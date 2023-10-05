@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023, WSO2 LLC. (https://www.wso2.com). All Rights Reserved.
+ * Copyright (c) 2023, WSO2 LLC. (https://www.wso2.com).
  *
  * WSO2 LLC. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -357,17 +357,26 @@ export const AppView: FunctionComponent<RouteComponentProps> = (
                             />,
                             label: t(subRoute.name),
                             onClick: () => history.push(subRoute.path),
-                            selected: selectedRoute?.path === subRoute.path,
+                            selected: subRoute.selected ?? selectedRoute?.path === subRoute.path,
                             tag: t(subRoute.featureStatusLabel)
                         })),
                         label: t(route.name),
                         onClick: () => history.push(route.path),
-                        selected: selectedRoute?.path === route.path,
+                        selected: route.selected ?? isRouteActive(route.path),
                         tag: t(route.featureStatusLabel)
                     }))
                 };
             }
         );
+    };
+
+    /**
+     * 
+     * @param routePath - current route path
+     * @returns if the navigation item is active.
+     */
+    const isRouteActive = (routePath: string): boolean => {
+        return history.location.pathname === routePath;
     };
 
     return (
