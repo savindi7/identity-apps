@@ -465,7 +465,14 @@ export const console: ConsoleNS = {
             }
         },
         sidePanel: {
-            privacy: "Privacy"
+            privacy: "Privacy",
+            loginAndRegistration: {
+                label: "Login & Registration",
+                description: "Configure login and registration settings."
+            },
+            userAttributesAndStores: "User Attributes & Stores",
+            userManagement: "User Management",
+            branding: "Branding"
         },
         validations: {
             inSecureURL: {
@@ -961,7 +968,7 @@ export const console: ConsoleNS = {
                             tabName: "Provisioning"
                         },
                         sharedAccess: {
-                            subTitle: "Select the following options to share the application with the sub organizations.",
+                            subTitle: "Select the following options to share the application with the organizations.",
                             tabName: "Shared Access"
                         },
                         shareApplication: {
@@ -1528,9 +1535,9 @@ export const console: ConsoleNS = {
                                 }
                             },
                             isSharingEnabled: {
-                                hint: "If enabled, it will share this application with all or any selected sub-organizations " +
+                                hint: "If enabled, it will share this application with all or any selected organizations " +
                                     "that belong to your root organization.",
-                                label: "Allow sharing with sub-organizations"
+                                label: "Allow sharing with organizations"
                             },
                             isManagementApp: {
                                 hint: "Enable to allow the application to access management API of this organization.",
@@ -4934,7 +4941,7 @@ export const console: ConsoleNS = {
                                 "administrator) upgrade your subscription to increase the allowed limit.",
                             title: "You have reached the maximum number of allowed suborganizations."
                         },
-                        heading: "You've reached the maximum limit for sub organizations"
+                        heading: "You've reached the maximum limit for organizations"
                     },
                     subOrgLevelsLimitReachedError: {
                         emptyPlaceholder: {
@@ -7912,6 +7919,7 @@ export const console: ConsoleNS = {
                 copyright: "WSO2 Identity Server © {{year}}"
             },
             governanceConnectors: {
+                goBackLoginAndRegistration: "Go back to login & registration",
                 categories: "Categories",
                 connectorSubHeading: "Configure {{ name }} settings.",
                 connectorCategories: {
@@ -9196,12 +9204,12 @@ export const console: ConsoleNS = {
                     }
                 },
                 homeList: {
-                    description: "View the list of all the available sub organizations.",
-                    name: "All Sub Organizations"
+                    description: "View the list of all the available organizations.",
+                    name: "All Organizations"
                 },
                 list: {
                     actions: {
-                        add: "Add Sub Organization"
+                        add: "Add Organization"
                     },
                     columns: {
                         actions: "Actions",
@@ -9210,9 +9218,9 @@ export const console: ConsoleNS = {
                 },
                 modals: {
                     addOrganization: {
-                        header: "Add Sub Organization",
-                        subtitle1: "Create a new sub organization in {{parent}}.",
-                        subtitle2: "Create a new sub organization."
+                        header: "Add Organization",
+                        subtitle1: "Create a new organization in {{parent}}.",
+                        subtitle2: "Create a new organization."
                     }
                 },
                 notifications: {
@@ -9245,7 +9253,7 @@ export const console: ConsoleNS = {
                         }
                     },
                     deleteOrganizationWithSubOrganizationError: "Organization {{ organizationName }} cannot be " +
-                        "deleted since it has one or more sub organizations.",
+                        "deleted since it has one or more organizations.",
                     disableOrganization: {
                         error: {
                             description: "{{description}}",
@@ -9261,7 +9269,7 @@ export const console: ConsoleNS = {
                         }
                     },
                     disableOrganizationWithSubOrganizationError: "Organization {{ organizationName }} cannot be " +
-                        "disabled since it has one or more sub organizations.",
+                        "disabled since it has one or more organizations.",
                     enableOrganization: {
                         error: {
                             description: "{{description}}",
@@ -9331,7 +9339,7 @@ export const console: ConsoleNS = {
                 },
                 placeholders: {
                     emptyList: {
-                        action: "Add Sub Organization",
+                        action: "Add Organization",
                         subtitles: {
                             0: "There are no organizations at the moment.",
                             1: "You can add a new organization easily by",
@@ -9342,21 +9350,21 @@ export const console: ConsoleNS = {
                     }
                 },
                 shareApplicationSubTitle: "Select one of the following options to share the application.",
-                shareApplicationRadio: "Share with all sub-organizations",
-                shareApplicationInfo: "Select this to share the application with all the existing sub-organizations " +
-                    "and all new sub-organizations that you create under your current organization.",
-                unshareApplicationRadio: "Do not share with any sub-organization",
-                shareWithSelectedOrgsRadio: "Share with only selected sub-organizations",
+                shareApplicationRadio: "Share with all organizations",
+                shareApplicationInfo: "Select this to share the application with all the existing organizations " +
+                    "and all new organizations that you create under your current organization.",
+                unshareApplicationRadio: "Do not share with any organization",
+                shareWithSelectedOrgsRadio: "Share with only selected organizations",
                 unshareApplicationInfo: "This will allow you to prevent sharing this application with any of the " +
-                    "existing sub-organizations or new sub-organizations that you create under this organization " +
+                    "existing organizations or new organizations that you create under this organization " +
                     "in the future.",
                 switching: {
-                    emptyList: "There are no sub-organizations to show.",
+                    emptyList: "There are no organizations to show.",
                     goBack: "Go back",
                     search: {
                         placeholder: "Search by Name"
                     },
-                    subOrganizations: "Sub-organizations",
+                    subOrganizations: "Organizations",
                     switchLabel: "Organization"
                 },
                 title: "Organizations"
@@ -10079,7 +10087,7 @@ export const console: ConsoleNS = {
                 localDialect: "Attributes",
                 loginAttemptsSecurity: "Login Attempts Security",
                 multiFactorAuthenticators: "Multi Factor Authenticators",
-                organizations: "Sub Organizations",
+                organizations: "Organizations",
                 otherSettings: "Other Settings",
                 overview: "Overview",
                 passwordPolicies: "Password Policies",
@@ -11555,8 +11563,8 @@ export const console: ConsoleNS = {
                 title: "Edit scope: {{ name }}"
             },
             organizations: {
-                subTitle: "Create and manage sub organizations.",
-                title: "Sub Organizations"
+                subTitle: "Create and manage organizations.",
+                title: "Organizations"
             },
             overview: {
                 subTitle: "Configure and  manage users, roles, attribute dialects, server configurations etc." +
