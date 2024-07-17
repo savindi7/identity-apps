@@ -1088,6 +1088,10 @@ export interface ApplicationsNS {
                 label: string;
             };
             fields: {
+                allowBrandingInOrgs: {
+                    hint: string;
+                    label: string;
+                };
                 name: {
                     label: string;
                     placeholder: string;

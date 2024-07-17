@@ -45,6 +45,7 @@ export interface ApplicationBasicInterface {
     applicationEnabled?:boolean;
     advancedConfigurations?: AdvancedConfigurationsInterface;
     associatedRoles?: AssociatedRolesInterface;
+    isSubOrgBrandingAllowed?: boolean;
 }
 
 export enum ApplicationAccessTypes {

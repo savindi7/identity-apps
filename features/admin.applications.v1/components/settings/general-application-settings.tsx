@@ -74,6 +74,10 @@ interface GeneralApplicationSettingsInterface extends SBACInterface<FeatureConfi
      */
     imageUrl?: string;
     /**
+     * Is Application Branding in Sub-Organizations allowed.
+     */
+    isSubOrgBrandingAllowed?: boolean;
+    /**
      * Is the application info request loading.
      */
     isLoading?: boolean;
@@ -101,6 +105,10 @@ interface GeneralApplicationSettingsInterface extends SBACInterface<FeatureConfi
      * Specifies a Management Application
      */
     isManagementApp?: boolean;
+    /**
+     * Specifies if the organization is a sub organization.
+     */
+    isSubOrganization?: boolean;
     /**
      * Application.
      */
@@ -130,11 +138,13 @@ export const GeneralApplicationSettings: FunctionComponent<GeneralApplicationSet
         featureConfig,
         imageUrl,
         accessUrl,
+        isSubOrgBrandingAllowed,
         isLoading,
         onDelete,
         onUpdate,
         readOnly,
         isManagementApp,
+        isSubOrganization,
         application,
         isBrandingSectionHidden,
         [ "data-componentid" ]: componentId
@@ -378,6 +388,7 @@ export const GeneralApplicationSettings: FunctionComponent<GeneralApplicationSet
                             discoverability={ discoverability }
                             onSubmit={ handleFormSubmit }
                             imageUrl={ imageUrl }
+                            isSubOrgBrandingAllowed={ isSubOrgBrandingAllowed }
                             accessUrl={ accessUrl }
                             readOnly={
                                 readOnly
@@ -393,6 +404,7 @@ export const GeneralApplicationSettings: FunctionComponent<GeneralApplicationSet
                             data-testid={ `${ componentId }-form` }
                             isSubmitting={ isSubmitting }
                             isManagementApp={ isManagementApp }
+                            isSubOrganization={ isSubOrganization }
                         />
                     </EmphasizedSegment>
                     <Divider hidden />

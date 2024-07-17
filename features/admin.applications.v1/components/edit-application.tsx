@@ -1055,6 +1055,7 @@ export const EditApplication: FunctionComponent<EditApplicationPropsInterface> =
                 discoverability={ application?.advancedConfigurations?.discoverableByEndUsers }
                 imageUrl={ application?.imageUrl }
                 name={ application?.name }
+                isSubOrgBrandingAllowed={ application?.isSubOrgBrandingAllowed }
                 application = { application }
                 isLoading={ isLoading }
                 onDelete={ onDelete }
@@ -1062,11 +1063,12 @@ export const EditApplication: FunctionComponent<EditApplicationPropsInterface> =
                 featureConfig={ featureConfig }
                 template={ template }
                 isBrandingSectionHidden={ brandingDisabledFeatures.includes(BrandingPreferencesConstants.
-                    APP_WISE_BRANDING_FEATURE_TAG) }
+                    APP_WISE_BRANDING_FEATURE_TAG) || isM2MApplication }
                 readOnly={ readOnly || applicationConfig.editApplication.getTabPanelReadOnlyStatus(
                     "APPLICATION_EDIT_GENERAL_SETTINGS", application) }
                 data-componentid={ `${ componentId }-general-settings` }
                 isManagementApp={ application.isManagementApp }
+                isSubOrganization={ isSubOrganization() }
             />
         </ResourceTab.Pane>
     );

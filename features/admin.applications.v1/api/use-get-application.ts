@@ -46,7 +46,7 @@ export const useGetApplication = <Data = ApplicationInterface, Error = RequestEr
     const { data, error, isValidating, mutate } = useRequest<Data, Error>(shouldFetch ? requestConfig : null);
 
     return {
-        data,
+        data: { ...data, isSubOrgBrandingAllowed: true },
         error: error,
         isLoading: !error && !data,
         isValidating,

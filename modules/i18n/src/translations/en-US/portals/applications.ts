@@ -1291,6 +1291,10 @@ export const applications: ApplicationsNS = {
                 label: "Go to Application Branding"
             },
             fields: {
+                allowBrandingInOrgs: {
+                    hint: "If enabled, organizations that have access to this application will be allowed to customize its branding to match their own themes.",
+                    label: "Allow Branding in Organizations"
+                },
                 accessUrl: {
                     hint: "The landing page URL for this application. It will be used in the application" +
                         " catalog and discovery flows. If the login page times out, the user will " +
