@@ -952,16 +952,15 @@ export const applications: ApplicationsNS = {
                         message: "Invalid configuration",
                         description: "Linked local account validation should be enabled to mandate a linked local account"
                     },
-                    heading: "Linked Accounts",
-                    descriptionFederated: "Enable to retrieve user attributes of the linked local account during federated authentication.",
+                    heading: "Attribute Resolution in Federated Login",
+                    descriptionFederated: "Manage how user attributes are resolved when a local account is linked to a federated identity.",
                     fields: {
                         validateLocalAccount: {
-                            label: "Prioritize local account attributes",
-                            hint: "If a linked local account exists, its attributes are returned. Otherwise, " +
-                                "attributes of the federated identity are returned."
+                            label: "Use Linked Local Account Attributes",
+                            hint: "If a linked local account exists, its attributes will be used. If no linked account is found, attributes of the federated user account will be used instead."
                         },
                         mandateLocalAccount: {
-                            label: "Mandate linked local account",
+                            label: "Require Linked Local Account",
                             hint: "Authentication will fail in token exchange grant if there is no linked local account with the federated identity."
                         }
                     }
