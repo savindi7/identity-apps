@@ -1,5 +1,149 @@
 # @wso2is/admin.applications.v1
 
+## 2.41.17
+
+### Patch Changes
+
+- [#9699](https://github.com/wso2/identity-apps/pull/9699) [`413d08d82b88fb248b45e6a6e6e668a84d7f6a19`](https://github.com/wso2/identity-apps/commit/413d08d82b88fb248b45e6a6e6e668a84d7f6a19) Thanks [@piraveena](https://github.com/piraveena)! - Add feature gate logic for OIDC front-channel logout
+
+- Updated dependencies [[`413d08d82b88fb248b45e6a6e6e668a84d7f6a19`](https://github.com/wso2/identity-apps/commit/413d08d82b88fb248b45e6a6e6e668a84d7f6a19)]:
+  - @wso2is/admin.extensions.v1@2.40.27
+  - @wso2is/admin.feature-gate.v1@1.9.1
+  - @wso2is/access-control@3.5.2
+  - @wso2is/admin.branding.v1@2.32.114
+  - @wso2is/admin.login-flow-builder.v1@2.29.4
+  - @wso2is/admin.login-flow.ai.v1@2.27.109
+  - @wso2is/admin.core.v1@2.54.14
+  - @wso2is/admin.roles.v2@2.27.328
+  - @wso2is/admin.server-configurations.v1@2.37.24
+  - @wso2is/admin.users.v1@2.37.5
+  - @wso2is/admin.connections.v1@2.35.18
+
+## 2.41.16
+
+### Patch Changes
+
+- [#9706](https://github.com/wso2/identity-apps/pull/9706) [`d1e3d8f53406ef45be4483a3eb5a7663dfbdad68`](https://github.com/wso2/identity-apps/commit/d1e3d8f53406ef45be4483a3eb5a7663dfbdad68) Thanks [@sahandilshan](https://github.com/sahandilshan)! - Improvements to the ciba protocol configuration
+
+* [#9709](https://github.com/wso2/identity-apps/pull/9709) [`b256fb1cf7c979c91f7bf9cb70932cd514d8434c`](https://github.com/wso2/identity-apps/commit/b256fb1cf7c979c91f7bf9cb70932cd514d8434c) Thanks [@sahandilshan](https://github.com/sahandilshan)! - Improvements to the ciba protocol configuration
+
+* Updated dependencies [[`d1e3d8f53406ef45be4483a3eb5a7663dfbdad68`](https://github.com/wso2/identity-apps/commit/d1e3d8f53406ef45be4483a3eb5a7663dfbdad68), [`b256fb1cf7c979c91f7bf9cb70932cd514d8434c`](https://github.com/wso2/identity-apps/commit/b256fb1cf7c979c91f7bf9cb70932cd514d8434c)]:
+  - @wso2is/admin.extensions.v1@2.40.24
+  - @wso2is/i18n@2.34.8
+  - @wso2is/admin.branding.v1@2.32.111
+  - @wso2is/admin.core.v1@2.54.11
+  - @wso2is/admin.roles.v2@2.27.325
+  - @wso2is/admin.connections.v1@2.35.13
+  - @wso2is/admin.server-configurations.v1@2.37.21
+  - @wso2is/admin.users.v1@2.37.2
+
+## 2.41.15
+
+### Patch Changes
+
+- [#9701](https://github.com/wso2/identity-apps/pull/9701) [`7da789c6ba254f3e6e66c63ebceb7e7108b151a8`](https://github.com/wso2/identity-apps/commit/7da789c6ba254f3e6e66c63ebceb7e7108b151a8) Thanks [@PasinduYeshan](https://github.com/PasinduYeshan)! - Address outbound provisioning blocking mode issue.
+
+- Updated dependencies []:
+  - @wso2is/admin.branding.v1@2.32.110
+  - @wso2is/admin.core.v1@2.54.10
+  - @wso2is/admin.roles.v2@2.27.324
+  - @wso2is/admin.connections.v1@2.35.12
+  - @wso2is/admin.server-configurations.v1@2.37.20
+  - @wso2is/admin.users.v1@2.37.1
+
+## 2.41.14
+
+### Patch Changes
+
+- [#9568](https://github.com/wso2/identity-apps/pull/9568) [`6f37a9068f902c2020fdcd22d06caa0f76eecf90`](https://github.com/wso2/identity-apps/commit/6f37a9068f902c2020fdcd22d06caa0f76eecf90) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Introduce UI support for B2B User Sharing
+
+- Updated dependencies [[`6f37a9068f902c2020fdcd22d06caa0f76eecf90`](https://github.com/wso2/identity-apps/commit/6f37a9068f902c2020fdcd22d06caa0f76eecf90)]:
+  - @wso2is/admin.users.v1@2.37.0
+  - @wso2is/common.ui.shared-access.v1@0.1.4
+  - @wso2is/admin.console-settings.v1@2.26.9
+  - @wso2is/admin.core.v1@2.54.9
+  - @wso2is/i18n@2.34.7
+  - @wso2is/admin.branding.v1@2.32.109
+  - @wso2is/admin.roles.v2@2.27.323
+  - @wso2is/admin.server-configurations.v1@2.37.19
+  - @wso2is/admin.connections.v1@2.35.11
+
+## 2.41.13
+
+### Patch Changes
+
+- [#9693](https://github.com/wso2/identity-apps/pull/9693) [`7875b8053d9af4ca38138818bf15596946c83ebe`](https://github.com/wso2/identity-apps/commit/7875b8053d9af4ca38138818bf15596946c83ebe) Thanks [@shashimalcse](https://github.com/shashimalcse)! - Fix Digital Wallet Application Authorization resource name
+
+- Updated dependencies [[`89273a887431c2e7e2bf346bc166dea0667cfc45`](https://github.com/wso2/identity-apps/commit/89273a887431c2e7e2bf346bc166dea0667cfc45)]:
+  - @wso2is/admin.core.v1@2.54.7
+  - @wso2is/admin.branding.v1@2.32.107
+  - @wso2is/admin.roles.v2@2.27.321
+  - @wso2is/admin.server-configurations.v1@2.37.17
+  - @wso2is/admin.users.v1@2.36.126
+  - @wso2is/admin.connections.v1@2.35.9
+
+## 2.41.12
+
+### Patch Changes
+
+- [#9675](https://github.com/wso2/identity-apps/pull/9675) [`e775d9c4454e20e29a506327c99aba687957f3ce`](https://github.com/wso2/identity-apps/commit/e775d9c4454e20e29a506327c99aba687957f3ce) Thanks [@ShanChathusanda93](https://github.com/ShanChathusanda93)! - Improve default token issuer selection based on the current organization id
+
+- Updated dependencies []:
+  - @wso2is/admin.branding.v1@2.32.105
+  - @wso2is/admin.core.v1@2.54.5
+  - @wso2is/admin.roles.v2@2.27.319
+  - @wso2is/admin.connections.v1@2.35.7
+  - @wso2is/admin.server-configurations.v1@2.37.15
+  - @wso2is/admin.users.v1@2.36.124
+
+## 2.41.11
+
+### Patch Changes
+
+- [#9677](https://github.com/wso2/identity-apps/pull/9677) [`c3b6f90a9fab3ca270c0ae7b9b09798558fa0869`](https://github.com/wso2/identity-apps/commit/c3b6f90a9fab3ca270c0ae7b9b09798558fa0869) Thanks [@sahandilshan](https://github.com/sahandilshan)! - Remove hardcoded ciba grant name
+
+- Updated dependencies [[`c3b6f90a9fab3ca270c0ae7b9b09798558fa0869`](https://github.com/wso2/identity-apps/commit/c3b6f90a9fab3ca270c0ae7b9b09798558fa0869)]:
+  - @wso2is/i18n@2.34.4
+  - @wso2is/admin.branding.v1@2.32.103
+  - @wso2is/admin.core.v1@2.54.3
+  - @wso2is/admin.roles.v2@2.27.317
+  - @wso2is/admin.connections.v1@2.35.5
+  - @wso2is/admin.server-configurations.v1@2.37.13
+  - @wso2is/admin.users.v1@2.36.122
+
+## 2.41.10
+
+### Patch Changes
+
+- [#9674](https://github.com/wso2/identity-apps/pull/9674) [`8bf98aba6e17b25d20231894e6f21e285a00c648`](https://github.com/wso2/identity-apps/commit/8bf98aba6e17b25d20231894e6f21e285a00c648) Thanks [@shashimalcse](https://github.com/shashimalcse)! - Rename VC Client Application to Digital Wallet
+
+- Updated dependencies [[`8bf98aba6e17b25d20231894e6f21e285a00c648`](https://github.com/wso2/identity-apps/commit/8bf98aba6e17b25d20231894e6f21e285a00c648)]:
+  - @wso2is/admin.application-templates.v1@1.5.11
+  - @wso2is/admin.extensions.v1@2.40.23
+  - @wso2is/admin.branding.v1@2.32.102
+  - @wso2is/admin.core.v1@2.54.2
+  - @wso2is/admin.roles.v2@2.27.316
+  - @wso2is/admin.connections.v1@2.35.4
+  - @wso2is/admin.server-configurations.v1@2.37.12
+  - @wso2is/admin.users.v1@2.36.121
+
+## 2.41.9
+
+### Patch Changes
+
+- [#9609](https://github.com/wso2/identity-apps/pull/9609) [`462c16471302dd0b197ef8cad758146e10af2ab0`](https://github.com/wso2/identity-apps/commit/462c16471302dd0b197ef8cad758146e10af2ab0) Thanks [@sahandilshan](https://github.com/sahandilshan)! - Add CIBA support for protocol configuration
+
+- Updated dependencies [[`a4db7d691345f8849a92e26e9fb904dfc7d7bcef`](https://github.com/wso2/identity-apps/commit/a4db7d691345f8849a92e26e9fb904dfc7d7bcef), [`462c16471302dd0b197ef8cad758146e10af2ab0`](https://github.com/wso2/identity-apps/commit/462c16471302dd0b197ef8cad758146e10af2ab0)]:
+  - @wso2is/admin.console-settings.v1@2.26.8
+  - @wso2is/admin.core.v1@2.54.1
+  - @wso2is/admin.extensions.v1@2.40.22
+  - @wso2is/i18n@2.34.3
+  - @wso2is/admin.branding.v1@2.32.101
+  - @wso2is/admin.server-configurations.v1@2.37.11
+  - @wso2is/admin.users.v1@2.36.120
+  - @wso2is/admin.roles.v2@2.27.315
+  - @wso2is/admin.connections.v1@2.35.3
+
 ## 2.41.8
 
 ### Patch Changes

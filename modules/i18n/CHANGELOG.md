@@ -1,5 +1,52 @@
 # @wso2is/i18n
 
+## 2.34.9
+
+### Patch Changes
+
+- [#9667](https://github.com/wso2/identity-apps/pull/9667) [`ad69b9379651fec0b7a42eaabe5b6921a830d423`](https://github.com/wso2/identity-apps/commit/ad69b9379651fec0b7a42eaabe5b6921a830d423) Thanks [@bhagyasakalanka](https://github.com/bhagyasakalanka)! - Add override all support for IDP group / role mapping
+
+## 2.34.8
+
+### Patch Changes
+
+- [#9706](https://github.com/wso2/identity-apps/pull/9706) [`d1e3d8f53406ef45be4483a3eb5a7663dfbdad68`](https://github.com/wso2/identity-apps/commit/d1e3d8f53406ef45be4483a3eb5a7663dfbdad68) Thanks [@sahandilshan](https://github.com/sahandilshan)! - Improvements to the ciba protocol configuration
+
+* [#9709](https://github.com/wso2/identity-apps/pull/9709) [`b256fb1cf7c979c91f7bf9cb70932cd514d8434c`](https://github.com/wso2/identity-apps/commit/b256fb1cf7c979c91f7bf9cb70932cd514d8434c) Thanks [@sahandilshan](https://github.com/sahandilshan)! - Improvements to the ciba protocol configuration
+
+## 2.34.7
+
+### Patch Changes
+
+- [#9568](https://github.com/wso2/identity-apps/pull/9568) [`6f37a9068f902c2020fdcd22d06caa0f76eecf90`](https://github.com/wso2/identity-apps/commit/6f37a9068f902c2020fdcd22d06caa0f76eecf90) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Introduce UI support for B2B User Sharing
+
+## 2.34.6
+
+### Patch Changes
+
+- [#9688](https://github.com/wso2/identity-apps/pull/9688) [`bbdc05651633f04305710158afc355ea6f16d8c0`](https://github.com/wso2/identity-apps/commit/bbdc05651633f04305710158afc355ea6f16d8c0) Thanks [@shashimalcse](https://github.com/shashimalcse)! - Improve VC creation UX
+
+## 2.34.5
+
+### Patch Changes
+
+- [#9245](https://github.com/wso2/identity-apps/pull/9245) [`1d64e4c1973e5177906a6a15a0b85fd16d420e11`](https://github.com/wso2/identity-apps/commit/1d64e4c1973e5177906a6a15a0b85fd16d420e11) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Update locale dropdown in email and SMS template edit page to display all available locales
+
+- Updated dependencies [[`1d64e4c1973e5177906a6a15a0b85fd16d420e11`](https://github.com/wso2/identity-apps/commit/1d64e4c1973e5177906a6a15a0b85fd16d420e11)]:
+  - @wso2is/core@2.12.8
+
+## 2.34.4
+
+### Patch Changes
+
+- [#9677](https://github.com/wso2/identity-apps/pull/9677) [`c3b6f90a9fab3ca270c0ae7b9b09798558fa0869`](https://github.com/wso2/identity-apps/commit/c3b6f90a9fab3ca270c0ae7b9b09798558fa0869) Thanks [@sahandilshan](https://github.com/sahandilshan)! - Remove hardcoded ciba grant name
+
+## 2.34.3
+
+### Patch Changes
+
+- [#9609](https://github.com/wso2/identity-apps/pull/9609) [`462c16471302dd0b197ef8cad758146e10af2ab0`](https://github.com/wso2/identity-apps/commit/462c16471302dd0b197ef8cad758146e10af2ab0) Thanks [@sahandilshan](https://github.com/sahandilshan)! - Add CIBA support for protocol configuration
+
 ## 2.34.2
 
 ### Patch Changes

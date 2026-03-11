@@ -1,5 +1,54 @@
 # @wso2is/identity-apps-core
 
+## 3.4.7
+
+### Patch Changes
+
+- [#9357](https://github.com/wso2/identity-apps/pull/9357) [`4217a2cf28d5c553b4298ae5a73748a2556a7693`](https://github.com/wso2/identity-apps/commit/4217a2cf28d5c553b4298ae5a73748a2556a7693) Thanks [@JayaShakthi97](https://github.com/JayaShakthi97)! - Fix CSS issue in Approvals Page in My Account app in dark theme
+
+## 3.4.6
+
+### Patch Changes
+
+- [#9719](https://github.com/wso2/identity-apps/pull/9719) [`6287ee8da534f772b8f3020341fded201fe4fec3`](https://github.com/wso2/identity-apps/commit/6287ee8da534f772b8f3020341fded201fe4fec3) Thanks [@ashanthamara](https://github.com/ashanthamara)! - Use char[] data type to hold password values in the runtime
+
+## 3.4.5
+
+### Patch Changes
+
+- [#9717](https://github.com/wso2/identity-apps/pull/9717) [`0f7da05933fbe8543a1f079a8902b1c02b3f88ba`](https://github.com/wso2/identity-apps/commit/0f7da05933fbe8543a1f079a8902b1c02b3f88ba) Thanks [@ashanthamara](https://github.com/ashanthamara)! - Integrate flow data retrieval client to invoke flow execute api in accounts webapp
+
+* [#9718](https://github.com/wso2/identity-apps/pull/9718) [`861c888dff4ca8e88e7ec1b7228ef3956a92e293`](https://github.com/wso2/identity-apps/commit/861c888dff4ca8e88e7ec1b7228ef3956a92e293) Thanks [@ashanthamara](https://github.com/ashanthamara)! - Add encoding for html attributes in jsps
+
+- [#9716](https://github.com/wso2/identity-apps/pull/9716) [`d939b57796a1b27ca90b2011e71c9b7c167f08b3`](https://github.com/wso2/identity-apps/commit/d939b57796a1b27ca90b2011e71c9b7c167f08b3) Thanks [@SujanSanjula96](https://github.com/SujanSanjula96)! - Add org identifier handler related changes
+
+- Updated dependencies [[`d939b57796a1b27ca90b2011e71c9b7c167f08b3`](https://github.com/wso2/identity-apps/commit/d939b57796a1b27ca90b2011e71c9b7c167f08b3)]:
+  - @wso2is/theme@2.9.4
+
+## 3.4.4
+
+### Patch Changes
+
+- [#9713](https://github.com/wso2/identity-apps/pull/9713) [`98a39447f1e6665b59bbad035eb30f8c646e96c6`](https://github.com/wso2/identity-apps/commit/98a39447f1e6665b59bbad035eb30f8c646e96c6) Thanks [@SujanSanjula96](https://github.com/SujanSanjula96)! - Release a new version
+
+## 3.4.3
+
+### Patch Changes
+
+- [#9690](https://github.com/wso2/identity-apps/pull/9690) [`1f34ebf16f5b05fc1fc781ac3acda62e573b2575`](https://github.com/wso2/identity-apps/commit/1f34ebf16f5b05fc1fc781ac3acda62e573b2575) Thanks [@SujanSanjula96](https://github.com/SujanSanjula96)! - Improve discovery pages to use for non federated authenticators
+
+## 3.4.2
+
+### Patch Changes
+
+- [#9696](https://github.com/wso2/identity-apps/pull/9696) [`fba762a069005000d96fceee24bb8830a7635766`](https://github.com/wso2/identity-apps/commit/fba762a069005000d96fceee24bb8830a7635766) Thanks [@DilshanSenarath](https://github.com/DilshanSenarath)! - Add support for an invalid tenant domain error page within the authentication portal
+
+## 3.4.1
+
+### Patch Changes
+
+- [#9672](https://github.com/wso2/identity-apps/pull/9672) [`d945a23adfaab4ab85915cc2265781c26ff77ec4`](https://github.com/wso2/identity-apps/commit/d945a23adfaab4ab85915cc2265781c26ff77ec4) Thanks [@ZiyamSanthosh](https://github.com/ZiyamSanthosh)! - Send IP and UA information through recovery API clients.
+
 ## 3.4.0
 
 ### Minor Changes

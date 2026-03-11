@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023-2024, WSO2 LLC. (https://www.wso2.com).
+ * Copyright (c) 2023-2026, WSO2 LLC. (https://www.wso2.com).
  *
  * WSO2 LLC. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -230,7 +230,7 @@ export const applicationConfig: ApplicationConfig = {
                     || application?.templateId === OIDCWebAppTemplate?.id
                     || application?.templateId === SinglePageAppTemplate?.id
                     || application?.templateId === ApplicationManagementConstants.M2M_APP_TEMPLATE_ID
-                    || application?.templateId === ApplicationTemplateIdTypes.VC_CLIENT_APPLICATION
+                    || application?.templateId === ApplicationTemplateIdTypes.DIGITAL_WALLET_APPLICATION
                 )
                 && application.name !== ApplicationManagementConstants.MY_ACCOUNT_APP_NAME
             ) {
@@ -246,7 +246,7 @@ export const applicationConfig: ApplicationConfig = {
                                 "extensions:develop.applications.edit.sections.resourceAuthorization.title"
                             )
                             : (application?.originalTemplateId
-                                === ApplicationTemplateIdTypes.VC_CLIENT_APPLICATION)
+                                === ApplicationTemplateIdTypes.DIGITAL_WALLET_APPLICATION)
                                 ? I18n.instance.t(
                                     "extensions:develop.applications.edit.sections.resourceAuthorization.title"
                                 )
@@ -276,7 +276,7 @@ export const applicationConfig: ApplicationConfig = {
                     || application?.templateId === OIDCWebAppTemplate?.id
                     || application?.templateId === SinglePageAppTemplate?.id
                     || application?.templateId === SamlWebAppTemplate?.id
-                    || application?.templateId === ApplicationTemplateIdTypes.VC_CLIENT_APPLICATION)
+                    || application?.templateId === ApplicationTemplateIdTypes.DIGITAL_WALLET_APPLICATION)
                 )
                 && application.name !== ApplicationManagementConstants.MY_ACCOUNT_APP_NAME
             ) {
@@ -430,6 +430,13 @@ export const applicationConfig: ApplicationConfig = {
             ApplicationManagementConstants.AUTHORIZATION_CODE_GRANT,
             ApplicationManagementConstants.REFRESH_TOKEN_GRANT,
             ApplicationManagementConstants.IMPLICIT_GRANT,
+            ApplicationManagementConstants.ORGANIZATION_SWITCH_GRANT,
+            ApplicationManagementConstants.CIBA_GRANT
+        ],
+        [ "angular-application" ]: [
+            ApplicationManagementConstants.AUTHORIZATION_CODE_GRANT,
+            ApplicationManagementConstants.IMPLICIT_GRANT,
+            ApplicationManagementConstants.REFRESH_TOKEN_GRANT,
             ApplicationManagementConstants.ORGANIZATION_SWITCH_GRANT
         ],
         // oidc traditional web app template
@@ -439,7 +446,8 @@ export const applicationConfig: ApplicationConfig = {
             ApplicationManagementConstants.CLIENT_CREDENTIALS_GRANT,
             ApplicationManagementConstants.REFRESH_TOKEN_GRANT,
             ApplicationManagementConstants.ORGANIZATION_SWITCH_GRANT,
-            ApplicationManagementConstants.OAUTH2_TOKEN_EXCHANGE
+            ApplicationManagementConstants.OAUTH2_TOKEN_EXCHANGE,
+            ApplicationManagementConstants.CIBA_GRANT
         ],
         // oidc standard app template
         [ "custom-application" ]:
@@ -464,15 +472,29 @@ export const applicationConfig: ApplicationConfig = {
                 ApplicationManagementConstants.OAUTH2_TOKEN_EXCHANGE,
                 ApplicationManagementConstants.SAML2_BEARER,
                 ApplicationManagementConstants.JWT_BEARER,
-                ApplicationManagementConstants.IWA_NTLM
+                ApplicationManagementConstants.IWA_NTLM,
+                ApplicationManagementConstants.CIBA_GRANT
             ],
+        [ "digital-wallet-application" ]: [
+            ApplicationManagementConstants.AUTHORIZATION_CODE_GRANT,
+            ApplicationManagementConstants.REFRESH_TOKEN_GRANT
+        ],
+        [ "expressjs-application" ]: [
+            ApplicationManagementConstants.AUTHORIZATION_CODE_GRANT,
+            ApplicationManagementConstants.IMPLICIT_GRANT,
+            ApplicationManagementConstants.CLIENT_CREDENTIALS_GRANT,
+            ApplicationManagementConstants.REFRESH_TOKEN_GRANT,
+            ApplicationManagementConstants.ORGANIZATION_SWITCH_GRANT,
+            ApplicationManagementConstants.OAUTH2_TOKEN_EXCHANGE
+        ],
         [ "m2m-application" ]: [
             ApplicationManagementConstants.CLIENT_CREDENTIALS_GRANT
         ],
         [ "mcp-client-application" ]: [
             ApplicationManagementConstants.AUTHORIZATION_CODE_GRANT,
             ApplicationManagementConstants.REFRESH_TOKEN_GRANT,
-            ApplicationManagementConstants.CLIENT_CREDENTIALS_GRANT
+            ApplicationManagementConstants.CLIENT_CREDENTIALS_GRANT,
+            ApplicationManagementConstants.CIBA_GRANT
         ],
         [ "mobile-application" ]: [
             ApplicationManagementConstants.AUTHORIZATION_CODE_GRANT,
@@ -481,7 +503,8 @@ export const applicationConfig: ApplicationConfig = {
             ApplicationManagementConstants.PASSWORD,
             ApplicationManagementConstants.DEVICE_GRANT,
             ApplicationManagementConstants.ORGANIZATION_SWITCH_GRANT,
-            ApplicationManagementConstants.OAUTH2_TOKEN_EXCHANGE
+            ApplicationManagementConstants.OAUTH2_TOKEN_EXCHANGE,
+            ApplicationManagementConstants.CIBA_GRANT
         ],
         [ "nextjs-application" ]: [
             ApplicationManagementConstants.AUTHORIZATION_CODE_GRANT,
@@ -489,22 +512,20 @@ export const applicationConfig: ApplicationConfig = {
             ApplicationManagementConstants.IMPLICIT_GRANT,
             ApplicationManagementConstants.REFRESH_TOKEN_GRANT,
             ApplicationManagementConstants.OAUTH2_TOKEN_EXCHANGE,
-            ApplicationManagementConstants.ORGANIZATION_SWITCH_GRANT
+            ApplicationManagementConstants.ORGANIZATION_SWITCH_GRANT,
+            ApplicationManagementConstants.CIBA_GRANT
         ],
         [ "react-application" ]: [
             ApplicationManagementConstants.AUTHORIZATION_CODE_GRANT,
             ApplicationManagementConstants.IMPLICIT_GRANT,
             ApplicationManagementConstants.REFRESH_TOKEN_GRANT,
-            ApplicationManagementConstants.ORGANIZATION_SWITCH_GRANT
+            ApplicationManagementConstants.ORGANIZATION_SWITCH_GRANT,
+            ApplicationManagementConstants.CIBA_GRANT
         ],
         [ "sub-organization-application" ]: [
             ApplicationManagementConstants.REFRESH_TOKEN_GRANT,
             ApplicationManagementConstants.PASSWORD,
             ApplicationManagementConstants.CLIENT_CREDENTIALS_GRANT
-        ],
-        [ "vc-client-application" ]: [
-            ApplicationManagementConstants.AUTHORIZATION_CODE_GRANT,
-            ApplicationManagementConstants.REFRESH_TOKEN_GRANT
         ]
     }),
     hiddenGrantTypes: [ ApplicationManagementConstants.ACCOUNT_SWITCH_GRANT ],

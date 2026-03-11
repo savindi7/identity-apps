@@ -1,5 +1,28 @@
 # @wso2is/admin.claims.v1
 
+## 2.30.3
+
+### Patch Changes
+
+- [#9732](https://github.com/wso2/identity-apps/pull/9732) [`22331b80b5ca8b15d5e3b52abd5a5bb46b069640`](https://github.com/wso2/identity-apps/commit/22331b80b5ca8b15d5e3b52abd5a5bb46b069640) Thanks [@shashimalcse](https://github.com/shashimalcse)! - Add VC claim dialect to SYSTEM_DIALECTS
+
+- Updated dependencies [[`4d6a03e28d19248a2a24ae1ddafbc41e41f6b917`](https://github.com/wso2/identity-apps/commit/4d6a03e28d19248a2a24ae1ddafbc41e41f6b917), [`22331b80b5ca8b15d5e3b52abd5a5bb46b069640`](https://github.com/wso2/identity-apps/commit/22331b80b5ca8b15d5e3b52abd5a5bb46b069640)]:
+  - @wso2is/admin.server-configurations.v1@2.37.25
+  - @wso2is/admin.claims.v1@2.30.3
+
+## 2.30.2
+
+### Patch Changes
+
+- [#9686](https://github.com/wso2/identity-apps/pull/9686) [`11f78e74d83aa13af412513cf1010ab92f9989ad`](https://github.com/wso2/identity-apps/commit/11f78e74d83aa13af412513cf1010ab92f9989ad) Thanks [@ImalshaD](https://github.com/ImalshaD)! - Add Compatibility Settings UI support.
+
+- Updated dependencies [[`11f78e74d83aa13af412513cf1010ab92f9989ad`](https://github.com/wso2/identity-apps/commit/11f78e74d83aa13af412513cf1010ab92f9989ad), [`bbdc05651633f04305710158afc355ea6f16d8c0`](https://github.com/wso2/identity-apps/commit/bbdc05651633f04305710158afc355ea6f16d8c0)]:
+  - @wso2is/admin.server-configurations.v1@2.37.16
+  - @wso2is/admin.claims.v1@2.30.2
+  - @wso2is/admin.users.v1@2.36.125
+  - @wso2is/admin.core.v1@2.54.6
+  - @wso2is/i18n@2.34.6
+
 ## 2.30.1
 
 ### Patch Changes

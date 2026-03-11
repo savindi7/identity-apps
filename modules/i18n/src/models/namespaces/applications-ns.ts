@@ -819,9 +819,11 @@ export interface ApplicationsNS {
                 shareSelectedApplication: string;
                 allRolesAndOrgsSharingMessage: string;
                 allRolesAndOrgsNotSharingMessage: string;
+                allApplicationRolesSharingMessage: string;
                 selectAnOrganizationToMangage: string;
                 allRolesSharingMessage: string;
                 doNotShareRolesWithAllOrgs: string;
+                shareApplicationWithFutureChildOrgs: string;
                 toManageOrganizationSelectLeftPanel: string;
                 subTitle: string;
                 tabName: string;
@@ -1500,6 +1502,24 @@ export interface ApplicationsNS {
                             }
                         }
                     }
+                },
+                ciba: {
+                    authReqExpiryTime: {
+                        hint: string;
+                        label: string;
+                        placeholder: string;
+                        validations: {
+                            empty: string;
+                            invalid: string;
+                        };
+                    };
+                    notificationChannels: {
+                        externalHint: string;
+                        externalLabel: string;
+                        hint: string;
+                        label: string;
+                    };
+                    heading: string;
                 }
             };
             mobileApp: {

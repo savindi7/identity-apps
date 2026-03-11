@@ -23,7 +23,12 @@ import Autocomplete, {
 import Box from "@oxygen-ui/react/Box";
 import Chip from "@oxygen-ui/react/Chip";
 import TextField from "@oxygen-ui/react/TextField";
-import { FeatureAccessConfigInterface, useRequiredScopes } from "@wso2is/access-control";
+import {
+    FeatureAccessConfigInterface,
+    FeatureStatus,
+    useCheckFeatureStatus,
+    useRequiredScopes
+} from "@wso2is/access-control";
 import {
     ApplicationTabComponentsFilter
 } from "@wso2is/admin.application-templates.v1/components/application-tab-components-filter";
@@ -32,6 +37,7 @@ import useGlobalVariables from "@wso2is/admin.core.v1/hooks/use-global-variables
 import { ConfigReducerStateInterface } from "@wso2is/admin.core.v1/models/reducer-state";
 import { AppState } from "@wso2is/admin.core.v1/store";
 import { ApplicationTabIDs, applicationConfig } from "@wso2is/admin.extensions.v1";
+import FeatureFlagConstants from "@wso2is/admin.feature-gate.v1/constants/feature-flag-constants";
 import { FeatureStatusLabel } from "@wso2is/admin.feature-gate.v1/models/feature-status";
 import { ImpersonationConfigConstants } from "@wso2is/admin.impersonation.v1/constants/impersonation-configuration";
 import { getSharedOrganizations } from "@wso2is/admin.organizations.v1/api";
@@ -115,6 +121,7 @@ import {
 } from "../../models/application";
 import {
     AllowedIssuerInterface,
+    CIBANotificationChannelInterface,
     GrantTypeInterface,
     GrantTypeMetaDataInterface,
     MetadataPropertyInterface,
@@ -249,6 +256,10 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
         applicationFeatureConfig,
         ApplicationManagementConstants.FEATURE_DICTIONARY.get("APPLICATION_EDIT_ACCESS_CONFIG_FRONT_CHANNEL_LOGOUT")
     );
+    const oidcFrontChannelLogoutFeatureStatus: FeatureStatus = useCheckFeatureStatus(
+        FeatureFlagConstants.FEATURE_FLAG_KEY_MAP["OIDC_FRONT_CHANNEL_LOGOUT"]);
+    const isFrontChannelLogoutGated: boolean = isFrontChannelLogoutEnabled
+        && oidcFrontChannelLogoutFeatureStatus === FeatureStatus.ENABLED;
     const isEnforceClientSecretPermissionEnabled: boolean = isFeatureEnabled(
         applicationFeatureConfig,
         ApplicationManagementConstants.FEATURE_DICTIONARY.get(
@@ -353,6 +364,8 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
     const requestObjectEncryptionMethod: MutableRefObject<HTMLElement> = useRef<HTMLElement>();
     const subjectToken: MutableRefObject<HTMLElement> = useRef<HTMLElement>();
     const applicationSubjectTokenExpiryInSeconds: MutableRefObject<HTMLElement> = useRef<HTMLElement>();
+    const authReqExpiryTime: MutableRefObject<HTMLElement> = useRef<HTMLElement>();
+    const notificationChannels: MutableRefObject<HTMLDivElement> = useRef<HTMLDivElement>();
 
     const [ isSPAApplication, setSPAApplication ] = useState<boolean>(false);
     const [ isOIDCWebApplication, setOIDCWebApplication ] = useState<boolean>(false);
@@ -371,6 +384,7 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
     const [ isAppShared, setIsAppShared ] = useState<boolean>(false);
     const [ sharedOrganizationsList, setSharedOrganizationsList ] = useState<Array<OrganizationInterface>>(undefined);
     const [ enableHybridFlowResponseTypeField , setEnableHybridFlowResponseTypeField ] = useState<boolean>(undefined);
+    const [ showCibaFields, setShowCibaFields ] = useState<boolean>(false);
 
     const [ triggerCertSubmit, setTriggerCertSubmit ] = useTrigger();
 
@@ -720,6 +734,12 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
         ) {
             setHybridFlowEnableConfig(true);
         }
+    }, [ selectedGrantTypes, isGrantChanged ]);
+
+    useEffect(() => {
+        setShowCibaFields(
+            selectedGrantTypes?.includes(ApplicationManagementConstants.CIBA_GRANT) ?? false
+        );
     }, [ selectedGrantTypes, isGrantChanged ]);
 
     /**
@@ -1503,7 +1523,9 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
                     backChannelLogoutUrl: isBackChannelLogoutEnabled
                         ? values.get("backChannelLogoutUrl")
                         : initialValues?.logout?.backChannelLogoutUrl,
-                    frontChannelLogoutUrl: values.get("frontChannelLogoutUrl")
+                    frontChannelLogoutUrl: isFrontChannelLogoutGated
+                        ? values.get("frontChannelLogoutUrl")
+                        : initialValues?.logout?.frontChannelLogoutUrl
                 },
                 publicClient: !isMobileApplication ? values.get("supportPublicClients")?.length > 0 : true,
                 refreshToken: {
@@ -1582,6 +1604,29 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
                     hybridFlow: {
                         enable: false,
                         responseType: null
+                    }
+                };
+            }
+
+            if (showCibaFields) {
+                const notificationChannels: string[] =
+                    values.get("cibaNotificationChannels") as unknown as string[] || [];
+
+                inboundConfigFormValues = {
+                    ...inboundConfigFormValues,
+                    cibaAuthenticationRequest: {
+                        authReqExpiryTime: values.get("authReqExpiryTime")
+                            ? parseInt(values.get("authReqExpiryTime") as string, 10)
+                            : undefined,
+                        notificationChannels: notificationChannels
+                    }
+                };
+            } else {
+                inboundConfigFormValues = {
+                    ...inboundConfigFormValues,
+                    cibaAuthenticationRequest: {
+                        authReqExpiryTime: undefined,
+                        notificationChannels: []
                     }
                 };
             }
@@ -1740,7 +1785,7 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
                 expiryInSeconds: Number(values.get("idExpiryInSeconds"))
             },
             logout: {
-                frontChannelLogoutUrl: isFrontChannelLogoutEnabled
+                frontChannelLogoutUrl: isFrontChannelLogoutGated
                     ? values.get("frontChannelLogoutUrl")
                     : initialValues?.logout?.frontChannelLogoutUrl
             },
@@ -2152,6 +2197,127 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
                             </Hint>
                         </Grid.Column>
                     </Grid.Row>
+                )
+            }
+
+            {
+                showCibaFields && (
+                    <>
+                        <Grid.Row columns={ 2 }>
+                            <Grid.Column mobile={ 16 }>
+                                <Divider />
+                                <Divider hidden />
+                            </Grid.Column>
+                            <Grid.Column mobile={ 16 }>
+                                <Heading as="h4">
+                                    { t("applications:forms.inboundOIDC.fields.ciba.heading") }
+                                </Heading>
+                            </Grid.Column>
+                        </Grid.Row>
+                        <Grid.Row columns={ 1 }>
+                            <Grid.Column mobile={ 16 }>
+                                <Field
+                                    ref={ authReqExpiryTime }
+                                    name="authReqExpiryTime"
+                                    label={
+                                        t("applications:forms.inboundOIDC.fields." +
+                                            "ciba.authReqExpiryTime.label")
+                                    }
+                                    required={ true }
+                                    requiredErrorMessage={
+                                        t("applications:forms.inboundOIDC.fields." +
+                                            "ciba.authReqExpiryTime.validations.empty")
+                                    }
+                                    type="number"
+                                    placeholder={
+                                        t("applications:forms.inboundOIDC.fields." +
+                                            "ciba.authReqExpiryTime.placeholder")
+                                    }
+                                    value={
+                                        initialValues?.cibaAuthenticationRequest?.authReqExpiryTime
+                                    }
+                                    readOnly={ readOnly }
+                                    min={ 1 }
+                                    validation={ async (value: FormValue, validation: Validation) => {
+                                        if (!isValidExpiryTime(value.toString())) {
+                                            validation.isValid = false;
+                                            validation.errorMessages.push(
+                                                t("applications:forms.inboundOIDC.fields." +
+                                                    "ciba.authReqExpiryTime.validations.invalid")
+                                            );
+                                        }
+                                    } }
+                                    data-componentid={ `${ testId }-ciba-expiry-input` }
+                                />
+                                <Hint>
+                                    { t("applications:forms.inboundOIDC.fields." +
+                                        "ciba.authReqExpiryTime.hint") }
+                                </Hint>
+                            </Grid.Column>
+                        </Grid.Row>
+                        <Grid.Row columns={ 1 }>
+                            <Grid.Column mobile={ 16 } tablet={ 16 } computer={ 8 }>
+                                <div
+                                    ref={ notificationChannels }
+                                    className="field"
+                                >
+                                    <label>
+                                        { t("applications:forms.inboundOIDC.fields." +
+                                            "ciba.notificationChannels.label") }
+                                    </label>
+                                    <Hint>
+                                        { t("applications:forms.inboundOIDC.fields." +
+                                            "ciba.notificationChannels.hint") }
+                                    </Hint>
+                                </div>
+                                <Field
+                                    name="cibaNotificationChannels"
+                                    type="checkbox"
+                                    required={ false }
+                                    value={
+                                        initialValues?.cibaAuthenticationRequest
+                                            ?.notificationChannels ?? []
+                                    }
+                                    readOnly={ readOnly }
+                                    data-componentid={
+                                        `${ testId }-ciba-notification-channels`
+                                    }
+                                    children={
+                                        [ ...(metadata?.cibaMetadata
+                                            ?.supportedNotificationChannels ?? []) ]
+                                            .sort(
+                                                (a: CIBANotificationChannelInterface,
+                                                    b: CIBANotificationChannelInterface
+                                                ): number =>
+                                                    a.name === "external" ? 1
+                                                        : b.name === "external" ? -1 : 0
+                                            )
+                                            ?.map(
+                                                (channel:
+                                                    CIBANotificationChannelInterface):
+                                                    CheckboxChild => ({
+                                                    label: channel.name === "external"
+                                                        ? t("applications:forms" +
+                                                            ".inboundOIDC.fields.ciba" +
+                                                            ".notificationChannels" +
+                                                            ".externalLabel")
+                                                        : channel.displayName,
+                                                    value: channel.name
+                                                })
+                                            ) ?? []
+                                    }
+                                />
+                                <Hint>
+                                    { t("applications:forms" +
+                                        ".inboundOIDC.fields.ciba" +
+                                        ".notificationChannels" +
+                                        ".externalHint",
+                                    { productName:
+                                        config.ui.productName }) }
+                                </Hint>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </>
                 )
             }
             {
@@ -4087,7 +4253,7 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
             {
                 !isSubOrganization()
                 && ((isBackChannelLogoutEnabled && !isSPAApplication)
-                    || (isFrontChannelLogoutEnabled && !isMobileApplication
+                    || (isFrontChannelLogoutGated && !isMobileApplication
                         && !isMcpClientApplication && !isM2MApplication))
                 && !isSystemApplication
                 && !isDefaultApplication
@@ -4101,7 +4267,7 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
                             <Heading as="h4">
                                 {
                                     ((isBackChannelLogoutEnabled && !isSPAApplication)
-                                        && (isFrontChannelLogoutEnabled && !isMobileApplication
+                                        && (isFrontChannelLogoutGated && !isMobileApplication
                                             && !isMcpClientApplication && !isM2MApplication))
                                         ? t("applications:forms.inboundOIDC.sections" +
                                             ".logoutURLs.heading")
@@ -4146,7 +4312,7 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
                     </Grid.Row>
                 )
             }
-            { isFrontChannelLogoutEnabled
+            { isFrontChannelLogoutGated
                 && !isSystemApplication
                 && !isDefaultApplication
                 && !isMobileApplication

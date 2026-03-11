@@ -181,6 +181,7 @@ export const commonConfigReducerInitialState: CommonConfigReducerStateInterface<
             updateSecret: "",
             updateSecretType: "",
             userSessions: "",
+            userSharingV2: "",
             userStores: "",
             users: "",
             usersOrganization: "",
@@ -236,8 +237,10 @@ export const commonConfigReducerInitialState: CommonConfigReducerStateInterface<
             },
             enableCustomEmailTemplates: undefined,
             enableCustomSmsTemplates: undefined,
+            enableLegacyLocaleDropdown: undefined,
             enableLegacySessionBoundTokenBehaviour: false,
             enableOldUIForEmailProvider: undefined,
+            enabledFeatureOverridesInConsoleRolePermissions: [],
             features: {
                 applications: null,
                 approvals: null,

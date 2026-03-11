@@ -79,6 +79,7 @@ import {
     SupportedLanguagesMeta,
     generateBackendPaths
 } from "@wso2is/i18n";
+import { getCompatibilitySettingsResourceEndpoints } from "./endpoints";
 import { getWorkflowRequestsResourceEndpoints } from "../../admin.workflow-requests.v1/types/workflow-requests";
 import { AppConstants } from "../constants/app-constants";
 import { I18nConstants } from "../constants/i18n-constants";
@@ -367,6 +368,7 @@ export class Config {
             ...getFlowBuilderCoreResourceEndpoints(this.resolveServerHost()),
             ...getVCTemplateEndpoints(this.resolveServerHost()),
             ...getCustomerDataServiceEndpoints(this.resolveServerHost()),
+            ...getCompatibilitySettingsResourceEndpoints(this.resolveServerHost(true)),
             CORSOrigins: `${ this.resolveServerHostFromConfig() }/api/server/v1/cors/origins`,
             asyncStatus: `${ this.resolveServerHost(false, true) }/api/server/v1/async-operations`,
             // TODO: Remove this endpoint and use ID token to get the details
@@ -432,9 +434,12 @@ export class Config {
             enableCustomSmsTemplates: window[ "AppUtils" ]?.getConfig()?.ui?.enableCustomSmsTemplates,
             enableEmailDomain: window[ "AppUtils" ]?.getConfig()?.ui?.enableEmailDomain ?? false,
             enableIdentityClaims: window[ "AppUtils" ]?.getConfig()?.ui?.enableIdentityClaims ?? true,
+            enableLegacyLocaleDropdown: window[ "AppUtils" ]?.getConfig()?.ui?.enableLegacyLocaleDropdown ?? false,
             enableLegacySessionBoundTokenBehaviour:
                 window[ "AppUtils" ]?.getConfig()?.ui?.enableLegacySessionBoundTokenBehaviour ?? true,
             enableOldUIForEmailProvider: window[ "AppUtils" ]?.getConfig()?.ui?.enableOldUIForEmailProvider,
+            enabledFeatureOverridesInConsoleRolePermissions:
+                window[ "AppUtils" ]?.getConfig()?.ui?.enabledFeatureOverridesInConsoleRolePermissions,
             features: window[ "AppUtils" ]?.getConfig()?.ui?.features,
             flowExecution: {
                 enableLegacyFlows: window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacyFlows ?? true

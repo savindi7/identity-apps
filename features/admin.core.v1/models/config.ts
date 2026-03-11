@@ -356,6 +356,20 @@ export interface DeploymentConfigInterface extends CommonDeploymentConfigInterfa
 }
 
 /**
+ * Flow execution compatibility settings from the tenant/sub-org API.
+ */
+export interface FlowExecutionCompatibilityInterface {
+    enableLegacyFlows?: string;
+}
+
+/**
+ * Tenant/sub-organization compatibility settings from /api/server/v1/configs/compatibility-settings.
+ */
+export interface CompatibilitySettingsInterface extends Record<string, unknown> {
+    flowExecution?: FlowExecutionCompatibilityInterface;
+}
+
+/**
  * Interface for defining settings and configs of an external app.
  */
 interface ExternalAppConfigInterface {
@@ -543,6 +557,18 @@ export interface UIConfigInterface extends CommonUIConfigInterface<FeatureConfig
      * Enable/Disable custom SMS template feature
      */
     enableCustomSmsTemplates: boolean;
+    /**
+     * Enable/Disable the legacy locale dropdown (using supported i18n languages from store)
+     * in email and SMS template edit pages. When true, the old dropdown is shown instead of
+     * the new autocomplete input that lists all locales.
+     */
+    enableLegacyLocaleDropdown?: boolean;
+    /**
+     * List of features to be enabled in console role permissions, even if the feature is disabled
+     * in the feature config. This is to allow certain features to be assignable in console roles,
+     * even if they are not generally available for use in the console.
+     */
+    enabledFeatureOverridesInConsoleRolePermissions?: string[];
     /**
      * Enable signature validation certificate alias.
      */

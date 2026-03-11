@@ -613,8 +613,10 @@ export const applications: ApplicationsNS = {
                 allRolesSharingMessage: "All roles of the application will be shared with the organization.",
                 allRolesAndOrgsSharingMessage: "All roles of the application will be shared with all the organizations.",
                 allRolesAndOrgsNotSharingMessage: "No roles will be shared with any organization.",
+                allApplicationRolesSharingMessage: "All roles of the application will be shared and assigned.",
                 doNotShareRolesWithAllOrgs: "Do not share roles with all organizations.",
                 manageRoleSharing: "Manage role sharing",
+                shareApplicationWithFutureChildOrgs: "Share application and roles with future child organizations",
                 viewRoleSharing: "View shared roles",
                 noSharedOrgs: "This application is not shared with any organizations.",
                 noRolesAvailableForOrg: "No roles available for the selected organization.",
@@ -1757,6 +1759,29 @@ export const applications: ApplicationsNS = {
                             }
                         }
                     }
+                },
+                ciba: {
+                    authReqExpiryTime: {
+                        hint: "Specify the expiry time for the CIBA authentication request in seconds.",
+                        label: "CIBA Authentication Request Expiry Time",
+                        placeholder: "Enter expiry time",
+                        validations: {
+                            empty: "This is a required field.",
+                            invalid: "Please enter a valid positive integer."
+                        }
+                    },
+                    notificationChannels: {
+                        externalHint: "If the client includes " +
+                            "notification_channel=external in the request, " +
+                            "{{productName}} returns the notification details " +
+                            "in the response, enabling the client application " +
+                            "to deliver the notification through its own channel.",
+                        externalLabel: "External (Client Application Handles Delivery)",
+                        hint: "Select the notification delivery methods that " +
+                            "this client application is permitted to request.",
+                        label: "Allowed Notification Delivery Methods"
+                    },
+                    heading: "Client Initiated Backchannel Authentication"
                 }
             },
             messages: {

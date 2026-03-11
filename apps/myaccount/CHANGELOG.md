@@ -1,5 +1,21 @@
 # @wso2is/myaccount
 
+## 2.26.2
+
+### Patch Changes
+
+- [#9357](https://github.com/wso2/identity-apps/pull/9357) [`07f6716b1fb74010d40790837f025f29195a1c0a`](https://github.com/wso2/identity-apps/commit/07f6716b1fb74010d40790837f025f29195a1c0a) Thanks [@JayaShakthi97](https://github.com/JayaShakthi97)! - Fix CSS issue in Approvals Page in My Account app in dark theme
+
+- Updated dependencies [[`07f6716b1fb74010d40790837f025f29195a1c0a`](https://github.com/wso2/identity-apps/commit/07f6716b1fb74010d40790837f025f29195a1c0a)]:
+  - @wso2is/common.workflow-approvals.v1@1.0.13
+  - @wso2is/common.branding.v1@2.28.2
+
+## 2.26.1
+
+### Patch Changes
+
+- [#9692](https://github.com/wso2/identity-apps/pull/9692) [`15b2661e06810ccfc88be3fb355b1a9ea03013fe`](https://github.com/wso2/identity-apps/commit/15b2661e06810ccfc88be3fb355b1a9ea03013fe) Thanks [@Malith-19](https://github.com/Malith-19)! - Update the password update API usage in my account.
+
 ## 2.26.0
 
 ### Minor Changes
