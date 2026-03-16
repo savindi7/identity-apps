@@ -1,6 +1,6 @@
 # Using Feature Flags
 
-Feature flags are a powerful way to enable or disable features in your application dynamically. This approach allows you to 
+Feature flags are a powerful way to enable, disable and label features in your application dynamically. This approach allows you to 
 deploy new features safely, perform A/B testing, and roll out features incrementally. In this guide, we'll walk through how to 
 define and use feature flags in identity-apps React applications.
 
@@ -10,9 +10,14 @@ define and use feature flags in identity-apps React applications.
 - Locate Feature Config in Deployment Config: Ensure you have a configuration file or environment variables that manage your feature flags.
 - Choose a Suitable Feature Identifier: Define a unique identifier for your sub-feature.
 - Update the Disabled Features Array: Add your feature identifier to the disabledFeatures array in the feature configuration to disable it.
-- Use Feature Flags in Your Code: Conditionally show/hide UI elements or run logic based on the feature flag.
+- Update/Add Feature Labels: Add or update labels in the `featureFlags` array to define status labels such as `Preview`, `New`, or `Beta`.
+- Use Feature Flags in Your Code: Conditionally show/hide UI elements or run logic based on the feature flag, and change UI behaviour depending on feature labels.
 
-## Step-by-Step Guide
+## Conditionally Enabling/Disabling Features
+
+You can use feature flags to conditionally disable or enable features and control whether certain UI elements are shown in the application.
+
+### Step-by-Step Guide
 
 1. Identify the High-Level Feature
 
@@ -69,6 +74,7 @@ Updated deployment.config.json:
           "organizations.filterByMetadataAttributes"
         ],
         "enabled": true,
+        "featureFlags": [],
         "scopes": {
           "create": [ 
             "internal_organization_create"
@@ -115,8 +121,135 @@ export default App;
 In the above example, the "filter by metadata attribute" input is conditionally rendered based on the defined feature flag. If
 `organizations.filterByMetadataAttributes` is included in the `disabledFeatures` array, the section will not be displayed.
 
+## Changing UI Behaviour Using Feature Labels
+
+In addition to the `enabled` and `disabledFeatures` based approach above, identity-apps also supports a `featureFlags` array inside a feature config. This can be used to dynamically change UI behaviour by attaching labels such as `New`, `Beta`, or `Coming Soon`.
+
+Unlike `disabledFeatures`, these labels do not automatically hide or disable UI elements. Instead, your component can be configured to read the label and decide how to display it.
+
+### Step-by-Step Guide
+
+1. Identify the High-Level Feature
+
+First, identify the parent feature that owns the UI element. For example, assume we want to show a status label for a new "Export Users" button on the users page. In this case, the high-level feature is `users`.
+
+2. Add a Feature Flag Entry to the Deployment Config
+
+Add a `featureFlags` entry to the relevant feature config in `deployment.config.json`.
+
+Updated deployment.config.json:
+
+```js
+{
+  "ui": {
+    "features": {
+      // other features,
+      "users": {
+        "disabledFeatures": [],
+        "enabled": true,
+        "featureFlags": [
+          {
+            "feature": "users.exportButton",
+            "flag": "NEW"
+          }
+        ],
+        "scopes": {
+          "create": [ "internal_user_mgt_create" ],
+          "delete": [ "internal_user_mgt_delete" ],
+          "feature": [ "console:users" ],
+          "read": [ "internal_user_mgt_list" ],
+          "update": [ "internal_user_mgt_update" ]
+        }
+      }
+    }
+  }
+}
+```
+
+In the above example:
+
+- `feature` identifies the specific UI element or sub-feature.
+- `flag` defines the status label to be used.
+
+3. Read the Feature Flag Value in Your Component
+
+Use the `useFeatureFlag` hook to read the configured label from the `featureFlags` array and update the button text.
+
+Example:
+
+```tsx
+import Button from "@oxygen-ui/react/Button";
+import { AppState } from "@wso2is/admin.core.v1/store";
+import useFeatureFlag from "@wso2is/admin.feature-gate.v1/hooks/use-feature-flag";
+import { FeatureFlagsInterface } from "@wso2is/core/models";
+import React from "react";
+import { useSelector } from "react-redux";
+
+const App = () => {
+  const userFeatureFlags: FeatureFlagsInterface[] = useSelector(
+    (state: AppState) => state.config.ui.features?.users?.featureFlags
+  );
+
+  const exportButtonFlag: string = useFeatureFlag("users.exportButton", userFeatureFlags);
+
+  return (
+    <Button>
+      { exportButtonFlag === "NEW" ? "Export Users [New]" : "Export Users" }
+    </Button>
+  );
+};
+
+export default App;
+```
+
+In the above example, if the configured flag value is `NEW`, the button text becomes: `Export Users [New]`
+
+4. Use `FeatureFlagLabel` for Standard UI Labels
+
+You can also render the status label as a reusable UI element instead of directly modifying the text by using the `FeatureFlagLabel` component. This component reads the flag and renders it as a `chip` or a `ribbon`.
+
+`FeatureFlagLabel` currently supports the following flag values:
+
+- `NEW`
+- `BETA`
+- `EXPERIMENTAL`
+- `PREMIUM`
+- `COMING_SOON`
+- `PREVIEW`
+
+Example:
+
+```tsx
+import Button from "@oxygen-ui/react/Button";
+import FeatureFlagLabel from "@wso2is/admin.feature-gate.v1/components/feature-flag-label";
+
+const App = () => {
+  const userFeatureFlags: FeatureFlagsInterface[] = useSelector(
+    (state: AppState) => state.config.ui.features?.users?.featureFlags
+  );
+  
+  return (
+    <Button>
+      Export Users
+      <FeatureFlagLabel
+        featureFlags={ userFeatureFlags }
+        featureKey="users.exportButton"
+        type="chip"
+      />
+    </Button>
+  );
+};
+
+export default App;
+```
+
+You can use:
+
+- `type="chip"` to render the label as a chip.
+- `type="ribbon"` to render the label as a ribbon.
+
+This is the recommended approach when you want a consistent UI element for labels such as `Preview`, `New`, or `Beta` across the application.
+
 ## Conclusion
 
-Using feature flags allows you to manage feature deployment more flexibly and safely. By following the steps outlined in this 
-guide, you can define feature flags, manage them in your configuration, and use them to control the behavior and appearance of 
-your application dynamically
+Using feature flags allows you to manage feature deployment more flexibly and safely. By following the steps outlined in this guide, you can define feature flags, manage them in your configuration, use them to conditionally enable or disable features, and use feature labels to control UI behaviour and appearance in your application dynamically.
