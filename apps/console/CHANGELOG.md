@@ -1,5 +1,35 @@
 # @wso2is/console
 
+## 2.105.5
+
+### Patch Changes
+
+- [#9797](https://github.com/wso2/identity-apps/pull/9797) [`25ca6cf9e8fc5f1219728aa73e1abe61c1044aca`](https://github.com/wso2/identity-apps/commit/25ca6cf9e8fc5f1219728aa73e1abe61c1044aca) Thanks [@sahandilshan](https://github.com/sahandilshan)! - Add additional ciba configs
+
+* [#9778](https://github.com/wso2/identity-apps/pull/9778) [`63a9edbc6e879fc4a76b7f2a6b330a58ef37611c`](https://github.com/wso2/identity-apps/commit/63a9edbc6e879fc4a76b7f2a6b330a58ef37611c) Thanks [@PasinduYeshan](https://github.com/PasinduYeshan)! - Improve outbound provisioning wizard
+
+- [#9786](https://github.com/wso2/identity-apps/pull/9786) [`c1fabf4ef861da56adba0ed0fc10aa65638471fc`](https://github.com/wso2/identity-apps/commit/c1fabf4ef861da56adba0ed0fc10aa65638471fc) Thanks [@shashimalcse](https://github.com/shashimalcse)! - Hide VC attributes from sub orgs
+
+- Updated dependencies [[`25ca6cf9e8fc5f1219728aa73e1abe61c1044aca`](https://github.com/wso2/identity-apps/commit/25ca6cf9e8fc5f1219728aa73e1abe61c1044aca), [`63a9edbc6e879fc4a76b7f2a6b330a58ef37611c`](https://github.com/wso2/identity-apps/commit/63a9edbc6e879fc4a76b7f2a6b330a58ef37611c), [`c1fabf4ef861da56adba0ed0fc10aa65638471fc`](https://github.com/wso2/identity-apps/commit/c1fabf4ef861da56adba0ed0fc10aa65638471fc)]:
+  - @wso2is/admin.applications.v1@2.41.22
+  - @wso2is/i18n@2.37.1
+  - @wso2is/admin.connections.v1@2.36.10
+  - @wso2is/admin.claims.v1@2.30.4
+  - @wso2is/admin.agents.v1@1.0.185
+  - @wso2is/admin.branding.v1@2.32.126
+  - @wso2is/admin.onboarding.v1@1.0.41
+  - @wso2is/admin.core.v1@2.54.26
+  - @wso2is/admin.roles.v2@2.27.340
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.170
+  - @wso2is/admin.email-management.v1@2.25.334
+  - @wso2is/admin.flows.v1@1.0.139
+  - @wso2is/admin.home.v1@1.7.150
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.170
+  - @wso2is/admin.server-configurations.v1@2.38.9
+  - @wso2is/admin.users.v1@2.37.17
+  - @wso2is/admin.approval-workflows.v1@1.2.8
+  - @wso2is/admin.registration-flow-builder.v1@0.10.130
+
 ## 2.105.4
 
 ### Patch Changes
