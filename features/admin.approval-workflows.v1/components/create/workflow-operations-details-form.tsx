@@ -20,7 +20,9 @@ import Autocomplete, { AutocompleteRenderInputParams } from "@oxygen-ui/react/Au
 import Button from "@oxygen-ui/react/Button";
 import Grid from "@oxygen-ui/react/Grid";
 import TextField from "@oxygen-ui/react/TextField";
+import useUIConfig from "@wso2is/admin.core.v1/hooks/use-ui-configs";
 import { RuleWithoutIdInterface } from "@wso2is/admin.rules.v1/models/rules";
+import { isFeatureEnabled } from "@wso2is/core/helpers";
 import { AlertLevels, IdentifiableComponentInterface } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { FinalForm, FormRenderProps } from "@wso2is/form";
@@ -47,6 +49,7 @@ import { SemanticICONS } from "semantic-ui-react";
 import AutoCompleteRenderOption from "./auto-complete-render-option";
 import RuleConfigurationModal from "./rule-configuration-modal";
 import { useGetWorkflowAssociations } from "../../api/use-get-workflow-associations";
+import { FEATURE_FLAG_RULE_BASED_WORKFLOW_ENGAGEMENT } from "../../constants/approval-workflow-constants";
 import { DropdownPropsInterface, WorkflowOperationsDetailsFormValuesInterface } from "../../models/ui";
 import "./general-approval-workflow-details-form.scss";
 import "./workflow-operations-details-form.scss";
@@ -95,10 +98,6 @@ interface WorkflowOperationsDetailsPropsInterface extends IdentifiableComponentI
      * Callback to update rule for a specific operation.
      */
     onRuleUpdate?: (operationValue: string, rule: RuleWithoutIdInterface | null) => void;
-    /**
-     * Whether the rule-based workflow engagement feature is enabled.
-     */
-    isRuleBasedWorkflowEngagementEnabled?: boolean;
 }
 
 /**
@@ -140,13 +139,18 @@ const WorkflowOperationsDetailsForm: ForwardRefExoticComponent<RefAttributes<Wor
                 onChange,
                 operationRules = {},
                 onRuleUpdate,
-                isRuleBasedWorkflowEngagementEnabled = false,
                 ["data-componentid"]: componentId = "workflow-operations"
             }: WorkflowOperationsDetailsPropsInterface,
             ref: ForwardedRef<WorkflowOperationsDetailsFormRef>
         ): ReactElement => {
             const { t } = useTranslation();
             const dispatch: Dispatch = useDispatch();
+            const { UIConfig } = useUIConfig();
+
+            const isRuleBasedWorkflowEngagementEnabled: boolean = isFeatureEnabled(
+                UIConfig?.features?.approvalWorkflows,
+                FEATURE_FLAG_RULE_BASED_WORKFLOW_ENGAGEMENT
+            );
 
             const triggerFormSubmit: MutableRefObject<() => void> = useRef<(() => void) | null>(null);
 
