@@ -201,7 +201,9 @@ const UsersPage: FunctionComponent<UsersPageInterface> = (
         = useState<number>(UIConstants.DEFAULT_RESOURCE_LIST_ITEM_LIMIT);
     const [ invitedUserListOffset, setInvitedUserListOffset ] = useState<number>(1);
 
-    const isLegacyInvitedUserRegistrationFlowEnabled: boolean = useEnableLegacyFlows(LegacyFlowType.INVITED_USER_REGISTRATION);
+    const isLegacyInvitedUserRegistrationFlowEnabled: boolean = useEnableLegacyFlows(
+        LegacyFlowType.INVITED_USER_REGISTRATION
+    );
     const profileSchemas: ProfileSchemaInterface[] = useSelector((state: AppState) => state?.profile?.profileSchemas);
     const systemReservedUserStores: string[] =
         useSelector((state: AppState) => state?.config?.ui?.systemReservedUserStores);

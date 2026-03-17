@@ -182,7 +182,15 @@ export const ConnectorListingPage: FunctionComponent<ConnectorListingPageInterfa
         }
 
         return refinedConnectorCategories;
-    }, [ featureConfig, UIConfig, allowedScopes, isSubOrgResidentOutboundProvisioningEnabled ]);
+    }, [ 
+        featureConfig,
+        UIConfig,
+        allowedScopes,
+        isLegacyInvitedUserRegistrationEnabled,
+        isLegacyPasswordRecoveryEnabled,
+        isLegacySelfRegistrationEnabled,
+        isSubOrgResidentOutboundProvisioningEnabled
+     ]);
 
     const [
         dynamicConnectorCategories,

@@ -444,16 +444,16 @@ export class Config {
             flowExecution: {
                 enableLegacyFlows:
                     window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacyFlows ?? true,
-                enableLegacySelfRegistrationFlow:
-                    window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacySelfRegistrationFlow
-                    ?? window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacyFlows
-                    ?? true,
                 enableLegacyInvitedUserRegistrationFlow:
                     window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacyInvitedUserRegistrationFlow
                     ?? window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacyFlows
                     ?? true,
                 enableLegacyPasswordRecoveryFlow:
                     window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacyPasswordRecoveryFlow
+                    ?? window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacyFlows
+                    ?? true,
+                enableLegacySelfRegistrationFlow:
+                    window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacySelfRegistrationFlow
                     ?? window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacyFlows
                     ?? true
             },

@@ -2074,9 +2074,9 @@
         },
         "flowExecution": {
             "enableLegacyFlows": false,
-            "enableLegacySelfRegistrationFlow": false,
             "enableLegacyInvitedUserRegistrationFlow": false,
-            "enableLegacyPasswordRecoveryFlow": false
+            "enableLegacyPasswordRecoveryFlow": false,
+            "enableLegacySelfRegistrationFlow": false
         },
         "governanceConnectors": {
             "loginAttempts": {

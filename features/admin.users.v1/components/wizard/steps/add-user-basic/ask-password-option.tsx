@@ -74,7 +74,9 @@ const AskPasswordOption: FunctionComponent<AskPasswordOptionPropsInterface> = ({
 }: AskPasswordOptionPropsInterface): ReactElement => {
     const { t } = useTranslation();
 
-    const isLegacyInvitedUserRegistrationFlowEnabled: boolean = useEnableLegacyFlows(LegacyFlowType.INVITED_USER_REGISTRATION);
+    const isLegacyInvitedUserRegistrationFlowEnabled: boolean = useEnableLegacyFlows(
+        LegacyFlowType.INVITED_USER_REGISTRATION
+    );
 
     /**
      * Process connector properties to determine ask password verification option.

@@ -17,9 +17,9 @@
  */
 
 import { useSelector } from "react-redux";
+import useCompatibilitySettings from "./use-compatibility-settings";
 import { CompatibilitySettingsInterface, FlowExecutionCompatibilityInterface } from "../models/config";
 import type { AppState } from "../store";
-import useCompatibilitySettings from "./use-compatibility-settings";
 
 /**
  * Supported legacy flow types for the `useEnableLegacyFlows` hook.
@@ -45,7 +45,7 @@ const resolveIndividualFlow = (serverFlag: boolean, compatibilityFlag: boolean):
 /**
  * Returns the effective legacy-flow-enabled flag for a given flow type.
  *
- * Priority is resolved according to:
+ * Priority is resolved according to (in order to enable a flow):
  * 1. Server → flowExecution.enableLegacyFlows (all flows)
  * 2. Server → flowExecution.<individualFlag>
  * 3. Compatibility → flowExecution.enableLegacyFlows (all flows)
