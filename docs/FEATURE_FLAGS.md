@@ -251,7 +251,3 @@ You can use:
 
 
 This is the recommended approach when you want a consistent UI element for labels such as `Preview`, `New`, or `Beta` across the application.
-
-## Conclusion
-
-Using feature flags allows you to manage feature deployment more flexibly and safely. By following the steps outlined in this guide, you can define feature flags, manage them in your configuration, use them to conditionally enable or disable features, and use feature labels to control UI behaviour and appearance in your application dynamically.
