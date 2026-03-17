@@ -34,7 +34,7 @@ deployment.config.json:
 ```js
 {
   "ui": {
-    "features": [
+    "features": {
       // other features,
       "organizations": { 
         "disabledFeatures": [],
@@ -49,7 +49,7 @@ deployment.config.json:
           "update": [ "internal_organization_update" ] 
         }
       },   
-    ]
+    }
   }
 }
 ```
@@ -123,7 +123,7 @@ In the above example, the "filter by metadata attribute" input is conditionally 
 
 ## Changing UI Behaviour Using Feature Labels
 
-In addition to the `enabled` and `disabledFeatures` based approach above, identity-apps also supports a `featureFlags` array inside a feature config. This can be used to dynamically change UI behaviour by attaching labels such as `New`, `Beta`, or `Coming Soon`.
+In addition to the enabled and disabledFeatures-based approach above, identity-apps also supports a `featureFlags` array inside a feature config. This can be used to dynamically change UI behaviour by attaching labels such as `New`, `Beta`, or `Coming Soon`.
 
 Unlike `disabledFeatures`, these labels do not automatically hide or disable UI elements. Instead, your component can be configured to read the label and decide how to display it.
 
