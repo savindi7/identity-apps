@@ -104,7 +104,7 @@ const useAdministrators = (
 
     const { isSubOrganization } = useGetCurrentOrganizationType();
 
-        const { consoleId } = useConsoleSettings();
+    const { consoleId } = useConsoleSettings();
 
     /**
      * When an advanced filter is present, the role audience filter cannot be combined with it
