@@ -182,7 +182,7 @@ export const ConnectorListingPage: FunctionComponent<ConnectorListingPageInterfa
         }
 
         return refinedConnectorCategories;
-    }, [ 
+    }, [
         featureConfig,
         UIConfig,
         allowedScopes,
@@ -190,7 +190,7 @@ export const ConnectorListingPage: FunctionComponent<ConnectorListingPageInterfa
         isLegacyPasswordRecoveryEnabled,
         isLegacySelfRegistrationEnabled,
         isSubOrgResidentOutboundProvisioningEnabled
-     ]);
+    ]);
 
     const [
         dynamicConnectorCategories,
