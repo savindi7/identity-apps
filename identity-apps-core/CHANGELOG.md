@@ -1,5 +1,13 @@
 # @wso2is/identity-apps-core
 
+## 3.7.1
+
+### Patch Changes
+
+- [#9796](https://github.com/wso2/identity-apps/pull/9796) [`ba7c5040fe8f83a20d4dfbdfacdfd07433e09acb`](https://github.com/wso2/identity-apps/commit/ba7c5040fe8f83a20d4dfbdfacdfd07433e09acb) Thanks [@JayaShakthi97](https://github.com/JayaShakthi97)! - Fix proxy context path not prefixing to policy URLs issue
+
+* [#9725](https://github.com/wso2/identity-apps/pull/9725) [`0f3292ffa589a3bafecea90ef56a78249b7e09f3`](https://github.com/wso2/identity-apps/commit/0f3292ffa589a3bafecea90ef56a78249b7e09f3) Thanks [@AfraHussaindeen](https://github.com/AfraHussaindeen)! - Refactor isMultiAuthAvailable method to include current authenticator check
+
 ## 3.7.0
 
 ### Minor Changes
