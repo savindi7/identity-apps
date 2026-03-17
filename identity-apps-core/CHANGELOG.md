@@ -1,5 +1,11 @@
 # @wso2is/identity-apps-core
 
+## 3.7.2
+
+### Patch Changes
+
+- [#9413](https://github.com/wso2/identity-apps/pull/9413) [`9badd48ba2c7db9aade47e4d49186f81e0e8b3f0`](https://github.com/wso2/identity-apps/commit/9badd48ba2c7db9aade47e4d49186f81e0e8b3f0) Thanks [@RushanNanayakkara](https://github.com/RushanNanayakkara)! - improve encodings of mobile.jsp
+
 ## 3.7.1
 
 ### Patch Changes
