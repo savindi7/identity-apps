@@ -212,7 +212,6 @@ You can also render the status label as a reusable UI element instead of directl
 
 - `NEW`
 - `BETA`
-- `PREMIUM`
 - `COMING_SOON`
 - `PREVIEW`
 
