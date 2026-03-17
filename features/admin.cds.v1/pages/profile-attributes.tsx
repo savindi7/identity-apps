@@ -16,6 +16,7 @@
  * under the License.
  */
 
+import IconButton from "@oxygen-ui/react/IconButton";
 import { ChevronRightIcon } from "@oxygen-ui/react-icons";
 import { AdvancedSearchWithBasicFilters } from "@wso2is/admin.core.v1/components/advanced-search-with-basic-filters";
 import { getEmptyPlaceholderIllustrations } from "@wso2is/admin.core.v1/configs/ui";
@@ -45,7 +46,6 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "redux";
 import {
-    Button,
     DropdownItemProps,
     DropdownProps,
     Icon,
@@ -486,17 +486,16 @@ const ProfileSchemaPage: FunctionComponent<ProfileSchemaPagePropsInterface> = (
                     <List>
                         <List.Item verticalAlign="middle">
                             <List.Content floated="right" verticalAlign="middle">
-                                <Button
+                                <IconButton
                                     data-componentid={
                                         `${componentId}-identity-attributes-manage-button`
                                     }
                                     onClick={ (): void =>
                                         history.push(AppConstants.getPaths().get("LOCAL_CLAIMS"))
                                     }
-                                    style={ { padding: "11px" } }
                                 >
                                     <ChevronRightIcon />
-                                </Button>
+                                </IconButton>
                             </List.Content>
                             <GenericIcon
                                 icon={ CdsClaimsIcon }

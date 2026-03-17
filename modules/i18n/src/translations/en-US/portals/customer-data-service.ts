@@ -372,6 +372,11 @@ export const customerDataService: CustomerDataServiceNS = {
                     message: "This action is irreversible!"
                 }
             },
+            identityAttributes: {
+                description: "Edit or update Identity Attributes.",
+                manage: "Manage Identity Attributes",
+                title: "Identity Attributes"
+            },
             notifications: {
                 deleteAttribute: {
                     error: {
@@ -525,7 +530,7 @@ export const customerDataService: CustomerDataServiceNS = {
             columns: {
                 profile: "Profile",
                 unifiedProfiles: "Unified Profiles",
-                user: "User"
+                user: "Profile Type"
             },
             confirmations: {
                 delete: {

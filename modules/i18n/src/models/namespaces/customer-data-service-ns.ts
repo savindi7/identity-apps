@@ -341,6 +341,11 @@ export interface CustomerDataServiceNS {
                     title: string;
                 };
             };
+            identityAttributes: {
+                description: string;
+                manage: string;
+                title: string;
+            };
             search: {
                 placeholder: string;
             };
