@@ -2073,7 +2073,10 @@
             }
         },
         "flowExecution": {
-            "enableLegacyFlows": false
+            "enableLegacyFlows": false,
+            "enableLegacyInvitedUserRegistrationFlow": false,
+            "enableLegacyPasswordRecoveryFlow": false,
+            "enableLegacySelfRegistrationFlow": false
         },
         "governanceConnectors": {
             "loginAttempts": {
