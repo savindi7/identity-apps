@@ -360,6 +360,9 @@ export interface DeploymentConfigInterface extends CommonDeploymentConfigInterfa
  */
 export interface FlowExecutionCompatibilityInterface {
     enableLegacyFlows?: string;
+    enableLegacySelfRegistrationFlow?: string;
+    enableLegacyInvitedUserRegistrationFlow?: string;
+    enableLegacyPasswordRecoveryFlow?: string;
 }
 
 /**
@@ -708,6 +711,9 @@ export interface UIConfigInterface extends CommonUIConfigInterface<FeatureConfig
      */
     flowExecution: {
         enableLegacyFlows: boolean;
+        enableLegacySelfRegistrationFlow?: boolean;
+        enableLegacyInvitedUserRegistrationFlow?: boolean;
+        enableLegacyPasswordRecoveryFlow?: boolean;
     };
     /**
      * Enable legacy session bound token behaviour.

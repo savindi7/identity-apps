@@ -261,7 +261,10 @@ export const commonConfigReducerInitialState: CommonConfigReducerStateInterface<
                 users: null
             },
             flowExecution: {
-                enableLegacyFlows: true
+                enableLegacyFlows: true,
+                enableLegacySelfRegistrationFlow: true,
+                enableLegacyInvitedUserRegistrationFlow: true,
+                enableLegacyPasswordRecoveryFlow: true
             },
             googleOneTapEnabledTenants: [],
             gravatarConfig: {

@@ -442,7 +442,20 @@ export class Config {
                 window[ "AppUtils" ]?.getConfig()?.ui?.enabledFeatureOverridesInConsoleRolePermissions,
             features: window[ "AppUtils" ]?.getConfig()?.ui?.features,
             flowExecution: {
-                enableLegacyFlows: window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacyFlows ?? true
+                enableLegacyFlows:
+                    window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacyFlows ?? true,
+                enableLegacySelfRegistrationFlow:
+                    window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacySelfRegistrationFlow
+                    ?? window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacyFlows
+                    ?? true,
+                enableLegacyInvitedUserRegistrationFlow:
+                    window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacyInvitedUserRegistrationFlow
+                    ?? window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacyFlows
+                    ?? true,
+                enableLegacyPasswordRecoveryFlow:
+                    window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacyPasswordRecoveryFlow
+                    ?? window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacyFlows
+                    ?? true
             },
             googleOneTapEnabledTenants: window["AppUtils"]?.getConfig()?.ui?.googleOneTapEnabledTenants,
             governanceConnectors: window["AppUtils"]?.getConfig()?.ui?.governanceConnectors,
