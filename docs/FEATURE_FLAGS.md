@@ -244,7 +244,11 @@ export default App;
 You can use:
 
 - `type="chip"` to render the label as a chip.
+  <br><br><img width="236" height="69" alt="image" src="https://github.com/user-attachments/assets/7b88c1d7-b819-4ddd-8aed-30f352cc105c" /><br>
+
 - `type="ribbon"` to render the label as a ribbon.
+  <br><br><img width="465" height="223" alt="ribbon" src="https://github.com/user-attachments/assets/b5fa372e-3a87-4f73-a042-d8133bb7b5d2" /><br>
+
 
 This is the recommended approach when you want a consistent UI element for labels such as `Preview`, `New`, or `Beta` across the application.
 
