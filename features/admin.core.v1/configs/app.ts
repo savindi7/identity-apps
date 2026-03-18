@@ -487,7 +487,8 @@ export class Config {
             isMultipleEmailsAndMobileNumbersEnabled:
                 window["AppUtils"]?.getConfig()?.ui?.isMultipleEmailsAndMobileNumbersEnabled,
             isPasswordInputValidationEnabled: window["AppUtils"]?.getConfig()?.ui?.isPasswordInputValidationEnabled,
-            isPasswordResetEnforcementScopeEnabled: window["AppUtils"]?.getConfig()?.ui?.isPasswordResetEnforcementScopeEnabled ?? false,
+            isPasswordResetEnforcementScopeEnabled:
+                window["AppUtils"]?.getConfig()?.ui?.isPasswordResetEnforcementScopeEnabled ?? false,
             isRequestPathAuthenticationEnabled:
                 window[ "AppUtils" ]?.getConfig()?.ui?.isRequestPathAuthenticationEnabled,
             isSAASDeployment: window[ "AppUtils" ]?.getConfig()?.ui?.isSAASDeployment,
