@@ -1,5 +1,11 @@
 # @wso2is/console
 
+## 3.0.0
+
+### Major Changes
+
+- [#9825](https://github.com/wso2/identity-apps/pull/9825) [`2a5a8feb389c2476e50e730a11142f78ded5aed9`](https://github.com/wso2/identity-apps/commit/2a5a8feb389c2476e50e730a11142f78ded5aed9) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Major version bump for the upcoming release
+
 ## 2.105.8
 
 ### Patch Changes
