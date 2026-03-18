@@ -282,7 +282,9 @@ const OrganizationsPage: FunctionComponent<OrganizationsPageInterface> = (
             return;
         }
 
-        handleGetAuthoriziedListCallError(authorizedListFetchRequestError);
+        handleGetAuthoriziedListCallError(
+            authorizedListFetchRequestError as unknown as AxiosError<HttpErrorResponseDataInterface>
+        );
     }, [ authorizedListFetchRequestError ]);
 
     const handleGetAuthoriziedListCallError = (error: AxiosError<HttpErrorResponseDataInterface>) => {

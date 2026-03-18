@@ -98,8 +98,7 @@ export const getUserStoreMetaDataType = (id: string, params: QueryParams): Promi
         headers: {
             Accept: "application/json",
             "Access-Control-Allow-Origin": store.getState().config.deployment.clientHost,
-            "Content-Type": "application/json",
-            params
+            "Content-Type": "application/json"
         },
         method: HttpMethods.GET,
         params,
