@@ -19,7 +19,6 @@
 import Checkbox from "@oxygen-ui/react/Checkbox";
 import FormControlLabel from "@oxygen-ui/react/FormControlLabel";
 import FormGroup from "@oxygen-ui/react/FormGroup";
-import Grid from "@oxygen-ui/react/Grid";
 import { IdentifiableComponentInterface } from "@wso2is/core/models";
 import { Heading, Hint } from "@wso2is/react-components";
 import React, {
