@@ -138,11 +138,6 @@ const NotificationDetailsForm: ForwardRefExoticComponent<RefAttributes<Notificat
                     className="notification-details-form"
                     data-componentid={ componentId }
                 >
-                    <Grid className="operations-autocomplete-header">
-                        <Heading as="h6">
-                            { t("approvalWorkflows:pageLayout.create.stepper.step3.title") }
-                        </Heading>
-                    </Grid>
                     <div className="notification-channels">
                         { /* Initiator Notifications */ }
                         <div className="notification-config">

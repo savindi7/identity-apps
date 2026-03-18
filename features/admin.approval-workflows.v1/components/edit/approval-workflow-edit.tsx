@@ -764,6 +764,11 @@ const EditApprovalWorkflow: FunctionComponent<EditApprovalWorkflowPropsInterface
 
                         <Divider className="divider-container" />
 
+                        <Grid className="common-section-heading">
+                            <Heading as="h4">
+                                { t("approvalWorkflows:pageLayout.create.stepper.step3.title") }
+                            </Heading>
+                        </Grid>
                         <div className="workflow-notification-settings">
                             <NotificationDetailsForm
                                 ref={ notificationDetailsFormRef }
