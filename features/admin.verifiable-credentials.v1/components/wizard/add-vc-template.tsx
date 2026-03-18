@@ -23,7 +23,9 @@ import Autocomplete, {
 import Chip from "@oxygen-ui/react/Chip";
 import TextField from "@oxygen-ui/react/TextField";
 import { getAllExternalClaims, getAllLocalClaims } from "@wso2is/admin.claims.v1/api";
-import { AlertInterface, AlertLevels, Claim, ExternalClaim, IdentifiableComponentInterface } from "@wso2is/core/models";
+import { AlertInterface, AlertLevels, Claim, ExternalClaim, IdentifiableComponentInterface,
+    HttpErrorResponseDataInterface
+} from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { FinalForm, FinalFormField, FormRenderProps, TextFieldAdapter } from "@wso2is/form/src";
 import { Button, Hint } from "@wso2is/react-components";
@@ -249,7 +251,7 @@ export default function AddVCTemplateWizard({
                 onSuccess?.();
                 closeWizard();
             })
-            .catch((error: AxiosError) => {
+            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
                 if (error?.response?.status === 409) {
                     dispatch(addAlert<AlertInterface>({
                         description: t("verifiableCredentials:notifications.createTemplate.duplicateError.description"),

@@ -23,7 +23,9 @@ import {
 import { store } from "@wso2is/admin.core.v1/store";
 import { UserstoreConstants } from "@wso2is/core/constants";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { HttpMethods, UserstoreListResponseInterface } from "@wso2is/core/models";
+import { HttpMethods, UserstoreListResponseInterface,
+    HttpErrorResponseDataInterface
+} from "@wso2is/core/models";
 import { AxiosError, AxiosResponse } from "axios";
 import {
     AttributeMapping,
@@ -71,7 +73,7 @@ export const getUserStoreList = (): Promise<UserstoreListResponseInterface[] | a
 
             return Promise.resolve(response);
         })
-        .catch((error: AxiosError) => {
+        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
             throw new IdentityAppsApiException(
                 UserstoreConstants.USERSTORES_FETCH_REQUEST_ERROR,
                 error.stack,
@@ -112,7 +114,7 @@ export const getUserStoreMetaDataType = (id: string, params: QueryParams): Promi
 
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError) => {
+        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
             return Promise.reject(error?.response?.data);
         });
 };
@@ -143,7 +145,7 @@ export const getAUserStore = (id: string): Promise<any> => {
 
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError) => {
+        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
             return Promise.reject(error?.response?.data);
         });
 };
@@ -174,7 +176,7 @@ export const deleteUserStore = (id: string): Promise<any> => {
 
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError) => {
+        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
             return Promise.reject(error?.response?.data);
         });
 };
@@ -206,7 +208,7 @@ export const patchUserStore = (id: string, data: PatchData[]): Promise<any> => {
 
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError) => {
+        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
             return Promise.reject(error?.response?.data);
         });
 };
@@ -238,7 +240,7 @@ export const addUserStore = (data: UserStorePostData): Promise<any> => {
 
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError) => {
+        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
             return Promise.reject(error?.response?.data);
         });
 };
@@ -271,7 +273,7 @@ export const updateUserStore = (id: string, data: UserStorePostData): Promise<an
 
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError) => {
+        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
             return Promise.reject(error?.response?.data);
         });
 };
@@ -303,7 +305,7 @@ export const testConnection = (data: TestConnection): Promise<any> => {
 
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError) => {
+        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
             return Promise.reject(error?.response?.data);
         });
 };
@@ -336,7 +338,7 @@ export const updateUserStoreAttributeMappings = (userstoreId: string, data: Attr
 
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError) => {
+        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
             return Promise.reject(error?.response?.data);
         });
 };

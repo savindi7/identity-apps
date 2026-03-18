@@ -29,7 +29,8 @@ import {
     AlertInterface,
     AlertLevels,
     IdentifiableComponentInterface,
-    ProfileInfoInterface
+    ProfileInfoInterface,
+    HttpErrorResponseDataInterface
 } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { Message, ResourceTab } from "@wso2is/react-components";
@@ -165,7 +166,7 @@ export const EditUser: FunctionComponent<EditUserPropsInterface> = (
                     setIsSelectedSuperAdmin(true);
                 }
             })
-            .catch((error: AxiosError) => {
+            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
 
                 setHideTermination(true);
 
