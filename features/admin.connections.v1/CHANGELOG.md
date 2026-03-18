@@ -1,5 +1,183 @@
 # @wso2is/admin.connections.v1
 
+## 2.36.12
+
+### Patch Changes
+
+- Updated dependencies [[`193f2c8597147db88fdb7ff21bf39bcadcbdab89`](https://github.com/wso2/identity-apps/commit/193f2c8597147db88fdb7ff21bf39bcadcbdab89)]:
+  - @wso2is/admin.applications.v1@2.41.23
+  - @wso2is/admin.extensions.v1@2.40.29
+  - @wso2is/admin.core.v1@2.54.28
+  - @wso2is/admin.roles.v2@2.27.342
+  - @wso2is/admin.connections.v1@2.36.12
+
+## 2.36.11
+
+### Patch Changes
+
+- Updated dependencies [[`d017740b584334c955953a9a8c99608040decd9c`](https://github.com/wso2/identity-apps/commit/d017740b584334c955953a9a8c99608040decd9c)]:
+  - @wso2is/admin.claims.v1@2.30.5
+  - @wso2is/admin.core.v1@2.54.27
+  - @wso2is/admin.roles.v2@2.27.341
+  - @wso2is/admin.connections.v1@2.36.11
+
+## 2.36.10
+
+### Patch Changes
+
+- [#9778](https://github.com/wso2/identity-apps/pull/9778) [`63a9edbc6e879fc4a76b7f2a6b330a58ef37611c`](https://github.com/wso2/identity-apps/commit/63a9edbc6e879fc4a76b7f2a6b330a58ef37611c) Thanks [@PasinduYeshan](https://github.com/PasinduYeshan)! - Improve outbound provisioning wizard
+
+- Updated dependencies [[`25ca6cf9e8fc5f1219728aa73e1abe61c1044aca`](https://github.com/wso2/identity-apps/commit/25ca6cf9e8fc5f1219728aa73e1abe61c1044aca), [`63a9edbc6e879fc4a76b7f2a6b330a58ef37611c`](https://github.com/wso2/identity-apps/commit/63a9edbc6e879fc4a76b7f2a6b330a58ef37611c), [`c1fabf4ef861da56adba0ed0fc10aa65638471fc`](https://github.com/wso2/identity-apps/commit/c1fabf4ef861da56adba0ed0fc10aa65638471fc)]:
+  - @wso2is/admin.applications.v1@2.41.22
+  - @wso2is/i18n@2.37.1
+  - @wso2is/admin.connections.v1@2.36.10
+  - @wso2is/admin.claims.v1@2.30.4
+  - @wso2is/admin.core.v1@2.54.26
+  - @wso2is/admin.roles.v2@2.27.340
+
+## 2.36.9
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.54.25
+  - @wso2is/admin.roles.v2@2.27.339
+  - @wso2is/admin.connections.v1@2.36.9
+
+## 2.36.8
+
+### Patch Changes
+
+- Updated dependencies [[`6142c1c56cb418e81d34da5e937c9c37675f937c`](https://github.com/wso2/identity-apps/commit/6142c1c56cb418e81d34da5e937c9c37675f937c)]:
+  - @wso2is/admin.core.v1@2.54.24
+  - @wso2is/admin.roles.v2@2.27.338
+  - @wso2is/admin.connections.v1@2.36.8
+
+## 2.36.7
+
+### Patch Changes
+
+- [#9761](https://github.com/wso2/identity-apps/pull/9761) [`0b1fc6523f43b7151132cd96036bbd4b3f8ba1a0`](https://github.com/wso2/identity-apps/commit/0b1fc6523f43b7151132cd96036bbd4b3f8ba1a0) Thanks [@PasinduYeshan](https://github.com/PasinduYeshan)! - Improve outbound provisioning wizard
+
+- Updated dependencies [[`0b1fc6523f43b7151132cd96036bbd4b3f8ba1a0`](https://github.com/wso2/identity-apps/commit/0b1fc6523f43b7151132cd96036bbd4b3f8ba1a0)]:
+  - @wso2is/admin.applications.v1@2.41.21
+  - @wso2is/admin.connections.v1@2.36.7
+  - @wso2is/admin.core.v1@2.54.23
+  - @wso2is/admin.roles.v2@2.27.337
+
+## 2.36.6
+
+### Patch Changes
+
+- Updated dependencies [[`209d099801560b7a9a72d11e6864b9dc5e463f76`](https://github.com/wso2/identity-apps/commit/209d099801560b7a9a72d11e6864b9dc5e463f76)]:
+  - @wso2is/admin.applications.v1@2.41.20
+  - @wso2is/admin.core.v1@2.54.22
+  - @wso2is/admin.roles.v2@2.27.336
+  - @wso2is/admin.connections.v1@2.36.6
+
+## 2.36.5
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.54.21
+  - @wso2is/admin.roles.v2@2.27.335
+  - @wso2is/admin.connections.v1@2.36.5
+
+## 2.36.4
+
+### Patch Changes
+
+- Updated dependencies [[`bb844d3b938f1c1432af84086c3df3b29f03047c`](https://github.com/wso2/identity-apps/commit/bb844d3b938f1c1432af84086c3df3b29f03047c), [`fdcc23b24755b9179b6ecab7bcb4eabe6694d5b9`](https://github.com/wso2/identity-apps/commit/fdcc23b24755b9179b6ecab7bcb4eabe6694d5b9)]:
+  - @wso2is/i18n@2.37.0
+  - @wso2is/admin.console-settings.v1@2.26.10
+  - @wso2is/admin.core.v1@2.54.20
+  - @wso2is/admin.roles.v2@2.27.334
+  - @wso2is/admin.connections.v1@2.36.4
+
+## 2.36.3
+
+### Patch Changes
+
+- Updated dependencies [[`aa65d18c579561581a0a6b60003017d31d8f9c27`](https://github.com/wso2/identity-apps/commit/aa65d18c579561581a0a6b60003017d31d8f9c27)]:
+  - @wso2is/admin.application-templates.v1@1.6.0
+  - @wso2is/admin.identity-verification-providers.v1@2.28.0
+  - @wso2is/admin.template-core.v1@1.6.0
+  - @wso2is/form@2.10.0
+  - @wso2is/i18n@2.36.0
+  - @wso2is/admin.connections.v1@2.36.3
+
+## 2.36.2
+
+### Patch Changes
+
+- Updated dependencies [[`041d7e4c3b1ae6a82839ea7d698bd12c25056123`](https://github.com/wso2/identity-apps/commit/041d7e4c3b1ae6a82839ea7d698bd12c25056123)]:
+  - @wso2is/admin.applications.v1@2.41.19
+  - @wso2is/admin.core.v1@2.54.19
+  - @wso2is/admin.roles.v2@2.27.333
+  - @wso2is/admin.connections.v1@2.36.2
+
+## 2.36.1
+
+### Patch Changes
+
+- Updated dependencies [[`c211c3b9390ab23e03937f4ad2ea7c6cbc849bf7`](https://github.com/wso2/identity-apps/commit/c211c3b9390ab23e03937f4ad2ea7c6cbc849bf7)]:
+  - @wso2is/i18n@2.35.0
+  - @wso2is/admin.core.v1@2.54.18
+  - @wso2is/admin.roles.v2@2.27.332
+  - @wso2is/admin.connections.v1@2.36.1
+
+## 2.36.0
+
+### Minor Changes
+
+- [#9707](https://github.com/wso2/identity-apps/pull/9707) [`98be11798211c36636778c925819b578d4fbeabd`](https://github.com/wso2/identity-apps/commit/98be11798211c36636778c925819b578d4fbeabd) Thanks [@NipuniBhagya](https://github.com/NipuniBhagya)! - Introduce password reset enforcement scope configuration
+
+* [#9744](https://github.com/wso2/identity-apps/pull/9744) [`3ebcd80a19cabc51a4ee840bafb0da213e0c97e1`](https://github.com/wso2/identity-apps/commit/3ebcd80a19cabc51a4ee840bafb0da213e0c97e1) Thanks [@DilshanSenarath](https://github.com/DilshanSenarath)! - Automatic refresh for SAML IDP Certificates from Metadata URL
+
+### Patch Changes
+
+- Updated dependencies [[`98be11798211c36636778c925819b578d4fbeabd`](https://github.com/wso2/identity-apps/commit/98be11798211c36636778c925819b578d4fbeabd), [`3ebcd80a19cabc51a4ee840bafb0da213e0c97e1`](https://github.com/wso2/identity-apps/commit/3ebcd80a19cabc51a4ee840bafb0da213e0c97e1), [`8f189290049855d403087514cbdc0b9ca2892ab8`](https://github.com/wso2/identity-apps/commit/8f189290049855d403087514cbdc0b9ca2892ab8)]:
+  - @wso2is/admin.connections.v1@2.36.0
+  - @wso2is/admin.extensions.v1@2.40.28
+  - @wso2is/i18n@2.34.11
+  - @wso2is/admin.core.v1@2.54.17
+  - @wso2is/admin.actions.v1@1.15.3
+  - @wso2is/admin.roles.v2@2.27.331
+
+## 2.35.20
+
+### Patch Changes
+
+- Updated dependencies [[`37f1eae32f0b30c5a060432e41fe5e13285aef01`](https://github.com/wso2/identity-apps/commit/37f1eae32f0b30c5a060432e41fe5e13285aef01)]:
+  - @wso2is/admin.applications.v1@2.41.18
+  - @wso2is/admin.core.v1@2.54.16
+  - @wso2is/i18n@2.34.10
+  - @wso2is/admin.roles.v2@2.27.330
+  - @wso2is/admin.connections.v1@2.35.20
+
+## 2.35.19
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.54.15
+  - @wso2is/admin.roles.v2@2.27.329
+  - @wso2is/admin.connections.v1@2.35.19
+
+## 2.35.18
+
+### Patch Changes
+
+- Updated dependencies [[`413d08d82b88fb248b45e6a6e6e668a84d7f6a19`](https://github.com/wso2/identity-apps/commit/413d08d82b88fb248b45e6a6e6e668a84d7f6a19)]:
+  - @wso2is/admin.applications.v1@2.41.17
+  - @wso2is/admin.extensions.v1@2.40.27
+  - @wso2is/admin.feature-gate.v1@1.9.1
+  - @wso2is/access-control@3.5.2
+  - @wso2is/admin.core.v1@2.54.14
+  - @wso2is/admin.roles.v2@2.27.328
+  - @wso2is/admin.connections.v1@2.35.18
+
 ## 2.35.17
 
 ### Patch Changes
