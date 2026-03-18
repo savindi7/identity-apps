@@ -1,5 +1,29 @@
 # @wso2is/console
 
+## 3.0.1
+
+### Patch Changes
+
+- [#9824](https://github.com/wso2/identity-apps/pull/9824) [`b38ab3b15ff9ab1ee0ec74a4d6dfeed0613c8014`](https://github.com/wso2/identity-apps/commit/b38ab3b15ff9ab1ee0ec74a4d6dfeed0613c8014) Thanks [@Malith-19](https://github.com/Malith-19)! - Update the workflow rule delete confirmation modal header.
+
+- Updated dependencies [[`b38ab3b15ff9ab1ee0ec74a4d6dfeed0613c8014`](https://github.com/wso2/identity-apps/commit/b38ab3b15ff9ab1ee0ec74a4d6dfeed0613c8014)]:
+  - @wso2is/admin.approval-workflows.v1@1.2.11
+  - @wso2is/i18n@2.37.2
+  - @wso2is/admin.users.v1@2.37.20
+  - @wso2is/admin.agents.v1@1.0.188
+  - @wso2is/admin.onboarding.v1@1.0.44
+  - @wso2is/admin.core.v1@2.54.29
+  - @wso2is/admin.roles.v2@2.27.343
+  - @wso2is/admin.connections.v1@2.36.13
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.173
+  - @wso2is/admin.branding.v1@2.32.129
+  - @wso2is/admin.email-management.v1@2.25.337
+  - @wso2is/admin.flows.v1@1.0.142
+  - @wso2is/admin.home.v1@1.7.153
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.173
+  - @wso2is/admin.server-configurations.v1@2.38.12
+  - @wso2is/admin.registration-flow-builder.v1@0.10.133
+
 ## 3.0.0
 
 ### Major Changes
