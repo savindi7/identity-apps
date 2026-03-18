@@ -705,7 +705,7 @@ export const OutboundProvisioningConnectionCreateWizard: FC<
                 >
                     <div className="display-flex">
                         <GenericIcon
-                            icon={ getConnectionIcons().enterprise }
+                            icon={ getConnectionIcons().outboundProvisioning }
                             size="x30"
                             transparent
                             spaced="right"

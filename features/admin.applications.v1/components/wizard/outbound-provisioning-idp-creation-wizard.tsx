@@ -76,6 +76,8 @@ export const OutboundProvisioningIdpCreateWizard: FunctionComponent<
         const [ partiallyCompletedStep, setPartiallyCompletedStep ] = useState<number>(undefined);
         const [ currentWizardStep, setCurrentWizardStep ] = useState<number>(currentStep);
         const [ isSubmitting, setIsSubmitting ] = useState<boolean>(false);
+        const [ isConnectorListLoading, setIsConnectorListLoading ] = useState<boolean>(false);
+        const [ isIdpSelected, setIsIdpSelected ] = useState<boolean>(false);
 
         const {
             data: identityProviderList,
@@ -240,6 +242,12 @@ export const OutboundProvisioningIdpCreateWizard: FunctionComponent<
                         data-testid={ `${ testId }-form` }
                         data-componentid={ `${ componentId }-form` }
                         isSubmitting={ isSubmitting }
+                        onConnectorLoadingChange={ (isLoading: boolean) => {
+                            setIsConnectorListLoading(isLoading);
+                            if (isLoading) {
+                                setIsIdpSelected(true);
+                            }
+                        } }
                     />
                 ),
                 icon: getApplicationWizardStepIcons().general,
@@ -326,8 +334,8 @@ export const OutboundProvisioningIdpCreateWizard: FunctionComponent<
                                         onClick={ navigateToNext }
                                         data-testid={ `${ testId }-finish-button` }
                                         data-componentid={ `${ componentId }-finish-button` }
-                                        loading={ isSubmitting }
-                                        disabled={ isSubmitting }
+                                        loading={ isSubmitting || isConnectorListLoading }
+                                        disabled={ isSubmitting || isConnectorListLoading || !isIdpSelected }
                                     >
                                         { t("common:finish") }
                                     </PrimaryButton>

@@ -1553,6 +1553,14 @@ export interface ApplicationsNS {
                         hint: string;
                         label: string;
                     };
+                    skipUserValidation: {
+                        hint: string;
+                        label: string;
+                    };
+                    allowFederatedUsers: {
+                        hint: string;
+                        label: string;
+                    };
                     heading: string;
                 }
             };
