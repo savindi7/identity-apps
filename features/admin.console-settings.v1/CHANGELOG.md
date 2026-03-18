@@ -1,5 +1,11 @@
 # @wso2is/admin.console-settings.v1
 
+## 2.26.11
+
+### Patch Changes
+
+- [#9810](https://github.com/wso2/identity-apps/pull/9810) [`182b9a86ebbfb84eca00f0bbfc66d88950691917`](https://github.com/wso2/identity-apps/commit/182b9a86ebbfb84eca00f0bbfc66d88950691917) Thanks [@sadilchamishka](https://github.com/sadilchamishka)! - Improve console administrator listing by console role audience
+
 ## 2.26.10
 
 ### Patch Changes
