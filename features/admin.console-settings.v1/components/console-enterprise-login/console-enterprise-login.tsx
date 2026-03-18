@@ -495,7 +495,7 @@ const ConsoleEnterpriseLogin: FunctionComponent<ConsoleEnterpriseLoginPropsInter
                     </Heading>
                 </div>
 
-                <Box sx={ { mb: 3, mt: 3 } }>
+                <Box sx={ { mb: 5, mt: 4 } }>
                     <Autocomplete
                         fullWidth
                         options={ availableConnections }
@@ -511,6 +511,7 @@ const ConsoleEnterpriseLogin: FunctionComponent<ConsoleEnterpriseLoginPropsInter
                         renderInput={ (params: AutocompleteRenderInputParams) => (
                             <TextField
                                 { ...params }
+                                sx = { { mt: 1 } }
                                 InputLabelProps={ {
                                     sx: {
                                         fontSize: "1.2rem"
@@ -532,7 +533,7 @@ const ConsoleEnterpriseLogin: FunctionComponent<ConsoleEnterpriseLoginPropsInter
 
                 { selectedIdp && (
                     <>
-                        <Heading as="h5" compact>
+                        <Heading as="h5">
                             { t("consoleSettings:enterpriseLogin" +
                                 ".configured.mappingsHeading") }
                         </Heading>
@@ -540,7 +541,7 @@ const ConsoleEnterpriseLogin: FunctionComponent<ConsoleEnterpriseLoginPropsInter
                             { t("consoleSettings:enterpriseLogin.form.mappingDescription") }
                         </Heading>
 
-                        <Box sx={ { mt: 2 } }>
+                        <Box sx={ { mt: 4 } }>
                             { mappings.length > 0 && (
                                 <Grid
                                     container
@@ -552,7 +553,7 @@ const ConsoleEnterpriseLogin: FunctionComponent<ConsoleEnterpriseLoginPropsInter
                                         <Typography
                                             variant="body2"
                                             color="text.primary"
-                                            sx={ { fontWeight: 600 } }
+                                            sx={ { fontSize: "1rem", fontWeight: 500 } }
                                         >
                                             { t("consoleSettings:enterpriseLogin.form.roleLabel") }
                                         </Typography>
@@ -562,7 +563,7 @@ const ConsoleEnterpriseLogin: FunctionComponent<ConsoleEnterpriseLoginPropsInter
                                         <Typography
                                             variant="body2"
                                             color="text.primary"
-                                            sx={ { fontWeight: 600 } }
+                                            sx={ { fontSize: "1rem", fontWeight: 500 } }
                                         >
                                             { t("consoleSettings:enterpriseLogin.form.idpGroupLabel") }
                                         </Typography>
@@ -819,31 +820,28 @@ const ConsoleEnterpriseLogin: FunctionComponent<ConsoleEnterpriseLoginPropsInter
                             }
                         </Box>
 
-                        <Box
-                            sx={ { display: "flex", justifyContent: "flex-start", mb: 2, ml: 0.5, p: 0 } }
-                        >
+                        <Box sx={ { mb: 4, ml: 0 } }>
                             <Button
                                 variant="text"
-                                color="primary"
                                 size="small"
                                 startIcon={ <PlusIcon /> }
                                 onClick={ handleAddMapping }
                                 sx={ {
                                     "& .MuiButton-startIcon": {
-                                        ml: 0,
-                                        mr: 0.75
+                                        marginLeft: 0,
+                                        marginRight: "4px"
                                     },
-                                    "& svg": {
-                                        fontSize: "0.9rem"
+                                    "&:hover": {
+                                        background: "none",
+                                        color: "primary.dark"
                                     },
-                                    border: 1,
-                                    borderColor: "primary.main",
-                                    fontSize: "0.75rem",
-                                    justifyContent: "flex-start",
+                                    fontSize: "0.9rem",
                                     minWidth: "auto",
-                                    p: 0
+                                    ml: "-12px",
+                                    p: 0,
+                                    textTransform: "none"
                                 } }
-                                data-componentid={ `${componentId}-add-mapping-btn` }
+                                data-componentid= { `${componentId}-add-mapping-btn` }
                             >
                                 { t("consoleSettings:enterpriseLogin.form.addMapping") }
                             </Button>
