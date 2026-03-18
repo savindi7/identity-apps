@@ -26,8 +26,8 @@ import { ProfileConstants } from "@wso2is/core/constants";
 import { FeatureAccessConfigInterface } from "@wso2is/core/models";
 import { useCallback, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
-import { parseOnboardingShowFromPreferences } from "../api/get-onboarding-claim";
 import { dismissOnboardingWizardClaim } from "../api/update-onboarding-claim";
+import { parseOnboardingShowFromPreferences } from "../utils/parse-onboarding-preferences";
 
 /**
  * SCIM2 attributes to request from the Users list endpoint.

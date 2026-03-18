@@ -41,6 +41,7 @@ export const getExtendedFeatureResourceEndpoints = (serverHost: string,
         emailProviderEndpoint: `${ serverHost }/api/server/v1/notification-senders/email`,
         emailProviderV2Endpoint: `${ serverHost }/api/server/v2/notification-senders/email`,
         eventsEndpoint: `${ serverHost }/api/event-configurations/v1/events`,
+        guestUserMeClaimsEndpoint: `${ serverHost }/api/asgardeo-guest/v1/users/me/claims`,
         inviteEndpoint: `${ serverHost }/api/asgardeo-guest/v1/users/invite`,
         inviteLinkEndpoint: "/api/users/v1/offline-invite-link",
         notificationSendersEndPoint: `${ serverHost }/api/server/v1/notification-senders`,
@@ -54,7 +55,6 @@ export const getExtendedFeatureResourceEndpoints = (serverHost: string,
         resendEndpoint: `${ serverHost }/api/asgardeo-guest/v1/users/invite/{}/resend`,
         smsProviderEndpoint: `${ serverHost }/api/server/v1/notification-senders/sms`,
         smsProviderV2Endpoint: `${ serverHost }/api/server/v2/notification-senders/sms`,
-        guestUserMeClaimsEndpoint: `${ serverHost }/api/asgardeo-guest/v1/users/me/claims`,
         userEndpoint: `${ serverHost }/api/asgardeo-guest/v1/users`
     };
 };
