@@ -239,6 +239,10 @@ export interface CommonUIConfigInterface<T = Record<string, unknown>> {
     */
     isPasswordInputValidationEnabled: boolean;
     /**
+     *
+     */
+    isPasswordResetEnforcementScopeEnabled?: boolean;
+    /**
      * Privacy Policy configs.
      */
     privacyPolicyConfigs: PrivacyPolicyConfigsInterface;
