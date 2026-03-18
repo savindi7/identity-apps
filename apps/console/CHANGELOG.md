@@ -1,5 +1,33 @@
 # @wso2is/console
 
+## 2.105.7
+
+### Patch Changes
+
+- [#9814](https://github.com/wso2/identity-apps/pull/9814) [`193f2c8597147db88fdb7ff21bf39bcadcbdab89`](https://github.com/wso2/identity-apps/commit/193f2c8597147db88fdb7ff21bf39bcadcbdab89) Thanks [@sahandilshan](https://github.com/sahandilshan)! - Hide CIBA grant from public clients
+
+* [#9811](https://github.com/wso2/identity-apps/pull/9811) [`a66fab55380225c346388dca5f34aa11d0d83997`](https://github.com/wso2/identity-apps/commit/a66fab55380225c346388dca5f34aa11d0d83997) Thanks [@shashimalcse](https://github.com/shashimalcse)! - Fix verifiable credentail creation redirect
+
+* Updated dependencies [[`193f2c8597147db88fdb7ff21bf39bcadcbdab89`](https://github.com/wso2/identity-apps/commit/193f2c8597147db88fdb7ff21bf39bcadcbdab89), [`a66fab55380225c346388dca5f34aa11d0d83997`](https://github.com/wso2/identity-apps/commit/a66fab55380225c346388dca5f34aa11d0d83997)]:
+  - @wso2is/admin.applications.v1@2.41.23
+  - @wso2is/admin.extensions.v1@2.40.29
+  - @wso2is/admin.verifiable-credentials.v1@1.0.4
+  - @wso2is/admin.agents.v1@1.0.187
+  - @wso2is/admin.branding.v1@2.32.128
+  - @wso2is/admin.onboarding.v1@1.0.43
+  - @wso2is/admin.core.v1@2.54.28
+  - @wso2is/admin.roles.v2@2.27.342
+  - @wso2is/admin.approval-workflows.v1@1.2.10
+  - @wso2is/admin.connections.v1@2.36.12
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.172
+  - @wso2is/admin.email-management.v1@2.25.336
+  - @wso2is/admin.flows.v1@1.0.141
+  - @wso2is/admin.home.v1@1.7.152
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.172
+  - @wso2is/admin.server-configurations.v1@2.38.11
+  - @wso2is/admin.users.v1@2.37.19
+  - @wso2is/admin.registration-flow-builder.v1@0.10.132
+
 ## 2.105.6
 
 ### Patch Changes
