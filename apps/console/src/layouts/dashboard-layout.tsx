@@ -358,6 +358,7 @@ const DashboardLayout: FunctionComponent<RouteComponentProps> = (
                                 className="route-icon"
                                 { ...route.icon }
                             />,
+                            expanded: route.expanded,
                             items: route.items?.map((subRoute: NavRouteInterface) => {
 
                                 const subRouteFlag: string = resolveFeatureFlag(subRoute.id, subRoute.featureFlagKey);

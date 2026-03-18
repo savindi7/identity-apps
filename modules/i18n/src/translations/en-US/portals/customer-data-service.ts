@@ -522,9 +522,14 @@ export const customerDataService: CustomerDataServiceNS = {
                 title: "Unified Profiles"
             }
         },
+        linkedUser: {
+            action: "View Customer Profile",
+            info: "This user has an associated Customer data profile."
+        },
         list: {
             chips: {
-                anonymous: "Anonymous",
+                anonymous: "Temporary",
+                registered: "Permanent",
                 unified: "Unified"
             },
             columns: {
