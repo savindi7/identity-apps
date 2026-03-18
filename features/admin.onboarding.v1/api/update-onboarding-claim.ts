@@ -57,6 +57,10 @@ export const dismissOnboardingWizardClaim = async (
         return;
     }
 
+    if (!userId) {
+        throw new Error("User ID is required for SCIM endpoint update.");
+    }
+
     await dismissViaScimEndpoint(userId);
 };
 
