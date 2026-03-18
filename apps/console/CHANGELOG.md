@@ -1,5 +1,30 @@
 # @wso2is/console
 
+## 3.0.3
+
+### Patch Changes
+
+- [#9842](https://github.com/wso2/identity-apps/pull/9842) [`2cad6ed902817e50e522628726732802503f5893`](https://github.com/wso2/identity-apps/commit/2cad6ed902817e50e522628726732802503f5893) Thanks [@NipuniBhagya](https://github.com/NipuniBhagya)! - Fix password reset scope configuration issue
+
+- Updated dependencies [[`2cad6ed902817e50e522628726732802503f5893`](https://github.com/wso2/identity-apps/commit/2cad6ed902817e50e522628726732802503f5893)]:
+  - @wso2is/admin.validation.v1@2.28.2
+  - @wso2is/admin.core.v1@2.54.31
+  - @wso2is/core@2.12.9
+  - @wso2is/admin.onboarding.v1@1.0.46
+  - @wso2is/admin.registration-flow-builder.v1@0.10.135
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.175
+  - @wso2is/admin.branding.v1@2.32.131
+  - @wso2is/admin.email-management.v1@2.25.339
+  - @wso2is/admin.flows.v1@1.0.144
+  - @wso2is/admin.home.v1@1.7.155
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.175
+  - @wso2is/admin.server-configurations.v1@2.38.14
+  - @wso2is/admin.users.v1@2.37.22
+  - @wso2is/admin.agents.v1@1.0.190
+  - @wso2is/admin.roles.v2@2.27.345
+  - @wso2is/admin.connections.v1@2.36.15
+  - @wso2is/admin.approval-workflows.v1@1.2.13
+
 ## 3.0.2
 
 ### Patch Changes
