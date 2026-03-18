@@ -1360,6 +1360,13 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
                     return;
                 }
 
+                // Hide CIBA grant type for public clients.
+                // CIBA requires a backchannel and a confidential client secret,
+                // which public clients (SPA, mobile) cannot securely hold.
+                if (isPublicClient && name === ApplicationManagementConstants.CIBA_GRANT) {
+                    return;
+                }
+
                 /**
                  * Create the checkbox children object. hint is marked
                  * as optional because not all children have hint/description
