@@ -23,12 +23,7 @@ import Autocomplete, {
 import Box from "@oxygen-ui/react/Box";
 import Chip from "@oxygen-ui/react/Chip";
 import TextField from "@oxygen-ui/react/TextField";
-import {
-    FeatureAccessConfigInterface,
-    FeatureStatus,
-    useCheckFeatureStatus,
-    useRequiredScopes
-} from "@wso2is/access-control";
+import { FeatureAccessConfigInterface, useRequiredScopes } from "@wso2is/access-control";
 import {
     ApplicationTabComponentsFilter
 } from "@wso2is/admin.application-templates.v1/components/application-tab-components-filter";
@@ -37,7 +32,6 @@ import useGlobalVariables from "@wso2is/admin.core.v1/hooks/use-global-variables
 import { ConfigReducerStateInterface } from "@wso2is/admin.core.v1/models/reducer-state";
 import { AppState } from "@wso2is/admin.core.v1/store";
 import { ApplicationTabIDs, applicationConfig } from "@wso2is/admin.extensions.v1";
-import FeatureFlagConstants from "@wso2is/admin.feature-gate.v1/constants/feature-flag-constants";
 import { FeatureStatusLabel } from "@wso2is/admin.feature-gate.v1/models/feature-status";
 import { ImpersonationConfigConstants } from "@wso2is/admin.impersonation.v1/constants/impersonation-configuration";
 import { getSharedOrganizations } from "@wso2is/admin.organizations.v1/api";
@@ -256,10 +250,6 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
         applicationFeatureConfig,
         ApplicationManagementConstants.FEATURE_DICTIONARY.get("APPLICATION_EDIT_ACCESS_CONFIG_FRONT_CHANNEL_LOGOUT")
     );
-    const oidcFrontChannelLogoutFeatureStatus: FeatureStatus = useCheckFeatureStatus(
-        FeatureFlagConstants.FEATURE_FLAG_KEY_MAP["OIDC_FRONT_CHANNEL_LOGOUT"]);
-    const isFrontChannelLogoutGated: boolean = isFrontChannelLogoutEnabled
-        && oidcFrontChannelLogoutFeatureStatus === FeatureStatus.ENABLED;
     const isEnforceClientSecretPermissionEnabled: boolean = isFeatureEnabled(
         applicationFeatureConfig,
         ApplicationManagementConstants.FEATURE_DICTIONARY.get(
@@ -289,6 +279,8 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
     const [ showHybridFlowEnableConfig, setHybridFlowEnableConfig ] = useState<boolean>(false);
     const [ showCallbackURLField, setShowCallbackURLField ] = useState<boolean>(undefined);
     const [ hideRefreshTokenGrantType, setHideRefreshTokenGrantType ] = useState<boolean>(false);
+    const [ isRenewRefreshTokenEnabled, setIsRenewRefreshTokenEnabled ] =
+        useState<boolean>(initialValues?.refreshToken?.renewRefreshToken ?? false);
     const [ selectedGrantTypes, setSelectedGrantTypes ] = useState<string[]>(undefined);
     const [ selectedHybridFlowResponseTypes, setSelectedHybridFlowResponseTypes ] = useState<string[]>([]);
     const [ isJWTAccessTokenTypeSelected, setJWTAccessTokenTypeSelected ] = useState<boolean>(false);
@@ -366,6 +358,8 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
     const applicationSubjectTokenExpiryInSeconds: MutableRefObject<HTMLElement> = useRef<HTMLElement>();
     const authReqExpiryTime: MutableRefObject<HTMLElement> = useRef<HTMLElement>();
     const notificationChannels: MutableRefObject<HTMLDivElement> = useRef<HTMLDivElement>();
+    const cibaSkipUserValidation: MutableRefObject<HTMLElement> = useRef<HTMLElement>();
+    const cibaAllowFederatedUsers: MutableRefObject<HTMLElement> = useRef<HTMLElement>();
 
     const [ isSPAApplication, setSPAApplication ] = useState<boolean>(false);
     const [ isOIDCWebApplication, setOIDCWebApplication ] = useState<boolean>(false);
@@ -385,6 +379,9 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
     const [ sharedOrganizationsList, setSharedOrganizationsList ] = useState<Array<OrganizationInterface>>(undefined);
     const [ enableHybridFlowResponseTypeField , setEnableHybridFlowResponseTypeField ] = useState<boolean>(undefined);
     const [ showCibaFields, setShowCibaFields ] = useState<boolean>(false);
+    const [ isSkipUserValidationEnabled, setIsSkipUserValidationEnabled ] = useState<boolean>(
+        initialValues?.cibaAuthenticationRequest?.skipUserValidation ?? false
+    );
 
     const [ triggerCertSubmit, setTriggerCertSubmit ] = useTrigger();
 
@@ -766,6 +763,10 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
 
     };
 
+    useEffect((): void => {
+        setIsRenewRefreshTokenEnabled(initialValues?.refreshToken?.renewRefreshToken ?? false);
+    }, [ initialValues?.refreshToken?.renewRefreshToken ]);
+
     /**
      * Check whether to enable validate token bindings.
      */
@@ -829,6 +830,12 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
         setIsSubjectTokenFeatureAvailable(isSubjectTokenFeatureEnabled ? initialValues?.subjectToken ?
             true : false : false);
     }, [ initialValues ]);
+
+    useEffect(() => {
+        setIsSkipUserValidationEnabled(
+            initialValues?.cibaAuthenticationRequest?.skipUserValidation ?? false
+        );
+    }, [ initialValues?.cibaAuthenticationRequest?.skipUserValidation ]);
 
     useEffect(() => {
         if (isGrantChanged) {
@@ -1353,6 +1360,13 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
                     return;
                 }
 
+                // Hide CIBA grant type for public clients.
+                // CIBA requires a backchannel and a confidential client secret,
+                // which public clients (SPA, mobile) cannot securely hold.
+                if (isPublicClient && name === ApplicationManagementConstants.CIBA_GRANT) {
+                    return;
+                }
+
                 /**
                  * Create the checkbox children object. hint is marked
                  * as optional because not all children have hint/description
@@ -1523,9 +1537,7 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
                     backChannelLogoutUrl: isBackChannelLogoutEnabled
                         ? values.get("backChannelLogoutUrl")
                         : initialValues?.logout?.backChannelLogoutUrl,
-                    frontChannelLogoutUrl: isFrontChannelLogoutGated
-                        ? values.get("frontChannelLogoutUrl")
-                        : initialValues?.logout?.frontChannelLogoutUrl
+                    frontChannelLogoutUrl: values.get("frontChannelLogoutUrl")
                 },
                 publicClient: !isMobileApplication ? values.get("supportPublicClients")?.length > 0 : true,
                 refreshToken: {
@@ -1615,18 +1627,23 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
                 inboundConfigFormValues = {
                     ...inboundConfigFormValues,
                     cibaAuthenticationRequest: {
+                        allowFederatedUsers: values.get("cibaSkipUserValidation")?.length > 0
+                            && values.get("cibaAllowFederatedUsers")?.length > 0,
                         authReqExpiryTime: values.get("authReqExpiryTime")
                             ? parseInt(values.get("authReqExpiryTime") as string, 10)
                             : undefined,
-                        notificationChannels: notificationChannels
+                        notificationChannels: notificationChannels,
+                        skipUserValidation: values.get("cibaSkipUserValidation")?.length > 0
                     }
                 };
             } else {
                 inboundConfigFormValues = {
                     ...inboundConfigFormValues,
                     cibaAuthenticationRequest: {
+                        allowFederatedUsers: false,
                         authReqExpiryTime: undefined,
-                        notificationChannels: []
+                        notificationChannels: [],
+                        skipUserValidation: false
                     }
                 };
             }
@@ -1785,7 +1802,7 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
                 expiryInSeconds: Number(values.get("idExpiryInSeconds"))
             },
             logout: {
-                frontChannelLogoutUrl: isFrontChannelLogoutGated
+                frontChannelLogoutUrl: isFrontChannelLogoutEnabled
                     ? values.get("frontChannelLogoutUrl")
                     : initialValues?.logout?.frontChannelLogoutUrl
             },
@@ -1944,6 +1961,9 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
     const handleClientAuthenticationChange = (publicClient: boolean):void => {
         if (publicClient) {
             setSelectedAuthMethod("");
+            setSelectedGrantTypes((prev: string[]) =>
+                prev?.filter((grant: string) => grant !== ApplicationManagementConstants.CIBA_GRANT)
+            );
         }
     };
 
@@ -2315,6 +2335,74 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
                                     { productName:
                                         config.ui.productName }) }
                                 </Hint>
+                            </Grid.Column>
+                        </Grid.Row>
+                        <Grid.Row columns={ 1 }>
+                            <Grid.Column mobile={ 16 }>
+                                <Field
+                                    ref={ cibaSkipUserValidation }
+                                    name="cibaSkipUserValidation"
+                                    required={ false }
+                                    type="checkbox"
+                                    value={
+                                        initialValues?.cibaAuthenticationRequest
+                                            ?.skipUserValidation
+                                            ? [ "cibaSkipUserValidation" ]
+                                            : []
+                                    }
+                                    listen={ (values: Map<string, FormValue>): void => {
+                                        const isEnabled: boolean =
+                                            values.get("cibaSkipUserValidation")?.length > 0;
+
+                                        setIsSkipUserValidationEnabled(isEnabled);
+                                    } }
+                                    children={ [
+                                        {
+                                            label: t("applications:forms.inboundOIDC.fields." +
+                                                "ciba.skipUserValidation.label"),
+                                            value: "cibaSkipUserValidation"
+                                        }
+                                    ] }
+                                    readOnly={ readOnly }
+                                    data-componentid={
+                                        `${ testId }-ciba-skip-user-validation-checkbox`
+                                    }
+                                />
+                                <Hint>
+                                    { t("applications:forms.inboundOIDC.fields." +
+                                        "ciba.skipUserValidation.hint") }
+                                </Hint>
+                                <div style={ { paddingLeft: "1.5rem" } }>
+                                    <Field
+                                        ref={ cibaAllowFederatedUsers }
+                                        name="cibaAllowFederatedUsers"
+                                        required={ false }
+                                        type="checkbox"
+                                        value={
+                                            isSkipUserValidationEnabled
+                                            && initialValues?.cibaAuthenticationRequest
+                                                ?.allowFederatedUsers
+                                                ? [ "cibaAllowFederatedUsers" ]
+                                                : []
+                                        }
+                                        disabled={ !isSkipUserValidationEnabled }
+                                        children={ [
+                                            {
+                                                label: t("applications:forms.inboundOIDC.fields." +
+                                                    "ciba.allowFederatedUsers.label"),
+                                                value: "cibaAllowFederatedUsers"
+                                            }
+                                        ] }
+                                        readOnly={ readOnly }
+                                        data-componentid={
+                                            `${ testId }-ciba-allow-federated-users-checkbox`
+                                        }
+                                    />
+                                    <Hint>
+                                        { t("applications:forms.inboundOIDC.fields." +
+                                            "ciba.allowFederatedUsers.hint") }
+                                    </Hint>
+                                </div>
                             </Grid.Column>
                         </Grid.Row>
                     </>
@@ -3667,6 +3755,11 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
                                             ? [ "refreshToken" ]
                                             : []
                                     }
+                                    listen={ (values: Map<string, FormValue>): void => {
+                                        setIsRenewRefreshTokenEnabled(
+                                            values.get("RefreshToken")?.length > 0
+                                        );
+                                    } }
                                     children={ [
                                         {
                                             label: t("applications:forms.inboundOIDC" +
@@ -3691,42 +3784,44 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
                                 </Hint>
                             </Grid.Column>
                         </Grid.Row>
-                        <Grid.Row columns={ 1 }>
-                            <Grid.Column mobile={ 16 } tablet={ 16 } computer={ 16 }>
-                                <Field
-                                    ref={ extendExpiryTime }
-                                    name="extendExpiryTime"
-                                    label=""
-                                    required={ false }
-                                    type="checkbox"
-                                    value={
-                                        initialValues?.refreshToken?.extendRenewedRefreshTokenExpiryTime
-                                            ? [ "extendExpiryTime" ]
-                                            : []
-                                    }
-                                    children={ [
-                                        {
-                                            label: t("applications:forms.inboundOIDC.sections.refreshToken."
-                                                + "fields.extendRenewedRefreshTokenExpiryTime.label"),
-                                            value: "extendExpiryTime"
+                        { isRenewRefreshTokenEnabled && (
+                            <Grid.Row columns={ 1 }>
+                                <Grid.Column mobile={ 16 } tablet={ 16 } computer={ 16 }>
+                                    <Field
+                                        ref={ extendExpiryTime }
+                                        name="extendExpiryTime"
+                                        label=""
+                                        required={ false }
+                                        type="checkbox"
+                                        value={
+                                            initialValues?.refreshToken?.extendRenewedRefreshTokenExpiryTime
+                                                ? [ "extendExpiryTime" ]
+                                                : []
                                         }
-                                    ] }
-                                    readOnly={ readOnly }
-                                    data-testid={ `${ testId }-extend-refresh-token-expiry-time-checkbox` }
-                                />
-                                <Hint>
-                                    <Trans
-                                        i18nKey={
-                                            "applications:forms.inboundOIDC.sections" +
-                                            ".refreshToken.fields.extendRenewedRefreshTokenExpiryTime.hint"
-                                        }
-                                    >
-                                        Select to ensure renewed refresh tokens retain the remaining validity period
-                                         from the original token instead of receiving a fresh expiry time.
-                                    </Trans>
-                                </Hint>
-                            </Grid.Column>
-                        </Grid.Row>
+                                        children={ [
+                                            {
+                                                label: t("applications:forms.inboundOIDC.sections.refreshToken."
+                                                    + "fields.extendRenewedRefreshTokenExpiryTime.label"),
+                                                value: "extendExpiryTime"
+                                            }
+                                        ] }
+                                        readOnly={ readOnly }
+                                        data-testid={ `${ testId }-extend-refresh-token-expiry-time-checkbox` }
+                                    />
+                                    <Hint>
+                                        <Trans
+                                            i18nKey={
+                                                "applications:forms.inboundOIDC.sections" +
+                                                ".refreshToken.fields.extendRenewedRefreshTokenExpiryTime.hint"
+                                            }
+                                        >
+                                            Select to ensure renewed refresh tokens retain the remaining validity period
+                                            from the original token instead of receiving a fresh expiry time.
+                                        </Trans>
+                                    </Hint>
+                                </Grid.Column>
+                            </Grid.Row>
+                        ) }
                         <Grid.Row columns={ 1 }>
                             <Grid.Column mobile={ 16 } tablet={ 16 } computer={ 16 }>
                                 <Field
@@ -4253,7 +4348,7 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
             {
                 !isSubOrganization()
                 && ((isBackChannelLogoutEnabled && !isSPAApplication)
-                    || (isFrontChannelLogoutGated && !isMobileApplication
+                    || (isFrontChannelLogoutEnabled && !isMobileApplication
                         && !isMcpClientApplication && !isM2MApplication))
                 && !isSystemApplication
                 && !isDefaultApplication
@@ -4267,7 +4362,7 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
                             <Heading as="h4">
                                 {
                                     ((isBackChannelLogoutEnabled && !isSPAApplication)
-                                        && (isFrontChannelLogoutGated && !isMobileApplication
+                                        && (isFrontChannelLogoutEnabled && !isMobileApplication
                                             && !isMcpClientApplication && !isM2MApplication))
                                         ? t("applications:forms.inboundOIDC.sections" +
                                             ".logoutURLs.heading")
@@ -4312,7 +4407,7 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
                     </Grid.Row>
                 )
             }
-            { isFrontChannelLogoutGated
+            { isFrontChannelLogoutEnabled
                 && !isSystemApplication
                 && !isDefaultApplication
                 && !isMobileApplication
