@@ -16,23 +16,64 @@
  * under the License.
  */
 
-import { updateProfileInfo } from "@wso2is/admin.users.v1/api/profile";
+import { AsgardeoSPAClient, HttpClientInstance } from "@asgardeo/auth-react";
+import { RequestConfigInterface } from "@wso2is/admin.core.v1/hooks/use-request";
+import { store } from "@wso2is/admin.core.v1/store";
+import { PatchRoleDataInterface } from "@wso2is/admin.roles.v2/models/roles";
+import { updateUserInfo } from "@wso2is/admin.users.v1/api/users";
+import { UserAccountTypes } from "@wso2is/admin.users.v1/constants/user-management-constants";
 import { ProfileConstants } from "@wso2is/core/constants";
-import { ProfileInfoInterface } from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
+
+const httpClient: HttpClientInstance = AsgardeoSPAClient.getInstance()
+    .httpRequest.bind(AsgardeoSPAClient.getInstance());
 
 /**
- * Updates the `showOnboardingWizard` claim to `false` for the current user via PATCH /scim2/Me.
- *
- * @returns Promise resolving to the updated profile info.
+ * Claim URI for user preferences used by the guest API.
  */
-export const dismissOnboardingWizardClaim = (): Promise<ProfileInfoInterface> => {
-    const data: Record<string, unknown> = {
+const USER_PREFERENCES_CLAIM_URI: string = "http://wso2.org/claims/userPreferences";
+
+/**
+ * Dismisses the onboarding wizard for the current user by setting the
+ * onboarding.show preference to false.
+ *
+ * - Owners and collaborators: PATCH /api/asgardeo-guest/v1/users/me/claims
+ * - All other user types (e.g. privileged users): PATCH /scim2/Users/userId
+ *
+ * @param userAccountType - The SCIM userAccountType of the current user.
+ * @param userId - The SCIM2 user ID (UUID). Required for non-guest endpoint updates.
+ * @returns Promise resolving when the claim is updated.
+ */
+export const dismissOnboardingWizardClaim = async (
+    userAccountType: string | null,
+    userId?: string
+): Promise<void> => {
+    if (
+        userAccountType === UserAccountTypes.OWNER ||
+        userAccountType === UserAccountTypes.COLLABORATOR
+    ) {
+        await dismissViaGuestEndpoint();
+
+        return;
+    }
+
+    await dismissViaScimEndpoint(userId);
+};
+
+/**
+ * Dismisses the wizard claim via SCIM2 PATCH /scim2/Users/userId.
+ * Used for privileged users and other non-owner/collaborator types.
+ *
+ * @param userId - The SCIM2 user ID (UUID).
+ */
+const dismissViaScimEndpoint = async (userId: string): Promise<void> => {
+    const data: PatchRoleDataInterface = {
         Operations: [
             {
                 op: "replace",
                 value: {
                     [ProfileConstants.SCIM2_SYSTEM_USER_SCHEMA]: {
-                        showOnboardingWizard: false
+                        userPreferences: "{'onboarding.show': false}"
                     }
                 }
             }
@@ -40,5 +81,29 @@ export const dismissOnboardingWizardClaim = (): Promise<ProfileInfoInterface> =>
         schemas: [ "urn:ietf:params:scim:api:messages:2.0:PatchOp" ]
     };
 
-    return updateProfileInfo(data);
+    await updateUserInfo(userId, data);
+};
+
+/**
+ * Dismisses the wizard claim for owners and collaborators via
+ * PATCH /api/asgardeo-guest/v1/users/me/claims.
+ */
+const dismissViaGuestEndpoint = async (): Promise<void> => {
+    const requestConfig: RequestConfigInterface = {
+        data: {
+            claims: [
+                {
+                    uri: USER_PREFERENCES_CLAIM_URI,
+                    value: "{'onboarding.show': false}"
+                }
+            ]
+        },
+        headers: {
+            "Content-Type": "application/json"
+        },
+        method: HttpMethods.PATCH,
+        url: store.getState().config.endpoints.guestUserMeClaimsEndpoint
+    };
+
+    await httpClient(requestConfig);
 };

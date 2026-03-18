@@ -33,7 +33,7 @@ import { useOnboardingFabVisibility } from "../../hooks/use-onboarding-fab-visib
 type OnboardingFabPropsInterface = IdentifiableComponentInterface;
 
 /**
- * Entrance animation: scale up with a bounce, then a subtle pulse glow.
+ * Entrance animation.
  */
 const bounceIn: Keyframes = keyframes`
     0% {
@@ -67,21 +67,53 @@ const pulseGlow: Keyframes = keyframes`
 `;
 
 /**
- * Styled extended FAB with entrance animation.
+ * Styled extended FAB.
  */
 const StyledFab: typeof Fab = styled(Fab)(({ theme }: { theme: Theme }) => ({
+    "&:hover": {
+        backgroundColor: theme.palette.primary.main,
+        maxWidth: 200,
+        paddingLeft: theme.spacing(2),
+        paddingRight: theme.spacing(2.5)
+    },
+    "&:hover .fab-label": {
+        marginLeft: theme.spacing(1),
+        maxWidth: 120,
+        opacity: 1
+    },
     animation: `${bounceIn} 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
                 ${pulseGlow} 2s ease-in-out 0.6s 2`,
+    borderRadius: 28,
     bottom: theme.spacing(4),
-    gap: theme.spacing(1),
+    gap: 0,
+    height: 56,
+    justifyContent: "center",
+    maxWidth: 56,
+    minWidth: 56,
+    overflow: "hidden",
+    padding: 0,
     position: "fixed",
     right: theme.spacing(4),
+    transition: "max-width 0.3s ease, padding 0.3s ease, " +
+        "background-color 0.3s ease, color 0.3s ease, " +
+        "border-color 0.3s ease",
+    whiteSpace: "nowrap",
     zIndex: theme.zIndex.fab
 }));
 
 /**
+ * Label text that fades in when the FAB is hovered.
+ */
+const FabLabel: React.ElementType = styled("span")({
+    display: "inline-block",
+    maxWidth: 0,
+    opacity: 0,
+    overflow: "hidden",
+    transition: "opacity 0.2s ease 0.1s, max-width 0.3s ease, margin 0.3s ease"
+});
+
+/**
  * Floating action button that navigates to the onboarding wizard.
- * Visible for eligible users (Owner/Collaborator/Customer) on root org only.
  */
 const OnboardingFab: FunctionComponent<OnboardingFabPropsInterface> = (
     props: OnboardingFabPropsInterface
@@ -102,13 +134,14 @@ const OnboardingFab: FunctionComponent<OnboardingFabPropsInterface> = (
 
     return (
         <StyledFab
+            aria-label="Setup Guide"
             color="primary"
             data-componentid={ componentId }
             onClick={ handleClick }
             variant="extended"
         >
-            <Rocket width={ 20 } height={ 20 } fill="white" />
-            Setup Guide
+            <Rocket fill="white" height={ 24 } width={ 24 } />
+            <FabLabel className="fab-label">Setup Guide</FabLabel>
         </StyledFab>
     );
 };

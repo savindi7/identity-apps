@@ -19,10 +19,10 @@
 import { useRequiredScopes } from "@wso2is/access-control";
 import { FeatureConfigInterface } from "@wso2is/admin.core.v1/models/config";
 import { AppState } from "@wso2is/admin.core.v1/store";
-import { SCIMConfigs } from "@wso2is/admin.extensions.v1/configs/scim";
-import { OrganizationType } from "@wso2is/admin.organizations.v1/constants";
-import { UserAccountTypes } from "@wso2is/admin.users.v1/constants/user-management-constants";
-import { FeatureAccessConfigInterface, ProfileInfoInterface } from "@wso2is/core/models";
+import {
+    useGetCurrentOrganizationType
+} from "@wso2is/admin.organizations.v1/hooks/use-get-organization-type";
+import { FeatureAccessConfigInterface } from "@wso2is/core/models";
 import { useSelector } from "react-redux";
 
 /**
@@ -36,32 +36,20 @@ interface UseOnboardingFabVisibilityReturn {
  * Determines whether the onboarding FAB should be visible for the current user.
  */
 export const useOnboardingFabVisibility = (): UseOnboardingFabVisibilityReturn => {
-    const profileInfo: ProfileInfoInterface = useSelector(
-        (state: AppState) => state.profile.profileInfo
-    );
-    const userAccountType: string = profileInfo?.[SCIMConfigs.scim.systemSchema]?.userAccountType;
-
-    const organizationType: string = useSelector(
-        (state: AppState) => state?.organization?.organizationType
-    );
     const featureConfig: FeatureConfigInterface = useSelector(
         (state: AppState) => state?.config?.ui?.features
     );
     const onboardingFeatureConfig: FeatureAccessConfigInterface = featureConfig?.onboarding;
 
+    const { isFirstLevelOrganization } = useGetCurrentOrganizationType();
+
     const hasRequiredCreateScopes: boolean = useRequiredScopes(
         onboardingFeatureConfig?.scopes?.create as string[]
     );
 
-    const isEligibleUserType: boolean =
-        userAccountType === UserAccountTypes.OWNER ||
-        userAccountType === UserAccountTypes.COLLABORATOR ||
-        userAccountType === UserAccountTypes.CUSTOMER;
-
     const isVisible: boolean =
         !!onboardingFeatureConfig?.enabled &&
-        isEligibleUserType &&
-        organizationType !== OrganizationType.SUBORGANIZATION &&
+        isFirstLevelOrganization() &&
         hasRequiredCreateScopes;
 
     return { isVisible };

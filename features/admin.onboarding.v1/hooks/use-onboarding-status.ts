@@ -18,14 +18,24 @@
 
 import { FeatureConfigInterface } from "@wso2is/admin.core.v1/models/config";
 import { AppState } from "@wso2is/admin.core.v1/store";
-import { SCIMConfigs } from "@wso2is/admin.extensions.v1/configs/scim";
-import { OrganizationType } from "@wso2is/admin.organizations.v1/constants";
-import { UserAccountTypes } from "@wso2is/admin.users.v1/constants/user-management-constants";
-import { FeatureAccessConfigInterface, ProfileInfoInterface } from "@wso2is/core/models";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import {
+    useGetCurrentOrganizationType
+} from "@wso2is/admin.organizations.v1/hooks/use-get-organization-type";
+import { useUsersList } from "@wso2is/admin.users.v1/api/users";
+import { ProfileConstants } from "@wso2is/core/constants";
+import { FeatureAccessConfigInterface } from "@wso2is/core/models";
+import { useCallback, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
-import { getOnboardingWizardClaim } from "../api/get-onboarding-claim";
+import { parseOnboardingShowFromPreferences } from "../api/get-onboarding-claim";
 import { dismissOnboardingWizardClaim } from "../api/update-onboarding-claim";
+
+/**
+ * SCIM2 attributes to request from the Users list endpoint.
+ */
+const SCIM_ATTRIBUTES: string = [
+    `${ProfileConstants.SCIM2_SYSTEM_USER_SCHEMA}.userAccountType`,
+    `${ProfileConstants.SCIM2_SYSTEM_USER_SCHEMA}.userPreferences`
+].join(",");
 
 /**
  * Return type for the useOnboardingStatus hook.
@@ -39,106 +49,77 @@ interface UseOnboardingStatusReturn {
 /**
  * Determines whether the onboarding wizard should be shown to the current user.
  *
- * Evaluates feature flag, user type, org type, and the SCIM2
- * `showOnboardingWizard` claim — in that order. The claim is only checked
- * after all other prerequisites pass. Gates on `uuid` which is set last in
- * the sign-in flow, ensuring all Redux state is settled before evaluation.
  */
 export const useOnboardingStatus = (): UseOnboardingStatusReturn => {
-    const [ shouldShowOnboarding, setShouldShowOnboarding ] = useState<boolean>(false);
-    const [ isLoading, setIsLoading ] = useState<boolean>(true);
+    const [ isDismissed, setIsDismissed ] = useState<boolean>(false);
 
-    const hasEvaluated: React.MutableRefObject<boolean> = useRef<boolean>(false);
-
-    const uuid: string = useSelector((state: AppState) => state.profile.profileInfo.id);
-    const username: string = useSelector((state: AppState) => state.auth.username);
-    const profileInfo: ProfileInfoInterface = useSelector(
-        (state: AppState) => state.profile.profileInfo
-    );
-    const userAccountType: string = profileInfo?.[SCIMConfigs.scim.systemSchema]?.userAccountType;
-    const organizationType: string = useSelector(
-        (state: AppState) => state?.organization?.organizationType
+    const userName: string = useSelector(
+        (state: AppState) => state.profile.profileInfo.userName
     );
     const featureConfig: FeatureConfigInterface = useSelector(
         (state: AppState) => state?.config?.ui?.features
     );
     const onboardingFeatureConfig: FeatureAccessConfigInterface = featureConfig?.onboarding;
 
-    // Only show wizard for org owners, collaborators and priviledged users.
-    const isEligibleUserType: boolean =
-        userAccountType === UserAccountTypes.OWNER ||
-        userAccountType === UserAccountTypes.COLLABORATOR ||
-        userAccountType === UserAccountTypes.CUSTOMER;
+    const { isFirstLevelOrganization } = useGetCurrentOrganizationType();
+    const isFirstLevelOrg: boolean = isFirstLevelOrganization();
 
-    useEffect(() => {
-        // Wait until uuid and featureConfig are set — ensures all required Redux state
-        // (feature config, org type, privileged user status) is settled before evaluation.
-        if (!uuid || !featureConfig) {
-            return;
+    const shouldFetch: boolean =
+        !!userName &&
+        !!onboardingFeatureConfig?.enabled &&
+        isFirstLevelOrg;
+
+    const {
+        data: userListData,
+        isLoading: isUserListLoading
+    } = useUsersList(
+        1,
+        1,
+        `userName eq ${userName}`,
+        SCIM_ATTRIBUTES,
+        "PRIMARY",
+        "groups",
+        shouldFetch
+    );
+
+    const currentUser: Record<string, unknown> | undefined =
+        userListData?.Resources?.[0] as unknown as Record<string, unknown> | undefined;
+
+    const systemSchemaData: Record<string, unknown> | undefined = currentUser
+        ?.[ProfileConstants.SCIM2_SYSTEM_USER_SCHEMA] as Record<string, unknown> | undefined;
+
+    const scimUserId: string = (currentUser?.id as string) ?? "";
+
+    const userAccountType: string | null =
+        (systemSchemaData?.userAccountType as string) ?? null;
+
+    const shouldShowOnboarding: boolean = useMemo((): boolean => {
+        if (isDismissed || !shouldFetch || !currentUser) {
+            return false;
         }
 
-        // Only evaluate once to prevent state churn from causing wizard resets
-        if (hasEvaluated.current) {
-            return;
-        }
+        return parseOnboardingShowFromPreferences(
+            systemSchemaData?.userPreferences as string | undefined
+        );
+    }, [ isDismissed, shouldFetch, currentUser, systemSchemaData ]);
 
-        hasEvaluated.current = true;
-
-        // Check 1: Feature flag must be enabled
-        if (!onboardingFeatureConfig?.enabled) {
-            setShouldShowOnboarding(false);
-            setIsLoading(false);
-
-            return;
-        }
-
-        // Check 2: Only show wizard for org owners, collaborators and priviledged users.
-        if (!isEligibleUserType) {
-            setShouldShowOnboarding(false);
-            setIsLoading(false);
-
-            return;
-        }
-
-        // Check 3: Exclude sub-organization users
-        if (organizationType === OrganizationType.SUBORGANIZATION) {
-            setShouldShowOnboarding(false);
-            setIsLoading(false);
-
-            return;
-        }
-
-        // Check 4: Read the showOnboardingWizard SCIM claim from the server.
-        const evaluateScimClaim: () => Promise<void> = async (): Promise<void> => {
-            try {
-                const shouldShow: boolean = await getOnboardingWizardClaim(uuid);
-
-                setShouldShowOnboarding(shouldShow);
-            } catch (_error: unknown) {
-                setShouldShowOnboarding(false);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-
-        evaluateScimClaim();
-    }, [
-        uuid, username, isEligibleUserType, organizationType,
-        onboardingFeatureConfig
-    ]);
+    const isLoading: boolean = !featureConfig || (shouldFetch && isUserListLoading);
 
     const markOnboardingComplete: () => Promise<void> = useCallback(
         async (): Promise<void> => {
             try {
-                await dismissOnboardingWizardClaim();
+                await dismissOnboardingWizardClaim(
+                    userAccountType,
+                    scimUserId || undefined
+                );
             } catch (_error: unknown) {
                 // eslint-disable-next-line no-console
                 console.warn("Failed to update onboarding wizard claim. Proceeding with navigation.");
             }
 
-            setShouldShowOnboarding(false);
+            setIsDismissed(true);
         },
-        []
+        [ userAccountType, scimUserId ]
     );
 
     return {

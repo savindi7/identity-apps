@@ -126,9 +126,12 @@ const OnboardingPage: FunctionComponent<OnboardingPageProps> = (props: Onboardin
     );
 
     const handleSkip: () => Promise<void> = useCallback(async (): Promise<void> => {
-        await markOnboardingComplete();
+        if (!isIntentionalAccess) {
+            await markOnboardingComplete();
+        }
+
         history.push(AppConstants.getAppHomePath());
-    }, [ markOnboardingComplete ]);
+    }, [ isIntentionalAccess, markOnboardingComplete ]);
 
     if (!isFeatureEnabled || !hasRequiredCreateScopes) {
         return null;

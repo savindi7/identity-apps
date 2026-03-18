@@ -523,7 +523,9 @@ const OnboardingWizard: FunctionComponent<OnboardingWizardPropsInterface> = (
                         onClick={ handleSkip }
                         variant="text"
                     >
-                        Skip and go to Console
+                        { isReturningUser
+                            ? "Back to Console"
+                            : "Skip and go to Console" }
                     </Button>
                 ) }
                 <ActionButtons sx={ isSuccessStep ? { ml: "auto" } : undefined }>

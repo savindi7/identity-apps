@@ -16,54 +16,32 @@
  * under the License.
  */
 
-import { AsgardeoSPAClient, HttpClientInstance } from "@asgardeo/auth-react";
-import { RequestConfigInterface } from "@wso2is/admin.core.v1/hooks/use-request";
-import { store } from "@wso2is/admin.core.v1/store";
-import { ProfileConstants } from "@wso2is/core/constants";
-import { HttpMethods } from "@wso2is/core/models";
-import { AxiosError, AxiosResponse } from "axios";
-
-const httpClient: HttpClientInstance = AsgardeoSPAClient.getInstance()
-    .httpRequest.bind(AsgardeoSPAClient.getInstance());
-
 /**
- * SCIM2 claim attribute name for onboarding wizard visibility.
+ * Key used inside the userPreferences JSON string.
  */
-const SHOW_ONBOARDING_WIZARD_ATTRIBUTE: string = "showOnboardingWizard";
+const ONBOARDING_SHOW_KEY: string = "onboarding.show";
 
 /**
- * Reads the `showOnboardingWizard` claim for the given user.
+ * Parses the userPreferences JSON string to extract the onboarding.show value.
+ * The userPreferences claim stores data as a stringified JSON object
+ * e.g. "\{'onboarding.show': true\}".
  *
- * @param userId - The SCIM2 user ID (UUID).
+ * @param userPreferences - The raw userPreferences string from SCIM2.
  * @returns True if the wizard should be shown, false otherwise.
  */
-export const getOnboardingWizardClaim = (userId: string): Promise<boolean> => {
-    const systemSchema: string = ProfileConstants.SCIM2_SYSTEM_USER_SCHEMA;
-    const attributes: string = `${systemSchema}.${SHOW_ONBOARDING_WIZARD_ATTRIBUTE}`;
+export const parseOnboardingShowFromPreferences = (
+    userPreferences: string | undefined
+): boolean => {
+    if (!userPreferences) {
+        return true;
+    }
 
-    const requestConfig: RequestConfigInterface = {
-        headers: {
-            "Content-Type": "application/json"
-        },
-        method: HttpMethods.GET,
-        params: {
-            attributes
-        },
-        url: `${store.getState().config.endpoints.users}/${userId}`
-    };
+    try {
+        const normalized: string = userPreferences.replace(/'/g, "\"");
+        const parsed: Record<string, unknown> = JSON.parse(normalized);
 
-    return httpClient(requestConfig)
-        .then((response: AxiosResponse) => {
-            const systemSchemaData: Record<string, unknown> =
-                response?.data?.[systemSchema] as Record<string, unknown>;
-
-            return systemSchemaData?.[SHOW_ONBOARDING_WIZARD_ATTRIBUTE] !== false;
-        })
-        .catch((error: AxiosError) => {
-            // Graceful failure: default to not showing the wizard
-            // eslint-disable-next-line no-console
-            console.warn("Failed to read onboarding wizard claim:", error);
-
-            return false;
-        });
+        return parsed?.[ONBOARDING_SHOW_KEY] !== false;
+    } catch (_error: unknown) {
+        return true;
+    }
 };
