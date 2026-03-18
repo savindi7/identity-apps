@@ -190,7 +190,7 @@ const App = () => {
     (state: AppState) => state.config.ui.features?.users?.featureFlags
   );
 
-  const exportButtonFlag: string = useFeatureFlag("users.exportButton", userFeatureFlags);
+  const exportButtonFlag: string | null = useFeatureFlag("users.exportButton", userFeatureFlags);
 
   return (
     <Button>
