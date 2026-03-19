@@ -310,6 +310,10 @@ export interface FeatureConfigInterface {
      * Customer Data feature.
      */
     customerData?: FeatureAccessConfigInterface;
+    /**
+     * Customer Data Service feature.
+     */
+    customerDataService?: FeatureAccessConfigInterface;
 }
 
 /**
