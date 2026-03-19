@@ -81,15 +81,6 @@ type ConsoleEnterpriseLoginPropsInterface = IdentifiableComponentInterface;
 /**
  * Console Enterprise Login tab component.
  *
- * This component allows administrators to configure an enterprise login option in the Console app.
- *
- * The configuration flow consists of the following steps:
- * 1. Select an existing enterprise connection.
- * 2. Map connection groups to console roles (with add/remove support).
- * 3. On save: ensure connection groups exist, PATCH console roles, and
- *    add the connection as a step-1 login option in the Console app.
- * 4. On remove: reverse the above operations.
- *
  * @param props - Props injected to the component.
  * @returns Console enterprise login component.
  */
@@ -511,12 +502,6 @@ const ConsoleEnterpriseLogin: FunctionComponent<ConsoleEnterpriseLoginPropsInter
                         renderInput={ (params: AutocompleteRenderInputParams) => (
                             <TextField
                                 { ...params }
-                                sx = { { mt: 1 } }
-                                InputLabelProps={ {
-                                    sx: {
-                                        fontSize: "1.2rem"
-                                    }
-                                } }
                                 label={
                                     t("consoleSettings:enterpriseLogin.form.connectionLabel")
                                 }
