@@ -1,5 +1,18 @@
 # @wso2is/admin.home.v1
 
+## 1.7.157
+
+### Patch Changes
+
+- [#9669](https://github.com/wso2/identity-apps/pull/9669) [`06f2828341ff02da1d328e9cb9c03a2c0038c324`](https://github.com/wso2/identity-apps/commit/06f2828341ff02da1d328e9cb9c03a2c0038c324) Thanks [@savindi7](https://github.com/savindi7)! - Show user onboarding wizard based on claim, and give option to re-access it.
+
+- Updated dependencies [[`06f2828341ff02da1d328e9cb9c03a2c0038c324`](https://github.com/wso2/identity-apps/commit/06f2828341ff02da1d328e9cb9c03a2c0038c324), [`889ba146a770d03968eed6bd8ecdf9b2f41df5e4`](https://github.com/wso2/identity-apps/commit/889ba146a770d03968eed6bd8ecdf9b2f41df5e4)]:
+  - @wso2is/admin.applications.v1@2.41.25
+  - @wso2is/admin.onboarding.v1@1.0.48
+  - @wso2is/admin.core.v1@2.55.0
+  - @wso2is/admin.flow-builder-core.v1@0.10.177
+  - @wso2is/admin.flows.v1@1.0.146
+
 ## 1.7.156
 
 ### Patch Changes

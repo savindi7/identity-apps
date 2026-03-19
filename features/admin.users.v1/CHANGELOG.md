@@ -1,5 +1,23 @@
 # @wso2is/admin.users.v1
 
+## 2.38.0
+
+### Minor Changes
+
+- [#9851](https://github.com/wso2/identity-apps/pull/9851) [`889ba146a770d03968eed6bd8ecdf9b2f41df5e4`](https://github.com/wso2/identity-apps/commit/889ba146a770d03968eed6bd8ecdf9b2f41df5e4) Thanks [@VivekVinushanth](https://github.com/VivekVinushanth)! - improve cds ux
+
+### Patch Changes
+
+- Updated dependencies [[`889ba146a770d03968eed6bd8ecdf9b2f41df5e4`](https://github.com/wso2/identity-apps/commit/889ba146a770d03968eed6bd8ecdf9b2f41df5e4)]:
+  - @wso2is/admin.users.v1@2.38.0
+  - @wso2is/admin.core.v1@2.55.0
+  - @wso2is/admin.cds.v1@1.6.0
+  - @wso2is/admin.flow-builder-core.v1@0.10.177
+  - @wso2is/admin.roles.v2@2.27.347
+  - @wso2is/admin.flows.v1@1.0.146
+  - @wso2is/admin.server-configurations.v1@2.38.16
+  - @wso2is/admin.approval-workflows.v1@1.2.15
+
 ## 2.37.23
 
 ### Patch Changes
