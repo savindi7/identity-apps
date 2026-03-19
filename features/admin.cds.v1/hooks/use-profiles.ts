@@ -31,14 +31,14 @@ import { FetchProfilesParams, ProfileModel, ProfilesListResponse } from "../mode
  * @returns SWR response with profiles data
  */
 export const useCDSProfiles = (
-    params: FetchProfilesParams = {},
+    params: FetchProfilesParams | null = {},
     config?: SWRConfiguration<ProfilesListResponse, AxiosError<HttpErrorResponseDataInterface>>
 ): SWRResponse<ProfilesListResponse, AxiosError<HttpErrorResponseDataInterface>> => {
     const key: ["cds-profiles", FetchProfilesParams] | null = params ? [ "cds-profiles", params ] : null;
 
     return useSWR<ProfilesListResponse, AxiosError<HttpErrorResponseDataInterface>>(
         key,
-        () => fetchCDSProfiles(params),
+        params ? () => fetchCDSProfiles(params) : null,
         config
     );
 };

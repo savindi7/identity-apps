@@ -19219,6 +19219,9 @@ importers:
       '@wso2is/admin.authentication.v1':
         specifier: ^2.25.208
         version: link:../admin.authentication.v1
+      '@wso2is/admin.cds.v1':
+        specifier: 1.5.0
+        version: link:../admin.cds.v1
       '@wso2is/admin.claims.v1':
         specifier: ^2.30.5
         version: link:../admin.claims.v1
