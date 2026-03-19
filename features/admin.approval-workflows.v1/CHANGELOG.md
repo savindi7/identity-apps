@@ -1,5 +1,17 @@
 # @wso2is/admin.approval-workflows.v1
 
+## 1.2.17
+
+### Patch Changes
+
+- [#9753](https://github.com/wso2/identity-apps/pull/9753) [`9660d11690e260e852c5a879ef60658b8d54b5ee`](https://github.com/wso2/identity-apps/commit/9660d11690e260e852c5a879ef60658b8d54b5ee) Thanks [@nishagii](https://github.com/nishagii)! - Add feature disabling option to approval workflow rules
+
+- Updated dependencies []:
+  - @wso2is/admin.users.v1@2.38.2
+  - @wso2is/admin.core.v1@2.55.2
+  - @wso2is/admin.roles.v2@2.27.349
+  - @wso2is/admin.rules.v1@0.7.18
+
 ## 1.2.16
 
 ### Patch Changes
