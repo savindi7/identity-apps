@@ -352,7 +352,9 @@ export const myAccount: MyAccountNS = {
             "modals": {
                 "confirmationModal": {
                     "heading": "Bestätigung",
-                    "message": "Das Ändern des Passworts führt zur Beendigung der aktuellen Sitzung. Sie müssen sich mit dem neu geänderten Passwort anmelden. Möchten Sie fortfahren?"
+                    "message": "Das Ändern des Passworts kann je nach den Sicherheitseinstellungen Ihrer Organisation " +
+                        "Auswirkungen auf Ihre aktuelle Sitzung haben. Falls Sie abgemeldet werden, " +
+                        "melden Sie sich erneut mit Ihrem neuen Passwort an. Möchten Sie fortfahren?"
                 }
             }
         },
