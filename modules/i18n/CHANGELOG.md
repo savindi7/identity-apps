@@ -1,5 +1,11 @@
 # @wso2is/i18n
 
+## 2.37.3
+
+### Patch Changes
+
+- [#9671](https://github.com/wso2/identity-apps/pull/9671) [`8a1e91278bc6b376e8e82bddbf94f98ceb76f6fc`](https://github.com/wso2/identity-apps/commit/8a1e91278bc6b376e8e82bddbf94f98ceb76f6fc) Thanks [@bhagyasakalanka](https://github.com/bhagyasakalanka)! - Add UI for enterprise login
+
 ## 2.37.2
 
 ### Patch Changes
