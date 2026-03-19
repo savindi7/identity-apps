@@ -602,6 +602,13 @@ const ApprovalWorkflowRuleConditions: FunctionComponent<ApprovalWorkflowRuleCond
         const resourceDetailsError: any = resourceDetailsResponse.error;
 
         useEffect(() => {
+            if (!shouldFetchDetails) {
+                setResourceDetails(null);
+                setIsResourceMissing(false);
+
+                return;
+            }
+
             if (!isResourceDetailsLoading) {
                 if (resourceDetailsError) {
                     setIsResourceMissing(true);
@@ -610,7 +617,7 @@ const ApprovalWorkflowRuleConditions: FunctionComponent<ApprovalWorkflowRuleCond
                     setResourceDetails(resourcesDetails);
                 }
             }
-        }, [ isResourceDetailsLoading, resourceDetailsError ]);
+        }, [ isResourceDetailsLoading, resourceDetailsError, shouldFetchDetails ]);
 
         if (isResourcesListLoading || !fetchedResourcesList) {
             return <CircularProgress size={ 20 } />;
