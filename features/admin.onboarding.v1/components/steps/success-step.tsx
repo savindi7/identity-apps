@@ -53,7 +53,7 @@ import CodeBlock from "../shared/code-block";
 import CopyableField from "../shared/copyable-field";
 import IntegrationAccordion from "../shared/integration-accordion";
 import LoginBoxPreview from "../shared/login-box-preview";
-import { LeftColumn, RightColumn, TwoColumnLayout } from "../shared/onboarding-styles";
+import { ConfigPanel, PreviewPanel, TwoColumnLayout } from "../shared/onboarding-styles";
 import SuccessConfetti from "../shared/success-confetti";
 
 /**
@@ -76,6 +76,8 @@ interface SuccessStepPropsInterface extends IdentifiableComponentInterface {
     isTourFlow?: boolean;
     /** Redirect URLs configured for the application */
     redirectUrls?: string[];
+    /** Whether self-registration is enabled (for preview) */
+    selfRegistrationEnabled?: boolean;
 }
 
 /**
@@ -134,11 +136,11 @@ const HelperText: typeof Typography = styled(Typography)(({ theme }: { theme: Th
 }));
 
 /**
- * Scrollable left column override for success step.
- * Overrides the parent LeftColumn's `overflow: hidden` to allow scrolling
+ * Scrollable config panel override for success step.
+ * Overrides the parent ConfigPanel's `overflow: hidden` to allow scrolling
  * when accordion content expands beyond the available height.
  */
-const ScrollableLeftColumn: typeof LeftColumn = styled(LeftColumn)(({ theme }: { theme: Theme }) => ({
+const ScrollableConfigPanel: typeof ConfigPanel = styled(ConfigPanel)(({ theme }: { theme: Theme }) => ({
     "&::-webkit-scrollbar": {
         width: 6
     },
@@ -151,18 +153,6 @@ const ScrollableLeftColumn: typeof LeftColumn = styled(LeftColumn)(({ theme }: {
     },
     overflow: "auto",
     paddingRight: theme.spacing(1)
-}));
-
-/**
- * Preview column styling.
- */
-const PreviewColumn: typeof Box = styled(RightColumn)(({ theme }: { theme: Theme }) => ({
-    alignItems: "center",
-    backgroundColor: theme.palette.grey[50],
-    borderRadius: theme.shape.borderRadius * 2,
-    display: "flex",
-    justifyContent: "center",
-    padding: theme.spacing(4)
 }));
 
 /**
@@ -180,6 +170,7 @@ const SuccessStep: FunctionComponent<SuccessStepPropsInterface> = (
         isM2M = false,
         isTourFlow = false,
         redirectUrls,
+        selfRegistrationEnabled = false,
         ["data-componentid"]: componentId = OnboardingComponentIds.SUCCESS_STEP
     } = props;
 
@@ -324,7 +315,7 @@ const SuccessStep: FunctionComponent<SuccessStepPropsInterface> = (
     return (
         <TwoColumnLayout data-componentid={ componentId } sx={ { position: "relative" } }>
             <SuccessConfetti primaryColor={ brandingConfig?.primaryColor } />
-            <ScrollableLeftColumn>
+            <ScrollableConfigPanel>
                 <SuccessHeader>
                     <TitleContainer>
                         <SuccessIcon />
@@ -497,16 +488,17 @@ const SuccessStep: FunctionComponent<SuccessStepPropsInterface> = (
                     </Box>
                 ) }
 
-            </ScrollableLeftColumn>
+            </ScrollableConfigPanel>
 
             { !isM2M && (
-                <PreviewColumn>
+                <PreviewPanel>
                     <LoginBoxPreview
                         brandingConfig={ brandingConfig }
-                        signInOptions={ signInOptions }
                         data-componentid={ `${componentId}-preview` }
+                        selfRegistrationEnabled={ selfRegistrationEnabled }
+                        signInOptions={ signInOptions }
                     />
-                </PreviewColumn>
+                </PreviewPanel>
             ) }
         </TwoColumnLayout>
     );

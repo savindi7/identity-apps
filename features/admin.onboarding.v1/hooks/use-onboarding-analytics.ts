@@ -17,6 +17,8 @@
  */
 
 import { AppState } from "@wso2is/admin.core.v1/store";
+import { getAssociatedTenants } from "@wso2is/admin.tenants.v1/api/tenants";
+import { TenantInfo, TenantRequestResponse } from "@wso2is/admin.tenants.v1/models/tenant";
 import { ProfileInfoInterface } from "@wso2is/core/models";
 import moesif from "moesif-browser-js";
 import React, { useCallback, useEffect, useRef } from "react";
@@ -75,18 +77,19 @@ export const useOnboardingAnalytics = (params: UseOnboardingAnalyticsParams): Us
 
     const profileInfo: ProfileInfoInterface = useSelector((state: AppState) => state.profile.profileInfo);
     const userId: string = useSelector((state: AppState) => state.profile.profileInfo?.id || "");
-    // TODO: Uncomment identifyCompany below when deploying to Asgardeo.
-    const _tenantUuid: string = useSelector((state: AppState) =>
-        state?.organization?.userOrganizationId || ""
+    const tenantDomain: string = useSelector((state: AppState) =>
+        state?.auth?.tenantDomain || ""
     );
     const moesifApplicationId: string = useSelector((state: AppState) =>
         (state?.config?.deployment?.extensions as Record<string, unknown>)?.moesifApplicationId as string || ""
     );
 
     const isEnabledRef: React.MutableRefObject<boolean> = useRef<boolean>(false);
+    const tenantUuidRef: React.MutableRefObject<string> = useRef<string>("");
     const visitedStepsRef: React.MutableRefObject<Set<number>> = useRef<Set<number>>(new Set<number>());
 
     // Initialize Moesif SDK on mount if application ID is configured.
+    // Fetches tenant UUID from the tenant/me endpoint for Moesif Company ID.
     useEffect(() => {
         if (!moesifApplicationId) {
             return;
@@ -103,19 +106,30 @@ export const useOnboardingAnalytics = (params: UseOnboardingAnalyticsParams): Us
                 moesif.identifyUser(userId);
             }
 
-            // TODO: Enable identifyCompany once running on Asgardeo where tenantUuid
-            // is a real UUID. In identity-apps (local IS), userOrganizationId resolves
-            // to "carbon.super" which is not the correct Moesif Company ID.
-            // if (_tenantUuid) {
-            //     moesif.identifyCompany(_tenantUuid);
-            // }
-
             isEnabledRef.current = true;
         } catch (_error: unknown) {
             // eslint-disable-next-line no-console
             console.warn("Failed to initialize Moesif analytics:", _error);
             isEnabledRef.current = false;
         }
+
+        // Fetch tenant UUID from tenant/me endpoint for Moesif Company ID.
+        // This is a fire-and-forget call — analytics events will still fire
+        // without the company ID if this fails.
+        getAssociatedTenants(undefined, 15, 0)
+            .then((response: TenantRequestResponse): void => {
+                const currentTenant: TenantInfo | undefined = response?.associatedTenants?.find(
+                    (tenant: TenantInfo) => tenant.domain === tenantDomain
+                );
+
+                if (currentTenant?.id) {
+                    tenantUuidRef.current = currentTenant.id;
+                    moesif.identifyCompany(currentTenant.id);
+                }
+            })
+            .catch((): void => {
+                // Tenant UUID fetch failed — analytics will work without Company ID.
+            });
     }, []);
 
     // Track visited steps for is_revisit computation.

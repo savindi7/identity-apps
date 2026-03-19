@@ -29,6 +29,7 @@ export const OnboardingComponentIds: Record<string, string> = {
     NAME_APP_STEP: "name-application-step",
     PAGE: "onboarding-page",
     SELECT_APPLICATION_TEMPLATE_STEP: "select-application-template-step",
+    SELF_REGISTRATION_SECTION: "self-registration-section",
     SIGN_IN_OPTIONS_STEP: "sign-in-options-step",
     SIGN_IN_OPTION_TOGGLE: "sign-in-option-toggle",
     SUCCESS_STEP: "success-step",

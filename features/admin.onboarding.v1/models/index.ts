@@ -70,6 +70,7 @@ export interface OnboardingDataInterface {
     allowedOrigins?: string[];
     signInOptions?: SignInOptionsConfigInterface;
     brandingConfig?: OnboardingBrandingConfigInterface;
+    selfRegistrationEnabled?: boolean;
     createdApplication?: CreatedApplicationResultInterface;
 }
 

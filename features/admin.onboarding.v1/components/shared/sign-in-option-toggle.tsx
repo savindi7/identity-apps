@@ -54,16 +54,18 @@ const StyledFormControlLabel: React.FC<React.ComponentProps<typeof FormControlLa
             flex: 1
         },
         "&:hover": {
-            backgroundColor: "rgba(0, 0, 0, 0.03)"
+            backgroundColor: theme.palette.action.hover,
+            borderColor: theme.palette.primary.main
         },
         alignItems: "flex-start",
         backgroundColor: theme.palette.background.paper,
-        borderRadius: theme.shape.borderRadius,
+        border: `1px solid ${theme.palette.divider}`,
+        borderRadius: theme.shape.borderRadius * 1.5,
         display: "flex",
         justifyContent: "space-between",
         margin: 0,
-        padding: theme.spacing(0.7, 2),
-        transition: "background-color 150ms ease-out",
+        padding: theme.spacing(1.25, 2),
+        transition: "background-color 150ms ease-out, border-color 150ms ease-out",
         width: "100%"
     }));
 

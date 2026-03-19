@@ -53,6 +53,12 @@ import SelectApplicationTemplateStep from "./steps/select-application-template-s
 import SignInOptionsStep from "./steps/sign-in-options-step";
 import SuccessStep from "./steps/success-step";
 import WelcomeStep from "./steps/welcome-step";
+import {
+    updateGovernanceConnector
+} from "@wso2is/admin.server-configurations.v1/api/governance-connectors";
+import {
+    ServerConfigurationsConstants
+} from "@wso2is/admin.server-configurations.v1/constants/server-configurations-constants";
 import { createOnboardingApplication } from "../api/create-onboarding-application";
 import { createTryItApplication } from "../api/create-try-it-application";
 import { isBrandingCustomized, updateApplicationBranding } from "../api/update-onboarding-branding";
@@ -301,6 +307,7 @@ const OnboardingWizard: FunctionComponent<OnboardingWizardPropsInterface> = (
         updateBrandingConfig,
         updateChoice,
         updateRedirectUrls,
+        updateSelfRegistration,
         updateSignInOptions,
         updateTemplateSelection
     } = useOnboardingDataInterface(onboardingData, setOnboardingDataInterface);
@@ -397,6 +404,30 @@ const OnboardingWizard: FunctionComponent<OnboardingWizardPropsInterface> = (
                 }
             }
 
+            // Update self-registration org-wide setting if the user changed it
+            if (onboardingData.selfRegistrationEnabled !== undefined) {
+                try {
+                    await updateGovernanceConnector(
+                        {
+                            operation: "UPDATE",
+                            properties: [ {
+                                name: ServerConfigurationsConstants.SELF_REGISTRATION_ENABLE,
+                                value: String(onboardingData.selfRegistrationEnabled)
+                            } ]
+                        },
+                        ServerConfigurationsConstants.USER_ONBOARDING_CONNECTOR_ID,
+                        ServerConfigurationsConstants.SELF_SIGN_UP_CONNECTOR_ID
+                    );
+                } catch (_selfRegError) {
+                    dispatch(addAlert({
+                        description: "Application created successfully, but the self-registration " +
+                            "setting could not be updated.",
+                        level: AlertLevels.WARNING,
+                        message: "Self-Registration Not Updated"
+                    }));
+                }
+            }
+
             setCreatedApplication(result);
 
             const appName: string = onboardingData.applicationName || "your application";
@@ -476,7 +507,11 @@ const OnboardingWizard: FunctionComponent<OnboardingWizardPropsInterface> = (
             }
 
             case OnboardingStep.SIGN_IN_OPTIONS:
-                trackStepCompleted(OnboardingStep.SIGN_IN_OPTIONS, OnboardingStepNames.SIGNIN_OPTIONS_CHOSEN);
+                trackStepCompleted(
+                    OnboardingStep.SIGN_IN_OPTIONS,
+                    OnboardingStepNames.SIGNIN_OPTIONS_CHOSEN,
+                    { self_registration_enabled: onboardingData.selfRegistrationEnabled ?? false }
+                );
 
                 break;
 
@@ -592,7 +627,9 @@ const OnboardingWizard: FunctionComponent<OnboardingWizardPropsInterface> = (
                         <SignInOptionsStep
                             brandingConfig={ onboardingData.brandingConfig }
                             data-componentid={ `${componentId}-sign-in-options` }
+                            onSelfRegistrationChange={ updateSelfRegistration }
                             onSignInOptionsChange={ updateSignInOptions }
+                            selfRegistrationEnabled={ onboardingData.selfRegistrationEnabled }
                             signInOptions={ onboardingData.signInOptions }
                         />
                     ) }
@@ -602,6 +639,7 @@ const OnboardingWizard: FunctionComponent<OnboardingWizardPropsInterface> = (
                             brandingConfig={ onboardingData.brandingConfig }
                             data-componentid={ `${componentId}-design-login` }
                             onBrandingConfigChange={ updateBrandingConfig }
+                            selfRegistrationEnabled={ onboardingData.selfRegistrationEnabled }
                             signInOptions={ onboardingData.signInOptions }
                         />
                     ) }
@@ -615,6 +653,7 @@ const OnboardingWizard: FunctionComponent<OnboardingWizardPropsInterface> = (
                             isM2M={ isM2M }
                             isTourFlow={ isTourFlow }
                             redirectUrls={ onboardingData.redirectUrls }
+                            selfRegistrationEnabled={ onboardingData.selfRegistrationEnabled }
                             signInOptions={ onboardingData.signInOptions }
                             templateId={ onboardingData.templateId }
                         />
