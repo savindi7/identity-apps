@@ -115,6 +115,7 @@ export const ValidationConfigEditPage: FunctionComponent<MyAccountSettingsEditPa
         state?.config?.ui?.isPasswordInputValidationEnabled);
     const isPasswordResetEnforcementScopeEnabled: boolean = useSelector((state: AppState) =>
         state?.config?.ui?.isPasswordResetEnforcementScopeEnabled ?? false);
+
     const disabledFeatures: string[] = useSelector((state: AppState) =>
         state?.config?.ui?.features?.loginAndRegistration?.disabledFeatures);
     const featureConfig: FeatureConfigInterface = useSelector((state: AppState) => state?.config?.ui?.features);
@@ -145,6 +146,8 @@ export const ValidationConfigEditPage: FunctionComponent<MyAccountSettingsEditPa
     >(false);
     const [ passwordExpiryEnabled, setPasswordExpiryEnabled ] = useState<boolean>(false);
     const [ passwordExpiryEnforcementScope, setPasswordExpiryEnforcementScope ] =
+        useState<string>(PasswordExpiryEnforcementScope.ORG_WIDE);
+    const [ initialPasswordExpiryEnforcementScope, setInitialPasswordExpiryEnforcementScope ] =
         useState<string>(PasswordExpiryEnforcementScope.ORG_WIDE);
     const [ defaultPasswordExpiryTime, setDefaultPasswordExpiryTime ] = useState<number>(30);
     const [ passwordExpirySkipFallback, setPasswordExpirySkipFallback ] = useState<boolean>(false);
@@ -447,9 +450,11 @@ export const ValidationConfigEditPage: FunctionComponent<MyAccountSettingsEditPa
                     property.name === ServerConfigurationsConstants.PASSWORD_EXPIRY_ENFORCEMENT_SCOPE
             );
 
-        setPasswordExpiryEnforcementScope(
-            enforcementScopeProperty?.value ?? PasswordExpiryEnforcementScope.ORG_WIDE
-        );
+        const resolvedEnforcementScope: string =
+            enforcementScopeProperty?.value ?? PasswordExpiryEnforcementScope.ORG_WIDE;
+
+        setPasswordExpiryEnforcementScope(resolvedEnforcementScope);
+        setInitialPasswordExpiryEnforcementScope(resolvedEnforcementScope);
 
         if (!isPasswordInputValidationEnabled) {
 
@@ -735,7 +740,9 @@ export const ValidationConfigEditPage: FunctionComponent<MyAccountSettingsEditPa
         const processedFormValues: ValidationFormInterface = {
             ...values,
             passwordExpiryEnabled: passwordExpiryEnabled,
-            passwordExpiryEnforcementScope: passwordExpiryEnforcementScope
+            passwordExpiryEnforcementScope: isPasswordResetEnforcementScopeEnabled
+                ? passwordExpiryEnforcementScope
+                : initialPasswordExpiryEnforcementScope
         };
 
         if (!isRuleBasedPasswordExpiryDisabled) {
@@ -1719,7 +1726,6 @@ export const ValidationConfigEditPage: FunctionComponent<MyAccountSettingsEditPa
 
         return (
             <>
-                <Divider hidden/>
                 <Grid alignContent="center">
                     <FormControl disabled={ isReadOnly || !passwordExpiryEnabled }>
                         <FormLabel sx={ { mb: 1 } }>
@@ -1791,6 +1797,7 @@ export const ValidationConfigEditPage: FunctionComponent<MyAccountSettingsEditPa
                         </RadioGroup>
                     </FormControl>
                 </Grid>
+                <Divider hidden/>
             </>
         );
     };

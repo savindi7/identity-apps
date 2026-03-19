@@ -1,5 +1,77 @@
 # @wso2is/console
 
+## 3.0.4
+
+### Patch Changes
+
+- [#9831](https://github.com/wso2/identity-apps/pull/9831) [`05441eece425cdba6eec9b03cebdfd30ba2a404e`](https://github.com/wso2/identity-apps/commit/05441eece425cdba6eec9b03cebdfd30ba2a404e) Thanks [@Malith-19](https://github.com/Malith-19)! - Handle the workflow scenario for user deletion.
+
+- Updated dependencies [[`05441eece425cdba6eec9b03cebdfd30ba2a404e`](https://github.com/wso2/identity-apps/commit/05441eece425cdba6eec9b03cebdfd30ba2a404e)]:
+  - @wso2is/admin.users.v1@2.37.23
+  - @wso2is/admin.agents.v1@1.0.191
+  - @wso2is/admin.onboarding.v1@1.0.47
+  - @wso2is/admin.core.v1@2.54.32
+  - @wso2is/admin.roles.v2@2.27.346
+  - @wso2is/admin.connections.v1@2.36.16
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.176
+  - @wso2is/admin.branding.v1@2.32.132
+  - @wso2is/admin.email-management.v1@2.25.340
+  - @wso2is/admin.flows.v1@1.0.145
+  - @wso2is/admin.home.v1@1.7.156
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.176
+  - @wso2is/admin.server-configurations.v1@2.38.15
+  - @wso2is/admin.approval-workflows.v1@1.2.14
+  - @wso2is/admin.registration-flow-builder.v1@0.10.136
+
+## 3.0.3
+
+### Patch Changes
+
+- [#9842](https://github.com/wso2/identity-apps/pull/9842) [`2cad6ed902817e50e522628726732802503f5893`](https://github.com/wso2/identity-apps/commit/2cad6ed902817e50e522628726732802503f5893) Thanks [@NipuniBhagya](https://github.com/NipuniBhagya)! - Fix password reset scope configuration issue
+
+- Updated dependencies [[`2cad6ed902817e50e522628726732802503f5893`](https://github.com/wso2/identity-apps/commit/2cad6ed902817e50e522628726732802503f5893)]:
+  - @wso2is/admin.validation.v1@2.28.2
+  - @wso2is/admin.core.v1@2.54.31
+  - @wso2is/core@2.12.9
+  - @wso2is/admin.onboarding.v1@1.0.46
+  - @wso2is/admin.registration-flow-builder.v1@0.10.135
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.175
+  - @wso2is/admin.branding.v1@2.32.131
+  - @wso2is/admin.email-management.v1@2.25.339
+  - @wso2is/admin.flows.v1@1.0.144
+  - @wso2is/admin.home.v1@1.7.155
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.175
+  - @wso2is/admin.server-configurations.v1@2.38.14
+  - @wso2is/admin.users.v1@2.37.22
+  - @wso2is/admin.agents.v1@1.0.190
+  - @wso2is/admin.roles.v2@2.27.345
+  - @wso2is/admin.connections.v1@2.36.15
+  - @wso2is/admin.approval-workflows.v1@1.2.13
+
+## 3.0.2
+
+### Patch Changes
+
+- [#9834](https://github.com/wso2/identity-apps/pull/9834) [`b808ec34dc0dbd9bc74a256d10be6bc24c80e1e6`](https://github.com/wso2/identity-apps/commit/b808ec34dc0dbd9bc74a256d10be6bc24c80e1e6) Thanks [@sahandilshan](https://github.com/sahandilshan)! - Remove CIBA selection when public client is enabled
+
+- Updated dependencies [[`b808ec34dc0dbd9bc74a256d10be6bc24c80e1e6`](https://github.com/wso2/identity-apps/commit/b808ec34dc0dbd9bc74a256d10be6bc24c80e1e6)]:
+  - @wso2is/admin.applications.v1@2.41.24
+  - @wso2is/admin.agents.v1@1.0.189
+  - @wso2is/admin.branding.v1@2.32.130
+  - @wso2is/admin.onboarding.v1@1.0.45
+  - @wso2is/admin.core.v1@2.54.30
+  - @wso2is/admin.roles.v2@2.27.344
+  - @wso2is/admin.connections.v1@2.36.14
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.174
+  - @wso2is/admin.email-management.v1@2.25.338
+  - @wso2is/admin.flows.v1@1.0.143
+  - @wso2is/admin.home.v1@1.7.154
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.174
+  - @wso2is/admin.server-configurations.v1@2.38.13
+  - @wso2is/admin.users.v1@2.37.21
+  - @wso2is/admin.approval-workflows.v1@1.2.12
+  - @wso2is/admin.registration-flow-builder.v1@0.10.134
+
 ## 3.0.1
 
 ### Patch Changes
