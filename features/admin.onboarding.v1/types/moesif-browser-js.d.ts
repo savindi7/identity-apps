@@ -16,12 +16,20 @@
  * under the License.
  */
 
-export * from "./analytics";
-export * from "./component-ids";
-export * from "./default-redirect-urls";
-export * from "./integration-guides";
-export * from "./preset-logos";
-export * from "./sign-in-options";
-export * from "./templates";
-export * from "./validation";
-export * from "./wizard-url-params";
+declare module "moesif-browser-js" {
+    interface MoesifOptions {
+        applicationId: string;
+        disableFetch?: boolean;
+    }
+
+    interface MoesifInstance {
+        identifyCompany(companyId: string, metadata?: Record<string, unknown>): void;
+        identifyUser(userId: string, metadata?: Record<string, unknown>): void;
+        init(options: MoesifOptions): void;
+        track(actionName: string, metadata?: Record<string, unknown>): void;
+    }
+
+    const moesif: MoesifInstance;
+
+    export default moesif;
+}

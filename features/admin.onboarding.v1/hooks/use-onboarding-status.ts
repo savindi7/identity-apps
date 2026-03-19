@@ -41,6 +41,7 @@ const SCIM_ATTRIBUTES: string = [
  * Return type for the useOnboardingStatus hook.
  */
 interface UseOnboardingStatusReturn {
+    isFirstWizardRun: boolean;
     isLoading: boolean;
     markOnboardingComplete: () => Promise<void>;
     shouldShowOnboarding: boolean;
@@ -122,7 +123,19 @@ export const useOnboardingStatus = (): UseOnboardingStatusReturn => {
         [ userAccountType, scimUserId ]
     );
 
+    // True when the user has never completed or skipped the wizard (SCIM2 userPreferences).
+    const isFirstWizardRun: boolean = useMemo((): boolean => {
+        if (!currentUser) {
+            return true;
+        }
+
+        return parseOnboardingShowFromPreferences(
+            systemSchemaData?.userPreferences as string | undefined
+        );
+    }, [ currentUser, systemSchemaData ]);
+
     return {
+        isFirstWizardRun,
         isLoading,
         markOnboardingComplete,
         shouldShowOnboarding

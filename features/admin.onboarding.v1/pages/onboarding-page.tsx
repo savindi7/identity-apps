@@ -74,6 +74,7 @@ const OnboardingPage: FunctionComponent<OnboardingPageProps> = (props: Onboardin
     const isIntentionalAccess: boolean = isIntentionalAccessRef.current;
 
     const {
+        isFirstWizardRun,
         shouldShowOnboarding,
         isLoading,
         markOnboardingComplete
@@ -149,6 +150,7 @@ const OnboardingPage: FunctionComponent<OnboardingPageProps> = (props: Onboardin
                     data-componentid={ `${componentId}-wizard` }
                     initialData={ initialData }
                     initialStep={ initialStep }
+                    isFirstWizardRun={ isFirstWizardRun }
                     isReturningUser={ isIntentionalAccess }
                     onComplete={ handleComplete }
                     onSkip={ handleSkip }

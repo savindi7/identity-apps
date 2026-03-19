@@ -60,8 +60,12 @@ import {
     DEFAULT_BRANDING_CONFIG,
     DEFAULT_SIGN_IN_OPTIONS,
     OnboardingComponentIds,
-    RANDOM_NAME_COUNT
+    OnboardingStepNames,
+    RANDOM_NAME_COUNT,
+    STEP_NAMES,
+    getDefaultRedirectUrl
 } from "../constants";
+import { useOnboardingAnalytics } from "../hooks/use-onboarding-analytics";
 import { useOnboardingDataInterface, useStepValidation } from "../hooks/use-onboarding-validation";
 import { useStepTransition } from "../hooks/use-step-transition";
 import { useWizardUrlSync } from "../hooks/use-wizard-url-sync";
@@ -79,6 +83,7 @@ import { generateRandomNames } from "../utils/random-name-generator";
 export interface OnboardingWizardPropsInterface extends IdentifiableComponentInterface {
     initialData?: OnboardingDataInterface;
     initialStep?: OnboardingStep;
+    isFirstWizardRun?: boolean;
     isReturningUser?: boolean;
     onComplete: (data: OnboardingDataInterface) => Promise<void>;
     onSkip: () => Promise<void>;
@@ -240,6 +245,7 @@ const OnboardingWizard: FunctionComponent<OnboardingWizardPropsInterface> = (
     const {
         initialData,
         initialStep,
+        isFirstWizardRun = true,
         isReturningUser = false,
         onComplete,
         onSkip,
@@ -301,6 +307,20 @@ const OnboardingWizard: FunctionComponent<OnboardingWizardPropsInterface> = (
 
     // Sync wizard state to URL query parameters
     useWizardUrlSync(currentStep, onboardingData);
+
+    // Analytics tracking
+    const {
+        trackCompleted,
+        trackSkipped,
+        trackStarted,
+        trackStepBack,
+        trackStepCompleted
+    } = useOnboardingAnalytics({ currentStep, isFirstWizardRun, onboardingData });
+
+    // Fire Onboarding-Started event on mount
+    useEffect(() => {
+        trackStarted();
+    }, []);
 
     const isNextDisabled: boolean = useStepValidation(currentStep, onboardingData);
 
@@ -426,7 +446,63 @@ const OnboardingWizard: FunctionComponent<OnboardingWizardPropsInterface> = (
     const handleNext: () => Promise<void> = useCallback(async (): Promise<void> => {
         const nextStep: OnboardingStep = getNextStep(currentStep, onboardingData);
 
+        // Fire step-specific analytics events before transitioning
+        switch (currentStep) {
+            case OnboardingStep.WELCOME:
+                trackStepCompleted(OnboardingStep.WELCOME, OnboardingStepNames.WELCOME_OPTION_SELECTED);
+
+                break;
+
+            case OnboardingStep.NAME_APPLICATION:
+                trackStepCompleted(OnboardingStep.NAME_APPLICATION, OnboardingStepNames.APP_NAME_ENTERED);
+
+                break;
+
+            case OnboardingStep.CONFIGURE_REDIRECT_URL: {
+                const defaultUrls: string[] = getDefaultRedirectUrl(
+                    onboardingData.framework || onboardingData.templateId
+                );
+                const isDefaultRedirectUrl: boolean = defaultUrls.length > 0 &&
+                    JSON.stringify(onboardingData.redirectUrls?.slice().sort()) ===
+                    JSON.stringify(defaultUrls.slice().sort());
+
+                trackStepCompleted(
+                    OnboardingStep.CONFIGURE_REDIRECT_URL,
+                    OnboardingStepNames.REDIRECT_URL_CONFIGURED,
+                    { is_default_value: isDefaultRedirectUrl }
+                );
+
+                break;
+            }
+
+            case OnboardingStep.SIGN_IN_OPTIONS:
+                trackStepCompleted(OnboardingStep.SIGN_IN_OPTIONS, OnboardingStepNames.SIGNIN_OPTIONS_CHOSEN);
+
+                break;
+
+            case OnboardingStep.DESIGN_LOGIN:
+                trackStepCompleted(
+                    OnboardingStep.DESIGN_LOGIN,
+                    OnboardingStepNames.BRANDING_LOGO_SELECTED,
+                    { is_default_value: !onboardingData.brandingConfig?.logoUrl }
+                );
+                trackStepCompleted(
+                    OnboardingStep.DESIGN_LOGIN,
+                    OnboardingStepNames.BRANDING_COLOR_SELECTED,
+                    {
+                        is_default_value:
+                            onboardingData.brandingConfig?.primaryColor === DEFAULT_BRANDING_CONFIG.primaryColor
+                    }
+                );
+
+                break;
+
+            default:
+                break;
+        }
+
         if (currentStep === OnboardingStep.SUCCESS) {
+            trackCompleted();
             await onComplete(onboardingData);
         } else if (
             // Create app when clicking Finish from Design Login
@@ -441,18 +517,23 @@ const OnboardingWizard: FunctionComponent<OnboardingWizardPropsInterface> = (
             setDirection("forward");
             setCurrentStep(nextStep);
         }
-    }, [ currentStep, onboardingData, isM2M, createApplication, onComplete ]);
+    }, [
+        currentStep, onboardingData, isM2M, createApplication, onComplete,
+        trackStepCompleted, trackCompleted
+    ]);
 
     const handleBack: () => void = useCallback((): void => {
         const previousStep: OnboardingStep = getPreviousStep(currentStep, onboardingData);
 
+        trackStepBack(currentStep, previousStep);
         setDirection("backward");
         setCurrentStep(previousStep);
-    }, [ currentStep, onboardingData ]);
+    }, [ currentStep, onboardingData, trackStepBack ]);
 
     const handleSkip: () => Promise<void> = useCallback(async (): Promise<void> => {
+        trackSkipped(currentStep, STEP_NAMES[currentStep]);
         await onSkip();
-    }, [ onSkip ]);
+    }, [ onSkip, currentStep, trackSkipped ]);
 
     const isFirstStep: boolean = visibleStep === OnboardingStep.WELCOME;
     const isSuccessStep: boolean = visibleStep === OnboardingStep.SUCCESS;
