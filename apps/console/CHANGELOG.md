@@ -1,5 +1,34 @@
 # @wso2is/console
 
+## 3.1.0
+
+### Minor Changes
+
+- [#9851](https://github.com/wso2/identity-apps/pull/9851) [`889ba146a770d03968eed6bd8ecdf9b2f41df5e4`](https://github.com/wso2/identity-apps/commit/889ba146a770d03968eed6bd8ecdf9b2f41df5e4) Thanks [@VivekVinushanth](https://github.com/VivekVinushanth)! - improve cds ux
+
+### Patch Changes
+
+- [#9669](https://github.com/wso2/identity-apps/pull/9669) [`06f2828341ff02da1d328e9cb9c03a2c0038c324`](https://github.com/wso2/identity-apps/commit/06f2828341ff02da1d328e9cb9c03a2c0038c324) Thanks [@savindi7](https://github.com/savindi7)! - Show user onboarding wizard based on claim, and give option to re-access it.
+
+- Updated dependencies [[`06f2828341ff02da1d328e9cb9c03a2c0038c324`](https://github.com/wso2/identity-apps/commit/06f2828341ff02da1d328e9cb9c03a2c0038c324), [`889ba146a770d03968eed6bd8ecdf9b2f41df5e4`](https://github.com/wso2/identity-apps/commit/889ba146a770d03968eed6bd8ecdf9b2f41df5e4)]:
+  - @wso2is/admin.applications.v1@2.41.25
+  - @wso2is/admin.onboarding.v1@1.0.48
+  - @wso2is/admin.home.v1@1.7.157
+  - @wso2is/admin.users.v1@2.38.0
+  - @wso2is/admin.core.v1@2.55.0
+  - @wso2is/admin.cds.v1@1.6.0
+  - @wso2is/admin.agents.v1@1.0.192
+  - @wso2is/admin.branding.v1@2.32.133
+  - @wso2is/admin.roles.v2@2.27.347
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.177
+  - @wso2is/admin.email-management.v1@2.25.341
+  - @wso2is/admin.flows.v1@1.0.146
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.177
+  - @wso2is/admin.server-configurations.v1@2.38.16
+  - @wso2is/admin.connections.v1@2.36.17
+  - @wso2is/admin.registration-flow-builder.v1@0.10.137
+  - @wso2is/admin.approval-workflows.v1@1.2.15
+
 ## 3.0.4
 
 ### Patch Changes
