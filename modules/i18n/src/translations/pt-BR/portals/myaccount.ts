@@ -352,9 +352,9 @@ export const myAccount: MyAccountNS = {
             modals: {
                 confirmationModal: {
                     heading: "Confirmação",
-                    message: "A alteração da senha pode afetar sua sessão atual dependendo das configurações de " +
-                        "segurança da sua organização. Se você for desconectado, faça login novamente usando " +
-                        "sua nova senha. Você deseja continuar?"
+                    message: "A atualização da sua senha pode desconectar você de todos os aplicativos. " +
+                        "Se você for desconectado, faça login novamente usando sua nova senha. " +
+                        "Deseja continuar?"
                 }
             }
         },

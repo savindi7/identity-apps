@@ -354,9 +354,9 @@ export const myAccount: MyAccountNS = {
             modals: {
                 confirmationModal: {
                     heading: "Confirmação",
-                    message: "A alteração da palavra-passe pode afetar a sua sessão atual dependendo das " +
-                        "definições de segurança da sua organização. Se tiver a sessão terminada, " +
-                        "inicie sessão novamente com a nova palavra-passe. Deseja continuar?"
+                    message: "A atualização da sua palavra-passe pode terminar a sessão em todas as aplicações. " +
+                        "Se a sessão for terminada, inicie sessão novamente com a nova palavra-passe. " +
+                        "Deseja continuar?"
                 }
             }
         },

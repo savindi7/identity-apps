@@ -352,9 +352,9 @@ export const myAccount: MyAccountNS = {
             "modals": {
                 "confirmationModal": {
                     "heading": "Confirmación",
-                    "message": "Cambiar la contraseña puede afectar tu sesión actual según la configuración de " +
-                        "seguridad de tu organización. Si has cerrado sesión, vuelve a iniciarla con tu " +
-                        "nueva contraseña. ¿Deseas continuar?"
+                    "message": "Actualizar tu contraseña puede cerrar tu sesión en todas las aplicaciones. " +
+                        "Si se cierra tu sesión, vuelve a iniciar sesión con tu nueva contraseña. " +
+                        "¿Deseas continuar?"
                 }
             }
         },
