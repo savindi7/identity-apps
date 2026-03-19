@@ -22,6 +22,7 @@ import org.wso2.carbon.identity.application.common.IdentityApplicationManagement
 import org.wso2.carbon.identity.application.common.IdentityApplicationManagementException;
 import org.wso2.carbon.identity.application.common.model.ServiceProvider;
 import org.wso2.carbon.identity.application.common.util.IdentityApplicationManagementUtil;
+import org.wso2.carbon.identity.application.mgt.ApplicationMgtUtil;
 import org.wso2.carbon.identity.application.mgt.listener.AbstractApplicationMgtListener;
 import org.wso2.carbon.identity.oauth.Error;
 import org.wso2.identity.apps.common.internal.AppsCommonDataHolder;
@@ -64,7 +65,17 @@ public class AppPortalApplicationMgtListener extends AbstractApplicationMgtListe
     public boolean doPreUpdateApplication(ServiceProvider serviceProvider, String tenantDomain, String userName)
         throws IdentityApplicationManagementException {
 
-        if (!isEnable() || IdentityApplicationManagementUtil.getAllowUpdateSystemApplicationThreadLocal()) {
+        if (!isEnable()) {
+            return true;
+        }
+
+        if (ApplicationMgtUtil.isConsoleOrMyAccount(serviceProvider.getApplicationName()) &&
+            serviceProvider.isEnhancedOrganizationAuthenticationEnabled()) {
+            throw new IdentityApplicationManagementClientException(Error.INVALID_UPDATE.getErrorCode(),
+                "Enabling enhanced organization authentication is not allowed for system applications.");
+        }
+
+        if (IdentityApplicationManagementUtil.getAllowUpdateSystemApplicationThreadLocal()) {
             return true;
         }
 
