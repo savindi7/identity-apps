@@ -25,8 +25,8 @@ import TextField from "@oxygen-ui/react/TextField";
 import { getAllExternalClaims, getAllLocalClaims } from "@wso2is/admin.claims.v1/api";
 import { AppConstants } from "@wso2is/admin.core.v1/constants/app-constants";
 import { history } from "@wso2is/admin.core.v1/helpers/history";
-import { AlertInterface, AlertLevels, Claim, ExternalClaim, IdentifiableComponentInterface,
-    HttpErrorResponseDataInterface
+import { AlertInterface, AlertLevels, Claim, ExternalClaim, HttpErrorResponseDataInterface,
+    IdentifiableComponentInterface
 } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { FinalForm, FinalFormField, FormRenderProps, TextFieldAdapter } from "@wso2is/form/src";
@@ -289,7 +289,11 @@ export default function AddVCTemplateWizard({
                     validate={ validateForm }
                     render={ ({ handleSubmit }: FormRenderProps) => {
                         return (
-                            <form id="addVCTemplateForm" onSubmit={ handleSubmit }>
+                            <form
+                                id="addVCTemplateForm"
+                                className="vc-template-create-form"
+                                onSubmit={ handleSubmit }
+                            >
                                 <FinalFormField
                                     name="identifier"
                                     label={ t("verifiableCredentials:wizard.form.identifier.label") }
