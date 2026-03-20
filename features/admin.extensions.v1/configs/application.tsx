@@ -430,8 +430,7 @@ export const applicationConfig: ApplicationConfig = {
             ApplicationManagementConstants.AUTHORIZATION_CODE_GRANT,
             ApplicationManagementConstants.REFRESH_TOKEN_GRANT,
             ApplicationManagementConstants.IMPLICIT_GRANT,
-            ApplicationManagementConstants.ORGANIZATION_SWITCH_GRANT,
-            ApplicationManagementConstants.CIBA_GRANT
+            ApplicationManagementConstants.ORGANIZATION_SWITCH_GRANT
         ],
         [ "angular-application" ]: [
             ApplicationManagementConstants.AUTHORIZATION_CODE_GRANT,
@@ -503,8 +502,7 @@ export const applicationConfig: ApplicationConfig = {
             ApplicationManagementConstants.PASSWORD,
             ApplicationManagementConstants.DEVICE_GRANT,
             ApplicationManagementConstants.ORGANIZATION_SWITCH_GRANT,
-            ApplicationManagementConstants.OAUTH2_TOKEN_EXCHANGE,
-            ApplicationManagementConstants.CIBA_GRANT
+            ApplicationManagementConstants.OAUTH2_TOKEN_EXCHANGE
         ],
         [ "nextjs-application" ]: [
             ApplicationManagementConstants.AUTHORIZATION_CODE_GRANT,
@@ -519,8 +517,7 @@ export const applicationConfig: ApplicationConfig = {
             ApplicationManagementConstants.AUTHORIZATION_CODE_GRANT,
             ApplicationManagementConstants.IMPLICIT_GRANT,
             ApplicationManagementConstants.REFRESH_TOKEN_GRANT,
-            ApplicationManagementConstants.ORGANIZATION_SWITCH_GRANT,
-            ApplicationManagementConstants.CIBA_GRANT
+            ApplicationManagementConstants.ORGANIZATION_SWITCH_GRANT
         ],
         [ "sub-organization-application" ]: [
             ApplicationManagementConstants.REFRESH_TOKEN_GRANT,

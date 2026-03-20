@@ -994,6 +994,40 @@ export interface ApplicationsNS {
                     partiallyCompleted: string
                 }
             };
+            enhancedOrganizationLogin: {
+                title: string;
+                description: string;
+                hint: string;
+                confirmation: {
+                    header: string;
+                    message: string;
+                    content: {
+                        0: string;
+                    };
+                };
+                notifications: {
+                    enable: {
+                        success: {
+                            message: string;
+                            description: string;
+                        };
+                        error: {
+                            message: string;
+                            description: string;
+                        };
+                    };
+                    disable: {
+                        success: {
+                            message: string;
+                            description: string;
+                        };
+                        error: {
+                            message: string;
+                            description: string;
+                        };
+                    };
+                };
+            };
             apiAuthorization: {
                 limitedAccessMessage: string;
                 m2mPolicyMessage: string;
@@ -1516,6 +1550,14 @@ export interface ApplicationsNS {
                     notificationChannels: {
                         externalHint: string;
                         externalLabel: string;
+                        hint: string;
+                        label: string;
+                    };
+                    skipUserValidation: {
+                        hint: string;
+                        label: string;
+                    };
+                    allowFederatedUsers: {
                         hint: string;
                         label: string;
                     };
