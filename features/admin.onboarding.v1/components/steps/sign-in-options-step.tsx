@@ -195,12 +195,8 @@ const SignInOptionsStep: FunctionComponent<SignInOptionsStepPropsInterface> = (
             <ConfigPanel>
                 <StepHeader
                     data-componentid={ `${componentId}-header` }
-                    // subtitle="Choose how your users will verify their identity."
                     title="How do you want users to sign in?"
                 />
-                <SectionLabel sx={ { marginBottom: 0 } }>
-                    Sign-in methods
-                </SectionLabel>
                 <OptionsContainer>
                     <OptionSection>
                         { LOGIN_METHOD_OPTIONS.map((option: SignInOptionDefinitionInterface) => (

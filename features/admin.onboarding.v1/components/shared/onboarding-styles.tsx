@@ -90,7 +90,7 @@ export const RightColumn: typeof Box = styled(Box)(() => ({
  */
 export const ConfigPanel: typeof Box = styled(LeftColumn)(() => ({
     flex: "0 0 360px",
-    maxWidth: 360
+    minWidth: 500
 }));
 
 /**

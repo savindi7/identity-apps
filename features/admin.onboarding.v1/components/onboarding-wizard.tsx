@@ -510,7 +510,19 @@ const OnboardingWizard: FunctionComponent<OnboardingWizardPropsInterface> = (
                 trackStepCompleted(
                     OnboardingStep.SIGN_IN_OPTIONS,
                     OnboardingStepNames.SIGNIN_OPTIONS_CHOSEN,
-                    { self_registration_enabled: onboardingData.selfRegistrationEnabled ?? false }
+                    {
+                        identifier_email: onboardingData.signInOptions?.identifiers?.email ?? false,
+                        identifier_mobile: onboardingData.signInOptions?.identifiers?.mobile ?? false,
+                        identifier_username: onboardingData.signInOptions?.identifiers?.username ?? false,
+                        login_method_email_otp: onboardingData.signInOptions?.loginMethods?.emailOtp ?? false,
+                        login_method_magic_link: onboardingData.signInOptions?.loginMethods?.magicLink ?? false,
+                        login_method_passkey: onboardingData.signInOptions?.loginMethods?.passkey ?? false,
+                        login_method_password: onboardingData.signInOptions?.loginMethods?.password ?? false,
+                        login_method_push_notification:
+                            onboardingData.signInOptions?.loginMethods?.pushNotification ?? false,
+                        login_method_totp: onboardingData.signInOptions?.loginMethods?.totp ?? false,
+                        self_registration_enabled: onboardingData.selfRegistrationEnabled ?? false
+                    }
                 );
 
                 break;

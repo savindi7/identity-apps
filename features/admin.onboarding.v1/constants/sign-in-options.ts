@@ -105,6 +105,7 @@ export const LOGIN_METHOD_OPTIONS: SignInOptionDefinitionInterface[] = [
         canBeFirstFactor: true,
         canBeSecondFactor: false,
         category: "login-method",
+        description: "Traditional password authentication",
         id: "password",
         label: "Password",
         requiresIdentifier: true
@@ -117,6 +118,7 @@ export const LOGIN_METHOD_OPTIONS: SignInOptionDefinitionInterface[] = [
         canBeFirstFactor: true,
         canBeSecondFactor: false,
         category: "login-method",
+        description: "Passwordless authentication with biometrics or security keys",
         id: "passkey",
         label: "Passkey",
         requiresIdentifier: true
@@ -129,6 +131,7 @@ export const LOGIN_METHOD_OPTIONS: SignInOptionDefinitionInterface[] = [
         canBeFirstFactor: true,
         canBeSecondFactor: false,
         category: "login-method",
+        description: "Passwordless authentication via email link",
         id: "magicLink",
         label: "Magic Link",
         requiresIdentifier: true
@@ -141,6 +144,7 @@ export const LOGIN_METHOD_OPTIONS: SignInOptionDefinitionInterface[] = [
         canBeFirstFactor: true,
         canBeSecondFactor: true,
         category: "login-method",
+        description: "One-time password sent via email",
         id: "emailOtp",
         label: "Email OTP",
         requiresIdentifier: true
@@ -153,6 +157,7 @@ export const LOGIN_METHOD_OPTIONS: SignInOptionDefinitionInterface[] = [
         canBeFirstFactor: true,
         canBeSecondFactor: true,
         category: "login-method",
+        description: "Time-based one-time password from authenticator app",
         id: "totp",
         label: "TOTP",
         requiresIdentifier: true
@@ -165,6 +170,7 @@ export const LOGIN_METHOD_OPTIONS: SignInOptionDefinitionInterface[] = [
         canBeFirstFactor: true,
         canBeSecondFactor: true,
         category: "login-method",
+        description: "Push notification to mobile device for approval",
         id: "pushNotification",
         label: "Push Notification",
         requiresIdentifier: true

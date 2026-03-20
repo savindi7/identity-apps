@@ -54,10 +54,9 @@ const StyledFormControlLabel: React.FC<React.ComponentProps<typeof FormControlLa
             flex: 1
         },
         "&:hover": {
-            backgroundColor: theme.palette.action.hover,
-            borderColor: theme.palette.primary.main
+            backgroundColor: theme.palette.grey[50]
         },
-        alignItems: "flex-start",
+        alignItems: "center",
         backgroundColor: theme.palette.background.paper,
         border: `1px solid ${theme.palette.divider}`,
         borderRadius: theme.shape.borderRadius * 1.5,
@@ -89,9 +88,9 @@ const OptionLabelContent: FunctionComponent<OptionLabelContentProps> = ({
     description,
     icon
 }: OptionLabelContentProps): ReactElement => (
-    <Box sx={ { alignItems: "flex-start", display: "flex", gap: 1.5 } }>
+    <Box sx={ { alignItems: "center", display: "flex", gap: 1.5 } }>
         { icon && (
-            <Box sx={ { display: "flex", flexShrink: 0, height: 20, mt: 0.25, width: 20 } }>
+            <Box sx={ { display: "flex", flexShrink: 0, height: 20, width: 20 } }>
                 { typeof icon === "string"
                     ? <img alt="" src={ icon } style={ { height: "100%", width: "100%" } } />
                     : icon }

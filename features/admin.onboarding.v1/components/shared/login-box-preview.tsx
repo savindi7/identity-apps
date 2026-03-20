@@ -128,10 +128,11 @@ const BrowserContent: typeof Box = styled(Box)(({ theme }: { theme: Theme }) => 
     alignItems: "center",
     backgroundColor: theme.palette.grey[50],
     display: "flex",
+    flex: 1,
     flexDirection: "column",
     gap: theme.spacing(2),
-    height: 600,
     justifyContent: "center",
+    minHeight: 480,
     padding: theme.spacing(4, 3)
 }));
 
