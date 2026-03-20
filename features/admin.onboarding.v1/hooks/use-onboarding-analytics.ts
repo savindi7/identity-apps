@@ -23,6 +23,7 @@ import { ProfileInfoInterface } from "@wso2is/core/models";
 import moesif from "moesif-browser-js";
 import React, { useCallback, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
+import { getScimUserId } from "../api/get-scim-user-id";
 import { FEATURE_LAUNCH_DATE, OnboardingAnalyticsEvents } from "../constants";
 import { OnboardingChoice, OnboardingDataInterface, OnboardingStep } from "../models";
 
@@ -59,7 +60,7 @@ const SCIM_SYSTEM_SCHEMA: string = "urn:scim:wso2:schema";
  * Total step counts per wizard path (excluding lifecycle events started/completed).
  */
 const TOTAL_STEPS_FULL_SETUP: number = 6;
-const TOTAL_STEPS_PREVIEW: number = 4;
+const TOTAL_STEPS_PREVIEW: number = 3;
 
 /**
  * Hook that provides Moesif analytics tracking for the onboarding wizard.
@@ -76,7 +77,6 @@ export const useOnboardingAnalytics = (params: UseOnboardingAnalyticsParams): Us
     const { currentStep, isFirstWizardRun, onboardingData } = params;
 
     const profileInfo: ProfileInfoInterface = useSelector((state: AppState) => state.profile.profileInfo);
-    const userId: string = useSelector((state: AppState) => state.profile.profileInfo?.id || "");
     const tenantDomain: string = useSelector((state: AppState) =>
         state?.auth?.tenantDomain || ""
     );
@@ -85,11 +85,10 @@ export const useOnboardingAnalytics = (params: UseOnboardingAnalyticsParams): Us
     );
 
     const isEnabledRef: React.MutableRefObject<boolean> = useRef<boolean>(false);
-    const tenantUuidRef: React.MutableRefObject<string> = useRef<string>("");
     const visitedStepsRef: React.MutableRefObject<Set<number>> = useRef<Set<number>>(new Set<number>());
 
     // Initialize Moesif SDK on mount if application ID is configured.
-    // Fetches tenant UUID from the tenant/me endpoint for Moesif Company ID.
+    // Fetches user UUID from /scim2/Me and tenant UUID from tenant/me for Moesif identification.
     useEffect(() => {
         if (!moesifApplicationId) {
             return;
@@ -101,21 +100,26 @@ export const useOnboardingAnalytics = (params: UseOnboardingAnalyticsParams): Us
                 disableFetch: true
             });
 
-            // Moesif User ID = Asgardeo user UUID (from SCIM2 /Me response)
-            if (userId) {
-                moesif.identifyUser(userId);
-            }
-
             isEnabledRef.current = true;
         } catch (_error: unknown) {
             // eslint-disable-next-line no-console
             console.warn("Failed to initialize Moesif analytics:", _error);
             isEnabledRef.current = false;
+
+            return;
         }
 
+        getScimUserId()
+            .then((scimUserId: string): void => {
+                if (scimUserId) {
+                    moesif.identifyUser(scimUserId);
+                }
+            })
+            .catch((): void => {
+                // User ID fetch failed — analytics will work without User ID.
+            });
+
         // Fetch tenant UUID from tenant/me endpoint for Moesif Company ID.
-        // This is a fire-and-forget call — analytics events will still fire
-        // without the company ID if this fails.
         getAssociatedTenants(undefined, 15, 0)
             .then((response: TenantRequestResponse): void => {
                 const currentTenant: TenantInfo | undefined = response?.associatedTenants?.find(
@@ -123,7 +127,6 @@ export const useOnboardingAnalytics = (params: UseOnboardingAnalyticsParams): Us
                 );
 
                 if (currentTenant?.id) {
-                    tenantUuidRef.current = currentTenant.id;
                     moesif.identifyCompany(currentTenant.id);
                 }
             })

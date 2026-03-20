@@ -43,10 +43,10 @@ export enum OnboardingAnalyticsEvents {
  */
 export enum OnboardingStepNames {
     APP_NAME_ENTERED = "app_name_entered",
-    BRANDING_COLOR_SELECTED = "branding_color_selected",
-    BRANDING_LOGO_SELECTED = "branding_logo_selected",
+    APP_TEMPLATE_SELECTED = "app_template_selected",
+    DESIGN_LOGIN_CONFIGURED = "design_login_configured",
     REDIRECT_URL_CONFIGURED = "redirect_url_configured",
-    SIGNIN_OPTIONS_CHOSEN = "signin_options_chosen",
+    SIGNIN_OPTIONS_CONFIGURED = "signin_options_configured",
     WELCOME_OPTION_SELECTED = "welcome_option_selected"
 }
 

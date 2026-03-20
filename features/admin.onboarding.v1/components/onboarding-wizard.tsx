@@ -489,6 +489,18 @@ const OnboardingWizard: FunctionComponent<OnboardingWizardPropsInterface> = (
 
                 break;
 
+            case OnboardingStep.SELECT_APPLICATION_TEMPLATE:
+                trackStepCompleted(
+                    OnboardingStep.SELECT_APPLICATION_TEMPLATE,
+                    OnboardingStepNames.APP_TEMPLATE_SELECTED,
+                    {
+                        app_type: onboardingData.templateId ?? "",
+                        technology_framework: onboardingData.framework ?? ""
+                    }
+                );
+
+                break;
+
             case OnboardingStep.CONFIGURE_REDIRECT_URL: {
                 const defaultUrls: string[] = getDefaultRedirectUrl(
                     onboardingData.framework || onboardingData.templateId
@@ -506,39 +518,41 @@ const OnboardingWizard: FunctionComponent<OnboardingWizardPropsInterface> = (
                 break;
             }
 
-            case OnboardingStep.SIGN_IN_OPTIONS:
+            case OnboardingStep.SIGN_IN_OPTIONS: {
+                const selectedMethods: string[] = [];
+                const identifiers = onboardingData.signInOptions?.identifiers;
+                const loginMethods = onboardingData.signInOptions?.loginMethods;
+
+                if (identifiers?.username) selectedMethods.push("username");
+                if (identifiers?.email) selectedMethods.push("email");
+                if (identifiers?.mobile) selectedMethods.push("mobile");
+                if (loginMethods?.password) selectedMethods.push("password");
+                if (loginMethods?.passkey) selectedMethods.push("passkey");
+                if (loginMethods?.magicLink) selectedMethods.push("magic_link");
+                if (loginMethods?.emailOtp) selectedMethods.push("email_otp");
+                if (loginMethods?.totp) selectedMethods.push("totp");
+                if (loginMethods?.pushNotification) selectedMethods.push("push_notification");
+
                 trackStepCompleted(
                     OnboardingStep.SIGN_IN_OPTIONS,
-                    OnboardingStepNames.SIGNIN_OPTIONS_CHOSEN,
+                    OnboardingStepNames.SIGNIN_OPTIONS_CONFIGURED,
                     {
-                        identifier_email: onboardingData.signInOptions?.identifiers?.email ?? false,
-                        identifier_mobile: onboardingData.signInOptions?.identifiers?.mobile ?? false,
-                        identifier_username: onboardingData.signInOptions?.identifiers?.username ?? false,
-                        login_method_email_otp: onboardingData.signInOptions?.loginMethods?.emailOtp ?? false,
-                        login_method_magic_link: onboardingData.signInOptions?.loginMethods?.magicLink ?? false,
-                        login_method_passkey: onboardingData.signInOptions?.loginMethods?.passkey ?? false,
-                        login_method_password: onboardingData.signInOptions?.loginMethods?.password ?? false,
-                        login_method_push_notification:
-                            onboardingData.signInOptions?.loginMethods?.pushNotification ?? false,
-                        login_method_totp: onboardingData.signInOptions?.loginMethods?.totp ?? false,
-                        self_registration_enabled: onboardingData.selfRegistrationEnabled ?? false
+                        self_registration_enabled: onboardingData.selfRegistrationEnabled ?? false,
+                        signin_methods_selected: selectedMethods
                     }
                 );
 
                 break;
+            }
 
             case OnboardingStep.DESIGN_LOGIN:
                 trackStepCompleted(
                     OnboardingStep.DESIGN_LOGIN,
-                    OnboardingStepNames.BRANDING_LOGO_SELECTED,
-                    { is_default_value: !onboardingData.brandingConfig?.logoUrl }
-                );
-                trackStepCompleted(
-                    OnboardingStep.DESIGN_LOGIN,
-                    OnboardingStepNames.BRANDING_COLOR_SELECTED,
+                    OnboardingStepNames.DESIGN_LOGIN_CONFIGURED,
                     {
-                        is_default_value:
-                            onboardingData.brandingConfig?.primaryColor === DEFAULT_BRANDING_CONFIG.primaryColor
+                        is_default_color:
+                            onboardingData.brandingConfig?.primaryColor === DEFAULT_BRANDING_CONFIG.primaryColor,
+                        is_default_logo: !onboardingData.brandingConfig?.logoUrl
                     }
                 );
 
