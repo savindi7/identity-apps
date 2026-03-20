@@ -97,6 +97,9 @@ const ConsoleSettingsTabs: FunctionComponent<ConsoleSettingsTabsInterface> = (
     const isSharedAccessDisabled: boolean =
         consoleSettingsFeatureConfig?.disabledFeatures?.includes("consoleSettings.sharedAccess");
 
+    const isEnterpriseLoginDisabled: boolean =
+        consoleSettingsFeatureConfig?.disabledFeatures?.includes("consoleSettings.enterpriseLogin");
+
     const isLoginFlowEnabled: boolean = useMemo(() => {
         if (isSuperOrganization()) {
             return true;
@@ -163,7 +166,7 @@ const ConsoleSettingsTabs: FunctionComponent<ConsoleSettingsTabsInterface> = (
                     pane: <ConsoleSharedAccess />,
                     value: ConsoleSettingsTabIDs.SHARED_ACCESS
                 },
-                !(isSubOrganization() || tierName === TenantTier.FREE) && {
+                !(isSubOrganization() || isEnterpriseLoginDisabled || tierName === TenantTier.FREE) && {
                     className: "console-enterprise-login",
                     "data-componentid": `${componentId}-tab-enterprise-login`,
                     "data-tabid": ConsoleSettingsModes.ENTERPRISE_LOGIN,
