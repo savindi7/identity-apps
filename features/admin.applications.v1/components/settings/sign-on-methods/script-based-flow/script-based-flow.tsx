@@ -56,8 +56,8 @@ import { GetSecretListResponse, SecretModel } from "@wso2is/admin.secrets.v1/mod
 import { UIConstants } from "@wso2is/core/constants";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
 import { isFeatureEnabled } from "@wso2is/core/helpers";
-import { AlertLevels, IdentifiableComponentInterface, StorageIdentityAppsSettingsInterface,
-    HttpErrorResponseDataInterface
+import { AlertLevels, HttpErrorResponseDataInterface, IdentifiableComponentInterface,
+    StorageIdentityAppsSettingsInterface
 } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { StringUtils } from "@wso2is/core/utils";
