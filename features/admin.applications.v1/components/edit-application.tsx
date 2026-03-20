@@ -40,8 +40,10 @@ import { OrganizationFeatureDictionaryKeys, OrganizationType } from "@wso2is/adm
 import { OrganizationManagementConstants } from "@wso2is/admin.organizations.v1/constants/organization-constants";
 import { useGetCurrentOrganizationType } from "@wso2is/admin.organizations.v1/hooks/use-get-organization-type";
 import { isFeatureEnabled } from "@wso2is/core/helpers";
-import { AlertLevels, IdentifiableComponentInterface, SBACInterface,
-    HttpErrorResponseDataInterface
+import { AlertLevels,
+    HttpErrorResponseDataInterface,
+    IdentifiableComponentInterface,
+    SBACInterface
 } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import {
@@ -240,6 +242,12 @@ export const EditApplication: FunctionComponent<EditApplicationPropsInterface> =
         organizationFeatureConfig,
         OrganizationManagementConstants.FEATURE_DICTIONARY.get(
             OrganizationFeatureDictionaryKeys.OrganizationApplicationAdvancedSettings
+        ));
+
+    const isTokenIssuerSelectionEnabled: boolean = isFeatureEnabled(
+        organizationFeatureConfig,
+        OrganizationManagementConstants.FEATURE_DICTIONARY.get(
+            OrganizationFeatureDictionaryKeys.OrganizationApplicationTokenIssuerSelection
         ));
 
     const isApplicationEditProvisioningSettingsEnabled: boolean = isFeatureEnabled(featureConfig?.applications,
@@ -962,8 +970,9 @@ export const EditApplication: FunctionComponent<EditApplicationPropsInterface> =
             }
             if (isFeatureEnabled(featureConfig?.applications,
                 ApplicationManagementConstants.FEATURE_DICTIONARY.get("APPLICATION_EDIT_INFO"))
-                 && !isSubOrganization()
-                 && !isMyAccount) {
+                 && !isFragmentApp
+                 && !isMyAccount
+                 && (isSubOrganization() ? isTokenIssuerSelectionEnabled : true)) {
 
                 applicationConfig.editApplication.
                     isTabEnabledForApp(
@@ -1034,7 +1043,7 @@ export const EditApplication: FunctionComponent<EditApplicationPropsInterface> =
                 menuItem: t("applications:edit.sections.sharedAccess.tabName"),
                 render: SharedAccessTabPane
             },
-            {
+            ...(isSubOrganization() ? isTokenIssuerSelectionEnabled : true) && [ {
                 componentId: "info",
                 "data-tabid": ApplicationTabIDs.INFO,
                 menuItem: {
@@ -1042,7 +1051,7 @@ export const EditApplication: FunctionComponent<EditApplicationPropsInterface> =
                     icon: "info circle grey"
                 },
                 render: InfoTabPane
-            }
+            } ]
         ];
     };
 
