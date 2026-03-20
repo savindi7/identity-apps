@@ -24,8 +24,9 @@ import useRequest, {
 } from "@wso2is/admin.core.v1/hooks/use-request";
 import { AppState, store } from "@wso2is/admin.core.v1/store";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
+import {
+    HttpErrorResponseDataInterface,
+    HttpMethods
 } from "@wso2is/core/models";
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import isEmpty from "lodash-es/isEmpty";
@@ -1088,6 +1089,7 @@ export const getOIDCApplicationConfigurations = (): Promise<OIDCApplicationConfi
 
             const oidcConfigs: OIDCApplicationConfigurationInterface = {
                 authorizeEndpoint: response.data.authorization_endpoint,
+                cibaEndpoint: response.data.backchannel_authentication_endpoint,
                 dynamicClientRegistrationEndpoint: response.data.registration_endpoint,
                 endSessionEndpoint: response.data.end_session_endpoint,
                 introspectionEndpoint: response.data.introspection_endpoint,
