@@ -1,5 +1,11 @@
 # @wso2is/i18n
 
+## 2.37.4
+
+### Patch Changes
+
+- [#9849](https://github.com/wso2/identity-apps/pull/9849) [`8773dc284b272d8668f9051c52257549d6db97d5`](https://github.com/wso2/identity-apps/commit/8773dc284b272d8668f9051c52257549d6db97d5) Thanks [@Malith-19](https://github.com/Malith-19)! - Update the password reset confirmation message.
+
 ## 2.37.3
 
 ### Patch Changes
