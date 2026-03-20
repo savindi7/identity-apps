@@ -27,8 +27,7 @@ import {
     AlertLevels,
     LoadableComponentInterface,
     SBACInterface,
-    TestableComponentInterface,
-    HttpErrorResponseDataInterface
+    TestableComponentInterface
 } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import {
@@ -181,7 +180,7 @@ export const OIDCScopeList: FunctionComponent<OIDCScopesListPropsInterface> = (
 
                 setShowDeleteConfirmationModal(false);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error.response && error.response.data && error.response.data.description) {
                     dispatch(addAlert({
                         description: error.response.data.description,

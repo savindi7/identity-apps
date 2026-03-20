@@ -20,7 +20,6 @@ import { AuthenticatedUserInfo, BasicUserInfo } from "@asgardeo/auth-react";
 import { AuthenticateUtils } from "@wso2is/core/utils";
 import { I18n } from "@wso2is/i18n";
 import { AxiosError } from "axios";
-import { HttpErrorResponseDataInterface } from "@wso2is/core/models";
 import isEmpty from "lodash-es/isEmpty";
 import { AnyAction, Dispatch } from "redux";
 import { getProfileLinkedAccounts } from ".";
@@ -197,7 +196,7 @@ export const getProfileInformation = (
                         })
                     );
                 })
-                .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+                .catch((error: AxiosError) => {
                     if (error.response && error.response.data && error.response.data.detail) {
                         dispatch(
                             addAlert({
@@ -231,7 +230,7 @@ export const getProfileInformation = (
                     dispatch(setProfileInfoLoader(false));
                 });
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface> & { description: string }) => {
+        .catch((error: AxiosError & { description: string }) => {
             if (error?.response?.status === 404) {
                 dispatch(setLocalAccountStatus(false));
             } else {
@@ -300,7 +299,7 @@ export const handleAccountSwitching = (account: LinkedAccountInterface) => (disp
             dispatch(getProfileInformation() as unknown as AnyAction);
             dispatch(getProfileLinkedAccounts() as unknown as AnyAction);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw error;
         });
 };

@@ -19,9 +19,7 @@
 import Grid from "@oxygen-ui/react/Grid";
 import { AppConstants } from "@wso2is/admin.core.v1/constants/app-constants";
 import { history } from "@wso2is/admin.core.v1/helpers/history";
-import { AlertLevels, IdentifiableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AlertLevels, IdentifiableComponentInterface } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { DangerZone, DangerZoneGroup, EmphasizedSegment, Hint, PageLayout } from "@wso2is/react-components";
 import { AxiosError } from "axios";
@@ -104,7 +102,7 @@ export const InternalNotificationSendingPage: FC<InternalNotificationSendingPage
             .then((response: boolean[]) => {
                 let summationOfResponse: boolean = false;
 
-                response.forEach((value: boolean | AxiosError<HttpErrorResponseDataInterface>) => {
+                response.forEach((value: boolean | AxiosError) => {
                     // If all the values are true, then the summation will be true.
                     if (value === true) {
                         summationOfResponse = true;
@@ -115,7 +113,7 @@ export const InternalNotificationSendingPage: FC<InternalNotificationSendingPage
 
                 setIsNotificationInternallyManaged(summationOfResponse);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error?.response?.data?.detail) {
                     dispatch(
                         addAlert({
@@ -256,7 +254,7 @@ export const InternalNotificationSendingPage: FC<InternalNotificationSendingPage
 
                 return isNotificationInternallyManaged;
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error?.response?.data?.detail) {
                     dispatch(
                         addAlert({
@@ -400,7 +398,7 @@ export const InternalNotificationSendingPage: FC<InternalNotificationSendingPage
             .then(() => {
                 return Promise.resolve(true);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error.response && error.response.data && error.response.data.detail) {
                     dispatch(
                         addAlert({

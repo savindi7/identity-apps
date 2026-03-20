@@ -18,9 +18,7 @@
 
 import { store } from "@wso2is/admin.core.v1/store";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { AlertLevels,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AlertLevels } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { I18n } from "@wso2is/i18n";
 import { AxiosError } from "axios";
@@ -124,7 +122,7 @@ export const handleAttributeSettingsFormSubmit = (connectionId: string, values: 
                             "notifications.updateAttributes." +
                             "success.message")
                 }));
-            }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            }).catch((error: AxiosError) => {
                 handleUpdateIDPRoleMappingsError(error);
             });
         })

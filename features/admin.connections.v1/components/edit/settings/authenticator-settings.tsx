@@ -25,9 +25,7 @@ import { ConfigReducerStateInterface } from "@wso2is/admin.core.v1/models/reduce
 import { AppState } from "@wso2is/admin.core.v1/store";
 import { identityProviderConfig } from "@wso2is/admin.extensions.v1";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { AlertLevels, TestableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AlertLevels, TestableComponentInterface } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import {
     ConfirmationModal,
@@ -225,7 +223,7 @@ export const AuthenticatorSettings: FunctionComponent<IdentityProviderSettingsPr
 
                 setAvailableFederatedAuthenticators(filteredAuthenticators);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error.response && error.response.data && error.response.data.description) {
                     dispatch(
                         addAlert({
@@ -320,7 +318,7 @@ export const AuthenticatorSettings: FunctionComponent<IdentityProviderSettingsPr
                 }
                 onUpdate(identityProvider.id);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error.response && error.response.data && error.response.data.description) {
                     dispatch(addAlert({
                         description: t("authenticationProvider:" +
@@ -381,7 +379,7 @@ export const AuthenticatorSettings: FunctionComponent<IdentityProviderSettingsPr
         }
     };
 
-    const handleGetFederatedAuthenticatorAPICallError = (error: AxiosError<HttpErrorResponseDataInterface>) => {
+    const handleGetFederatedAuthenticatorAPICallError = (error: AxiosError) => {
         if (error.response && error.response.data && error.response.data.description) {
             dispatch(addAlert({
                 description: t("authenticationProvider:notifications." +
@@ -425,7 +423,7 @@ export const AuthenticatorSettings: FunctionComponent<IdentityProviderSettingsPr
                             handleGetFederatedAuthenticatorMetadataAPICallError(error);
                         });
                 })
-                .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+                .catch((error: AxiosError) => {
                     handleGetFederatedAuthenticatorAPICallError(error);
                 });
         });
@@ -560,7 +558,7 @@ export const AuthenticatorSettings: FunctionComponent<IdentityProviderSettingsPr
 
                 onUpdate(identityProvider.id);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error.response && error.response.data && error.response.data.description) {
                     dispatch(addAlert({
                         description: error.response.data.description,

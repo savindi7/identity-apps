@@ -19,9 +19,7 @@
 import { AsgardeoSPAClient, HttpClientInstance } from "@asgardeo/auth-react";
 import { store } from "@wso2is/admin.core.v1/store";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { GenerateBrandingAPIResponseInterface } from "../models/branding-preferences";
 
@@ -61,7 +59,7 @@ const generateBrandingPreference = (
             }
 
             return response.data;
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             const errorMessage: string = error.response?.data?.detail || "Unknown error occurred";
 
             throw new IdentityAppsApiException(

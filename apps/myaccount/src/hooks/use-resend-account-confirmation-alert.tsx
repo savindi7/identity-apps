@@ -19,7 +19,6 @@
 import { ProfileConstants } from "@wso2is/core/constants";
 import { LinkButton } from "@wso2is/react-components";
 import { AxiosError } from "axios";
-import { HttpErrorResponseDataInterface } from "@wso2is/core/models";
 import React, { ReactNode, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
@@ -120,7 +119,7 @@ export const useResendAccountConfirmationAlert = (
                     }));
                 }
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error?.response?.data?.detail) {
                     dispatch(addAlert({
                         description: t(
@@ -159,7 +158,7 @@ export const useResendAccountConfirmationAlert = (
                         "notifications.resendSuccess.message")
                 }));
             })
-            .catch((errorMessage: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((errorMessage: AxiosError) => {
                 dispatch(addAlert({
                     description: t("myAccount:components.systemNotificationAlert.selfSignUp." +
                         "notifications.resendError.description", { error: errorMessage }),

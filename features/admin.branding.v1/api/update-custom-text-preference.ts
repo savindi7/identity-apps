@@ -22,9 +22,7 @@ import { store } from "@wso2is/admin.core.v1/store";
 import { OrganizationType } from "@wso2is/admin.organizations.v1/constants/organization-constants";
 import { BrandingPreferenceTypes } from "@wso2is/common.branding.v1/models/branding-preferences";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { CustomTextPreferenceConstants } from "../constants/custom-text-preference-constants";
 import {
@@ -94,7 +92,7 @@ const updateCustomTextPreference = (
             }
 
             return Promise.resolve(response.data as CustomTextPreferenceAPIResponseInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 CustomTextPreferenceConstants.ErrorMessages.CUSTOM_TEXT_PREFERENCE_UPDATE_ERROR.getErrorMessage(),
                 error.stack,

@@ -24,9 +24,7 @@ import { FeatureAccessConfigInterface, useRequiredScopes } from "@wso2is/access-
 import { history } from "@wso2is/admin.core.v1/helpers/history";
 import { AppState } from "@wso2is/admin.core.v1/store";
 import { isFeatureEnabled } from "@wso2is/core/helpers";
-import { IdentifiableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { IdentifiableComponentInterface } from "@wso2is/core/models";
 import {
     ConfirmationModal,
     DangerZone,
@@ -318,7 +316,7 @@ const WebhookEditPage: FunctionComponent<WebhookEditPageInterface> = ({
                         handleSuccess("createWebhook");
                         navigateToWebhookEditById(response.id);
                     })
-                    .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+                    .catch((error: AxiosError) => {
                         handleError(error, "createWebhook");
                     })
                     .finally(() => {
@@ -349,7 +347,7 @@ const WebhookEditPage: FunctionComponent<WebhookEditPageInterface> = ({
                         handleSuccess("updateWebhook");
                         mutateWebhook();
                     })
-                    .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+                    .catch((error: AxiosError) => {
                         handleError(error, "updateWebhook");
                     })
                     .finally(() => {
@@ -388,7 +386,7 @@ const WebhookEditPage: FunctionComponent<WebhookEditPageInterface> = ({
                         handleSuccess("updateWebhookStatus", { status: newStatus ? "active" : "inactive" });
                         mutateWebhook();
                     })
-                    .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+                    .catch((error: AxiosError) => {
                         setIsActive(!newStatus);
                         handleError(error, "updateWebhookStatus");
                     })
@@ -414,7 +412,7 @@ const WebhookEditPage: FunctionComponent<WebhookEditPageInterface> = ({
                 handleSuccess("retryWebhookState", { requestType });
                 mutateWebhook();
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 handleError(error, "retryWebhookState");
             })
             .finally(() => {
@@ -431,7 +429,7 @@ const WebhookEditPage: FunctionComponent<WebhookEditPageInterface> = ({
                 handleSuccess("deleteWebhook");
                 navigateToWebhooksList();
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 handleError(error, "deleteWebhook");
             })
             .finally(() => {

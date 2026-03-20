@@ -41,8 +41,7 @@ import { isFeatureEnabled } from "@wso2is/core/helpers";
 import {
     AlertLevels,
     IdentifiableComponentInterface,
-    SBACInterface,
-    HttpErrorResponseDataInterface
+    SBACInterface
 } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import {
@@ -371,7 +370,7 @@ export const SignInMethodCustomization: FunctionComponent<SignInMethodCustomizat
 
                 onUpdate(appId);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 handleUpdateAuthenticationFlowError(error);
             })
             .finally(() => {
@@ -423,10 +422,10 @@ export const SignInMethodCustomization: FunctionComponent<SignInMethodCustomizat
                             }));
 
                             onUpdate(appId);
-                        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+                        }).catch((error: AxiosError) => {
                             handleUpdateAuthenticationFlowError(error);
                         });
-                }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+                }).catch((error: AxiosError) => {
                     handleUpdateAuthenticationFlowError(error);
                 }).finally(() => {
                     setIsLoading(false);
@@ -452,10 +451,10 @@ export const SignInMethodCustomization: FunctionComponent<SignInMethodCustomizat
                         }));
 
                         onUpdate(appId);
-                    }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+                    }).catch((error: AxiosError) => {
                         handleUpdateAuthenticationFlowError(error);
                     });
-            }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            }).catch((error: AxiosError) => {
                 handleUpdateAuthenticationFlowError(error);
             }).finally(() => {
                 setIsLoading(false);
@@ -463,7 +462,7 @@ export const SignInMethodCustomization: FunctionComponent<SignInMethodCustomizat
             });
     };
 
-    const handleUpdateAuthenticationFlowError = (error: AxiosError<HttpErrorResponseDataInterface>): void => {
+    const handleUpdateAuthenticationFlowError = (error: AxiosError): void => {
         const DISALLOWED_PROGRAMMING_CONSTRUCTS: string = "APP-60001";
 
         if (error.response && error.response.data?.code === DISALLOWED_PROGRAMMING_CONSTRUCTS) {

@@ -21,9 +21,7 @@
  */
 // eslint-disable-next-line no-restricted-imports
 import { hasRequiredScopes, isFeatureEnabled } from "@wso2is/core/helpers";
-import { SBACInterface, TestableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { SBACInterface, TestableComponentInterface } from "@wso2is/core/models";
 import { EmphasizedSegment } from "@wso2is/react-components";
 import { AxiosError } from "axios";
 import React, { FunctionComponent, ReactElement, useEffect, useState } from "react";
@@ -148,7 +146,7 @@ export const AccountRecoveryComponent: FunctionComponent<AccountRecoveryProps> =
                     });
                 }
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error.response && error.response.data && error.response.data.detail) {
                     onAlertFired({
                         description: t(

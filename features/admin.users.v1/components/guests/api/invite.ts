@@ -18,9 +18,7 @@
 
 import { AsgardeoSPAClient, HttpClientInstance } from "@asgardeo/auth-react";
 import { store } from "@wso2is/admin.core.v1/store";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { ParentOrgUserInviteInterface } from "../models/invite";
 
@@ -44,7 +42,7 @@ export const sendParentOrgUserInvite = (userInvite: ParentOrgUserInviteInterface
     return httpClient(requestConfig).then((response: AxiosResponse) => {
 
         return Promise.resolve(response);
-    }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+    }).catch((error: AxiosError) => {
         return Promise.reject(error);
     });
 };
@@ -64,7 +62,7 @@ export const deleteParentOrgInvite = (traceID: string): Promise<any> => {
 
     return httpClient(requestConfig).then((response: AxiosResponse) => {
         return Promise.resolve(response);
-    }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+    }).catch((error: AxiosError) => {
         return Promise.reject(error);
     });
 };

@@ -18,9 +18,7 @@
 
 import { ProfileConstants } from "@wso2is/core/constants";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { AlertLevels, IdentifiableComponentInterface, PatchOperationRequest,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AlertLevels, IdentifiableComponentInterface, PatchOperationRequest } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { useTrigger } from "@wso2is/forms";
 import { AxiosError, AxiosResponse } from "axios";
@@ -190,7 +188,7 @@ const MobileUpdateWizardV2: FunctionComponent<MobileUpdateWizardV2PropsInterface
                 setIsOTPResendSuccess(true);
                 setIsOTPVerificationError(false);
             })
-            .catch((errorMessage: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((errorMessage: AxiosError) => {
                 dispatch(addAlert({
                     description: t("myAccount:components.mobileUpdateWizard.notifications." +
                             "resendError.error.description", {

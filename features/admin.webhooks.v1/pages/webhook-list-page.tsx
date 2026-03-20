@@ -23,9 +23,7 @@ import { AppConstants } from "@wso2is/admin.core.v1/constants/app-constants";
 import { history } from "@wso2is/admin.core.v1/helpers/history";
 import { AppState } from "@wso2is/admin.core.v1/store";
 import { isFeatureEnabled } from "@wso2is/core/helpers";
-import { IdentifiableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { IdentifiableComponentInterface } from "@wso2is/core/models";
 import {
     DocumentationLink,
     ListLayout,
@@ -162,7 +160,7 @@ const WebhooksPage: FunctionComponent<WebhooksPageInterface> = ({
                 mutateWebhooks();
                 handleSuccess("deleteWebhook");
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 handleError(error, "deleteWebhook");
             })
             .finally(() => {

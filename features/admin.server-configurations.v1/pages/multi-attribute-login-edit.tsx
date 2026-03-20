@@ -21,9 +21,7 @@ import { history } from "@wso2is/admin.core.v1/helpers/history";
 import { FeatureConfigInterface } from "@wso2is/admin.core.v1/models/config";
 import { AppState } from "@wso2is/admin.core.v1/store";
 import { hasRequiredScopes } from "@wso2is/core/helpers";
-import { AlertLevels, TestableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AlertLevels, TestableComponentInterface } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { ContentLoader, PageLayout } from "@wso2is/react-components";
 import { AxiosError } from "axios";
@@ -93,7 +91,7 @@ export const MultiAttributeLoginEdit: FunctionComponent<GovernanceConnectorsPage
                 response.categoryId = categoryId;
                 setConnector(response);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error.response && error.response.data && error.response.data.detail) {
                     dispatch(
                         addAlert({
