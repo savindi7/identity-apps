@@ -163,7 +163,7 @@ const ApprovalWorkflowCreatePage: FunctionComponent<CreateApprovalWorkflowProps>
 
     /**
      * Handles the step details form submission.
-     * @param values - Step 03 form values.
+     * @param values - Step 04 form values.
      */
     const onNotificationDetailsFormSubmit = (values: NotificationDetailsFormValuesInterface) => {
         setNotificationData(values);
@@ -171,12 +171,41 @@ const ApprovalWorkflowCreatePage: FunctionComponent<CreateApprovalWorkflowProps>
             ...prevData,
             notificationDetails: values
         }));
-        setActiveStep(3);
+
+        const workflowTemplate: WorkflowTemplate = {
+            name: "MultiStepApprovalTemplate",
+            notificationsForApprovers: values?.notificationsForApprovers,
+            steps: approvalWorkflowFormData.configurations.approvalSteps.map(
+                (step: ApprovalSteps, index: number) => ({
+                    options: [
+                        {
+                            entity: "roles",
+                            values: step.roles
+                        },
+                        {
+                            entity: "users",
+                            values: step.users
+                        }
+                    ].filter((option: OptionDetails) => option.values.length > 0),
+                    step: index + 1
+                })
+            )
+        };
+
+        const approvalWorkflowPayload: ApprovalWorkflowPayload = {
+            description: approvalWorkflowFormData.generalDetails.description,
+            engine: WORKFLOW_ENGINE,
+            name: approvalWorkflowFormData.generalDetails.name,
+            notificationsForInitiator: values?.notificationsForInitiator,
+            template: workflowTemplate
+        };
+
+        handleApprovalWorkflowRegistration(approvalWorkflowPayload);
     };
 
     /**
      * Handles the step details form submission.
-     * @param values - Step 04 form values.
+     * @param values - Step 03 form values.
      */
     const onConfigurationDetailsFormSubmit = (values: ConfigurationsFormValuesInterface) => {
         //Check if there are any empty steps
@@ -195,33 +224,7 @@ const ApprovalWorkflowCreatePage: FunctionComponent<CreateApprovalWorkflowProps>
             configurations: values
         }));
 
-        const workflowTemplate: WorkflowTemplate = {
-            name: "MultiStepApprovalTemplate",
-            notificationsForApprovers: notificationData?.notificationsForApprovers,
-            steps: values.approvalSteps.map((step: ApprovalSteps, index: number) => ({
-                options: [
-                    {
-                        entity: "roles",
-                        values: step.roles
-                    },
-                    {
-                        entity: "users",
-                        values: step.users
-                    }
-                ].filter((option: OptionDetails) => option.values.length > 0),
-                step: index + 1
-            }))
-        };
-
-        const approvalWorkflowPayload: ApprovalWorkflowPayload = {
-            description: approvalWorkflowFormData.generalDetails.description,
-            engine: WORKFLOW_ENGINE,
-            name: approvalWorkflowFormData.generalDetails.name,
-            notificationsForInitiator: notificationData?.notificationsForInitiator,
-            template: workflowTemplate
-        };
-
-        handleApprovalWorkflowRegistration(approvalWorkflowPayload);
+        setActiveStep(3);
     };
 
     /**
@@ -447,12 +450,13 @@ const ApprovalWorkflowCreatePage: FunctionComponent<CreateApprovalWorkflowProps>
                             </Typography>
                         </StepLabel>
                         <StepContent data-componentid={ `${componentId}-step-3-content` }>
-                            <NotificationDetailsForm
-                                ref={ notificationDetailsFormRef }
+                            <ConfigurationsForm
+                                ref={ configurationsFormRef }
                                 isReadOnly={ !hasApprovalWorkflowCreatePermission }
-                                initialValues={ notificationData }
-                                onSubmit={ onNotificationDetailsFormSubmit }
-                                data-componentid={ `${componentId}-notification-details-form` }
+                                initialValues={ approvalWorkflowFormData?.configurations ?? {} }
+                                hasErrors={ hasErrors }
+                                onSubmit={ onConfigurationDetailsFormSubmit }
+                                data-componentid={ `${componentId}-configurations-form` }
                             />
                             <div
                                 className="step-actions-container"
@@ -474,8 +478,8 @@ const ApprovalWorkflowCreatePage: FunctionComponent<CreateApprovalWorkflowProps>
                                     variant="contained"
                                     disabled={ null }
                                     onClick={ () => {
-                                        if (notificationDetailsFormRef?.current?.triggerSubmit)
-                                            notificationDetailsFormRef.current.triggerSubmit();
+                                        if (configurationsFormRef?.current?.triggerSubmit)
+                                            configurationsFormRef.current.triggerSubmit();
                                     } }
                                     loading={ isApprovalWorkflowCreateRequestLoading }
                                     data-componentid={ `${componentId}-next-button` }
@@ -499,13 +503,12 @@ const ApprovalWorkflowCreatePage: FunctionComponent<CreateApprovalWorkflowProps>
                             </Typography>
                         </StepLabel>
                         <StepContent data-componentid={ `${componentId}-step-4-content` }>
-                            <ConfigurationsForm
-                                ref={ configurationsFormRef }
+                            <NotificationDetailsForm
+                                ref={ notificationDetailsFormRef }
                                 isReadOnly={ !hasApprovalWorkflowCreatePermission }
-                                initialValues={ approvalWorkflowFormData?.configurations ?? {} }
-                                hasErrors={ hasErrors }
-                                onSubmit={ onConfigurationDetailsFormSubmit }
-                                data-componentid={ `${componentId}-configurations-form` }
+                                initialValues={ notificationData }
+                                onSubmit={ onNotificationDetailsFormSubmit }
+                                data-componentid={ `${componentId}-notification-details-form` }
                             />
                             <div
                                 className="step-actions-container"
@@ -528,8 +531,8 @@ const ApprovalWorkflowCreatePage: FunctionComponent<CreateApprovalWorkflowProps>
                                     variant="contained"
                                     disabled={ null }
                                     onClick={ () => {
-                                        if (configurationsFormRef?.current?.triggerSubmit)
-                                            configurationsFormRef.current.triggerSubmit();
+                                        if (notificationDetailsFormRef?.current?.triggerSubmit)
+                                            notificationDetailsFormRef.current.triggerSubmit();
                                     } }
                                     loading={ isApprovalWorkflowCreateRequestLoading }
                                     data-componentid={ `${componentId}-finish-button` }
