@@ -21,9 +21,7 @@ import { RequestConfigInterface } from "@wso2is/admin.core.v1/hooks/use-request"
 import { store } from "@wso2is/admin.core.v1/store";
 import { Payload } from "@wso2is/admin.flow-builder-core.v1/models/api";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosResponse } from "axios";
 import AskPasswordFlowBuilderConstants from "../constants/ask-password-flow-builder-constants";
 
@@ -63,7 +61,7 @@ const configureAskPasswordFlow = (payload: Payload): Promise<AxiosResponse> => {
 
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 AskPasswordFlowBuilderConstants.FLOW_CONFIG_UPDATE_ERROR,
                 error.stack,

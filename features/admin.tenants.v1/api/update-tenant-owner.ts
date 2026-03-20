@@ -20,9 +20,7 @@ import { AsgardeoSPAClient, HttpClientInstance } from "@asgardeo/auth-react";
 import { store } from "@wso2is/admin.core.v1/store";
 import { RequestConfigInterface } from "@wso2is/admin.core.v1/hooks/use-request";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosResponse } from "axios";
 import TenantConstants from "../constants/tenant-constants";
 import { TenantOwner } from "../models/tenants";
@@ -72,7 +70,7 @@ const updateTenantOwner = (tenantId: string, ownerDetails: TenantOwner): Promise
 
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 TenantConstants.TENANT_OWNER_UPDATE_ERROR,
                 error.stack,

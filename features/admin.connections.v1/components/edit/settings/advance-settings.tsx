@@ -16,9 +16,7 @@
  * under the License.
  */
 
-import { AlertLevels, TestableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AlertLevels, TestableComponentInterface } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { EmphasizedSegment } from "@wso2is/react-components";
 import { AxiosError } from "axios";
@@ -121,7 +119,7 @@ export const AdvanceSettings: FunctionComponent<AdvanceSettingsPropsInterface> =
                 }));
                 onUpdate(editingIDP.id);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 handleConnectionUpdateError(error);
             })
             .finally(() => {
@@ -143,7 +141,7 @@ export const AdvanceSettings: FunctionComponent<AdvanceSettingsPropsInterface> =
                 }));
                 onUpdate(editingIDP.id);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 handleConnectionUpdateError(error);
             })
             .finally(() => {

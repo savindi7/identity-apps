@@ -40,8 +40,7 @@ import {
     ProfileSchemaInterface,
     Property,
     SBACInterface,
-    TestableComponentInterface,
-    HttpErrorResponseDataInterface
+    TestableComponentInterface
 } from "@wso2is/core/models";
 import { addAlert, setProfileSchemaRequestLoadingStatus, setSCIMSchemas } from "@wso2is/core/store";
 import { StringUtils } from "@wso2is/core/utils";
@@ -483,7 +482,7 @@ export const ClaimsList: FunctionComponent<ClaimsListPropsInterface> = (
                 dispatch(addAlert(
                     {
                         //TODO: [Type Fix] Description attribute does not exist on
-                        //AxiosError<HttpErrorResponseDataInterface> or IdentityAppsApiException.
+                        //AxiosError or IdentityAppsApiException.
                         description: error?.description
                             || t("claims:dialects.notifications." +
                                 "deleteDialect.genericError.description"),

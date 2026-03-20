@@ -16,9 +16,7 @@
  * under the License.
  */
 
-import { IdentifiableComponentInterface, TestableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { IdentifiableComponentInterface, TestableComponentInterface } from "@wso2is/core/models";
 import { EmphasizedSegment } from "@wso2is/react-components";
 import { AxiosError } from "axios";
 import reverse from "lodash-es/reverse";
@@ -82,7 +80,7 @@ export const UserSessionsWidget: FunctionComponent<TestableComponentInterface> =
 
                 setUserSessions(response);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface> & { response: { detail: string } }) => {
+            .catch((error: AxiosError & { response: { detail: string } }) => {
                 if (error.response && error.response.data && error.response.detail) {
                     dispatch(
                         addAlert({

@@ -19,9 +19,7 @@
 import Grid from "@oxygen-ui/react/Grid";
 import { AppConstants } from "@wso2is/admin.core.v1/constants/app-constants";
 import { history } from "@wso2is/admin.core.v1/helpers/history";
-import { AlertLevels, IdentifiableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AlertLevels, IdentifiableComponentInterface } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import {
     ContentLoader,
@@ -196,7 +194,7 @@ export const AccountDisablePage: FC<AccountDisablePageInterface> = (
                 );
                 setIsAccountDisableEnabled(value);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error.response && error.response.data && error.response.data.detail) {
                     dispatch(
                         addAlert({

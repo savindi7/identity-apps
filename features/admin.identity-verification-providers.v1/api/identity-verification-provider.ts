@@ -20,9 +20,7 @@ import { AsgardeoSPAClient, HttpRequestConfig, HttpResponse } from "@asgardeo/au
 import { store } from "@wso2is/admin.core.v1/store";
 import { RequestConfigInterface } from "@wso2is/admin.core.v1/hooks/use-request";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { AcceptHeaderValues, ContentTypeHeaderValues, HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AcceptHeaderValues, ContentTypeHeaderValues, HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosResponse } from "axios";
 import {
     IdVPListResponseInterface,
@@ -53,7 +51,7 @@ export const deleteIdentityVerificationProvider = async (id: string): Promise<Ax
 
     return httpClient(requestConfig)
         .then((response: AxiosResponse) =>  response)
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 error.message,
                 error.stack,
@@ -86,7 +84,7 @@ export const updateIdentityVerificationProvider = ({ id, ...rest }: IdentityVeri
 
     return httpClient(requestConfig)
         .then((response: HttpResponse) =>  response)
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 error.message,
                 error.stack,
@@ -131,7 +129,7 @@ export const createIdentityVerificationProvider = (data: IdentityVerificationPro
 
             return Promise.resolve(response.data as IdentityVerificationProviderInterface);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 error.message,
                 error.stack,
@@ -177,7 +175,7 @@ export const getIdentityVerificationProvidersList = (
 
             return Promise.resolve(response.data as IdVPListResponseInterface);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };

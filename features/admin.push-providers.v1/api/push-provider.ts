@@ -20,9 +20,7 @@ import { AsgardeoSPAClient, HttpRequestConfig, HttpResponse } from "@asgardeo/au
 import { RequestConfigInterface } from "@wso2is/admin.core.v1/hooks/use-request";
 import { store } from "@wso2is/admin.core.v1/store";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { AcceptHeaderValues, ContentTypeHeaderValues, HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AcceptHeaderValues, ContentTypeHeaderValues, HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosResponse } from "axios";
 import { PushProviderAPIInterface, PushProviderAPIResponseInterface } from "../models/push-providers";
 
@@ -60,7 +58,7 @@ export const createPushProvider = async (data: PushProviderAPIInterface):
 
             return Promise.resolve(response.data as PushProviderAPIResponseInterface);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 error.message,
                 error.stack,
@@ -87,7 +85,7 @@ export const updatePushProvider = async (name: string, data: PushProviderAPIInte
 
     return httpClient(requestConfig)
         .then((response: HttpResponse) =>  response)
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 error.message,
                 error.stack,
@@ -112,7 +110,7 @@ export const deletePushProvider = async (name: string): Promise<AxiosResponse> =
 
     return httpClient(requestConfig)
         .then((response: AxiosResponse) =>  response)
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 error.message,
                 error.stack,
@@ -142,7 +140,7 @@ export const updateDefaultPushProviderConfig = async (
 
     return httpClient(requestConfig)
         .then((response: HttpResponse) => response)
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 error.message,
                 error.stack,

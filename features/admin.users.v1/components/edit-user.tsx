@@ -32,7 +32,6 @@ import { isFeatureEnabled } from "@wso2is/core/helpers";
 import {
     AlertInterface,
     AlertLevels,
-    HttpErrorResponseDataInterface,
     IdentifiableComponentInterface,
     ProfileInfoInterface
 } from "@wso2is/core/models";
@@ -178,7 +177,7 @@ export const EditUser: FunctionComponent<EditUserPropsInterface> = (
                     setIsSelectedSuperAdmin(true);
                 }
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
 
                 setHideTermination(true);
 

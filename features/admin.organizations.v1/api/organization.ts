@@ -29,9 +29,7 @@ import useRequest, {
 } from "@wso2is/admin.core.v1/hooks/use-request";
 import { store } from "@wso2is/admin.core.v1/store";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import {
     AddOrganizationInterface,
@@ -353,7 +351,7 @@ export const shareApplication = (
             }
 
             return Promise.resolve(response);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -384,7 +382,7 @@ export const stopSharingApplication = (
             }
 
             return Promise.resolve(response);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -413,7 +411,7 @@ export const getSharedOrganizations = (
             }
 
             return Promise.resolve(response);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };

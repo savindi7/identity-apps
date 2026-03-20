@@ -22,9 +22,7 @@ import Button from "@oxygen-ui/react/Button";
 import { CertificateViewModal } from "@wso2is/admin.core.v1/components/certificate-view-modal";
 import { UIConstants } from "@wso2is/admin.core.v1/constants/ui-constants";
 import { CertificateManagementConstants } from "@wso2is/core/constants";
-import { CertificateValidity, DisplayCertificate, IdentifiableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { CertificateValidity, DisplayCertificate, IdentifiableComponentInterface } from "@wso2is/core/models";
 import { CertificateManagementUtils } from "@wso2is/core/utils";
 import {
     ConfirmationModal,
@@ -99,7 +97,7 @@ export const ActionCertificateComponent: FunctionComponent<ActionCertificateProp
     const { t } = useTranslation();
 
     const handleSuccess: (operation: string) => void = useHandleSuccess();
-    const handleError: (error: AxiosError<HttpErrorResponseDataInterface>, operation: string) => void = useHandleError();
+    const handleError: (error: AxiosError, operation: string) => void = useHandleError();
 
     const [ viewDisplayCertificate, setViewDisplayCertificate ] = useState<boolean>(false);
     const [ displayCertificate, setDisplayCertificate ] = useState<DisplayCertificate>(undefined);
@@ -151,7 +149,7 @@ export const ActionCertificateComponent: FunctionComponent<ActionCertificateProp
                 setDisplayCertificate(undefined);
                 setShowCertificateDeleteConfirmation(false);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 handleError(error, ActionsConstants.DELETE_CERTIFICATE);
             })
             .finally(() => {

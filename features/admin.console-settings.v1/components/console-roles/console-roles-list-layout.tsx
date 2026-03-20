@@ -24,9 +24,7 @@ import { FeatureConfigInterface } from "@wso2is/admin.core.v1/models/config";
 import { AppState } from "@wso2is/admin.core.v1/store";
 import { useGetCurrentOrganizationType } from "@wso2is/admin.organizations.v1/hooks/use-get-organization-type";
 import { deleteRoleById } from "@wso2is/admin.roles.v2/api/roles";
-import { AlertLevels, IdentifiableComponentInterface, RoleListInterface, RolesInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AlertLevels, IdentifiableComponentInterface, RoleListInterface, RolesInterface } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { ListLayout, PrimaryButton } from "@wso2is/react-components";
 import { AxiosError } from "axios";
@@ -127,7 +125,7 @@ const ConsoleRolesListLayout: FunctionComponent<ConsoleRolesListLayoutPropsInter
                 })));
 
                 onMutateRolesList();
-            }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            }).catch((error: AxiosError) => {
                 if (error.response && error.response.data && error.response.data.detail) {
                     dispatch(addAlert(({
                         description: error.response.data.detail,

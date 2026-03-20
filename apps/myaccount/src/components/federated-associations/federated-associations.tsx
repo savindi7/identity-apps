@@ -19,9 +19,7 @@
 import {
     AsgardeoSPAClient, BasicUserInfo, DecodedIDTokenPayload
 } from "@asgardeo/auth-react";
-import { TestableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { TestableComponentInterface } from "@wso2is/core/models";
 import { AppAvatar, Popup } from "@wso2is/react-components";
 import { AxiosError } from "axios";
 import React, { FunctionComponent, ReactElement, useEffect, useState } from "react";
@@ -85,7 +83,7 @@ export const FederatedAssociations: FunctionComponent<FederatedAssociationsProps
             .then((response: FederatedAssociation[]) => {
                 setFederatedAssociations(response);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 onAlertFired({
                     description:
                         t("myAccount:components.federatedAssociations.notifications.getFederatedAssociations."
@@ -172,7 +170,7 @@ export const FederatedAssociations: FunctionComponent<FederatedAssociationsProps
                         + ".removeFederatedAssociation.success.message")
                 });
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 onAlertFired({
                     description: t("myAccount:components.federatedAssociations.notifications"
                         + ".removeFederatedAssociation.error.description",

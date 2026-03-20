@@ -17,7 +17,6 @@
  */
 
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
-import { HttpErrorResponseDataInterface } from "@wso2is/core/models";
 
 /**
  * A collection of interfaces which can be used to map HTTP request
@@ -42,7 +41,7 @@ export interface HttpRequestConfig extends AxiosRequestConfig {
 export interface HttpResponse extends AxiosResponse {}
 
 /**
- * Interface to handle HTTP errors. Extends `AxiosError<HttpErrorResponseDataInterface>` interface
+ * Interface to handle HTTP errors. Extends `AxiosError` interface
  * from Axios library.
  */
 /* eslint-disable @typescript-eslint/no-empty-interface */
