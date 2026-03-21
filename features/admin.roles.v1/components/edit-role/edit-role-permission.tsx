@@ -16,9 +16,7 @@
  * under the License.
  */
 
-import { AlertLevels, RolesInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AlertLevels, RolesInterface } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { AxiosError } from "axios";
 import React, { FunctionComponent, ReactElement, useState } from "react";
@@ -97,7 +95,7 @@ export const RolePermissionDetails: FunctionComponent<RolePermissionDetailProps>
                 );
                 onRoleUpdate();
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (!error.response || error.response.status === 401) {
                     dispatch(
                         addAlert({

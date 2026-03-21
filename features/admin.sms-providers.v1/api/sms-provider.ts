@@ -24,9 +24,7 @@ import useRequest, {
 } from "@wso2is/admin.core.v1/hooks/use-request";
 import { store } from "@wso2is/admin.core.v1/store";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { SMSProviderConstants } from "../constants/sms-provider-constants";
 import {
@@ -93,7 +91,7 @@ export const createSMSProvider = (
             }
 
             return Promise.resolve(response.data as SMSProviderAPIResponseInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 SMSProviderConstants.ErrorMessages.SMS_PROVIDER_CONFIG_UPDATE_ERROR_CODE.getErrorMessage(),
                 error.stack,
@@ -132,7 +130,7 @@ export const updateSMSProvider = (
             }
 
             return Promise.resolve(response.data as SMSProviderAPIResponseInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 SMSProviderConstants.ErrorMessages.SMS_PROVIDER_CONFIG_UPDATE_ERROR_CODE.getErrorMessage(),
                 error.stack,
@@ -167,7 +165,7 @@ export const deleteSMSProviders = (): Promise<null | IdentityAppsApiException> =
             }
 
             return Promise.resolve(response.data);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 error.response?.data?.message ?? SMSProviderConstants
                     .ErrorMessages.SMS_PROVIDER_CONFIG_DELETE_ERROR_CODE.getErrorMessage(),

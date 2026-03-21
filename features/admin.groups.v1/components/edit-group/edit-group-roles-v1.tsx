@@ -30,8 +30,7 @@ import { RolePermissions } from "@wso2is/admin.users.v1/components/wizard/user-r
 import {
     AlertLevels,
     RolesMemberInterface,
-    TestableComponentInterface,
-    HttpErrorResponseDataInterface
+    TestableComponentInterface
 } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import {
@@ -425,7 +424,7 @@ export const GroupRolesV1List: FunctionComponent<GroupRolesV1PropsInterface> = (
                 handelAddNewRoleModalClose();
                 onGroupUpdate(group.id);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error?.response?.status === 404) {
                     return;
                 }

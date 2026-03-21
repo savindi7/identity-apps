@@ -36,8 +36,7 @@ import { IdentityAppsError } from "@wso2is/core/errors";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
 import {
     AlertLevels,
-    IdentifiableComponentInterface,
-    HttpErrorResponseDataInterface
+    IdentifiableComponentInterface
 } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import {
@@ -274,7 +273,7 @@ export const ApplicationShareModal: FunctionComponent<ApplicationShareModalProps
                         "client-id": clientId
                     });
                 })
-                .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+                .catch((error: AxiosError) => {
                     onClose(null, null);
                     if (error.response.data.message) {
                         dispatch(
@@ -334,7 +333,7 @@ export const ApplicationShareModal: FunctionComponent<ApplicationShareModalProps
                             "client-id": clientId
                         });
                     })
-                    .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+                    .catch((error: AxiosError) => {
                         onClose(null, null);
                         if (error.response.data.message) {
                             dispatch(
@@ -392,7 +391,7 @@ export const ApplicationShareModal: FunctionComponent<ApplicationShareModalProps
                         "client-id": clientId
                     });
                 })
-                .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+                .catch((error: AxiosError) => {
                     onClose(null, null);
                     if (error.response.data.message) {
                         dispatch(

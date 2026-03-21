@@ -24,9 +24,7 @@ import {
     history
 } from "@wso2is/admin.core.v1/helpers/history";
 import { AppState } from "@wso2is/admin.core.v1/store";
-import { AlertLevels,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AlertLevels } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { Field, Form } from "@wso2is/form";
 import {
@@ -179,7 +177,7 @@ export const ApplicationsSettingsForm: FunctionComponent<ApplicationsSettingsPro
     /**
      * Resolve the error message when the update fails.
      */
-    const resolveUpdateErrorMessage = (error: AxiosError<HttpErrorResponseDataInterface>): string => {
+    const resolveUpdateErrorMessage = (error: AxiosError): string => {
 
         return (
             t("console:develop.pages.applicationsSettings.notifications.error.description",
@@ -190,7 +188,7 @@ export const ApplicationsSettingsForm: FunctionComponent<ApplicationsSettingsPro
     /**
      * Handles the error scenario of the update.
      */
-    const handleUpdateError = (error: AxiosError<HttpErrorResponseDataInterface>) => {
+    const handleUpdateError = (error: AxiosError) => {
         if (error?.response?.data?.detail) {
             dispatch(
                 addAlert({
@@ -256,7 +254,7 @@ export const ApplicationsSettingsForm: FunctionComponent<ApplicationsSettingsPro
             .then(() => {
                 handleUpdateSuccess();
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 handleUpdateError(error);
             })
             .finally(() => {

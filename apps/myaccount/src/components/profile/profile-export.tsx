@@ -16,9 +16,7 @@
  * under the License.
  */
 
-import { TestableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { TestableComponentInterface } from "@wso2is/core/models";
 import { AxiosError, AxiosResponse } from "axios";
 import React, { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
@@ -92,7 +90,7 @@ export const ProfileExport: FunctionComponent<ProfileExportProps> = (
                     });
                 }
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface> & { response: { detail: string } }) => {
+            .catch((error: AxiosError & { response: { detail: string } }) => {
                 if (error.response && error.response.data && error.response.data.detail) {
                     onAlertFired({
                         description: t(

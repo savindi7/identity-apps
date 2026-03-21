@@ -35,9 +35,7 @@ import {
 } from "@wso2is/admin.server-configurations.v1/models/governance-connectors";
 import { GovernanceConnectorUtils } from "@wso2is/admin.server-configurations.v1/utils/governance-connector-utils";
 import { isFeatureEnabled } from "@wso2is/core/helpers";
-import { AlertLevels, IdentifiableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AlertLevels, IdentifiableComponentInterface } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { Field, Form } from "@wso2is/form";
 import { I18n } from "@wso2is/i18n";
@@ -151,7 +149,7 @@ const AttributeVerificationSettingsFormPage: FunctionComponent<AttributeVerifica
                 setConnectorDetails(response);
                 updateFormDataFromConnector(response);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error.response && error.response.data && error.response.data.description) {
                     dispatch(
                         addAlert({
@@ -279,7 +277,7 @@ const AttributeVerificationSettingsFormPage: FunctionComponent<AttributeVerifica
      *
      * @param error - Error response.
      */
-    const handleUpdateError = (error: AxiosError<HttpErrorResponseDataInterface>) => {
+    const handleUpdateError = (error: AxiosError) => {
         if (error.response && error.response.data && error.response.data.description) {
             dispatch(
                 addAlert({
@@ -338,7 +336,7 @@ const AttributeVerificationSettingsFormPage: FunctionComponent<AttributeVerifica
             .then(() => {
                 handleUpdateSuccess();
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 handleUpdateError(error);
             })
             .finally(() => {

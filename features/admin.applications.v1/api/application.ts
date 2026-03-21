@@ -24,9 +24,7 @@ import useRequest, {
 } from "@wso2is/admin.core.v1/hooks/use-request";
 import { AppState, store } from "@wso2is/admin.core.v1/store";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import isEmpty from "lodash-es/isEmpty";
 import { ApplicationManagementConstants } from "../constants/application-management";
@@ -91,7 +89,7 @@ export const getApplicationDetails = (id: string): Promise<any> => {
             }
 
             return Promise.resolve(response.data as ApplicationBasicInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -120,7 +118,7 @@ export const deleteApplication = (id: string): Promise<any> => {
             }
 
             return Promise.resolve(response);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -156,7 +154,7 @@ export const disableApplication = <T>(id: string, status: boolean): Promise<T> =
             }
 
             return Promise.resolve(response.data as T);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ApplicationManagementConstants.APPLICATION_STATUS_UPDATE_ERROR,
                 error.stack,
@@ -203,7 +201,7 @@ export const updateApplicationDetails = (
             }
 
             return Promise.resolve(response.data as ApplicationBasicInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -246,7 +244,7 @@ export const getApplicationList = (
             }
 
             return Promise.resolve(response.data as ApplicationListInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -319,7 +317,7 @@ export const getApplicationsByIds = async (
         const responses: Array<AxiosResponse> = await httpClientAll(requests);
 
         return Promise.resolve<AxiosResponse<ApplicationInterface>[]>(responses);
-    } catch (error: AxiosError<HttpErrorResponseDataInterface> | any) {
+    } catch (error: AxiosError | any) {
         return Promise.reject(
             new IdentityAppsApiException(
                 ApplicationManagementConstants.UNABLE_FETCH_APPLICATIONS,
@@ -399,7 +397,7 @@ export const getAvailableInboundProtocols = (customOnly: boolean): Promise<AuthP
             }
 
             return Promise.resolve(response.data as AuthProtocolMetaListItemInterface[]);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -435,7 +433,7 @@ export const getAuthProtocolMetadata = <T>(protocol: string): Promise<T> => {
             }
 
             return Promise.resolve(response.data as T);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ApplicationManagementConstants.AUTH_PROTOCOL_METADATA_FETCH_ERROR,
                 error.stack,
@@ -469,7 +467,7 @@ export const getOIDCData = (id: string): Promise<any> => {
             }
 
             return Promise.resolve(response.data as OIDCDataInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -505,7 +503,7 @@ export const getInboundProtocolConfig = (applicationId: string, inboundProtocolI
             }
 
             return Promise.resolve(response.data);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -538,7 +536,7 @@ export const updateOIDCData = (id: string, OIDC: Record<string, unknown>): Promi
             }
 
             return Promise.resolve(response);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -590,7 +588,7 @@ export const updateAuthProtocolConfig = <T>(id: string, config: T,
             }
 
             return Promise.resolve(response.data as T);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ApplicationManagementConstants.AUTH_PROTOCOL_CONFIG_UPDATE_ERROR,
                 error.stack,
@@ -634,7 +632,7 @@ export const deleteProtocol = <T>(id: string, protocol: string): Promise<T> => {
             }
 
             return Promise.resolve(response.data as T);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ApplicationManagementConstants.APP_PROTOCOL_DELETE_ERROR,
                 error.stack,
@@ -671,7 +669,7 @@ export const updateApplicationConfigurations = (id: string, configs: Record<stri
             }
 
             return Promise.resolve(response);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -701,7 +699,7 @@ export const createApplication = (application: MainApplicationInterface): Promis
             }
 
             return Promise.resolve(response);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -731,7 +729,7 @@ export const updateAuthenticationSequence = (id: string, data: Record<string, un
             }
 
             return Promise.resolve(response);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -768,7 +766,7 @@ export const updateAdaptiveScript = (id: string, script: string | string[], shou
             }
 
             return Promise.resolve(response);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -799,7 +797,7 @@ export const updateClaimConfiguration = (id: string, data: UpdateClaimConfigurat
             }
 
             return Promise.resolve(response);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -830,7 +828,7 @@ export const regenerateClientSecret = (appId: string): Promise<any> => {
             }
 
             return Promise.resolve(response);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -860,7 +858,7 @@ export const revokeClientSecret = (appId: string): Promise<any> => {
             }
 
             return Promise.resolve(response);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -897,7 +895,7 @@ export const getAdaptiveAuthTemplates = (): Promise<AdaptiveAuthTemplatesListInt
             return Promise.resolve({
                 templatesJSON: JSON.parse(response?.data?.templatesJSON)
             } as AdaptiveAuthTemplatesListInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ApplicationManagementConstants.ADAPTIVE_AUTH_TEMPLATES_FETCH_ERROR,
                 error.stack,
@@ -984,7 +982,7 @@ export const getApplicationTemplateData = (templateId: string): Promise<Applicat
             }
 
             return Promise.resolve(response.data as ApplicationTemplateInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ApplicationManagementConstants.APPLICATION_TEMPLATE_FETCH_ERROR,
                 error.stack,
@@ -1035,7 +1033,7 @@ export const getApplicationTemplateList = (limit?: number, offset?: number,
             }
 
             return Promise.resolve(response.data as ApplicationTemplateListInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ApplicationManagementConstants.APPLICATION_TEMPLATES_LIST_FETCH_ERROR,
                 error.stack,
@@ -1088,6 +1086,7 @@ export const getOIDCApplicationConfigurations = (): Promise<OIDCApplicationConfi
 
             const oidcConfigs: OIDCApplicationConfigurationInterface = {
                 authorizeEndpoint: response.data.authorization_endpoint,
+                cibaEndpoint: response.data.backchannel_authentication_endpoint,
                 dynamicClientRegistrationEndpoint: response.data.registration_endpoint,
                 endSessionEndpoint: response.data.end_session_endpoint,
                 introspectionEndpoint: response.data.introspection_endpoint,
@@ -1105,7 +1104,7 @@ export const getOIDCApplicationConfigurations = (): Promise<OIDCApplicationConfi
             };
 
             return Promise.resolve(oidcConfigs);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ApplicationManagementConstants.APPLICATION_OIDC_CONFIGURATIONS_FETCH_ERROR,
                 error.stack,
@@ -1177,7 +1176,7 @@ export const getSAMLApplicationConfigurations = (): Promise<SAMLApplicationConfi
             }
 
             return Promise.resolve(ApplicationManagementUtils.getIDPDetailsFromMetaXML(response.data));
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ApplicationManagementConstants.APPLICATION_SAML_CONFIGURATIONS_FETCH_ERROR,
                 error.stack,
@@ -1220,7 +1219,7 @@ export const getRequestPathAuthenticators = (): Promise<any> => {
 
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ApplicationManagementConstants.REQUEST_PATH_AUTHENTICATORS_FETCH_ERROR,
                 error.stack,
@@ -1274,7 +1273,7 @@ export const updateMyAccountStatus = (status: boolean): Promise<MyAccountPortalS
 
             return Promise.resolve(response.data as MyAccountPortalStatusInterface);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ApplicationManagementConstants.MYACCOUNT_STATUS_UPDATE_ERROR,
                 error.stack,
