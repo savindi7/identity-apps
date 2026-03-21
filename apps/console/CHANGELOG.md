@@ -1,5 +1,29 @@
 # @wso2is/console
 
+## 3.1.4
+
+### Patch Changes
+
+- Updated dependencies [[`4d2eb0510ada818bfad2603875a3cd5f5a60d70b`](https://github.com/wso2/identity-apps/commit/4d2eb0510ada818bfad2603875a3cd5f5a60d70b)]:
+  - @wso2is/admin.approval-workflows.v1@1.2.19
+  - @wso2is/admin.console-settings.v1@2.26.15
+  - @wso2is/i18n@2.37.6
+  - @wso2is/admin.users.v1@2.38.4
+  - @wso2is/admin.agents.v1@1.0.196
+  - @wso2is/admin.onboarding.v1@1.0.52
+  - @wso2is/admin.core.v1@2.55.4
+  - @wso2is/admin.roles.v2@2.27.351
+  - @wso2is/admin.applications.v1@2.41.29
+  - @wso2is/admin.home.v1@1.7.161
+  - @wso2is/admin.connections.v1@2.36.21
+  - @wso2is/admin.branding.v1@2.32.137
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.181
+  - @wso2is/admin.email-management.v1@2.25.345
+  - @wso2is/admin.flows.v1@1.0.150
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.181
+  - @wso2is/admin.server-configurations.v1@2.38.20
+  - @wso2is/admin.registration-flow-builder.v1@0.10.141
+
 ## 3.1.3
 
 ### Patch Changes
