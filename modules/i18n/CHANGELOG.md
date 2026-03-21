@@ -1,5 +1,11 @@
 # @wso2is/i18n
 
+## 2.37.6
+
+### Patch Changes
+
+- [#9876](https://github.com/wso2/identity-apps/pull/9876) [`4d2eb0510ada818bfad2603875a3cd5f5a60d70b`](https://github.com/wso2/identity-apps/commit/4d2eb0510ada818bfad2603875a3cd5f5a60d70b) Thanks [@sadilchamishka](https://github.com/sadilchamishka)! - Improve approval notification ux
+
 ## 2.37.5
 
 ### Patch Changes
