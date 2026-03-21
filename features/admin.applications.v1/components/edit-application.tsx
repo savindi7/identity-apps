@@ -40,9 +40,7 @@ import { OrganizationFeatureDictionaryKeys, OrganizationType } from "@wso2is/adm
 import { OrganizationManagementConstants } from "@wso2is/admin.organizations.v1/constants/organization-constants";
 import { useGetCurrentOrganizationType } from "@wso2is/admin.organizations.v1/hooks/use-get-organization-type";
 import { isFeatureEnabled } from "@wso2is/core/helpers";
-import { AlertLevels, IdentifiableComponentInterface, SBACInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AlertLevels, IdentifiableComponentInterface, SBACInterface } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import {
     ConfirmationModal,
@@ -242,6 +240,12 @@ export const EditApplication: FunctionComponent<EditApplicationPropsInterface> =
             OrganizationFeatureDictionaryKeys.OrganizationApplicationAdvancedSettings
         ));
 
+    const isTokenIssuerSelectionEnabled: boolean = isFeatureEnabled(
+        organizationFeatureConfig,
+        OrganizationManagementConstants.FEATURE_DICTIONARY.get(
+            OrganizationFeatureDictionaryKeys.OrganizationApplicationTokenIssuerSelection
+        ));
+
     const isApplicationEditProvisioningSettingsEnabled: boolean = isFeatureEnabled(featureConfig?.applications,
         ApplicationManagementConstants.FEATURE_DICTIONARY.get("APPLICATION_EDIT_PROVISIONING_SETTINGS"));
 
@@ -338,7 +342,7 @@ export const EditApplication: FunctionComponent<EditApplicationPropsInterface> =
                 });
 
             }))
-                .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+                .catch((error: AxiosError) => {
                     if (error?.response?.status === 404) {
                         return;
                     }
@@ -438,7 +442,7 @@ export const EditApplication: FunctionComponent<EditApplicationPropsInterface> =
                 setShowDisableConfirmationModal(false);
                 onUpdate(application.id);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error?.response?.data?.description) {
                     dispatch(addAlert({
                         description: error.response.data.description,
@@ -962,8 +966,9 @@ export const EditApplication: FunctionComponent<EditApplicationPropsInterface> =
             }
             if (isFeatureEnabled(featureConfig?.applications,
                 ApplicationManagementConstants.FEATURE_DICTIONARY.get("APPLICATION_EDIT_INFO"))
-                 && !isSubOrganization()
-                 && !isMyAccount) {
+                 && !isFragmentApp
+                 && !isMyAccount
+                 && (isSubOrganization() ? isTokenIssuerSelectionEnabled : true)) {
 
                 applicationConfig.editApplication.
                     isTabEnabledForApp(
@@ -1034,7 +1039,7 @@ export const EditApplication: FunctionComponent<EditApplicationPropsInterface> =
                 menuItem: t("applications:edit.sections.sharedAccess.tabName"),
                 render: SharedAccessTabPane
             },
-            {
+            ...(isSubOrganization() ? isTokenIssuerSelectionEnabled : true) && [ {
                 componentId: "info",
                 "data-tabid": ApplicationTabIDs.INFO,
                 menuItem: {
@@ -1042,7 +1047,7 @@ export const EditApplication: FunctionComponent<EditApplicationPropsInterface> =
                     icon: "info circle grey"
                 },
                 render: InfoTabPane
-            }
+            } ]
         ];
     };
 
@@ -1191,7 +1196,7 @@ export const EditApplication: FunctionComponent<EditApplicationPropsInterface> =
                     });
                     setAllowedOrigins(allowedCORSOrigins);
                 })
-                .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+                .catch((error: AxiosError) => {
                     if (error?.response?.data?.description) {
                         dispatch(addAlert({
                             description: error.response.data.description,

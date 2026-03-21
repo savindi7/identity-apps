@@ -39,8 +39,7 @@ import { isFeatureEnabled } from "@wso2is/core/helpers";
 import {
     AlertLevels,
     IdentifiableComponentInterface,
-    RolesInterface,
-    HttpErrorResponseDataInterface
+    RolesInterface
 } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { useTrigger } from "@wso2is/forms";
@@ -348,7 +347,7 @@ export const CreateGroupWizard: FunctionComponent<CreateGroupProps> =
                         );
                         closeWizard();
                         history.push(AppConstants.getPaths().get("GROUP_EDIT").replace(":id", response.data.id));
-                    }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+                    }).catch((error: AxiosError) => {
                         if (!error.response || error.response.status === 401) {
                             setAlert({
                                 description: t("console:manage.features.groups.notifications." +
@@ -395,7 +394,7 @@ export const CreateGroupWizard: FunctionComponent<CreateGroupProps> =
             }
 
             onCreate();
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>)  => {
+        }).catch((error: AxiosError)  => {
             if (!error.response || error.response.status === 401) {
                 dispatch(
                     addAlert({

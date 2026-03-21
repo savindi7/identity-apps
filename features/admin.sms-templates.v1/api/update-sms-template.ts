@@ -19,9 +19,7 @@
 import { AsgardeoSPAClient, HttpClientInstance } from "@asgardeo/auth-react";
 import { store } from "@wso2is/admin.core.v1/store";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { SMSTemplateConstants } from "../constants/sms-template-constants";
 import { SMSTemplate } from "../models/sms-templates";
@@ -74,7 +72,7 @@ const updateSmsTemplate = (
 
             return Promise.resolve(response.data as SMSTemplate);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 "Error occurred while updating the SMS template.",
                 error.stack,

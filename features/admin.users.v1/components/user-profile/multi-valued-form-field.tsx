@@ -41,8 +41,7 @@ import {
     PatchOperationRequest,
     ProfileInfoInterface,
     ProfileSchemaInterface,
-    SharedProfileValueResolvingMethod,
-    HttpErrorResponseDataInterface
+    SharedProfileValueResolvingMethod
 } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { AutocompleteFieldAdapter, FinalFormField, TextFieldAdapter } from "@wso2is/form";
@@ -236,7 +235,7 @@ const MultiValuedFormField = (props: MultiValuedFormFieldProps) => {
 
                 handleUserUpdate(user.id);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error?.response?.data?.detail || error?.response?.data?.description) {
                     dispatch(addAlert({
                         description: error?.response?.data?.detail || error?.response?.data?.description,

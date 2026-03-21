@@ -22,9 +22,7 @@ import {
     UpdateMultipleGovernanceConnectorsInterface
 } from "@wso2is/admin.server-configurations.v1/models/governance-connectors";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 
 /**
@@ -63,7 +61,7 @@ export const updatePasswordPolicyProperties = (
 
             return Promise.resolve();
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 "An error ocurred while updating the password expiry and history properties.",
                 error.stack,

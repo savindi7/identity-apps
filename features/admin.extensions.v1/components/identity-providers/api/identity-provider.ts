@@ -24,9 +24,7 @@ import useRequest, {
     RequestResultInterface
 } from "@wso2is/admin.core.v1/hooks/use-request";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosResponse } from "axios";
 import { SMSOTPConstants } from "../constants";
 import { NotificationSenderSMSInterface } from "../models";
@@ -107,7 +105,7 @@ export const addSMSPublisher = (): Promise<NotificationSenderSMSInterface> => {
             }
 
             return Promise.resolve(response.data as NotificationSenderSMSInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 SMSOTPConstants.ERROR_IN_CREATING_SMS_NOTIFICATION_SENDER,
                 error.stack,
@@ -147,7 +145,7 @@ export const deleteSMSPublisher = (): Promise<void> => {
             }
 
             return Promise.resolve(response.data);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             let errorMessage: string = SMSOTPConstants.ERROR_IN_DELETING_SMS_NOTIFICATION_SENDER;
 
             if (error.response?.data?.code ===

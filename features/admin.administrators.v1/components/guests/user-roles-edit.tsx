@@ -31,8 +31,7 @@ import {
     ProfileInfoInterface,
     RoleListInterface,
     RolesInterface,
-    RolesMemberInterface,
-    HttpErrorResponseDataInterface
+    RolesMemberInterface
 } from "@wso2is/core/models";
 import {
     ConfirmationModal,
@@ -529,7 +528,7 @@ export const UserRolesList: FunctionComponent<UserRolesPropsInterface> = (
                     handleUserUpdate(user.id);
                 }
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error?.response?.status === 404) {
                     return;
                 }

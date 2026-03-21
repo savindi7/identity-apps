@@ -22,9 +22,7 @@ import { AppState } from "@wso2is/admin.core.v1/store";
 import { updateRoleDetails, updateUsersForRole } from "@wso2is/admin.roles.v2/api/roles";
 import { PatchRoleDataInterface } from "@wso2is/admin.roles.v2/models/roles";
 import { PayloadInterface, PayloadRolesV3Interface } from "@wso2is/admin.users.v1/models/user";
-import { FeatureAccessConfigInterface, RolesInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { FeatureAccessConfigInterface, RolesInterface } from "@wso2is/core/models";
 import { AxiosError, AxiosResponse } from "axios";
 import { useSelector } from "react-redux";
 
@@ -42,7 +40,7 @@ export type UseBulkAssignAdministratorRolesInterface = {
     assignAdministratorRoles: (
         user: UserBasicInterface,
         roles: RolesInterface[],
-        onAdministratorRoleAssignError: (error: AxiosError<HttpErrorResponseDataInterface>) => void,
+        onAdministratorRoleAssignError: (error: AxiosError) => void,
         onAdministratorRoleAssignSuccess: () => void
     ) => void;
     /**
@@ -53,7 +51,7 @@ export type UseBulkAssignAdministratorRolesInterface = {
      */
     unassignAdministratorRoles: (
         user: UserBasicInterface,
-        onAdministratorRoleAssignError: (error: AxiosError<HttpErrorResponseDataInterface>) => void,
+        onAdministratorRoleAssignError: (error: AxiosError) => void,
         onAdministratorRoleAssignSuccess: () => void
     ) => void;
 };
@@ -92,7 +90,7 @@ const useBulkAssignAdministratorRoles = (): UseBulkAssignAdministratorRolesInter
     const assignAdministratorRoles = async (
         user: UserBasicInterface,
         roles: RolesInterface[],
-        onAdministratorRoleAssignError: (error: AxiosError<HttpErrorResponseDataInterface>) => void,
+        onAdministratorRoleAssignError: (error: AxiosError) => void,
         onAdministratorRoleAssignSuccess: (responses: AxiosResponse[]) => void
     ) => {
         const payload: PayloadRolesV3Interface | PayloadInterface =
@@ -153,7 +151,7 @@ const useBulkAssignAdministratorRoles = (): UseBulkAssignAdministratorRolesInter
      */
     const unassignAdministratorRoles = async (
         user: UserBasicInterface,
-        onAdministratorRoleUnassignError: (error: AxiosError<HttpErrorResponseDataInterface>) => void,
+        onAdministratorRoleUnassignError: (error: AxiosError) => void,
         onAdministratorRoleUnassignSuccess: (responses: AxiosResponse[]) => void
     ) => {
         const payload: PatchRoleDataInterface = userRolesV3FeatureEnabled && hasRoleV3UpdateScopes ? {

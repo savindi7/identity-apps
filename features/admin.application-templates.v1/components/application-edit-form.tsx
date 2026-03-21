@@ -31,9 +31,7 @@ import {
 } from "@wso2is/admin.applications.v1/models/application-inbound";
 import { TemplateDynamicForm } from "@wso2is/admin.template-core.v1/components/template-dynamic-form";
 import { DynamicFieldInterface } from "@wso2is/admin.template-core.v1/models/dynamic-fields";
-import { AlertLevels, IdentifiableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AlertLevels, IdentifiableComponentInterface } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { EmphasizedSegment } from "@wso2is/react-components";
 import { AxiosError } from "axios";
@@ -213,7 +211,7 @@ export const ApplicationEditForm: FunctionComponent<ApplicationEditFormPropsInte
                     level: AlertLevels.SUCCESS,
                     message: t("applications:notifications.updateApplication.success.message")
                 }));
-            }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            }).catch((error: AxiosError) => {
                 if (error?.response?.data?.description) {
                     dispatch(addAlert({
                         description: error.response.data.description,
@@ -253,7 +251,7 @@ export const ApplicationEditForm: FunctionComponent<ApplicationEditFormPropsInte
                         }));
                     }
                 })
-                .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+                .catch((error: AxiosError) => {
                     callback();
 
                     if (error?.response?.data?.description) {

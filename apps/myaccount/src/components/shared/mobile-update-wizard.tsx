@@ -17,9 +17,7 @@
  */
 
 import { ProfileConstants } from "@wso2is/core/constants";
-import { PatchOperationRequest, TestableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { PatchOperationRequest, TestableComponentInterface } from "@wso2is/core/models";
 import { Field, Forms, Validation, useTrigger } from "@wso2is/forms";
 import { FormValidation } from "@wso2is/validation";
 import { AxiosError, AxiosResponse } from "axios";
@@ -189,7 +187,7 @@ export const MobileUpdateWizard: React.FunctionComponent<MobileUpdateWizardProps
                 setVerificationError(false);
                 setResendSuccess(true);
             })
-            .catch((errorMessage: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((errorMessage: AxiosError) => {
                 onAlertFired({
                     description: t("myAccount:components.mobileUpdateWizard.notifications." +
                             "resendError.error.description", {

@@ -24,9 +24,7 @@ import useRequest, {
     RequestResultInterface
 } from "@wso2is/admin.core.v1/hooks/use-request";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { ImpersonationConfigConstants } from "../constants/impersonation-configuration";
 import {
@@ -97,7 +95,7 @@ export const updateImpersonationConfigurations = (data: ImpersonationConfigPatch
             }
 
             return Promise.resolve(response.data as ImpersonationConfigAPIResponseInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             const errorMessage: string = ImpersonationConfigConstants.ErrorMessages
                 .IMPERSONATION_CONFIG_UPDATE_ERROR_CODE.getErrorMessage();
 
@@ -135,7 +133,7 @@ export const revertImpersonationConfigurations = (): Promise<void> => {
             }
 
             return Promise.resolve();
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             const errorMessage: string = ImpersonationConfigConstants.ErrorMessages
                 .IMPERSONATION_CONFIG_REVERT_ERROR_CODE.getErrorMessage();
 

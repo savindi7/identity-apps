@@ -59,8 +59,7 @@ import {
     IdentifiableComponentInterface,
     MultiValueAttributeInterface,
     ProfileSchemaInterface,
-    TestableComponentInterface,
-    HttpErrorResponseDataInterface
+    TestableComponentInterface
 } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { DropdownChild } from "@wso2is/forms";
@@ -643,7 +642,7 @@ const UsersPage: FunctionComponent<UsersPageInterface> = (
 
                 setEmailVerificationEnabled(emailVerification.value === "true" ||
                     invitedUserRegistrationConfigs?.isEnabled);
-            }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            }).catch((error: AxiosError) => {
                 handleAlerts({
                     description: error?.response?.data?.description ?? t(
                         "governanceConnectors:notifications." +
