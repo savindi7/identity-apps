@@ -19,9 +19,7 @@
 import { AsgardeoSPAClient, HttpClientInstance } from "@asgardeo/auth-react";
 import { RequestConfigInterface } from "@wso2is/admin.core.v1/hooks/use-request";
 import { store } from "@wso2is/admin.core.v1/store";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosResponse } from "axios";
 import { AgentScimSchema } from "../models/agents";
 
@@ -53,7 +51,7 @@ export const addAgent = (data: AgentScimSchema): Promise<any> => {
         .then((response: AxiosResponse) => {
             return Promise.resolve(response?.data);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -79,7 +77,7 @@ export const updateAgent = (agentId: string, data: AgentScimSchema): Promise<any
         .then((response: AxiosResponse) => {
             return Promise.resolve(response);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -104,7 +102,7 @@ export const deleteAgent = (agentId: string): Promise<AxiosResponse> => {
         .then((response: AxiosResponse) => {
             return Promise.resolve(response);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -145,7 +143,7 @@ export const updateAgentLockStatus = (agentId: string, isLocked: boolean): Promi
         .then((response: AxiosResponse) => {
             return Promise.resolve(response);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -184,7 +182,7 @@ export const updateAgentPassword = (agentId: string, newPassword: string): Promi
         .then((response: AxiosResponse) => {
             return Promise.resolve(response);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };

@@ -26,9 +26,7 @@ import { store } from "@wso2is/admin.core.v1/store";
 import { OrganizationType } from "@wso2is/admin.organizations.v1/constants";
 import { useGetCurrentOrganizationType } from "@wso2is/admin.organizations.v1/hooks/use-get-organization-type";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { ValidationManagementConstants } from "../constants/validation-config-constants";
 import {
@@ -92,7 +90,7 @@ export const updateValidationConfigData = (
 
             return Promise.resolve(response.data as ValidationDataInterface[]);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ValidationManagementConstants.CONFIGURATION_STATUS_UPDATE_ERROR,
                 error.stack,
@@ -134,7 +132,7 @@ export const revertValidationConfigData = (
 
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ValidationManagementConstants.CONFIGURATION_REVERT_ERROR,
                 error.stack,

@@ -22,9 +22,7 @@ import useRequest,
     from "@wso2is/admin.core.v1/hooks/use-request";
 import { store } from "@wso2is/admin.core.v1/store";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosResponse } from "axios";
 import { ServerConfigurationsInterface } from "./governance-connectors";
 import { ServerConfigurationsConstants } from "../constants/server-configurations-constants";
@@ -65,7 +63,7 @@ export const getServerConfigs = () : Promise<ServerConfigurationsInterface> => {
 
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ServerConfigurationsConstants.CONFIGS_FETCH_REQUEST_ERROR,
                 error.stack,

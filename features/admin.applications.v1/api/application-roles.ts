@@ -19,9 +19,7 @@
 import { AsgardeoSPAClient, HttpClientInstance } from "@asgardeo/auth-react";
 import { store } from "@wso2is/admin.core.v1/store";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { ApplicationManagementConstants } from "../constants/application-management";
 import {
@@ -72,7 +70,7 @@ export const shareApplicationWithAllOrganizations = <T>(
             }
 
             return Promise.resolve(response.data as T);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ApplicationManagementConstants.APPLICATION_STATUS_UPDATE_ERROR,
                 error.stack,
@@ -115,7 +113,7 @@ export const unShareApplicationWithAllOrganizations = <T>(
             }
 
             return Promise.resolve(response.data as T);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ApplicationManagementConstants.APPLICATION_STATUS_UPDATE_ERROR,
                 error.stack,
@@ -158,7 +156,7 @@ export const shareApplicationWithSelectedOrganizationsAndRoles = <T>(
             }
 
             return Promise.resolve(response.data as T);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ApplicationManagementConstants.APPLICATION_STATUS_UPDATE_ERROR,
                 error.stack,
@@ -201,7 +199,7 @@ export const editApplicationRolesOfExistingOrganizations = <T>(
             }
 
             return Promise.resolve(response.data as T);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ApplicationManagementConstants.APPLICATION_STATUS_UPDATE_ERROR,
                 error.stack,
@@ -244,7 +242,7 @@ export const unshareApplicationWithSelectedOrganizations = <T>(
             }
 
             return Promise.resolve(response.data as T);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ApplicationManagementConstants.APPLICATION_STATUS_UPDATE_ERROR,
                 error.stack,

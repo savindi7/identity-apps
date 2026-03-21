@@ -26,9 +26,7 @@ import {
 } from "@wso2is/admin.organizations.v1/models";
 import { getRolesList } from "@wso2is/admin.roles.v2/api/roles";
 import { INTERNAL_DOMAIN } from "@wso2is/admin.roles.v2/constants/role-constants";
-import { RoleListInterface, RolesInterface, TestableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { RoleListInterface, RolesInterface, TestableComponentInterface } from "@wso2is/core/models";
 import { DynamicField, KeyValue } from "@wso2is/forms";
 import { Heading, Hint } from "@wso2is/react-components";
 import { AxiosError, AxiosResponse } from "axios";
@@ -116,7 +114,7 @@ export const RoleMappingSettings: FunctionComponent<RoleMappingSettingsPropsInte
                         setRoleList(allRole.Resources);
                     }
                 })
-                .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+                .catch((error: AxiosError) => {
                     handleGetRoleListError(error);
                 });
         } else {

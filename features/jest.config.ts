@@ -80,7 +80,8 @@ module.exports = {
         } ]
     },
     transformIgnorePatterns: [
-        "/node_modules/(?!(\\.pnpm|@wso2is|@oxygen-ui\\/react|axios)\\/)"
+        "/node_modules/?(?!@wso2is)",
+        "/node_modules/(?!@oxygen-ui/react/)"
     ],
     verbose: true
 };
