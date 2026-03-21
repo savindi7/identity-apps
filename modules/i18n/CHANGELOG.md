@@ -1,5 +1,11 @@
 # @wso2is/i18n
 
+## 2.37.7
+
+### Patch Changes
+
+- [#9809](https://github.com/wso2/identity-apps/pull/9809) [`41126304808de0c2e09081771c18c77e2b3236a1`](https://github.com/wso2/identity-apps/commit/41126304808de0c2e09081771c18c77e2b3236a1) Thanks [@nishagii](https://github.com/nishagii)! - Move approval workflow rule handlings to workflow module from rule module
+
 ## 2.37.6
 
 ### Patch Changes

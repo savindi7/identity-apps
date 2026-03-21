@@ -1,5 +1,21 @@
 # @wso2is/admin.approval-workflows.v1
 
+## 1.3.0
+
+### Minor Changes
+
+- [#9809](https://github.com/wso2/identity-apps/pull/9809) [`41126304808de0c2e09081771c18c77e2b3236a1`](https://github.com/wso2/identity-apps/commit/41126304808de0c2e09081771c18c77e2b3236a1) Thanks [@nishagii](https://github.com/nishagii)! - Move approval workflow rule handlings to workflow module from rule module
+
+### Patch Changes
+
+- Updated dependencies [[`41126304808de0c2e09081771c18c77e2b3236a1`](https://github.com/wso2/identity-apps/commit/41126304808de0c2e09081771c18c77e2b3236a1)]:
+  - @wso2is/admin.rules.v1@0.7.21
+  - @wso2is/i18n@2.37.7
+  - @wso2is/admin.users.v1@2.38.5
+  - @wso2is/admin.core.v1@2.55.5
+  - @wso2is/admin.roles.v2@2.27.352
+  - @wso2is/admin.applications.v1@2.41.30
+
 ## 1.2.19
 
 ### Patch Changes
