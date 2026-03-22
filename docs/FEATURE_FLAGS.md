@@ -250,4 +250,3 @@ You can use:
   <br><br><img width="465" height="223" alt="ribbon" src="https://github.com/user-attachments/assets/b5fa372e-3a87-4f73-a042-d8133bb7b5d2" /><br>
 
 
-This is the recommended approach when you want a consistent UI element for labels such as `Preview`, `New`, or `Beta` across the application.
