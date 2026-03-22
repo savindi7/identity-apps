@@ -1,5 +1,66 @@
 # @wso2is/admin.password-recovery-flow-builder.v1
 
+## 1.1.182
+
+### Patch Changes
+
+- Updated dependencies [[`41126304808de0c2e09081771c18c77e2b3236a1`](https://github.com/wso2/identity-apps/commit/41126304808de0c2e09081771c18c77e2b3236a1)]:
+  - @wso2is/admin.rules.v1@0.7.21
+  - @wso2is/admin.core.v1@2.55.5
+  - @wso2is/admin.flow-builder-core.v1@0.10.182
+  - @wso2is/admin.flows.v1@1.0.151
+  - @wso2is/admin.server-configurations.v1@2.38.21
+
+## 1.1.181
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.55.4
+  - @wso2is/admin.flow-builder-core.v1@0.10.181
+  - @wso2is/admin.rules.v1@0.7.20
+  - @wso2is/admin.flows.v1@1.0.150
+  - @wso2is/admin.server-configurations.v1@2.38.20
+
+## 1.1.180
+
+### Patch Changes
+
+- [#9875](https://github.com/wso2/identity-apps/pull/9875) [`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - Revert Axios and SDK version bumps
+
+- Updated dependencies [[`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d)]:
+  - @wso2is/admin.server-configurations.v1@2.38.19
+  - @wso2is/admin.flow-builder-core.v1@0.10.180
+  - @wso2is/admin.feature-gate.v1@1.9.2
+  - @wso2is/admin.claims.v1@2.30.6
+  - @wso2is/admin.flows.v1@1.0.149
+  - @wso2is/admin.rules.v1@0.7.19
+  - @wso2is/admin.core.v1@2.55.3
+  - @wso2is/access-control@3.5.3
+  - @wso2is/core@2.12.10
+
+## 1.1.179
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.55.2
+  - @wso2is/admin.flow-builder-core.v1@0.10.179
+  - @wso2is/admin.rules.v1@0.7.18
+  - @wso2is/admin.flows.v1@1.0.148
+  - @wso2is/admin.server-configurations.v1@2.38.18
+
+## 1.1.178
+
+### Patch Changes
+
+- Updated dependencies [[`410f5901427656fae17dd31db77efe138f111b9f`](https://github.com/wso2/identity-apps/commit/410f5901427656fae17dd31db77efe138f111b9f)]:
+  - @wso2is/admin.core.v1@2.55.1
+  - @wso2is/admin.flow-builder-core.v1@0.10.178
+  - @wso2is/admin.flows.v1@1.0.147
+  - @wso2is/admin.server-configurations.v1@2.38.17
+  - @wso2is/admin.rules.v1@0.7.17
+
 ## 1.1.177
 
 ### Patch Changes

@@ -1,5 +1,74 @@
 # @wso2is/admin.approval-workflows.v1
 
+## 1.3.0
+
+### Minor Changes
+
+- [#9809](https://github.com/wso2/identity-apps/pull/9809) [`41126304808de0c2e09081771c18c77e2b3236a1`](https://github.com/wso2/identity-apps/commit/41126304808de0c2e09081771c18c77e2b3236a1) Thanks [@nishagii](https://github.com/nishagii)! - Move approval workflow rule handlings to workflow module from rule module
+
+### Patch Changes
+
+- Updated dependencies [[`41126304808de0c2e09081771c18c77e2b3236a1`](https://github.com/wso2/identity-apps/commit/41126304808de0c2e09081771c18c77e2b3236a1)]:
+  - @wso2is/admin.rules.v1@0.7.21
+  - @wso2is/i18n@2.37.7
+  - @wso2is/admin.users.v1@2.38.5
+  - @wso2is/admin.core.v1@2.55.5
+  - @wso2is/admin.roles.v2@2.27.352
+  - @wso2is/admin.applications.v1@2.41.30
+
+## 1.2.19
+
+### Patch Changes
+
+- [#9876](https://github.com/wso2/identity-apps/pull/9876) [`4d2eb0510ada818bfad2603875a3cd5f5a60d70b`](https://github.com/wso2/identity-apps/commit/4d2eb0510ada818bfad2603875a3cd5f5a60d70b) Thanks [@sadilchamishka](https://github.com/sadilchamishka)! - Improve approval notification ux
+
+- Updated dependencies [[`4d2eb0510ada818bfad2603875a3cd5f5a60d70b`](https://github.com/wso2/identity-apps/commit/4d2eb0510ada818bfad2603875a3cd5f5a60d70b)]:
+  - @wso2is/i18n@2.37.6
+  - @wso2is/admin.users.v1@2.38.4
+  - @wso2is/admin.core.v1@2.55.4
+  - @wso2is/admin.roles.v2@2.27.351
+  - @wso2is/admin.rules.v1@0.7.20
+
+## 1.2.18
+
+### Patch Changes
+
+- [#9875](https://github.com/wso2/identity-apps/pull/9875) [`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - Revert Axios and SDK version bumps
+
+- Updated dependencies [[`c834b18928cdfc09710c5e7067668206d006e68a`](https://github.com/wso2/identity-apps/commit/c834b18928cdfc09710c5e7067668206d006e68a), [`877d726905edf898c33c615cd887f8ed0a071a0e`](https://github.com/wso2/identity-apps/commit/877d726905edf898c33c615cd887f8ed0a071a0e), [`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d)]:
+  - @wso2is/admin.users.v1@2.38.3
+  - @wso2is/i18n@2.37.5
+  - @wso2is/admin.userstores.v1@2.27.42
+  - @wso2is/admin.roles.v2@2.27.350
+  - @wso2is/admin.rules.v1@0.7.19
+  - @wso2is/admin.core.v1@2.55.3
+  - @wso2is/core@2.12.10
+
+## 1.2.17
+
+### Patch Changes
+
+- [#9753](https://github.com/wso2/identity-apps/pull/9753) [`9660d11690e260e852c5a879ef60658b8d54b5ee`](https://github.com/wso2/identity-apps/commit/9660d11690e260e852c5a879ef60658b8d54b5ee) Thanks [@nishagii](https://github.com/nishagii)! - Add feature disabling option to approval workflow rules
+
+- Updated dependencies []:
+  - @wso2is/admin.users.v1@2.38.2
+  - @wso2is/admin.core.v1@2.55.2
+  - @wso2is/admin.roles.v2@2.27.349
+  - @wso2is/admin.rules.v1@0.7.18
+
+## 1.2.16
+
+### Patch Changes
+
+- [#9829](https://github.com/wso2/identity-apps/pull/9829) [`d756fc7fef819d8180418b6bebfcded76f6045d7`](https://github.com/wso2/identity-apps/commit/d756fc7fef819d8180418b6bebfcded76f6045d7) Thanks [@nilasini](https://github.com/nilasini)! - Improve notification configuration
+
+- Updated dependencies [[`410f5901427656fae17dd31db77efe138f111b9f`](https://github.com/wso2/identity-apps/commit/410f5901427656fae17dd31db77efe138f111b9f), [`8a1e91278bc6b376e8e82bddbf94f98ceb76f6fc`](https://github.com/wso2/identity-apps/commit/8a1e91278bc6b376e8e82bddbf94f98ceb76f6fc)]:
+  - @wso2is/admin.core.v1@2.55.1
+  - @wso2is/i18n@2.37.3
+  - @wso2is/admin.users.v1@2.38.1
+  - @wso2is/admin.roles.v2@2.27.348
+  - @wso2is/admin.rules.v1@0.7.17
+
 ## 1.2.15
 
 ### Patch Changes

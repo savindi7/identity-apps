@@ -1,5 +1,28 @@
 # @wso2is/admin.org-insights.v1
 
+## 2.26.2
+
+### Patch Changes
+
+- [#9839](https://github.com/wso2/identity-apps/pull/9839) [`ebd9a2e1f1bce8f51c882338f936d49c52a35160`](https://github.com/wso2/identity-apps/commit/ebd9a2e1f1bce8f51c882338f936d49c52a35160) Thanks [@RushanNanayakkara](https://github.com/RushanNanayakkara)! - Add autocomplete input for org search in insights
+
+- Updated dependencies [[`ebd9a2e1f1bce8f51c882338f936d49c52a35160`](https://github.com/wso2/identity-apps/commit/ebd9a2e1f1bce8f51c882338f936d49c52a35160)]:
+  - @wso2is/i18n@2.37.8
+
+## 2.26.1
+
+### Patch Changes
+
+- [#9875](https://github.com/wso2/identity-apps/pull/9875) [`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - Revert Axios and SDK version bumps
+
+- Updated dependencies [[`c834b18928cdfc09710c5e7067668206d006e68a`](https://github.com/wso2/identity-apps/commit/c834b18928cdfc09710c5e7067668206d006e68a), [`877d726905edf898c33c615cd887f8ed0a071a0e`](https://github.com/wso2/identity-apps/commit/877d726905edf898c33c615cd887f8ed0a071a0e), [`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d)]:
+  - @wso2is/i18n@2.37.5
+  - @wso2is/admin.core.v1@2.55.3
+  - @wso2is/access-control@3.5.3
+  - @wso2is/theme@2.9.5
+  - @wso2is/core@2.12.10
+  - @wso2is/form@2.10.1
+
 ## 2.26.0
 
 ### Minor Changes

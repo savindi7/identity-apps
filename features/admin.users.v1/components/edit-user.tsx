@@ -323,7 +323,7 @@ export const EditUser: FunctionComponent<EditUserPropsInterface> = (
             }
         );
 
-        if (isSharedAccessEnabled && hasSharedAccessReadPermission) {
+        if (isSharedAccessEnabled && hasSharedAccessReadPermission && !isUserManagedByParentOrg) {
             _panes.push({
                 menuItem: t("users:editUser.tab.menuItems.4"),
                 render: () => (

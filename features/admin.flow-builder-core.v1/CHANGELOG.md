@@ -1,5 +1,61 @@
 # @wso2is/admin.flow-builder-core.v1
 
+## 0.10.182
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.55.5
+  - @wso2is/admin.branding.v1@2.32.138
+  - @wso2is/admin.flows.v1@1.0.151
+  - @wso2is/admin.registration-flow-builder.v1@0.10.142
+
+## 0.10.181
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.55.4
+  - @wso2is/admin.branding.v1@2.32.137
+  - @wso2is/admin.flows.v1@1.0.150
+  - @wso2is/admin.registration-flow-builder.v1@0.10.141
+
+## 0.10.180
+
+### Patch Changes
+
+- [#9875](https://github.com/wso2/identity-apps/pull/9875) [`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - Revert Axios and SDK version bumps
+
+- Updated dependencies [[`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d)]:
+  - @wso2is/admin.registration-flow-builder.v1@0.10.140
+  - @wso2is/admin.organizations.v1@2.28.2
+  - @wso2is/common.branding.v1@2.28.3
+  - @wso2is/admin.branding.v1@2.32.136
+  - @wso2is/admin.claims.v1@2.30.6
+  - @wso2is/admin.flows.v1@1.0.149
+  - @wso2is/admin.core.v1@2.55.3
+  - @wso2is/core@2.12.10
+
+## 0.10.179
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.55.2
+  - @wso2is/admin.branding.v1@2.32.135
+  - @wso2is/admin.flows.v1@1.0.148
+  - @wso2is/admin.registration-flow-builder.v1@0.10.139
+
+## 0.10.178
+
+### Patch Changes
+
+- Updated dependencies [[`410f5901427656fae17dd31db77efe138f111b9f`](https://github.com/wso2/identity-apps/commit/410f5901427656fae17dd31db77efe138f111b9f)]:
+  - @wso2is/admin.core.v1@2.55.1
+  - @wso2is/admin.branding.v1@2.32.134
+  - @wso2is/admin.flows.v1@1.0.147
+  - @wso2is/admin.registration-flow-builder.v1@0.10.138
+
 ## 0.10.177
 
 ### Patch Changes
