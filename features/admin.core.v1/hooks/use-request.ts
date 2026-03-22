@@ -17,7 +17,7 @@
  */
 
 import { AsgardeoSPAClient, HttpClientInstance } from "@asgardeo/auth-react";
-import axios, { AxiosError, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from "axios";
+import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import useSWR, { BareFetcher, Revalidator, RevalidatorOptions, SWRConfiguration, SWRResponse } from "swr";
 import { FetcherResponse } from "swr/dist/_internal";
 
@@ -144,7 +144,7 @@ const useRequest = <Data = unknown, Error = unknown>(
             ..._config,
             fallbackData: fallbackData && {
                 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                config: request! as InternalAxiosRequestConfig,
+                config: request!,
                 data: fallbackData,
                 headers: {},
                 status: 200,

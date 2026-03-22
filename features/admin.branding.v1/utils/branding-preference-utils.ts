@@ -24,7 +24,6 @@ import {
     PredefinedThemes
 } from "@wso2is/common.branding.v1/models";
 import { AxiosError } from "axios";
-import { HttpErrorResponseDataInterface } from "@wso2is/core/models";
 import cloneDeep from "lodash-es/cloneDeep";
 import merge from "lodash-es/merge";
 import { BrandingPreferencesConstants } from "../constants/branding-preferences-constants";
@@ -348,7 +347,7 @@ export class BrandingPreferenceUtils {
                     )
                 });
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 return Promise.reject(error);
             });
     };

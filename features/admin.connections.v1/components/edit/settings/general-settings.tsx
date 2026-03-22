@@ -22,9 +22,7 @@ import { ApplicationBasicInterface } from "@wso2is/admin.applications.v1/models/
 import { FeatureConfigInterface } from "@wso2is/admin.core.v1/models/config";
 import { AppState } from "@wso2is/admin.core.v1/store";
 import { IdentityAppsError } from "@wso2is/core/errors";
-import { AlertLevels, TestableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AlertLevels, TestableComponentInterface } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { ConfirmationModal, ContentLoader, DangerZone, DangerZoneGroup } from "@wso2is/react-components";
 import { AxiosError } from "axios";
@@ -308,7 +306,7 @@ export const GeneralSettings: FunctionComponent<GeneralSettingsInterface> = (
                 setShowDeleteConfirmationModal(false);
                 onDelete();
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 handleConnectionDeleteError(error);
             })
             .finally(() => {
@@ -338,7 +336,7 @@ export const GeneralSettings: FunctionComponent<GeneralSettingsInterface> = (
                 setShowDeleteConfirmationModal(false);
                 onDelete();
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 handleConnectionDeleteError(error);
             })
             .finally(() => {
@@ -365,7 +363,7 @@ export const GeneralSettings: FunctionComponent<GeneralSettingsInterface> = (
                 );
                 onUpdate(editingIDP.id);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 handleConnectionUpdateError(error);
             })
             .finally(() => {
@@ -403,7 +401,7 @@ export const GeneralSettings: FunctionComponent<GeneralSettingsInterface> = (
                 );
                 onUpdate(editingIDP.id);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 handleConnectionUpdateError(error);
             })
             .finally(() => {

@@ -33,8 +33,7 @@ import {
     AlertInterface,
     AlertLevels,
     IdentifiableComponentInterface,
-    ProfileInfoInterface,
-    HttpErrorResponseDataInterface
+    ProfileInfoInterface
 } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { Message, ResourceTab } from "@wso2is/react-components";
@@ -178,7 +177,7 @@ export const EditUser: FunctionComponent<EditUserPropsInterface> = (
                     setIsSelectedSuperAdmin(true);
                 }
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
 
                 setHideTermination(true);
 
@@ -324,7 +323,7 @@ export const EditUser: FunctionComponent<EditUserPropsInterface> = (
             }
         );
 
-        if (isSharedAccessEnabled && hasSharedAccessReadPermission) {
+        if (isSharedAccessEnabled && hasSharedAccessReadPermission && !isUserManagedByParentOrg) {
             _panes.push({
                 menuItem: t("users:editUser.tab.menuItems.4"),
                 render: () => (

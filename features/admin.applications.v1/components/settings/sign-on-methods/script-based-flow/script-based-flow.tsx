@@ -56,9 +56,7 @@ import { GetSecretListResponse, SecretModel } from "@wso2is/admin.secrets.v1/mod
 import { UIConstants } from "@wso2is/core/constants";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
 import { isFeatureEnabled } from "@wso2is/core/helpers";
-import { AlertLevels, HttpErrorResponseDataInterface, IdentifiableComponentInterface,
-    StorageIdentityAppsSettingsInterface
-} from "@wso2is/core/models";
+import { AlertLevels, IdentifiableComponentInterface, StorageIdentityAppsSettingsInterface } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { StringUtils } from "@wso2is/core/utils";
 import {
@@ -264,7 +262,7 @@ export const ScriptBasedFlow: FunctionComponent<AdaptiveScriptsPropsInterface> =
             }).then((axiosResponse: AxiosResponse<GetSecretListResponse>) => {
                 setSecretList(axiosResponse.data);
                 setFilteredSecretList(axiosResponse.data);
-            }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            }).catch((error: AxiosError) => {
                 if (error.response && error.response.data && error.response.data.description) {
                     dispatch(addAlert({
                         description: error.response.data?.description,

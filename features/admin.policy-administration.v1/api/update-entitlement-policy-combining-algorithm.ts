@@ -19,9 +19,7 @@
 import { AsgardeoSPAClient, HttpClientInstance } from "@asgardeo/auth-react";
 import { RequestConfigInterface } from "@wso2is/admin.core.v1/hooks/use-request";
 import { store } from "@wso2is/admin.core.v1/store";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosResponse } from "axios";
 import { PolicyAlgorithmRequestInterface } from "../models/policies";
 
@@ -57,7 +55,7 @@ export const updateEntitlementPolicyCombiningAlgorithm = async (
 
             return Promise.resolve(response);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };

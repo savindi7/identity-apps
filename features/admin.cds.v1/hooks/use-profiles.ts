@@ -17,7 +17,6 @@
  */
 
 import { AxiosError } from "axios";
-import { HttpErrorResponseDataInterface } from "@wso2is/core/models";
 import useSWR, { SWRConfiguration, SWRResponse } from "swr";
 
 import { fetchCDSProfileDetails, fetchCDSProfiles } from "../api/profiles";
@@ -31,12 +30,12 @@ import { FetchProfilesParams, ProfileModel, ProfilesListResponse } from "../mode
  * @returns SWR response with profiles data
  */
 export const useCDSProfiles = (
-    params: FetchProfilesParams | null = {},
-    config?: SWRConfiguration<ProfilesListResponse, AxiosError<HttpErrorResponseDataInterface>>
-): SWRResponse<ProfilesListResponse, AxiosError<HttpErrorResponseDataInterface>> => {
+    params: FetchProfilesParams = {},
+    config?: SWRConfiguration<ProfilesListResponse, AxiosError>
+): SWRResponse<ProfilesListResponse, AxiosError> => {
     const key: ["cds-profiles", FetchProfilesParams] | null = params ? [ "cds-profiles", params ] : null;
 
-    return useSWR<ProfilesListResponse, AxiosError<HttpErrorResponseDataInterface>>(
+    return useSWR<ProfilesListResponse, AxiosError>(
         key,
         params ? () => fetchCDSProfiles(params) : null,
         config
@@ -52,11 +51,11 @@ export const useCDSProfiles = (
  */
 export const useCDSProfileDetails = (
     profileId: string | null,
-    config?: SWRConfiguration<ProfileModel, AxiosError<HttpErrorResponseDataInterface>>
-): SWRResponse<ProfileModel, AxiosError<HttpErrorResponseDataInterface>> => {
+    config?: SWRConfiguration<ProfileModel, AxiosError>
+): SWRResponse<ProfileModel, AxiosError> => {
     const key: ["cds-profile", string] | null = profileId ? [ "cds-profile", profileId ] : null;
 
-    return useSWR<ProfileModel, AxiosError<HttpErrorResponseDataInterface>>(
+    return useSWR<ProfileModel, AxiosError>(
         key,
         profileId ? () => fetchCDSProfileDetails(profileId) : null,
         config

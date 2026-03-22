@@ -30,9 +30,7 @@ import {
 import { ResourceTypes } from "@wso2is/admin.template-core.v1/models/templates";
 import ExtensionTemplatesProvider from "@wso2is/admin.template-core.v1/provider/extension-templates-provider";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { AlertLevels, TestableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AlertLevels, TestableComponentInterface } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import {
     AnimatedAvatar,
@@ -366,7 +364,7 @@ const ConnectionEditPage: FunctionComponent<ConnectionEditPagePropsInterface> = 
             .then((response: any) => {
                 setConnectionSettings(response);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 handleGetConnectionsMetaDataError(error);
             })
             .finally(() => {

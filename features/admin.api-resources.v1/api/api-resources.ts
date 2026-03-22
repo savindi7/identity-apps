@@ -23,9 +23,7 @@ import useRequest, {
 } from "@wso2is/admin.core.v1/hooks/use-request";
 import { store } from "@wso2is/admin.core.v1/store";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { APIResourcesConstants } from "../constants/api-resources-constants";
 import { APIResourceInterface, APIResourcePermissionInterface, APIResourcesListInterface,
@@ -74,7 +72,7 @@ export const getAPIResourcesForIdenitifierValidation = (
                     response.config);
             }
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 error.message,
                 error.stack,
@@ -196,7 +194,7 @@ export const getAPIResourcePermissions = (
                     response.config);
             }
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 error.message,
                 error.stack,
@@ -239,7 +237,7 @@ export const deleteAPIResource = (apiResourceId: string): Promise<null | Identit
             }
 
             return Promise.resolve(response.data);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 error.message,
                 error.stack,
@@ -274,7 +272,7 @@ export const updateAPIResource = (
         .then((response: AxiosResponse) => {
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 error.message,
                 error.stack,
@@ -305,7 +303,7 @@ export const createAPIResource = (
         .then((response: AxiosResponse) => {
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 error.message,
                 error.stack,

@@ -23,9 +23,7 @@ import useRequest, {
     RequestResultInterface
 } from "@wso2is/admin.core.v1/hooks/use-request";
 import { store } from "@wso2is/admin.core.v1/store";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosResponse } from "axios";
 import {
     CreateGroupInterface,
@@ -68,7 +66,7 @@ export const getGroupList = (domain: string, excludedAttributes?: string): Promi
                 return Promise.resolve(response);
             }
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -146,7 +144,7 @@ export const getGroupById = (groupId: string, excludedAttributes?: string): Prom
         .then((response: AxiosResponse) => {
             return Promise.resolve(response);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -172,7 +170,7 @@ export const updateGroupDetails = (groupId: string, groupData: PatchGroupDataInt
         .then((response: AxiosResponse) => {
             return Promise.resolve(response);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -197,7 +195,7 @@ export const searchGroupList = (searchData: SearchGroupInterface): Promise<any> 
         .then((response: AxiosResponse) => {
             return Promise.resolve(response);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -222,7 +220,7 @@ export const deleteGroupById = (groupId: string): Promise<any> => {
         .then((response: AxiosResponse) => {
             return Promise.resolve(response);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -247,7 +245,7 @@ export const createGroup = (data: CreateGroupInterface): Promise<any> => {
         .then((response: AxiosResponse) => {
             return Promise.resolve(response);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };

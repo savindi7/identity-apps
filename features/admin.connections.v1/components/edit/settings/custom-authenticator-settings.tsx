@@ -24,9 +24,7 @@ import {
     FederatedAuthenticatorInterface,
     FederatedAuthenticatorListItemInterface
 } from "@wso2is/admin.identity-providers.v1/models";
-import { AlertLevels, IdentifiableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AlertLevels, IdentifiableComponentInterface } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { FinalForm, FormRenderProps } from "@wso2is/form";
 import { EmphasizedSegment } from "@wso2is/react-components";
@@ -145,7 +143,7 @@ export const CustomAuthenticatorSettings: FunctionComponent<CustomAuthenticatorS
 
                 setInitialValues(endpointAuth);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 handleGetCustomAuthenticatorError(error);
             }).finally(() => {
                 setIsEndpointDetailsLoading(false);
@@ -207,7 +205,7 @@ export const CustomAuthenticatorSettings: FunctionComponent<CustomAuthenticatorS
                 );
                 onUpdate(connector.id);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 handleConnectionUpdateError(error);
             });
     };
@@ -253,7 +251,7 @@ export const CustomAuthenticatorSettings: FunctionComponent<CustomAuthenticatorS
                 );
                 onUpdate(connector.id);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 handleCustomAuthenticatorUpdateError(error);
             });
     };

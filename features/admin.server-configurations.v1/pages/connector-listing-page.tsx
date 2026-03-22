@@ -27,9 +27,7 @@ import FeatureFlagConstants from "@wso2is/admin.feature-gate.v1/constants/featur
 import { useGetCurrentOrganizationType } from "@wso2is/admin.organizations.v1/hooks/use-get-organization-type";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
 import { isFeatureEnabled } from "@wso2is/core/helpers";
-import { AlertLevels, ReferableComponentInterface, TestableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AlertLevels, ReferableComponentInterface, TestableComponentInterface } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { I18n } from "@wso2is/i18n";
 import { PageLayout } from "@wso2is/react-components";
@@ -227,7 +225,7 @@ export const ConnectorListingPage: FunctionComponent<ConnectorListingPageInterfa
 
                 setDynamicConnectorCategories(connectorCategoryArray);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error.response && error.response.data && error.response.data.detail) {
                     store.dispatch(addAlert({
                         description: I18n.instance.t("governanceConnectors:notifications." +

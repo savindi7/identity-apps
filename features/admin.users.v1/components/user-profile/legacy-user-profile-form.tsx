@@ -45,8 +45,7 @@ import {
     PatchOperationRequest,
     ProfileInfoInterface,
     ProfileSchemaInterface,
-    SharedProfileValueResolvingMethod,
-    HttpErrorResponseDataInterface
+    SharedProfileValueResolvingMethod
 } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { CommonUtils, ProfileUtils } from "@wso2is/core/utils";
@@ -440,7 +439,7 @@ const UserProfileForm: FunctionComponent<UserProfileFormPropsInterface> = (
 
                 onUserUpdate(profileData.id);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error?.response?.data?.detail || error?.response?.data?.description) {
                     dispatch(addAlert({
                         description: error?.response?.data?.detail || error?.response?.data?.description,
@@ -1857,7 +1856,7 @@ const UserProfileForm: FunctionComponent<UserProfileFormPropsInterface> = (
 
                 onUpdate(profileData.id);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error?.response?.data?.detail || error?.response?.data?.description) {
                     dispatch(addAlert({
                         description: error?.response?.data?.detail || error?.response?.data?.description,

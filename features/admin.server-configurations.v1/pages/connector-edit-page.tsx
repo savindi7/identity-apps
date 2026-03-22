@@ -25,9 +25,7 @@ import { serverConfigurationConfig } from "@wso2is/admin.extensions.v1/configs/s
 import RegistrationFlowBuilderBanner
     from "@wso2is/admin.registration-flow-builder.v1/components/registration-flow-builder-banner";
 import { isFeatureEnabled } from "@wso2is/core/helpers";
-import { AlertLevels, TestableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AlertLevels, TestableComponentInterface } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import {
     DangerZone,
@@ -190,7 +188,7 @@ export const ConnectorEditPage: FunctionComponent<ConnectorEditPageInterface> = 
         );
     };
 
-    const handleUpdateError = (error: AxiosError<HttpErrorResponseDataInterface>) => {
+    const handleUpdateError = (error: AxiosError) => {
         if (error.response && error.response.data && error.response.data.detail) {
             dispatch(
                 addAlert({
@@ -252,7 +250,7 @@ export const ConnectorEditPage: FunctionComponent<ConnectorEditPageInterface> = 
                 loadConnectorDetails();
                 handleUpdateSuccess();
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 handleUpdateError(error);
             }).finally(() => {
                 setIsSubmitting(false);
@@ -324,7 +322,7 @@ export const ConnectorEditPage: FunctionComponent<ConnectorEditPageInterface> = 
                     });
                 });
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 handleUpdateError(error);
             });
     };
@@ -434,7 +432,7 @@ export const ConnectorEditPage: FunctionComponent<ConnectorEditPageInterface> = 
                 handleUpdateSuccess();
                 loadConnectorDetails();
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 handleUpdateError(error);
             })
             .finally(() => {
@@ -460,7 +458,7 @@ export const ConnectorEditPage: FunctionComponent<ConnectorEditPageInterface> = 
 
                 setEnableForm(enableProperty ? enableProperty?.value === "true" : true);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error.response && error.response.data && error.response.data.detail) {
                     dispatch(
                         addAlert({

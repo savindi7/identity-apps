@@ -18,9 +18,7 @@
 import { AsgardeoSPAClient } from "@asgardeo/auth-react";
 import { RequestConfigInterface } from "@wso2is/admin.core.v1/hooks/use-request";
 import { store } from "@wso2is/admin.core.v1/store";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosResponse } from "axios";
 import { ApprovalWorkflowPayload } from "../models/approval-workflows";
 
@@ -49,7 +47,7 @@ export const deleteApprovalWorkflowById = (id: string): Promise<any> => {
         .then((response: AxiosResponse) => {
             return Promise.resolve(response);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -76,7 +74,7 @@ export const addApprovalWorkflow = (data: ApprovalWorkflowPayload): Promise<any>
         .then((response: AxiosResponse) => {
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             return Promise.reject(error?.response?.data);
         });
 };
@@ -108,7 +106,7 @@ export const updateApprovalWorkflow = (id: string, data: ApprovalWorkflowPayload
 
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             return Promise.reject(error?.response?.data);
         });
 };
