@@ -1,5 +1,11 @@
 # @wso2is/i18n
 
+## 2.37.8
+
+### Patch Changes
+
+- [#9839](https://github.com/wso2/identity-apps/pull/9839) [`ebd9a2e1f1bce8f51c882338f936d49c52a35160`](https://github.com/wso2/identity-apps/commit/ebd9a2e1f1bce8f51c882338f936d49c52a35160) Thanks [@RushanNanayakkara](https://github.com/RushanNanayakkara)! - Add autocomplete input for org search in insights
+
 ## 2.37.7
 
 ### Patch Changes
