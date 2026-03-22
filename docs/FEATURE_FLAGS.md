@@ -1,6 +1,6 @@
 # Using Feature Flags
 
-Feature flags are a powerful way to enable, disable and label features in your application dynamically. This approach allows you to 
+Feature flags enable conditionally enabling and labelling features in Identity Server console dynamically. This approach allows you to 
 deploy new features safely, perform A/B testing, and roll out features incrementally. In this guide, we'll walk through how to 
 define and use feature flags in identity-apps React applications.
 
