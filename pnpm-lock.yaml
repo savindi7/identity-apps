@@ -582,7 +582,7 @@ importers:
         specifier: workspace:^
         version: link:../../features/admin.onboarding.v1
       '@wso2is/admin.org-insights.v1':
-        specifier: ^2.26.1
+        specifier: ^2.26.2
         version: link:../../features/admin.org-insights.v1
       '@wso2is/admin.organization-discovery.v1':
         specifier: ^2.25.208
@@ -687,7 +687,7 @@ importers:
         specifier: ^2.3.25
         version: link:../../modules/forms
       '@wso2is/i18n':
-        specifier: ^2.37.7
+        specifier: ^2.37.8
         version: link:../../modules/i18n
       '@wso2is/react-components':
         specifier: ^2.9.25
@@ -12057,7 +12057,7 @@ importers:
         specifier: ^2.3.22
         version: link:../../modules/forms
       '@wso2is/i18n':
-        specifier: ^2.37.5
+        specifier: ^2.37.8
         version: link:../../modules/i18n
       '@wso2is/react-components':
         specifier: ^2.9.16
