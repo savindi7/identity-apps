@@ -33,6 +33,7 @@ import { parseOnboardingShowFromPreferences } from "../utils/parse-onboarding-pr
  * SCIM2 attributes to request from the Users list endpoint.
  */
 const SCIM_ATTRIBUTES: string = [
+    "userName",
     `${ProfileConstants.SCIM2_SYSTEM_USER_SCHEMA}.userAccountType`,
     `${ProfileConstants.SCIM2_SYSTEM_USER_SCHEMA}.userPreferences`
 ].join(",");
@@ -45,6 +46,7 @@ interface UseOnboardingStatusReturn {
     isLoading: boolean;
     markOnboardingComplete: () => Promise<void>;
     shouldShowOnboarding: boolean;
+    userAccountType: string | null;
 }
 
 /**
@@ -138,6 +140,7 @@ export const useOnboardingStatus = (): UseOnboardingStatusReturn => {
         isFirstWizardRun,
         isLoading,
         markOnboardingComplete,
-        shouldShowOnboarding
+        shouldShowOnboarding,
+        userAccountType
     };
 };

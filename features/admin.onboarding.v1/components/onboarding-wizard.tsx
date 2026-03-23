@@ -30,6 +30,12 @@ import {
 import { AppConstants } from "@wso2is/admin.core.v1/constants/app-constants";
 import { history } from "@wso2is/admin.core.v1/helpers/history";
 import { AppState } from "@wso2is/admin.core.v1/store";
+import {
+    updateGovernanceConnector
+} from "@wso2is/admin.server-configurations.v1/api/governance-connectors";
+import {
+    ServerConfigurationsConstants
+} from "@wso2is/admin.server-configurations.v1/constants/server-configurations-constants";
 import useGetExtensionTemplates from "@wso2is/admin.template-core.v1/api/use-get-extension-templates";
 import { ExtensionTemplateListInterface, ResourceTypes } from "@wso2is/admin.template-core.v1/models/templates";
 import { resolveUserDisplayName } from "@wso2is/core/helpers";
@@ -53,12 +59,6 @@ import SelectApplicationTemplateStep from "./steps/select-application-template-s
 import SignInOptionsStep from "./steps/sign-in-options-step";
 import SuccessStep from "./steps/success-step";
 import WelcomeStep from "./steps/welcome-step";
-import {
-    updateGovernanceConnector
-} from "@wso2is/admin.server-configurations.v1/api/governance-connectors";
-import {
-    ServerConfigurationsConstants
-} from "@wso2is/admin.server-configurations.v1/constants/server-configurations-constants";
 import { createOnboardingApplication } from "../api/create-onboarding-application";
 import { createTryItApplication } from "../api/create-try-it-application";
 import { isBrandingCustomized, updateApplicationBranding } from "../api/update-onboarding-branding";
@@ -79,7 +79,9 @@ import {
     CreatedApplicationResultInterface,
     OnboardingChoice,
     OnboardingDataInterface,
-    OnboardingStep
+    OnboardingStep,
+    SignInIdentifiersConfigInterface,
+    SignInLoginMethodsConfigInterface
 } from "../models";
 import { generateRandomNames } from "../utils/random-name-generator";
 
@@ -89,10 +91,10 @@ import { generateRandomNames } from "../utils/random-name-generator";
 export interface OnboardingWizardPropsInterface extends IdentifiableComponentInterface {
     initialData?: OnboardingDataInterface;
     initialStep?: OnboardingStep;
-    isFirstWizardRun?: boolean;
     isReturningUser?: boolean;
     onComplete: (data: OnboardingDataInterface) => Promise<void>;
     onSkip: () => Promise<void>;
+    userAccountType?: string | null;
 }
 
 /**
@@ -251,10 +253,10 @@ const OnboardingWizard: FunctionComponent<OnboardingWizardPropsInterface> = (
     const {
         initialData,
         initialStep,
-        isFirstWizardRun = true,
         isReturningUser = false,
         onComplete,
         onSkip,
+        userAccountType = null,
         ["data-componentid"]: componentId = OnboardingComponentIds.WIZARD
     } = props;
 
@@ -322,7 +324,7 @@ const OnboardingWizard: FunctionComponent<OnboardingWizardPropsInterface> = (
         trackStarted,
         trackStepBack,
         trackStepCompleted
-    } = useOnboardingAnalytics({ currentStep, isFirstWizardRun, onboardingData });
+    } = useOnboardingAnalytics({ currentStep, isReturningUser, onboardingData, userAccountType });
 
     // Fire Onboarding-Started event on mount
     useEffect(() => {
@@ -520,8 +522,10 @@ const OnboardingWizard: FunctionComponent<OnboardingWizardPropsInterface> = (
 
             case OnboardingStep.SIGN_IN_OPTIONS: {
                 const selectedMethods: string[] = [];
-                const identifiers = onboardingData.signInOptions?.identifiers;
-                const loginMethods = onboardingData.signInOptions?.loginMethods;
+                const identifiers: SignInIdentifiersConfigInterface | undefined =
+                    onboardingData.signInOptions?.identifiers;
+                const loginMethods: SignInLoginMethodsConfigInterface | undefined =
+                    onboardingData.signInOptions?.loginMethods;
 
                 if (identifiers?.username) selectedMethods.push("username");
                 if (identifiers?.email) selectedMethods.push("email");

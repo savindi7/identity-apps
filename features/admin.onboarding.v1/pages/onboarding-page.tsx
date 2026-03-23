@@ -77,7 +77,8 @@ const OnboardingPage: FunctionComponent<OnboardingPageProps> = (props: Onboardin
         isFirstWizardRun,
         shouldShowOnboarding,
         isLoading,
-        markOnboardingComplete
+        markOnboardingComplete,
+        userAccountType
     } = useOnboardingStatus();
 
     const featureConfig: FeatureConfigInterface = useSelector(
@@ -154,6 +155,7 @@ const OnboardingPage: FunctionComponent<OnboardingPageProps> = (props: Onboardin
                     isReturningUser={ isIntentionalAccess }
                     onComplete={ handleComplete }
                     onSkip={ handleSkip }
+                    userAccountType={ userAccountType }
                 />
             </ContentArea>
         </StyledOnboardingPage>

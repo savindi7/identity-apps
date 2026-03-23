@@ -19,6 +19,7 @@
 import { AppState } from "@wso2is/admin.core.v1/store";
 import { getAssociatedTenants } from "@wso2is/admin.tenants.v1/api/tenants";
 import { TenantInfo, TenantRequestResponse } from "@wso2is/admin.tenants.v1/models/tenant";
+import { UserAccountTypes } from "@wso2is/admin.users.v1/constants/user-management-constants";
 import { ProfileInfoInterface } from "@wso2is/core/models";
 import moesif from "moesif-browser-js";
 import React, { useCallback, useEffect, useRef } from "react";
@@ -32,8 +33,9 @@ import { OnboardingChoice, OnboardingDataInterface, OnboardingStep } from "../mo
  */
 interface UseOnboardingAnalyticsParams {
     currentStep: OnboardingStep;
-    isFirstWizardRun: boolean;
+    isReturningUser: boolean;
     onboardingData: OnboardingDataInterface;
+    userAccountType?: string | null;
 }
 
 /**
@@ -52,11 +54,6 @@ interface UseOnboardingAnalyticsReturn {
 }
 
 /**
- * SCIM2 system schema URI for accessing user account type.
- */
-const SCIM_SYSTEM_SCHEMA: string = "urn:scim:wso2:schema";
-
-/**
  * Total step counts per wizard path (excluding lifecycle events started/completed).
  */
 const TOTAL_STEPS_FULL_SETUP: number = 6;
@@ -65,16 +62,11 @@ const TOTAL_STEPS_PREVIEW: number = 3;
 /**
  * Hook that provides Moesif analytics tracking for the onboarding wizard.
  *
- * Follows the WSO2 Unified Product Analytics Taxonomy:
- * - Event names use PascalCase-with-hyphens format
- * - Every event includes `product`, `asset_type`, `domain`, and `context` fields
- * - Step events use a single `Onboarding-Step-Completed` event with `step_name` in metadata
- *
  * @param params - Hook parameters including current step, data, and first-run flag.
  * @returns Object with tracking functions for each wizard event.
  */
 export const useOnboardingAnalytics = (params: UseOnboardingAnalyticsParams): UseOnboardingAnalyticsReturn => {
-    const { currentStep, isFirstWizardRun, onboardingData } = params;
+    const { currentStep, isReturningUser, onboardingData, userAccountType } = params;
 
     const profileInfo: ProfileInfoInterface = useSelector((state: AppState) => state.profile.profileInfo);
     const tenantDomain: string = useSelector((state: AppState) =>
@@ -90,7 +82,7 @@ export const useOnboardingAnalytics = (params: UseOnboardingAnalyticsParams): Us
     // Initialize Moesif SDK on mount if application ID is configured.
     // Fetches user UUID from /scim2/Me and tenant UUID from tenant/me for Moesif identification.
     useEffect(() => {
-        if (!moesifApplicationId) {
+        if (!moesifApplicationId || isReturningUser) {
             return;
         }
 
@@ -119,7 +111,6 @@ export const useOnboardingAnalytics = (params: UseOnboardingAnalyticsParams): Us
                 // User ID fetch failed — analytics will work without User ID.
             });
 
-        // Fetch tenant UUID from tenant/me endpoint for Moesif Company ID.
         getAssociatedTenants(undefined, 15, 0)
             .then((response: TenantRequestResponse): void => {
                 const currentTenant: TenantInfo | undefined = response?.associatedTenants?.find(
@@ -157,8 +148,8 @@ export const useOnboardingAnalytics = (params: UseOnboardingAnalyticsParams): Us
      * Compute whether the current user is the organization owner.
      */
     const getIsOwner: () => boolean = useCallback((): boolean => {
-        return profileInfo?.[SCIM_SYSTEM_SCHEMA]?.userAccountType === "Owner";
-    }, [ profileInfo ]);
+        return userAccountType === UserAccountTypes.OWNER;
+    }, [ userAccountType ]);
 
     /**
      * Derive the wizard path string from the current onboarding choice.
@@ -169,8 +160,6 @@ export const useOnboardingAnalytics = (params: UseOnboardingAnalyticsParams): Us
 
     /**
      * Build the common metadata object included in every analytics event.
-     * Includes WSO2 taxonomy required fields (product, asset_type, domain, context)
-     * and onboarding-specific fields.
      *
      * @param stepNumber - The current wizard step number.
      * @param stepName - The step name identifier (for step events) or empty string (for lifecycle events).
@@ -187,7 +176,6 @@ export const useOnboardingAnalytics = (params: UseOnboardingAnalyticsParams): Us
                 asset_type: "console",
                 context: "onboarding",
                 domain: window.location.hostname,
-                is_first_wizard_run: isFirstWizardRun,
                 is_new_user: getIsNewUser(),
                 is_owner: getIsOwner(),
                 is_revisit: visitedStepsRef.current.has(stepNumber),
@@ -198,7 +186,7 @@ export const useOnboardingAnalytics = (params: UseOnboardingAnalyticsParams): Us
                 wizard_path: wizardPath
             };
         },
-        [ isFirstWizardRun, getIsNewUser, getIsOwner, getWizardPath ]
+        [ getIsNewUser, getIsOwner, getWizardPath ]
     );
 
     /**

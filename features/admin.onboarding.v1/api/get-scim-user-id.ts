@@ -19,7 +19,6 @@
 import { AsgardeoSPAClient, HttpClientInstance } from "@asgardeo/auth-react";
 import { store } from "@wso2is/admin.core.v1/store";
 import { HttpMethods } from "@wso2is/core/models";
-import { AxiosResponse } from "axios";
 
 const httpClient: HttpClientInstance = AsgardeoSPAClient.getInstance()
     .httpRequest.bind(AsgardeoSPAClient.getInstance());
@@ -32,7 +31,7 @@ const httpClient: HttpClientInstance = AsgardeoSPAClient.getInstance()
 export const getScimUserId = async (): Promise<string> => {
     const meEndpoint: string = store.getState().config.endpoints.me;
 
-    const response: AxiosResponse = await httpClient({
+    const response: { data: { id?: string } } = await httpClient({
         headers: {
             "Accept": "application/json",
             "Content-Type": "application/scim+json"
