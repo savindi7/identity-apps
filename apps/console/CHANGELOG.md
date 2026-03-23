@@ -1,5 +1,36 @@
 # @wso2is/console
 
+## 3.1.9
+
+### Patch Changes
+
+- [#9874](https://github.com/wso2/identity-apps/pull/9874) [`9b7895431efc0eeae3a2edfb57f19211b35f0871`](https://github.com/wso2/identity-apps/commit/9b7895431efc0eeae3a2edfb57f19211b35f0871) Thanks [@savindi7](https://github.com/savindi7)! - Integrate Moesif analytics in Console.
+
+* [#9898](https://github.com/wso2/identity-apps/pull/9898) [`8ba669268e37c2c75809ba5cbbde403538540b0f`](https://github.com/wso2/identity-apps/commit/8ba669268e37c2c75809ba5cbbde403538540b0f) Thanks [@NutharaNR](https://github.com/NutharaNR)! - Modify pendingEmails call to honour to complex attribute type
+
+- [#9865](https://github.com/wso2/identity-apps/pull/9865) [`4fafdda888701e42fb3bb19678a5ac5fb7711ff9`](https://github.com/wso2/identity-apps/commit/4fafdda888701e42fb3bb19678a5ac5fb7711ff9) Thanks [@sadilchamishka](https://github.com/sadilchamishka)! - Outbound provisioning UI improvement
+
+- Updated dependencies [[`9b7895431efc0eeae3a2edfb57f19211b35f0871`](https://github.com/wso2/identity-apps/commit/9b7895431efc0eeae3a2edfb57f19211b35f0871), [`4fafdda888701e42fb3bb19678a5ac5fb7711ff9`](https://github.com/wso2/identity-apps/commit/4fafdda888701e42fb3bb19678a5ac5fb7711ff9), [`51d4c127b2aae10e8dbf5d16800fbd20f562458b`](https://github.com/wso2/identity-apps/commit/51d4c127b2aae10e8dbf5d16800fbd20f562458b)]:
+  - @wso2is/admin.onboarding.v1@1.0.56
+  - @wso2is/admin.analytics.v1@0.0.1
+  - @wso2is/admin.applications.v1@2.41.33
+  - @wso2is/admin.connections.v1@2.36.25
+  - @wso2is/i18n@2.37.9
+  - @wso2is/admin.home.v1@1.7.165
+  - @wso2is/admin.users.v1@2.38.8
+  - @wso2is/admin.agents.v1@1.0.200
+  - @wso2is/admin.approval-workflows.v1@1.3.3
+  - @wso2is/admin.branding.v1@2.32.141
+  - @wso2is/admin.console-settings.v1@2.26.19
+  - @wso2is/admin.core.v1@2.55.8
+  - @wso2is/admin.roles.v2@2.27.355
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.185
+  - @wso2is/admin.email-management.v1@2.25.349
+  - @wso2is/admin.flows.v1@1.0.154
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.185
+  - @wso2is/admin.server-configurations.v1@2.38.24
+  - @wso2is/admin.registration-flow-builder.v1@0.10.145
+
 ## 3.1.8
 
 ### Patch Changes
