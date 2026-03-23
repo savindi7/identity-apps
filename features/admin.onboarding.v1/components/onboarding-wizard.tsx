@@ -91,6 +91,7 @@ import { generateRandomNames } from "../utils/random-name-generator";
 export interface OnboardingWizardPropsInterface extends IdentifiableComponentInterface {
     initialData?: OnboardingDataInterface;
     initialStep?: OnboardingStep;
+    isFirstWizardRun?: boolean;
     isReturningUser?: boolean;
     onComplete: (data: OnboardingDataInterface) => Promise<void>;
     onSkip: () => Promise<void>;
