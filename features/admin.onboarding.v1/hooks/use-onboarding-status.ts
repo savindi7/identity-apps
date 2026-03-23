@@ -33,6 +33,7 @@ import { parseOnboardingShowFromPreferences } from "../utils/parse-onboarding-pr
  * SCIM2 attributes to request from the Users list endpoint.
  */
 const SCIM_ATTRIBUTES: string = [
+    "userName",
     `${ProfileConstants.SCIM2_SYSTEM_USER_SCHEMA}.userAccountType`,
     `${ProfileConstants.SCIM2_SYSTEM_USER_SCHEMA}.userPreferences`
 ].join(",");
@@ -41,9 +42,11 @@ const SCIM_ATTRIBUTES: string = [
  * Return type for the useOnboardingStatus hook.
  */
 interface UseOnboardingStatusReturn {
+    isFirstWizardRun: boolean;
     isLoading: boolean;
     markOnboardingComplete: () => Promise<void>;
     shouldShowOnboarding: boolean;
+    userAccountType: string | null;
 }
 
 /**
@@ -122,9 +125,22 @@ export const useOnboardingStatus = (): UseOnboardingStatusReturn => {
         [ userAccountType, scimUserId ]
     );
 
+    // True when the user has never completed or skipped the wizard (SCIM2 userPreferences).
+    const isFirstWizardRun: boolean = useMemo((): boolean => {
+        if (!currentUser) {
+            return true;
+        }
+
+        return parseOnboardingShowFromPreferences(
+            systemSchemaData?.userPreferences as string | undefined
+        );
+    }, [ currentUser, systemSchemaData ]);
+
     return {
+        isFirstWizardRun,
         isLoading,
         markOnboardingComplete,
-        shouldShowOnboarding
+        shouldShowOnboarding,
+        userAccountType
     };
 };

@@ -497,6 +497,9 @@ importers:
       '@wso2is/admin.alternative-login-identifier.v1':
         specifier: ^1.5.207
         version: link:../../features/admin.alternative-login-identifier.v1
+      '@wso2is/admin.analytics.v1':
+        specifier: workspace:^
+        version: link:../../features/admin.analytics.v1
       '@wso2is/admin.api-resources.v1':
         specifier: ^2.25.204
         version: link:../../features/admin.api-resources.v1
@@ -2382,6 +2385,100 @@ importers:
       rollup-plugin-svg:
         specifier: ^2.0.0
         version: 2.0.0
+      typescript:
+        specifier: ^4.6.4
+        version: 4.9.5
+
+  features/admin.analytics.v1:
+    dependencies:
+      '@asgardeo/auth-react':
+        specifier: ^5.1.2
+        version: 5.2.3(@babel/runtime-corejs3@7.26.7)(react-dom@18.3.1)(react@18.3.1)
+      '@wso2is/admin.core.v1':
+        specifier: ^2.55.5
+        version: link:../admin.core.v1
+      '@wso2is/admin.tenants.v1':
+        specifier: workspace:^
+        version: link:../admin.tenants.v1
+      '@wso2is/core':
+        specifier: ^2.12.10
+        version: link:../../modules/core
+      moesif-browser-js:
+        specifier: ^1.8.0
+        version: 1.9.0
+      react:
+        specifier: ^18.2.0
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.3.1(react@18.3.1)
+      react-redux:
+        specifier: ^7.2.9
+        version: 7.2.9(react-dom@18.3.1)(react@18.3.1)
+      redux:
+        specifier: ^4.0.4
+        version: 4.2.1
+    devDependencies:
+      '@rollup/plugin-commonjs':
+        specifier: ^25.0.7
+        version: 25.0.8(rollup@4.34.4)
+      '@rollup/plugin-dynamic-import-vars':
+        specifier: ^2.1.2
+        version: 2.1.5(rollup@4.34.4)
+      '@rollup/plugin-image':
+        specifier: ^3.0.3
+        version: 3.0.3(rollup@4.34.4)
+      '@rollup/plugin-json':
+        specifier: ^6.1.0
+        version: 6.1.0(rollup@4.34.4)
+      '@rollup/plugin-node-resolve':
+        specifier: ^15.2.3
+        version: 15.3.1(rollup@4.34.4)
+      '@rollup/plugin-typescript':
+        specifier: ^11.1.6
+        version: 11.1.6(rollup@4.34.4)(tslib@2.8.1)(typescript@4.9.5)
+      '@types/node':
+        specifier: ^13.9.2
+        version: 13.13.52
+      '@types/react':
+        specifier: 18.0.18
+        version: 18.0.18
+      '@types/react-dom':
+        specifier: ^18.0.6
+        version: 18.3.5(@types/react@18.0.18)
+      '@types/react-redux':
+        specifier: ^7.1.25
+        version: 7.1.34
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^6.5.0
+        version: 6.5.0(@typescript-eslint/parser@6.5.0)(eslint@8.46.0)(typescript@4.9.5)
+      '@typescript-eslint/parser':
+        specifier: ^6.5.0
+        version: 6.5.0(eslint@8.46.0)(typescript@4.9.5)
+      eslint:
+        specifier: 8.46.0
+        version: 8.46.0
+      eslint-plugin-import:
+        specifier: ^2.20.2
+        version: 2.31.0(@typescript-eslint/parser@6.5.0)(eslint@8.46.0)
+      eslint-plugin-react:
+        specifier: 7.30.0
+        version: 7.30.0(eslint@8.46.0)
+      eslint-plugin-react-hooks:
+        specifier: ^4.0.0
+        version: 4.6.2(eslint@8.46.0)
+      rollup:
+        specifier: ^4.17.2
+        version: 4.34.4
+      rollup-plugin-dts:
+        specifier: ^6.1.1
+        version: 6.1.1(rollup@4.34.4)(typescript@4.9.5)
+      rollup-plugin-generate-package-json:
+        specifier: ^3.2.0
+        version: 3.2.0(rollup@4.34.4)
+      rollup-plugin-polyfill-node:
+        specifier: ^0.13.0
+        version: 0.13.0(rollup@4.34.4)
       typescript:
         specifier: ^4.6.4
         version: 4.9.5
@@ -11827,6 +11924,9 @@ importers:
       '@wso2is/access-control':
         specifier: ^3.5.3
         version: link:../../modules/access-control
+      '@wso2is/admin.analytics.v1':
+        specifier: workspace:^
+        version: link:../admin.analytics.v1
       '@wso2is/admin.application-templates.v1':
         specifier: workspace:^
         version: link:../admin.application-templates.v1
@@ -11860,6 +11960,9 @@ importers:
       '@wso2is/admin.template-core.v1':
         specifier: workspace:^
         version: link:../admin.template-core.v1
+      '@wso2is/admin.tenants.v1':
+        specifier: workspace:^
+        version: link:../admin.tenants.v1
       '@wso2is/admin.users.v1':
         specifier: workspace:^
         version: link:../admin.users.v1
@@ -45575,6 +45678,10 @@ packages:
     resolution: {integrity: sha512-xV2bxeN6F7oYjZWTe/YPAy6MN2M+sL4u/Rlm2AHCIVGfo2p1yGmBHQ6vHehl4bRTZBdHu3TSkWdYgkwpYzAGSw==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /moesif-browser-js@1.9.0:
+    resolution: {integrity: sha512-MjydWI4hnh3UJWk7IGyXkN0pfzpDfV/u/rqcKrjTbBeUg5A9uTBkc0uZ+XtEfKddbxLemKuA9DFGT6yb9K6CFQ==}
+    dev: false
 
   /moment@2.30.1:
     resolution: {integrity: sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==}

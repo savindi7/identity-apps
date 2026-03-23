@@ -176,6 +176,11 @@ export const useOnboardingDataInterface = (
             setData((prevState: OnboardingDataInterface) => ({ ...prevState, brandingConfig: config }));
         }, [ setData ]);
 
+    const updateSelfRegistration: (enabled: boolean) => void = useCallback(
+        (selfRegistrationEnabled: boolean): void => {
+            setData((prevState: OnboardingDataInterface) => ({ ...prevState, selfRegistrationEnabled }));
+        }, [ setData ]);
+
     const setCreatedApplication: (result: CreatedApplicationResultInterface) => void = useCallback(
         (result: CreatedApplicationResultInterface): void => {
             setData((prevState: OnboardingDataInterface) => ({ ...prevState, createdApplication: result }));
@@ -189,6 +194,7 @@ export const useOnboardingDataInterface = (
         updateChoice,
         updateIsRandomName,
         updateRedirectUrls,
+        updateSelfRegistration,
         updateSignInOptions,
         updateTemplateSelection
     };
