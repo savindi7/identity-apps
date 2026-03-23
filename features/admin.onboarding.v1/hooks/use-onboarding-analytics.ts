@@ -208,12 +208,16 @@ export const useOnboardingAnalytics = (params: UseOnboardingAnalyticsParams): Us
                 return;
             }
 
-            const metadata: Record<string, unknown> = {
-                ...buildCommonMetadata(stepNumber, stepName),
-                ...extra
-            };
+            try {
+                const metadata: Record<string, unknown> = {
+                    ...buildCommonMetadata(stepNumber, stepName),
+                    ...extra
+                };
 
-            moesif.track(eventName, metadata);
+                moesif.track(eventName, metadata);
+            } catch (_error: unknown) {
+                // Analytics failures must never block wizard progression.
+            }
         },
         [ buildCommonMetadata ]
     );
