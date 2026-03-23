@@ -36,7 +36,7 @@ import { OnboardingBrandingConfigInterface, SignInOptionsConfigInterface } from 
  */
 interface AuthMethodDisplayConfigInterface {
     /** Icon - can be string path or React component */
-    icon: any;
+    icon: string | React.ComponentType<React.SVGProps<SVGSVGElement>>;
     /** Display label */
     label: string;
 }
@@ -303,25 +303,27 @@ const LoginBoxPreview: FunctionComponent<LoginBoxPreviewPropsInterface> = memo((
     /**
      * Render icon for a method - handles both string paths and React components.
      */
-    const renderIcon: (icon: any, size?: number) => ReactElement | null =
-        (icon: any, size: number = 16): ReactElement | null => {
+    const renderIcon: (
+        icon: AuthMethodDisplayConfigInterface["icon"] | undefined,
+        size?: number
+    ) => ReactElement | null =
+        (
+            icon: AuthMethodDisplayConfigInterface["icon"] | undefined,
+            size: number = 16
+        ): ReactElement | null => {
             if (!icon) return null;
 
             if (typeof icon === "string") {
                 return <IconImage src={ icon } alt="" style={ { height: size, width: size } } />;
             }
 
-            if (typeof icon === "function" || typeof icon === "object") {
-                const IconComponent: any = icon;
+            const IconComponent: React.ComponentType<React.SVGProps<SVGSVGElement>> = icon;
 
-                return (
-                    <Box sx={ { display: "flex", height: size, width: size } }>
-                        <IconComponent style={ { height: "100%", width: "100%" } } />
-                    </Box>
-                );
-            }
-
-            return null;
+            return (
+                <Box sx={ { display: "flex", height: size, width: size } }>
+                    <IconComponent style={ { height: "100%", width: "100%" } } />
+                </Box>
+            );
         };
 
     return (
@@ -473,11 +475,13 @@ const LoginBoxPreview: FunctionComponent<LoginBoxPreviewPropsInterface> = memo((
                                     flexItem
                                     orientation="vertical"
                                 />
-                                <Box sx={ {
-                                    display: "flex",
-                                    flexWrap: "wrap",
-                                    gap: 0.75
-                                } }>
+                                <Box
+                                    sx={ {
+                                        display: "flex",
+                                        flexWrap: "wrap",
+                                        gap: 0.75
+                                    } }
+                                >
                                     { step2Methods.map((methodKey: string) => {
                                         const config: AuthMethodDisplayConfigInterface =
                                             authMethodConfig[methodKey];

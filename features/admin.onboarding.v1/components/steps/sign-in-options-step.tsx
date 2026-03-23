@@ -21,6 +21,7 @@ import Alert from "@oxygen-ui/react/Alert";
 import Box from "@oxygen-ui/react/Box";
 import Typography from "@oxygen-ui/react/Typography";
 import { getConnectionIcons } from "@wso2is/admin.connections.v1/configs/ui";
+import { RequestResultInterface } from "@wso2is/admin.core.v1/hooks/use-request";
 import {
     useGetGovernanceConnectorById
 } from "@wso2is/admin.server-configurations.v1/api/governance-connectors";
@@ -31,7 +32,6 @@ import {
     ConnectorPropertyInterface,
     GovernanceConnectorInterface
 } from "@wso2is/admin.server-configurations.v1/models/governance-connectors";
-import { RequestResultInterface } from "@wso2is/admin.core.v1/hooks/use-request";
 import { IdentifiableComponentInterface } from "@wso2is/core/models";
 import React, { FunctionComponent, ReactElement, ReactNode, useCallback, useEffect, useMemo } from "react";
 import {
