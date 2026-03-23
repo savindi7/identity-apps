@@ -152,7 +152,7 @@ const SignInOptionsStep: FunctionComponent<SignInOptionsStepPropsInterface> = (
 
             onSelfRegistrationChange(enableProp?.value === "true");
         }
-    }, [ selfSignUpConnector ]);
+    }, [ selfSignUpConnector, selfRegistrationEnabled, onSelfRegistrationChange ]);
 
     const handleLoginMethodToggle: (id: string, enabled: boolean) => void = useCallback(
         (id: string, enabled: boolean): void => {

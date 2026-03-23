@@ -89,7 +89,7 @@ export const RightColumn: typeof Box = styled(Box)(() => ({
  * Fixed width to give maximum space to the preview area.
  */
 export const ConfigPanel: typeof Box = styled(LeftColumn)(() => ({
-    flex: "0 0 360px",
+    flex: "0 0 500px",
     minWidth: 500
 }));
 
