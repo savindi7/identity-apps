@@ -142,8 +142,7 @@ export const DEFAULT_LAYOUT_CSS_CONTENT_WITH_POLICY_PAGES: string =
 	margin-left: -10px;
 }
 
-.login-portal.layout.policy-page-layout .page-wrapper.layout-file .footer .ui.menu:not(.vertical) .right.item,
-.ui.menu:not(.vertical) .right.menu {
+.login-portal.layout.policy-page-layout .footer .ui.menu:not(.vertical) .right.menu {
 	justify-content: end;
 }`;
 
@@ -155,21 +154,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector("#page-wrapper-root").classList.add("success-page");
     } else if (dataset.responseType === "error") {
         document.querySelector("#page-wrapper-root").classList.add("error-page");
-    }
-    document.getElementById("init-loader").style.display = "none";
-    document.getElementById("page-content-section").style.display = "block";
-});`;
-
-export const DEFAULT_LAYOUT_JS_CONTENT_WITH_POLICY_PAGES: string =`
-const dataset = document.body.dataset;
-
-document.addEventListener('DOMContentLoaded', function () {
-    if (dataset.responseType === "success") {
-        document.querySelector("#page-wrapper-root").classList.add("success-page");
-    } else if (dataset.responseType === "error") {
-        document.querySelector("#page-wrapper-root").classList.add("error-page");
-    } else if (dataset.page === "cookie-policy" || dataset.page === "privacy-policy") {
-        document.querySelector("#page-wrapper-root").classList.add("policy-page-layout");
     }
     document.getElementById("init-loader").style.display = "none";
     document.getElementById("page-content-section").style.display = "block";
