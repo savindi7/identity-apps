@@ -41,9 +41,16 @@ const MoesifAnalyticsProvider: FunctionComponent<PropsWithChildren> = (
 
     const { getDecodedIDToken } = useAuthContext();
 
-    const moesifApplicationId: string = useSelector((state: AppState) =>
-        (state?.config?.deployment?.extensions as Record<string, unknown>)?.moesifApplicationId as string || ""
-    );
+    const moesifApplicationId: string = useSelector((state: AppState) => {
+        const extensions: Record<string, unknown> =
+            (state?.config?.deployment?.extensions as Record<string, unknown>) ?? {};
+        const analytics: Record<string, unknown> =
+            (extensions?.analytics as Record<string, unknown>) ?? {};
+        const moesifConfig: Record<string, unknown> =
+            (analytics?.moesif as Record<string, unknown>) ?? {};
+
+        return (moesifConfig?.applicationId as string) || "";
+    });
     const tenantDomain: string = useSelector((state: AppState) =>
         state?.auth?.tenantDomain || ""
     );

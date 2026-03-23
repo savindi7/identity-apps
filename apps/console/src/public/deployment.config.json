@@ -171,7 +171,11 @@
                 "id": "VmVyaWZ5RW1haWxPblVwZGF0ZQ"
             }
         ],
-        "moesifApplicationId": "",
+        "analytics": {
+            "moesif": {
+                "applicationId": ""
+            }
+        },
         "outboundProvisioningConnectors": [],
         "smsTemplates": [
             {
@@ -1372,7 +1376,7 @@
             },
             "onboarding": {
                 "disabledFeatures": [],
-                "enabled": false,
+                "enabled": true,
                 "featureFlags": [],
                 "scopes": {
                     "create": [
