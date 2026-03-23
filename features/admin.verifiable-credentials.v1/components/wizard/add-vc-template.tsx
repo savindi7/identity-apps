@@ -287,7 +287,11 @@ export default function AddVCTemplateWizard({
                     validate={ validateForm }
                     render={ ({ handleSubmit }: FormRenderProps) => {
                         return (
-                            <form id="addVCTemplateForm" onSubmit={ handleSubmit }>
+                            <form
+                                id="addVCTemplateForm"
+                                className="vc-template-create-form"
+                                onSubmit={ handleSubmit }
+                            >
                                 <FinalFormField
                                     name="identifier"
                                     label={ t("verifiableCredentials:wizard.form.identifier.label") }
