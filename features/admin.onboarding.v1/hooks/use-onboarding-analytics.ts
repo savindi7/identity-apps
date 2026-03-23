@@ -16,15 +16,12 @@
  * under the License.
  */
 
+import { useMoesifAnalytics } from "@wso2is/admin.analytics.v1/hooks/use-moesif-analytics";
 import { AppState } from "@wso2is/admin.core.v1/store";
-import { getAssociatedTenants } from "@wso2is/admin.tenants.v1/api/tenants";
-import { TenantInfo, TenantRequestResponse } from "@wso2is/admin.tenants.v1/models/tenant";
 import { UserAccountTypes } from "@wso2is/admin.users.v1/constants/user-management-constants";
 import { ProfileInfoInterface } from "@wso2is/core/models";
-import moesif from "moesif-browser-js";
 import React, { useCallback, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
-import { getScimUserId } from "../api/get-scim-user-id";
 import { FEATURE_LAUNCH_DATE, OnboardingAnalyticsEvents } from "../constants";
 import { OnboardingChoice, OnboardingDataInterface, OnboardingStep } from "../models";
 
@@ -61,70 +58,20 @@ const TOTAL_STEPS_PREVIEW: number = 3;
 
 /**
  * Hook that provides Moesif analytics tracking for the onboarding wizard.
+ * Consumes the shared MoesifAnalyticsProvider for SDK access and adds
+ * onboarding-specific metadata and event logic.
  *
- * @param params - Hook parameters including current step, data, and first-run flag.
+ * @param params - Hook parameters including current step, data, and returning user flag.
  * @returns Object with tracking functions for each wizard event.
  */
 export const useOnboardingAnalytics = (params: UseOnboardingAnalyticsParams): UseOnboardingAnalyticsReturn => {
     const { currentStep, isReturningUser, onboardingData, userAccountType } = params;
 
+    const { track, isEnabled } = useMoesifAnalytics();
+
     const profileInfo: ProfileInfoInterface = useSelector((state: AppState) => state.profile.profileInfo);
-    const tenantDomain: string = useSelector((state: AppState) =>
-        state?.auth?.tenantDomain || ""
-    );
-    const moesifApplicationId: string = useSelector((state: AppState) =>
-        (state?.config?.deployment?.extensions as Record<string, unknown>)?.moesifApplicationId as string || ""
-    );
 
-    const isEnabledRef: React.MutableRefObject<boolean> = useRef<boolean>(false);
     const visitedStepsRef: React.MutableRefObject<Set<number>> = useRef<Set<number>>(new Set<number>());
-
-    // Initialize Moesif SDK on mount if application ID is configured.
-    // Fetches user UUID from /scim2/Me and tenant UUID from tenant/me for Moesif identification.
-    useEffect(() => {
-        if (!moesifApplicationId || isReturningUser) {
-            return;
-        }
-
-        try {
-            moesif.init({
-                applicationId: moesifApplicationId,
-                disableFetch: true
-            });
-
-            isEnabledRef.current = true;
-        } catch (_error: unknown) {
-            // eslint-disable-next-line no-console
-            console.warn("Failed to initialize Moesif analytics:", _error);
-            isEnabledRef.current = false;
-
-            return;
-        }
-
-        getScimUserId()
-            .then((scimUserId: string): void => {
-                if (scimUserId) {
-                    moesif.identifyUser(scimUserId);
-                }
-            })
-            .catch((): void => {
-                // User ID fetch failed — analytics will work without User ID.
-            });
-
-        getAssociatedTenants(undefined, 15, 0)
-            .then((response: TenantRequestResponse): void => {
-                const currentTenant: TenantInfo | undefined = response?.associatedTenants?.find(
-                    (tenant: TenantInfo) => tenant.domain === tenantDomain
-                );
-
-                if (currentTenant?.id) {
-                    moesif.identifyCompany(currentTenant.id);
-                }
-            })
-            .catch((): void => {
-                // Tenant UUID fetch failed — analytics will work without Company ID.
-            });
-    }, []);
 
     // Track visited steps for is_revisit computation.
     useEffect(() => {
@@ -191,6 +138,7 @@ export const useOnboardingAnalytics = (params: UseOnboardingAnalyticsParams): Us
 
     /**
      * Fire a Moesif track event with common metadata and optional extra properties.
+     * Skips tracking for returning users (re-launched wizard from homepage).
      */
     const trackEvent: (
         eventName: string,
@@ -204,22 +152,18 @@ export const useOnboardingAnalytics = (params: UseOnboardingAnalyticsParams): Us
             stepName: string,
             extra?: Record<string, unknown>
         ): void => {
-            if (!isEnabledRef.current) {
+            if (!isEnabled || isReturningUser) {
                 return;
             }
 
-            try {
-                const metadata: Record<string, unknown> = {
-                    ...buildCommonMetadata(stepNumber, stepName),
-                    ...extra
-                };
+            const metadata: Record<string, unknown> = {
+                ...buildCommonMetadata(stepNumber, stepName),
+                ...extra
+            };
 
-                moesif.track(eventName, metadata);
-            } catch (_error: unknown) {
-                // Analytics failures must never block wizard progression.
-            }
+            track(eventName, metadata);
         },
-        [ buildCommonMetadata ]
+        [ isEnabled, isReturningUser, buildCommonMetadata, track ]
     );
 
     // ========================================================================

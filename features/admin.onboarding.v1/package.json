@@ -14,6 +14,7 @@
         "@oxygen-ui/react-icons": "^2.4.6",
         "@wso2is/access-control": "^3.5.3",
         "@wso2is/admin.application-templates.v1": "workspace:^",
+        "@wso2is/admin.analytics.v1": "workspace:^",
         "@wso2is/admin.applications.v1": "workspace:^",
         "@wso2is/admin.branding.v1": "workspace:^",
         "@wso2is/admin.claims.v1": "workspace:^",
@@ -34,7 +35,6 @@
         "lodash-es": "^4.17.21",
         "react-i18next": "^11.18.5",
         "react-redux": "^7.2.9",
-        "moesif-browser-js": "^1.8.0",
         "redux": "^4.0.4"
     },
     "devDependencies": {
