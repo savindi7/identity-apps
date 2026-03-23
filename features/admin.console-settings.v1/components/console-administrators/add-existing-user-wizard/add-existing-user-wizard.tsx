@@ -156,7 +156,7 @@ const AddExistingUserWizard: FunctionComponent<AddExistingUserWizardPropsInterfa
      */
     const searchUsers: DebouncedFunc<(query: string) => void> =
         useCallback(debounce((query: string) => {
-            setUsernameInputValue(!isEmpty(query) ? query : null);
+            setUsernameInputValue(!isEmpty(query) ? query : "");
         }, 1000), []);
 
     const handleAddExitingUser = (values: AddExistingUserWizardFormValuesInterface): void => {
@@ -209,7 +209,7 @@ const AddExistingUserWizard: FunctionComponent<AddExistingUserWizardPropsInterfa
             username: undefined
         };
 
-        if (!values.username) {
+        if (!values.username || !values.username.user) {
             errors.username = "Username is a required field";
         }
 
@@ -287,6 +287,7 @@ const AddExistingUserWizard: FunctionComponent<AddExistingUserWizardPropsInterfa
                                                     { ...props }
                                                     className="MuiAutocomplete-moreItemsAvailableMessage"
                                                     key={ option.key }
+                                                    onClick={ undefined }
                                                 >
                                                     { option.label }
                                                 </li>

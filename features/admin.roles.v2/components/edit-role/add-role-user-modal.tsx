@@ -137,8 +137,8 @@ export const AddRoleUserModal: FunctionComponent<AddRoleUserModalProps> = (
     );
 
     const hasMoreUsers: boolean = isForNonHumanUser
-        ? agentList?.Resources?.length == UIConstants.DEFAULT_RESOURCE_LIST_ITEM_LIMIT
-        : originalUserList?.Resources?.length == UIConstants.DEFAULT_RESOURCE_LIST_ITEM_LIMIT;
+        ? agentList?.Resources?.length === UIConstants.DEFAULT_RESOURCE_LIST_ITEM_LIMIT
+        : originalUserList?.Resources?.length === UIConstants.DEFAULT_RESOURCE_LIST_ITEM_LIMIT;
     const entityList: UserBasicInterface[] = isForNonHumanUser ? agentList?.Resources : originalUserList?.Resources;
     const isEntityListLoading: boolean = isForNonHumanUser
         ? isAgentListLoading
@@ -392,13 +392,15 @@ export const AddRoleUserModal: FunctionComponent<AddRoleUserModalProps> = (
                                 })
                             }
                             { hasMoreUsers && !isEntityListLoading && (
-                                <Table.Cell
-                                    colSpan={ 2 }
-                                    className="transfer-list-more-items-message"
-                                >
-                                    { t(isForNonHumanUser ? "roles:edit.agents.actions.search.moreItemsMessage":
-                                        "roles:edit.users.actions.search.moreItemsMessage") }
-                                </Table.Cell>
+                                <Table.Row>
+                                    <Table.Cell
+                                        colSpan={ 2 }
+                                        className="transfer-list-more-items-message"
+                                    >
+                                        { t(isForNonHumanUser ? "roles:edit.agents.actions.search.moreItemsMessage":
+                                            "roles:edit.users.actions.search.moreItemsMessage") }
+                                    </Table.Cell>
+                                </Table.Row>
                             ) }
                         </TransferList>
                     </TransferComponent>
