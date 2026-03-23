@@ -54,11 +54,11 @@ export enum OnboardingStepNames {
  * Step names for analytics metadata.
  */
 export const STEP_NAMES: Record<OnboardingStep, string> = {
-    [OnboardingStep.WELCOME]: "welcome",
-    [OnboardingStep.NAME_APPLICATION]: "app_name",
-    [OnboardingStep.SELECT_APPLICATION_TEMPLATE]: "select_template",
-    [OnboardingStep.CONFIGURE_REDIRECT_URL]: "redirect_url",
-    [OnboardingStep.SIGN_IN_OPTIONS]: "sign_in_options",
-    [OnboardingStep.DESIGN_LOGIN]: "design_login",
+    [OnboardingStep.WELCOME]: OnboardingStepNames.WELCOME_OPTION_SELECTED,
+    [OnboardingStep.NAME_APPLICATION]: OnboardingStepNames.APP_NAME_ENTERED,
+    [OnboardingStep.SELECT_APPLICATION_TEMPLATE]: OnboardingStepNames.APP_TEMPLATE_SELECTED,
+    [OnboardingStep.CONFIGURE_REDIRECT_URL]: OnboardingStepNames.REDIRECT_URL_CONFIGURED,
+    [OnboardingStep.SIGN_IN_OPTIONS]: OnboardingStepNames.SIGNIN_OPTIONS_CONFIGURED,
+    [OnboardingStep.DESIGN_LOGIN]: OnboardingStepNames.DESIGN_LOGIN_CONFIGURED,
     [OnboardingStep.SUCCESS]: "success"
 };

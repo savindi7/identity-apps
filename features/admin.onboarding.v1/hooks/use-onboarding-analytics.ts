@@ -72,6 +72,7 @@ export const useOnboardingAnalytics = (params: UseOnboardingAnalyticsParams): Us
     const profileInfo: ProfileInfoInterface = useSelector((state: AppState) => state.profile.profileInfo);
 
     const visitedStepsRef: React.MutableRefObject<Set<number>> = useRef<Set<number>>(new Set<number>());
+    const startTimeRef: React.MutableRefObject<number> = useRef<number>(Date.now());
 
     // Track visited steps for is_revisit computation.
     useEffect(() => {
@@ -175,15 +176,16 @@ export const useOnboardingAnalytics = (params: UseOnboardingAnalyticsParams): Us
     }, [ trackEvent, currentStep ]);
 
     const trackCompleted: () => void = useCallback((): void => {
-        trackEvent(OnboardingAnalyticsEvents.COMPLETED, currentStep, "");
+        const durationSeconds: number = Math.round((Date.now() - startTimeRef.current) / 1000);
+
+        trackEvent(OnboardingAnalyticsEvents.COMPLETED, currentStep, "", {
+            duration_seconds: durationSeconds
+        });
     }, [ trackEvent, currentStep ]);
 
     const trackSkipped: (fromStep: OnboardingStep, fromStepName: string) => void = useCallback(
         (fromStep: OnboardingStep, fromStepName: string): void => {
-            trackEvent(OnboardingAnalyticsEvents.SKIPPED, fromStep, fromStepName, {
-                skipped_from_step: fromStep,
-                skipped_from_step_name: fromStepName
-            });
+            trackEvent(OnboardingAnalyticsEvents.SKIPPED, fromStep, fromStepName);
         },
         [ trackEvent ]
     );
