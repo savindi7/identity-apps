@@ -1,5 +1,11 @@
 # @wso2is/i18n
 
+## 2.37.9
+
+### Patch Changes
+
+- [#9865](https://github.com/wso2/identity-apps/pull/9865) [`51d4c127b2aae10e8dbf5d16800fbd20f562458b`](https://github.com/wso2/identity-apps/commit/51d4c127b2aae10e8dbf5d16800fbd20f562458b) Thanks [@sadilchamishka](https://github.com/sadilchamishka)! - Improve outbound provisioning connection remove ux
+
 ## 2.37.8
 
 ### Patch Changes
