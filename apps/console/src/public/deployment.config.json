@@ -29,6 +29,11 @@
     },
     "docSiteUrl": "https://is.docs.wso2.com/en/latest",
     "extensions": {
+        "analytics": {
+            "moesif": {
+                "applicationId": ""
+            }
+        },
         "defaultBrandedLoginScreenCopyright": "${copyright} ${year} WSO2 LLC.",
         "emailTemplates": [
             {
@@ -171,11 +176,6 @@
                 "id": "VmVyaWZ5RW1haWxPblVwZGF0ZQ"
             }
         ],
-        "analytics": {
-            "moesif": {
-                "applicationId": ""
-            }
-        },
         "outboundProvisioningConnectors": [],
         "smsTemplates": [
             {
