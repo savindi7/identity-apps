@@ -40,9 +40,7 @@ import useFeatureGate, { UseFeatureGateInterface } from "@wso2is/admin.feature-g
 import useAILoginFlow from "@wso2is/admin.login-flow.ai.v1/hooks/use-ai-login-flow";
 import { OrganizationType } from "@wso2is/admin.organizations.v1/constants/organization-constants";
 import { isFeatureEnabled } from "@wso2is/core/helpers";
-import { AlertLevels, IdentifiableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AlertLevels, IdentifiableComponentInterface } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { PrimaryButton } from "@wso2is/react-components";
 import { AxiosError } from "axios";
@@ -289,7 +287,7 @@ const AuthenticationFlowBuilder: FunctionComponent<AuthenticationFlowBuilderProp
                         )
                     })
                 );
-            }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            }).catch((error: AxiosError) => {
                 const INVALID_SCRIPT_CODE: string = "APP-60001";
 
                 if (error?.response?.data?.code === INVALID_SCRIPT_CODE) {
@@ -383,10 +381,10 @@ const AuthenticationFlowBuilder: FunctionComponent<AuthenticationFlowBuilderProp
                                 level: AlertLevels.SUCCESS,
                                 message: t("applications:notifications.updateAuthenticationFlow.success.message")
                             }));
-                        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+                        }).catch((error: AxiosError) => {
                             handleUpdateAuthenticationFlowError(error);
                         });
-                }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+                }).catch((error: AxiosError) => {
                     handleUpdateAuthenticationFlowError(error);
                 }).finally(() => {
                     setAiGeneratedLoginFlow(undefined);
@@ -407,10 +405,10 @@ const AuthenticationFlowBuilder: FunctionComponent<AuthenticationFlowBuilderProp
                             level: AlertLevels.SUCCESS,
                             message: t("applications:notifications.updateAuthenticationFlow.success.message")
                         }));
-                    }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+                    }).catch((error: AxiosError) => {
                         handleUpdateAuthenticationFlowError(error);
                     });
-            }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            }).catch((error: AxiosError) => {
                 handleUpdateAuthenticationFlowError(error);
             }).finally(() => {
                 setAiGeneratedLoginFlow(undefined);
@@ -418,7 +416,7 @@ const AuthenticationFlowBuilder: FunctionComponent<AuthenticationFlowBuilderProp
             });
     };
 
-    const handleUpdateAuthenticationFlowError = (error: AxiosError<HttpErrorResponseDataInterface>): void => {
+    const handleUpdateAuthenticationFlowError = (error: AxiosError): void => {
         const INVALID_SCRIPT_CODE: string = "APP-60001";
 
         if (error?.response?.data?.code === INVALID_SCRIPT_CODE) {

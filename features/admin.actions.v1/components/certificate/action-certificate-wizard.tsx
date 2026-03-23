@@ -17,9 +17,7 @@
  */
 
 import { AddCertificateFormComponent } from "@wso2is/admin.core.v1/components/add-certificate-form";
-import { IdentifiableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { IdentifiableComponentInterface } from "@wso2is/core/models";
 import { useTrigger } from "@wso2is/forms";
 import { Heading, LinkButton, PrimaryButton, useWizardAlert } from "@wso2is/react-components";
 import { AxiosError } from "axios";
@@ -85,7 +83,7 @@ export const ActionCertificateWizard: FunctionComponent<ActionCertificateWizardP
     const { t } = useTranslation();
 
     const handleSuccess: (operation: string) => void = useHandleSuccess();
-    const handleError: (error: AxiosError<HttpErrorResponseDataInterface>, operation: string) => void = useHandleError();
+    const handleError: (error: AxiosError, operation: string) => void = useHandleError();
 
     const [ finishSubmit, setFinishSubmit ] = useTrigger();
     const [ triggerUpload, setTriggerUpload ] = useTrigger();
@@ -123,7 +121,7 @@ export const ActionCertificateWizard: FunctionComponent<ActionCertificateWizardP
                         handleSuccess(ActionsConstants.ADD_CERTIFICATE);
                     }
                 })
-                .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+                .catch((error: AxiosError) => {
                     if (currentPEMValue) {
                         handleError(error, ActionsConstants.CHANGE_CERTIFICATE);
                     }else {

@@ -49,8 +49,7 @@ import { GovernanceConnectorUtils } from "@wso2is/admin.server-configurations.v1
 import { getConfiguration } from "@wso2is/admin.users.v1/utils/generate-password.utils";
 import {
     AlertLevels,
-    IdentifiableComponentInterface,
-    HttpErrorResponseDataInterface
+    IdentifiableComponentInterface
 } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { Field, Form } from "@wso2is/form";
@@ -595,7 +594,7 @@ export const ValidationConfigEditPage: FunctionComponent<MyAccountSettingsEditPa
             .then((response: GovernanceConnectorInterface) => {
                 setLegacyPasswordPolicies(response?.properties);
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error.response && error.response.data && error.response.data.detail) {
                     dispatch(
                         addAlert({
@@ -808,7 +807,7 @@ export const ValidationConfigEditPage: FunctionComponent<MyAccountSettingsEditPa
                     })
                 );
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error?.response?.data?.description) {
                     dispatch(
                         addAlert({

@@ -27,8 +27,7 @@ import {
     ProfileInfoInterface,
     ProfileSchemaInterface,
     SBACInterface,
-    TestableComponentInterface,
-    HttpErrorResponseDataInterface
+    TestableComponentInterface
 } from "@wso2is/core/models";
 import { ProfileUtils } from "@wso2is/core/utils";
 import { Message } from "@wso2is/react-components";
@@ -246,7 +245,7 @@ export const Profile: FunctionComponent<ProfileProps> = (props: ProfileProps): R
                     });
                 }
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error?.response?.data?.detail) {
                     onAlertFired({
                         description: t(

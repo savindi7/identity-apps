@@ -34,8 +34,7 @@ import { isFeatureEnabled } from "@wso2is/core/helpers";
 import {
     AlertLevels,
     IdentifiableComponentInterface,
-    LoadableComponentInterface,
-    HttpErrorResponseDataInterface
+    LoadableComponentInterface
 } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import {
@@ -240,7 +239,7 @@ export const OrganizationList: FunctionComponent<OrganizationListPropsInterface>
                 setShowDeleteConfirmationModal(false);
                 onOrganizationDelete();
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 setShowDeleteConfirmationModal(false);
                 if (error.response && error.response.data && error.response.data.description) {
                     if (error.response.data.code === "ORG-60007") {

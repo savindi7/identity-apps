@@ -24,7 +24,6 @@ import axios, { AxiosError } from "axios";
 import isEmpty from "lodash-es/isEmpty";
 import { getLocalAuthenticators } from "../api";
 import { AuthenticatorMeta } from "../meta";
-import { HttpErrorResponseDataInterface } from "@wso2is/core/models";
 import {
     FederatedAuthenticatorInterface,
     FederatedAuthenticatorListItemInterface,
@@ -235,7 +234,7 @@ export class IdentityProviderManagementUtils {
 
                 return Promise.resolve([ localAuthenticators, federatedAuthenticators ]);
             }))
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 throw new IdentityAppsApiException(
                     ConnectionUIConstants.ERROR_MESSAGES.COMBINED_AUTHENTICATOR_FETCH_ERROR,
                     error.stack,

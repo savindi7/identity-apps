@@ -24,9 +24,7 @@ import useRequest, {
     RequestResultInterface
 } from "@wso2is/admin.core.v1/hooks/use-request";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { Saml2ConfigurationConstants } from "../constants/saml2-configuration";
 import { Saml2ConfigAPIResponseInterface } from "../models/saml2-configuration";
@@ -92,7 +90,7 @@ export const revertSaml2Configurations = (): Promise<void> => {
             }
 
             return Promise.resolve();
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             const errorMessage: string = Saml2ConfigurationConstants.ErrorMessages
                 .SAML2_CONFIG_REVERT_ERROR_CODE.getErrorMessage();
 
@@ -134,7 +132,7 @@ export const updateSaml2Configurations = (data: Saml2ConfigAPIResponseInterface)
             }
 
             return Promise.resolve(response.data as Saml2ConfigAPIResponseInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             const errorMessage: string = Saml2ConfigurationConstants.ErrorMessages
                 .SAML2_CONFIG_UPDATE_ERROR_CODE.getErrorMessage();
 

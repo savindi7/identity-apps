@@ -44,9 +44,7 @@ import {
     UserStoreType
 } from "@wso2is/admin.userstores.v1/models/user-stores";
 import { isFeatureEnabled } from "@wso2is/core/helpers";
-import { AlertLevels, IdentifiableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AlertLevels, IdentifiableComponentInterface } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { DocumentationLink, EmphasizedSegment, Message, PageLayout, useDocumentation } from "@wso2is/react-components";
 import { AxiosError } from "axios";
@@ -240,7 +238,7 @@ const RemoteUserStoreCreatePage: FunctionComponent<RemoteCustomerUserStoreCreate
                         "#tab=guide"
                 });
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (
                     error.response?.status === 403 &&
                     error.response.data?.code === UserStoreManagementConstants.ERROR_CREATE_LIMIT_REACHED.getErrorCode()

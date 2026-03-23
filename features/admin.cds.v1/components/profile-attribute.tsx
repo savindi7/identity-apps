@@ -21,9 +21,7 @@ import IconButton from "@oxygen-ui/react/IconButton";
 import { TrashIcon } from "@oxygen-ui/react-icons";
 import { AppConstants } from "@wso2is/admin.core.v1/constants/app-constants";
 import { history } from "@wso2is/admin.core.v1/helpers/history";
-import { AlertLevels,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AlertLevels } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { Field, Form } from "@wso2is/form";
 import { DynamicField, KeyValue } from "@wso2is/forms";
@@ -228,7 +226,7 @@ const ProfileAttributeEditPage: FunctionComponent<RouteComponentProps<RouteParam
                 // truth for canonical_values — its response is what the useEffect re-seeds from.
                 mutate();
             })
-            .catch((err: AxiosError<HttpErrorResponseDataInterface>): void => {
+            .catch((err: AxiosError): void => {
                 dispatch(addAlert({
                     description: err?.message || t("customerDataService:profileAttributes.edit.notifications" +
                         ".updateAttribute.error.description"),
@@ -256,7 +254,7 @@ const ProfileAttributeEditPage: FunctionComponent<RouteComponentProps<RouteParam
 
             history.push(AppConstants.getPaths().get("PROFILE_ATTRIBUTES"));
         } catch (err: unknown) {
-            const axiosErr: AxiosError<HttpErrorResponseDataInterface> = err as AxiosError<HttpErrorResponseDataInterface>;
+            const axiosErr: AxiosError = err as AxiosError;
 
             setModalAlert({
                 description: axiosErr?.message || t("customerDataService:profileAttributes.edit.notifications" +

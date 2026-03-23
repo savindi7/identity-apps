@@ -26,9 +26,7 @@ import { store } from "@wso2is/admin.core.v1/store";
 import { PatchGroupDataInterface } from "@wso2is/admin.groups.v1/models/groups";
 import { PatchRoleDataInterface } from "@wso2is/admin.roles.v2/models/roles";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { HttpMethods, ProfileInfoInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods, ProfileInfoInterface } from "@wso2is/core/models";
 import { AxiosError, AxiosResponse } from "axios";
 import { UserManagementConstants } from "../constants";
 import { SCIMBulkEndpointInterface } from "../models/endpoints";
@@ -79,7 +77,7 @@ export const getUsersList = (
         .then((response: AxiosResponse<UserListInterface>) => {
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -159,7 +157,7 @@ export const addUser = (data: UserDetailsInterface): Promise<any> => {
         .then((response: AxiosResponse) => {
             return Promise.resolve(response);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -184,7 +182,7 @@ export const addBulkUsers = (data: SCIMBulkEndpointInterface): Promise<any> => {
         .then((response: AxiosResponse) => {
             return Promise.resolve(response);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -210,7 +208,7 @@ export const deleteUser = (userId: string): Promise<any> => {
         .then((response: AxiosResponse) => {
             return Promise.resolve(response);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -237,7 +235,7 @@ export const addUserRole = (data: PatchGroupDataInterface, groupId: string): Pro
         .then((response: AxiosResponse) => {
             return Promise.resolve(response);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -298,7 +296,7 @@ export const getUserDetails = (id: string, attributes: string): Promise<ProfileI
         .then((response: AxiosResponse<ProfileInfoInterface>) => {
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -327,7 +325,7 @@ export const updateUserInfo = (userId: string, data: PatchRoleDataInterface): Pr
         .then((response: AxiosResponse<ProfileInfoInterface>) => {
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 UserManagementConstants.USER_INFO_UPDATE_ERROR,
                 error.stack,
@@ -369,7 +367,7 @@ export const getUserSessions = (userId: string): Promise<AxiosResponse<UserSessi
 
             return Promise.resolve(response);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 UserManagementConstants.GET_USER_SESSIONS_REQUEST_ERROR,
                 error.stack,
@@ -412,7 +410,7 @@ export const terminateUserSession = (userId: string, sessionId: string): Promise
 
             return Promise.resolve(response);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 UserManagementConstants.TERMINATE_USER_SESSION_REQUEST_ERROR,
                 error.stack,
@@ -454,7 +452,7 @@ export const terminateAllUserSessions = (userId: string): Promise<AxiosResponse>
 
             return Promise.resolve(response);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 UserManagementConstants.TERMINATE_ALL_USER_SESSIONS_ERROR,
                 error.stack,
@@ -499,7 +497,7 @@ export const resendCode = (data: ResendCodeRequestData): Promise<void> => {
 
             return Promise.resolve();
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 UserManagementConstants.RESEND_CODE_REQUEST_ERROR,
                 error.stack,
@@ -536,7 +534,7 @@ export const shareUserWithAllOrganizations = (data: any): Promise<any> => {
         .then((response: AxiosResponse) => {
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 UserManagementConstants.USER_SHARING_ERROR,
                 error.stack,
@@ -571,7 +569,7 @@ export const unShareUserWithAllOrganizations = (data: any): Promise<any> => {
         .then((response: AxiosResponse) => {
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 UserManagementConstants.USER_UNSHARING_ERROR,
                 error.stack,
@@ -607,7 +605,7 @@ export const shareUserWithSelectedOrganizationsAndRoles = (data: any): Promise<a
         .then((response: AxiosResponse) => {
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 UserManagementConstants.USER_SHARING_ERROR,
                 error.stack,
@@ -643,7 +641,7 @@ export const unshareUserWithSelectedOrganizations = (data: any): Promise<any> =>
         .then((response: AxiosResponse) => {
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 UserManagementConstants.USER_UNSHARING_ERROR,
                 error.stack,
@@ -679,7 +677,7 @@ export const editUserRolesOfExistingOrganizations = (data: any): Promise<any> =>
         .then((response: AxiosResponse) => {
             return Promise.resolve(response.data);
         })
-        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        .catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 UserManagementConstants.USER_SHARING_ERROR,
                 error.stack,

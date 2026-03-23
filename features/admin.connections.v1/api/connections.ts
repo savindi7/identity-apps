@@ -25,9 +25,7 @@ import useRequest, {
 import useResourceEndpoints from "@wso2is/admin.core.v1/hooks/use-resource-endpoints";
 import { store } from "@wso2is/admin.core.v1/store";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { ConnectionUIConstants } from "../constants/connection-ui-constants";
 import { NotificationSenderSMSInterface } from "../models/authenticators";
@@ -84,7 +82,7 @@ export const createConnection = (
             }
 
             return Promise.resolve(response);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -115,7 +113,7 @@ export const createCustomAuthenticator = (
             }
 
             return Promise.resolve(response);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -148,7 +146,7 @@ export const updateCustomAuthenticator = (
             }
 
             return Promise.resolve(response);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -178,7 +176,7 @@ export const deleteCustomAuthenticator = (
             }
 
             return Promise.resolve(response);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -277,7 +275,7 @@ export const getConnections = (
             }
 
             return Promise.resolve(response?.data as ConnectionListResponseInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ConnectionUIConstants.ERROR_MESSAGES.CONNECTIONS_FETCH_ERROR,
                 error?.stack,
@@ -378,7 +376,7 @@ export const deleteConnection = (id: string): Promise<AxiosResponse> => {
             }
 
             return Promise.resolve(response);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -494,7 +492,7 @@ export const getConnectionTemplates = (
             }
 
             return Promise.resolve(response.data as ConnectionTemplateInterface[]);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -557,7 +555,7 @@ export const getConnectionMetaData = (id: string): Promise<any> => {
             }
 
             return Promise.resolve(response.data as FederatedAuthenticatorMetaInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -586,7 +584,7 @@ export const getConnectionDetails = (id: string): Promise<any> => {
             }
 
             return Promise.resolve(response.data as any);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -613,7 +611,7 @@ export const getCustomLocalAuthenticatorDetails = (id: string): Promise<any> => 
             }
 
             return Promise.resolve(response.data as any);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -647,7 +645,7 @@ export const updateConnectionRoleMappings = (
             }
 
             return Promise.resolve(response.data as ConnectionInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -680,7 +678,7 @@ export const getOutboundProvisioningConnectorMetadata = (
             }
 
             return Promise.resolve(response.data as OutboundProvisioningConnectorMetaInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -717,7 +715,7 @@ export const updateOutboundProvisioningConnector = (
             }
 
             return Promise.resolve(response.data as ConnectionInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -749,7 +747,7 @@ export const getOutboundProvisioningConnector = (idpId: string, connectorId: str
             }
 
             return Promise.resolve(response.data as OutboundProvisioningConnectorInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -783,7 +781,7 @@ export const updateOutboundProvisioningConnectors = <T = Record<string,unknown>>
             }
 
             return Promise.resolve(response.data as ConnectionInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -818,7 +816,7 @@ export const updateJITProvisioningConfigs = (
             }
 
             return Promise.resolve(response.data as ConnectionInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ConnectionUIConstants.ERROR_MESSAGES.CONNECTION_JIT_PROVISIONING_UPDATE_ERROR,
                 error.stack,
@@ -856,7 +854,7 @@ export const getConnectedApps = (idpId: string): Promise<any> => {
             }
 
             return Promise.resolve(response.data as ConnectedAppsInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -889,7 +887,7 @@ export const getConnectedAppsOfAuthenticator = (authenticatorId: string): Promis
             }
 
             return Promise.resolve(response.data as ConnectedAppsInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -935,7 +933,7 @@ export const updateIdentityProviderDetails = (
             }
 
             return Promise.resolve(response.data as ConnectionInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -968,7 +966,7 @@ export const getFederatedAuthenticatorDetails = (idpId: string, authenticatorId:
             }
 
             return Promise.resolve(response.data as FederatedAuthenticatorListItemInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -997,7 +995,7 @@ export const getFederatedAuthenticatorMeta = (id: string): Promise<any> => {
             }
 
             return Promise.resolve(response.data as FederatedAuthenticatorMetaInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -1031,7 +1029,7 @@ export const updateFederatedAuthenticators = (
             }
 
             return Promise.resolve(response.data as ConnectionInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -1067,7 +1065,7 @@ export const updateFederatedAuthenticator = (
             }
 
             return Promise.resolve(response.data as ConnectionInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -1099,7 +1097,7 @@ export const getFederatedAuthenticatorMetadata = (authenticatorId: string): Prom
             }
 
             return Promise.resolve(response.data as FederatedAuthenticatorMetaInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -1133,7 +1131,7 @@ export const updateIDPCertificate = <T = Record<string, unknown>>(
             }
 
             return Promise.resolve(response.data as ConnectionInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ConnectionUIConstants.ERROR_MESSAGES.CONNECTION_CERTIFICATE_UPDATE_ERROR,
                 error.stack,
@@ -1173,7 +1171,7 @@ export const updateClaimsConfigs = (
             }
 
             return Promise.resolve(response.data as ConnectionInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ConnectionUIConstants.ERROR_MESSAGES.CONNECTION_CLAIMS_UPDATE_ERROR,
                 error.stack,
@@ -1214,7 +1212,7 @@ export const updateImplicitAssociationConfig = (
             }
 
             return Promise.resolve(response.data as ConnectionInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ConnectionUIConstants.ERROR_MESSAGES.CONNECTION_IMPLICIT_ASSOCIATION_UPDATE_ERROR,
                 error.stack,
@@ -1307,7 +1305,7 @@ export const updateConnectionGroup = (idpId: string, idpGroups: ConnectionGroupI
             }
 
             return Promise.resolve(response.data as ConnectionGroupInterface[]);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };

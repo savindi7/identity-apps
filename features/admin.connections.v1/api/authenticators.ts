@@ -28,9 +28,7 @@ import {
     IdVPTemplateTags
 } from "@wso2is/admin.identity-verification-providers.v1/models/identity-verification-providers";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { HttpMethods,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { HttpMethods } from "@wso2is/core/models";
 import { I18n } from "@wso2is/i18n";
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { ConnectionUIConstants } from "../constants/connection-ui-constants";
@@ -148,7 +146,7 @@ export const getAuthenticators = (filter?: string, type?: AuthenticatorTypes): P
             }
 
             return Promise.resolve(response.data);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ConnectionUIConstants.ERROR_MESSAGES.AUTHENTICATORS_FETCH_ERROR,
                 error.stack,
@@ -237,7 +235,7 @@ export const updateMultiFactorAuthenticatorDetails = (
             }
 
             return Promise.resolve(response.data);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ConnectionUIConstants.ERROR_MESSAGES.MULTI_FACTOR_AUTHENTICATOR_UPDATE_ERROR,
                 error.stack,
@@ -279,7 +277,7 @@ export const getLocalAuthenticator = (id: string): Promise<AuthenticatorInterfac
             }
 
             return Promise.resolve(response.data);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ConnectionUIConstants.ERROR_MESSAGES.LOCAL_AUTHENTICATOR_FETCH_ERROR,
                 error.stack,
@@ -321,7 +319,7 @@ export const getMultiFactorAuthenticatorDetails = (id: string): Promise<MultiFac
             }
 
             return Promise.resolve(response.data);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 ConnectionUIConstants.ERROR_MESSAGES.MULTI_FACTOR_AUTHENTICATOR_FETCH_ERROR,
                 error.stack,
@@ -361,7 +359,7 @@ export const getFederatedAuthenticatorDetails = (idpId: string, authenticatorId:
             }
 
             return Promise.resolve(response.data as FederatedAuthenticatorListItemInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -399,7 +397,7 @@ export const getFederatedAuthenticatorMeta = (id: string): Promise<any> => {
             }
 
             return Promise.resolve(response.data as FederatedAuthenticatorMetaInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             throw new IdentityAppsApiException(
                 error.response?.data?.message ?? I18n.instance.t(
                     "authenticationProvider:notifications.getFederatedAuthenticatorMetadata.genericError.description"),
@@ -441,7 +439,7 @@ export const updateFederatedAuthenticators = (
             }
 
             return Promise.resolve(response.data as ConnectionInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -479,7 +477,7 @@ export const updateFederatedAuthenticator = (
             }
 
             return Promise.resolve(response.data as ConnectionInterface);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };
@@ -508,7 +506,7 @@ export const getFederatedAuthenticatorsList = (): Promise<FederatedAuthenticator
             }
 
             return Promise.resolve(response.data as FederatedAuthenticatorMetaInterface[]);
-        }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+        }).catch((error: AxiosError) => {
             return Promise.reject(error);
         });
 };

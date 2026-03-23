@@ -24,9 +24,7 @@ import {
     URLFragmentTypes
 } from "@wso2is/admin.applications.v1/models/application";
 import { history } from "@wso2is/admin.core.v1/helpers/history";
-import { AlertLevels, IdentifiableComponentInterface,
-    HttpErrorResponseDataInterface
-} from "@wso2is/core/models";
+import { AlertLevels, IdentifiableComponentInterface } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { Heading, useDocumentation } from "@wso2is/react-components";
 import { AxiosError } from "axios";
@@ -101,7 +99,7 @@ const SinglePageApplicationQuickStart: FunctionComponent<SinglePageApplicationQu
                 setAppList(response);
 
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error.response && error.response.data && error.response.data.description) {
                     dispatch(addAlert({
                         description: error.response.data.description,

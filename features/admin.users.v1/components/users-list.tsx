@@ -34,8 +34,7 @@ import {
     AlertLevels,
     LoadableComponentInterface,
     SBACInterface,
-    TestableComponentInterface,
-    HttpErrorResponseDataInterface
+    TestableComponentInterface
 } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { CommonUtils } from "@wso2is/core/utils";
@@ -219,7 +218,7 @@ export const UsersList: React.FunctionComponent<UsersListProps> = (props: UsersL
                     );
                 }
                 onUserDelete();
-            }).catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            }).catch((error: AxiosError) => {
                 if (error.response && error.response.data) {
                     let errorDescription: string = t("users:notifications.deleteUser.genericError.description");
 

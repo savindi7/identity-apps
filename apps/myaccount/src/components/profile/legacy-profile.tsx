@@ -47,8 +47,7 @@ import {
     PatchOperationRequest,
     ProfileSchemaInterface,
     SBACInterface,
-    TestableComponentInterface,
-    HttpErrorResponseDataInterface
+    TestableComponentInterface
 } from "@wso2is/core/models";
 import { ProfileUtils, CommonUtils as ReusableCommonUtils } from "@wso2is/core/utils";
 import { Field, FormValue, Forms, Validation } from "@wso2is/forms";
@@ -238,7 +237,7 @@ export const LegacyProfile: FunctionComponent<LegacyProfileProps> = (props: Lega
                     });
                 }
             })
-            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+            .catch((error: AxiosError) => {
                 if (error?.response?.data?.detail) {
                     onAlertFired({
                         description: t(
