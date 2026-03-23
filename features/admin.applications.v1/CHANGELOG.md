@@ -1,5 +1,21 @@
 # @wso2is/admin.applications.v1
 
+## 2.41.31
+
+### Patch Changes
+
+- [#9740](https://github.com/wso2/identity-apps/pull/9740) [`257cf61947a8f99767e092a75a976fcf3925d923`](https://github.com/wso2/identity-apps/commit/257cf61947a8f99767e092a75a976fcf3925d923) Thanks [@HasiniSama](https://github.com/HasiniSama)! - Sets the script to the default script instead of an empty string when reseting adaptive script
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.55.6
+  - @wso2is/admin.branding.v1@2.32.139
+  - @wso2is/admin.onboarding.v1@1.0.54
+  - @wso2is/admin.roles.v2@2.27.353
+  - @wso2is/admin.users.v1@2.38.6
+  - @wso2is/admin.server-configurations.v1@2.38.22
+  - @wso2is/admin.connections.v1@2.36.23
+  - @wso2is/admin.console-settings.v1@2.26.17
+
 ## 2.41.30
 
 ### Patch Changes
