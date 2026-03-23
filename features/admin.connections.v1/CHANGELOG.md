@@ -1,5 +1,16 @@
 # @wso2is/admin.connections.v1
 
+## 2.36.24
+
+### Patch Changes
+
+- Updated dependencies [[`11695e46c544d533dab235c2c8badb4fb60a8d4a`](https://github.com/wso2/identity-apps/commit/11695e46c544d533dab235c2c8badb4fb60a8d4a)]:
+  - @wso2is/admin.console-settings.v1@2.26.18
+  - @wso2is/admin.core.v1@2.55.7
+  - @wso2is/admin.roles.v2@2.27.354
+  - @wso2is/admin.applications.v1@2.41.32
+  - @wso2is/admin.connections.v1@2.36.24
+
 ## 2.36.23
 
 ### Patch Changes
