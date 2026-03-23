@@ -35,8 +35,7 @@ import {
     DEFAULT_LAYOUT_CSS_CONTENT,
     DEFAULT_LAYOUT_CSS_CONTENT_WITH_POLICY_PAGES,
     DEFAULT_LAYOUT_HTML_CONTENT,
-    DEFAULT_LAYOUT_JS_CONTENT,
-    DEFAULT_LAYOUT_JS_CONTENT_WITH_POLICY_PAGES
+    DEFAULT_LAYOUT_JS_CONTENT
 } from "./data/default-content";
 import { EditorViewTabs } from "./editor-view";
 import useBrandingPreference from "../../hooks/use-branding-preference";
@@ -90,11 +89,7 @@ export const CustomPageEditor: FunctionComponent<CustomPageEditorInterface> = ({
                     ? DEFAULT_LAYOUT_CSS_CONTENT_WITH_POLICY_PAGES
                     : DEFAULT_LAYOUT_CSS_CONTENT
             );
-            setJs(
-                brandingConfig.usePolicyPagesInDefaultCustomContent
-                    ? DEFAULT_LAYOUT_JS_CONTENT_WITH_POLICY_PAGES
-                    : DEFAULT_LAYOUT_JS_CONTENT
-            );
+            setJs(DEFAULT_LAYOUT_JS_CONTENT);
         }
     }, [ brandingPreference ]);
 
