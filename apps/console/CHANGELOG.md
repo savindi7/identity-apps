@@ -1,5 +1,11 @@
 # @wso2is/console
 
+## 3.2.0
+
+### Minor Changes
+
+- [#9889](https://github.com/wso2/identity-apps/pull/9889) [`169d8fb3a58f4568dd1168917c95f9a57f44cc8d`](https://github.com/wso2/identity-apps/commit/169d8fb3a58f4568dd1168917c95f9a57f44cc8d) Thanks [@JayaShakthi97](https://github.com/JayaShakthi97)! - Bundle monaco editor as an npm dependency
+
 ## 3.1.11
 
 ### Patch Changes
