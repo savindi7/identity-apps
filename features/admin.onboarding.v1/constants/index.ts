@@ -16,6 +16,7 @@
  * under the License.
  */
 
+export * from "./analytics";
 export * from "./component-ids";
 export * from "./onboarding-feature-constants";
 export * from "./default-redirect-urls";

@@ -1,5 +1,23 @@
 # @wso2is/i18n
 
+## 2.37.11
+
+### Patch Changes
+
+- [#9902](https://github.com/wso2/identity-apps/pull/9902) [`89dd70084bb54ed6d06eb1d3aa98686a5b63cd53`](https://github.com/wso2/identity-apps/commit/89dd70084bb54ed6d06eb1d3aa98686a5b63cd53) Thanks [@DilshanSenarath](https://github.com/DilshanSenarath)! - Improve the UX when enabling the custom layout feature through the console
+
+## 2.37.10
+
+### Patch Changes
+
+- [#9901](https://github.com/wso2/identity-apps/pull/9901) [`cde90233b006536715b6d13fb0354e335a7caceb`](https://github.com/wso2/identity-apps/commit/cde90233b006536715b6d13fb0354e335a7caceb) Thanks [@ashanthamara](https://github.com/ashanthamara)! - Improve user listing in administrator add wizard and role user assigning wizard
+
+## 2.37.9
+
+### Patch Changes
+
+- [#9865](https://github.com/wso2/identity-apps/pull/9865) [`51d4c127b2aae10e8dbf5d16800fbd20f562458b`](https://github.com/wso2/identity-apps/commit/51d4c127b2aae10e8dbf5d16800fbd20f562458b) Thanks [@sadilchamishka](https://github.com/sadilchamishka)! - Improve outbound provisioning connection remove ux
+
 ## 2.37.8
 
 ### Patch Changes

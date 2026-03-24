@@ -85,6 +85,25 @@ export const RightColumn: typeof Box = styled(Box)(() => ({
 }));
 
 /**
+ * Narrow config panel for builder steps (sign-in options, design, success).
+ * Fixed width to give maximum space to the preview area.
+ */
+export const ConfigPanel: typeof Box = styled(LeftColumn)(() => ({
+    flex: "0 0 500px",
+    minWidth: 500
+}));
+
+/**
+ * Wide preview panel for builder steps.
+ * Centers content and takes all remaining space.
+ */
+export const PreviewPanel: typeof Box = styled(RightColumn)(({ theme }: { theme: Theme }) => ({
+    justifyContent: "center",
+    overflow: "hidden",
+    padding: theme.spacing(4)
+}));
+
+/**
  * Section label
  */
 export const SectionLabel: typeof Typography = styled(Typography)(({ theme }: { theme: Theme }) => ({
