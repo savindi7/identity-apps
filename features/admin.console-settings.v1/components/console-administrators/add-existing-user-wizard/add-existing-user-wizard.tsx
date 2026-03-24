@@ -33,7 +33,6 @@ import isEmpty from "lodash-es/isEmpty";
 import React, {
     FunctionComponent,
     ReactElement,
-    ReactNode,
     SyntheticEvent,
     useCallback,
     useMemo,
@@ -47,6 +46,12 @@ import { ConsoleAdministratorOnboardingConstants } from "../../../constants/cons
 import useBulkAssignAdministratorRoles from "../../../hooks/use-bulk-assign-user-roles";
 import useConsoleRoles from "../../../hooks/use-console-roles";
 import useProspectiveAdministrators from "../../../hooks/use-prospective-administrators";
+import {
+    AddExistingUserWizardFormErrorsInterface,
+    AddExistingUserWizardFormValuesInterface,
+    RoleOptionsInterface,
+    UserOptionsInterface
+} from "../../../models/administrators";
 import "./add-existing-user-wizard.scss";
 
 /**
@@ -55,28 +60,6 @@ import "./add-existing-user-wizard.scss";
 export interface AddExistingUserWizardPropsInterface extends IdentifiableComponentInterface, ModalProps {
     onSuccess?: () => void;
     selectedUserStore: string;
-}
-
-interface UserOptionsInterface {
-    key: string;
-    label: ReactNode;
-    user?: UserBasicInterface;
-}
-
-interface RoleOptionsInterface {
-    key: string;
-    label: ReactNode;
-    role: RolesInterface;
-}
-
-interface AddExistingUserWizardFormValuesInterface {
-    username: UserOptionsInterface;
-    roles: RoleOptionsInterface[];
-}
-
-interface AddExistingUserWizardFormErrorsInterface {
-    username: string;
-    roles: string;
 }
 
 /**
@@ -95,8 +78,6 @@ const AddExistingUserWizard: FunctionComponent<AddExistingUserWizardPropsInterfa
         ["data-componentid"]: componentId,
         ...rest
     } = props;
-
-    const MORE_ITEMS: string = "more-items";
 
     const { t } = useTranslation();
     const dispatch: Dispatch = useDispatch();
@@ -270,7 +251,7 @@ const AddExistingUserWizard: FunctionComponent<AddExistingUserWizardPropsInterfa
                                     options={ [
                                         ...usernameAutocompleteOptions,
                                         ...(isNextPageAvailable && !isEmpty(usernameAutocompleteOptions) ? [ {
-                                            key: MORE_ITEMS,
+                                            key: ConsoleAdministratorOnboardingConstants.MORE_ITEMS,
                                             label: t("consoleSettings:administrators.add.wizard.users.moreItemsMessage")
                                         } ] : [])
                                     ] }
@@ -281,7 +262,7 @@ const AddExistingUserWizard: FunctionComponent<AddExistingUserWizardPropsInterfa
                                         searchUsers(value);
                                     } }
                                     renderOption={ (props: ListItemProps, option: UserOptionsInterface) => {
-                                        if (option.key === MORE_ITEMS) {
+                                        if (option.key === ConsoleAdministratorOnboardingConstants.MORE_ITEMS) {
                                             return (
                                                 <li
                                                     { ...props }
