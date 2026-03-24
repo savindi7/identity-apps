@@ -16,12 +16,8 @@
  * under the License.
  */
 
-export * from "./component-ids";
-export * from "./onboarding-feature-constants";
-export * from "./default-redirect-urls";
-export * from "./integration-guides";
-export * from "./preset-logos";
-export * from "./sign-in-options";
-export * from "./templates";
-export * from "./validation";
-export * from "./wizard-url-params";
+/**
+ * Set of keys used to enable/disable onboarding sub-features.
+ */
+export const OnboardingFeatureDictionary: Map<string, string> = new Map<string, string>()
+    .set("ONBOARDING_TRIAL_ACTIVATION", "onboarding.trialActivation");

@@ -23,14 +23,16 @@ import { AppConstants } from "@wso2is/admin.core.v1/constants/app-constants";
 import { history } from "@wso2is/admin.core.v1/helpers/history";
 import { FeatureConfigInterface } from "@wso2is/admin.core.v1/models/config";
 import { AppState } from "@wso2is/admin.core.v1/store";
+import { isFeatureEnabled as checkFeatureEnabled } from "@wso2is/core/helpers";
 import { IdentifiableComponentInterface } from "@wso2is/core/models";
 import React, { FunctionComponent, ReactElement, useCallback, useEffect, useMemo, useRef } from "react";
 import { useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router";
+import { activateTrial } from "../api/activate-trial";
 import OnboardingWizard from "../components/onboarding-wizard";
 import Header from "../components/shared/header";
 import { ContentArea } from "../components/shared/onboarding-styles";
-import { OnboardingComponentIds } from "../constants";
+import { OnboardingComponentIds, OnboardingFeatureDictionary } from "../constants";
 import { useOnboardingStatus } from "../hooks/use-onboarding-status";
 import { OnboardingDataInterface, ParsedWizardUrlParamsInterface } from "../models";
 import { parseWizardUrlParams } from "../utils/parse-wizard-url-params";
@@ -76,6 +78,7 @@ const OnboardingPage: FunctionComponent<OnboardingPageProps> = (props: Onboardin
     const {
         shouldShowOnboarding,
         isLoading,
+        isTrialEnabled,
         markOnboardingComplete
     } = useOnboardingStatus();
 
@@ -87,6 +90,11 @@ const OnboardingPage: FunctionComponent<OnboardingPageProps> = (props: Onboardin
     );
 
     const isFeatureEnabled: boolean = !!featureConfig?.onboarding?.enabled;
+
+    const isTrialActivationEnabled: boolean = checkFeatureEnabled(
+        featureConfig?.onboarding,
+        OnboardingFeatureDictionary.get("ONBOARDING_TRIAL_ACTIVATION")
+    );
 
     // Route guard: always enforce feature flag and scopes.
     // Only skip the SCIM claim check when the user intentionally navigated via the FAB.
@@ -105,6 +113,22 @@ const OnboardingPage: FunctionComponent<OnboardingPageProps> = (props: Onboardin
             history.push(AppConstants.getAppHomePath());
         }
     }, [ isLoading, isFeatureEnabled, shouldShowOnboarding, hasRequiredCreateScopes, isIntentionalAccess ]);
+
+    // Fire-and-forget trial activation when trial is not yet enabled.
+    const trialActivationAttempted: React.MutableRefObject<boolean> = useRef<boolean>(false);
+
+    useEffect(() => {
+        if (!isTrialActivationEnabled || isLoading || isTrialEnabled || trialActivationAttempted.current) {
+            return;
+        }
+
+        trialActivationAttempted.current = true;
+
+        activateTrial().catch((error: unknown) => {
+            // eslint-disable-next-line no-console
+            console.warn("Trial activation is pending.");
+        });
+    }, [ isTrialActivationEnabled, isLoading, isTrialEnabled ]);
 
     const handleComplete: (data: OnboardingDataInterface) => Promise<void> = useCallback(
         async (data: OnboardingDataInterface): Promise<void> => {
