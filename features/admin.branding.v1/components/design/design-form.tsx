@@ -3186,6 +3186,8 @@ export const DesignForm: FunctionComponent<DesignFormPropsInterface> = forwardRe
                         setPendingSubmitValues(null);
                     } }
                     type="negative"
+                    assertionHint={ t("branding:customLayout.dangerModal.assertionHint") }
+                    assertionType="checkbox"
                     primaryAction={ t("common:confirm") }
                     secondaryAction={ t("common:cancel") }
                     onSecondaryActionClick={ () => {
@@ -3221,10 +3223,10 @@ export const DesignForm: FunctionComponent<DesignFormPropsInterface> = forwardRe
                             tOptions={ { tenant: tenantDomain } }
                         >
                             The custom layout option relies on layout templates deployed at the server level under
-                            <Code>extensions/layouts/custom/{ tenantDomain }</Code>. If no such files exist for
-                            this organization, all login pages will fail to render. Ensure your layout files are
-                            deployed before saving. Refer to the official documentation for more details:
-                            <i>Customizations &gt; Customize branding &gt; Customize layouts &gt;
+                            <Code>{ `<WEB_APP>/extensions/layouts/custom/${tenantDomain}` }</Code>. If no such files
+                            exist for this organization, all login pages will fail to render. Ensure your
+                            layout files are deployed before saving. Refer to the official documentation
+                            for more details: <i>Customizations &gt; Customize branding &gt; Customize layouts &gt;
                             By updating server files</i>.
                         </Trans>
                     </ConfirmationModal.Content>

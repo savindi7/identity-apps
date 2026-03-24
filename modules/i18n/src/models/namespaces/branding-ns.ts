@@ -258,6 +258,7 @@ export interface BrandingNS {
     };
     customLayout: {
         dangerModal: {
+            assertionHint: string;
             heading: string;
             message: string;
             content: string;
