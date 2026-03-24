@@ -1,5 +1,16 @@
 # @wso2is/myaccount
 
+## 4.0.0
+
+### Major Changes
+
+- [#9910](https://github.com/wso2/identity-apps/pull/9910) [`70d146badbb5af5dc3fd58734a268730ea216857`](https://github.com/wso2/identity-apps/commit/70d146badbb5af5dc3fd58734a268730ea216857) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Prepare for next iteration
+
+### Patch Changes
+
+- Updated dependencies [[`52d1bcd9995d2a3b6cec53560e91bfc90e4438d6`](https://github.com/wso2/identity-apps/commit/52d1bcd9995d2a3b6cec53560e91bfc90e4438d6)]:
+  - @wso2is/i18n@2.37.11
+
 ## 3.0.4
 
 ### Patch Changes
