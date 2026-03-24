@@ -34,7 +34,6 @@ export const activateTrial = (): Promise<AxiosResponse> => {
 
     const requestConfig: AxiosRequestConfig = {
         headers: {
-            "Access-Control-Allow-Origin": store.getState().config.deployment.clientOrigin,
             "Content-Type": "application/json"
         },
         method: HttpMethods.POST,

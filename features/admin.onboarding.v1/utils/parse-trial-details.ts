@@ -26,7 +26,7 @@ const DEFAULT_TRIAL_DETAILS: TrialDetailsInterface = {
 /**
  * Parses the trialDetails JSON string from the SCIM trialDetails attribute.
  * The attribute stores data as a stringified JSON object
- * e.g. "{'isTrialEnabled': true, 'isTrialExpired': false}".
+ * e.g. "\{'isTrialEnabled': true, 'isTrialExpired': false\}".
  *
  * Handles null, undefined, empty, partial, and malformed values gracefully.
  *

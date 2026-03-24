@@ -120,17 +120,33 @@ const OnboardingPage: FunctionComponent<OnboardingPageProps> = (props: Onboardin
     const trialActivationAttempted: React.MutableRefObject<boolean> = useRef<boolean>(false);
 
     useEffect(() => {
-        if (!isTrialActivationEnabled || isLoading || isTrialEnabled || trialActivationAttempted.current) {
+        if (
+            !isTrialActivationEnabled
+            || isLoading
+            || isTrialEnabled
+            || trialActivationAttempted.current
+            || !isFeatureEnabled
+            || !hasRequiredCreateScopes
+            || (!isIntentionalAccess && !shouldShowOnboarding)
+        ) {
             return;
         }
 
         trialActivationAttempted.current = true;
 
-        activateTrial().catch((error: unknown) => {
+        activateTrial().catch(() => {
             // eslint-disable-next-line no-console
             console.warn("Trial activation is pending.");
         });
-    }, [ isTrialActivationEnabled, isLoading, isTrialEnabled ]);
+    }, [
+        isTrialActivationEnabled,
+        isLoading,
+        isTrialEnabled,
+        isFeatureEnabled,
+        hasRequiredCreateScopes,
+        isIntentionalAccess,
+        shouldShowOnboarding
+    ]);
 
     const handleComplete: (data: OnboardingDataInterface) => Promise<void> = useCallback(
         async (data: OnboardingDataInterface): Promise<void> => {
