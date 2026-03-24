@@ -1,36 +1,5 @@
 # @wso2is/console
 
-## 4.0.0
-
-### Major Changes
-
-- [#9910](https://github.com/wso2/identity-apps/pull/9910) [`70d146badbb5af5dc3fd58734a268730ea216857`](https://github.com/wso2/identity-apps/commit/70d146badbb5af5dc3fd58734a268730ea216857) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Prepare for next iteration
-
-### Patch Changes
-
-- [#9909](https://github.com/wso2/identity-apps/pull/9909) [`52d1bcd9995d2a3b6cec53560e91bfc90e4438d6`](https://github.com/wso2/identity-apps/commit/52d1bcd9995d2a3b6cec53560e91bfc90e4438d6) Thanks [@github-actions](https://github.com/apps/github-actions)! - Improve the UX when enabling the custom layout feature through the console
-
-- Updated dependencies [[`52d1bcd9995d2a3b6cec53560e91bfc90e4438d6`](https://github.com/wso2/identity-apps/commit/52d1bcd9995d2a3b6cec53560e91bfc90e4438d6)]:
-  - @wso2is/admin.extensions.v1@2.40.31
-  - @wso2is/admin.branding.v1@2.32.143
-  - @wso2is/i18n@2.37.11
-  - @wso2is/admin.approval-workflows.v1@1.3.5
-  - @wso2is/admin.onboarding.v1@1.0.58
-  - @wso2is/admin.users.v1@2.38.10
-  - @wso2is/admin.applications.v1@2.41.35
-  - @wso2is/admin.home.v1@1.7.167
-  - @wso2is/admin.ask-password-flow-builder.v1@1.1.187
-  - @wso2is/admin.core.v1@2.55.10
-  - @wso2is/admin.email-management.v1@2.25.351
-  - @wso2is/admin.flows.v1@1.0.156
-  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.187
-  - @wso2is/admin.server-configurations.v1@2.38.26
-  - @wso2is/admin.agents.v1@1.0.202
-  - @wso2is/admin.registration-flow-builder.v1@0.10.147
-  - @wso2is/admin.roles.v2@2.27.357
-  - @wso2is/admin.connections.v1@2.36.27
-  - @wso2is/admin.console-settings.v1@2.26.21
-
 ## 3.1.10
 
 ### Patch Changes
