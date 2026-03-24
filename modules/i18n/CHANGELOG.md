@@ -1,11 +1,5 @@
 # @wso2is/i18n
 
-## 2.37.11
-
-### Patch Changes
-
-- [#9909](https://github.com/wso2/identity-apps/pull/9909) [`52d1bcd9995d2a3b6cec53560e91bfc90e4438d6`](https://github.com/wso2/identity-apps/commit/52d1bcd9995d2a3b6cec53560e91bfc90e4438d6) Thanks [@github-actions](https://github.com/apps/github-actions)! - Improve the UX when enabling the custom layout feature through the console
-
 ## 2.37.10
 
 ### Patch Changes
