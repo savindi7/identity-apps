@@ -241,6 +241,8 @@ export const commonConfigReducerInitialState: CommonConfigReducerStateInterface<
             enableLegacyLocaleDropdown: undefined,
             enableLegacySessionBoundTokenBehaviour: false,
             enableOldUIForEmailProvider: undefined,
+            httpEmailProviderBodyMaxLength: undefined,
+            httpEmailProviderScopesMaxLength: undefined,
             enabledFeatureOverridesInConsoleRolePermissions: [],
             features: {
                 applications: null,

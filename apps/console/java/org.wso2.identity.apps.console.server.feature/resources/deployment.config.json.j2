@@ -2669,6 +2669,16 @@
         {% else %}
             "enableOldUIForEmailProvider": false,
         {% endif %}
+        {% if console.ui.http_email_provider_body_max_length is defined %}
+            "httpEmailProviderBodyMaxLength": {{ console.ui.http_email_provider_body_max_length }},
+        {% else %}
+            "httpEmailProviderBodyMaxLength": 1023,
+        {% endif %}
+        {% if console.ui.http_email_provider_scopes_max_length is defined %}
+            "httpEmailProviderScopesMaxLength": {{ console.ui.http_email_provider_scopes_max_length }},
+        {% else %}
+            "httpEmailProviderScopesMaxLength": 1023,
+        {% endif %}
         {% if console.ui.enable_legacy_locale_dropdown is defined %}
             "enableLegacyLocaleDropdown": {{ console.ui.enable_legacy_locale_dropdown }},
         {% else %}
