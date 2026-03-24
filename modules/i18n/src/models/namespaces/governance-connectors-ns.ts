@@ -739,6 +739,11 @@ export interface governanceConnectorsNS {
                         userClaimUpdateEmailEnableVerification: {
                             hint: string;
                             label: string;
+                            recoveryMethods: {
+                                emailLink: string;
+                                emailOTP: string;
+                                label: string;
+                            }
                         };
                         userClaimUpdateEmailVerificationCodeExpiryTime: {
                             hint: string;
