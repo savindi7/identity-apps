@@ -273,7 +273,7 @@ export const branding: BrandingNS = {
             message: "Activating the custom layout without server-level layout files will break all login page " +
                 "rendering, including the Console app.",
             content: "The custom layout option relies on layout templates deployed at the server level under " +
-                "<1><WEB_APP>/extensions/layouts/custom/{{tenant}}</1>. If no such files exist for this organization, all " +
+                "<1>extensions/layouts/custom/{{tenant}}</1>. If no such files exist for this organization, all " +
                 "login pages will fail to render. Ensure your layout files are deployed before saving. " +
                 "Refer to the official documentation for more details: " +
                 "<3>Customizations > Customize branding > Customize layouts > By updating server files</3>."
