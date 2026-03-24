@@ -1,5 +1,11 @@
 # @wso2is/identity-apps-core
 
+## 5.0.0
+
+### Major Changes
+
+- [#9910](https://github.com/wso2/identity-apps/pull/9910) [`70d146badbb5af5dc3fd58734a268730ea216857`](https://github.com/wso2/identity-apps/commit/70d146badbb5af5dc3fd58734a268730ea216857) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Prepare for next iteration
+
 ## 4.0.1
 
 ### Patch Changes
