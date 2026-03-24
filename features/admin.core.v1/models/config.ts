@@ -557,6 +557,17 @@ export interface UIConfigInterface extends CommonUIConfigInterface<FeatureConfig
      */
     enableOldUIForEmailProvider: boolean;
     /**
+     * Maximum character length for the OAuth scopes field in the HTTP-based email provider.
+     * Defaults to 1023 to match the default database column size. Configurable to support
+     * deployments with a different column length.
+     */
+    httpEmailProviderScopesMaxLength?: number;
+    /**
+     * Maximum character length for the body field in the HTTP-based email provider.
+     * Defaults to 1023. Configurable to support deployments with a different column length.
+     */
+    httpEmailProviderBodyMaxLength?: number;
+    /**
      * Enable/Disable custom email template feature
      */
     enableCustomEmailTemplates: boolean;
