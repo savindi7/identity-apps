@@ -76,7 +76,7 @@ FunctionComponent<TrustedTokenIssuerAdvanceConfigurationsFormPropsInterface> = (
 
     const { t } = useTranslation();
     const dispatch: Dispatch<any> = useDispatch();
-    const enableIdentityClaims: boolean = useSelector((state: AppState) => state?.config?.ui?.enableIdentityClaims);
+    const enableIdentityClaims: boolean = useSelector((state: AppState) => state.config.ui?.enableIdentityClaims);
     const [ implicitAssociationEnabled, setImplicitAssociationEnabled ] = useState<boolean>(config.isEnabled);
     const [ primaryClaimList, setPrimaryClaimList ] = useState<DropdownOptionsInterface[]>([]);
     const [ secondaryClaimList, setSecondaryClaimList ] = useState<DropdownOptionsInterface[]>([]);
