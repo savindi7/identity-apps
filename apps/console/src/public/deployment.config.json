@@ -2100,6 +2100,8 @@
             "swe-idp"
         ],
         "hiddenUserStores": [],
+        "httpEmailProviderBodyMaxLength": 1023,
+        "httpEmailProviderScopesMaxLength": 1023,
         "i18nConfigs": {
             "langAutoDetectEnabled": false,
             "showLanguageSwitcher": false
