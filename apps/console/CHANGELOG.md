@@ -1,5 +1,30 @@
 # @wso2is/console
 
+## 3.3.1
+
+### Patch Changes
+
+- [#9926](https://github.com/wso2/identity-apps/pull/9926) [`e8a2f61f2243d671638005e41b499a86c0c78403`](https://github.com/wso2/identity-apps/commit/e8a2f61f2243d671638005e41b499a86c0c78403) Thanks [@DilshanSenarath](https://github.com/DilshanSenarath)! - Add pagination support in connected apps view
+
+- Updated dependencies [[`e8a2f61f2243d671638005e41b499a86c0c78403`](https://github.com/wso2/identity-apps/commit/e8a2f61f2243d671638005e41b499a86c0c78403)]:
+  - @wso2is/admin.connections.v1@2.36.29
+  - @wso2is/admin.console-settings.v1@2.26.23
+  - @wso2is/admin.onboarding.v1@1.0.60
+  - @wso2is/admin.applications.v1@2.42.1
+  - @wso2is/admin.home.v1@1.7.169
+  - @wso2is/admin.agents.v1@1.1.1
+  - @wso2is/admin.approval-workflows.v1@1.3.7
+  - @wso2is/admin.branding.v1@2.32.145
+  - @wso2is/admin.core.v1@2.55.12
+  - @wso2is/admin.roles.v2@2.27.359
+  - @wso2is/admin.users.v1@2.38.12
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.189
+  - @wso2is/admin.email-management.v1@2.25.353
+  - @wso2is/admin.flows.v1@1.0.158
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.189
+  - @wso2is/admin.server-configurations.v1@2.38.28
+  - @wso2is/admin.registration-flow-builder.v1@0.10.149
+
 ## 3.3.0
 
 ### Minor Changes
