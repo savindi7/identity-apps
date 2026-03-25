@@ -1,5 +1,35 @@
 # @wso2is/console
 
+## 3.3.2
+
+### Patch Changes
+
+- [#9923](https://github.com/wso2/identity-apps/pull/9923) [`37eb4e51bcf1b6c2e4cd715f892844d560852195`](https://github.com/wso2/identity-apps/commit/37eb4e51bcf1b6c2e4cd715f892844d560852195) Thanks [@UdeshAthukorala](https://github.com/UdeshAthukorala)! - Add UI Length validation for HTTP-based email provider configuration UI
+
+* [#9920](https://github.com/wso2/identity-apps/pull/9920) [`8d832e11274602412741a4f926c972c25510fbca`](https://github.com/wso2/identity-apps/commit/8d832e11274602412741a4f926c972c25510fbca) Thanks [@Lakshan-Banneheke](https://github.com/Lakshan-Banneheke)! - Add trial activation mechanism
+
+* Updated dependencies [[`37eb4e51bcf1b6c2e4cd715f892844d560852195`](https://github.com/wso2/identity-apps/commit/37eb4e51bcf1b6c2e4cd715f892844d560852195), [`8d832e11274602412741a4f926c972c25510fbca`](https://github.com/wso2/identity-apps/commit/8d832e11274602412741a4f926c972c25510fbca)]:
+  - @wso2is/admin.email-providers.v1@2.28.2
+  - @wso2is/admin.core.v1@2.55.13
+  - @wso2is/admin.tenants.v1@2.29.26
+  - @wso2is/admin.analytics.v1@0.0.2
+  - @wso2is/admin.onboarding.v1@1.0.61
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.190
+  - @wso2is/admin.branding.v1@2.32.146
+  - @wso2is/admin.email-management.v1@2.25.354
+  - @wso2is/admin.flows.v1@1.0.159
+  - @wso2is/admin.home.v1@1.7.170
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.190
+  - @wso2is/admin.server-configurations.v1@2.38.29
+  - @wso2is/admin.users.v1@2.38.13
+  - @wso2is/admin.applications.v1@2.42.2
+  - @wso2is/admin.registration-flow-builder.v1@0.10.150
+  - @wso2is/admin.agents.v1@1.1.2
+  - @wso2is/admin.approval-workflows.v1@1.3.8
+  - @wso2is/admin.roles.v2@2.27.360
+  - @wso2is/admin.connections.v1@2.36.30
+  - @wso2is/admin.console-settings.v1@2.26.24
+
 ## 3.3.1
 
 ### Patch Changes

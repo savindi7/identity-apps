@@ -1,5 +1,16 @@
 # @wso2is/admin.email-management.v1
 
+## 2.25.354
+
+### Patch Changes
+
+- Updated dependencies [[`37eb4e51bcf1b6c2e4cd715f892844d560852195`](https://github.com/wso2/identity-apps/commit/37eb4e51bcf1b6c2e4cd715f892844d560852195), [`8d832e11274602412741a4f926c972c25510fbca`](https://github.com/wso2/identity-apps/commit/8d832e11274602412741a4f926c972c25510fbca)]:
+  - @wso2is/admin.core.v1@2.55.13
+  - @wso2is/admin.flow-builder-core.v1@0.10.190
+  - @wso2is/admin.branding.v1@2.32.146
+  - @wso2is/admin.flows.v1@1.0.159
+  - @wso2is/admin.server-configurations.v1@2.38.29
+
 ## 2.25.353
 
 ### Patch Changes
