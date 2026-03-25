@@ -1,5 +1,11 @@
 # @wso2is/i18n
 
+## 2.38.0
+
+### Minor Changes
+
+- [#9935](https://github.com/wso2/identity-apps/pull/9935) [`5ee1f0f630cd3d02964bc6e2bd73d4819b1888be`](https://github.com/wso2/identity-apps/commit/5ee1f0f630cd3d02964bc6e2bd73d4819b1888be) Thanks [@github-actions](https://github.com/apps/github-actions)! - Add user-serving agent support with OAuth configuration to agent creation wizard
+
 ## 2.37.11
 
 ### Patch Changes

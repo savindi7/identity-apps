@@ -1,5 +1,27 @@
 # @wso2is/admin.applications.v1
 
+## 2.42.0
+
+### Minor Changes
+
+- [#9935](https://github.com/wso2/identity-apps/pull/9935) [`5ee1f0f630cd3d02964bc6e2bd73d4819b1888be`](https://github.com/wso2/identity-apps/commit/5ee1f0f630cd3d02964bc6e2bd73d4819b1888be) Thanks [@github-actions](https://github.com/apps/github-actions)! - Add user-serving agent support with OAuth configuration to agent creation wizard
+
+### Patch Changes
+
+- [#9936](https://github.com/wso2/identity-apps/pull/9936) [`25a653bf9e2ca27239a2dc652d494aecd7b9e17e`](https://github.com/wso2/identity-apps/commit/25a653bf9e2ca27239a2dc652d494aecd7b9e17e) Thanks [@github-actions](https://github.com/apps/github-actions)! - Revert well-known endpoint resolution
+
+- Updated dependencies [[`aa063b32848f472383119a186e27477258f45706`](https://github.com/wso2/identity-apps/commit/aa063b32848f472383119a186e27477258f45706), [`5ee1f0f630cd3d02964bc6e2bd73d4819b1888be`](https://github.com/wso2/identity-apps/commit/5ee1f0f630cd3d02964bc6e2bd73d4819b1888be)]:
+  - @wso2is/admin.core.v1@2.55.11
+  - @wso2is/admin.extensions.v1@2.41.0
+  - @wso2is/i18n@2.38.0
+  - @wso2is/admin.branding.v1@2.32.144
+  - @wso2is/admin.onboarding.v1@1.0.59
+  - @wso2is/admin.roles.v2@2.27.358
+  - @wso2is/admin.users.v1@2.38.11
+  - @wso2is/admin.server-configurations.v1@2.38.27
+  - @wso2is/admin.connections.v1@2.36.28
+  - @wso2is/admin.console-settings.v1@2.26.22
+
 ## 2.41.35
 
 ### Patch Changes

@@ -1,5 +1,32 @@
 # @wso2is/admin.core.v1
 
+## 2.55.11
+
+### Patch Changes
+
+- [#9943](https://github.com/wso2/identity-apps/pull/9943) [`aa063b32848f472383119a186e27477258f45706`](https://github.com/wso2/identity-apps/commit/aa063b32848f472383119a186e27477258f45706) Thanks [@github-actions](https://github.com/apps/github-actions)! - Add UI Length validation for HTTP-based email provider configuration UI
+
+- Updated dependencies [[`25a653bf9e2ca27239a2dc652d494aecd7b9e17e`](https://github.com/wso2/identity-apps/commit/25a653bf9e2ca27239a2dc652d494aecd7b9e17e), [`aa063b32848f472383119a186e27477258f45706`](https://github.com/wso2/identity-apps/commit/aa063b32848f472383119a186e27477258f45706), [`5ee1f0f630cd3d02964bc6e2bd73d4819b1888be`](https://github.com/wso2/identity-apps/commit/5ee1f0f630cd3d02964bc6e2bd73d4819b1888be)]:
+  - @wso2is/admin.applications.v1@2.42.0
+  - @wso2is/admin.email-providers.v1@2.28.2
+  - @wso2is/admin.extensions.v1@2.41.0
+  - @wso2is/admin.agents.v1@1.1.0
+  - @wso2is/i18n@2.38.0
+  - @wso2is/admin.approval-workflows.v1@1.3.6
+  - @wso2is/admin.branding.v1@2.32.144
+  - @wso2is/admin.flow-builder-core.v1@0.10.188
+  - @wso2is/admin.rules.v1@0.7.27
+  - @wso2is/admin.roles.v2@2.27.358
+  - @wso2is/admin.users.v1@2.38.11
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.188
+  - @wso2is/admin.email-management.v1@2.25.352
+  - @wso2is/admin.flows.v1@1.0.157
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.188
+  - @wso2is/admin.server-configurations.v1@2.38.27
+  - @wso2is/admin.connections.v1@2.36.28
+  - @wso2is/admin.registration-flow-builder.v1@0.10.148
+  - @wso2is/admin.console-settings.v1@2.26.22
+
 ## 2.55.10
 
 ### Patch Changes
