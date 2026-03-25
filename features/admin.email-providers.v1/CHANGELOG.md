@@ -1,5 +1,15 @@
 # @wso2is/admin.email-providers.v1
 
+## 2.28.2
+
+### Patch Changes
+
+- [#9943](https://github.com/wso2/identity-apps/pull/9943) [`aa063b32848f472383119a186e27477258f45706`](https://github.com/wso2/identity-apps/commit/aa063b32848f472383119a186e27477258f45706) Thanks [@github-actions](https://github.com/apps/github-actions)! - Add UI Length validation for HTTP-based email provider configuration UI
+
+- Updated dependencies [[`aa063b32848f472383119a186e27477258f45706`](https://github.com/wso2/identity-apps/commit/aa063b32848f472383119a186e27477258f45706), [`5ee1f0f630cd3d02964bc6e2bd73d4819b1888be`](https://github.com/wso2/identity-apps/commit/5ee1f0f630cd3d02964bc6e2bd73d4819b1888be)]:
+  - @wso2is/admin.core.v1@2.55.11
+  - @wso2is/i18n@2.38.0
+
 ## 2.28.1
 
 ### Patch Changes
