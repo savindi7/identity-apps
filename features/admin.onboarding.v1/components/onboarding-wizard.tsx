@@ -52,6 +52,7 @@ import {
     SecondaryButton,
     StepTransitionWrapper
 } from "./shared/onboarding-styles";
+import ProgressStepper from "./shared/progress-stepper";
 import ConfigureRedirectUrlStep from "./steps/configure-redirect-url-step";
 import DesignLoginStep from "./steps/design-login-step";
 import NameApplicationStep from "./steps/name-application-step";
@@ -72,6 +73,7 @@ import {
     getDefaultRedirectUrl
 } from "../constants";
 import { useOnboardingAnalytics } from "../hooks/use-onboarding-analytics";
+import { useStepProgress } from "../hooks/use-step-progress";
 import { useOnboardingDataInterface, useStepValidation } from "../hooks/use-onboarding-validation";
 import { useStepTransition } from "../hooks/use-step-transition";
 import { useWizardUrlSync } from "../hooks/use-wizard-url-sync";
@@ -224,6 +226,9 @@ const getNextButtonText = (currentStep: OnboardingStep, data: OnboardingDataInte
     const isM2M: boolean = data.templateId === ApplicationTemplateIdTypes.M2M_APPLICATION;
 
     switch (currentStep) {
+        case OnboardingStep.WELCOME:
+            return "Let's go!";
+
         case OnboardingStep.SELECT_APPLICATION_TEMPLATE:
 
             if (isM2M) {
@@ -333,6 +338,14 @@ const OnboardingWizard: FunctionComponent<OnboardingWizardPropsInterface> = (
     }, []);
 
     const isNextDisabled: boolean = useStepValidation(currentStep, onboardingData);
+
+    // Progress stepper state - uses visibleStep so it updates in sync with transitions
+    const {
+        currentStepIndex: progressStepIndex,
+        isVisible: showProgressStepper,
+        steps: progressSteps,
+        totalSteps: progressTotalSteps
+    } = useStepProgress(visibleStep, onboardingData);
 
     const isM2M: boolean = useMemo(
         () => onboardingData.templateId === ApplicationTemplateIdTypes.M2M_APPLICATION,
@@ -615,6 +628,14 @@ const OnboardingWizard: FunctionComponent<OnboardingWizardPropsInterface> = (
     return (
         <>
             <ContentCard data-componentid={ componentId }>
+                { showProgressStepper && (
+                    <ProgressStepper
+                        currentStepIndex={ progressStepIndex }
+                        data-componentid={ `${componentId}-progress-stepper` }
+                        steps={ progressSteps }
+                        totalSteps={ progressTotalSteps }
+                    />
+                ) }
                 <StepTransitionWrapper sx={ transitionStyles }>
                     { visibleStep === OnboardingStep.WELCOME && (
                         <WelcomeStep
