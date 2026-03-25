@@ -20,13 +20,10 @@ import { ApplicationTemplateIdTypes } from "@wso2is/admin.applications.v1/models
 import { PatternConstants } from "@wso2is/core/constants";
 import { Dispatch, SetStateAction, useCallback, useMemo } from "react";
 import { AppNameConstraints, RedirectUrlConstraints } from "../constants";
-import {
-    CreatedApplicationResultInterface,
-    OnboardingBrandingConfigInterface,
-    OnboardingDataInterface,
-    OnboardingStep,
-    SignInOptionsConfigInterface
-} from "../models";
+import { CreatedApplicationResultInterface } from "../models/application";
+import { OnboardingBrandingConfigInterface } from "../models/branding";
+import { OnboardingDataInterface, OnboardingStep } from "../models/onboarding";
+import { SignInOptionsConfigInterface } from "../models/sign-in-options";
 import { isValidSignInOptions } from "../utils/sign-in-options-validator";
 import { extractOrigins } from "../utils/url-utils";
 

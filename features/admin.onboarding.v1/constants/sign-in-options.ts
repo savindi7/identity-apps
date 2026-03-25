@@ -19,7 +19,7 @@
 import {
     LocalAuthenticatorConstants
 } from "@wso2is/admin.connections.v1/constants/local-authenticator-constants";
-import { SignInOptionDefinitionInterface, SignInOptionsConfigInterface } from "../models";
+import { SignInOptionDefinitionInterface, SignInOptionsConfigInterface } from "../models/sign-in-options";
 
 const AuthNames: typeof LocalAuthenticatorConstants.AUTHENTICATOR_NAMES =
     LocalAuthenticatorConstants.AUTHENTICATOR_NAMES;

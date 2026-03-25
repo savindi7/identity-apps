@@ -23,7 +23,7 @@ import { ProfileInfoInterface } from "@wso2is/core/models";
 import React, { useCallback, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { FEATURE_LAUNCH_DATE, OnboardingAnalyticsEvents } from "../constants";
-import { OnboardingChoice, OnboardingDataInterface, OnboardingStep } from "../models";
+import { OnboardingChoice, OnboardingDataInterface, OnboardingStep } from "../models/onboarding";
 
 /**
  * Parameters for the useOnboardingAnalytics hook.

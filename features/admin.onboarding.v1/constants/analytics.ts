@@ -16,7 +16,7 @@
  * under the License.
  */
 
-import { OnboardingStep } from "../models";
+import { OnboardingStep } from "../models/onboarding";
 
 /**
  * Cutoff date for determining whether a user is "new".

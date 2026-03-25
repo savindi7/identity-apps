@@ -1376,7 +1376,7 @@
             },
             "onboarding": {
                 "disabledFeatures": [],
-                "enabled": true,
+                "enabled": false,
                 "featureFlags": [],
                 "scopes": {
                     "create": [
