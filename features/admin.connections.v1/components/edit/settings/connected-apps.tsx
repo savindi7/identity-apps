@@ -203,7 +203,6 @@ export const ConnectedApps: FunctionComponent<ConnectedAppsPropsInterface> = (
     /**
      * Fetches ALL connected apps from the authenticator endpoint (which does not support
      * server-side pagination or filtering) and stores them in `allAuthenticatorApps`.
-     * Client-side filtering and pagination are applied in a separate effect below.
      */
     useEffect(() => {
         if (isCustomLocalAuthenticator === undefined || !isCustomLocalAuthenticator) {
@@ -251,8 +250,6 @@ export const ConnectedApps: FunctionComponent<ConnectedAppsPropsInterface> = (
 
     /**
      * Applies client-side filtering and pagination on `allAuthenticatorApps`.
-     * Runs whenever the full list or any pagination/search control changes.
-     * Only active when the current connection is a custom local authenticator.
      */
     useEffect(() => {
         if (!isCustomLocalAuthenticator || allAuthenticatorApps === undefined) {
@@ -260,14 +257,37 @@ export const ConnectedApps: FunctionComponent<ConnectedAppsPropsInterface> = (
         }
 
         // The AdvancedSearchWithBasicFilters emits a SCIM-like filter string (e.g. `name co "foo"`).
-        // Since we only support name-contains search here, extract the search term directly.
-        const nameCoMatch: RegExpMatchArray | null = searchQuery.match(/name\s+co\s+"?([^"]+)"?/i);
-        const searchTerm: string = nameCoMatch ? nameCoMatch[1].trim() : "";
+        const filterMatch: RegExpMatchArray | null = searchQuery.match(/name\s+(co|sw|ew|eq)\s+"?([^"]+)"?/i);
 
-        const filtered: ConnectedAppInterface[] = searchTerm
-            ? allAuthenticatorApps.filter((app: ConnectedAppInterface) =>
-                app.name?.toLowerCase().includes(searchTerm.toLowerCase()))
-            : allAuthenticatorApps;
+        if (!filterMatch) {
+            setconnectedAppsCount(allAuthenticatorApps.length);
+            setConnectedApps(allAuthenticatorApps.slice(listOffset, listOffset + listItemLimit));
+
+            return;
+        }
+
+        const operator: string = filterMatch[1].toLowerCase();
+        const searchTerm: string = filterMatch[2].trim();
+        const searchTermLower: string = searchTerm.toLowerCase();
+
+        const filtered: ConnectedAppInterface[] = allAuthenticatorApps.filter(
+            (app: ConnectedAppInterface) => {
+                const appNameLower: string = app.name?.toLowerCase() || "";
+
+                switch (operator) {
+                    case "co":
+                        return appNameLower.includes(searchTermLower);
+                    case "sw":
+                        return appNameLower.startsWith(searchTermLower);
+                    case "ew":
+                        return appNameLower.endsWith(searchTermLower);
+                    case "eq":
+                        return appNameLower === searchTermLower;
+                    default:
+                        return true;
+                }
+            }
+        );
 
         setconnectedAppsCount(filtered.length);
         setConnectedApps(filtered.slice(listOffset, listOffset + listItemLimit));
