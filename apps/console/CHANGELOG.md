@@ -24,6 +24,24 @@
   - @wso2is/admin.approval-workflows.v1@1.3.5
   - @wso2is/admin.onboarding.v1@1.0.58
   - @wso2is/admin.console-settings.v1@2.26.21
+## 3.2.0
+
+### Minor Changes
+
+- [#9889](https://github.com/wso2/identity-apps/pull/9889) [`169d8fb3a58f4568dd1168917c95f9a57f44cc8d`](https://github.com/wso2/identity-apps/commit/169d8fb3a58f4568dd1168917c95f9a57f44cc8d) Thanks [@JayaShakthi97](https://github.com/JayaShakthi97)! - Bundle monaco editor as an npm dependency
+
+## 3.1.11
+
+### Patch Changes
+
+- [#9902](https://github.com/wso2/identity-apps/pull/9902) [`89dd70084bb54ed6d06eb1d3aa98686a5b63cd53`](https://github.com/wso2/identity-apps/commit/89dd70084bb54ed6d06eb1d3aa98686a5b63cd53) Thanks [@DilshanSenarath](https://github.com/DilshanSenarath)! - Improve the UX when enabling the custom layout feature through the console
+
+- Updated dependencies [[`89dd70084bb54ed6d06eb1d3aa98686a5b63cd53`](https://github.com/wso2/identity-apps/commit/89dd70084bb54ed6d06eb1d3aa98686a5b63cd53)]:
+  - @wso2is/admin.extensions.v1@2.40.31
+  - @wso2is/admin.branding.v1@2.32.143
+  - @wso2is/i18n@2.37.11
+  - @wso2is/admin.approval-workflows.v1@1.3.5
+  - @wso2is/admin.onboarding.v1@1.0.58
   - @wso2is/admin.users.v1@2.38.10
   - @wso2is/admin.applications.v1@2.41.35
   - @wso2is/admin.home.v1@1.7.167
@@ -36,6 +54,8 @@
   - @wso2is/admin.agents.v1@1.0.202
   - @wso2is/admin.registration-flow-builder.v1@0.10.147
   - @wso2is/admin.roles.v2@2.27.357
+  - @wso2is/admin.connections.v1@2.36.27
+  - @wso2is/admin.console-settings.v1@2.26.21
 
 ## 3.1.10
 

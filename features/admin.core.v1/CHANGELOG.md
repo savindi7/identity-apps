@@ -23,6 +23,8 @@
   - @wso2is/admin.agents.v1@1.0.202
   - @wso2is/admin.registration-flow-builder.v1@0.10.147
   - @wso2is/admin.roles.v2@2.27.357
+  - @wso2is/admin.connections.v1@2.36.27
+  - @wso2is/admin.console-settings.v1@2.26.21
 
 ## 2.55.9
 
