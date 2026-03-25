@@ -171,6 +171,16 @@ const RolesShareWithAll: FunctionComponent<RolesShareWithAllPropsInterface> = (
         }
     };
 
+    const getRoleAudienceLabel = (role: RolesV2Interface): string => {
+        const audienceType: string = role?.audience?.type?.toLowerCase();
+
+        if (audienceType === "organization") {
+            return "organization";
+        }
+
+        return `application/${role?.audience?.display ?? ""}`;
+    };
+
     return (
         <>
             <Typography variant="body1" marginBottom={ 1 }>
@@ -203,10 +213,29 @@ const RolesShareWithAll: FunctionComponent<RolesShareWithAllPropsInterface> = (
                 noOptionsText={ t("common:noResultsFound") }
                 getOptionLabel={ (dropdownOption: DropdownProps) =>
                     dropdownOption?.displayName }
+                renderOption={ (props: React.HTMLAttributes<HTMLLIElement>, option: RolesV2Interface) => (
+                    <li
+                        { ...props }
+                        style={ {
+                            alignItems: "flex-start",
+                            display: "flex",
+                            flexDirection: "column"
+                        } }
+                    >
+                        <Typography variant="body2" sx={ { fontSize: "0.95rem" } }>
+                            { option?.displayName }
+                        </Typography>
+                        <Typography variant="caption" color="text.secondary">
+                            { getRoleAudienceLabel(option) }
+                        </Typography>
+                    </li>
+                ) }
                 isOptionEqualToValue={ (
                     option: RolesV2Interface,
                     value: RolesV2Interface) =>
-                    option?.displayName === value.displayName
+                    option?.displayName === value?.displayName
+                    && option?.audience?.type === value?.audience?.type
+                    && option?.audience?.display === value?.audience?.display
                 }
                 renderInput={ (params: AutocompleteRenderInputParams) => (
                     <TextField
