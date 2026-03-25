@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023-2024, WSO2 LLC. (https://www.wso2.com).
+ * Copyright (c) 2023-2026, WSO2 LLC. (https://www.wso2.com).
  *
  * WSO2 LLC. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -832,9 +832,17 @@ export const updateJITProvisioningConfigs = (
  * Get connected apps of the IDP.
  *
  * @param idpId - ID of the Identity Provider.
+ * @param limit - Maximum Limit of the connected apps list.
+ * @param offset - Offset for get to start.
+ * @param filter - Search filter.
  * @returns  A promise containing the response.
  */
-export const getConnectedApps = (idpId: string): Promise<any> => {
+export const getConnectedApps = (
+    idpId: string,
+    limit?: number,
+    offset?: number,
+    filter?: string
+): Promise<any> => {
 
     const requestConfig: RequestConfigInterface = {
         headers: {
@@ -842,6 +850,11 @@ export const getConnectedApps = (idpId: string): Promise<any> => {
             "Content-Type": "application/json"
         },
         method: HttpMethods.GET,
+        params: {
+            filter,
+            limit,
+            offset
+        },
         url: store.getState().config.endpoints.identityProviders + "/" + idpId + "/connected-apps/"
     };
 
