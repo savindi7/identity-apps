@@ -21,7 +21,7 @@ import Box from "@oxygen-ui/react/Box";
 import Button from "@oxygen-ui/react/Button";
 import Link from "@oxygen-ui/react/Link";
 import Typography from "@oxygen-ui/react/Typography";
-import { ArrowUpRightFromSquareIcon, CheckIcon } from "@oxygen-ui/react-icons";
+import { ArrowUpRightFromSquareIcon, CircleCheckFilledIcon } from "@oxygen-ui/react-icons";
 import useGetApplicationTemplateMetadata
     from "@wso2is/admin.application-templates.v1/api/use-get-application-template-metadata";
 import { ApplicationTemplateConstants } from "@wso2is/admin.application-templates.v1/constants/templates";
@@ -36,6 +36,7 @@ import { AppState } from "@wso2is/admin.core.v1/store";
 import { IdentifiableComponentInterface } from "@wso2is/core/models";
 import React, { FunctionComponent, ReactElement, useMemo } from "react";
 import { useSelector } from "react-redux";
+import { ReactComponent as RafikiIllustration } from "../../assets/icons/rafiki-illustration.svg";
 import {
     OnboardingComponentIds,
     getIntegrationGuide,
@@ -87,14 +88,14 @@ const SuccessHeader: typeof Box = styled(Box)(({ theme }: { theme: Theme }) => (
     display: "flex",
     flexDirection: "column",
     gap: theme.spacing(1),
-    marginBottom: theme.spacing(3)
+    marginBottom: theme.spacing(1.5)
 }));
 
 /**
  * Title text with icon.
  */
 const TitleContainer: typeof Box = styled(Box)(({ theme }: { theme: Theme }) => ({
-    alignItems: "center",
+    alignItems: "flex-start",
     display: "flex",
     gap: theme.spacing(1.5)
 }));
@@ -102,11 +103,15 @@ const TitleContainer: typeof Box = styled(Box)(({ theme }: { theme: Theme }) => 
 /**
  * Success icon styling.
  */
-const SuccessIcon: typeof CheckIcon = styled(CheckIcon)(({ theme }: { theme: Theme }) => ({
-    color: theme.palette.success.main,
-    height: 32,
-    width: 32
-}));
+const SuccessIcon: typeof CircleCheckFilledIcon = styled(CircleCheckFilledIcon)(
+    ({ theme }: { theme: Theme }) => ({
+        color: theme.palette.success.main,
+        flexShrink: 0,
+        height: 32,
+        marginTop: theme.spacing(0.5),
+        width: 32
+    })
+);
 
 /**
  * Main title styling.
@@ -141,17 +146,7 @@ const HelperText: typeof Typography = styled(Typography)(({ theme }: { theme: Th
  * when accordion content expands beyond the available height.
  */
 const ScrollableConfigPanel: typeof ConfigPanel = styled(ConfigPanel)(({ theme }: { theme: Theme }) => ({
-    "&::-webkit-scrollbar": {
-        width: 6
-    },
-    "&::-webkit-scrollbar-thumb": {
-        backgroundColor: theme.palette.grey[300],
-        borderRadius: 3
-    },
-    "&::-webkit-scrollbar-track": {
-        backgroundColor: "transparent"
-    },
-    overflow: "auto",
+    overflow: "hidden",
     paddingRight: theme.spacing(1)
 }));
 
@@ -263,8 +258,6 @@ const SuccessStep: FunctionComponent<SuccessStepPropsInterface> = (
         templateId
     }), [ createdApplication, customServerHost, inboundOidcConfig, redirectUrls, templateId ]);
 
-    const appName: string = createdApplication?.name || "Your application";
-
     const docsUrl: string | undefined = getTemplateDocsUrl(templateId, docSiteURL);
 
     const getSuccessTitle: () => string = (): string => {
@@ -272,7 +265,7 @@ const SuccessStep: FunctionComponent<SuccessStepPropsInterface> = (
             return "Your login experience is ready to preview!";
         }
 
-        return `Your application ${appName} is ready!`;
+        return `Your application ${createdApplication?.name || "Your application"} is ready!`;
     };
 
     const getSuccessSubtitle: () => string = (): string => {
@@ -321,8 +314,10 @@ const SuccessStep: FunctionComponent<SuccessStepPropsInterface> = (
                         <SuccessIcon />
                         <Title>{ getSuccessTitle() }</Title>
                     </TitleContainer>
-                    <Subtitle>{ getSuccessSubtitle() }</Subtitle>
-                    { !isM2M && !isTourFlow && (
+                    { !(integrationGuide || guideContent) && (
+                        <Subtitle>{ getSuccessSubtitle() }</Subtitle>
+                    ) }
+                    { !isM2M && !isTourFlow && !(integrationGuide || guideContent) && (
                         <HelperText>
                             This is optional. Skip if you&apos;ll configure later.
                         </HelperText>
@@ -383,13 +378,13 @@ const SuccessStep: FunctionComponent<SuccessStepPropsInterface> = (
                                     alignItems: "center",
                                     display: "inline-flex",
                                     fontSize: "0.875rem",
-                                    gap: 0.5,
+                                    gap: 1,
                                     mt: 0.5
                                 } }
                                 target="_blank"
                             >
                                 Read the full integration guide
-                                <ArrowUpRightFromSquareIcon size={ 14 } />
+                                <ArrowUpRightFromSquareIcon size={ 12 } />
                             </Link>
                         ) }
                     </Box>
@@ -406,22 +401,6 @@ const SuccessStep: FunctionComponent<SuccessStepPropsInterface> = (
                             testUserCredentials={ createdApplication?.testUserCredentials }
                             data-componentid={ `${componentId}-integration` }
                         />
-                        { docsUrl && (
-                            <Link
-                                href={ docsUrl }
-                                rel="noopener noreferrer"
-                                sx={ {
-                                    alignItems: "center",
-                                    display: "inline-flex",
-                                    fontSize: "0.875rem",
-                                    gap: 0.5
-                                } }
-                                target="_blank"
-                            >
-                                Read the full integration guide
-                                <ArrowUpRightFromSquareIcon size={ 14 } />
-                            </Link>
-                        ) }
                     </>
                 ) }
 
@@ -476,13 +455,13 @@ const SuccessStep: FunctionComponent<SuccessStepPropsInterface> = (
                                     alignItems: "center",
                                     display: "inline-flex",
                                     fontSize: "0.875rem",
-                                    gap: 0.5,
+                                    gap: 1,
                                     mt: 0.5
                                 } }
                                 target="_blank"
                             >
                                 Read the full integration guide
-                                <ArrowUpRightFromSquareIcon size={ 14 } />
+                                <ArrowUpRightFromSquareIcon size={ 12 } />
                             </Link>
                         ) }
                     </Box>
@@ -492,12 +471,28 @@ const SuccessStep: FunctionComponent<SuccessStepPropsInterface> = (
 
             { !isM2M && (
                 <PreviewPanel>
-                    <LoginBoxPreview
-                        brandingConfig={ brandingConfig }
-                        data-componentid={ `${componentId}-preview` }
-                        selfRegistrationEnabled={ selfRegistrationEnabled }
-                        signInOptions={ signInOptions }
-                    />
+                    { isTourFlow ? (
+                        <Box
+                            data-componentid={ `${componentId}-illustration` }
+                            sx={ {
+                                alignItems: "center",
+                                display: "flex",
+                                justifyContent: "center",
+                                maxWidth: 360
+                            } }
+                        >
+                            <RafikiIllustration
+                                style={ { height: "auto", width: "100%" } }
+                            />
+                        </Box>
+                    ) : (
+                        <LoginBoxPreview
+                            brandingConfig={ brandingConfig }
+                            data-componentid={ `${componentId}-preview` }
+                            selfRegistrationEnabled={ selfRegistrationEnabled }
+                            signInOptions={ signInOptions }
+                        />
+                    ) }
                 </PreviewPanel>
             ) }
         </TwoColumnLayout>

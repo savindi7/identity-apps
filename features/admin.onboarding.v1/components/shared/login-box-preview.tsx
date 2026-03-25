@@ -27,7 +27,7 @@ import Typography from "@oxygen-ui/react/Typography";
 import { getConnectionIcons } from "@wso2is/admin.connections.v1/configs/ui";
 import { IdentifiableComponentInterface } from "@wso2is/core/models";
 import React, { FunctionComponent, ReactElement, memo, useMemo } from "react";
-import { OnboardingComponentIds } from "../../constants";
+import { FIRST_FACTOR_METHOD_IDS, OnboardingComponentIds } from "../../constants";
 import { getAnimalNameFromUrl, getAvatarDisplayImage } from "../../constants/preset-logos";
 import { OnboardingBrandingConfigInterface, SignInOptionsConfigInterface } from "../../models";
 
@@ -277,6 +277,7 @@ const LoginBoxPreview: FunctionComponent<LoginBoxPreviewPropsInterface> = memo((
     const hasIdentifier: boolean = identifiers.username || identifiers.email || identifiers.mobile;
     const hasPassword: boolean = loginMethods.password;
     const hasPasskey: boolean = loginMethods.passkey;
+    const hasMagicLink: boolean = loginMethods.magicLink;
     const hasAnyLoginMethod: boolean = loginMethods.password || loginMethods.passkey ||
         loginMethods.magicLink || loginMethods.emailOtp || loginMethods.totp ||
         loginMethods.pushNotification;
@@ -291,11 +292,11 @@ const LoginBoxPreview: FunctionComponent<LoginBoxPreviewPropsInterface> = memo((
         []
     );
 
-    // Second-step verification methods (everything except password and passkey which are first-factor)
+    // Second-step verification methods (exclude first-factor methods: password, passkey, magicLink)
     const step2Methods: string[] = useMemo(() => {
         return Object.entries(loginMethods)
             .filter(([ key, enabled ]: [string, boolean]) =>
-                enabled && key !== "password" && key !== "passkey"
+                enabled && !FIRST_FACTOR_METHOD_IDS.includes(key)
             )
             .map(([ key ]: [string, boolean]) => key);
     }, [ loginMethods ]);
@@ -367,22 +368,34 @@ const LoginBoxPreview: FunctionComponent<LoginBoxPreviewPropsInterface> = memo((
                 { hasIdentifier && hasAnyLoginMethod && (
                     <>
                         <LoginCard variant="outlined">
-                            { brandingConfig.logoUrl && (
-                                <Box sx={ { display: "flex", justifyContent: "center", mb: 0.5 } }>
+                            { brandingConfig.logoUrl && (() => {
+                                const animalName: string =
+                                    getAnimalNameFromUrl(brandingConfig.logoUrl);
+                                const logoSrc: string = animalName
+                                    ? getAvatarDisplayImage(animalName)
+                                    : brandingConfig.logoUrl;
+
+                                return (
                                     <Box
-                                        component="img"
-                                        src={ getAvatarDisplayImage(
-                                            getAnimalNameFromUrl(brandingConfig.logoUrl)
-                                        ) }
-                                        alt="Application logo"
                                         sx={ {
-                                            height: 48,
-                                            objectFit: "cover",
-                                            width: 48
-                                        } }
-                                    />
-                                </Box>
-                            ) }
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            mb: 0.5
+                                        } }>
+                                        <Box
+                                            component="img"
+                                            src={ logoSrc }
+                                            alt="Application logo"
+                                            sx={ {
+                                                height: 48,
+                                                maxWidth: "100%",
+                                                objectFit: "contain",
+                                                width: 48
+                                            } }
+                                        />
+                                    </Box>
+                                );
+                            })() }
                             <Typography
                                 sx={ { mb: 0.5, textAlign: "center" } }
                                 variant="h6"
@@ -410,26 +423,48 @@ const LoginBoxPreview: FunctionComponent<LoginBoxPreviewPropsInterface> = memo((
                             >
                                 { hasPassword ? "Sign In" : "Continue" }
                             </PrimaryButtonStyled>
-                            { hasPasskey && (
+                            { (hasPasskey || hasMagicLink) && (
                                 <>
                                     <Divider sx={ { fontSize: "0.625rem" } }>OR</Divider>
-                                    <Button
-                                        fullWidth
-                                        startIcon={ renderIcon(authMethodConfig.passkey?.icon, 16) }
-                                        sx={ {
-                                            border: (t: Theme) =>
-                                                `1px solid ${t.palette.divider}`,
-                                            borderRadius: 1,
-                                            color: "text.primary",
-                                            fontSize: "0.6875rem",
-                                            justifyContent: "flex-start",
-                                            pointerEvents: "none",
-                                            textTransform: "none"
-                                        } }
-                                        variant="outlined"
-                                    >
-                                        Sign In With Passkey
-                                    </Button>
+                                    { hasPasskey && (
+                                        <Button
+                                            fullWidth
+                                            startIcon={ renderIcon(authMethodConfig.passkey?.icon, 16) }
+                                            sx={ {
+                                                border: (t: Theme) =>
+                                                    `1px solid ${t.palette.divider}`,
+                                                borderRadius: 1,
+                                                color: "text.primary",
+                                                fontSize: "0.6875rem",
+                                                justifyContent: "flex-start",
+                                                pointerEvents: "none",
+                                                textTransform: "none"
+                                            } }
+                                            variant="outlined"
+                                        >
+                                            Sign In With Passkey
+                                        </Button>
+                                    ) }
+                                    { hasMagicLink && (
+                                        <Button
+                                            fullWidth
+                                            startIcon={
+                                                renderIcon(authMethodConfig.magicLink?.icon, 16) }
+                                            sx={ {
+                                                border: (t: Theme) =>
+                                                    `1px solid ${t.palette.divider}`,
+                                                borderRadius: 1,
+                                                color: "text.primary",
+                                                fontSize: "0.6875rem",
+                                                justifyContent: "flex-start",
+                                                pointerEvents: "none",
+                                                textTransform: "none"
+                                            } }
+                                            variant="outlined"
+                                        >
+                                            Sign In With Magic Link
+                                        </Button>
+                                    ) }
                                 </>
                             ) }
                             { selfRegistrationEnabled && (
