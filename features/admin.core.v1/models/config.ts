@@ -247,6 +247,10 @@ export interface FeatureConfigInterface {
      */
     secretsManagement?: FeatureAccessConfigInterface;
     /**
+     * Tenant management feature.
+     */
+    tenants?: FeatureAccessConfigInterface;
+    /**
      * Try It feature
      */
     tryIt?: FeatureAccessConfigInterface;

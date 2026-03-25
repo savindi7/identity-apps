@@ -207,15 +207,3 @@ export interface ParsedWizardUrlParamsInterface {
     step: OnboardingStep | undefined;
     data: OnboardingDataInterface;
 }
-
-// ============================================================================
-// Trial Interfaces
-// ============================================================================
-
-/**
- * Parsed trial details from the SCIM trialDetails attribute.
- */
-export interface TrialDetailsInterface {
-    isTrialEnabled: boolean;
-    isTrialExpired: boolean;
-}

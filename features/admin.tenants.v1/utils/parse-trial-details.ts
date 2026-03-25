@@ -16,7 +16,7 @@
  * under the License.
  */
 
-import { TrialDetailsInterface } from "../models";
+import { TrialDetailsInterface } from "../models/trial";
 
 const DEFAULT_TRIAL_DETAILS: TrialDetailsInterface = {
     isTrialEnabled: false,

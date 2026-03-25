@@ -27,9 +27,7 @@ import { FeatureAccessConfigInterface } from "@wso2is/core/models";
 import { useCallback, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { dismissOnboardingWizardClaim } from "../api/update-onboarding-claim";
-import { TrialDetailsInterface } from "../models";
 import { parseOnboardingShowFromPreferences } from "../utils/parse-onboarding-preferences";
-import { parseTrialDetails } from "../utils/parse-trial-details";
 
 /**
  * SCIM2 attributes to request from the Users list endpoint.
@@ -37,8 +35,7 @@ import { parseTrialDetails } from "../utils/parse-trial-details";
 const SCIM_ATTRIBUTES: string = [
     "userName",
     `${ProfileConstants.SCIM2_SYSTEM_USER_SCHEMA}.userAccountType`,
-    `${ProfileConstants.SCIM2_SYSTEM_USER_SCHEMA}.userPreferences`,
-    `${ProfileConstants.SCIM2_SYSTEM_USER_SCHEMA}.trialDetails`
+    `${ProfileConstants.SCIM2_SYSTEM_USER_SCHEMA}.userPreferences`
 ].join(",");
 
 /**
@@ -47,8 +44,6 @@ const SCIM_ATTRIBUTES: string = [
 interface UseOnboardingStatusReturn {
     isFirstWizardRun: boolean;
     isLoading: boolean;
-    isTrialEnabled: boolean;
-    isTrialExpired: boolean;
     markOnboardingComplete: () => Promise<void>;
     shouldShowOnboarding: boolean;
     userAccountType: string | null;
@@ -101,13 +96,6 @@ export const useOnboardingStatus = (): UseOnboardingStatusReturn => {
     const userAccountType: string | null =
         (systemSchemaData?.userAccountType as string) ?? null;
 
-    const { isTrialEnabled, isTrialExpired }: TrialDetailsInterface = useMemo(
-        (): TrialDetailsInterface => parseTrialDetails(
-            systemSchemaData?.trialDetails as string | undefined
-        ),
-        [ systemSchemaData ]
-    );
-
     const shouldShowOnboarding: boolean = useMemo((): boolean => {
         if (isDismissed || !shouldFetch || !currentUser) {
             return false;
@@ -151,8 +139,6 @@ export const useOnboardingStatus = (): UseOnboardingStatusReturn => {
     return {
         isFirstWizardRun,
         isLoading,
-        isTrialEnabled,
-        isTrialExpired,
         markOnboardingComplete,
         shouldShowOnboarding,
         userAccountType

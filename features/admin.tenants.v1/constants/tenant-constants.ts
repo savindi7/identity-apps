@@ -81,13 +81,15 @@ export default class TenantConstants {
         MANAGING_TENANTS_FROM_DROPDOWN: string;
         ORGANIZATIONS_QUICK_NAV_FROM_DROPDOWN: string;
         TENANT_DELETION: string;
+        TRIAL_ACTIVATION: string;
     } = {
             ADD_TENANTS_FROM_DROPDOWN: "tenants.add.tenant.from.dropdown",
             HIDE_REMOTE_LOG_CONFIG_SECRETS: "hide.config.secrets",
             MAKING_TENANTS_DEFAULT: "tenants.make.default",
             MANAGING_TENANTS_FROM_DROPDOWN: "tenants.manage.tenants.from.dropdown",
             ORGANIZATIONS_QUICK_NAV_FROM_DROPDOWN: "tenants.organizations.quick.nav.from.dropdown",
-            TENANT_DELETION: "tenants.deletion"
+            TENANT_DELETION: "tenants.deletion",
+            TRIAL_ACTIVATION: "tenants.trialActivation"
         };
 
     public static readonly AUTH_TYPES: AuthenticationTypeDropdownOption[] = [

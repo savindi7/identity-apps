@@ -17,7 +17,9 @@
  */
 
 /**
- * Set of keys used to enable/disable onboarding sub-features.
+ * Parsed trial details from the SCIM trialDetails attribute.
  */
-export const OnboardingFeatureDictionary: Map<string, string> = new Map<string, string>()
-    .set("ONBOARDING_TRIAL_ACTIVATION", "onboarding.trialActivation");
+export interface TrialDetailsInterface {
+    isTrialEnabled: boolean;
+    isTrialExpired: boolean;
+}

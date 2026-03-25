@@ -18,7 +18,6 @@
 
 export * from "./analytics";
 export * from "./component-ids";
-export * from "./onboarding-feature-constants";
 export * from "./default-redirect-urls";
 export * from "./integration-guides";
 export * from "./preset-logos";
