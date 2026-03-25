@@ -16,6 +16,7 @@
  * under the License.
  */
 
+import { RequestErrorInterface } from "@wso2is/admin.core.v1/hooks/use-request";
 import { FeatureConfigInterface } from "@wso2is/admin.core.v1/models/config";
 import { AppState } from "@wso2is/admin.core.v1/store";
 import {
@@ -24,9 +25,10 @@ import {
 import { useUsersList } from "@wso2is/admin.users.v1/api/users";
 import { ProfileConstants } from "@wso2is/core/constants";
 import { FeatureAccessConfigInterface } from "@wso2is/core/models";
+import { AxiosError } from "axios";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
-import { TrialDetailsInterface } from "../models/trial";
+import { TrialDetailsInterface, TrialStatus } from "../models/trial";
 import { parseTrialDetails } from "../utils/parse-trial-details";
 
 /**
@@ -38,19 +40,34 @@ const SCIM_ATTRIBUTES: string = [
 ].join(",");
 
 /**
+ * Escapes a value for use in a SCIM filter string per RFC 7644 §3.4.2.2.
+ * Backslashes and double quotes are escaped, and the result is wrapped in double quotes.
+ *
+ * @param value - The raw string value.
+ * @returns The escaped and quoted filter value.
+ */
+const escapeScimFilterValue = (value: string): string => {
+    const escaped: string = value.replace(/\\/g, "\\\\").replace(/"/g, "\\\"");
+
+    return `"${escaped}"`;
+};
+
+/**
  * Return type for the useTrialStatus hook.
  */
 interface UseTrialStatusReturn {
-    isTrialEnabled: boolean;
+    trialStatus: TrialStatus;
     isTrialExpired: boolean;
     isLoading: boolean;
+    isResolved: boolean;
+    error: AxiosError<RequestErrorInterface> | undefined;
 }
 
 /**
  * Read-only hook that fetches and returns the current user's trial status
  * from SCIM2 trialDetails attribute.
  *
- * @returns Trial status flags and loading state.
+ * @returns Trial status, resolution state, loading state, and any fetch error.
  */
 export const useTrialStatus = (): UseTrialStatusReturn => {
     const userName: string = useSelector(
@@ -71,11 +88,12 @@ export const useTrialStatus = (): UseTrialStatusReturn => {
 
     const {
         data: userListData,
-        isLoading: isUserListLoading
+        isLoading: isUserListLoading,
+        error
     } = useUsersList(
         1,
         1,
-        `userName eq ${userName}`,
+        `userName eq ${escapeScimFilterValue(userName ?? "")}`,
         SCIM_ATTRIBUTES,
         "PRIMARY",
         "groups",
@@ -97,9 +115,21 @@ export const useTrialStatus = (): UseTrialStatusReturn => {
 
     const isLoading: boolean = !featureConfig || (shouldFetch && isUserListLoading);
 
+    const isResolved: boolean = shouldFetch && !isUserListLoading && !error && !!userListData;
+
+    const trialStatus: TrialStatus = useMemo((): TrialStatus => {
+        if (!isResolved) {
+            return TrialStatus.UNKNOWN;
+        }
+
+        return isTrialEnabled ? TrialStatus.ENABLED : TrialStatus.DISABLED;
+    }, [ isResolved, isTrialEnabled ]);
+
     return {
+        error,
         isLoading,
-        isTrialEnabled,
-        isTrialExpired
+        isResolved,
+        isTrialExpired,
+        trialStatus
     };
 };

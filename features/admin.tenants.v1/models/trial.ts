@@ -17,6 +17,15 @@
  */
 
 /**
+ * Tri-state trial status.
+ */
+export enum TrialStatus {
+    UNKNOWN = "unknown",
+    ENABLED = "enabled",
+    DISABLED = "disabled"
+}
+
+/**
  * Parsed trial details from the SCIM trialDetails attribute.
  */
 export interface TrialDetailsInterface {

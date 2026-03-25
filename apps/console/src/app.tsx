@@ -49,6 +49,7 @@ import { useOnboardingStatus } from "@wso2is/admin.onboarding.v1/hooks/use-onboa
 import { activateTrial } from "@wso2is/admin.tenants.v1/api/activate-trial";
 import TenantConstants from "@wso2is/admin.tenants.v1/constants/tenant-constants";
 import { useTrialStatus } from "@wso2is/admin.tenants.v1/hooks/use-trial-status";
+import { TrialStatus } from "@wso2is/admin.tenants.v1/models/trial";
 import { AGENT_USERSTORE_ID } from "@wso2is/admin.userstores.v1/constants/user-store-constants";
 import useUserStores from "@wso2is/admin.userstores.v1/hooks/use-user-stores";
 import { UserStoreListItem } from "@wso2is/admin.userstores.v1/models/user-stores";
@@ -206,7 +207,8 @@ export const App = ({
     const { shouldShowOnboarding, isLoading: isOnboardingStatusLoading } = useOnboardingStatus();
 
     const {
-        isTrialEnabled,
+        trialStatus,
+        isResolved: isTrialResolved,
         isLoading: isTrialStatusLoading
     } = useTrialStatus();
 
@@ -250,7 +252,8 @@ export const App = ({
         if (
             !isTrialActivationEnabled
             || isTrialStatusLoading
-            || isTrialEnabled
+            || !isTrialResolved
+            || trialStatus !== TrialStatus.DISABLED
             || trialActivationAttempted.current
         ) {
             return;
@@ -265,7 +268,8 @@ export const App = ({
     }, [
         isTrialActivationEnabled,
         isTrialStatusLoading,
-        isTrialEnabled
+        isTrialResolved,
+        trialStatus
     ]);
 
     /**
