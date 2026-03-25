@@ -452,8 +452,6 @@ export class Config {
             enableLegacySessionBoundTokenBehaviour:
                 window[ "AppUtils" ]?.getConfig()?.ui?.enableLegacySessionBoundTokenBehaviour ?? true,
             enableOldUIForEmailProvider: window[ "AppUtils" ]?.getConfig()?.ui?.enableOldUIForEmailProvider,
-            httpEmailProviderBodyMaxLength: window[ "AppUtils" ]?.getConfig()?.ui?.httpEmailProviderBodyMaxLength,
-            httpEmailProviderScopesMaxLength: window[ "AppUtils" ]?.getConfig()?.ui?.httpEmailProviderScopesMaxLength,
             enabledFeatureOverridesInConsoleRolePermissions:
                 window[ "AppUtils" ]?.getConfig()?.ui?.enabledFeatureOverridesInConsoleRolePermissions,
             features: window[ "AppUtils" ]?.getConfig()?.ui?.features,
@@ -482,6 +480,8 @@ export class Config {
             hiddenOutboundProvisioningConnectors:
                 window[ "AppUtils" ]?.getConfig()?.ui?.hiddenOutboundProvisioningConnectors ?? [],
             hiddenUserStores: window[ "AppUtils" ]?.getConfig()?.ui?.hiddenUserStores,
+            httpEmailProviderBodyMaxLength: window[ "AppUtils" ]?.getConfig()?.ui?.httpEmailProviderBodyMaxLength,
+            httpEmailProviderScopesMaxLength: window[ "AppUtils" ]?.getConfig()?.ui?.httpEmailProviderScopesMaxLength,
             i18nConfigs: window[ "AppUtils" ]?.getConfig()?.ui?.i18nConfigs,
             identityProviderTemplates: window[ "AppUtils" ]?.getConfig()?.ui?.identityProviderTemplates,
             isClaimUniquenessValidationEnabled:

@@ -241,8 +241,6 @@ export const commonConfigReducerInitialState: CommonConfigReducerStateInterface<
             enableLegacyLocaleDropdown: undefined,
             enableLegacySessionBoundTokenBehaviour: false,
             enableOldUIForEmailProvider: undefined,
-            httpEmailProviderBodyMaxLength: undefined,
-            httpEmailProviderScopesMaxLength: undefined,
             enabledFeatureOverridesInConsoleRolePermissions: [],
             features: {
                 applications: null,
@@ -278,6 +276,8 @@ export const commonConfigReducerInitialState: CommonConfigReducerStateInterface<
             hiddenConnectionTemplates: [],
             hiddenOutboundProvisioningConnectors: [],
             hiddenUserStores: [],
+            httpEmailProviderBodyMaxLength: undefined,
+            httpEmailProviderScopesMaxLength: undefined,
             i18nConfigs: null,
             identityProviderTemplates: {
                 apple: {
