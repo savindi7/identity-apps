@@ -1,5 +1,18 @@
 # @wso2is/admin.connections.v1
 
+## 2.36.29
+
+### Patch Changes
+
+- [#9926](https://github.com/wso2/identity-apps/pull/9926) [`e8a2f61f2243d671638005e41b499a86c0c78403`](https://github.com/wso2/identity-apps/commit/e8a2f61f2243d671638005e41b499a86c0c78403) Thanks [@DilshanSenarath](https://github.com/DilshanSenarath)! - Add pagination support in connected apps view
+
+- Updated dependencies [[`e8a2f61f2243d671638005e41b499a86c0c78403`](https://github.com/wso2/identity-apps/commit/e8a2f61f2243d671638005e41b499a86c0c78403)]:
+  - @wso2is/admin.connections.v1@2.36.29
+  - @wso2is/admin.console-settings.v1@2.26.23
+  - @wso2is/admin.applications.v1@2.42.1
+  - @wso2is/admin.core.v1@2.55.12
+  - @wso2is/admin.roles.v2@2.27.359
+
 ## 2.36.28
 
 ### Patch Changes
