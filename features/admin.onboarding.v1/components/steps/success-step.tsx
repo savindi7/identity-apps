@@ -43,11 +43,9 @@ import {
     getTemplateDocsUrl
 } from "../../constants";
 import { FrameworkIntegrationGuideInterface, IntegrationConfigInterface } from "../../constants/integration-guides";
-import {
-    CreatedApplicationResultInterface,
-    OnboardingBrandingConfigInterface,
-    SignInOptionsConfigInterface
-} from "../../models";
+import { CreatedApplicationResultInterface } from "../../models/application";
+import { OnboardingBrandingConfigInterface } from "../../models/branding";
+import { SignInOptionsConfigInterface } from "../../models/sign-in-options";
 import { buildOnboardingGuideData } from "../../utils/build-guide-data";
 import { resolveGuideContent } from "../../utils/guide-content-resolver";
 import CodeBlock from "../shared/code-block";

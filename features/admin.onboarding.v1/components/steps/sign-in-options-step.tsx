@@ -43,12 +43,12 @@ import {
     PASSWORDLESS_METHOD_IDS,
     PASSWORD_METHOD_IDS
 } from "../../constants";
+import { OnboardingBrandingConfigInterface } from "../../models/branding";
 import {
-    OnboardingBrandingConfigInterface,
     SignInOptionDefinitionInterface,
     SignInOptionsConfigInterface,
     SignInOptionsValidationInterface
-} from "../../models";
+} from "../../models/sign-in-options";
 import { validateSignInOptions } from "../../utils/sign-in-options-validator";
 import LoginBoxPreview from "../shared/login-box-preview";
 import { ConfigPanel, PreviewPanel, SectionLabel, TwoColumnLayout } from "../shared/onboarding-styles";

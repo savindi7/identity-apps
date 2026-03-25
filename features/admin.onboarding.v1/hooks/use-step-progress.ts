@@ -18,7 +18,7 @@
 
 import { ApplicationTemplateIdTypes } from "@wso2is/admin.applications.v1/models/application";
 import { useMemo } from "react";
-import { OnboardingChoice, OnboardingDataInterface, OnboardingStep } from "../models";
+import { OnboardingChoice, OnboardingDataInterface, OnboardingStep } from "../models/onboarding";
 
 /**
  * Status of a step in the progress stepper.

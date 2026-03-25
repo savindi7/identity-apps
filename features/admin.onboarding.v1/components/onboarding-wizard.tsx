@@ -73,18 +73,16 @@ import {
     getDefaultRedirectUrl
 } from "../constants";
 import { useOnboardingAnalytics } from "../hooks/use-onboarding-analytics";
-import { useStepProgress } from "../hooks/use-step-progress";
 import { useOnboardingDataInterface, useStepValidation } from "../hooks/use-onboarding-validation";
+import { useStepProgress } from "../hooks/use-step-progress";
 import { useStepTransition } from "../hooks/use-step-transition";
 import { useWizardUrlSync } from "../hooks/use-wizard-url-sync";
+import { CreatedApplicationResultInterface } from "../models/application";
+import { OnboardingChoice, OnboardingDataInterface, OnboardingStep } from "../models/onboarding";
 import {
-    CreatedApplicationResultInterface,
-    OnboardingChoice,
-    OnboardingDataInterface,
-    OnboardingStep,
     SignInIdentifiersConfigInterface,
     SignInLoginMethodsConfigInterface
-} from "../models";
+} from "../models/sign-in-options";
 import { generateRandomNames } from "../utils/random-name-generator";
 
 /**

@@ -25,7 +25,7 @@ import { useSelector } from "react-redux";
 import { ReactComponent as Preview } from "../../assets/icons/preview.svg";
 import { ReactComponent as Rocket } from "../../assets/icons/rocket.svg";
 import { OnboardingComponentIds } from "../../constants";
-import { OnboardingChoice } from "../../models";
+import { OnboardingChoice } from "../../models/onboarding";
 import Hint from "../shared/hint";
 import {
     CardsRow,

@@ -26,7 +26,7 @@ import {
     FRAMEWORK_OPTIONS,
     OnboardingComponentIds
 } from "../../constants";
-import { ApplicationTypeOptionInterface, FrameworkOptionInterface } from "../../models";
+import { ApplicationTypeOptionInterface, FrameworkOptionInterface } from "../../models/application";
 import { LeftColumn, SectionLabel, TwoColumnLayout } from "../shared/onboarding-styles";
 import SelectableCard from "../shared/selectable-card";
 import StepHeader from "../shared/step-header";

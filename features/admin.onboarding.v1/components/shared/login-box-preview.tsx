@@ -29,7 +29,8 @@ import { IdentifiableComponentInterface } from "@wso2is/core/models";
 import React, { FunctionComponent, ReactElement, memo, useMemo } from "react";
 import { FIRST_FACTOR_METHOD_IDS, OnboardingComponentIds } from "../../constants";
 import { getAnimalNameFromUrl, getAvatarDisplayImage } from "../../constants/preset-logos";
-import { OnboardingBrandingConfigInterface, SignInOptionsConfigInterface } from "../../models";
+import { OnboardingBrandingConfigInterface } from "../../models/branding";
+import { SignInOptionsConfigInterface } from "../../models/sign-in-options";
 
 /**
  * Auth method display configuration interface.

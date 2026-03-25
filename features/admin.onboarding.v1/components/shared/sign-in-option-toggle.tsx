@@ -25,7 +25,7 @@ import Typography from "@oxygen-ui/react/Typography";
 import { IdentifiableComponentInterface } from "@wso2is/core/models";
 import React, { FunctionComponent, ReactElement, ReactNode, memo } from "react";
 import { OnboardingComponentIds } from "../../constants";
-import { SignInOptionDefinitionInterface } from "../../models";
+import { SignInOptionDefinitionInterface } from "../../models/sign-in-options";
 
 /**
  * Props interface for SignInOptionToggle component.
