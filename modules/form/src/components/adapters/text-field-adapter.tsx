@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023-2024, WSO2 LLC. (https://www.wso2.com).
+ * Copyright (c) 2023-2026, WSO2 LLC. (https://www.wso2.com).
  *
  * WSO2 LLC. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -53,6 +53,7 @@ const TextFieldAdapter: FunctionComponent<TextFieldAdapterPropsInterface> = (
     const {
         input,
         meta,
+        label,
         fullWidth = true,
         FormControlProps = {},
         helperText,
@@ -68,6 +69,7 @@ const TextFieldAdapter: FunctionComponent<TextFieldAdapterPropsInterface> = (
     return (
         <>
             <TextField
+                label={ label }
                 fullWidth={ fullWidth }
                 variant="outlined"
                 error={ isError }
@@ -76,7 +78,7 @@ const TextFieldAdapter: FunctionComponent<TextFieldAdapterPropsInterface> = (
                 { ...input }
                 // TODO: Remove this once the `required` prop is supported by the Oxygen UI TextField component.
                 InputLabelProps={ {
-                    required
+                    required: label && required
                 } }
                 InputProps={ {
                     endAdornment,

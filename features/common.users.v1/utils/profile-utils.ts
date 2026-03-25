@@ -90,8 +90,17 @@ const prepareInitialValues = (
                 : [];
 
             const emails: unknown[] = Array.isArray(value) ? (value as unknown[]) : [];
-            const primaryEmail: string = emails.find(
-                (email: unknown): email is string => typeof email === "string");
+            // If the primary email is retrieved as
+            // `["primaryEmail", { type: "work", value: "workEmail" }]`.
+            let primaryEmail: string = emails.find((email: unknown) => typeof email === "string") as string;
+
+            if (!primaryEmail) {
+                // If the primary email is retrieved as
+                // `[{ value: "primaryEmail", primary: true }, { value: "workEmail", type: "work" }]`.
+                primaryEmail = emails.find((email: unknown) => typeof email === "object" &&
+                    email !== null &&
+                    email["primary"] === true)?.["value"] as string;
+            }
 
             if (isMultipleEmailAndMobileNumberEnabled && isEmpty(emailAddresses)) {
                 if (primaryEmail) {

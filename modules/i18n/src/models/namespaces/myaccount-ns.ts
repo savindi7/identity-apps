@@ -74,9 +74,67 @@ export interface MyAccountNS {
             resultsIndicator: string;
         };
         verificationOnUpdate: {
+            modal?: {
+                email: {
+                    step1: {
+                        content: {
+                            label: string;
+                        };
+                        heading: string;
+                        validation: {
+                            invalidFormat: string;
+                            required: string;
+                        };
+                    };
+                    step2: {
+                        content: {
+                            label: string;
+                        };
+                        heading: string;
+                    };
+                    step3: {
+                        content: string;
+                    };
+                };
+                sms: {
+                    step1: {
+                        content: {
+                            label: string;
+                        };
+                        heading: string;
+                        validation: {
+                            invalidFormat: string;
+                            required: string;
+                        };
+                    };
+                    step2: {
+                        content: {
+                            label: string;
+                        };
+                        heading: string;
+                    };
+                    step3: {
+                        content: string;
+                    };
+                };
+                common: {
+                    step2: {
+                        verificationFailure: string;
+                        hint: string;
+                        resend: string;
+                        resendSuccess: string;
+                        validation: {
+                            otpRequired: string;
+                        };
+                    };
+                };
+                notifications: {
+                    resendError: NotificationItem;
+                };
+            };
             preference?: {
                 notifications?: Notification;
-            }
+            };
         }
         selfSignUp: {
             preference?: {
@@ -878,6 +936,9 @@ export interface MyAccountNS {
                     header: string;
                 };
                 mobileVerification: {
+                    content: string;
+                };
+                emailVerification?: {
                     content: string;
                 };
             };
