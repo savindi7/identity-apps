@@ -1739,7 +1739,8 @@
                     "tenants.add.tenant.from.dropdown",
                     "tenants.deletion",
                     "tenants.make.default",
-                    "tenants.organizations.quick.nav.from.dropdown"
+                    "tenants.organizations.quick.nav.from.dropdown",
+                    "tenants.trialActivation"
                 ],
                 "enabled": true,
                 "featureFlags": [],
