@@ -37,7 +37,7 @@
         "@wso2is/admin.users.v1": "workspace:^",
         "@wso2is/core": "^2.12.11",
         "classnames": "^2.2.6",
-        "axios": "^0.19.2",
+        "axios": "^1.7.0",
         "i18next": "^21.9.1",
         "react-helmet": "^5.2.1",
         "react-i18next": "^11.18.5",
