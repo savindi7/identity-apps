@@ -886,7 +886,12 @@ const UserProfileForm: FunctionComponent<UserProfileFormPropsInterface> = ({
 
         if (
             schema.schemaUri === ProfileConstants.SCIM2_SYSTEM_USER_SCHEMA_ATTRIBUTES.emailAddresses &&
-            !isMultipleEmailsAndMobileNumbersConfigEnabled
+            (
+                !isMultipleEmailsAndMobileNumbersConfigEnabled ||
+                !isMultiValuedAttributeSupportedInConsole(
+                    ProfileConstants.SCIM2_SCHEMA_DICTIONARY.get("EMAIL_ADDRESSES")
+                )
+            )
         ) {
             return false;
         }
