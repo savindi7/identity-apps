@@ -1,5 +1,39 @@
 # @wso2is/console
 
+## 4.1.3
+
+### Patch Changes
+
+- [#9966](https://github.com/wso2/identity-apps/pull/9966) [`17437c6c73d5e9da02b0979bce4059c30b1cf684`](https://github.com/wso2/identity-apps/commit/17437c6c73d5e9da02b0979bce4059c30b1cf684) Thanks [@github-actions](https://github.com/apps/github-actions)! - Release a new console version
+
+* [#9952](https://github.com/wso2/identity-apps/pull/9952) [`f24ec92d8fe95b0fde9abdd6fda0b4fc08ebc0eb`](https://github.com/wso2/identity-apps/commit/f24ec92d8fe95b0fde9abdd6fda0b4fc08ebc0eb) Thanks [@github-actions](https://github.com/apps/github-actions)! - Fix user sharing and application sharing with selected organizations not working issue
+
+- [#9969](https://github.com/wso2/identity-apps/pull/9969) [`05091041be686c64db9914e3d3287a834cd26945`](https://github.com/wso2/identity-apps/commit/05091041be686c64db9914e3d3287a834cd26945) Thanks [@github-actions](https://github.com/apps/github-actions)! - Move trial activation logic from admin.tenants.v1 to admin.subscription.v1
+
+* [#9959](https://github.com/wso2/identity-apps/pull/9959) [`5ae3036004d5881522a5a915459b9a05e013c4ac`](https://github.com/wso2/identity-apps/commit/5ae3036004d5881522a5a915459b9a05e013c4ac) Thanks [@github-actions](https://github.com/apps/github-actions)! - Hide role selector in selective sharing view for non immediate child organizations
+
+* Updated dependencies [[`05091041be686c64db9914e3d3287a834cd26945`](https://github.com/wso2/identity-apps/commit/05091041be686c64db9914e3d3287a834cd26945)]:
+  - @wso2is/admin.subscription.v1@1.5.206
+  - @wso2is/admin.tenants.v1@2.29.27
+  - @wso2is/admin.applications.v1@2.42.3
+  - @wso2is/admin.console-settings.v1@2.26.25
+  - @wso2is/admin.users.v1@2.38.14
+  - @wso2is/admin.email-management.v1@2.25.355
+  - @wso2is/admin.home.v1@1.7.171
+  - @wso2is/admin.analytics.v1@0.0.3
+  - @wso2is/admin.onboarding.v1@1.0.62
+  - @wso2is/admin.agents.v1@1.1.3
+  - @wso2is/admin.approval-workflows.v1@1.3.9
+  - @wso2is/admin.branding.v1@2.32.147
+  - @wso2is/admin.core.v1@2.55.14
+  - @wso2is/admin.roles.v2@2.27.361
+  - @wso2is/admin.connections.v1@2.36.31
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.191
+  - @wso2is/admin.flows.v1@1.0.160
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.191
+  - @wso2is/admin.server-configurations.v1@2.38.30
+  - @wso2is/admin.registration-flow-builder.v1@0.10.151
+
 ## 4.1.2
 
 ### Patch Changes

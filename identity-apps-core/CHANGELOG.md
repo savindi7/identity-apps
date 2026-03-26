@@ -1,5 +1,11 @@
 # @wso2is/identity-apps-core
 
+## 5.0.2
+
+### Patch Changes
+
+- [#9954](https://github.com/wso2/identity-apps/pull/9954) [`abde2688584860a0e99b721371bae338c8c88e4a`](https://github.com/wso2/identity-apps/commit/abde2688584860a0e99b721371bae338c8c88e4a) Thanks [@github-actions](https://github.com/apps/github-actions)! - Fix pattern issue in cache prevention filter
+
 ## 5.0.1
 
 ### Patch Changes

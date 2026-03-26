@@ -1,5 +1,19 @@
 # @wso2is/common.ui.shared-access.v1
 
+## 0.1.7
+
+### Patch Changes
+
+- [#9952](https://github.com/wso2/identity-apps/pull/9952) [`f24ec92d8fe95b0fde9abdd6fda0b4fc08ebc0eb`](https://github.com/wso2/identity-apps/commit/f24ec92d8fe95b0fde9abdd6fda0b4fc08ebc0eb) Thanks [@github-actions](https://github.com/apps/github-actions)! - Fix user sharing and application sharing with selected organizations not working issue
+
+* [#9959](https://github.com/wso2/identity-apps/pull/9959) [`5ae3036004d5881522a5a915459b9a05e013c4ac`](https://github.com/wso2/identity-apps/commit/5ae3036004d5881522a5a915459b9a05e013c4ac) Thanks [@github-actions](https://github.com/apps/github-actions)! - Hide role selector in selective sharing view for non immediate child organizations
+
+* Updated dependencies []:
+  - @wso2is/admin.applications.v1@2.42.3
+  - @wso2is/admin.console-settings.v1@2.26.25
+  - @wso2is/admin.core.v1@2.55.14
+  - @wso2is/admin.roles.v2@2.27.361
+
 ## 0.1.6
 
 ### Patch Changes
