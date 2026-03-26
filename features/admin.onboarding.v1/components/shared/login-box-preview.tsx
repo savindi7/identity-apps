@@ -94,7 +94,7 @@ const BrowserFrame: typeof Box = styled(Box)(({ theme }: { theme: Theme }) => ({
     backgroundColor: theme.palette.background.paper,
     border: `1px solid ${theme.palette.divider}`,
     borderRadius: theme.shape.borderRadius * 2,
-    boxShadow: theme.shadows[2],
+    boxShadow: theme.shadows[1],
     display: "flex",
     flexDirection: "column",
     overflow: "hidden",
