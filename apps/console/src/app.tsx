@@ -46,17 +46,16 @@ import { commonConfig } from "@wso2is/admin.extensions.v1";
 import { featureGateConfig } from "@wso2is/admin.extensions.v1/configs/feature-gate";
 import useGetAllFeatures from "@wso2is/admin.feature-gate.v1/api/use-get-all-features";
 import { useOnboardingStatus } from "@wso2is/admin.onboarding.v1/hooks/use-onboarding-status";
-import { activateTrial } from "@wso2is/admin.tenants.v1/api/activate-trial";
-import TenantConstants from "@wso2is/admin.tenants.v1/constants/tenant-constants";
-import { useTrialStatus } from "@wso2is/admin.tenants.v1/hooks/use-trial-status";
-import { TrialStatus } from "@wso2is/admin.tenants.v1/models/trial";
+import { activateTrial } from "@wso2is/admin.subscription.v1/api/activate-trial";
+import { useTrialStatus } from "@wso2is/admin.subscription.v1/hooks/use-trial-status";
+import { TrialStatus } from "@wso2is/admin.subscription.v1/models/trial";
 import { AGENT_USERSTORE_ID } from "@wso2is/admin.userstores.v1/constants/user-store-constants";
 import useUserStores from "@wso2is/admin.userstores.v1/hooks/use-user-stores";
 import { UserStoreListItem } from "@wso2is/admin.userstores.v1/models/user-stores";
 import UserStoresProvider from "@wso2is/admin.userstores.v1/providers/user-stores-provider";
 import { AppConstants as CommonAppConstants, CommonConstants } from "@wso2is/core/constants";
 import { IdentityAppsApiException } from "@wso2is/core/exceptions";
-import { CommonHelpers, isFeatureEnabled, isPortalAccessGranted } from "@wso2is/core/helpers";
+import { CommonHelpers, isPortalAccessGranted } from "@wso2is/core/helpers";
 import { RouteInterface, StorageIdentityAppsSettingsInterface, emptyIdentityAppsSettings } from "@wso2is/core/models";
 import { setI18nConfigs, setServiceResourceEndpoints } from "@wso2is/core/store";
 import { AuthenticateUtils, LocalStorageUtils } from "@wso2is/core/utils";
@@ -212,10 +211,9 @@ export const App = ({
         isLoading: isTrialStatusLoading
     } = useTrialStatus();
 
-    const isTrialActivationEnabled: boolean = isFeatureEnabled(
-        config?.ui?.features?.tenants,
-        TenantConstants.FEATURE_DICTIONARY.TRIAL_ACTIVATION
-    );
+    const isTrialActivationEnabled: boolean =
+        (config?.deployment?.extensions as Record<string, Record<string, unknown>>)
+            ?.trial?.enabled === true;
 
     /**
      * Redirect to onboarding page if user should see onboarding.

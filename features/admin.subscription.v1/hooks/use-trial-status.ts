@@ -17,14 +17,12 @@
  */
 
 import { RequestErrorInterface } from "@wso2is/admin.core.v1/hooks/use-request";
-import { FeatureConfigInterface } from "@wso2is/admin.core.v1/models/config";
 import { AppState } from "@wso2is/admin.core.v1/store";
 import {
     useGetCurrentOrganizationType
 } from "@wso2is/admin.organizations.v1/hooks/use-get-organization-type";
 import { useUsersList } from "@wso2is/admin.users.v1/api/users";
 import { ProfileConstants } from "@wso2is/core/constants";
-import { FeatureAccessConfigInterface } from "@wso2is/core/models";
 import { AxiosError } from "axios";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
@@ -73,17 +71,19 @@ export const useTrialStatus = (): UseTrialStatusReturn => {
     const userName: string = useSelector(
         (state: AppState) => state.profile.profileInfo.userName
     );
-    const featureConfig: FeatureConfigInterface = useSelector(
-        (state: AppState) => state?.config?.ui?.features
+
+    const isTrialFeatureEnabled: boolean = useSelector(
+        (state: AppState) =>
+            (state.config.deployment.extensions as Record<string, Record<string, unknown>>)
+                ?.trial?.enabled === true
     );
-    const tenantsFeatureConfig: FeatureAccessConfigInterface = featureConfig?.tenants;
 
     const { isFirstLevelOrganization } = useGetCurrentOrganizationType();
     const isFirstLevelOrg: boolean = isFirstLevelOrganization();
 
     const shouldFetch: boolean =
         !!userName &&
-        !!tenantsFeatureConfig?.enabled &&
+        isTrialFeatureEnabled &&
         isFirstLevelOrg;
 
     const {
@@ -113,7 +113,7 @@ export const useTrialStatus = (): UseTrialStatusReturn => {
         [ systemSchemaData ]
     );
 
-    const isLoading: boolean = !featureConfig || (shouldFetch && isUserListLoading);
+    const isLoading: boolean = shouldFetch && isUserListLoading;
 
     const isResolved: boolean = shouldFetch && !isUserListLoading && !error && !!userListData;
 
