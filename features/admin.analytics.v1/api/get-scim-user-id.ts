@@ -29,7 +29,11 @@ const httpClient: HttpClientInstance = AsgardeoSPAClient.getInstance()
  * @returns The SCIM2 user UUID string.
  */
 export const getScimUserId = async (): Promise<string> => {
-    const meEndpoint: string = store.getState().config.endpoints.me;
+    const meEndpoint: string = store.getState()?.config?.endpoints?.me;
+
+    if (!meEndpoint) {
+        return "";
+    }
 
     const response: { data: { id?: string } } = await httpClient({
         headers: {
