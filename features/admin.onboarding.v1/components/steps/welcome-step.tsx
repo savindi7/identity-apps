@@ -16,12 +16,10 @@
  * under the License.
  */
 
-import { Theme, styled } from "@mui/material/styles";
+import { Theme } from "@mui/material/styles";
 import Box from "@oxygen-ui/react/Box";
-import { AppState } from "@wso2is/admin.core.v1/store";
 import { IdentifiableComponentInterface } from "@wso2is/core/models";
 import React, { FunctionComponent, ReactElement, useCallback, useMemo } from "react";
-import { useSelector } from "react-redux";
 import { ReactComponent as Preview } from "../../assets/icons/preview.svg";
 import { ReactComponent as Rocket } from "../../assets/icons/rocket.svg";
 import { OnboardingComponentIds } from "../../constants";
