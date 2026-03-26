@@ -16,7 +16,7 @@
  * under the License.
  */
 
-import { Theme, styled } from "@mui/material/styles";
+import { Theme, alpha, styled } from "@mui/material/styles";
 import Box from "@oxygen-ui/react/Box";
 import Button from "@oxygen-ui/react/Button";
 import Link from "@oxygen-ui/react/Link";
@@ -36,7 +36,6 @@ import { AppState } from "@wso2is/admin.core.v1/store";
 import { IdentifiableComponentInterface } from "@wso2is/core/models";
 import React, { FunctionComponent, ReactElement, useMemo } from "react";
 import { useSelector } from "react-redux";
-import { ReactComponent as RafikiIllustration } from "../../assets/icons/rafiki-illustration.svg";
 import {
     OnboardingComponentIds,
     getIntegrationGuide,
@@ -136,6 +135,28 @@ const HelperText: typeof Typography = styled(Typography)(({ theme }: { theme: Th
     color: theme.palette.text.secondary,
     fontSize: "0.8125rem",
     fontStyle: "italic"
+}));
+
+/**
+ * Preview button.
+ */
+const PreviewLoginButton: typeof Button = styled(Button)(({ theme }: { theme: Theme }) => ({
+    "&:hover": {
+        backgroundColor: alpha(theme.palette.primary.main, 0.12),
+        borderColor: theme.palette.primary.main
+    },
+    backgroundColor: alpha(theme.palette.primary.main, 0.06),
+    borderColor: alpha(theme.palette.primary.main, 0.3),
+    borderRadius: theme.shape.borderRadius * 2,
+    color: theme.palette.primary.main,
+    fontSize: "1rem",
+    fontWeight: 600,
+    gap: theme.spacing(1),
+    justifyContent: "center",
+    marginTop: theme.spacing(0.5),
+    minHeight: 52,
+    textTransform: "none",
+    width: "100%"
 }));
 
 /**
@@ -267,10 +288,6 @@ const SuccessStep: FunctionComponent<SuccessStepPropsInterface> = (
     };
 
     const getSuccessSubtitle: () => string = (): string => {
-        if (isTourFlow) {
-            return "We've configured the Try It app with your login settings.";
-        }
-
         if (isM2M) {
             return "Use the credentials below to authenticate your service.";
         }
@@ -312,34 +329,37 @@ const SuccessStep: FunctionComponent<SuccessStepPropsInterface> = (
                         <SuccessIcon />
                         <Title>{ getSuccessTitle() }</Title>
                     </TitleContainer>
-                    { !(integrationGuide || guideContent) && (
-                        <Subtitle>{ getSuccessSubtitle() }</Subtitle>
-                    ) }
-                    { !isM2M && !isTourFlow && !(integrationGuide || guideContent) && (
-                        <HelperText>
-                            This is optional. Skip if you&apos;ll configure later.
-                        </HelperText>
+                    { !isTourFlow && !(integrationGuide || guideContent) && (
+                        <>
+                            <Subtitle>{ getSuccessSubtitle() }</Subtitle>
+                            { !isM2M && (
+                                <HelperText>
+                                    This is optional. Skip if you&apos;ll configure later.
+                                </HelperText>
+                            ) }
+                        </>
                     ) }
                 </SuccessHeader>
 
                 { isTourFlow && createdApplication?.tryItUrl && (
-                    <Box sx={ { display: "flex", flexDirection: "column", gap: 2.5, maxWidth: 480 } }>
-                        <Typography sx={ { fontSize: "0.9375rem" } }>
-                            Click the button below to open the Try It app and see your configured
-                            login experience in action.
-                        </Typography>
-                        <Button
+                    <Box sx={ { display: "flex", flexDirection: "column", gap: 2 } }>
+                        <Subtitle>
+                            We&apos;ve configured the Try It app with your login settings.
+                            Launch the preview to see it in action.
+                        </Subtitle>
+                        <PreviewLoginButton
                             color="primary"
                             data-componentid={ `${componentId}-preview-login-button` }
-                            onClick={ () => window.open(createdApplication.tryItUrl, "_blank",
-                                "noopener,noreferrer") }
+                            onClick={ () => window.open(
+                                createdApplication.tryItUrl, "_blank",
+                                "noopener,noreferrer"
+                            ) }
                             size="large"
-                            sx={ { alignSelf: "flex-start", mt: 1 } }
-                            variant="contained"
+                            variant="outlined"
                         >
-                            Preview Login
+                            Launch Preview
                             <ArrowUpRightFromSquareIcon size={ 16 } />
-                        </Button>
+                        </PreviewLoginButton>
                     </Box>
                 ) }
 
@@ -469,28 +489,12 @@ const SuccessStep: FunctionComponent<SuccessStepPropsInterface> = (
 
             { !isM2M && (
                 <PreviewPanel>
-                    { isTourFlow ? (
-                        <Box
-                            data-componentid={ `${componentId}-illustration` }
-                            sx={ {
-                                alignItems: "center",
-                                display: "flex",
-                                justifyContent: "center",
-                                maxWidth: 360
-                            } }
-                        >
-                            <RafikiIllustration
-                                style={ { height: "auto", width: "100%" } }
-                            />
-                        </Box>
-                    ) : (
-                        <LoginBoxPreview
-                            brandingConfig={ brandingConfig }
-                            data-componentid={ `${componentId}-preview` }
-                            selfRegistrationEnabled={ selfRegistrationEnabled }
-                            signInOptions={ signInOptions }
-                        />
-                    ) }
+                    <LoginBoxPreview
+                        brandingConfig={ brandingConfig }
+                        data-componentid={ `${componentId}-preview` }
+                        selfRegistrationEnabled={ selfRegistrationEnabled }
+                        signInOptions={ signInOptions }
+                    />
                 </PreviewPanel>
             ) }
         </TwoColumnLayout>
