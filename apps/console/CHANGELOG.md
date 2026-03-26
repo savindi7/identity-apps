@@ -1,5 +1,33 @@
 # @wso2is/console
 
+## 4.1.1
+
+### Patch Changes
+
+- [#9944](https://github.com/wso2/identity-apps/pull/9944) [`14efd04a58cc78ac0dc57fb533bd1fc4bab4905d`](https://github.com/wso2/identity-apps/commit/14efd04a58cc78ac0dc57fb533bd1fc4bab4905d) Thanks [@github-actions](https://github.com/apps/github-actions)! - Display role audience in the role selection dropdown in user's shared access configuration view
+
+* [#9940](https://github.com/wso2/identity-apps/pull/9940) [`7703179ea538ee15a76339afd34f19d2b7e3ee21`](https://github.com/wso2/identity-apps/commit/7703179ea538ee15a76339afd34f19d2b7e3ee21) Thanks [@github-actions](https://github.com/apps/github-actions)! - Add pagination support in connected apps view
+
+* Updated dependencies [[`14efd04a58cc78ac0dc57fb533bd1fc4bab4905d`](https://github.com/wso2/identity-apps/commit/14efd04a58cc78ac0dc57fb533bd1fc4bab4905d), [`7703179ea538ee15a76339afd34f19d2b7e3ee21`](https://github.com/wso2/identity-apps/commit/7703179ea538ee15a76339afd34f19d2b7e3ee21)]:
+  - @wso2is/admin.users.v1@2.38.12
+  - @wso2is/i18n@2.38.1
+  - @wso2is/admin.connections.v1@2.36.29
+  - @wso2is/admin.applications.v1@2.42.1
+  - @wso2is/admin.console-settings.v1@2.26.23
+  - @wso2is/admin.agents.v1@1.1.1
+  - @wso2is/admin.onboarding.v1@1.0.60
+  - @wso2is/admin.approval-workflows.v1@1.3.7
+  - @wso2is/admin.branding.v1@2.32.145
+  - @wso2is/admin.core.v1@2.55.12
+  - @wso2is/admin.roles.v2@2.27.359
+  - @wso2is/admin.home.v1@1.7.169
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.189
+  - @wso2is/admin.email-management.v1@2.25.353
+  - @wso2is/admin.flows.v1@1.0.158
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.189
+  - @wso2is/admin.server-configurations.v1@2.38.28
+  - @wso2is/admin.registration-flow-builder.v1@0.10.149
+
 ## 4.1.0
 
 ### Minor Changes

@@ -1,5 +1,13 @@
 # @wso2is/admin.rules.v1
 
+## 0.7.28
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.55.12
+  - @wso2is/admin.roles.v2@2.27.359
+
 ## 0.7.27
 
 ### Patch Changes
