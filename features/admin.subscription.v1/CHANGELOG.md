@@ -1,5 +1,15 @@
 # @wso2is/admin.subscription.v1
 
+## 1.5.206
+
+### Patch Changes
+
+- [#9963](https://github.com/wso2/identity-apps/pull/9963) [`6f636d61f26bec8b6f45ebdb47b2f1dbe971bedd`](https://github.com/wso2/identity-apps/commit/6f636d61f26bec8b6f45ebdb47b2f1dbe971bedd) Thanks [@Lakshan-Banneheke](https://github.com/Lakshan-Banneheke)! - Move trial activation logic from admin.tenants.v1 to admin.subscription.v1
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.55.17
+  - @wso2is/admin.users.v1@2.38.17
+
 ## 1.5.205
 
 ### Patch Changes
