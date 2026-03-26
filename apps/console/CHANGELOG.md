@@ -1,5 +1,11 @@
 # @wso2is/console
 
+## 3.3.6
+
+### Patch Changes
+
+- [#9964](https://github.com/wso2/identity-apps/pull/9964) [`20ccbff4bffbc74f26bf87a3ef109f1332f6b06e`](https://github.com/wso2/identity-apps/commit/20ccbff4bffbc74f26bf87a3ef109f1332f6b06e) Thanks [@DilshanSenarath](https://github.com/DilshanSenarath)! - Release a new console version
+
 ## 3.3.5
 
 ### Patch Changes

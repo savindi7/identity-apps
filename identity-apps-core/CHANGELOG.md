@@ -1,5 +1,11 @@
 # @wso2is/identity-apps-core
 
+## 4.0.4
+
+### Patch Changes
+
+- [#9962](https://github.com/wso2/identity-apps/pull/9962) [`daf105e2780b356759d8a8be5c0a895522363e5c`](https://github.com/wso2/identity-apps/commit/daf105e2780b356759d8a8be5c0a895522363e5c) Thanks [@DilshanSenarath](https://github.com/DilshanSenarath)! - Add the cache-prevention filter for forward requests
+
 ## 4.0.3
 
 ### Patch Changes
