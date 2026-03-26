@@ -106,7 +106,7 @@ export const useOnboardingStatus = (): UseOnboardingStatusReturn => {
         data: appListData,
         isLoading: isAppListLoading
     } = useApplicationList<ApplicationListInterface>(
-        "id",
+        null,
         1,
         0,
         null,
