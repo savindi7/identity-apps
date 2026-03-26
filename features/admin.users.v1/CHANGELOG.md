@@ -1,5 +1,19 @@
 # @wso2is/admin.users.v1
 
+## 2.38.15
+
+### Patch Changes
+
+- Updated dependencies [[`4798b1c75f3eff0edccb1539f720b8c582393075`](https://github.com/wso2/identity-apps/commit/4798b1c75f3eff0edccb1539f720b8c582393075)]:
+  - @wso2is/common.ui.shared-access.v1@0.1.7
+  - @wso2is/admin.users.v1@2.38.15
+  - @wso2is/admin.approval-workflows.v1@1.3.10
+  - @wso2is/admin.core.v1@2.55.15
+  - @wso2is/admin.roles.v2@2.27.362
+  - @wso2is/admin.flow-builder-core.v1@0.10.192
+  - @wso2is/admin.flows.v1@1.0.161
+  - @wso2is/admin.server-configurations.v1@2.38.31
+
 ## 2.38.14
 
 ### Patch Changes

@@ -1,5 +1,17 @@
 # @wso2is/common.ui.shared-access.v1
 
+## 0.1.7
+
+### Patch Changes
+
+- [#9950](https://github.com/wso2/identity-apps/pull/9950) [`4798b1c75f3eff0edccb1539f720b8c582393075`](https://github.com/wso2/identity-apps/commit/4798b1c75f3eff0edccb1539f720b8c582393075) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Fix user sharing and application sharing with selected organizations not working issue
+
+- Updated dependencies []:
+  - @wso2is/admin.applications.v1@2.42.4
+  - @wso2is/admin.console-settings.v1@2.26.26
+  - @wso2is/admin.core.v1@2.55.15
+  - @wso2is/admin.roles.v2@2.27.362
+
 ## 0.1.6
 
 ### Patch Changes

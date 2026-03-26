@@ -1,5 +1,30 @@
 # @wso2is/console
 
+## 3.3.4
+
+### Patch Changes
+
+- [#9950](https://github.com/wso2/identity-apps/pull/9950) [`4798b1c75f3eff0edccb1539f720b8c582393075`](https://github.com/wso2/identity-apps/commit/4798b1c75f3eff0edccb1539f720b8c582393075) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Fix user sharing and application sharing with selected organizations not working issue
+
+- Updated dependencies []:
+  - @wso2is/admin.applications.v1@2.42.4
+  - @wso2is/admin.console-settings.v1@2.26.26
+  - @wso2is/admin.users.v1@2.38.15
+  - @wso2is/admin.agents.v1@1.1.4
+  - @wso2is/admin.approval-workflows.v1@1.3.10
+  - @wso2is/admin.branding.v1@2.32.148
+  - @wso2is/admin.onboarding.v1@1.0.63
+  - @wso2is/admin.core.v1@2.55.15
+  - @wso2is/admin.roles.v2@2.27.362
+  - @wso2is/admin.home.v1@1.7.172
+  - @wso2is/admin.connections.v1@2.36.32
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.192
+  - @wso2is/admin.email-management.v1@2.25.356
+  - @wso2is/admin.flows.v1@1.0.161
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.192
+  - @wso2is/admin.server-configurations.v1@2.38.31
+  - @wso2is/admin.registration-flow-builder.v1@0.10.152
+
 ## 3.3.3
 
 ### Patch Changes
