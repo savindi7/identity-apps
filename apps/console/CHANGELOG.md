@@ -1,5 +1,30 @@
 # @wso2is/console
 
+## 3.3.5
+
+### Patch Changes
+
+- [#9958](https://github.com/wso2/identity-apps/pull/9958) [`d1db4ad0cc600b7cc0bd63daca7f9277ac125a6a`](https://github.com/wso2/identity-apps/commit/d1db4ad0cc600b7cc0bd63daca7f9277ac125a6a) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Hide role selector in selective sharing view for non immediate child organizations
+
+- Updated dependencies []:
+  - @wso2is/admin.applications.v1@2.42.5
+  - @wso2is/admin.console-settings.v1@2.26.27
+  - @wso2is/admin.users.v1@2.38.16
+  - @wso2is/admin.agents.v1@1.1.5
+  - @wso2is/admin.approval-workflows.v1@1.3.11
+  - @wso2is/admin.branding.v1@2.32.149
+  - @wso2is/admin.onboarding.v1@1.0.64
+  - @wso2is/admin.core.v1@2.55.16
+  - @wso2is/admin.roles.v2@2.27.363
+  - @wso2is/admin.home.v1@1.7.173
+  - @wso2is/admin.connections.v1@2.36.33
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.193
+  - @wso2is/admin.email-management.v1@2.25.357
+  - @wso2is/admin.flows.v1@1.0.162
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.193
+  - @wso2is/admin.server-configurations.v1@2.38.32
+  - @wso2is/admin.registration-flow-builder.v1@0.10.153
+
 ## 3.3.4
 
 ### Patch Changes
