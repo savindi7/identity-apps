@@ -88,7 +88,9 @@ interface SegmentProps {
     isActive?: boolean;
 }
 
-const Segment: typeof Box = styled(Box, {
+// `any` used because MUI's styled() with shouldForwardProp + custom props doesn't produce
+// a type that can be explicitly annotated without losing either Box's children or isActive.
+const Segment: any = styled(Box, {
     shouldForwardProp: (prop: string) => prop !== "isActive"
 })<SegmentProps>(({ theme, isActive }: SegmentProps & { theme: Theme }) => ({
     alignItems: "center",
@@ -109,7 +111,8 @@ const Segment: typeof Box = styled(Box, {
 /**
  * AI segment with gradient fill when active.
  */
-const AISegment: typeof Box = styled(Box, {
+// Same MUI styled() typing limitation as Segment above.
+const AISegment: any = styled(Box, {
     shouldForwardProp: (prop: string) => prop !== "isActive"
 })<SegmentProps>(({ theme, isActive }: SegmentProps & { theme: Theme }) => ({
     alignItems: "center",
