@@ -172,13 +172,15 @@ const RolesShareWithAll: FunctionComponent<RolesShareWithAllPropsInterface> = (
     };
 
     const getRoleAudienceLabel = (role: RolesV2Interface): string => {
-        const audienceType: string = role?.audience?.type?.toLowerCase();
+        const audienceType: string = role?.audience?.type?.toUpperCase();
 
-        if (audienceType === "organization") {
-            return "organization";
+        if (audienceType === RoleAudienceTypes.ORGANIZATION) {
+            return t("user:editUser.sections.sharedAccess.roleAudience.organization");
         }
 
-        return `application/${role?.audience?.display ?? ""}`;
+        return t("user:editUser.sections.sharedAccess.roleAudience.application", {
+            appName: role?.audience?.display ?? ""
+        });
     };
 
     return (
