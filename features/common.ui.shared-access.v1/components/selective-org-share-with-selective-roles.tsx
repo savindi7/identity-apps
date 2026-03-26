@@ -56,6 +56,7 @@ import {
     OrganizationRoleInterface,
     SelectedOrganizationRoleInterface
 } from "@wso2is/admin.organizations.v1/models/organizations";
+import { RoleAudienceTypes } from "@wso2is/admin.roles.v2/constants/role-constants";
 import { RolesV2Interface } from "@wso2is/admin.roles.v2/models/roles";
 import { AlertLevels, IdentifiableComponentInterface, RolesInterface } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
@@ -953,13 +954,15 @@ const SelectiveOrgShareWithSelectiveRoles = (props: SelectiveOrgShareWithSelecti
     };
 
     const getRoleAudienceLabel = (role: RolesV2Interface): string => {
-        const audienceType: string = role?.audience?.type?.toLowerCase();
+        const audienceType: string = role?.audience?.type?.toUpperCase();
 
-        if (audienceType === "organization") {
-            return "organization";
+        if (audienceType === RoleAudienceTypes.ORGANIZATION) {
+            return t("applications:edit.sections.sharedAccess.roleAudience.organization");
         }
 
-        return `application/${role?.audience?.display ?? ""}`;
+        return t("applications:edit.sections.sharedAccess.roleAudience.application", {
+            appName: role?.audience?.display ?? ""
+        });
     };
 
     const resolveRoleSelectionPane = (): ReactNode => {
