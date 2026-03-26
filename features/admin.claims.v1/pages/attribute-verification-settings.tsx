@@ -145,7 +145,7 @@ const AttributeVerificationSettingsFormPage: FunctionComponent<AttributeVerifica
     const [ connectorDetails, setConnectorDetails ] = useState<GovernanceConnectorInterface>(undefined);
     const [ formValues, setFormValues ] = useState<any>(undefined);
     const [ formDisplayData, setFormDisplayData ] = useState<any>(undefined);
-
+    const [ isEmailVerificationEnabledInForm, setIsEmailVerificationEnabledInForm ] = useState<boolean>(false);
     const [ isLoading, setIsLoading ] = useState<boolean>(false);
     const [ isSubmitting, setIsSubmitting ] = useState<boolean>(false);
     const [ isFormInitialized, setIsFormInitialized ] = useState<boolean>(false);
@@ -186,6 +186,10 @@ const AttributeVerificationSettingsFormPage: FunctionComponent<AttributeVerifica
             updateConnector(formValues);
             setIsLoading(false);
         }
+
+        // Set default states of listener dependent fields.
+        setIsEmailVerificationEnabledInForm(
+            formValues?.[CONNECTOR_NAMES.ENABLE_EMAIL_VERIFICATION] === true);
     }, [ formValues ]);
 
     /**
@@ -442,17 +446,19 @@ const AttributeVerificationSettingsFormPage: FunctionComponent<AttributeVerifica
                         CONNECTOR_NAMES.ENABLE_EMAIL_VERIFICATION) }
                     className="toggle"
                     label= { resolveInputFieldLabel(CONNECTOR_NAMES.ENABLE_EMAIL_VERIFICATION) }
-                    defaultValue={ formValues?.[
-                        CONNECTOR_NAMES.ENABLE_EMAIL_VERIFICATION ] == true }
+                    initialValue={ isEmailVerificationEnabledInForm }
                     readOnly={ isReadOnly }
                     disabled={ !isConnectorEnabled }
                     width={ 16 }
                     data-componentid={ `${ componentId }-email-verification` }
                     hint={ resolveInputFieldHint(CONNECTOR_NAMES.ENABLE_EMAIL_VERIFICATION) }
+                    listen={ (checked: boolean) => {
+                        setIsEmailVerificationEnabledInForm(checked);
+                    } }
                 />
 
                 <Box sx={ { mt: -2, pl: 8 } }>
-                    <Heading as="h6">
+                    <Heading as="h6" disabled={ !isEmailVerificationEnabledInForm }>
                         { t("governanceConnectors:connectorCategories.otherSettings.connectors.userClaimUpdate." +
                             "properties.userClaimUpdateEmailEnableVerification.recoveryMethods.label") }
                     </Heading>
@@ -465,6 +471,8 @@ const AttributeVerificationSettingsFormPage: FunctionComponent<AttributeVerifica
                                 type="radio"
                                 value={ emailVerificationOption.value }
                                 initialValue={ formValues?.[CONNECTOR_NAMES.ENABLE_EMAIL_OTP] === true }
+                                disabled={ !isConnectorEnabled || !isEmailVerificationEnabledInForm }
+                                data-componentid={ emailVerificationOption.componentId }
                             />
                         ))
                     }

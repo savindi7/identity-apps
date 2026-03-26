@@ -1574,7 +1574,7 @@ export const myAccount: MyAccountNS = {
                         content: {
                             label: "Enter your new email address"
                         },
-                        heading: "Verify Your Mobile Number",
+                        heading: "Verify Your Email Address",
                         validation: {
                             invalidFormat: "Please enter a valid email address",
                             required: "Email address required"

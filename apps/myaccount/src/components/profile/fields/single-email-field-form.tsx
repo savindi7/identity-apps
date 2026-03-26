@@ -63,7 +63,7 @@ const SingleEmailFieldForm: FunctionComponent<SingleEmailFieldFormPropsInterface
 
     const profileDetails: AuthStateInterface = useSelector((state: AppState) => state.authenticationInformation);
 
-    const [ isEmailUpdateModalOpen, setIsMobileUpdateModalOpen ] = useState(false);
+    const [ isEmailUpdateModalOpen, setIsEmailUpdateModalOpen ] = useState(false);
     const [ isOTPVerificationModalOpen, setIsOTPVerificationModalOpen ] = useState<boolean>(false);
 
     // If email verification is enabled and there is a verification pending email, it will be shown as the field value.
@@ -149,7 +149,7 @@ const SingleEmailFieldForm: FunctionComponent<SingleEmailFieldFormPropsInterface
             updatedData?.[ProfileConstants.SCIM2_SYSTEM_USER_SCHEMA] as Record<string, unknown>)
             ?.pendingEmails as {value: string}[];
 
-        setIsMobileUpdateModalOpen(false);
+        setIsEmailUpdateModalOpen(false);
         if (updatedPendingEmailAddresses && updatedPendingEmailAddresses[0]?.value === newValue) {
             // Navigate to the OTP verification step.
             setIsOTPVerificationModalOpen(true);
@@ -214,12 +214,12 @@ const SingleEmailFieldForm: FunctionComponent<SingleEmailFieldFormPropsInterface
                                                     <a
                                                         className="placeholder-text"
                                                         tabIndex={ 0 }
-                                                        onClick={ () => setIsMobileUpdateModalOpen(true) }
+                                                        onClick={ () => setIsEmailUpdateModalOpen(true) }
                                                         onKeyPress={ (
                                                             { key }: React.KeyboardEvent<HTMLAnchorElement>
                                                         ) => {
                                                             if (key === "Enter") {
-                                                                setIsMobileUpdateModalOpen(true);
+                                                                setIsEmailUpdateModalOpen(true);
                                                             }
                                                         } }
                                                         data-componentid={
@@ -243,7 +243,7 @@ const SingleEmailFieldForm: FunctionComponent<SingleEmailFieldFormPropsInterface
                             <Grid.Column mobile={ 8 } computer={ 2 }>
                                 <Button
                                     variant="contained"
-                                    onClick={ () => setIsMobileUpdateModalOpen(true) }
+                                    onClick={ () => setIsEmailUpdateModalOpen(true) }
                                     data-componentid={ `${testId}-schema-email-editing-section-${
                                         schema.name.replace(".", "-")}-update-button` }
                                 >
@@ -266,7 +266,7 @@ const SingleEmailFieldForm: FunctionComponent<SingleEmailFieldFormPropsInterface
                         isOpen={ isEmailUpdateModalOpen }
                         verificationChannel={ OTPVerificationChannel.EMAIL }
                         onClose={ (shouldRevalidate?: boolean) => {
-                            setIsMobileUpdateModalOpen(false);
+                            setIsEmailUpdateModalOpen(false);
                             if (shouldRevalidate) {
                                 setIsOTPVerificationModalOpen(true);
                             }

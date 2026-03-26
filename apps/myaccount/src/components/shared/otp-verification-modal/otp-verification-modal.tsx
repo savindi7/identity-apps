@@ -65,7 +65,7 @@ const OTPVerificationModal: FunctionComponent<OtpVerificationModalPropsInterface
 
     return (
         <Modal
-            data-testid={ componentId }
+            data-componentid={ componentId }
             dimmer="blurring"
             size="mini"
             open={ isOpen }

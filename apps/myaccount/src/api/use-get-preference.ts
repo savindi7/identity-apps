@@ -41,8 +41,7 @@ export const useGetPreference = <Data = PreferenceConnectorResponse[], Error = R
     const requestConfig: RequestConfigInterface = {
         data,
         headers: {
-            Accept: "application/json",
-            "Access-Control-Allow-Origin": store.getState()?.config?.deployment?.clientHost
+            Accept: "application/json"
         },
         method: HttpMethods.POST,
         url: store.getState()?.config?.endpoints?.preference

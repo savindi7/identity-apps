@@ -92,7 +92,7 @@ const prepareInitialValues = (
             const emails: unknown[] = Array.isArray(value) ? (value as unknown[]) : [];
             // If the primary email is retrieved as
             // `["primaryEmail", { type: "work", value: "workEmail" }]`.
-            let primaryEmail: string = emails.find((email: unknown) => typeof email === "string") as string;
+            let primaryEmail: string = emails.find((email: unknown): email is string => typeof email === "string");
 
             if (!primaryEmail) {
                 // If the primary email is retrieved as

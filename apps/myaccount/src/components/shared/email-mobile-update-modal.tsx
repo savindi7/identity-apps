@@ -118,7 +118,7 @@ const EmailMobileUpdateModal: FunctionComponent<EmailMobileUpdateModalPropsInter
         >
             <Modal.Header className="wizard-header" data-componentid={ `${componentId}-header` }>
                 { t(`myAccount:components.verificationOnUpdate.modal.${
-                    verificationChannel.toLowerCase()}.step2.heading`) }
+                    verificationChannel.toLowerCase()}.step1.heading`) }
             </Modal.Header>
             <Modal.Content data-componentid={ `${componentId}-content` }>
                 <FinalForm
@@ -147,7 +147,7 @@ const EmailMobileUpdateModal: FunctionComponent<EmailMobileUpdateModalPropsInter
                                                 data-componentid={ `${componentId}-input-field` }
                                                 required={ isRequired }
                                                 endAdornment={
-                                                    hasValue && (
+                                                    hasValue && !isRequired && (
                                                         <InputAdornment position="end">
                                                             <Tooltip title={ t("common:clear") }>
                                                                 <IconButton

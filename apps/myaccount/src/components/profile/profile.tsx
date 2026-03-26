@@ -268,11 +268,11 @@ export const Profile: FunctionComponent<ProfileProps> = (props: ProfileProps): R
         }
 
         const responseProperties: PreferenceProperty[] = preferenceData[0].properties;
-        const mobileVerificationPreference: PreferenceProperty = responseProperties.find(
+        const emailOTPVerificationPreference: PreferenceProperty = responseProperties.find(
             (prop: PreferenceProperty) => prop.name === ProfileConstants.ENABLE_EMAIL_VERIFICATION_WITH_OTP
         );
 
-        return mobileVerificationPreference ? mobileVerificationPreference.value.toLowerCase() === "true" : false;
+        return emailOTPVerificationPreference ? emailOTPVerificationPreference.value.toLowerCase() === "true" : false;
     }, [ preferenceData ]);
 
     /**
