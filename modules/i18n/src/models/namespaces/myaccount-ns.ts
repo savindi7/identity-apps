@@ -74,7 +74,7 @@ export interface MyAccountNS {
             resultsIndicator: string;
         };
         verificationOnUpdate: {
-            modal?: {
+            modal: {
                 email: {
                     step1: {
                         content: {
@@ -938,7 +938,7 @@ export interface MyAccountNS {
                 mobileVerification: {
                     content: string;
                 };
-                emailVerification?: {
+                emailVerification: {
                     content: string;
                 };
             };

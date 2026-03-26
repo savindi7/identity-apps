@@ -1275,6 +1275,9 @@ export const myAccount: MyAccountNS = {
                     content: "Por favor, confirme a atualização do endereço de e-mail para adicionar o novo e-mail ao seu perfil.",
                     header: "Confirmação pendente!"
                 },
+                emailVerification: {
+                    content: "Este endereço de e-mail é usado para enviar e-mails de verificação quando a autenticação de segundo fator está habilitada e para enviar códigos de recuperação em caso de recuperação de nome de usuário/senha. Para atualizar este e-mail, você precisa verificar o novo e-mail inserindo o código de verificação enviado para o seu novo e-mail. Clique em atualizar se desejar continuar."
+                },
                 mobileVerification: {
                     content: "Este número de celular é usado para enviar OTPs de SMS quando a autenticação de segundo fator estiver habilitada e para enviar códigos de recuperação em caso de recuperação de nome de usuário/senha. Para atualizar este número, você deve verificar o novo número inserindo o código de verificação enviado para seu novo número. Clique em atualizar se desejar prosseguir."
                 }
@@ -1514,6 +1517,67 @@ export const myAccount: MyAccountNS = {
             }
         },
         verificationOnUpdate: {
+            modal: {
+                common: {
+                    step2: {
+                        hint: "Não recebeu um código?",
+                        resend: "Reenviar",
+                        resendSuccess: "A solicitação de reenvio do código foi enviada com sucesso",
+                        validation: {
+                            otpRequired: "Digite o código de verificação"
+                        },
+                        verificationFailure: "A verificação falhou. Tente novamente."
+                    }
+                },
+                email: {
+                    step1: {
+                        content: {
+                            label: "Digite seu novo endereço de e-mail"
+                        },
+                        heading: "Verifique seu endereço de e-mail",
+                        validation: {
+                            invalidFormat: "Digite um endereço de e-mail válido",
+                            required: "Endereço de e-mail obrigatório"
+                        }
+                    },
+                    step2: {
+                        content: {
+                            label: "Um código de verificação foi enviado para o seu e-mail. Digite o código abaixo para verificar seu endereço de e-mail."
+                        },
+                        heading: "Verifique seu endereço de e-mail"
+                    },
+                    step3: {
+                        content: "Sucesso! Seu endereço de e-mail foi verificado com sucesso."
+                    }
+                },
+                notifications: {
+                    resendError: {
+                        description: "Ocorreu um erro ao reenviar o código de verificação",
+                        message: "Algo deu errado"
+                    }
+                },
+                sms: {
+                    step1: {
+                        content: {
+                            label: "Digite seu novo número de celular"
+                        },
+                        heading: "Verifique seu número de celular",
+                        validation: {
+                            invalidFormat: "Digite um número de celular válido",
+                            required: "Número de celular obrigatório"
+                        }
+                    },
+                    step2: {
+                        content: {
+                            label: "Um código de verificação foi enviado para o seu número de celular. Digite o código abaixo para verificar seu número de celular."
+                        },
+                        heading: "Verifique seu número de celular"
+                    },
+                    step3: {
+                        content: "Sucesso! Seu número de celular foi verificado com sucesso."
+                    }
+                }
+            },
             preference: {
                 notifications: {
                     error: {

@@ -1337,6 +1337,9 @@ export const myAccount: MyAccountNS = {
                     content: "Veuillez confirmer votre adresse e-mail afin de pouvoir l'ajouter à votre profil",
                     header: "Confirmation en attente !"
                 },
+                emailVerification: {
+                    content: "Cette adresse e-mail est utilisée pour envoyer des e-mails de vérification lorsque l'authentification à deuxième facteur est activée et pour envoyer des codes de récupération en cas de récupération d'un nom d'utilisateur/mot de passe. Pour mettre à jour cet e-mail, vous devez vérifier le nouvel e-mail en saisissant le code de vérification envoyé à votre nouvel e-mail. Cliquez sur mettre à jour si vous souhaitez continuer."
+                },
                 mobileVerification: {
                     content: "Ce numéro de mobile est utilisé pour l'envoi de SMS OTP lorsque l'authentification " +
                         "second facteur est activée et pour l'envoi de codes de récupération en cas de " +
@@ -1589,6 +1592,67 @@ export const myAccount: MyAccountNS = {
             }
         },
         verificationOnUpdate: {
+            modal: {
+                common: {
+                    step2: {
+                        hint: "Vous n'avez pas reçu de code ?",
+                        resend: "Renvoyer",
+                        resendSuccess: "La demande de renvoi du code a été envoyée avec succès",
+                        validation: {
+                            otpRequired: "Saisissez le code de vérification"
+                        },
+                        verificationFailure: "La vérification a échoué. Veuillez réessayer."
+                    }
+                },
+                email: {
+                    step1: {
+                        content: {
+                            label: "Saisissez votre nouvelle adresse e-mail"
+                        },
+                        heading: "Vérifiez votre adresse e-mail",
+                        validation: {
+                            invalidFormat: "Veuillez saisir une adresse e-mail valide",
+                            required: "Adresse e-mail requise"
+                        }
+                    },
+                    step2: {
+                        content: {
+                            label: "Un code de vérification a été envoyé à votre e-mail. Veuillez saisir le code ci-dessous pour vérifier votre adresse e-mail."
+                        },
+                        heading: "Vérifiez votre adresse e-mail"
+                    },
+                    step3: {
+                        content: "Succès ! Votre adresse e-mail a été vérifiée avec succès."
+                    }
+                },
+                notifications: {
+                    resendError: {
+                        description: "Une erreur s'est produite lors du renvoi du code de vérification",
+                        message: "Un problème est survenu"
+                    }
+                },
+                sms: {
+                    step1: {
+                        content: {
+                            label: "Saisissez votre nouveau numéro de mobile"
+                        },
+                        heading: "Vérifiez votre numéro de mobile",
+                        validation: {
+                            invalidFormat: "Veuillez saisir un numéro de mobile valide",
+                            required: "Numéro de mobile requis"
+                        }
+                    },
+                    step2: {
+                        content: {
+                            label: "Un code de vérification a été envoyé à votre numéro de mobile. Veuillez saisir le code ci-dessous pour vérifier votre numéro de mobile."
+                        },
+                        heading: "Vérifiez votre numéro de mobile"
+                    },
+                    step3: {
+                        content: "Succès ! Votre numéro de mobile a été vérifié avec succès."
+                    }
+                }
+            },
             preference: {
                 notifications: {
                     error: {

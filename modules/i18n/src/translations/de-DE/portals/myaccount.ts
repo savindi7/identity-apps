@@ -1273,6 +1273,9 @@ export const myAccount: MyAccountNS = {
                     "content": "Bitte bestätigen Sie die Aktualisierung der E-Mail-Adresse, um die neue E-Mail-Adresse zu Ihrem Profil hinzuzufügen.",
                     "header": "Bestätigung ausstehend!"
                 },
+                "emailVerification": {
+                    "content": "Diese E-Mail-Adresse wird verwendet, um Verifizierungs-E-Mails zu senden, wenn die Zwei-Faktor-Authentifizierung aktiviert ist, und um Wiederherstellungscodes bei einer Benutzername-/Passwort-Wiederherstellung zu senden. Um diese E-Mail-Adresse zu aktualisieren, müssen Sie die neue E-Mail-Adresse verifizieren, indem Sie den Verifizierungscode eingeben, der an Ihre neue E-Mail-Adresse gesendet wurde. Klicken Sie auf Aktualisieren, wenn Sie fortfahren möchten."
+                },
                 "mobileVerification": {
                     "content": "Diese Mobiltelefonnummer wird zum Senden von SMS-OTP verwendet, wenn die Zwei-Faktor-Authentifizierung aktiviert ist, und zum Senden von Wiederherstellungscodes im Falle einer Wiederherstellung von Benutzername/Passwort. Um diese Nummer zu aktualisieren, müssen Sie die neue Nummer verifizieren, indem Sie den Bestätigungscode eingeben, der an Ihre neue Nummer gesendet wurde. Klicken Sie auf Aktualisieren, wenn Sie fortfahren möchten."
                 }
@@ -1511,6 +1514,67 @@ export const myAccount: MyAccountNS = {
             }
         },
         "verificationOnUpdate": {
+            "modal": {
+                "common": {
+                    "step2": {
+                        "hint": "Keinen Code erhalten?",
+                        "resend": "Erneut senden",
+                        "resendSuccess": "Anfrage zum erneuten Senden des Codes wurde erfolgreich gesendet",
+                        "validation": {
+                            "otpRequired": "Geben Sie den Verifizierungscode ein"
+                        },
+                        "verificationFailure": "Verifizierung fehlgeschlagen. Bitte versuchen Sie es erneut."
+                    }
+                },
+                "email": {
+                    "step1": {
+                        "content": {
+                            "label": "Geben Sie Ihre neue E-Mail-Adresse ein"
+                        },
+                        "heading": "Verifizieren Sie Ihre E-Mail-Adresse",
+                        "validation": {
+                            "invalidFormat": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+                            "required": "E-Mail-Adresse erforderlich"
+                        }
+                    },
+                    "step2": {
+                        "content": {
+                            "label": "Ein Verifizierungscode wurde an Ihre E-Mail-Adresse gesendet. Bitte geben Sie den Code unten ein, um Ihre E-Mail-Adresse zu verifizieren."
+                        },
+                        "heading": "Verifizieren Sie Ihre E-Mail-Adresse"
+                    },
+                    "step3": {
+                        "content": "Erfolg! Ihre E-Mail-Adresse wurde erfolgreich verifiziert."
+                    }
+                },
+                "notifications": {
+                    "resendError": {
+                        "description": "Beim erneuten Senden des Verifizierungscodes ist ein Fehler aufgetreten",
+                        "message": "Etwas ist schief gelaufen"
+                    }
+                },
+                "sms": {
+                    "step1": {
+                        "content": {
+                            "label": "Geben Sie Ihre neue Mobilnummer ein"
+                        },
+                        "heading": "Verifizieren Sie Ihre Mobilnummer",
+                        "validation": {
+                            "invalidFormat": "Bitte geben Sie eine gültige Mobilnummer ein",
+                            "required": "Mobilnummer erforderlich"
+                        }
+                    },
+                    "step2": {
+                        "content": {
+                            "label": "Ein Verifizierungscode wurde an Ihre Mobilnummer gesendet. Bitte geben Sie den Code unten ein, um Ihre Mobilnummer zu verifizieren."
+                        },
+                        "heading": "Verifizieren Sie Ihre Mobilnummer"
+                    },
+                    "step3": {
+                        "content": "Erfolg! Ihre Mobilnummer wurde erfolgreich verifiziert."
+                    }
+                }
+            },
             "preference": {
                 "notifications": {
                     "error": {
