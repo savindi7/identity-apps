@@ -88,7 +88,7 @@ interface SegmentProps {
     isActive?: boolean;
 }
 
-const Segment: React.ComponentType<SegmentProps> = styled(Box, {
+const Segment: typeof Box = styled(Box, {
     shouldForwardProp: (prop: string) => prop !== "isActive"
 })<SegmentProps>(({ theme, isActive }: SegmentProps & { theme: Theme }) => ({
     alignItems: "center",
@@ -109,7 +109,7 @@ const Segment: React.ComponentType<SegmentProps> = styled(Box, {
 /**
  * AI segment with gradient fill when active.
  */
-const AISegment: React.ComponentType<SegmentProps> = styled(Box, {
+const AISegment: typeof Box = styled(Box, {
     shouldForwardProp: (prop: string) => prop !== "isActive"
 })<SegmentProps>(({ theme, isActive }: SegmentProps & { theme: Theme }) => ({
     alignItems: "center",
