@@ -316,6 +316,48 @@ const SelectiveOrgShareWithSelectiveRoles = (props: SelectiveOrgShareWithSelecti
         }
     }, [ originalTopLevelOrganizations ]);
 
+    // When there is only one shareable organization, the left selection panel is hidden.
+    // Auto-select that organization so parent save handlers do not fail with
+    // "Please select at least one organization".
+    useEffect(() => {
+        if (disableOrgSelection || !originalTopLevelOrganizations?.organizations?.length) {
+            return;
+        }
+
+        if (originalTopLevelOrganizations.organizations.length !== 1) {
+            return;
+        }
+
+        const onlyOrganization: OrganizationInterface = originalTopLevelOrganizations.organizations[0];
+
+        // Keep existing behavior for tree mode where children can still be selected.
+        if (onlyOrganization?.hasChildren) {
+            return;
+        }
+
+        if (!selectedItems.includes(onlyOrganization.id)) {
+            setSelectedItems([ onlyOrganization.id ]);
+        }
+
+        // Mark this as an added organization only for fresh selections.
+        if (selectedItems.length === 0 && !addedOrgs.includes(onlyOrganization.id)) {
+            setAddedOrgs((prev: string[]) => [ ...prev, onlyOrganization.id ]);
+        }
+
+        if (removedOrgs.includes(onlyOrganization.id)) {
+            setRemovedOrgs((prev: string[]) => prev.filter((item: string) => item !== onlyOrganization.id));
+        }
+    }, [
+        disableOrgSelection,
+        originalTopLevelOrganizations,
+        selectedItems,
+        addedOrgs,
+        removedOrgs,
+        setSelectedItems,
+        setAddedOrgs,
+        setRemovedOrgs
+    ]);
+
     // This will update the organization tree with the children of the expanded organization.
     useEffect(() => {
         if (originalOrganizations?.organizations?.length > 0) {
