@@ -147,6 +147,7 @@ const SelectiveOrgShareWithSelectiveRoles = (props: SelectiveOrgShareWithSelecti
         clearAdvancedRoleSharing = false,
         disableOrgSelection = false,
         enableAdminRole = false,
+        userId,
         allRolesSharingMessage,
         shareWithFutureChildOrgsLabel,
         sharingSettingsLabel,
@@ -1034,6 +1035,60 @@ const SelectiveOrgShareWithSelectiveRoles = (props: SelectiveOrgShareWithSelecti
             return (
                 <Box className="role-list-container center">
                     { t("applications:edit.sections.sharedAccess.toManageOrganizationSelectLeftPanel") }
+                </Box>
+            );
+        }
+
+        // For user sharing only, non-immediate sub-organizations (whose parent is not the root
+        // organization) do not have their own sharing policy. Their role assignments are inherited
+        // and cannot be modified. Show a read-only view of the currently assigned roles instead.
+        const selectedOrgParentId: string | undefined = flatOrganizationMap[selectedOrgId]?.parentId;
+        const isNonImmediateOrgInUserSharing: boolean =
+            !isEmpty(userId) &&
+            !isEmpty(selectedOrgId) &&
+            !isEmpty(selectedOrgParentId) &&
+            selectedOrgParentId !== organizationId;
+
+        if (isNonImmediateOrgInUserSharing) {
+            const currentlyAssignedRoles: SelectedOrganizationRoleInterface[] =
+                roleSelections[selectedOrgId]?.filter(
+                    (role: SelectedOrganizationRoleInterface) => role.selected
+                ) ?? [];
+
+            return (
+                <Box className="role-list-container">
+                    <Typography variant="h5">
+                        { `${ sharingSettingsLabel }` }
+                        <Code sx={ { marginLeft: "5px" } }>{ flatOrganizationMap[selectedOrgId]?.name }</Code>
+                    </Typography>
+                    <Typography variant="body1">
+                        { assignedRolesLabel }
+                    </Typography>
+                    {
+                        currentlyAssignedRoles.length === 0 ? (
+                            <Alert
+                                severity="info"
+                                data-componentid={ `${ componentId }-no-roles-alert` }
+                            >
+                                { t("applications:edit.sections.sharedAccess" +
+                                    ".noRolesAvailableForOrg") }
+                            </Alert>
+                        ) : (
+                            <Box sx={ { display: "flex", flexWrap: "wrap", gap: 1, mt: 1 } }>
+                                { currentlyAssignedRoles.map((
+                                    role: SelectedOrganizationRoleInterface,
+                                    index: number
+                                ) => (
+                                    <Chip
+                                        key={ index }
+                                        label={ role.displayName }
+                                        data-componentid={
+                                            `${ componentId }-assigned-role-chip-${ index }` }
+                                    />
+                                )) }
+                            </Box>
+                        )
+                    }
                 </Box>
             );
         }
