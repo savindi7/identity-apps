@@ -245,8 +245,6 @@ export const isMultipleEmailsAndMobileNumbersEnabled = (
     }
 
     const multipleEmailsAndMobileFeatureRelatedAttributes: string[] = [
-        ProfileConstants.SCIM2_SCHEMA_DICTIONARY.get("MOBILE"),
-        ProfileConstants.SCIM2_SCHEMA_DICTIONARY.get("EMAILS"),
         ProfileConstants.SCIM2_SCHEMA_DICTIONARY.get("EMAIL_ADDRESSES"),
         ProfileConstants.SCIM2_SCHEMA_DICTIONARY.get("MOBILE_NUMBERS"),
         ProfileConstants.SCIM2_SCHEMA_DICTIONARY.get("VERIFIED_EMAIL_ADDRESSES"),
@@ -293,8 +291,6 @@ export const isMultipleEmailsAndMobileNumbersEnabledForUserStore = (
 ): boolean => {
 
     const multipleEmailsAndMobileFeatureRelatedAttributes: string[] = [
-        ProfileConstants.SCIM2_SCHEMA_DICTIONARY.get("MOBILE"),
-        ProfileConstants.SCIM2_SCHEMA_DICTIONARY.get("EMAILS"),
         ProfileConstants.SCIM2_SCHEMA_DICTIONARY.get("EMAIL_ADDRESSES"),
         ProfileConstants.SCIM2_SCHEMA_DICTIONARY.get("MOBILE_NUMBERS"),
         ProfileConstants.SCIM2_SCHEMA_DICTIONARY.get("VERIFIED_EMAIL_ADDRESSES"),
