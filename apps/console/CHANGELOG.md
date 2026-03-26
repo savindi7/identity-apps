@@ -1,5 +1,34 @@
 # @wso2is/console
 
+## 4.1.2
+
+### Patch Changes
+
+- [#9947](https://github.com/wso2/identity-apps/pull/9947) [`417568cf9de52b7a78d227006dd3e37d524c652f`](https://github.com/wso2/identity-apps/commit/417568cf9de52b7a78d227006dd3e37d524c652f) Thanks [@github-actions](https://github.com/apps/github-actions)! - Hide enable enhanced org authentication toggle in my account and add backend validations for system apps
+
+* [#9949](https://github.com/wso2/identity-apps/pull/9949) [`6137b75af107167be60698614ceacb2bed1216df`](https://github.com/wso2/identity-apps/commit/6137b75af107167be60698614ceacb2bed1216df) Thanks [@Lakshan-Banneheke](https://github.com/Lakshan-Banneheke)! - Add trial activation mechanism
+
+* Updated dependencies [[`417568cf9de52b7a78d227006dd3e37d524c652f`](https://github.com/wso2/identity-apps/commit/417568cf9de52b7a78d227006dd3e37d524c652f), [`6137b75af107167be60698614ceacb2bed1216df`](https://github.com/wso2/identity-apps/commit/6137b75af107167be60698614ceacb2bed1216df)]:
+  - @wso2is/admin.applications.v1@2.42.2
+  - @wso2is/admin.tenants.v1@2.29.26
+  - @wso2is/admin.core.v1@2.55.13
+  - @wso2is/admin.agents.v1@1.1.2
+  - @wso2is/admin.approval-workflows.v1@1.3.8
+  - @wso2is/admin.branding.v1@2.32.146
+  - @wso2is/admin.onboarding.v1@1.0.61
+  - @wso2is/admin.analytics.v1@0.0.2
+  - @wso2is/admin.roles.v2@2.27.360
+  - @wso2is/admin.users.v1@2.38.13
+  - @wso2is/admin.home.v1@1.7.170
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.190
+  - @wso2is/admin.email-management.v1@2.25.354
+  - @wso2is/admin.flows.v1@1.0.159
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.190
+  - @wso2is/admin.server-configurations.v1@2.38.29
+  - @wso2is/admin.connections.v1@2.36.30
+  - @wso2is/admin.registration-flow-builder.v1@0.10.150
+  - @wso2is/admin.console-settings.v1@2.26.24
+
 ## 4.1.1
 
 ### Patch Changes
