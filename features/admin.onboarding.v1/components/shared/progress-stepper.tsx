@@ -110,7 +110,7 @@ const ProgressStepper: FunctionComponent<ProgressStepperPropsInterface> = memo((
             <ProgressTrack
                 aria-label="Wizard progress"
                 aria-valuemax={ totalSteps }
-                aria-valuemin={ 1 }
+                aria-valuemin={ 0 }
                 aria-valuenow={ currentStepIndex + 1 }
                 role="progressbar"
             >

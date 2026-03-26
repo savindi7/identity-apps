@@ -38,15 +38,6 @@ import StepHeader from "../shared/step-header";
 import StepIndicator, { StepConfigInterface } from "../shared/step-indicator";
 
 /**
- * Gradient-highlighted text span using the primary color.
- */
-const AccentText: typeof Box = styled(Box)(({ theme }: { theme: Theme }) => ({
-    color: theme.palette.primary.main,
-    display: "inline",
-    fontWeight: 600
-}));
-
-/**
  * Steps for the "Add login to app" flow.
  */
 const ADD_LOGIN_STEPS: StepConfigInterface[] = [
@@ -99,10 +90,6 @@ const WelcomeStep: FunctionComponent<WelcomeStepPropsInterface> = (props: Welcom
         selectedChoice,
         ["data-componentid"]: componentId = OnboardingComponentIds.WELCOME_STEP
     } = props;
-
-    const productName: string = useSelector((state: AppState) =>
-        state.config?.ui?.productName || ""
-    );
 
     // Memoize the handler to prevent unnecessary re-renders
     const handleChoiceSelect: (choice: OnboardingChoice) => void = useCallback(
