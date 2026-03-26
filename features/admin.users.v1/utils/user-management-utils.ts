@@ -21,7 +21,6 @@ import { UserRoleInterface } from "@wso2is/admin.core.v1/models/users";
 import { store } from "@wso2is/admin.core.v1/store";
 import { administratorConfig } from "@wso2is/admin.extensions.v1/configs/administrator";
 import { OperationValueInterface, ScimOperationsInterface } from "@wso2is/admin.roles.v2/models/roles";
-import { PRIMARY_USERSTORE } from "@wso2is/admin.userstores.v1/constants/user-store-constants";
 import {
     ValidationConfInterface,
     ValidationDataInterface,
@@ -254,12 +253,7 @@ export const isMultipleEmailsAndMobileNumbersEnabled = (
         ProfileConstants.SCIM2_SCHEMA_DICTIONARY.get("VERIFIED_MOBILE_NUMBERS")
     ];
 
-    const domainName: string[] = profileInfo?.get("userName")?.toString().split("/");
-    const userStoreDomain: string = (domainName.length > 1
-        ? domainName[0]
-        : PRIMARY_USERSTORE)?.toUpperCase();
-
-    // Check each required attribute exists and domain is not excluded in the excluded user store list.
+    // Check each required attribute exists and its supportedByDefault is enabled.
     const attributeCheck: boolean = multipleEmailsAndMobileFeatureRelatedAttributes.every(
         (attribute: string) => {
             const schema: ProfileSchemaInterface = profileSchema?.find(
@@ -269,18 +263,19 @@ export const isMultipleEmailsAndMobileNumbersEnabled = (
                 return false;
             }
 
-            // The global supportedByDefault value is a string. Hence, it needs to be converted to a boolean.
-            const resolveSupportedByDefaultValue: boolean = schema?.supportedByDefault?.toLowerCase() === "true";
+            // Resolve supportedByDefault: profile-level (console) takes precedence over global.
+            let resolveSupportedByDefaultValue: boolean =
+                schema?.supportedByDefault?.toLowerCase() === "true";
 
-            // Currently BE check if global supported by default is enabled for these attributes to enable the feature.
+            if (schema?.profiles?.console?.supportedByDefault !== undefined) {
+                resolveSupportedByDefaultValue = schema.profiles.console.supportedByDefault;
+            }
+
             if (!resolveSupportedByDefaultValue) {
                 return false;
             }
 
-            const excludedUserStores: string[] =
-                schema?.excludedUserStores?.split(",")?.map((store: string) => store?.trim().toUpperCase()) || [];
-
-            return !excludedUserStores.includes(userStoreDomain);
+            return true;
         });
 
     return attributeCheck;
@@ -306,7 +301,7 @@ export const isMultipleEmailsAndMobileNumbersEnabledForUserStore = (
         ProfileConstants.SCIM2_SCHEMA_DICTIONARY.get("VERIFIED_MOBILE_NUMBERS")
     ];
 
-    // Check each required attribute exists and domain is not excluded in the excluded user store list.
+    // Check each required attribute exists and its supportedByDefault is enabled.
     const attributeCheck: boolean = multipleEmailsAndMobileFeatureRelatedAttributes.every(
         (attribute: string) => {
             const schema: ProfileSchemaInterface = profileSchema?.find(
@@ -316,18 +311,19 @@ export const isMultipleEmailsAndMobileNumbersEnabledForUserStore = (
                 return false;
             }
 
-            // The global supportedByDefault value is a string. Hence, it needs to be converted to a boolean.
-            const resolveSupportedByDefaultValue: boolean = schema?.supportedByDefault?.toLowerCase() === "true";
+            // Resolve supportedByDefault: profile-level (console) takes precedence over global.
+            let resolveSupportedByDefaultValue: boolean =
+                schema?.supportedByDefault?.toLowerCase() === "true";
 
-            // Currently BE check if global supported by default is enabled for these attributes to enable the feature.
+            if (schema?.profiles?.console?.supportedByDefault !== undefined) {
+                resolveSupportedByDefaultValue = schema.profiles.console.supportedByDefault;
+            }
+
             if (!resolveSupportedByDefaultValue) {
                 return false;
             }
 
-            const excludedUserStores: string[] =
-                schema?.excludedUserStores?.split(",")?.map((store: string) => store?.trim().toUpperCase()) || [];
-
-            return !excludedUserStores.includes(userStoreDomain);
+            return true;
         });
 
     return attributeCheck;
