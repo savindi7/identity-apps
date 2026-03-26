@@ -1,5 +1,13 @@
 # @wso2is/admin.analytics.v1
 
+## 0.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`6137b75af107167be60698614ceacb2bed1216df`](https://github.com/wso2/identity-apps/commit/6137b75af107167be60698614ceacb2bed1216df)]:
+  - @wso2is/admin.tenants.v1@2.29.26
+  - @wso2is/admin.core.v1@2.55.13
+
 ## 0.0.1
 
 ### Patch Changes

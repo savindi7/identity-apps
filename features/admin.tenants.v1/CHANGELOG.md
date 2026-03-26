@@ -1,5 +1,15 @@
 # @wso2is/admin.tenants.v1
 
+## 2.29.26
+
+### Patch Changes
+
+- [#9949](https://github.com/wso2/identity-apps/pull/9949) [`6137b75af107167be60698614ceacb2bed1216df`](https://github.com/wso2/identity-apps/commit/6137b75af107167be60698614ceacb2bed1216df) Thanks [@Lakshan-Banneheke](https://github.com/Lakshan-Banneheke)! - Add trial activation mechanism
+
+- Updated dependencies [[`6137b75af107167be60698614ceacb2bed1216df`](https://github.com/wso2/identity-apps/commit/6137b75af107167be60698614ceacb2bed1216df)]:
+  - @wso2is/admin.core.v1@2.55.13
+  - @wso2is/admin.users.v1@2.38.13
+
 ## 2.29.25
 
 ### Patch Changes

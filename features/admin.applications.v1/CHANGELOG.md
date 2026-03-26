@@ -1,5 +1,21 @@
 # @wso2is/admin.applications.v1
 
+## 2.42.2
+
+### Patch Changes
+
+- [#9947](https://github.com/wso2/identity-apps/pull/9947) [`417568cf9de52b7a78d227006dd3e37d524c652f`](https://github.com/wso2/identity-apps/commit/417568cf9de52b7a78d227006dd3e37d524c652f) Thanks [@github-actions](https://github.com/apps/github-actions)! - Hide enable enhanced org authentication toggle in my account and add backend validations for system apps
+
+- Updated dependencies [[`6137b75af107167be60698614ceacb2bed1216df`](https://github.com/wso2/identity-apps/commit/6137b75af107167be60698614ceacb2bed1216df)]:
+  - @wso2is/admin.core.v1@2.55.13
+  - @wso2is/admin.branding.v1@2.32.146
+  - @wso2is/admin.onboarding.v1@1.0.61
+  - @wso2is/admin.roles.v2@2.27.360
+  - @wso2is/admin.users.v1@2.38.13
+  - @wso2is/admin.server-configurations.v1@2.38.29
+  - @wso2is/admin.connections.v1@2.36.30
+  - @wso2is/admin.console-settings.v1@2.26.24
+
 ## 2.42.1
 
 ### Patch Changes
