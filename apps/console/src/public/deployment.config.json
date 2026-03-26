@@ -1381,6 +1381,7 @@
             "onboarding": {
                 "disabledFeatures": [],
                 "enabled": false,
+                "featureDeployedDate": "",
                 "featureFlags": [],
                 "scopes": {
                     "create": [
