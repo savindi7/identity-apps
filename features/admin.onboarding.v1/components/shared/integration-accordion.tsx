@@ -18,7 +18,7 @@
 
 import IconButton from "@mui/material/IconButton";
 import { Theme, styled } from "@mui/material/styles";
-import Box from "@oxygen-ui/react/Box";
+import Box, { BoxProps } from "@oxygen-ui/react/Box";
 import Link from "@oxygen-ui/react/Link";
 import Typography from "@oxygen-ui/react/Typography";
 import {
@@ -84,13 +84,11 @@ const SegmentedControl: typeof Box = styled(Box)(({ theme }: { theme: Theme }) =
 /**
  * Individual segment option within the segmented control.
  */
-interface SegmentProps {
+interface SegmentProps extends BoxProps {
     isActive?: boolean;
 }
 
-// `any` used because MUI's styled() with shouldForwardProp + custom props doesn't produce
-// a type that can be explicitly annotated without losing either Box's children or isActive.
-const Segment: any = styled(Box, {
+const Segment: React.ComponentType<SegmentProps> = styled(Box, {
     shouldForwardProp: (prop: string) => prop !== "isActive"
 })<SegmentProps>(({ theme, isActive }: SegmentProps & { theme: Theme }) => ({
     alignItems: "center",
@@ -111,8 +109,7 @@ const Segment: any = styled(Box, {
 /**
  * AI segment with gradient fill when active.
  */
-// Same MUI styled() typing limitation as Segment above.
-const AISegment: any = styled(Box, {
+const AISegment: React.ComponentType<SegmentProps> = styled(Box, {
     shouldForwardProp: (prop: string) => prop !== "isActive"
 })<SegmentProps>(({ theme, isActive }: SegmentProps & { theme: Theme }) => ({
     alignItems: "center",
