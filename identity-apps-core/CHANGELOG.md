@@ -1,5 +1,11 @@
 # @wso2is/identity-apps-core
 
+## 4.0.2
+
+### Patch Changes
+
+- [#9843](https://github.com/wso2/identity-apps/pull/9843) [`ea7227c798abbff52cbf69d4f6e91d38426b6651`](https://github.com/wso2/identity-apps/commit/ea7227c798abbff52cbf69d4f6e91d38426b6651) Thanks [@SujanSanjula96](https://github.com/SujanSanjula96)! - Hide enable enhanced org authentication toggle in my account and add backend validations for system apps
+
 ## 4.0.1
 
 ### Patch Changes
