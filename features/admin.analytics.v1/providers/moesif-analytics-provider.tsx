@@ -16,6 +16,7 @@
  * under the License.
  */
 
+import { useAuthContext } from "@asgardeo/auth-react";
 import { AppState } from "@wso2is/admin.core.v1/store";
 import { getAssociatedTenants } from "@wso2is/admin.tenants.v1/api/tenants";
 import { TenantInfo, TenantRequestResponse } from "@wso2is/admin.tenants.v1/models/tenant";
@@ -23,7 +24,6 @@ import moesif from "moesif-browser-js";
 import React, { FunctionComponent, PropsWithChildren, ReactElement, useCallback, useEffect, useMemo, useRef }
     from "react";
 import { useSelector } from "react-redux";
-import { getScimUserId } from "../api/get-scim-user-id";
 import MoesifAnalyticsContext, { MoesifAnalyticsContextInterface } from "../context/moesif-analytics-context";
 
 /**
@@ -38,6 +38,8 @@ const MoesifAnalyticsProvider: FunctionComponent<PropsWithChildren> = (
     props: PropsWithChildren
 ): ReactElement => {
     const { children } = props;
+
+    const { getDecodedIDToken } = useAuthContext();
 
     const moesifApplicationId: string = useSelector((state: AppState) => {
         const extensions: Record<string, unknown> =
@@ -86,15 +88,17 @@ const MoesifAnalyticsProvider: FunctionComponent<PropsWithChildren> = (
 
         isIdentifyingRef.current = true;
 
-        // Identify user via SCIM2 /Me endpoint.
-        getScimUserId()
-            .then((scimUserId: string): void => {
-                if (scimUserId) {
-                    moesif.identifyUser(scimUserId);
+        // Identify user via JWT sub claim.
+        getDecodedIDToken()
+            .then((decodedToken: Record<string, unknown>): void => {
+                const sub: string = (decodedToken?.sub as string) ?? "";
+
+                if (sub) {
+                    moesif.identifyUser(sub);
                 }
             })
             .catch((): void => {
-                // User ID fetch failed — analytics will work without User ID.
+                // JWT decode failed — analytics will work without User ID.
             });
 
         getAssociatedTenants(undefined, 15, 0)
