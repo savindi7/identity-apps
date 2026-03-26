@@ -160,9 +160,8 @@ const PreviewLoginButton: typeof Button = styled(Button)(({ theme }: { theme: Th
 }));
 
 /**
- * Scrollable config panel override for success step.
- * Overrides the parent ConfigPanel's `overflow: hidden` to allow scrolling
- * when accordion content expands beyond the available height.
+ * ConfigPanel override for the success step.
+ * Keeps overflow hidden and reduces right padding for tighter layout.
  */
 const ScrollableConfigPanel: typeof ConfigPanel = styled(ConfigPanel)(({ theme }: { theme: Theme }) => ({
     overflow: "hidden",
