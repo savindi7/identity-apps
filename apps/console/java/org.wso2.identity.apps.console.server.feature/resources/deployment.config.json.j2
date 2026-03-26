@@ -2018,6 +2018,7 @@
                 "enabled": {% if console.onboarding.enabled is defined %} {{ console.onboarding.enabled }},
                 {% else %} true,
                 {% endif %}
+                "featureDeployedDate": "{% if console.onboarding.feature_deployed_date is defined %}{{ console.onboarding.feature_deployed_date }}{% endif %}",
                 "scopes": {
                     {% if console.onboarding.scopes is defined %}
                     {% for operation, scopes in console.onboarding.scopes.items() %}

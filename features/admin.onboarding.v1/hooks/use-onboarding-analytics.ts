@@ -17,12 +17,13 @@
  */
 
 import { useMoesifAnalytics } from "@wso2is/admin.analytics.v1/hooks/use-moesif-analytics";
+import { FeatureConfigInterface } from "@wso2is/admin.core.v1/models/config";
 import { AppState } from "@wso2is/admin.core.v1/store";
 import { UserAccountTypes } from "@wso2is/admin.users.v1/constants/user-management-constants";
 import { ProfileInfoInterface } from "@wso2is/core/models";
 import React, { useCallback, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
-import { FEATURE_LAUNCH_DATE, OnboardingAnalyticsEvents } from "../constants";
+import { OnboardingAnalyticsEvents } from "../constants";
 import { OnboardingChoice, OnboardingDataInterface, OnboardingStep } from "../models/onboarding";
 
 /**
@@ -70,6 +71,11 @@ export const useOnboardingAnalytics = (params: UseOnboardingAnalyticsParams): Us
     const { track, isEnabled } = useMoesifAnalytics();
 
     const profileInfo: ProfileInfoInterface = useSelector((state: AppState) => state.profile.profileInfo);
+    const featureConfig: FeatureConfigInterface = useSelector(
+        (state: AppState) => state?.config?.ui?.features
+    );
+
+    const featureDeployedDate: string | undefined = featureConfig?.onboarding?.featureDeployedDate;
 
     const visitedStepsRef: React.MutableRefObject<Set<number>> = useRef<Set<number>>(new Set<number>());
     const startTimeRef: React.MutableRefObject<number> = useRef<number>(Date.now());
@@ -85,12 +91,12 @@ export const useOnboardingAnalytics = (params: UseOnboardingAnalyticsParams): Us
     const getIsNewUser: () => boolean = useCallback((): boolean => {
         const createdDate: string = profileInfo?.meta?.created;
 
-        if (!createdDate || FEATURE_LAUNCH_DATE === "YYYY-MM-DD") {
+        if (!createdDate || !featureDeployedDate) {
             return false;
         }
 
-        return new Date(createdDate) >= new Date(FEATURE_LAUNCH_DATE);
-    }, [ profileInfo?.meta?.created ]);
+        return new Date(createdDate) >= new Date(featureDeployedDate);
+    }, [ profileInfo?.meta?.created, featureDeployedDate ]);
 
     /**
      * Compute whether the current user is the organization owner.

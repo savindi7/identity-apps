@@ -19,13 +19,6 @@
 import { OnboardingStep } from "../models/onboarding";
 
 /**
- * Cutoff date for determining whether a user is "new".
- * Users with SCIM2 meta.created on or after this date are considered new.
- * TODO: Set this to the actual feature launch date before deployment.
- */
-export const FEATURE_LAUNCH_DATE: string = "YYYY-MM-DD";
-
-/**
  * Moesif event names.
  * Format: Area-PastTenseAction-ObjectOrResult in PascalCase with hyphens.
  */

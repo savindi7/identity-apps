@@ -75,6 +75,17 @@ interface ConnectionConfigInterface extends FeatureAccessConfigInterface {
 }
 
 /**
+ * Extended feature config for onboarding with deployment-specific fields.
+ */
+export interface OnboardingFeatureConfigInterface extends FeatureAccessConfigInterface {
+    /**
+     * Cutoff date (YYYY-MM-DD) for determining whether a user is "new".
+     * Users with SCIM2 meta.created on or after this date are considered new.
+     */
+    featureDeployedDate?: string;
+}
+
+/**
  * Application configuration interface.
  */
 export interface FeatureConfigInterface {
@@ -141,7 +152,7 @@ export interface FeatureConfigInterface {
     /**
      * Onboarding wizard feature.
      */
-    onboarding?: FeatureAccessConfigInterface;
+    onboarding?: OnboardingFeatureConfigInterface;
     /**
      * SMS providers feature.
      */
