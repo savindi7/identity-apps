@@ -620,6 +620,10 @@ export const applications: ApplicationsNS = {
                 viewRoleSharing: "View shared roles",
                 noSharedOrgs: "This application is not shared with any organizations.",
                 noRolesAvailableForOrg: "No roles available for the selected organization.",
+                roleAudience: {
+                    application: "application/{{appName}}",
+                    organization: "organization"
+                },
                 searchAvailableRolesPlaceholder: "Search available roles",
                 orgNotSelectedForRoleSharing: "To share roles, please select the organization from the left panel.",
                 rolesSharedPartially: "Roles are selectively shared with this organization.",
