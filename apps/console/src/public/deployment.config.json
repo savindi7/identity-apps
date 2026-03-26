@@ -238,7 +238,11 @@
                 "displayName": "Password Set Success",
                 "id": "YXNrUGFzc3dvcmRTZXRTdWNjZXNz"
             }
-        ]
+        ],
+        "trial": {
+            "enabled": false,
+            "tierName": "Paid"
+        }
     },
     "getProfileInfoFromIDToken": false,
     "i18nResourcePath": "",
@@ -1739,8 +1743,7 @@
                     "tenants.add.tenant.from.dropdown",
                     "tenants.deletion",
                     "tenants.make.default",
-                    "tenants.organizations.quick.nav.from.dropdown",
-                    "tenants.trialActivation"
+                    "tenants.organizations.quick.nav.from.dropdown"
                 ],
                 "enabled": true,
                 "featureFlags": [],
