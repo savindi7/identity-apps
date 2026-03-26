@@ -1,5 +1,17 @@
 # @wso2is/common.ui.shared-access.v1
 
+## 0.1.6
+
+### Patch Changes
+
+- [#9944](https://github.com/wso2/identity-apps/pull/9944) [`14efd04a58cc78ac0dc57fb533bd1fc4bab4905d`](https://github.com/wso2/identity-apps/commit/14efd04a58cc78ac0dc57fb533bd1fc4bab4905d) Thanks [@github-actions](https://github.com/apps/github-actions)! - Display role audience in the role selection dropdown in user's shared access configuration view
+
+- Updated dependencies []:
+  - @wso2is/admin.applications.v1@2.42.1
+  - @wso2is/admin.console-settings.v1@2.26.23
+  - @wso2is/admin.core.v1@2.55.12
+  - @wso2is/admin.roles.v2@2.27.359
+
 ## 0.1.5
 
 ### Patch Changes

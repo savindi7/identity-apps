@@ -1,5 +1,17 @@
 # @wso2is/admin.approval-workflows.v1
 
+## 1.3.7
+
+### Patch Changes
+
+- Updated dependencies [[`14efd04a58cc78ac0dc57fb533bd1fc4bab4905d`](https://github.com/wso2/identity-apps/commit/14efd04a58cc78ac0dc57fb533bd1fc4bab4905d)]:
+  - @wso2is/admin.users.v1@2.38.12
+  - @wso2is/i18n@2.38.1
+  - @wso2is/admin.applications.v1@2.42.1
+  - @wso2is/admin.core.v1@2.55.12
+  - @wso2is/admin.roles.v2@2.27.359
+  - @wso2is/admin.rules.v1@0.7.28
+
 ## 1.3.6
 
 ### Patch Changes

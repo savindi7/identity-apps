@@ -1,5 +1,11 @@
 # @wso2is/i18n
 
+## 2.38.1
+
+### Patch Changes
+
+- [#9944](https://github.com/wso2/identity-apps/pull/9944) [`14efd04a58cc78ac0dc57fb533bd1fc4bab4905d`](https://github.com/wso2/identity-apps/commit/14efd04a58cc78ac0dc57fb533bd1fc4bab4905d) Thanks [@github-actions](https://github.com/apps/github-actions)! - Display role audience in the role selection dropdown in user's shared access configuration view
+
 ## 2.38.0
 
 ### Minor Changes
