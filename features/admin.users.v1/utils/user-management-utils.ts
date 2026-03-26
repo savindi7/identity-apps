@@ -287,7 +287,7 @@ export const isMultipleEmailsAndMobileNumbersEnabled = (
  */
 export const isMultipleEmailsAndMobileNumbersEnabledForUserStore = (
     profileSchema: ProfileSchemaInterface[],
-    userStoreDomain: string
+    _userStoreDomain: string
 ): boolean => {
 
     const multipleEmailsAndMobileFeatureRelatedAttributes: string[] = [
