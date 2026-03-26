@@ -114,6 +114,14 @@ interface TreeViewBaseItemWithRoles extends TreeViewBaseItem {
     parentId?: string;
 }
 
+interface RoleIdentityInterface {
+    audience?: {
+        display?: string;
+        type?: string;
+    };
+    displayName?: string;
+}
+
 const SelectiveOrgShareWithSelectiveRoles = (props: SelectiveOrgShareWithSelectiveRolesProps) => {
     const {
         [ "data-componentid" ]: componentId = "org-selective-share-with-selective-roles-edit",
@@ -226,6 +234,12 @@ const SelectiveOrgShareWithSelectiveRoles = (props: SelectiveOrgShareWithSelecti
     );
 
     const isLoading: boolean = isTotalApplicationOrganizationsFetchRequestLoading;
+
+    const isSameRole = (roleA: RoleIdentityInterface, roleB: RoleIdentityInterface): boolean => {
+        return roleA?.displayName === roleB?.displayName
+            && roleA?.audience?.type === roleB?.audience?.type
+            && roleA?.audience?.display === roleB?.audience?.display;
+    };
 
     // Used to tick shared orgs from the total organization tree
     useEffect(() => {
@@ -407,7 +421,7 @@ const SelectiveOrgShareWithSelectiveRoles = (props: SelectiveOrgShareWithSelecti
 
                             const isRoleInSelectedOrg: boolean = selectedOrgRoles?.some(
                                 (selectedRole: OrganizationRoleInterface) =>
-                                    selectedRole.displayName === role.displayName);
+                                    isSameRole(selectedRole, role));
 
                             if (!clearAdvancedRoleSharing && isRoleInSelectedOrg) {
                                 // If the role exists in the selected organization, mark it as selected.
@@ -431,16 +445,16 @@ const SelectiveOrgShareWithSelectiveRoles = (props: SelectiveOrgShareWithSelecti
             let isSelected: boolean = clearAdvancedRoleSharing
                 ? false
                 : selectedOrgRoles?.some((selectedRole: OrganizationRoleInterface) =>
-                    selectedRole.displayName === role.displayName);
+                    isSameRole(selectedRole, role));
 
             const isRoleInNewlyAddedCommonRoles: boolean = newlyAddedCommonRoles?.some(
-                (selectedRole: RolesInterface) => selectedRole.displayName === role.displayName);
+                (selectedRole: RolesInterface) => isSameRole(selectedRole, role));
             const isRoleInNewlyRemovedCommonRoles: boolean = newlyRemovedCommonRoles?.some(
-                (selectedRole: RolesInterface) => selectedRole.displayName === role.displayName);
+                (selectedRole: RolesInterface) => isSameRole(selectedRole, role));
             const isRoleInAddedRoles: boolean = addedRoles[selectedOrgId]?.some(
-                (addedRole: RoleSharingInterface) => addedRole.displayName === role.displayName);
+                (addedRole: RoleSharingInterface) => isSameRole(addedRole, role));
             const isRoleInRemovedRoles: boolean = removedRoles[selectedOrgId]?.some(
-                (removedRole: RoleSharingInterface) => removedRole.displayName === role.displayName);
+                (removedRole: RoleSharingInterface) => isSameRole(removedRole, role));
 
             if (isRoleInNewlyAddedCommonRoles) {
                 // If the role exists in the newly added common roles, mark it as selected.
@@ -573,7 +587,7 @@ const SelectiveOrgShareWithSelectiveRoles = (props: SelectiveOrgShareWithSelecti
             const existingRoles: SelectedOrganizationRoleInterface[] = roleSelections[childId] || [];
 
             const alreadyHasRole: boolean = existingRoles.some(
-                (role: SelectedOrganizationRoleInterface) => role.displayName === addedRole.displayName
+                (role: SelectedOrganizationRoleInterface) => isSameRole(role, addedRole)
             );
 
             if (!alreadyHasRole) {
@@ -601,7 +615,7 @@ const SelectiveOrgShareWithSelectiveRoles = (props: SelectiveOrgShareWithSelecti
 
             if (childRoles) {
                 const updatedRoles: SelectedOrganizationRoleInterface[] = childRoles.filter(
-                    (role: SelectedOrganizationRoleInterface) => role.displayName !== removedRole.displayName);
+                    (role: SelectedOrganizationRoleInterface) => !isSameRole(role, removedRole));
 
                 setRoleSelections((prev: Record<string, SelectedOrganizationRoleInterface[]>) => ({
                     ...prev,
@@ -745,7 +759,7 @@ const SelectiveOrgShareWithSelectiveRoles = (props: SelectiveOrgShareWithSelecti
         // Check if the roles is in removedRoles map
         const removedRolesForOrg: RoleSharingInterface[] = removedRoles[orgId] || [];
         const isRoleInRemovedRoles: boolean = removedRolesForOrg.some(
-            (role: RoleSharingInterface) => role.displayName === addedRole.displayName
+            (role: RoleSharingInterface) => isSameRole(role, addedRole)
         );
 
         // If the role is in removedRoles, remove it from there
@@ -754,7 +768,7 @@ const SelectiveOrgShareWithSelectiveRoles = (props: SelectiveOrgShareWithSelecti
         if (isRoleInRemovedRoles) {
             setRemovedRoles((prev: Record<string, RoleSharingInterface[]>) => {
                 const updatedRoles: RoleSharingInterface[] = prev[orgId]?.filter(
-                    (role: RoleSharingInterface) => role.displayName !== addedRole.displayName
+                    (role: RoleSharingInterface) => !isSameRole(role, addedRole)
                 ) || [];
 
                 return {
@@ -777,7 +791,7 @@ const SelectiveOrgShareWithSelectiveRoles = (props: SelectiveOrgShareWithSelecti
                     displayName: role.displayName
                 })) || [];
             const alreadyExists: boolean = updatedRoles.some(
-                (role: RoleSharingInterface) => role.displayName === addedRole.displayName
+                (role: RoleSharingInterface) => isSameRole(role, addedRole)
             );
 
             if (!alreadyExists) {
@@ -795,7 +809,7 @@ const SelectiveOrgShareWithSelectiveRoles = (props: SelectiveOrgShareWithSelecti
         // Check if the roles is in addedRoles map
         const addedRolesForOrg: RoleSharingInterface[] = addedRoles[orgId] || [];
         const isRoleInAddedRoles: boolean = addedRolesForOrg.some(
-            (role: RoleSharingInterface) => role.displayName === removedRole.displayName
+            (role: RoleSharingInterface) => isSameRole(role, removedRole)
         );
 
         // If the role is in addedRoles, remove it from there
@@ -804,7 +818,7 @@ const SelectiveOrgShareWithSelectiveRoles = (props: SelectiveOrgShareWithSelecti
         if (isRoleInAddedRoles) {
             setAddedRoles((prev: Record<string, RoleSharingInterface[]>) => {
                 const updatedRoles: RoleSharingInterface[] = prev[orgId]?.filter(
-                    (role: RoleSharingInterface) => role.displayName !== removedRole.displayName
+                    (role: RoleSharingInterface) => !isSameRole(role, removedRole)
                 ) || [];
 
                 return {
@@ -820,7 +834,7 @@ const SelectiveOrgShareWithSelectiveRoles = (props: SelectiveOrgShareWithSelecti
         setRemovedRoles((prev: Record<string, RoleSharingInterface[]>) => {
             const updatedRoles: RoleSharingInterface[] = prev[orgId] || [];
             const alreadyExists: boolean = updatedRoles.some(
-                (role: RoleSharingInterface) => role.displayName === removedRole.displayName
+                (role: RoleSharingInterface) => isSameRole(role, removedRole)
             );
 
             if (!alreadyExists) {
@@ -885,7 +899,7 @@ const SelectiveOrgShareWithSelectiveRoles = (props: SelectiveOrgShareWithSelecti
 
             const updatedRoles: SelectedOrganizationRoleInterface[] = roleSelections[selectedOrgId]?.map(
                 (role: SelectedOrganizationRoleInterface) => {
-                    if (role?.displayName === selectedRole?.displayName) {
+                    if (isSameRole(role, selectedRole)) {
                         return { ...role, selected: true };
                     }
 
@@ -927,7 +941,7 @@ const SelectiveOrgShareWithSelectiveRoles = (props: SelectiveOrgShareWithSelecti
 
             const updatedRoles: SelectedOrganizationRoleInterface[] = roleSelections[selectedOrgId]?.map(
                 (role: SelectedOrganizationRoleInterface) => {
-                    if (role?.displayName === removedRole?.displayName) {
+                    if (isSameRole(role, removedRole)) {
                         return { ...role, selected: false };
                     }
 
@@ -1055,9 +1069,7 @@ const SelectiveOrgShareWithSelectiveRoles = (props: SelectiveOrgShareWithSelecti
                             isOptionEqualToValue={ (
                                 option: RolesV2Interface,
                                 value: RolesV2Interface) =>
-                                option?.displayName === value?.displayName
-                                && option?.audience?.type === value?.audience?.type
-                                && option?.audience?.display === value?.audience?.display
+                                isSameRole(option, value)
                             }
                             getOptionDisabled={ (option: RolesInterface) => {
                                 return enableAdminRole &&
