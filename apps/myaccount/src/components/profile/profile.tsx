@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025, WSO2 LLC. (https://www.wso2.com).
+ * Copyright (c) 2025-2026, WSO2 LLC. (https://www.wso2.com).
  *
  * WSO2 LLC. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -31,7 +31,7 @@ import {
 } from "@wso2is/core/models";
 import { ProfileUtils } from "@wso2is/core/utils";
 import { Message } from "@wso2is/react-components";
-import { AxiosError, AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
 import isEmpty from "lodash-es/isEmpty";
 import React, { Dispatch, FunctionComponent, ReactElement, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -39,17 +39,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { Container, List, Placeholder } from "semantic-ui-react";
 import ProfileFieldFormRenderer from "./fields/field-form-renderer";
 import ProfileAvatar from "./profile-avatar";
-import { getPreference } from "../../api/preference";
 import { updateProfileInfo } from "../../api/profile";
+import { useGetPreference } from "../../api/use-get-preference";
 import { fetchPasswordValidationConfig, getUsernameConfiguration } from "../../api/validation";
 import { AppConstants, CommonConstants, ProfileConstants as MyAccountProfileConstants } from "../../constants";
 import {
     AlertInterface,
     AuthStateInterface,
     FeatureConfigInterface,
-    PreferenceConnectorResponse,
     PreferenceProperty,
-    PreferenceRequest,
     ProfilePatchOperationValue,
     ProfileSchema,
     UIConfigInterface,
@@ -133,14 +131,11 @@ export const Profile: FunctionComponent<ProfileProps> = (props: ProfileProps): R
     const isProfileUsernameReadonly: boolean = uiConfig?.isProfileUsernameReadonly;
 
     const [ isProfileUpdating, setIsProfileUpdating ] = useState<boolean>(false);
-    const [ isPreferencesLoading, setIsPreferencesLoading ] = useState<boolean>(true);
-    const [ isMobileVerificationEnabled, setIsMobileVerificationEnabled ] = useState<boolean>(false);
-    const [ isEmailVerificationEnabled, setIsEmailVerificationEnabled ] = useState<boolean>(false);
+    // const [ isPreferencesLoading, setIsPreferencesLoading ] = useState<boolean>(true);
+    // const [ isMobileVerificationEnabled, setIsMobileVerificationEnabled ] = useState<boolean>(false);
+    // const [ isEmailVerificationEnabled, setIsEmailVerificationEnabled ] = useState<boolean>(false);
     const [ isValidationConfigsLoading, setIsValidationConfigsLoading ] = useState<boolean>(true);
     const [ usernameConfig, setUsernameConfig ] = useState<ValidationFormInterface>();
-
-    const isLoading: boolean =
-        isProfileInfoLoading || isProfileSchemaLoading || isPreferencesLoading || isValidationConfigsLoading;
 
     const hasPersonalInfoUpdatePermissions: boolean = useMemo(() => {
         return hasRequiredScopes(
@@ -160,6 +155,41 @@ export const Profile: FunctionComponent<ProfileProps> = (props: ProfileProps): R
         featureConfig?.personalInfo,
         AppConstants.FEATURE_DICTIONARY.get("PROFILEINFO_MOBILE_VERIFICATION")
     );
+
+    // Fetch recovery preferences.
+    const {
+        data: preferenceData,
+        isLoading: isPreferencesLoading,
+        isValidating: isPreferencesValidating,
+        error: preferenceFetchError
+    } = useGetPreference([
+        {
+            "connector-name": ProfileConstants.USER_CLAIM_UPDATE_CONNECTOR,
+            properties: [
+                ProfileConstants.ENABLE_EMAIL_VERIFICATION,
+                ProfileConstants.ENABLE_MOBILE_VERIFICATION,
+                ProfileConstants.ENABLE_EMAIL_VERIFICATION_WITH_OTP
+            ]
+        }
+    ]);
+
+    // Show error if fetching preferences failed.
+    useEffect(() => {
+        if (preferenceFetchError) {
+            onAlertFired({
+                description: t(
+                    "myAccount:sections.verificationOnUpdate.preference.notifications.genericError.description"
+                ),
+                level: AlertLevels.ERROR,
+                message: t(
+                    "myAccount:sections.verificationOnUpdate.preference.notifications.genericError.message"
+                )
+            });
+        }
+    }, [ preferenceFetchError ]);
+
+    const isLoading: boolean = isProfileInfoLoading ||
+        isProfileSchemaLoading || isPreferencesLoading || isPreferencesValidating || isValidationConfigsLoading;
 
     /**
      * Sort the elements of the profileSchema state according to the displayOrder attribute in the ascending order.
@@ -203,71 +233,47 @@ export const Profile: FunctionComponent<ProfileProps> = (props: ProfileProps): R
         }
     }, []);
 
-    /**
-     * The following method gets the preference for verification on mobile and email update.
-     * And check whether verification is enabled or not.
-     */
-    const getPreferences = (): void => {
-        setIsPreferencesLoading(true);
-        const userClaimUpdateConnector: PreferenceRequest[] = [
-            {
-                "connector-name": ProfileConstants.USER_CLAIM_UPDATE_CONNECTOR,
-                properties: [ ProfileConstants.ENABLE_EMAIL_VERIFICATION, ProfileConstants.ENABLE_MOBILE_VERIFICATION ]
-            }
-        ];
+    const isEmailVerificationEnabled: boolean = useMemo(() => {
+        if (isEmpty(preferenceData) || isEmpty(preferenceData[0]?.properties)) {
+            return false;
+        }
 
-        getPreference(userClaimUpdateConnector)
-            .then((response: PreferenceConnectorResponse[]) => {
-                if (response) {
-                    const userClaimUpdateOptions: PreferenceConnectorResponse[] = response;
-                    const responseProperties: PreferenceProperty[] = userClaimUpdateOptions[0].properties;
+        const responseProperties: PreferenceProperty[] = preferenceData[0].properties;
+        const emailVerificationPreference: PreferenceProperty = responseProperties.find(
+            (prop: PreferenceProperty) => prop.name === ProfileConstants.ENABLE_EMAIL_VERIFICATION
+        );
 
-                    responseProperties.forEach((prop: PreferenceProperty) => {
-                        if (prop.name === ProfileConstants.ENABLE_EMAIL_VERIFICATION) {
-                            setIsEmailVerificationEnabled(prop.value.toLowerCase() == "true");
-                        }
-                        if (isMobileVerificationFeatureEnabled
-                            && prop.name === ProfileConstants.ENABLE_MOBILE_VERIFICATION) {
-                            setIsMobileVerificationEnabled(prop.value.toLowerCase() == "true");
-                        }
-                    });
+        return emailVerificationPreference ? emailVerificationPreference.value.toLowerCase() === "true" : false;
+    }, [ preferenceData ]);
 
-                    setIsPreferencesLoading(false);
-                } else {
-                    onAlertFired({
-                        description: t(
-                            "myAccount:sections.verificationOnUpdate.preference.notifications.genericError.description"
-                        ),
-                        level: AlertLevels.ERROR,
-                        message: t(
-                            "myAccount:sections.verificationOnUpdate.preference.notifications.genericError.message"
-                        )
-                    });
-                }
-            })
-            .catch((error: AxiosError) => {
-                if (error?.response?.data?.detail) {
-                    onAlertFired({
-                        description: t(
-                            "myAccount:sections.verificationOnUpdate.preference.notifications.error.description",
-                            { description: error.response.data.detail }
-                        ),
-                        level: AlertLevels.ERROR,
-                        message: t("myAccount:sections.verificationOnUpdate.preference.notifications..error.message")
-                    });
+    const isMobileVerificationEnabled: boolean = useMemo(() => {
+        if (!isMobileVerificationFeatureEnabled) {
+            return false;
+        }
+        if (isEmpty(preferenceData) || isEmpty(preferenceData[0]?.properties)) {
+            return false;
+        }
 
-                    return;
-                }
+        const responseProperties: PreferenceProperty[] = preferenceData[0].properties;
+        const mobileVerificationPreference: PreferenceProperty = responseProperties.find(
+            (prop: PreferenceProperty) => prop.name === ProfileConstants.ENABLE_MOBILE_VERIFICATION
+        );
 
-                onAlertFired({
-                    description: t(
-                        "myAccount:sections.verificationOnUpdate.preference.notifications.genericError.description"
-                    ),
-                    level: AlertLevels.ERROR,
-                    message: t("myAccount:sections.verificationOnUpdate.preference.notifications.genericError.message")
-                });
-            });
-    };
+        return mobileVerificationPreference ? mobileVerificationPreference.value.toLowerCase() === "true" : false;
+    }, [ preferenceData, isMobileVerificationFeatureEnabled ]);
+
+    const isEmailVerificationWithOTPEnabled: boolean = useMemo(() => {
+        if (isEmpty(preferenceData) || isEmpty(preferenceData[0]?.properties)) {
+            return false;
+        }
+
+        const responseProperties: PreferenceProperty[] = preferenceData[0].properties;
+        const emailOTPVerificationPreference: PreferenceProperty = responseProperties.find(
+            (prop: PreferenceProperty) => prop.name === ProfileConstants.ENABLE_EMAIL_VERIFICATION_WITH_OTP
+        );
+
+        return emailOTPVerificationPreference ? emailOTPVerificationPreference.value.toLowerCase() === "true" : false;
+    }, [ preferenceData ]);
 
     /**
      * API call to get validation configurations.
@@ -312,10 +318,9 @@ export const Profile: FunctionComponent<ProfileProps> = (props: ProfileProps): R
     };
 
     /**
-     * Load verification on update preferences.
+     * Load validation configurations.
      */
     useEffect(() => {
-        getPreferences();
         getValidationConfigurations();
     }, []);
 
@@ -679,6 +684,7 @@ export const Profile: FunctionComponent<ProfileProps> = (props: ProfileProps): R
                     data-componentid={ testId }
                     triggerUpdate={ handleProfileUpdate }
                     isEmailVerificationEnabled={ isEmailVerificationEnabled }
+                    isEmailVerificationWithOTPEnabled={ isEmailVerificationWithOTPEnabled }
                     isMobileVerificationEnabled={ isMobileVerificationEnabled }
                 />
             </List.Item>

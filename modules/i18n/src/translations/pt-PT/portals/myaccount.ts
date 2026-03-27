@@ -394,7 +394,7 @@ export const myAccount: MyAccountNS = {
                     },
                     genericError: {
                         description: "Não foi possível carregar as informações no aplicativo selecionado",
-                        message: "Something went wrong"
+                        message: "Algo correu mal"
                     },
                     success: {
                         description: "Recuperado com sucesso o recibo de consentimento",
@@ -1305,6 +1305,9 @@ export const myAccount: MyAccountNS = {
                     content: "Please confirm the email address update in order to add the new email to your profile.",
                     header: "Confirmation pending!"
                 },
+                emailVerification: {
+                    content: "Este endereço de e-mail é usado para enviar e-mails de verificação quando a autenticação de segundo fator está ativada e para enviar códigos de recuperação no caso de recuperação de nome de utilizador/palavra-passe. Para atualizar este e-mail, tem de verificar o novo e-mail introduzindo o código de verificação enviado para o seu novo e-mail. Clique em atualizar se quiser continuar."
+                },
                 mobileVerification: {
                     content: "Este número de celular é usado para enviar SMS OTP quando a autenticação de segundo " +
                         "fator está habilitada e para enviar códigos de recuperação em caso de recuperação de nome " +
@@ -1552,6 +1555,67 @@ export const myAccount: MyAccountNS = {
             }
         },
         verificationOnUpdate: {
+            modal: {
+                common: {
+                    step2: {
+                        hint: "Não recebeu um código?",
+                        resend: "Reenviar",
+                        resendSuccess: "O pedido de reenvio do código foi enviado com sucesso",
+                        validation: {
+                            otpRequired: "Introduza o código de verificação"
+                        },
+                        verificationFailure: "A verificação falhou. Tente novamente."
+                    }
+                },
+                email: {
+                    step1: {
+                        content: {
+                            label: "Introduza o seu novo endereço de e-mail"
+                        },
+                        heading: "Verifique o seu endereço de e-mail",
+                        validation: {
+                            invalidFormat: "Introduza um endereço de e-mail válido",
+                            required: "Endereço de e-mail obrigatório"
+                        }
+                    },
+                    step2: {
+                        content: {
+                            label: "Foi enviado um código de verificação para o seu e-mail. Introduza o código abaixo para verificar o seu endereço de e-mail."
+                        },
+                        heading: "Verifique o seu endereço de e-mail"
+                    },
+                    step3: {
+                        content: "Sucesso! O seu endereço de e-mail foi verificado com sucesso."
+                    }
+                },
+                notifications: {
+                    resendError: {
+                        description: "Ocorreu um erro ao reenviar o código de verificação",
+                        message: "Algo correu mal"
+                    }
+                },
+                sms: {
+                    step1: {
+                        content: {
+                            label: "Introduza o seu novo número de telemóvel"
+                        },
+                        heading: "Verifique o seu número de telemóvel",
+                        validation: {
+                            invalidFormat: "Introduza um número de telemóvel válido",
+                            required: "Número de telemóvel obrigatório"
+                        }
+                    },
+                    step2: {
+                        content: {
+                            label: "Foi enviado um código de verificação para o seu número de telemóvel. Introduza o código abaixo para verificar o seu número de telemóvel."
+                        },
+                        heading: "Verifique o seu número de telemóvel"
+                    },
+                    step3: {
+                        content: "Sucesso! O seu número de telemóvel foi verificado com sucesso."
+                    }
+                }
+            },
             preference: {
                 notifications: {
                     error: {

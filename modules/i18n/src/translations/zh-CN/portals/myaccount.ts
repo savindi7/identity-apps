@@ -1270,6 +1270,9 @@ export const myAccount: MyAccountNS = {
                     "content": "请确认电子邮件地址更新，以便将新电子邮件添加到您的个人资料中。",
                     "header": "确认待定！"
                 },
+                "emailVerification": {
+                    "content": "当启用双因素认证时，此电子邮件地址用于发送验证邮件；在用户名/密码恢复时，也用于发送恢复码。要更新此电子邮件地址，您需要输入发送到新邮箱的验证码以完成验证。如需继续，请点击更新。"
+                },
                 "mobileVerification": {
                     "content": "当启用第二个因子身份验证并在用户名/密码恢复时发送恢复代码时，该手机号码用于发送SMS OTP。要更新此数字，您必须通过输入发送到您的新号码的验证代码来验证新号码。如果您愿意，请单击更新。"
                 }
@@ -1507,6 +1510,67 @@ export const myAccount: MyAccountNS = {
             }
         },
         verificationOnUpdate: {
+            modal: {
+                common: {
+                    step2: {
+                        hint: "没有收到验证码？",
+                        resend: "重新发送",
+                        resendSuccess: "验证码重发请求已成功发送",
+                        validation: {
+                            otpRequired: "请输入验证码"
+                        },
+                        verificationFailure: "验证失败。请重试。"
+                    }
+                },
+                email: {
+                    step1: {
+                        content: {
+                            label: "请输入新的电子邮件地址"
+                        },
+                        heading: "验证您的电子邮件地址",
+                        validation: {
+                            invalidFormat: "请输入有效的电子邮件地址",
+                            required: "电子邮件地址为必填项"
+                        }
+                    },
+                    step2: {
+                        content: {
+                            label: "验证码已发送至您的电子邮件地址。请输入下方验证码以验证您的电子邮件地址。"
+                        },
+                        heading: "验证您的电子邮件地址"
+                    },
+                    step3: {
+                        content: "成功！您的电子邮件地址已成功验证。"
+                    }
+                },
+                notifications: {
+                    resendError: {
+                        description: "重发验证码时发生错误",
+                        message: "出现了问题"
+                    }
+                },
+                sms: {
+                    step1: {
+                        content: {
+                            label: "请输入新的手机号码"
+                        },
+                        heading: "验证您的手机号码",
+                        validation: {
+                            invalidFormat: "请输入有效的手机号码",
+                            required: "手机号码为必填项"
+                        }
+                    },
+                    step2: {
+                        content: {
+                            label: "验证码已发送至您的手机号码。请输入下方验证码以验证您的手机号码。"
+                        },
+                        heading: "验证您的手机号码"
+                    },
+                    step3: {
+                        content: "成功！您的手机号码已成功验证。"
+                    }
+                }
+            },
             preference: {
                 notifications: {
                     error: {

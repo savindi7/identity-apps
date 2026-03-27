@@ -675,12 +675,17 @@ export const governanceConnectors: governanceConnectorsNS = {
                     subTitle: "Configure verification & notification settings when updating user attributes.",
                     properties: {
                         userClaimUpdateEmailEnableVerification: {
-                            hint: "Send a verification email with a link to the new address when the email attribute is updated.",
-                            label: "Enable user email verification"
+                            hint: "Send a verification email with a link/OTP to the new address when the email attribute is updated.",
+                            label: "Enable user email verification",
+                            recoveryMethods: {
+                                emailLink: "Email Link",
+                                emailOTP: "Email OTP",
+                                label: "Choose email verification method"
+                            }
                         },
                         userClaimUpdateEmailVerificationCodeExpiryTime: {
-                            hint: "Validity time of the email confirmation link in minutes.",
-                            label: "Email verification link expiration time"
+                            hint: "Validity time of the email confirmation link/OTP in minutes.",
+                            label: "Email verification link/OTP expiration time"
                         },
                         userClaimUpdateEmailEnableNotification: {
                             hint: "Send a notification to the current email address when the user attempts to change the email attribute.",

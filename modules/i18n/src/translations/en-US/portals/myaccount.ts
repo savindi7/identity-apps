@@ -1305,6 +1305,11 @@ export const myAccount: MyAccountNS = {
                     content: "Please confirm the email address update in order to add the new email to your profile.",
                     header: "Confirmation pending!"
                 },
+                emailVerification: {
+                    content: "This email address is used for sending verification emails when second factor authentication " +
+                        "is enabled and for sending recovery codes in case of a username/password recovery. " +
+                        "To update this email, you have to verify the new email by entering the verification code sent to your new email. Click update if you wish to proceed."
+                },
                 mobileVerification: {
                     content: "This mobile number is used for sending SMS OTP when second factor authentication " +
                         "is enabled and for sending recovery codes in case of a username/password recovery. " +
@@ -1552,6 +1557,67 @@ export const myAccount: MyAccountNS = {
             }
         },
         verificationOnUpdate: {
+            modal: {
+                common: {
+                    step2: {
+                        hint: "Didn't receive a code?",
+                        resend: "Resend",
+                        resendSuccess: "Resend code request is sent successfully",
+                        validation: {
+                            otpRequired: "Enter the verification code"
+                        },
+                        verificationFailure: "Verification failed. Please try again."
+                    }
+                },
+                email: {
+                    step1: {
+                        content: {
+                            label: "Enter your new email address"
+                        },
+                        heading: "Verify Your Email Address",
+                        validation: {
+                            invalidFormat: "Please enter a valid email address",
+                            required: "Email address required"
+                        }
+                    },
+                    step2: {
+                        content: {
+                            label: "A verification code has been sent to your email. Please enter the code below to verify your email address."
+                        },
+                        heading: "Verify Your Email Address"
+                    },
+                    step3: {
+                        content: "Success! Your email address is successfully verified."
+                    }
+                },
+                notifications: {
+                    resendError: {
+                        description: "Error occurred while resending the verification code",
+                        message: "Something went wrong"
+                    }
+                },
+                sms: {
+                    step1: {
+                        content: {
+                            label: "Enter your new mobile number"
+                        },
+                        heading: "Verify Your Mobile Number",
+                        validation: {
+                            invalidFormat: "Please enter a valid mobile number",
+                            required: "Mobile number required"
+                        }
+                    },
+                    step2: {
+                        content: {
+                            label: "A verification code has been sent to your mobile number. Please enter the code below to verify your mobile number."
+                        },
+                        heading: "Verify Your Mobile Number"
+                    },
+                    step3: {
+                        content: "Success! Your mobile number is successfully verified."
+                    }
+                }
+            },
             preference: {
                 notifications: {
                     error: {

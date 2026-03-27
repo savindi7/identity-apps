@@ -1273,6 +1273,9 @@ export const myAccount: MyAccountNS = {
                     "content": "Confirme la actualización de la dirección de correo electrónico para agregar el nuevo correo electrónico a su perfil.",
                     "header": "¡Confirmación pendiente!"
                 },
+                "emailVerification": {
+                    "content": "Esta dirección de correo electrónico se utiliza para enviar correos de verificación cuando la autenticación de segundo factor está habilitada y para enviar códigos de recuperación en caso de recuperación de nombre de usuario/contraseña. Para actualizar este correo electrónico, debe verificar el nuevo correo ingresando el código de verificación enviado a su nuevo correo. Haga clic en actualizar si desea continuar."
+                },
                 "mobileVerification": {
                     "content": "Este número de teléfono móvil se usa para enviar SMS OTP cuando la autenticación de segundo factor está habilitada y para enviar códigos de recuperación en caso de recuperación de nombre de usuario/contraseña. Para actualizar este número, debe verificar el nuevo número ingresando el código de verificación enviado a su nuevo número. Haga clic en actualizar si desea continuar."
                 }
@@ -1510,6 +1513,67 @@ export const myAccount: MyAccountNS = {
             }
         },
         verificationOnUpdate: {
+            modal: {
+                common: {
+                    step2: {
+                        hint: "¿No recibió un código?",
+                        resend: "Reenviar",
+                        resendSuccess: "La solicitud de reenvío del código se envió correctamente",
+                        validation: {
+                            otpRequired: "Introduzca el código de verificación"
+                        },
+                        verificationFailure: "La verificación falló. Inténtelo de nuevo."
+                    }
+                },
+                email: {
+                    step1: {
+                        content: {
+                            label: "Introduzca su nueva dirección de correo electrónico"
+                        },
+                        heading: "Verifique su dirección de correo electrónico",
+                        validation: {
+                            invalidFormat: "Introduzca una dirección de correo electrónico válida",
+                            required: "Se requiere dirección de correo electrónico"
+                        }
+                    },
+                    step2: {
+                        content: {
+                            label: "Se ha enviado un código de verificación a su correo electrónico. Introduzca el código a continuación para verificar su dirección de correo electrónico."
+                        },
+                        heading: "Verifique su dirección de correo electrónico"
+                    },
+                    step3: {
+                        content: "¡Éxito! Su dirección de correo electrónico se verificó correctamente."
+                    }
+                },
+                notifications: {
+                    resendError: {
+                        description: "Se produjo un error al reenviar el código de verificación",
+                        message: "Algo salió mal"
+                    }
+                },
+                sms: {
+                    step1: {
+                        content: {
+                            label: "Introduzca su nuevo número móvil"
+                        },
+                        heading: "Verifique su número móvil",
+                        validation: {
+                            invalidFormat: "Introduzca un número móvil válido",
+                            required: "Se requiere número móvil"
+                        }
+                    },
+                    step2: {
+                        content: {
+                            label: "Se ha enviado un código de verificación a su número móvil. Introduzca el código a continuación para verificar su número móvil."
+                        },
+                        heading: "Verifique su número móvil"
+                    },
+                    step3: {
+                        content: "¡Éxito! Su número móvil se verificó correctamente."
+                    }
+                }
+            },
             preference: {
                 notifications: {
                     error: {

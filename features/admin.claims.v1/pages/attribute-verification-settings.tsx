@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023, WSO2 LLC. (https://www.wso2.com).
+ * Copyright (c) 2023-2026, WSO2 LLC. (https://www.wso2.com).
  *
  * WSO2 LLC. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -16,6 +16,7 @@
  * under the License.
  */
 
+import Box from "@oxygen-ui/react/Box";
 import { useRequiredScopes } from "@wso2is/access-control";
 import { AppConstants } from "@wso2is/admin.core.v1/constants/app-constants";
 import { history } from "@wso2is/admin.core.v1/helpers/history";
@@ -55,6 +56,32 @@ import { ClaimManagementConstants } from "../constants";
 type AttributeVerificationSettingsPage = IdentifiableComponentInterface;
 
 /**
+ * Type for email verification options radio button metadata.
+ */
+interface EmailVerificationOptionInterface {
+    /**
+     * Key for the radio button option.
+     */
+    key: string;
+    /**
+     * Label for the radio button option.
+     */
+    label: string;
+    /**
+     * Name for the radio button option.
+     */
+    name: string;
+    /**
+     * Value for the radio button option.
+     */
+    value: boolean;
+    /**
+     * Component ID for the radio button option.
+     */
+    componentId: string;
+}
+
+/**
  * Attribute Verification Settings Form Page.
  *
  * @param props - Props injected to the component.
@@ -75,6 +102,7 @@ const AttributeVerificationSettingsFormPage: FunctionComponent<AttributeVerifica
     const CONNECTOR_NAMES: any = {
         EMAIL_VERIFICATION_ON_UPDATE_LINK_EXPIRY_TIME: "UserClaimUpdate.Email.VerificationCode.ExpiryTime",
         ENABLE_EMAIL_NOTIFICATION: "UserClaimUpdate.Email.EnableNotification",
+        ENABLE_EMAIL_OTP: "UserClaimUpdate.Email.EnableEmailOTP",
         ENABLE_EMAIL_VERIFICATION: "UserClaimUpdate.Email.EnableVerification",
         ENABLE_MOBILE_NUMBER_VERIFICATION: "UserClaimUpdate.MobileNumber.EnableVerification",
         ENABLE_MOBILE_NUMBER_VERIFICATION_BY_PRIVILEGED_USERS: "UserClaimUpdate.MobileNumber." +
@@ -94,10 +122,30 @@ const AttributeVerificationSettingsFormPage: FunctionComponent<AttributeVerifica
         CONNECTOR_NAMES.SEND_OTP_IN_EMAIL
     ];
 
+    // Metadata for email verification options radio buttons.
+    const emailVerificationOptions: EmailVerificationOptionInterface[] = [
+        {
+            componentId: `${ componentId }-email-verification-option1`,
+            key: "UserClaimUpdate.Email.EnableEmailOTP.Disable",
+            label: t("governanceConnectors:connectorCategories.otherSettings.connectors.userClaimUpdate." +
+                "properties.userClaimUpdateEmailEnableVerification.recoveryMethods.emailLink"),
+            name: GovernanceConnectorUtils.encodeConnectorPropertyName(CONNECTOR_NAMES.ENABLE_EMAIL_OTP),
+            value: false
+        },
+        {
+            componentId: `${ componentId }-email-verification-option2`,
+            key: "UserClaimUpdate.Email.EnableEmailOTP.Enable",
+            label: t("governanceConnectors:connectorCategories.otherSettings.connectors.userClaimUpdate." +
+                        "properties.userClaimUpdateEmailEnableVerification.recoveryMethods.emailOTP"),
+            name: GovernanceConnectorUtils.encodeConnectorPropertyName(CONNECTOR_NAMES.ENABLE_EMAIL_OTP),
+            value: true
+        }
+    ];
+
     const [ connectorDetails, setConnectorDetails ] = useState<GovernanceConnectorInterface>(undefined);
     const [ formValues, setFormValues ] = useState<any>(undefined);
     const [ formDisplayData, setFormDisplayData ] = useState<any>(undefined);
-
+    const [ isEmailVerificationEnabledInForm, setIsEmailVerificationEnabledInForm ] = useState<boolean>(false);
     const [ isLoading, setIsLoading ] = useState<boolean>(false);
     const [ isSubmitting, setIsSubmitting ] = useState<boolean>(false);
     const [ isFormInitialized, setIsFormInitialized ] = useState<boolean>(false);
@@ -138,6 +186,10 @@ const AttributeVerificationSettingsFormPage: FunctionComponent<AttributeVerifica
             updateConnector(formValues);
             setIsLoading(false);
         }
+
+        // Set default states of listener dependent fields.
+        setIsEmailVerificationEnabledInForm(
+            formValues?.[CONNECTOR_NAMES.ENABLE_EMAIL_VERIFICATION] === true);
     }, [ formValues ]);
 
     /**
@@ -394,14 +446,38 @@ const AttributeVerificationSettingsFormPage: FunctionComponent<AttributeVerifica
                         CONNECTOR_NAMES.ENABLE_EMAIL_VERIFICATION) }
                     className="toggle"
                     label= { resolveInputFieldLabel(CONNECTOR_NAMES.ENABLE_EMAIL_VERIFICATION) }
-                    defaultValue={ formValues?.[
-                        CONNECTOR_NAMES.ENABLE_EMAIL_VERIFICATION ] == true }
+                    initialValue={ isEmailVerificationEnabledInForm }
                     readOnly={ isReadOnly }
                     disabled={ !isConnectorEnabled }
                     width={ 16 }
                     data-componentid={ `${ componentId }-email-verification` }
                     hint={ resolveInputFieldHint(CONNECTOR_NAMES.ENABLE_EMAIL_VERIFICATION) }
+                    listen={ (checked: boolean) => {
+                        setIsEmailVerificationEnabledInForm(checked);
+                    } }
                 />
+
+                <Box sx={ { mt: -2, pl: 8 } }>
+                    <Heading as="h6" disabled={ !isEmailVerificationEnabledInForm }>
+                        { t("governanceConnectors:connectorCategories.otherSettings.connectors.userClaimUpdate." +
+                            "properties.userClaimUpdateEmailEnableVerification.recoveryMethods.label") }
+                    </Heading>
+                    {
+                        emailVerificationOptions.map((emailVerificationOption: EmailVerificationOptionInterface) => (
+                            <Field.Radio
+                                key={ emailVerificationOption.key }
+                                label={ emailVerificationOption.label }
+                                name={ emailVerificationOption.name }
+                                type="radio"
+                                value={ emailVerificationOption.value }
+                                initialValue={ formValues?.[CONNECTOR_NAMES.ENABLE_EMAIL_OTP] === true }
+                                disabled={ !isConnectorEnabled || !isEmailVerificationEnabledInForm }
+                                data-componentid={ emailVerificationOption.componentId }
+                            />
+                        ))
+                    }
+                </Box>
+
                 <Field.Input
                     ariaLabel={ resolveInputFieldLabel(CONNECTOR_NAMES.EMAIL_VERIFICATION_ON_UPDATE_LINK_EXPIRY_TIME) }
                     inputType="number"

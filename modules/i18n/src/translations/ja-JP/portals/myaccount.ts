@@ -1270,6 +1270,9 @@ export const myAccount: MyAccountNS = {
                     "content": "プロフィールに新しいメールを追加するために、メールアドレスの更新を確認してください。",
                     "header": "保留中の確認！"
                 },
+                "emailVerification": {
+                    "content": "このメールアドレスは、2要素認証が有効な場合の確認メール送信や、ユーザー名/パスワード回復時の回復コード送信に使用されます。このメールアドレスを更新するには、新しいメールアドレスに送信された確認コードを入力して、新しいメールアドレスを確認する必要があります。続行する場合は「更新」をクリックしてください。"
+                },
                 "mobileVerification": {
                     "content": "この携帯電話番号は、2番目の因子認証が有効になったときにSMS OTPを送信し、ユーザー名/パスワードの回復の場合のリカバリコードを送信するために使用されます。この番号を更新するには、新しい番号に送信された検証コードを入力して、新しい番号を確認する必要があります。続行する場合は、[更新]をクリックします。"
                 }
@@ -1506,6 +1509,67 @@ export const myAccount: MyAccountNS = {
             }
         },
         verificationOnUpdate: {
+            modal: {
+                common: {
+                    step2: {
+                        hint: "コードが届きませんか？",
+                        resend: "再送",
+                        resendSuccess: "コード再送リクエストを正常に送信しました",
+                        validation: {
+                            otpRequired: "確認コードを入力してください"
+                        },
+                        verificationFailure: "確認に失敗しました。もう一度お試しください。"
+                    }
+                },
+                email: {
+                    step1: {
+                        content: {
+                            label: "新しいメールアドレスを入力してください"
+                        },
+                        heading: "メールアドレスを確認",
+                        validation: {
+                            invalidFormat: "有効なメールアドレスを入力してください",
+                            required: "メールアドレスは必須です"
+                        }
+                    },
+                    step2: {
+                        content: {
+                            label: "確認コードをメールアドレスに送信しました。メールアドレスを確認するため、以下にコードを入力してください。"
+                        },
+                        heading: "メールアドレスを確認"
+                    },
+                    step3: {
+                        content: "成功！メールアドレスの確認が完了しました。"
+                    }
+                },
+                notifications: {
+                    resendError: {
+                        description: "確認コードの再送中にエラーが発生しました",
+                        message: "問題が発生しました"
+                    }
+                },
+                sms: {
+                    step1: {
+                        content: {
+                            label: "新しい携帯電話番号を入力してください"
+                        },
+                        heading: "携帯電話番号を確認",
+                        validation: {
+                            invalidFormat: "有効な携帯電話番号を入力してください",
+                            required: "携帯電話番号は必須です"
+                        }
+                    },
+                    step2: {
+                        content: {
+                            label: "確認コードを携帯電話番号に送信しました。携帯電話番号を確認するため、以下にコードを入力してください。"
+                        },
+                        heading: "携帯電話番号を確認"
+                    },
+                    step3: {
+                        content: "成功！携帯電話番号の確認が完了しました。"
+                    }
+                }
+            },
             preference: {
                 notifications: {
                     error: {
