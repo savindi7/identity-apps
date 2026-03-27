@@ -17,7 +17,9 @@
  */
 
 import { AppState } from "@wso2is/admin.core.v1/store";
-import { TestableComponentInterface } from "@wso2is/core/models";
+import { TestableComponentInterface,
+    HttpErrorResponseDataInterface
+} from "@wso2is/core/models";
 import { DropdownChild, Field, Form } from "@wso2is/form";
 import { Hint, Message } from "@wso2is/react-components";
 import { ContentLoader } from "@wso2is/react-components/src/components/loader/content-loader";
