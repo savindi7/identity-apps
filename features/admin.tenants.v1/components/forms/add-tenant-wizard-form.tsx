@@ -155,7 +155,7 @@ export const AddTenantWizardForm: FunctionComponent<AddTenantWizardFormPropsInte
                     }
                     setCheckingTenantExistence(false);
                 })
-                .catch((error: AxiosError) => {
+                .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
                     if (error.response.status == 404) {
                         // Proceed if tenant does not exist.
                         setTenantDuplicate(false);

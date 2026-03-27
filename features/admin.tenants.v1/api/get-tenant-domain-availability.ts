@@ -55,7 +55,7 @@ const getTenantDomainAvailability = (tenantDomain: string): Promise<boolean> => 
         .then(() => {
             return Promise.resolve(false);
         })
-        .catch((error: AxiosError) => {
+        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
             if (error.response.status === 404) {
                 return Promise.resolve(true);
             }
