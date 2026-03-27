@@ -19,6 +19,7 @@
 import { Theme, styled } from "@mui/material/styles";
 import Box from "@oxygen-ui/react/Box";
 import Button from "@oxygen-ui/react/Button";
+import TextField from "@oxygen-ui/react/TextField";
 import Typography from "@oxygen-ui/react/Typography";
 
 /**
@@ -48,6 +49,7 @@ export const ContentCard: typeof Box = styled(Box)(({ theme }: { theme: Theme })
     minHeight: "calc(100vh - 120px)",
     overflow: "hidden",
     padding: theme.spacing(6, 8),
+    paddingBottom: theme.spacing(4),
     width: "100%"
 }));
 
@@ -108,9 +110,8 @@ export const PreviewPanel: typeof Box = styled(RightColumn)(({ theme }: { theme:
  */
 export const SectionLabel: typeof Typography = styled(Typography)(({ theme }: { theme: Theme }) => ({
     color: theme.palette.text.secondary,
-    fontSize: "0.97rem",
-    fontWeight: 500,
-    marginBottom: theme.spacing(2)
+    fontSize: "1rem",
+    fontWeight: 500
 }));
 
 /**
@@ -121,7 +122,11 @@ export const Footer: typeof Box = styled(Box)(({ theme }: { theme: Theme }) => (
     borderTop: `1px solid ${theme.palette.divider}`,
     display: "flex",
     justifyContent: "space-between",
+    marginLeft: theme.spacing(-8),
+    marginRight: theme.spacing(-8),
     marginTop: "auto",
+    paddingLeft: theme.spacing(8),
+    paddingRight: theme.spacing(8),
     paddingTop: theme.spacing(3)
 }));
 
@@ -180,4 +185,24 @@ export const StepTransitionWrapper: typeof Box = styled(Box)(() => ({
     flexDirection: "column",
     minHeight: 0,
     transition: "transform 250ms ease-in-out, opacity 250ms ease-in-out"
+}));
+
+/**
+ * Styled TextField with extra spacing between the label and the input.
+ */
+export const StyledTextField: typeof TextField = styled(TextField)(({ theme }: { theme: Theme }) => ({
+    "& .MuiInputLabel-root": {
+        marginBottom: theme.spacing(1),
+        position: "relative",
+        transform: "none"
+    },
+    "& .MuiOutlinedInput-notchedOutline": {
+        top: 0
+    },
+    "& .MuiOutlinedInput-notchedOutline legend": {
+        display: "none"
+    },
+    "& .MuiOutlinedInput-root": {
+        marginTop: theme.spacing(0.5)
+    }
 }));

@@ -32,7 +32,7 @@ import Header from "../components/shared/header";
 import { ContentArea } from "../components/shared/onboarding-styles";
 import { OnboardingComponentIds } from "../constants";
 import { useOnboardingStatus } from "../hooks/use-onboarding-status";
-import { OnboardingDataInterface, ParsedWizardUrlParamsInterface } from "../models";
+import { OnboardingDataInterface, ParsedWizardUrlParamsInterface } from "../models/onboarding";
 import { parseWizardUrlParams } from "../utils/parse-wizard-url-params";
 
 /**

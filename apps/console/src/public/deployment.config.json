@@ -1380,7 +1380,8 @@
             },
             "onboarding": {
                 "disabledFeatures": [],
-                "enabled": true,
+                "enabled": false,
+                "featureDeployedDate": "",
                 "featureFlags": [],
                 "scopes": {
                     "create": [
