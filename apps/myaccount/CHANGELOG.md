@@ -1,5 +1,18 @@
 # @wso2is/myaccount
 
+## 4.1.0
+
+### Minor Changes
+
+- [#9921](https://github.com/wso2/identity-apps/pull/9921) [`61cd356ee61eaf81e40f4a7118c1af7a66438361`](https://github.com/wso2/identity-apps/commit/61cd356ee61eaf81e40f4a7118c1af7a66438361) Thanks [@JayaShakthi97](https://github.com/JayaShakthi97)! - Implement Email OTP verification on claim update
+
+### Patch Changes
+
+- Updated dependencies [[`61cd356ee61eaf81e40f4a7118c1af7a66438361`](https://github.com/wso2/identity-apps/commit/61cd356ee61eaf81e40f4a7118c1af7a66438361)]:
+  - @wso2is/common.users.v1@1.1.0
+  - @wso2is/core@2.12.11
+  - @wso2is/i18n@2.38.2
+
 ## 4.0.0
 
 ### Major Changes

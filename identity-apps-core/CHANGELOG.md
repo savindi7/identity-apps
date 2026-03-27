@@ -1,5 +1,15 @@
 # @wso2is/identity-apps-core
 
+## 5.0.3
+
+### Patch Changes
+
+- [#9977](https://github.com/wso2/identity-apps/pull/9977) [`39784a2b14009035d0500c3acb6895a82e3b0827`](https://github.com/wso2/identity-apps/commit/39784a2b14009035d0500c3acb6895a82e3b0827) Thanks [@HasiniSama](https://github.com/HasiniSama)! - Fix JSP compilation errors in user-not-found.jsp causing 404 on new user Google sign-in
+
+* [#9978](https://github.com/wso2/identity-apps/pull/9978) [`b941003343de6320c6e94a68c033c5cd15cdf386`](https://github.com/wso2/identity-apps/commit/b941003343de6320c6e94a68c033c5cd15cdf386) Thanks [@DilshanSenarath](https://github.com/DilshanSenarath)! - Add the cache-prevention filter for forward requests
+
+- [#9981](https://github.com/wso2/identity-apps/pull/9981) [`d296acb59caa619bc2bda832048a219dce780314`](https://github.com/wso2/identity-apps/commit/d296acb59caa619bc2bda832048a219dce780314) Thanks [@DilshanSenarath](https://github.com/DilshanSenarath)! - Release a new identity apps core version
+
 ## 5.0.2
 
 ### Patch Changes
