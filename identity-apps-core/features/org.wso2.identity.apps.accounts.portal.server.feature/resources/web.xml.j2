@@ -164,6 +164,8 @@
     <filter-mapping>
         <filter-name>ContentTypeBasedCachePreventionFilter</filter-name>
         <url-pattern>{{ cache_filter.url_pattern | default('*') }}</url-pattern>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
     <!-- *************** End of Cache Prevention Filter ********************** -->
 
