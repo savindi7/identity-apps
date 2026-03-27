@@ -44,8 +44,7 @@ env:
 jobs:
     release:
         name: 🚀 Release
-        runs-on:
-            - codebuild-wso2_product-is-${{ github.run_id }}-${{ github.run_attempt }}
+        runs-on: ubuntu-latest
         strategy:
             matrix:
                 node-version: [lts/*]
