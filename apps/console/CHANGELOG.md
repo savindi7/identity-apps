@@ -1,5 +1,39 @@
 # @wso2is/console
 
+## 4.2.0
+
+### Minor Changes
+
+- [#9921](https://github.com/wso2/identity-apps/pull/9921) [`61cd356ee61eaf81e40f4a7118c1af7a66438361`](https://github.com/wso2/identity-apps/commit/61cd356ee61eaf81e40f4a7118c1af7a66438361) Thanks [@JayaShakthi97](https://github.com/JayaShakthi97)! - Implement Email OTP verification on claim update
+
+### Patch Changes
+
+- [#9971](https://github.com/wso2/identity-apps/pull/9971) [`cf565acebb466c23a316ddb892a67d9b96c20404`](https://github.com/wso2/identity-apps/commit/cf565acebb466c23a316ddb892a67d9b96c20404) Thanks [@github-actions](https://github.com/apps/github-actions)! - Improvements and style updates to onboarding.
+
+- Updated dependencies [[`cf565acebb466c23a316ddb892a67d9b96c20404`](https://github.com/wso2/identity-apps/commit/cf565acebb466c23a316ddb892a67d9b96c20404), [`61cd356ee61eaf81e40f4a7118c1af7a66438361`](https://github.com/wso2/identity-apps/commit/61cd356ee61eaf81e40f4a7118c1af7a66438361)]:
+  - @wso2is/admin.onboarding.v1@1.0.63
+  - @wso2is/admin.claims.v1@2.31.0
+  - @wso2is/core@2.12.11
+  - @wso2is/form@2.10.2
+  - @wso2is/i18n@2.38.2
+  - @wso2is/admin.applications.v1@2.42.4
+  - @wso2is/admin.home.v1@1.7.172
+  - @wso2is/admin.users.v1@2.38.15
+  - @wso2is/admin.connections.v1@2.36.32
+  - @wso2is/admin.agents.v1@1.1.4
+  - @wso2is/admin.approval-workflows.v1@1.3.10
+  - @wso2is/admin.branding.v1@2.32.148
+  - @wso2is/admin.subscription.v1@1.5.207
+  - @wso2is/admin.console-settings.v1@2.26.26
+  - @wso2is/admin.core.v1@2.55.15
+  - @wso2is/admin.roles.v2@2.27.362
+  - @wso2is/admin.email-management.v1@2.25.356
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.192
+  - @wso2is/admin.flows.v1@1.0.161
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.192
+  - @wso2is/admin.server-configurations.v1@2.38.31
+  - @wso2is/admin.registration-flow-builder.v1@0.10.152
+
 ## 4.1.3
 
 ### Patch Changes
