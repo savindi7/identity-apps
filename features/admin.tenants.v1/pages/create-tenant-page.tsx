@@ -288,7 +288,7 @@ const TenantCreationPage: FunctionComponent<TestableComponentInterface> = (
                 }
                 setCheckingTenantExistence(false);
             })
-            .catch((error: AxiosError) => {
+            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
                 if (error.response.status == 404) {
                     // Proceed if tenant does not exist.
                     setTenantDuplicate(false);
@@ -318,8 +318,8 @@ const TenantCreationPage: FunctionComponent<TestableComponentInterface> = (
                     });
                 }
             })
-            .catch((error: AxiosError) => {
-                if (error.response.status == 404) {
+            .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
+                if (error.response?.status == 404) {
                     // Proceed to tenant creation if tenant does not exist.
                     addTenant(
                         submissionValue.tenantName,
