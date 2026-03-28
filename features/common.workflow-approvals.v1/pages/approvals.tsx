@@ -73,7 +73,7 @@ const ApprovalsPage: FunctionComponent<ApprovalsPageInterface> = (
     const [ filterOperationType, setFilterOperationType ] = useState<string>("ALL");
     const [ searchInputValue, setSearchInputValue ] = useState<string>("");
     const [ appliedRequestIdSearch, setAppliedRequestIdSearch ] = useState<string>("");
-    const [ searchResult, setSearchResult ] = useState<number>(undefined);
+    const [ searchResult, setSearchResult ] = useState<number | undefined>(undefined);
 
     const OPERATION_TYPE_OPTIONS: DropdownItemProps[] = [
         {
