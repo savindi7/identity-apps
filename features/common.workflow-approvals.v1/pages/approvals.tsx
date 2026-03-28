@@ -320,6 +320,7 @@ const ApprovalsPage: FunctionComponent<ApprovalsPageInterface> = (
      */
     const handleFilterStatusChange = (event: React.MouseEvent<HTMLAnchorElement>, data: DropdownProps) => {
         setFilterStatus(data.value as string);
+        setOffset(0);
     };
 
     /**
@@ -466,19 +467,34 @@ const ApprovalsPage: FunctionComponent<ApprovalsPageInterface> = (
                 leftActionPanel={
                     (<Input
                         fluid
+                        aria-label={ t("common:approvalsPage.search.placeholder") }
                         data-componentid={ `${ componentId }-search-input` }
-                        icon={ searchInputValue
+                        icon={ (searchInputValue || appliedRequestIdSearch)
                             ? (<Icon
                                 name="times"
                                 link
+                                role="button"
+                                tabIndex={ 0 }
                                 onClick={ handleSearchClear }
+                                onKeyDown={ (e: KeyboardEvent<HTMLElement>): void => {
+                                    if (e.key === "Enter" || e.key === " ") {
+                                        e.preventDefault();
+                                        handleSearchClear();
+                                    }
+                                } }
                             />)
                             : "search"
                         }
                         placeholder={ t("common:approvalsPage.search.placeholder") }
                         value={ searchInputValue }
                         onChange={ (e: React.ChangeEvent<HTMLInputElement>): void => {
-                            setSearchInputValue(e.target.value);
+                            const value: string = e.target.value;
+
+                            setSearchInputValue(value);
+                            if (value === "") {
+                                setAppliedRequestIdSearch("");
+                                setOffset(0);
+                            }
                         } }
                         onKeyDown={ (e: KeyboardEvent<HTMLInputElement>): void => {
                             if (e.key === "Enter") {
