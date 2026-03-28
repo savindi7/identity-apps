@@ -26,7 +26,8 @@ import React, { FunctionComponent, KeyboardEvent, MouseEvent, ReactElement, useE
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "redux";
-import { Dropdown, DropdownItemProps, DropdownProps, Icon, Input, PaginationProps, SemanticCOLORS } from "semantic-ui-react";
+import { Dropdown, DropdownItemProps, DropdownProps, Icon, Input, PaginationProps,
+    SemanticCOLORS } from "semantic-ui-react";
 import { fetchPendingApprovals, updatePendingApprovalStatus } from "../api";
 import { ApprovalsList } from "../components";
 import { ApprovalStatus, ApprovalTaskListItemInterface } from "../models";
@@ -183,13 +184,13 @@ const ApprovalsPage: FunctionComponent<ApprovalsPageInterface> = (
         }
 
         fetchPendingApprovals(
-                null,
-                null,
-                statusArray,
-                approvalsUrl,
-                filterOperationType !== "ALL" ? filterOperationType : undefined,
-                appliedRequestIdSearch || undefined
-            )
+            null,
+            null,
+            statusArray,
+            approvalsUrl,
+            filterOperationType !== "ALL" ? filterOperationType : undefined,
+            appliedRequestIdSearch || undefined
+        )
             .then((response: ApprovalTaskListItemInterface[]) => {
                 if (!shallowUpdate) {
                     setApprovals(response);

@@ -62,7 +62,7 @@ export const fetchPendingApprovals = (
             ...(limit !== null && { limit }),
             ...(offset !== null && { offset }),
             ...(operationType && { operationType }),
-            ...(workflowRequestId && { workflowRequestId })
+            ...(workflowRequestId && { filter: `workflowRequestId sw ${workflowRequestId}` })
         },
         url: approvalsUrl
     };
@@ -86,7 +86,7 @@ export const fetchPendingApprovals = (
             baseParamsObj.operationType = operationType;
         }
         if (workflowRequestId) {
-            baseParamsObj.workflowRequestId = workflowRequestId;
+            baseParamsObj.filter = `workflowRequestId sw ${workflowRequestId}`;
         }
         const baseParams: string = new URLSearchParams(baseParamsObj).toString();
 

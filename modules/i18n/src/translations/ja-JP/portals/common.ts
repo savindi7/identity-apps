@@ -140,7 +140,7 @@ export const common: CommonNS = {
             unassignedUsersDeleted: "割り当てられていないユーザー/sは削除されています。"
         },
         search: {
-            placeholder: "ワークフロー名で検索"
+            placeholder: "リクエストIDで検索"
         },
         "subTitle": "承認を必要とする運用タスクを確認します",
         "title": "承認"
