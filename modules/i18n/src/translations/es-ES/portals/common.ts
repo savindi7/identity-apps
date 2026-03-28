@@ -140,7 +140,7 @@ export const common: CommonNS = {
             unassignedUsersDeleted: "Los usuarios no asignados han sido eliminados."
         },
         search: {
-            placeholder: "Buscar por nombre de flujo de trabajo"
+            placeholder: "Buscar por ID de solicitud"
         },
         subTitle: "Revise las tareas operativas que requieren su aprobación",
         title: "Aprobaciones"

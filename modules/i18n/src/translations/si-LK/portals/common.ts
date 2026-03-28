@@ -140,7 +140,7 @@ export const common: CommonNS = {
             unassignedUsersDeleted: "පවරා නොමැති පරිශීලකයන් මකා දමා ඇත."
         },
         search: {
-            placeholder: "අයදුම්පත් අංකයෙන් සොයන්න"
+            placeholder: "ඉල්ලීමේ හැඳුනුම්පතෙන් සොයන්න"
         },
         subTitle: "අනුමැතිය අවශ්‍ය මෙහෙයුම් කාර්යයන් සමාලෝචනය කරන්න",
         title: "අනුමත කිරීම්"

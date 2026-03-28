@@ -140,7 +140,7 @@ export const common: CommonNS = {
             "unassignedUsersDeleted": "Die nicht zugewiesenen Benutzer wurden gelöscht."
         },
         "search": {
-            "placeholder": "Nach Workflow-Namen suchen"
+            "placeholder": "Nach Anforderungs-ID suchen"
         },
         "subTitle": "Überprüfen Sie die betrieblichen Aufgaben, die Ihre Genehmigung erfordern",
         "title": "Genehmigungen"
