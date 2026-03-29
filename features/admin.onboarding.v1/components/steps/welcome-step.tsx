@@ -18,8 +18,10 @@
 
 import { Theme } from "@mui/material/styles";
 import Box from "@oxygen-ui/react/Box";
+import { AppState } from "@wso2is/admin.core.v1/store";
 import { IdentifiableComponentInterface } from "@wso2is/core/models";
 import React, { FunctionComponent, ReactElement, useCallback, useMemo } from "react";
+import { useSelector } from "react-redux";
 import { ReactComponent as Preview } from "../../assets/icons/preview.svg";
 import { ReactComponent as Rocket } from "../../assets/icons/rocket.svg";
 import { OnboardingComponentIds } from "../../constants";
@@ -27,6 +29,7 @@ import { OnboardingChoice } from "../../models/onboarding";
 import Hint from "../shared/hint";
 import {
     CardsRow,
+    GradientText,
     LeftColumn,
     RightColumn,
     TwoColumnLayout
@@ -39,19 +42,47 @@ import StepIndicator, { StepConfigInterface } from "../shared/step-indicator";
  * Steps for the "Add login to app" flow.
  */
 const ADD_LOGIN_STEPS: StepConfigInterface[] = [
-    { key: "type", label: "Select your app type" },
-    { key: "configure", label: "Configure your login options" },
-    { key: "style", label: "Design your login screen" },
-    { key: "guide", label: "Integrate login to your app" }
+    {
+        description: "Choose your technology or application type",
+        key: "type",
+        label: "Select your app type"
+    },
+    {
+        description: "Set up login methods like passkey, OTP, or MFA",
+        key: "configure",
+        label: "Configure your login options"
+    },
+    {
+        description: "Add your logo and pick a brand color for your login page",
+        key: "style",
+        label: "Design your login screen"
+    },
+    {
+        description: "Follow a quick guide to connect your app",
+        key: "guide",
+        label: "Integrate login to your app"
+    }
 ];
 
 /**
  * Steps for the "Preview experience" flow.
  */
 const PREVIEW_STEPS: StepConfigInterface[] = [
-    { key: "configure", label: "Configure your login options" },
-    { key: "style", label: "Design your login screen" },
-    { key: "preview", label: "Preview the experience" }
+    {
+        description: "Set up login methods like passkey, OTP, or MFA",
+        key: "configure",
+        label: "Configure your login options"
+    },
+    {
+        description: "Add your logo and pick a brand color for your login page",
+        key: "style",
+        label: "Design your login screen"
+    },
+    {
+        description: "See how your login page looks to end users",
+        key: "preview",
+        label: "Preview the experience"
+    }
 ];
 
 /**
@@ -89,6 +120,10 @@ const WelcomeStep: FunctionComponent<WelcomeStepPropsInterface> = (props: Welcom
         ["data-componentid"]: componentId = OnboardingComponentIds.WELCOME_STEP
     } = props;
 
+    const productName: string = useSelector(
+        (state: AppState) => state?.config?.ui?.productName || ""
+    );
+
     // Memoize the handler to prevent unnecessary re-renders
     const handleChoiceSelect: (choice: OnboardingChoice) => void = useCallback(
         (choice: OnboardingChoice) => {
@@ -114,11 +149,11 @@ const WelcomeStep: FunctionComponent<WelcomeStepPropsInterface> = (props: Welcom
                         data-componentid={ `${componentId}-header` }
                         subtitle={ isReturningUser
                             ? "Set up a new app or preview the login experience"
-                            : "What would you like to do first?"
+                            : `What would you like to do first, ${greeting ? greeting : ""}?`
                         }
                         title={ isReturningUser
                             ? `Hi${greeting ? ` ${greeting}` : ""} 👋, What would you like to do?`
-                            : `Hi${greeting ? ` ${greeting}` : ""} 👋`
+                            : <>👋 Welcome to <GradientText>{ productName }</GradientText></>
                         }
                     />
                 </Box>
@@ -134,7 +169,7 @@ const WelcomeStep: FunctionComponent<WelcomeStepPropsInterface> = (props: Welcom
                     >
                         <SelectableCard
                             data-componentid={ `${componentId}-add-login-option` }
-                            description="Continue guided set up to integrate login into your existing app"
+                            description="Step-by-step setup for your app's login flow"
                             icon={ <Rocket fill="#ff7300" /> }
                             isSelected={ selectedChoice === OnboardingChoice.SETUP }
                             onClick={ () => handleChoiceSelect(OnboardingChoice.SETUP) }
@@ -151,8 +186,8 @@ const WelcomeStep: FunctionComponent<WelcomeStepPropsInterface> = (props: Welcom
                         <SelectableCard
                             data-componentid={ `${componentId}-preview-option` }
                             description={
-                                "Not ready to code? Launch a live playground " +
-                                "to see the user journey"
+                                "Launch a live playground " +
+                                "to preview the login experience"
                             }
                             icon={ <Preview style={ { color: "#ff7300" } } /> }
                             isSelected={ selectedChoice === OnboardingChoice.TOUR }
@@ -168,7 +203,6 @@ const WelcomeStep: FunctionComponent<WelcomeStepPropsInterface> = (props: Welcom
 
             <RightColumn
                 sx={ (theme: Theme) => ({
-                    backgroundColor: theme.palette.grey[50],
                     margin: theme.spacing(-6, -8, 0, 0),
                     minWidth: 300,
                     padding: theme.spacing(6, 4, 4, 4)
