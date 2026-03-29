@@ -373,17 +373,14 @@ const AuthenticationFlowBuilder: FunctionComponent<AuthenticationFlowBuilderProp
             updateAdaptiveScript(applicationMetaData?.id, adaptiveScriptToUpdate, !isScriptUpdateReadOnly
                 && !conditionalAuthPremiumFeature)
                 .then(() => {
-                    updateAuthenticationSequenceFromAPI(applicationMetaData?.id, payload)
-                        .then(() => {
-                            dispatch(addAlert({
-                                description: t("applications:notifications.updateAuthenticationFlow" +
-                                    ".success.description"),
-                                level: AlertLevels.SUCCESS,
-                                message: t("applications:notifications.updateAuthenticationFlow.success.message")
-                            }));
-                        }).catch((error: AxiosError) => {
-                            handleUpdateAuthenticationFlowError(error);
-                        });
+                    return updateAuthenticationSequenceFromAPI(applicationMetaData?.id, payload);
+                }).then(() => {
+                    dispatch(addAlert({
+                        description: t("applications:notifications.updateAuthenticationFlow" +
+                            ".success.description"),
+                        level: AlertLevels.SUCCESS,
+                        message: t("applications:notifications.updateAuthenticationFlow.success.message")
+                    }));
                 }).catch((error: AxiosError) => {
                     handleUpdateAuthenticationFlowError(error);
                 }).finally(() => {
@@ -396,18 +393,15 @@ const AuthenticationFlowBuilder: FunctionComponent<AuthenticationFlowBuilderProp
 
         updateAuthenticationSequenceFromAPI(applicationMetaData?.id, payload)
             .then(() => {
-                updateAdaptiveScript(applicationMetaData?.id, adaptiveScriptToUpdate, !isScriptUpdateReadOnly
-                    && !conditionalAuthPremiumFeature)
-                    .then(() => {
-                        dispatch(addAlert({
-                            description: t("applications:notifications.updateAuthenticationFlow" +
-                                    ".success.description"),
-                            level: AlertLevels.SUCCESS,
-                            message: t("applications:notifications.updateAuthenticationFlow.success.message")
-                        }));
-                    }).catch((error: AxiosError) => {
-                        handleUpdateAuthenticationFlowError(error);
-                    });
+                return updateAdaptiveScript(applicationMetaData?.id, adaptiveScriptToUpdate,
+                    !isScriptUpdateReadOnly && !conditionalAuthPremiumFeature);
+            }).then(() => {
+                dispatch(addAlert({
+                    description: t("applications:notifications.updateAuthenticationFlow" +
+                            ".success.description"),
+                    level: AlertLevels.SUCCESS,
+                    message: t("applications:notifications.updateAuthenticationFlow.success.message")
+                }));
             }).catch((error: AxiosError) => {
                 handleUpdateAuthenticationFlowError(error);
             }).finally(() => {
