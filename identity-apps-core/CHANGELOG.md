@@ -1,5 +1,11 @@
 # @wso2is/identity-apps-core
 
+## 5.0.4
+
+### Patch Changes
+
+- [#9986](https://github.com/wso2/identity-apps/pull/9986) [`77078bc638f6dcd413f435922059fcd3b4153baa`](https://github.com/wso2/identity-apps/commit/77078bc638f6dcd413f435922059fcd3b4153baa) Thanks [@github-actions](https://github.com/apps/github-actions)! - Fix double HTML encoding of error messages in x509 certificate error page
+
 ## 5.0.3
 
 ### Patch Changes
