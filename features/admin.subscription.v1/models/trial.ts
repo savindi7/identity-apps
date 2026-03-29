@@ -32,3 +32,12 @@ export interface TrialDetailsInterface {
     isTrialEnabled: boolean;
     isTrialExpired: boolean;
 }
+
+/**
+ * Response from the tenant trial GET endpoint.
+ */
+export interface TrialDetailsResponseInterface {
+    orgHandle: string;
+    trialEndDate: number;
+    daysRemaining: number;
+}
