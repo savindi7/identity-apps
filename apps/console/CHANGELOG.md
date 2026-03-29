@@ -1,5 +1,31 @@
 # @wso2is/console
 
+## 3.3.10
+
+### Patch Changes
+
+- [#9942](https://github.com/wso2/identity-apps/pull/9942) [`4952cd109836fc3b51516d0b4a40c757546c9d10`](https://github.com/wso2/identity-apps/commit/4952cd109836fc3b51516d0b4a40c757546c9d10) Thanks [@Lakshan-Banneheke](https://github.com/Lakshan-Banneheke)! - Add free trial banner
+
+- Updated dependencies [[`4952cd109836fc3b51516d0b4a40c757546c9d10`](https://github.com/wso2/identity-apps/commit/4952cd109836fc3b51516d0b4a40c757546c9d10)]:
+  - @wso2is/admin.subscription.v1@1.5.209
+  - @wso2is/admin.core.v1@2.55.20
+  - @wso2is/admin.home.v1@1.7.177
+  - @wso2is/admin.applications.v1@2.42.9
+  - @wso2is/admin.console-settings.v1@2.26.31
+  - @wso2is/admin.email-management.v1@2.25.361
+  - @wso2is/admin.agents.v1@1.1.9
+  - @wso2is/admin.approval-workflows.v1@1.3.15
+  - @wso2is/admin.branding.v1@2.32.153
+  - @wso2is/admin.onboarding.v1@1.0.68
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.197
+  - @wso2is/admin.flows.v1@1.0.166
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.197
+  - @wso2is/admin.server-configurations.v1@2.38.36
+  - @wso2is/admin.users.v1@2.38.20
+  - @wso2is/admin.roles.v2@2.27.367
+  - @wso2is/admin.registration-flow-builder.v1@0.10.157
+  - @wso2is/admin.connections.v1@2.36.37
+
 ## 3.3.9
 
 ### Patch Changes
