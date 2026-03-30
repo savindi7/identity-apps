@@ -1,5 +1,15 @@
 # @wso2is/admin.subscription.v1
 
+## 1.5.208
+
+### Patch Changes
+
+- [#9997](https://github.com/wso2/identity-apps/pull/9997) [`5066889ff2e1a7d789c05218c822d1df271148da`](https://github.com/wso2/identity-apps/commit/5066889ff2e1a7d789c05218c822d1df271148da) Thanks [@Lakshan-Banneheke](https://github.com/Lakshan-Banneheke)! - Add free trial banner
+
+- Updated dependencies [[`5066889ff2e1a7d789c05218c822d1df271148da`](https://github.com/wso2/identity-apps/commit/5066889ff2e1a7d789c05218c822d1df271148da)]:
+  - @wso2is/admin.core.v1@2.55.16
+  - @wso2is/admin.users.v1@2.38.16
+
 ## 1.5.207
 
 ### Patch Changes
