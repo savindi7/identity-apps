@@ -1,5 +1,15 @@
 # @wso2is/admin.subscription.v1
 
+## 1.5.209
+
+### Patch Changes
+
+- [#10012](https://github.com/wso2/identity-apps/pull/10012) [`701fb3065dd4cbf5c75b7e11be68cb388bc93b8a`](https://github.com/wso2/identity-apps/commit/701fb3065dd4cbf5c75b7e11be68cb388bc93b8a) Thanks [@github-actions](https://github.com/apps/github-actions)! - Fix incorrect config check
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.55.17
+  - @wso2is/admin.users.v1@2.38.17
+
 ## 1.5.208
 
 ### Patch Changes
