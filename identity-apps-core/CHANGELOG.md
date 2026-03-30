@@ -1,5 +1,11 @@
 # @wso2is/identity-apps-core
 
+## 4.0.6
+
+### Patch Changes
+
+- [#10000](https://github.com/wso2/identity-apps/pull/10000) [`e1fae599a1c54a534d60355375fed04fea4621ca`](https://github.com/wso2/identity-apps/commit/e1fae599a1c54a534d60355375fed04fea4621ca) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - Axios and SDK version bumps and Type error fixes
+
 ## 4.0.5
 
 ### Patch Changes
