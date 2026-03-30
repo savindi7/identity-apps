@@ -1,5 +1,11 @@
 # @wso2is/myaccount
 
+## 4.1.1
+
+### Patch Changes
+
+- [#10001](https://github.com/wso2/identity-apps/pull/10001) [`103172df448a1b16f3600a111167f5b26eaad938`](https://github.com/wso2/identity-apps/commit/103172df448a1b16f3600a111167f5b26eaad938) Thanks [@github-actions](https://github.com/apps/github-actions)! - Axios and SDK version bumps and Type error fixes
+
 ## 4.1.0
 
 ### Minor Changes
