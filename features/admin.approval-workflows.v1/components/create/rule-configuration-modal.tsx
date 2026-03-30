@@ -200,16 +200,27 @@ const RuleConfigurationModalContent: FunctionComponent<RuleConfigurationModalCon
 
                 onSave(rule);
                 onAssociationSaved?.(operationValue, savedAssociationId, rule);
+                dispatch(
+                    addAlert({
+                        description: t(
+                            "approvalWorkflows:notifications.updateRuleConfiguration.success.description"
+                        ),
+                        level: AlertLevels.SUCCESS,
+                        message: t(
+                            "approvalWorkflows:notifications.updateRuleConfiguration.success.message"
+                        )
+                    })
+                );
             })
             .catch(() => {
                 dispatch(
                     addAlert({
                         description: t(
-                            "approvalWorkflows:notifications.updateApprovalWorkflow.genericError.description"
+                            "approvalWorkflows:notifications.updateRuleConfiguration.genericError.description"
                         ),
                         level: AlertLevels.ERROR,
                         message: t(
-                            "approvalWorkflows:notifications.updateApprovalWorkflow.genericError.message"
+                            "approvalWorkflows:notifications.updateRuleConfiguration.genericError.message"
                         )
                     })
                 );
@@ -257,16 +268,27 @@ const RuleConfigurationModalContent: FunctionComponent<RuleConfigurationModalCon
             .then(() => {
                 onSave(null);
                 onAssociationSaved?.(operationValue, associationId, null);
+                dispatch(
+                    addAlert({
+                        description: t(
+                            "approvalWorkflows:notifications.updateRuleConfiguration.success.description"
+                        ),
+                        level: AlertLevels.SUCCESS,
+                        message: t(
+                            "approvalWorkflows:notifications.updateRuleConfiguration.success.message"
+                        )
+                    })
+                );
             })
             .catch(() => {
                 dispatch(
                     addAlert({
                         description: t(
-                            "approvalWorkflows:notifications.updateApprovalWorkflow.genericError.description"
+                            "approvalWorkflows:notifications.updateRuleConfiguration.genericError.description"
                         ),
                         level: AlertLevels.ERROR,
                         message: t(
-                            "approvalWorkflows:notifications.updateApprovalWorkflow.genericError.message"
+                            "approvalWorkflows:notifications.updateRuleConfiguration.genericError.message"
                         )
                     })
                 );
