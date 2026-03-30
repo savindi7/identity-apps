@@ -1,5 +1,11 @@
 # @wso2is/core
 
+## 2.12.12
+
+### Patch Changes
+
+- [#10017](https://github.com/wso2/identity-apps/pull/10017) [`b609194419f35a004fa33f5a80f57ffe09d5e4a4`](https://github.com/wso2/identity-apps/commit/b609194419f35a004fa33f5a80f57ffe09d5e4a4) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - Update core and console versions
+
 ## 2.12.11
 
 ### Patch Changes
