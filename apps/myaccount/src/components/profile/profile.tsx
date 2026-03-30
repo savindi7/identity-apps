@@ -27,7 +27,8 @@ import {
     ProfileInfoInterface,
     ProfileSchemaInterface,
     SBACInterface,
-    TestableComponentInterface
+    TestableComponentInterface,
+    HttpErrorResponseDataInterface
 } from "@wso2is/core/models";
 import { ProfileUtils } from "@wso2is/core/utils";
 import { Message } from "@wso2is/react-components";
