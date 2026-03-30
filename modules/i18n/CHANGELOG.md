@@ -1,5 +1,11 @@
 # @wso2is/i18n
 
+## 2.38.2
+
+### Patch Changes
+
+- [#9988](https://github.com/wso2/identity-apps/pull/9988) [`a4fe66d4e346222b0762577c80c5137a1acf7d1e`](https://github.com/wso2/identity-apps/commit/a4fe66d4e346222b0762577c80c5137a1acf7d1e) Thanks [@sadilchamishka](https://github.com/sadilchamishka)! - Approval task filtering by operation type and request ID UI
+
 ## 2.38.1
 
 ### Patch Changes
