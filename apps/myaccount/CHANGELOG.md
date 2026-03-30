@@ -1,5 +1,15 @@
 # @wso2is/myaccount
 
+## 3.0.6
+
+### Patch Changes
+
+- [#9988](https://github.com/wso2/identity-apps/pull/9988) [`a4fe66d4e346222b0762577c80c5137a1acf7d1e`](https://github.com/wso2/identity-apps/commit/a4fe66d4e346222b0762577c80c5137a1acf7d1e) Thanks [@sadilchamishka](https://github.com/sadilchamishka)! - Approval task filtering by operation type and request ID UI
+
+- Updated dependencies [[`a4fe66d4e346222b0762577c80c5137a1acf7d1e`](https://github.com/wso2/identity-apps/commit/a4fe66d4e346222b0762577c80c5137a1acf7d1e)]:
+  - @wso2is/common.workflow-approvals.v1@1.0.15
+  - @wso2is/i18n@2.38.2
+
 ## 3.0.5
 
 ### Patch Changes
