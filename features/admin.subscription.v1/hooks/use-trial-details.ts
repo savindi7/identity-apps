@@ -17,11 +17,9 @@
  */
 
 import { FeatureStatus, useCheckFeatureStatus } from "@wso2is/access-control";
-import { FeatureConfigInterface } from "@wso2is/admin.core.v1/models/config";
 import { AppState } from "@wso2is/admin.core.v1/store";
 import FeatureGateConstants from "@wso2is/admin.feature-gate.v1/constants/feature-gate-constants";
 import { useGetCurrentOrganizationType } from "@wso2is/admin.organizations.v1/hooks/use-get-organization-type";
-import { FeatureAccessConfigInterface } from "@wso2is/core/models";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { useGetTrialDetails } from "../api/get-trial-details";
@@ -42,11 +40,6 @@ interface UseTrialDetailsReturn {
  * @returns Trial state and days remaining.
  */
 export const useTrialDetails = (): UseTrialDetailsReturn => {
-    const featureConfig: FeatureConfigInterface = useSelector(
-        (state: AppState) => state?.config?.ui?.features
-    );
-    const tenantsFeatureConfig: FeatureAccessConfigInterface = featureConfig?.tenants;
-
     const saasFeatureStatus: FeatureStatus = useCheckFeatureStatus(FeatureGateConstants.SAAS_FEATURES_IDENTIFIER);
     const { isFirstLevelOrganization } = useGetCurrentOrganizationType();
     const isFirstLevelOrg: boolean = isFirstLevelOrganization();
@@ -59,7 +52,6 @@ export const useTrialDetails = (): UseTrialDetailsReturn => {
 
     const shouldFetch: boolean =
         saasFeatureStatus !== FeatureStatus.DISABLED &&
-        !!tenantsFeatureConfig?.enabled &&
         isTrialFeatureEnabled &&
         isFirstLevelOrg;
 
@@ -85,7 +77,7 @@ export const useTrialDetails = (): UseTrialDetailsReturn => {
         return trialData?.daysRemaining ?? 0;
     }, [ trialData ]);
 
-    const isLoading: boolean = !featureConfig || (shouldFetch && isTrialLoading);
+    const isLoading: boolean = shouldFetch && isTrialLoading;
 
     return {
         daysRemaining,
