@@ -32,6 +32,7 @@ import { isFeatureEnabled } from "@wso2is/core/helpers";
 import {
     AlertInterface,
     AlertLevels,
+    HttpErrorResponseDataInterface,
     IdentifiableComponentInterface,
     ProfileInfoInterface
 } from "@wso2is/core/models";
