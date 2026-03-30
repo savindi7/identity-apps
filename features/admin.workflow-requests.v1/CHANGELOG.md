@@ -1,5 +1,14 @@
 # @wso2is/admin.workflow-requests.v1
 
+## 1.0.20
+
+### Patch Changes
+
+- Updated dependencies [[`b609194419f35a004fa33f5a80f57ffe09d5e4a4`](https://github.com/wso2/identity-apps/commit/b609194419f35a004fa33f5a80f57ffe09d5e4a4), [`05a402441d9e42c9b26045578ea7fe4201be8828`](https://github.com/wso2/identity-apps/commit/05a402441d9e42c9b26045578ea7fe4201be8828)]:
+  - @wso2is/core@2.12.12
+  - @wso2is/common.workflow-approvals.v1@1.0.15
+  - @wso2is/i18n@2.38.3
+
 ## 1.0.19
 
 ### Patch Changes

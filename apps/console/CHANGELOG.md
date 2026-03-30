@@ -1,5 +1,19 @@
 # @wso2is/console
 
+## 4.2.3
+
+### Patch Changes
+
+- [#10015](https://github.com/wso2/identity-apps/pull/10015) [`c04771e48b9b36e551c2bc9f47d1a5e8b93b67f7`](https://github.com/wso2/identity-apps/commit/c04771e48b9b36e551c2bc9f47d1a5e8b93b67f7) Thanks [@github-actions](https://github.com/apps/github-actions)! - Console app approvals view improvement
+
+* [#10017](https://github.com/wso2/identity-apps/pull/10017) [`b609194419f35a004fa33f5a80f57ffe09d5e4a4`](https://github.com/wso2/identity-apps/commit/b609194419f35a004fa33f5a80f57ffe09d5e4a4) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - Update core and console versions
+
+* Updated dependencies [[`b609194419f35a004fa33f5a80f57ffe09d5e4a4`](https://github.com/wso2/identity-apps/commit/b609194419f35a004fa33f5a80f57ffe09d5e4a4), [`05a402441d9e42c9b26045578ea7fe4201be8828`](https://github.com/wso2/identity-apps/commit/05a402441d9e42c9b26045578ea7fe4201be8828)]:
+  - @wso2is/core@2.12.12
+  - @wso2is/common.workflow-approvals.v1@1.0.15
+  - @wso2is/i18n@2.38.3
+  - @wso2is/admin.workflow-requests.v1@1.0.20
+
 ## 4.2.2
 
 ### Patch Changes

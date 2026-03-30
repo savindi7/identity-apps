@@ -677,10 +677,10 @@ importers:
         specifier: ^0.2.0
         version: link:../../features/common.ui.v1
       '@wso2is/common.workflow-approvals.v1':
-        specifier: ^1.0.14
+        specifier: ^1.0.15
         version: link:../../features/common.workflow-approvals.v1
       '@wso2is/core':
-        specifier: ^2.12.11
+        specifier: ^2.12.12
         version: link:../../modules/core
       '@wso2is/dynamic-forms':
         specifier: ^2.4.41
@@ -692,7 +692,7 @@ importers:
         specifier: ^2.3.25
         version: link:../../modules/forms
       '@wso2is/i18n':
-        specifier: ^2.38.2
+        specifier: ^2.38.3
         version: link:../../modules/i18n
       '@wso2is/react-components':
         specifier: ^2.9.25
@@ -1008,16 +1008,16 @@ importers:
         specifier: workspace:^
         version: link:../../features/common.users.v1
       '@wso2is/common.workflow-approvals.v1':
-        specifier: ^1.0.14
+        specifier: ^1.0.15
         version: link:../../features/common.workflow-approvals.v1
       '@wso2is/core':
-        specifier: ^2.12.11
+        specifier: ^2.12.12
         version: link:../../modules/core
       '@wso2is/forms':
         specifier: ^2.3.23
         version: link:../../modules/forms
       '@wso2is/i18n':
-        specifier: ^2.38.2
+        specifier: ^2.38.3
         version: link:../../modules/i18n
       '@wso2is/react-components':
         specifier: ^2.9.23
@@ -20948,7 +20948,7 @@ importers:
         specifier: workspace:^
         version: link:../common.workflow-approvals.v1
       '@wso2is/core':
-        specifier: ^2.12.10
+        specifier: ^2.12.12
         version: link:../../modules/core
       '@wso2is/dynamic-forms':
         specifier: ^2.4.41
@@ -20960,7 +20960,7 @@ importers:
         specifier: ^2.3.22
         version: link:../../modules/forms
       '@wso2is/i18n':
-        specifier: ^2.37.5
+        specifier: ^2.38.3
         version: link:../../modules/i18n
       '@wso2is/react-components':
         specifier: ^2.9.16
@@ -22506,7 +22506,7 @@ importers:
         specifier: ^2.55.3
         version: link:../admin.core.v1
       '@wso2is/core':
-        specifier: ^2.12.10
+        specifier: ^2.12.12
         version: link:../../modules/core
       '@wso2is/dynamic-forms':
         specifier: ^2.4.41
@@ -22518,7 +22518,7 @@ importers:
         specifier: ^2.3.22
         version: link:../../modules/forms
       '@wso2is/i18n':
-        specifier: ^2.37.5
+        specifier: ^2.38.3
         version: link:../../modules/i18n
       '@wso2is/react-components':
         specifier: ^2.9.16
@@ -23293,7 +23293,7 @@ importers:
         specifier: ^29.5.12
         version: 29.5.14
       '@wso2is/core':
-        specifier: ^2.12.11
+        specifier: ^2.12.12
         version: link:../core
       babel-jest:
         specifier: ^26.3.0
@@ -44507,6 +44507,8 @@ packages:
       webpack: '*'
     peerDependenciesMeta:
       webpack:
+        optional: true
+      webpack-sources:
         optional: true
     dependencies:
       webpack: 5.84.1(@swc/core@1.3.99)(esbuild@0.18.20)(webpack-cli@4.10.0)
