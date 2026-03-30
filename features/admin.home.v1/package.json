@@ -46,7 +46,7 @@
         "@wso2is/core": "^2.12.10",
         "@wso2is/i18n": "^2.38.1",
         "@wso2is/react-components": "^2.9.25",
-        "axios": "^0.19.2",
+        "axios": "^1.7.0",
         "classnames": "^2.2.6",
         "dompurify": "^3.0.9",
         "i18next": "^21.9.1",
