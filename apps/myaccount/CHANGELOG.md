@@ -1,5 +1,11 @@
 # @wso2is/myaccount
 
+## 3.0.5
+
+### Patch Changes
+
+- [#10000](https://github.com/wso2/identity-apps/pull/10000) [`e1fae599a1c54a534d60355375fed04fea4621ca`](https://github.com/wso2/identity-apps/commit/e1fae599a1c54a534d60355375fed04fea4621ca) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - Axios and SDK version bumps and Type error fixes
+
 ## 3.0.4
 
 ### Patch Changes
