@@ -119,7 +119,7 @@ export const useEmailTemplate = <Data = EmailTemplate, Error = RequestErrorInter
         mutate
     } = useRequest<Data, Error>(shouldFetch ? requestConfig : null,
         {
-            onErrorRetry: (error: AxiosError<HttpErrorResponseDataInterface>) => {
+            onErrorRetry: (error: AxiosError) => {
                 if (error.response.status === 404) {
                     return;
                 }
