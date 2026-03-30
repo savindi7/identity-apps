@@ -338,7 +338,7 @@ export const approvalWorkflows: approvalWorkflowsNS = {
                 },
                 step2: {
                     description: "Select the operations that would trigger this approval workflow and configure rule conditions.",
-                    hint: "This approval workflow is triggered when the selected operations are initiated, depending on the configured rules. If no rules are defined, it is always triggered.",
+                    hint: "This approval workflow is triggered for selected operations based on configured rules, and always triggers if no rules are defined.",
                     title:  "Workflow Operation Details"
                 },
                 step3: {
