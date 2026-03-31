@@ -19,7 +19,6 @@
 import { useMoesifAnalytics } from "@wso2is/admin.analytics.v1/hooks/use-moesif-analytics";
 import { FeatureConfigInterface } from "@wso2is/admin.core.v1/models/config";
 import { AppState } from "@wso2is/admin.core.v1/store";
-import { UserAccountTypes } from "@wso2is/admin.users.v1/constants/user-management-constants";
 import { ProfileInfoInterface } from "@wso2is/core/models";
 import React, { useCallback, useRef } from "react";
 import { useSelector } from "react-redux";
@@ -93,12 +92,6 @@ export const useOnboardingAnalytics = (params: UseOnboardingAnalyticsParams): Us
         return new Date(createdDate) >= new Date(featureDeployedDate);
     }, [ profileInfo?.meta?.created, featureDeployedDate ]);
 
-    /**
-     * Compute whether the current user is the organization owner.
-     */
-    const getIsOwner: () => boolean = useCallback((): boolean => {
-        return userAccountType === UserAccountTypes.OWNER;
-    }, [ userAccountType ]);
 
     /**
      * Derive the wizard path string from the current onboarding choice.
@@ -129,16 +122,16 @@ export const useOnboardingAnalytics = (params: UseOnboardingAnalyticsParams): Us
                 context: "onboarding",
                 domain: window.location.hostname,
                 is_new_user: getIsNewUser(),
-                is_owner: getIsOwner(),
                 is_revisit: isRevisit,
                 product: "identity",
                 step_name: stepName,
                 step_number: stepNumber,
                 total_steps: wizardPath === "full_setup" ? TOTAL_STEPS_FULL_SETUP : TOTAL_STEPS_PREVIEW,
+                user_type: userAccountType ?? null,
                 wizard_path: wizardPath
             };
         },
-        [ getIsNewUser, getIsOwner, getWizardPath ]
+        [ getIsNewUser, getWizardPath, userAccountType ]
     );
 
     /**
