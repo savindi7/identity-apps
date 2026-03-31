@@ -853,6 +853,11 @@ const EditApprovalWorkflow: FunctionComponent<EditApprovalWorkflowPropsInterface
                             <Heading as="h4">
                                 { t("approvalWorkflows:pageLayout.create.stepper.step4.title") }
                             </Heading>
+                            <Heading subHeading ellipsis as="h6">
+                                <div >
+                                    { t("approvalWorkflows:pageLayout.create.stepper.step4.hint") }
+                                </div>
+                            </Heading>
                         </Grid>
                         <div className="workflow-notification-settings">
                             <NotificationDetailsForm
