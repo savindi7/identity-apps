@@ -81,8 +81,6 @@ const MoesifAnalyticsProvider: FunctionComponent<PropsWithChildren> = (
 
     /**
      * Resolves the primary email from the user's SCIM2 profile.
-     * The SCIM2 response may include a `primary` field not captured by
-     * MultiValueAttributeInterface, so we use an intersection type to account for it.
      */
     const resolveUserEmail: () => string = useCallback((): string => {
         if (!profileInfo?.emails?.length) {
@@ -116,8 +114,6 @@ const MoesifAnalyticsProvider: FunctionComponent<PropsWithChildren> = (
     /**
      * Lazily identifies the current user and company with Moesif.
      * Called on the first `track()` invocation to avoid API calls when no events are fired.
-     * Email is set on the Moesif user profile as a first-class field so it is visible
-     * directly on any event in the Moesif dashboard without navigating to the user profile.
      */
     const identifyUserAndCompany: () => void = useCallback((): void => {
         if (isIdentifiedRef.current || isIdentifyingRef.current) {
