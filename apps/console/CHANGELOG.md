@@ -1,5 +1,32 @@
 # @wso2is/console
 
+## 3.3.14
+
+### Patch Changes
+
+- [#10013](https://github.com/wso2/identity-apps/pull/10013) [`b31ee680498d737cc647bf6a377f303946f100ac`](https://github.com/wso2/identity-apps/commit/b31ee680498d737cc647bf6a377f303946f100ac) Thanks [@nishagii](https://github.com/nishagii)! - Fix styling issues and input validation issue in the approval workflows page
+
+- Updated dependencies [[`b31ee680498d737cc647bf6a377f303946f100ac`](https://github.com/wso2/identity-apps/commit/b31ee680498d737cc647bf6a377f303946f100ac)]:
+  - @wso2is/admin.approval-workflows.v1@1.3.17
+  - @wso2is/i18n@2.38.3
+  - @wso2is/admin.users.v1@2.38.22
+  - @wso2is/admin.agents.v1@1.1.11
+  - @wso2is/admin.onboarding.v1@1.0.70
+  - @wso2is/admin.subscription.v1@1.5.211
+  - @wso2is/admin.core.v1@2.55.22
+  - @wso2is/admin.roles.v2@2.27.369
+  - @wso2is/admin.applications.v1@2.42.11
+  - @wso2is/admin.home.v1@1.7.179
+  - @wso2is/admin.console-settings.v1@2.26.33
+  - @wso2is/admin.email-management.v1@2.25.363
+  - @wso2is/admin.connections.v1@2.36.39
+  - @wso2is/admin.branding.v1@2.32.155
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.199
+  - @wso2is/admin.flows.v1@1.0.168
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.199
+  - @wso2is/admin.server-configurations.v1@2.38.38
+  - @wso2is/admin.registration-flow-builder.v1@0.10.159
+
 ## 3.3.13
 
 ### Patch Changes

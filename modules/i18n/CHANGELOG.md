@@ -1,5 +1,11 @@
 # @wso2is/i18n
 
+## 2.38.3
+
+### Patch Changes
+
+- [#10013](https://github.com/wso2/identity-apps/pull/10013) [`b31ee680498d737cc647bf6a377f303946f100ac`](https://github.com/wso2/identity-apps/commit/b31ee680498d737cc647bf6a377f303946f100ac) Thanks [@nishagii](https://github.com/nishagii)! - Fix styling issues and input validation issue in the approval workflows page
+
 ## 2.38.2
 
 ### Patch Changes
