@@ -1,5 +1,14 @@
 # @wso2is/myaccount
 
+## 4.1.3
+
+### Patch Changes
+
+- [#10020](https://github.com/wso2/identity-apps/pull/10020) [`bcb014a1f88998b61d27632549c6e1f7a2f69811`](https://github.com/wso2/identity-apps/commit/bcb014a1f88998b61d27632549c6e1f7a2f69811) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Update application versions and core module version to the next patch version
+
+- Updated dependencies [[`bcb014a1f88998b61d27632549c6e1f7a2f69811`](https://github.com/wso2/identity-apps/commit/bcb014a1f88998b61d27632549c6e1f7a2f69811)]:
+  - @wso2is/core@2.12.13
+
 ## 4.1.2
 
 ### Patch Changes
