@@ -1,5 +1,17 @@
 # @wso2is/admin.branding.v1
 
+## 2.32.155
+
+### Patch Changes
+
+- Updated dependencies [[`b31ee680498d737cc647bf6a377f303946f100ac`](https://github.com/wso2/identity-apps/commit/b31ee680498d737cc647bf6a377f303946f100ac)]:
+  - @wso2is/i18n@2.38.3
+  - @wso2is/admin.core.v1@2.55.22
+  - @wso2is/admin.applications.v1@2.42.11
+  - @wso2is/admin.flow-builder-core.v1@0.10.199
+  - @wso2is/admin.flows.v1@1.0.168
+  - @wso2is/admin.server-configurations.v1@2.38.38
+
 ## 2.32.154
 
 ### Patch Changes

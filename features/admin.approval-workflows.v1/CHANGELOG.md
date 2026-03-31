@@ -1,5 +1,19 @@
 # @wso2is/admin.approval-workflows.v1
 
+## 1.3.17
+
+### Patch Changes
+
+- [#10013](https://github.com/wso2/identity-apps/pull/10013) [`b31ee680498d737cc647bf6a377f303946f100ac`](https://github.com/wso2/identity-apps/commit/b31ee680498d737cc647bf6a377f303946f100ac) Thanks [@nishagii](https://github.com/nishagii)! - Fix styling issues and input validation issue in the approval workflows page
+
+- Updated dependencies [[`b31ee680498d737cc647bf6a377f303946f100ac`](https://github.com/wso2/identity-apps/commit/b31ee680498d737cc647bf6a377f303946f100ac)]:
+  - @wso2is/i18n@2.38.3
+  - @wso2is/admin.users.v1@2.38.22
+  - @wso2is/admin.core.v1@2.55.22
+  - @wso2is/admin.roles.v2@2.27.369
+  - @wso2is/admin.applications.v1@2.42.11
+  - @wso2is/admin.rules.v1@0.7.38
+
 ## 1.3.16
 
 ### Patch Changes
