@@ -76,8 +76,7 @@ const ProfileFieldFormRenderer: FunctionComponent<
 
     /**
      * Returns true if the given top-level attribute name corresponds to a complex,
-     * multi-valued schema (e.g. `photos`) whose sub-attributes are stored as
-     * `{ type, value }` objects in the SCIM payload.
+     * multi-valued schema.
      *
      * @param parentName - Top-level attribute name to test.
      * @returns Whether the attribute is a complex multi-valued schema.
@@ -133,7 +132,6 @@ const ProfileFieldFormRenderer: FunctionComponent<
                 && isComplexMultiValuedAttribute(parentAttributeName)) {
                 // Builds payload for updating multi-valued complex attributes.
                 // Ensure all relevant sub-attributes are included in the request,
-                // as partial updates may overwrite or remove existing values.
                 // Format: { photos: [ { type: "thumbnail", value: <new> }, { type: "photo", value: <current> } ] }
                 const subAttributeName: string = Object.keys(tempPatchValue)[0];
                 const subAttributeValue: unknown = tempPatchValue[subAttributeName];
