@@ -272,7 +272,7 @@ export const SMSRecovery: React.FunctionComponent<SMSRecoveryProps> = (
                                 <List.Description >
                                     {
                                         mobile ?
-                                            t("myAccount:components.accountRecovery.SMSRecovery.descriptions.update",
+                                            t("myAccount:components.accountRecovery.SMSRecovery.descriptions.view",
                                                 { mobile: mobile ? maskMobile(mobile) : "" })
                                             : (
                                                 <Hint>
