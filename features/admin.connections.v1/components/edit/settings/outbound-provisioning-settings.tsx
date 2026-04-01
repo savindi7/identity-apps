@@ -94,6 +94,15 @@ interface ProvisioningSettingsPropsInterface extends TestableComponentInterface,
      * Loading Component.
      */
     loader: () => ReactElement;
+    /**
+     * Connectors prefetched by the parent component to avoid
+     * fetching them again when the tab is first opened.
+     */
+    prefetchedConnectors?: OutboundProvisioningConnectorWithMetaInterface[];
+    /**
+     * Whether the parent is still fetching connectors.
+     */
+    isFetchingConnectors?: boolean;
 }
 
 /**
@@ -112,6 +121,8 @@ export const OutboundProvisioningSettings: FunctionComponent<ProvisioningSetting
         isLoading,
         onUpdate,
         isReadOnly,
+        prefetchedConnectors,
+        isFetchingConnectors = false,
         [ "data-testid" ]: testId = "idp-edit-outbound-provisioning-settings",
         [ "data-componentid" ]: componentId = "idp-edit-outbound-provisioning-settings"
     } = props;
@@ -138,9 +149,29 @@ export const OutboundProvisioningSettings: FunctionComponent<ProvisioningSetting
     };
 
     /**
-     * Fetch available connectors for the identity provider.
+     * Sync connector data from parent prefetch when it arrives.
      */
     useEffect(() => {
+        if (prefetchedConnectors === undefined) {
+            return;
+        }
+
+        setAvailableConnectors(prefetchedConnectors);
+
+        if (prefetchedConnectors.length === 1) {
+            setAccordionActiveIndexes([ 0 ]);
+        }
+    }, [ prefetchedConnectors ]);
+
+    /**
+     * Fetch available connectors for the identity provider.
+     * Skipped when the parent has already prefetched the data.
+     */
+    useEffect(() => {
+        if (prefetchedConnectors !== undefined) {
+            return;
+        }
+
         setAvailableConnectors([]);
         fetchConnectors()
             .then((response: OutboundProvisioningConnectorWithMetaInterface[]) => {
@@ -286,7 +317,7 @@ export const OutboundProvisioningSettings: FunctionComponent<ProvisioningSetting
 
             {
                 outboundConnectors.connectors.length > 0 ? (
-                    (!isLoading)
+                    (!isLoading && !isFetchingConnectors)
                         ? (
                             <div className="default-provisioning-connector-section" style={ { marginTop: "1rem" } }>
                                 <Grid>
