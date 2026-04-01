@@ -531,8 +531,22 @@ const UserProfileForm: FunctionComponent<UserProfileFormPropsInterface> = ({
                         }
                     } else {
                         if (!schema.extended) {
-                            _flattenedInitialValues[schema.name] = preparedInitialValues[
-                                schemaNameParts[0]]?.[schemaNameParts[1]];
+                            const parentValues: unknown = preparedInitialValues[schemaNameParts[0]];
+
+                            if (Array.isArray(parentValues)) {
+                                // Complex multi-valued attribute: find the element whose `type` key
+                                // matches the sub-attribute name and return its `value`.
+                                _flattenedInitialValues[schema.name] = (
+                                    parentValues as Array<{ type: string; value: unknown }>
+                                ).find(
+                                    (item: { type: string; value: unknown }) =>
+                                        item.type === schemaNameParts[1]
+                                )?.value;
+                            } else {
+                                _flattenedInitialValues[schema.name] = (
+                                    parentValues as Record<string, unknown>
+                                )?.[schemaNameParts[1]];
+                            }
                         } else {
                             _flattenedInitialValues[encodedSchemaId][schema.name] = preparedInitialValues[
                                 schema.schemaId]?.[schemaNameParts[0]]?.[schemaNameParts[1]];
@@ -615,6 +629,24 @@ const UserProfileForm: FunctionComponent<UserProfileFormPropsInterface> = ({
         }
 
         return flattenedInitialValues[schema.name];
+    };
+
+    /**
+     * Returns true if the given top-level attribute name corresponds to a complex,
+     * multi-valued schema (e.g. `photos`) that stores its sub-attributes as an
+     * array of `{ type, value }` objects in the SCIM payload.
+     *
+     * @param parentName - Top-level attribute name to test.
+     * @returns Whether the attribute is a complex multi-valued schema.
+     */
+    const isComplexMultiValuedAttribute = (parentName: string): boolean => {
+        return profileSchemas.some(
+            (schema: ProfileSchemaInterface) =>
+                schema.name === parentName &&
+                schema.multiValued === true &&
+                Array.isArray(schema.subAttributes) &&
+                schema.subAttributes.length > 0
+        );
     };
 
     /**
@@ -721,6 +753,23 @@ const UserProfileForm: FunctionComponent<UserProfileFormPropsInterface> = ({
                         });
                     }
                 }
+            } else if (isComplexMultiValuedAttribute(fieldName)) {
+                // Complex multi-valued attribute (e.g. `photos`): each sub-attribute is stored
+                // as { type: <subAttributeName>, value: <fieldValue> } in the SCIM payload.
+                const patchValue: Array<{ type: string; value: unknown }> = [];
+
+                for (const [ type, value ] of Object.entries(
+                    (values[fieldName] ?? {}) as Record<string, unknown>
+                )) {
+                    patchValue.push({ type, value });
+                }
+
+                data.Operations.push({
+                    op: "replace",
+                    value: {
+                        [fieldName]: patchValue
+                    } as unknown as PatchUserOperationValue
+                });
             } else {
                 // Replace back the __DOT__ with dots.
                 const decodedFieldName: string = fieldName.replace(/__DOT__/g, ".");
