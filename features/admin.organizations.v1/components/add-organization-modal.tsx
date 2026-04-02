@@ -203,7 +203,7 @@ export const AddOrganizationModal: FunctionComponent<AddOrganizationModalPropsIn
             return false;
         }
 
-        // 2. First character must be an alphabet.
+        // 2. First character must be an alphanumeric character.
         if (!orgHandle.match(OrganizationManagementConstants.ORG_HANDLE_FIELD_CONSTRAINTS.ORG_HANDLE_FIRST_ALPHABET)) {
             setOrgHandleError(t("organizations:forms.addOrganization.orgHandle.validation.invalidFirstCharacter"));
 
