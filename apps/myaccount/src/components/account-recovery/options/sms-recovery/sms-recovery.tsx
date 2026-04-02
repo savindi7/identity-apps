@@ -16,8 +16,7 @@
  * under the License.
  */
 
-import { IdentifiableComponentInterface,
-    HttpErrorResponseDataInterface
+import { HttpErrorResponseDataInterface, IdentifiableComponentInterface
 } from "@wso2is/core/models";
 import { FinalForm, FinalFormField, FormRenderProps, FormValue, TextFieldAdapter } from "@wso2is/form";
 import { Button, GenericIcon, Hint, PrimaryButton, SecondaryButton } from "@wso2is/react-components";
