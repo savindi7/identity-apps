@@ -1,5 +1,11 @@
 # @wso2is/identity-apps-core
 
+## 4.0.8
+
+### Patch Changes
+
+- [#9967](https://github.com/wso2/identity-apps/pull/9967) [`543d61f8a556172a691c652dc728afcf69b9837a`](https://github.com/wso2/identity-apps/commit/543d61f8a556172a691c652dc728afcf69b9837a) Thanks [@Sithumli](https://github.com/Sithumli)! - Update passkey instruction messages to be device-agnostic for better UX on mobile devices
+
 ## 4.0.7
 
 ### Patch Changes
