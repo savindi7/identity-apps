@@ -169,7 +169,7 @@ export const EditConnection: FunctionComponent<EditConnectionPropsInterface> = (
     const [ isCustomAuthenticator, setIsCustomAuthenticator ] = useState<boolean>(false);
     const [ isCustomLocalAuthenticator, setIsCustomLocalAuthenticator ] = useState<boolean>(false);
     const [ isOutboundProvisioningConnection, setIsOutboundProvisioningConnection ] = useState<boolean>(false);
-    
+
     const hasApplicationReadPermissions: boolean = useRequiredScopes(featureConfig?.applications?.scopes?.read);
 
     const isOrganizationEnterpriseAuthenticator: boolean =
