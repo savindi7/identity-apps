@@ -94,15 +94,6 @@ interface ProvisioningSettingsPropsInterface extends TestableComponentInterface,
      * Loading Component.
      */
     loader: () => ReactElement;
-    /**
-     * Connectors prefetched by the parent component to avoid
-     * fetching them again when the tab is first opened.
-     */
-    prefetchedConnectors?: OutboundProvisioningConnectorWithMetaInterface[];
-    /**
-     * Whether the parent is still fetching connectors.
-     */
-    isFetchingConnectors?: boolean;
 }
 
 /**
@@ -121,8 +112,6 @@ export const OutboundProvisioningSettings: FunctionComponent<ProvisioningSetting
         isLoading,
         onUpdate,
         isReadOnly,
-        prefetchedConnectors,
-        isFetchingConnectors = false,
         [ "data-testid" ]: testId = "idp-edit-outbound-provisioning-settings",
         [ "data-componentid" ]: componentId = "idp-edit-outbound-provisioning-settings"
     } = props;
@@ -139,6 +128,7 @@ export const OutboundProvisioningSettings: FunctionComponent<ProvisioningSetting
     const [ accordionActiveIndexes, setAccordionActiveIndexes ] = useState<number[]>([]);
     const [ triggerConnectorFormSubmit, setTriggerConnectorFormSubmit ] = useState<boolean>(false);
     const [ triggerGroupsSave, setTriggerGroupsSave ] = useState<boolean>(false);
+    const [ isFetchingConnectors, setIsFetchingConnectors ] = useState<boolean>(false);
 
     /**
      * Handles the single Update button click — triggers both connector form submit and groups save.
@@ -149,30 +139,11 @@ export const OutboundProvisioningSettings: FunctionComponent<ProvisioningSetting
     };
 
     /**
-     * Sync connector data from parent prefetch when it arrives.
-     */
-    useEffect(() => {
-        if (prefetchedConnectors === undefined) {
-            return;
-        }
-
-        setAvailableConnectors(prefetchedConnectors);
-
-        if (prefetchedConnectors.length === 1) {
-            setAccordionActiveIndexes([ 0 ]);
-        }
-    }, [ prefetchedConnectors ]);
-
-    /**
      * Fetch available connectors for the identity provider.
-     * Skipped when the parent has already prefetched the data.
      */
     useEffect(() => {
-        if (prefetchedConnectors !== undefined) {
-            return;
-        }
-
         setAvailableConnectors([]);
+        setIsFetchingConnectors(true);
         fetchConnectors()
             .then((response: OutboundProvisioningConnectorWithMetaInterface[]) => {
                 setAvailableConnectors(response);
@@ -180,7 +151,8 @@ export const OutboundProvisioningSettings: FunctionComponent<ProvisioningSetting
                 if (response?.length === 1) {
                     setAccordionActiveIndexes([ 0 ]);
                 }
-            });
+            })
+            .finally(() => setIsFetchingConnectors(false));
     }, [ identityProvider ]);
 
     /**
@@ -451,7 +423,7 @@ export const OutboundProvisioningSettings: FunctionComponent<ProvisioningSetting
                 )
             }
             {
-                (!isLoading)
+                (!isLoading && !isFetchingConnectors)
                     ? (
                         <OutboundProvisioningGroups
                             idpRoles={ identityProvider?.roles }
