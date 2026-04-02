@@ -17,8 +17,7 @@
  */
 
 import { ProfileConstants } from "@wso2is/core/constants";
-import { TestableComponentInterface,
-    HttpErrorResponseDataInterface
+import { HttpErrorResponseDataInterface, TestableComponentInterface
 } from "@wso2is/core/models";
 import { Field, FormValue, Forms, Validation } from "@wso2is/forms";
 import { GenericIcon, Hint, Popup } from "@wso2is/react-components";
