@@ -141,19 +141,39 @@ export const OutboundProvisioningSettings: FunctionComponent<ProvisioningSetting
     /**
      * Fetch available connectors for the identity provider.
      */
-    useEffect(() => {
+    useEffect((): (() => void) => {
+        let isCurrentRequest: boolean = true;
+
         setAvailableConnectors([]);
         setIsFetchingConnectors(true);
+
         fetchConnectors()
-            .then((response: OutboundProvisioningConnectorWithMetaInterface[]) => {
+            .then((response: OutboundProvisioningConnectorWithMetaInterface[]): void => {
+                if (!isCurrentRequest) {
+                    return;
+                }
                 setAvailableConnectors(response);
                 // Auto-open accordion if only one connector exists.
                 if (response?.length === 1) {
                     setAccordionActiveIndexes([ 0 ]);
                 }
             })
-            .finally(() => setIsFetchingConnectors(false));
-    }, [ identityProvider ]);
+            .catch((): void => {
+                if (!isCurrentRequest) {
+                    return;
+                }
+                setAvailableConnectors([]);
+            })
+            .finally((): void => {
+                if (isCurrentRequest) {
+                    setIsFetchingConnectors(false);
+                }
+            });
+
+        return (): void => {
+            isCurrentRequest = false;
+        };
+    }, [ identityProvider?.id ]);
 
     /**
      * Fetch data and metadata of a given connector id and return a promise.
