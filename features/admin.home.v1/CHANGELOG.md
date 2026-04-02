@@ -1,5 +1,57 @@
 # @wso2is/admin.home.v1
 
+## 1.7.179
+
+### Patch Changes
+
+- Updated dependencies [[`b31ee680498d737cc647bf6a377f303946f100ac`](https://github.com/wso2/identity-apps/commit/b31ee680498d737cc647bf6a377f303946f100ac)]:
+  - @wso2is/i18n@2.38.3
+  - @wso2is/admin.onboarding.v1@1.0.70
+  - @wso2is/admin.subscription.v1@1.5.211
+  - @wso2is/admin.core.v1@2.55.22
+  - @wso2is/admin.applications.v1@2.42.11
+  - @wso2is/admin.flow-builder-core.v1@0.10.199
+  - @wso2is/admin.flows.v1@1.0.168
+
+## 1.7.178
+
+### Patch Changes
+
+- Updated dependencies [[`76d5dc3ab3ad7afe7e811c2b825743dff7930f8c`](https://github.com/wso2/identity-apps/commit/76d5dc3ab3ad7afe7e811c2b825743dff7930f8c), [`2375c0045ff232a40e0e0a269fdd37faf60f31b2`](https://github.com/wso2/identity-apps/commit/2375c0045ff232a40e0e0a269fdd37faf60f31b2), [`a4fe66d4e346222b0762577c80c5137a1acf7d1e`](https://github.com/wso2/identity-apps/commit/a4fe66d4e346222b0762577c80c5137a1acf7d1e)]:
+  - @wso2is/admin.subscription.v1@1.5.210
+  - @wso2is/admin.onboarding.v1@1.0.69
+  - @wso2is/i18n@2.38.2
+  - @wso2is/admin.applications.v1@2.42.10
+  - @wso2is/admin.core.v1@2.55.21
+  - @wso2is/admin.flow-builder-core.v1@0.10.198
+  - @wso2is/admin.flows.v1@1.0.167
+
+## 1.7.177
+
+### Patch Changes
+
+- [#9942](https://github.com/wso2/identity-apps/pull/9942) [`4952cd109836fc3b51516d0b4a40c757546c9d10`](https://github.com/wso2/identity-apps/commit/4952cd109836fc3b51516d0b4a40c757546c9d10) Thanks [@Lakshan-Banneheke](https://github.com/Lakshan-Banneheke)! - Add free trial banner
+
+- Updated dependencies [[`4952cd109836fc3b51516d0b4a40c757546c9d10`](https://github.com/wso2/identity-apps/commit/4952cd109836fc3b51516d0b4a40c757546c9d10)]:
+  - @wso2is/admin.subscription.v1@1.5.209
+  - @wso2is/admin.core.v1@2.55.20
+  - @wso2is/admin.applications.v1@2.42.9
+  - @wso2is/admin.flow-builder-core.v1@0.10.197
+  - @wso2is/admin.onboarding.v1@1.0.68
+  - @wso2is/admin.flows.v1@1.0.166
+
+## 1.7.176
+
+### Patch Changes
+
+- Updated dependencies [[`64e9db79d1a75865477e498d2d68f1c16d00240b`](https://github.com/wso2/identity-apps/commit/64e9db79d1a75865477e498d2d68f1c16d00240b)]:
+  - @wso2is/admin.onboarding.v1@1.0.67
+  - @wso2is/admin.applications.v1@2.42.8
+  - @wso2is/admin.core.v1@2.55.19
+  - @wso2is/admin.flow-builder-core.v1@0.10.196
+  - @wso2is/admin.subscription.v1@1.5.208
+  - @wso2is/admin.flows.v1@1.0.165
+
 ## 1.7.175
 
 ### Patch Changes

@@ -206,3 +206,13 @@ export const StyledTextField: typeof TextField = styled(TextField)(({ theme }: {
         marginTop: theme.spacing(0.5)
     }
 }));
+
+/**
+ * Gradient text span that uses the primary gradient colors.
+ */
+export const GradientText: typeof Box = styled("span")({
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    background: "linear-gradient(77.74deg, #EB4F63 11.16%, #FA7B3F 99.55%)",
+    backgroundClip: "text"
+}) as typeof Box;

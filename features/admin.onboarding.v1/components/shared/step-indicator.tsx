@@ -70,8 +70,8 @@ const StepIndicatorContainer: typeof Box = styled(Box)(({ theme }: { theme: Them
 
 const StepIndicatorHeader: typeof Typography = styled(Typography)(
     ({ theme }: { theme: Theme }) => ({
-        color: theme.palette.text.primary,
-        fontSize: "1.125rem",
+        color: theme.palette.primary.main,
+        fontSize: "1.4rem",
         fontWeight: 600,
         marginBottom: theme.spacing(3)
     })
@@ -95,7 +95,7 @@ const CustomConnector: typeof StepConnector = styled(StepConnector)(
         "& .MuiStepConnector-line": {
             borderColor: theme.palette.grey[300],
             borderLeftWidth: 2,
-            minHeight: 40
+            minHeight: 56
         },
         "&.MuiStepConnector-root": {
             marginLeft: 13
@@ -124,7 +124,7 @@ const DarkConnector: typeof StepConnector = styled(StepConnector)(() => ({
     "& .MuiStepConnector-line": {
         borderColor: alpha("#fff", 0.3),
         borderLeftWidth: 2,
-        minHeight: 40
+        minHeight: 56
     },
     "&.MuiStepConnector-root": {
         marginLeft: 13
@@ -193,16 +193,32 @@ const StepIndicator: FunctionComponent<StepIndicatorPropsInterface> = memo((
                             }
                             data-componentid={ `${componentId}-step-${step.key}` }
                         >
-                            <Typography
-                                sx={ {
-                                    color: isDark ? "#fff" : "text.primary",
-                                    fontSize: "0.875rem",
-                                    fontWeight: 500,
-                                    lineHeight: 1.4
-                                } }
-                            >
-                                { step.label }
-                            </Typography>
+                            <Box>
+                                <Typography
+                                    sx={ {
+                                        color: isDark ? "#fff" : "text.primary",
+                                        fontSize: "0.9rem",
+                                        fontWeight: 500,
+                                        lineHeight: 1.4
+                                    } }
+                                >
+                                    { step.label }
+                                </Typography>
+                                { step.description && (
+                                    <Typography
+                                        sx={ {
+                                            color: isDark
+                                                ? alpha("#fff", 0.7)
+                                                : "text.secondary",
+                                            fontSize: "0.78rem",
+                                            lineHeight: 1.4,
+                                            mt: 0.3
+                                        } }
+                                    >
+                                        { step.description }
+                                    </Typography>
+                                ) }
+                            </Box>
                         </StepLabel>
                     </Step>
                 )) }

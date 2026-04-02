@@ -1,5 +1,53 @@
 # @wso2is/admin.approval-workflows.v1
 
+## 1.3.17
+
+### Patch Changes
+
+- [#10013](https://github.com/wso2/identity-apps/pull/10013) [`b31ee680498d737cc647bf6a377f303946f100ac`](https://github.com/wso2/identity-apps/commit/b31ee680498d737cc647bf6a377f303946f100ac) Thanks [@nishagii](https://github.com/nishagii)! - Fix styling issues and input validation issue in the approval workflows page
+
+- Updated dependencies [[`b31ee680498d737cc647bf6a377f303946f100ac`](https://github.com/wso2/identity-apps/commit/b31ee680498d737cc647bf6a377f303946f100ac)]:
+  - @wso2is/i18n@2.38.3
+  - @wso2is/admin.users.v1@2.38.22
+  - @wso2is/admin.core.v1@2.55.22
+  - @wso2is/admin.roles.v2@2.27.369
+  - @wso2is/admin.applications.v1@2.42.11
+  - @wso2is/admin.rules.v1@0.7.38
+
+## 1.3.16
+
+### Patch Changes
+
+- Updated dependencies [[`a4fe66d4e346222b0762577c80c5137a1acf7d1e`](https://github.com/wso2/identity-apps/commit/a4fe66d4e346222b0762577c80c5137a1acf7d1e)]:
+  - @wso2is/i18n@2.38.2
+  - @wso2is/admin.applications.v1@2.42.10
+  - @wso2is/admin.core.v1@2.55.21
+  - @wso2is/admin.roles.v2@2.27.368
+  - @wso2is/admin.users.v1@2.38.21
+  - @wso2is/admin.rules.v1@0.7.37
+
+## 1.3.15
+
+### Patch Changes
+
+- Updated dependencies [[`4952cd109836fc3b51516d0b4a40c757546c9d10`](https://github.com/wso2/identity-apps/commit/4952cd109836fc3b51516d0b4a40c757546c9d10)]:
+  - @wso2is/admin.core.v1@2.55.20
+  - @wso2is/admin.applications.v1@2.42.9
+  - @wso2is/admin.users.v1@2.38.20
+  - @wso2is/admin.roles.v2@2.27.367
+  - @wso2is/admin.rules.v1@0.7.36
+
+## 1.3.14
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @wso2is/admin.applications.v1@2.42.8
+  - @wso2is/admin.core.v1@2.55.19
+  - @wso2is/admin.roles.v2@2.27.366
+  - @wso2is/admin.users.v1@2.38.19
+  - @wso2is/admin.rules.v1@0.7.35
+
 ## 1.3.13
 
 ### Patch Changes
