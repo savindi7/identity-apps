@@ -1,5 +1,11 @@
 # @wso2is/myaccount
 
+## 4.1.4
+
+### Patch Changes
+
+- [#10032](https://github.com/wso2/identity-apps/pull/10032) [`0bba04263ff9c829de64ad871282454572ff00fa`](https://github.com/wso2/identity-apps/commit/0bba04263ff9c829de64ad871282454572ff00fa) Thanks [@github-actions](https://github.com/apps/github-actions)! - Multiple email & mobile number display improvement
+
 ## 4.1.3
 
 ### Patch Changes
