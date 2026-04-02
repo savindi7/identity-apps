@@ -1,5 +1,22 @@
 # @wso2is/admin.applications.v1
 
+## 2.42.9
+
+### Patch Changes
+
+- [#10031](https://github.com/wso2/identity-apps/pull/10031) [`1e2cff05a3ba2cfa6f661bdb4f9e3f80a190f2b5`](https://github.com/wso2/identity-apps/commit/1e2cff05a3ba2cfa6f661bdb4f9e3f80a190f2b5) Thanks [@github-actions](https://github.com/apps/github-actions)! - Add improvements to the user onboarding wizard.
+
+- Updated dependencies [[`1e2cff05a3ba2cfa6f661bdb4f9e3f80a190f2b5`](https://github.com/wso2/identity-apps/commit/1e2cff05a3ba2cfa6f661bdb4f9e3f80a190f2b5)]:
+  - @wso2is/admin.onboarding.v1@1.0.68
+  - @wso2is/admin.branding.v1@2.32.153
+  - @wso2is/admin.core.v1@2.55.20
+  - @wso2is/admin.roles.v2@2.27.367
+  - @wso2is/admin.users.v1@2.38.20
+  - @wso2is/admin.connections.v1@2.36.37
+  - @wso2is/admin.subscription.v1@1.5.212
+  - @wso2is/admin.server-configurations.v1@2.38.36
+  - @wso2is/admin.console-settings.v1@2.26.31
+
 ## 2.42.8
 
 ### Patch Changes
