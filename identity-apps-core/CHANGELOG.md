@@ -1,5 +1,11 @@
 # @wso2is/identity-apps-core
 
+## 5.0.7
+
+### Patch Changes
+
+- [#10026](https://github.com/wso2/identity-apps/pull/10026) [`1eae77207f272111878e2d3d54b8bbc6fa70ff88`](https://github.com/wso2/identity-apps/commit/1eae77207f272111878e2d3d54b8bbc6fa70ff88) Thanks [@github-actions](https://github.com/apps/github-actions)! - Fix the issue with the X.509 authenticator error page.
+
 ## 5.0.6
 
 ### Patch Changes
