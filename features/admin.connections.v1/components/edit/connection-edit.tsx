@@ -21,13 +21,10 @@ import { FeatureConfigInterface } from "@wso2is/admin.core.v1/models/config";
 import { AppState } from "@wso2is/admin.core.v1/store";
 import { identityProviderConfig } from "@wso2is/admin.extensions.v1";
 import { isFeatureEnabled } from "@wso2is/core/helpers";
-import { AlertLevels, HttpErrorResponseDataInterface, TestableComponentInterface } from "@wso2is/core/models";
-import { addAlert } from "@wso2is/core/store";
+import { TestableComponentInterface } from "@wso2is/core/models";
 import { ContentLoader, EmphasizedSegment, ResourceTab, ResourceTabPaneInterface } from "@wso2is/react-components";
-import { AxiosError } from "axios";
-import React, { FunctionComponent, ReactElement, lazy, useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Dispatch } from "redux";
+import React, { FunctionComponent, ReactElement, lazy, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { TabProps } from "semantic-ui-react";
 import {
     AdvanceSettings,
@@ -47,23 +44,14 @@ import {
 import { ConnectionUIConstants } from "../../constants/connection-ui-constants";
 import { FederatedAuthenticatorConstants } from "../../constants/federated-authenticator-constants";
 import {
-    getOutboundProvisioningConnector,
-    getOutboundProvisioningConnectorMetadata
-} from "../../api/connections";
-import {
     ConnectionAdvanceInterface,
     ConnectionInterface,
     ConnectionTabTypes,
     ConnectionTemplateInterface,
-    ImplicitAssociaionConfigInterface,
-    OutboundProvisioningConnectorInterface,
-    OutboundProvisioningConnectorMetaDataInterface,
-    OutboundProvisioningConnectorMetaInterface,
-    OutboundProvisioningConnectorWithMetaInterface
+    ImplicitAssociaionConfigInterface
 } from "../../models/connection";
 import { isProvisioningAttributesEnabled } from "../../utils/attribute-utils";
-import { ConnectionsManagementUtils, handleGetOutboundProvisioningConnectorMetadataError } from "../../utils/connection-utils";
-import { getOutboundProvisioningConnectorsMetaData } from "../meta/connectors";
+import { ConnectionsManagementUtils } from "../../utils/connection-utils";
 
 /**
  * Proptypes for the connection edit component.
@@ -159,7 +147,6 @@ export const EditConnection: FunctionComponent<EditConnectionPropsInterface> = (
         ["data-testid"]: testId
     } = props;
 
-    const dispatch: Dispatch = useDispatch();
     const featureConfig: FeatureConfigInterface = useSelector((state: AppState) => state?.config?.ui?.features);
     const isOutboundProvisioningConnectionV2Enabled: boolean = isFeatureEnabled(
         featureConfig?.identityProviders,
@@ -182,10 +169,6 @@ export const EditConnection: FunctionComponent<EditConnectionPropsInterface> = (
     const [ isCustomAuthenticator, setIsCustomAuthenticator ] = useState<boolean>(false);
     const [ isCustomLocalAuthenticator, setIsCustomLocalAuthenticator ] = useState<boolean>(false);
     const [ isOutboundProvisioningConnection, setIsOutboundProvisioningConnection ] = useState<boolean>(false);
-    const [ prefetchedConnectors, setPrefetchedConnectors ] =
-        useState<OutboundProvisioningConnectorWithMetaInterface[] | undefined>(undefined);
-    const [ isFetchingConnectors, setIsFetchingConnectors ] = useState<boolean>(false);
-
     const hasApplicationReadPermissions: boolean = useRequiredScopes(featureConfig?.applications?.scopes?.read);
 
     const isOrganizationEnterpriseAuthenticator: boolean =
@@ -198,64 +181,6 @@ export const EditConnection: FunctionComponent<EditConnectionPropsInterface> = (
             FederatedAuthenticatorConstants.AUTHENTICATOR_IDS.OIDC_AUTHENTICATOR_ID;
 
     const urlSearchParams: URLSearchParams = new URLSearchParams(location.search);
-
-    /**
-     * Prefetch outbound connector details when the IDP data is available so the data
-     * is ready before the user navigates to the Outbound Provisioning tab.
-     */
-    const prefetchOutboundConnectors: (idp: ConnectionInterface) => Promise<void> = useCallback(
-        async (idp: ConnectionInterface): Promise<void> => {
-            const connectors: OutboundProvisioningConnectorWithMetaInterface[] = [];
-
-            for (const connector of idp.provisioning.outboundConnectors.connectors) {
-                await new Promise<void>((resolve: () => void) => {
-                    getOutboundProvisioningConnector(idp.id, connector.connectorId)
-                        .then((data: OutboundProvisioningConnectorInterface) => {
-                            getOutboundProvisioningConnectorMetadata(connector.connectorId)
-                                .then((meta: OutboundProvisioningConnectorMetaInterface) => {
-                                    connectors.push({
-                                        data,
-                                        id: connector.connectorId,
-                                        localMeta: getOutboundProvisioningConnectorsMetaData()?.find(
-                                            (m: OutboundProvisioningConnectorMetaDataInterface) =>
-                                                m.connectorId === connector.connectorId
-                                        ),
-                                        meta
-                                    });
-                                    resolve();
-                                })
-                                .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
-                                    handleGetOutboundProvisioningConnectorMetadataError(error);
-                                    resolve();
-                                });
-                        })
-                        .catch((error: AxiosError<HttpErrorResponseDataInterface>) => {
-                            if (error?.response?.data?.description) {
-                                dispatch(addAlert({
-                                    description: error.response.data.description,
-                                    level: AlertLevels.ERROR,
-                                    message: "Failed to retrieve outbound provisioning connector"
-                                }));
-                            }
-                            resolve();
-                        });
-                });
-            }
-
-            setPrefetchedConnectors(connectors);
-        },
-        [ dispatch ]
-    );
-
-    useEffect(() => {
-        if (!identityProvider?.provisioning?.outboundConnectors?.connectors?.length) {
-            return;
-        }
-
-        setPrefetchedConnectors(undefined);
-        setIsFetchingConnectors(true);
-        prefetchOutboundConnectors(identityProvider).finally(() => setIsFetchingConnectors(false));
-    }, [ identityProvider ]);
 
     const idpAdvanceConfig: ConnectionAdvanceInterface = {
         alias: identityProvider?.alias,
@@ -384,8 +309,6 @@ export const EditConnection: FunctionComponent<EditConnectionPropsInterface> = (
                 data-testid={ `${testId}-outbound-provisioning-settings` }
                 isReadOnly={ isReadOnly }
                 loader={ Loader }
-                prefetchedConnectors={ prefetchedConnectors }
-                isFetchingConnectors={ isFetchingConnectors }
             />
         </ResourceTab.Pane>
     );
