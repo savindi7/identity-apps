@@ -1,5 +1,14 @@
 # @wso2is/admin.analytics.v1
 
+## 0.0.5
+
+### Patch Changes
+
+- [#10024](https://github.com/wso2/identity-apps/pull/10024) [`57a676a2569a4cd677b3bd2253819eda5a408c5f`](https://github.com/wso2/identity-apps/commit/57a676a2569a4cd677b3bd2253819eda5a408c5f) Thanks [@savindi7](https://github.com/savindi7)! - Add improvements to the user onboarding wizard.
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.55.23
+
 ## 0.0.4
 
 ### Patch Changes
