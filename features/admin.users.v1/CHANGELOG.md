@@ -1,5 +1,23 @@
 # @wso2is/admin.users.v1
 
+## 2.38.26
+
+### Patch Changes
+
+- [#10053](https://github.com/wso2/identity-apps/pull/10053) [`034fc22337d975ced7088460f456b1a09a8176c2`](https://github.com/wso2/identity-apps/commit/034fc22337d975ced7088460f456b1a09a8176c2) Thanks [@BimsaraBodaragama](https://github.com/BimsaraBodaragama)! - Hide delete button and danger zone for shared users on user profile page
+
+* [#10048](https://github.com/wso2/identity-apps/pull/10048) [`fc100d6e6c26ee6e530fbe894cc1856e7811a781`](https://github.com/wso2/identity-apps/commit/fc100d6e6c26ee6e530fbe894cc1856e7811a781) Thanks [@BimsaraBodaragama](https://github.com/BimsaraBodaragama)! - Hide danger zone section for shared users on the user profile page
+
+* Updated dependencies [[`034fc22337d975ced7088460f456b1a09a8176c2`](https://github.com/wso2/identity-apps/commit/034fc22337d975ced7088460f456b1a09a8176c2), [`aca268b8b54edcd02d56d58d660c987ad9bcad3d`](https://github.com/wso2/identity-apps/commit/aca268b8b54edcd02d56d58d660c987ad9bcad3d), [`fc100d6e6c26ee6e530fbe894cc1856e7811a781`](https://github.com/wso2/identity-apps/commit/fc100d6e6c26ee6e530fbe894cc1856e7811a781)]:
+  - @wso2is/admin.users.v1@2.38.26
+  - @wso2is/common.users.v1@1.0.10
+  - @wso2is/admin.core.v1@2.55.26
+  - @wso2is/admin.roles.v2@2.27.373
+  - @wso2is/admin.flow-builder-core.v1@0.10.203
+  - @wso2is/admin.approval-workflows.v1@1.3.21
+  - @wso2is/admin.flows.v1@1.0.172
+  - @wso2is/admin.server-configurations.v1@2.38.42
+
 ## 2.38.25
 
 ### Patch Changes

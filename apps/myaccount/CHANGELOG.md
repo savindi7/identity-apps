@@ -1,5 +1,14 @@
 # @wso2is/myaccount
 
+## 3.0.9
+
+### Patch Changes
+
+- [#10056](https://github.com/wso2/identity-apps/pull/10056) [`aca268b8b54edcd02d56d58d660c987ad9bcad3d`](https://github.com/wso2/identity-apps/commit/aca268b8b54edcd02d56d58d660c987ad9bcad3d) Thanks [@sadilchamishka](https://github.com/sadilchamishka)! - Fix email verification issue
+
+- Updated dependencies [[`aca268b8b54edcd02d56d58d660c987ad9bcad3d`](https://github.com/wso2/identity-apps/commit/aca268b8b54edcd02d56d58d660c987ad9bcad3d)]:
+  - @wso2is/common.users.v1@1.0.10
+
 ## 3.0.8
 
 ### Patch Changes
