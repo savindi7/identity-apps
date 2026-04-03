@@ -238,6 +238,7 @@ export const applicationConfig: ApplicationConfig = {
                 apiResourceFeatureEnabled && !application?.advancedConfigurations?.fragment &&
                 (
                     (isUnifiedMcpCapabilitiesEnabled && (
+                        isMCPClientApp ||
                         application?.templateId === ApplicationManagementConstants.CUSTOM_APPLICATION_OIDC
                         || application?.templateId === MobileAppTemplate?.id
                         || application?.templateId === OIDCWebAppTemplate?.id
