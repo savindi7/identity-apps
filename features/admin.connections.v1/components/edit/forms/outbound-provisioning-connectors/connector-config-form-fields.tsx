@@ -737,7 +737,7 @@ export const ConnectorConfigFormFields: FunctionComponent<ConnectorConfigFormFie
                         readOnly={ isReadOnly }
                         required={ isRequired }
                         maxLength={ propertyMetadata.maxLength ?? 1000 }
-                        validation={ (value: string) => validateField(value, propertyMetadata) }
+                        validate={ (value: string) => validateField(value, propertyMetadata) }
                         endAdornment={ editingAdornment }
                         helperText={
                             helperTextContent ? (
@@ -775,7 +775,7 @@ export const ConnectorConfigFormFields: FunctionComponent<ConnectorConfigFormFie
                     readOnly={ isReadOnly }
                     required={ isRequired }
                     maxLength={ propertyMetadata.maxLength ?? 1000 }
-                    validation={ (value: string) => validateField(value, propertyMetadata) }
+                    validate={ (value: string) => validateField(value, propertyMetadata) }
                     helperText={
                         propertyMetadata.description ? (
                             <Hint compact>
