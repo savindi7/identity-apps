@@ -1,5 +1,17 @@
 # @wso2is/admin.home.v1
 
+## 1.7.180
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @wso2is/admin.onboarding.v1@1.0.71
+  - @wso2is/admin.subscription.v1@1.5.215
+  - @wso2is/admin.core.v1@2.55.23
+  - @wso2is/admin.applications.v1@2.42.12
+  - @wso2is/admin.flow-builder-core.v1@0.10.200
+  - @wso2is/admin.flows.v1@1.0.169
+
 ## 1.7.179
 
 ### Patch Changes

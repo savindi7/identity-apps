@@ -1,5 +1,16 @@
 # @wso2is/admin.connections.v1
 
+## 2.36.40
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.55.23
+  - @wso2is/admin.roles.v2@2.27.370
+  - @wso2is/admin.applications.v1@2.42.12
+  - @wso2is/admin.console-settings.v1@2.26.34
+  - @wso2is/admin.connections.v1@2.36.40
+
 ## 2.36.39
 
 ### Patch Changes
