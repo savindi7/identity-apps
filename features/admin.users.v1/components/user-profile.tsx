@@ -26,6 +26,7 @@ import { FeatureConfigInterface } from "@wso2is/admin.core.v1/models/config";
 import { AppState } from "@wso2is/admin.core.v1/store";
 import { SCIMConfigs, commonConfig, userConfig } from "@wso2is/admin.extensions.v1";
 import { administratorConfig } from "@wso2is/admin.extensions.v1/configs/administrator";
+import { useGetCurrentOrganizationType } from "@wso2is/admin.organizations.v1/hooks/use-get-organization-type";
 import { searchRoleList, updateRoleDetails, updateUsersForRole } from "@wso2is/admin.roles.v2/api/roles";
 import {
     PatchRoleDataInterface,
@@ -84,7 +85,8 @@ import {
     RECOVERY_SCENARIO_TO_RECOVERY_OPTION_TYPE_MAP,
     RecoveryScenario,
     UserFeatureDictionaryKeys,
-    UserManagementConstants
+    UserManagementConstants,
+    UserSharedType
 } from "../constants";
 import {
     AccountConfigSettingsInterface,
@@ -181,6 +183,11 @@ export const UserProfile: FunctionComponent<UserProfilePropsInterface> = (
 
     const { t } = useTranslation();
     const dispatch: Dispatch = useDispatch();
+    const { isSubOrganization } = useGetCurrentOrganizationType();
+
+    const isSharedUserFromParentOrg: boolean = isSubOrganization()
+        && !!user[ SCIMConfigs.scim.systemSchema ]?.sharedType
+        && user[ SCIMConfigs.scim.systemSchema ]?.sharedType !== UserSharedType.INVITED;
 
     const profileSchemas: ProfileSchemaInterface[] = useSelector((state: AppState) => state.profile.profileSchemas);
     const authenticatedUser: string = useSelector((state: AppState) => state?.auth?.providedUsername);
@@ -999,6 +1006,19 @@ export const UserProfile: FunctionComponent<UserProfilePropsInterface> = (
         const resolvedUsername: string = resolveUsernameOrDefaultEmail(user, false);
         const isUserCurrentLoggedInUser: boolean = authenticatedUser?.includes(resolvedUsername);
 
+        const isDangerZoneVisible: boolean = (
+            ( !isReadOnly && !isReadOnlyUserStore && !isUserManagedByParentOrg && user.userName !== adminUsername )
+            || ( !allowDeleteOnly && configSettings?.accountDisable === "true" )
+            || ( !allowDeleteOnly && !isUserManagedByParentOrg )
+            || (
+                userConfig?.enableAdminPrivilegeRevokeOption
+                && !isPrivilegedUser
+                && adminUserType === AdminAccountTypes.INTERNAL
+                && associationType !== UserManagementConstants.GUEST_ADMIN_ASSOCIATION_TYPE
+            )
+            || ( !isUserCurrentLoggedInUser && !isSharedUserFromParentOrg )
+        );
+
         return (
             <>
                 {
@@ -1023,7 +1043,7 @@ export const UserProfile: FunctionComponent<UserProfilePropsInterface> = (
                                     data-componentid="user-mgt-edit-user-impersonate-action"
                                 />
                                 <Divider hidden/>
-                                { !isUserManagedByParentOrg && (
+                                { isDangerZoneVisible && (
                                     <DangerZoneGroup
                                         sectionHeader={ t("user:editUser.dangerZoneGroup.header") }
                                     >
@@ -1031,6 +1051,7 @@ export const UserProfile: FunctionComponent<UserProfilePropsInterface> = (
                                             (
                                                 !isReadOnly &&
                                                 !isReadOnlyUserStore &&
+                                                !isUserManagedByParentOrg &&
                                                 user.userName !== adminUsername
                                             ) ? (
                                                     <Show when={ featureConfig?.users?.scopes?.update }>
@@ -1091,7 +1112,7 @@ export const UserProfile: FunctionComponent<UserProfilePropsInterface> = (
                                             )
                                         }
                                         {
-                                            !allowDeleteOnly && (
+                                            !allowDeleteOnly && !isUserManagedByParentOrg && (
                                                 <DangerZone
                                                     data-testid={ `${ testId }-danger-zone-toggle` }
                                                     actionTitle={ t("user:editUser." +
@@ -1136,7 +1157,7 @@ export const UserProfile: FunctionComponent<UserProfilePropsInterface> = (
                                                 />
                                             )
                                         }
-                                        { !isUserCurrentLoggedInUser && (
+                                        { !isUserCurrentLoggedInUser && !isSharedUserFromParentOrg && (
                                             <DangerZone
                                                 data-testid={ `${ testId }-danger-zone` }
                                                 actionTitle={ t("user:editUser.dangerZoneGroup." +
