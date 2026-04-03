@@ -545,9 +545,10 @@ export const AuthorizeAPIResource: FunctionComponent<AuthorizeAPIResourcePropsIn
                                                 APIResourceCategories.BUSINESS
                                             ];
 
-                                            const allowedTypes: string[] = (isUnifiedMcpCapabilitiesEnabled || isMCPClient)
-                                                ? [ ...baseTypes, APIResourceCategories.MCP ]
-                                                : baseTypes;
+                                            const allowedTypes: string[] =
+                                                (isUnifiedMcpCapabilitiesEnabled || isMCPClient)
+                                                    ? [ ...baseTypes, APIResourceCategories.MCP ]
+                                                    : baseTypes;
 
                                             return allowedTypes.includes(item?.type);
                                         }).sort((a: DropdownItemProps, b: DropdownItemProps) =>
