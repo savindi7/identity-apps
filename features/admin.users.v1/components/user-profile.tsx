@@ -1031,7 +1031,6 @@ export const UserProfile: FunctionComponent<UserProfilePropsInterface> = (
                                             (
                                                 !isReadOnly &&
                                                 !isReadOnlyUserStore &&
-                                                !isUserManagedByParentOrg &&
                                                 user.userName !== adminUsername
                                             ) ? (
                                                     <Show when={ featureConfig?.users?.scopes?.update }>
@@ -1092,7 +1091,7 @@ export const UserProfile: FunctionComponent<UserProfilePropsInterface> = (
                                             )
                                         }
                                         {
-                                            !allowDeleteOnly && !isUserManagedByParentOrg && (
+                                            !allowDeleteOnly && (
                                                 <DangerZone
                                                     data-testid={ `${ testId }-danger-zone-toggle` }
                                                     actionTitle={ t("user:editUser." +
