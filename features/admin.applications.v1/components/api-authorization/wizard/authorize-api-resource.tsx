@@ -102,11 +102,6 @@ export const AuthorizeAPIResource: FunctionComponent<AuthorizeAPIResourcePropsIn
     const isDigitalWallet: boolean = originalTemplateId === "digital-wallet-application";
     const isMCPClient: boolean = originalTemplateId === "mcp-client-application";
 
-    // Use "resource" for all apps that can access MCP Servers, "verifiable credential" for Digital Wallet
-    const resourceText: string = isDigitalWallet
-        ? t("extensions:develop.applications.edit.sections.apiAuthorization.resourceText.vcResource")
-        : t("extensions:develop.applications.edit.sections.apiAuthorization.resourceText.genericResource");
-
     const applicationFeatureConfig: FeatureAccessConfigInterface = useSelector(
         (state: AppState) => state.config.ui?.features?.applications);
 
@@ -114,6 +109,12 @@ export const AuthorizeAPIResource: FunctionComponent<AuthorizeAPIResourcePropsIn
         applicationFeatureConfig,
         ApplicationManagementConstants.FEATURE_DICTIONARY.get("APPLICATION_UNIFIED_MCP_CAPABILITIES")
     );
+
+    const resourceText: string = isDigitalWallet
+        ? t("extensions:develop.applications.edit.sections.apiAuthorization.resourceText.vcResource")
+        : (isUnifiedMcpCapabilitiesEnabled || isMCPClient)
+            ? t("extensions:develop.applications.edit.sections.apiAuthorization.resourceText.genericResource")
+            : t("extensions:develop.applications.edit.sections.apiAuthorization.resourceText.apiResource");
 
     const isApplicationEditEnforceAuthorizedAPIUpdatePermissionEnabled: boolean = isFeatureEnabled(
         applicationFeatureConfig,
