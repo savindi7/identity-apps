@@ -1,5 +1,38 @@
 # @wso2is/console
 
+## 3.3.16
+
+### Patch Changes
+
+- [#10038](https://github.com/wso2/identity-apps/pull/10038) [`c406e3b163ff2dfd39f00615763329ede5fa163e`](https://github.com/wso2/identity-apps/commit/c406e3b163ff2dfd39f00615763329ede5fa163e) Thanks [@BimsaraBodaragama](https://github.com/BimsaraBodaragama)! - fix incorrect UI input validation for orgHandle in sub-organization creation form
+
+* [#10042](https://github.com/wso2/identity-apps/pull/10042) [`ca8f31336295d453329f8b64ec6ce8307f34dc0d`](https://github.com/wso2/identity-apps/commit/ca8f31336295d453329f8b64ec6ce8307f34dc0d) Thanks [@Malith-19](https://github.com/Malith-19)! - Display the validation message in the outbound connection wizard.
+
+* Updated dependencies [[`c406e3b163ff2dfd39f00615763329ede5fa163e`](https://github.com/wso2/identity-apps/commit/c406e3b163ff2dfd39f00615763329ede5fa163e), [`ca8f31336295d453329f8b64ec6ce8307f34dc0d`](https://github.com/wso2/identity-apps/commit/ca8f31336295d453329f8b64ec6ce8307f34dc0d)]:
+  - @wso2is/admin.organizations.v1@2.28.3
+  - @wso2is/i18n@2.38.4
+  - @wso2is/admin.connections.v1@2.36.41
+  - @wso2is/admin.actions.v1@1.15.5
+  - @wso2is/admin.onboarding.v1@1.0.72
+  - @wso2is/admin.org-insights.v1@2.26.3
+  - @wso2is/admin.session-management.v1@2.26.5
+  - @wso2is/admin.console-settings.v1@2.26.35
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.201
+  - @wso2is/admin.branding.v1@2.32.157
+  - @wso2is/admin.core.v1@2.55.24
+  - @wso2is/admin.email-management.v1@2.25.365
+  - @wso2is/admin.flows.v1@1.0.170
+  - @wso2is/admin.home.v1@1.7.181
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.201
+  - @wso2is/admin.server-configurations.v1@2.38.40
+  - @wso2is/admin.users.v1@2.38.24
+  - @wso2is/admin.applications.v1@2.42.13
+  - @wso2is/admin.registration-flow-builder.v1@0.10.161
+  - @wso2is/admin.agents.v1@1.1.13
+  - @wso2is/admin.subscription.v1@1.5.213
+  - @wso2is/admin.approval-workflows.v1@1.3.19
+  - @wso2is/admin.roles.v2@2.27.371
+
 ## 3.3.15
 
 ### Patch Changes

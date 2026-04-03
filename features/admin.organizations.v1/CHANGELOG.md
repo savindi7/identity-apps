@@ -1,5 +1,20 @@
 # @wso2is/admin.organizations.v1
 
+## 2.28.3
+
+### Patch Changes
+
+- [#10038](https://github.com/wso2/identity-apps/pull/10038) [`c406e3b163ff2dfd39f00615763329ede5fa163e`](https://github.com/wso2/identity-apps/commit/c406e3b163ff2dfd39f00615763329ede5fa163e) Thanks [@BimsaraBodaragama](https://github.com/BimsaraBodaragama)! - fix incorrect UI input validation for orgHandle in sub-organization creation form
+
+- Updated dependencies [[`c406e3b163ff2dfd39f00615763329ede5fa163e`](https://github.com/wso2/identity-apps/commit/c406e3b163ff2dfd39f00615763329ede5fa163e), [`ca8f31336295d453329f8b64ec6ce8307f34dc0d`](https://github.com/wso2/identity-apps/commit/ca8f31336295d453329f8b64ec6ce8307f34dc0d)]:
+  - @wso2is/i18n@2.38.4
+  - @wso2is/admin.connections.v1@2.36.41
+  - @wso2is/admin.console-settings.v1@2.26.35
+  - @wso2is/admin.core.v1@2.55.24
+  - @wso2is/admin.users.v1@2.38.24
+  - @wso2is/admin.applications.v1@2.42.13
+  - @wso2is/admin.roles.v2@2.27.371
+
 ## 2.28.2
 
 ### Patch Changes

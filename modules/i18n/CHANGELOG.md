@@ -1,5 +1,11 @@
 # @wso2is/i18n
 
+## 2.38.4
+
+### Patch Changes
+
+- [#10038](https://github.com/wso2/identity-apps/pull/10038) [`c406e3b163ff2dfd39f00615763329ede5fa163e`](https://github.com/wso2/identity-apps/commit/c406e3b163ff2dfd39f00615763329ede5fa163e) Thanks [@BimsaraBodaragama](https://github.com/BimsaraBodaragama)! - fix incorrect UI input validation for orgHandle in sub-organization creation form
+
 ## 2.38.3
 
 ### Patch Changes
