@@ -1136,27 +1136,29 @@ export const UserProfile: FunctionComponent<UserProfilePropsInterface> = (
                                         />
                                     )
                                     }
-                                    <DangerZone
-                                        data-testid={ `${ testId }-danger-zone` }
-                                        actionTitle={ t("user:editUser.dangerZoneGroup." +
-                                        "deleteUserZone.actionTitle") }
-                                        header={ t("user:editUser.dangerZoneGroup." +
-                                        "deleteUserZone.header") }
-                                        subheader={ commonConfig.userEditSection.isGuestUser
-                                            ? t("extensions:manage.guest.editUser.dangerZoneGroup.deleteUserZone." +
-                                                "subheader")
-                                            : t("user:editUser.dangerZoneGroup." +
-                                                "deleteUserZone.subheader")
-                                        }
-                                        onActionClick={ (): void => {
-                                            setShowDeleteConfirmationModal(true);
-                                            setDeletingUser(user);
-                                        } }
-                                        isButtonDisabled={
-                                            adminUserType === AdminAccountTypes.INTERNAL && isReadOnlyUserStore }
-                                        buttonDisableHint={ t("user:editUser.dangerZoneGroup." +
-                                        "deleteUserZone.buttonDisableHint") }
-                                    />
+                                    { !isUserCurrentLoggedInUser && (
+                                        <DangerZone
+                                            data-testid={ `${ testId }-danger-zone` }
+                                            actionTitle={ t("user:editUser.dangerZoneGroup." +
+                                            "deleteUserZone.actionTitle") }
+                                            header={ t("user:editUser.dangerZoneGroup." +
+                                            "deleteUserZone.header") }
+                                            subheader={ commonConfig.userEditSection.isGuestUser
+                                                ? t("extensions:manage.guest.editUser.dangerZoneGroup.deleteUserZone." +
+                                                    "subheader")
+                                                : t("user:editUser.dangerZoneGroup." +
+                                                    "deleteUserZone.subheader")
+                                            }
+                                            onActionClick={ (): void => {
+                                                setShowDeleteConfirmationModal(true);
+                                                setDeletingUser(user);
+                                            } }
+                                            isButtonDisabled={
+                                                adminUserType === AdminAccountTypes.INTERNAL && isReadOnlyUserStore }
+                                            buttonDisableHint={ t("user:editUser.dangerZoneGroup." +
+                                            "deleteUserZone.buttonDisableHint") }
+                                        />
+                                    ) }
                                 </DangerZoneGroup>
                             </Show>
                         ) : null }
