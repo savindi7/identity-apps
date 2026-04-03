@@ -1,5 +1,21 @@
 # @wso2is/admin.connections.v1
 
+## 2.36.41
+
+### Patch Changes
+
+- [#10042](https://github.com/wso2/identity-apps/pull/10042) [`ca8f31336295d453329f8b64ec6ce8307f34dc0d`](https://github.com/wso2/identity-apps/commit/ca8f31336295d453329f8b64ec6ce8307f34dc0d) Thanks [@Malith-19](https://github.com/Malith-19)! - Display the validation message in the outbound connection wizard.
+
+- Updated dependencies [[`c406e3b163ff2dfd39f00615763329ede5fa163e`](https://github.com/wso2/identity-apps/commit/c406e3b163ff2dfd39f00615763329ede5fa163e), [`ca8f31336295d453329f8b64ec6ce8307f34dc0d`](https://github.com/wso2/identity-apps/commit/ca8f31336295d453329f8b64ec6ce8307f34dc0d)]:
+  - @wso2is/admin.organizations.v1@2.28.3
+  - @wso2is/i18n@2.38.4
+  - @wso2is/admin.connections.v1@2.36.41
+  - @wso2is/admin.actions.v1@1.15.5
+  - @wso2is/admin.console-settings.v1@2.26.35
+  - @wso2is/admin.core.v1@2.55.24
+  - @wso2is/admin.applications.v1@2.42.13
+  - @wso2is/admin.roles.v2@2.27.371
+
 ## 2.36.40
 
 ### Patch Changes
