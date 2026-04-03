@@ -1,5 +1,18 @@
 # @wso2is/admin.connections.v1
 
+## 2.36.42
+
+### Patch Changes
+
+- [#10027](https://github.com/wso2/identity-apps/pull/10027) [`3096f2a7d8dac8fbee97944d175c2ac6e7dc9bb8`](https://github.com/wso2/identity-apps/commit/3096f2a7d8dac8fbee97944d175c2ac6e7dc9bb8) Thanks [@sadilchamishka](https://github.com/sadilchamishka)! - User management team UI fixes
+
+- Updated dependencies [[`3096f2a7d8dac8fbee97944d175c2ac6e7dc9bb8`](https://github.com/wso2/identity-apps/commit/3096f2a7d8dac8fbee97944d175c2ac6e7dc9bb8)]:
+  - @wso2is/admin.connections.v1@2.36.42
+  - @wso2is/admin.console-settings.v1@2.26.36
+  - @wso2is/admin.applications.v1@2.42.14
+  - @wso2is/admin.core.v1@2.55.25
+  - @wso2is/admin.roles.v2@2.27.372
+
 ## 2.36.41
 
 ### Patch Changes

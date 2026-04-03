@@ -1,5 +1,14 @@
 # @wso2is/myaccount
 
+## 3.0.8
+
+### Patch Changes
+
+- [#10027](https://github.com/wso2/identity-apps/pull/10027) [`3096f2a7d8dac8fbee97944d175c2ac6e7dc9bb8`](https://github.com/wso2/identity-apps/commit/3096f2a7d8dac8fbee97944d175c2ac6e7dc9bb8) Thanks [@sadilchamishka](https://github.com/sadilchamishka)! - User management team UI fixes
+
+- Updated dependencies [[`3096f2a7d8dac8fbee97944d175c2ac6e7dc9bb8`](https://github.com/wso2/identity-apps/commit/3096f2a7d8dac8fbee97944d175c2ac6e7dc9bb8)]:
+  - @wso2is/common.users.v1@1.0.9
+
 ## 3.0.7
 
 ### Patch Changes
