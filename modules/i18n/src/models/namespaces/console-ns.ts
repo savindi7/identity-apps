@@ -331,6 +331,11 @@ export interface ConsoleNS {
                 description: string;
             };
         };
+        featureLockedBanner: {
+            prefix: string;
+            action: string;
+            suffix: string;
+        };
         upgrade: string;
     };
     develop: {

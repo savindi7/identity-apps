@@ -91,6 +91,11 @@ export interface FeatureGateInterface {
         saasFeatures: {
             status: FeatureStatus
         },
-        status: FeatureStatus
+        status: FeatureStatus,
+        userStores: {
+            remoteUserStores: {
+                status: FeatureStatus
+            }
+        }
     }
 }
