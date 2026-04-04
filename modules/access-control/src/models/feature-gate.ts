@@ -91,6 +91,9 @@ export interface FeatureGateInterface {
         saasFeatures: {
             status: FeatureStatus
         },
+        smsTemplates: {
+            status: FeatureStatus
+        },
         status: FeatureStatus,
         userStores: {
             remoteUserStores: {
