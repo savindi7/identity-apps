@@ -1,5 +1,11 @@
 # @wso2is/common.users.v1
 
+## 1.1.2
+
+### Patch Changes
+
+- [#10057](https://github.com/wso2/identity-apps/pull/10057) [`3f656293f585acc7d34a3288477e5ef4c43dcbf4`](https://github.com/wso2/identity-apps/commit/3f656293f585acc7d34a3288477e5ef4c43dcbf4) Thanks [@github-actions](https://github.com/apps/github-actions)! - Fix email verification issue
+
 ## 1.1.1
 
 ### Patch Changes
