@@ -1,5 +1,19 @@
 # @wso2is/admin.extensions.v1
 
+## 2.41.1
+
+### Patch Changes
+
+- [#10059](https://github.com/wso2/identity-apps/pull/10059) [`256d9c3d856df16c8b5ce1836726953ca22b08b8`](https://github.com/wso2/identity-apps/commit/256d9c3d856df16c8b5ce1836726953ca22b08b8) Thanks [@ranuka-laksika](https://github.com/ranuka-laksika)! - Add unified MCP capability feature for All existing Applications except Digital Wallet Application
+
+- Updated dependencies [[`256d9c3d856df16c8b5ce1836726953ca22b08b8`](https://github.com/wso2/identity-apps/commit/256d9c3d856df16c8b5ce1836726953ca22b08b8)]:
+  - @wso2is/admin.applications.v1@2.42.16
+  - @wso2is/admin.core.v1@2.55.27
+  - @wso2is/admin.roles.v2@2.27.374
+  - @wso2is/admin.users.v1@2.38.27
+  - @wso2is/admin.connections.v1@2.36.44
+  - @wso2is/admin.server-configurations.v1@2.38.43
+
 ## 2.41.0
 
 ### Minor Changes
