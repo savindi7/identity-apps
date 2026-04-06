@@ -126,7 +126,7 @@ export const JITProvisioningSettings: FunctionComponent<JITProvisioningSettingsI
 
         if (homeRealmIdentifierChanged) {
             const homeRealmUpdate: Promise<void> = updateIdentityProviderDetails(
-                { id: idpId!, homeRealmIdentifier: submittedHomeRealmIdentifier.trim() }
+                { homeRealmIdentifier: submittedHomeRealmIdentifier.trim(), id: idpId! }
             )
                 .then(() => {
                     dispatch(addAlert({
