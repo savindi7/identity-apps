@@ -49,9 +49,8 @@ const FeatureLockedBanner: FunctionComponent<FeatureLockedBannerPropsInterface> 
     const { t } = useTranslation();
 
     const tenantDomain: string = useSelector((state: AppState) => state?.auth?.tenantDomain);
-    const associatedTenants: any[] = useSelector((state: AppState) => state?.auth?.tenants);
-
-    const [ upgradeButtonURL, setUpgradeButtonURL ] = useState<string>(undefined);
+    const associatedTenants: unknown[] = useSelector((state: AppState) => state?.auth?.tenants);
+    const [ upgradeButtonURL, setUpgradeButtonURL ] = useState<string>("");
 
     useEffect(() => {
         CommonUtils.buildBillingURLs(tenantDomain, associatedTenants).then(

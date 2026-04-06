@@ -24,14 +24,19 @@ import StepContent from "@oxygen-ui/react/StepContent";
 import StepLabel from "@oxygen-ui/react/StepLabel";
 import Stepper from "@oxygen-ui/react/Stepper";
 import Typography from "@oxygen-ui/react/Typography";
-import { FeatureAccessConfigInterface, FeatureStatus, useCheckFeatureStatus, useRequiredScopes } from "@wso2is/access-control";
+import {
+    FeatureAccessConfigInterface,
+    FeatureStatus,
+    useCheckFeatureStatus,
+    useRequiredScopes
+} from "@wso2is/access-control";
 import { ClaimManagementConstants } from "@wso2is/admin.claims.v1/constants";
 import { AppConstants } from "@wso2is/admin.core.v1/constants/app-constants";
 import { history } from "@wso2is/admin.core.v1/helpers/history";
 import { AppState } from "@wso2is/admin.core.v1/store";
+import { userstoresConfig } from "@wso2is/admin.extensions.v1/configs/userstores";
 import FeatureFlagConstants from "@wso2is/admin.feature-gate.v1/constants/feature-flag-constants";
 
-import { userstoresConfig } from "@wso2is/admin.extensions.v1/configs/userstores";
 import useGetUserStoreTypes from "@wso2is/admin.userstores.v1/api/use-get-user-store-types";
 import { addUserStore } from "@wso2is/admin.userstores.v1/api/user-stores";
 import {
@@ -45,8 +50,8 @@ import {
     UserStoreType
 } from "@wso2is/admin.userstores.v1/models/user-stores";
 import { isFeatureEnabled } from "@wso2is/core/helpers";
-import { AlertLevels, IdentifiableComponentInterface,
-    HttpErrorResponseDataInterface
+import { AlertLevels, HttpErrorResponseDataInterface,
+    IdentifiableComponentInterface
 } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { DocumentationLink, EmphasizedSegment, Message, PageLayout, useDocumentation } from "@wso2is/react-components";

@@ -185,30 +185,30 @@ const RemoteUserStoresPage: FunctionComponent<RemoteUserStoresPagePropsInterface
                         sx={ { marginTop: "-20px" } }
                     />
                 ) : (
-                <ListLayout
-                    currentListSize={ listItemLimit }
-                    listItemLimit={ listItemLimit }
-                    onPageChange={ handlePaginationChange }
-                    leftActionPanel={ null }
-                    showPagination={ false }
-                    showTopActionPanel={ false }
-                    totalPages={ 1 }
-                    totalListSize={ filteredUserStores?.length }
-                    isLoading={ isUserStoreListFetchRequestLoading || filteredUserStores === undefined }
-                    data-testid={ `${ testId }-list-layout` }
-                >
-                    <UserStoresList
-                        list={ paginate(filteredUserStores, listItemLimit, offset) }
-                        onEmptyListPlaceholderActionClick={ () =>
-                            history.push(RemoteUserStoreConstants.getPaths().get("REMOTE_USER_STORE_CREATE"))
-                        }
-                        onSearchQueryClear={ handleSearchQueryClear }
-                        searchQuery={ searchQuery }
-                        update={ () => mutateUserStoreListFetchRequest() }
-                        featureConfig={ featureConfig }
-                        data-testid={ `${ testId }-list` }
-                    />
-                </ListLayout>
+                    <ListLayout
+                        currentListSize={ listItemLimit }
+                        listItemLimit={ listItemLimit }
+                        onPageChange={ handlePaginationChange }
+                        leftActionPanel={ null }
+                        showPagination={ false }
+                        showTopActionPanel={ false }
+                        totalPages={ 1 }
+                        totalListSize={ filteredUserStores?.length }
+                        isLoading={ isUserStoreListFetchRequestLoading || filteredUserStores === undefined }
+                        data-testid={ `${ testId }-list-layout` }
+                    >
+                        <UserStoresList
+                            list={ paginate(filteredUserStores, listItemLimit, offset) }
+                            onEmptyListPlaceholderActionClick={ () =>
+                                history.push(RemoteUserStoreConstants.getPaths().get("REMOTE_USER_STORE_CREATE"))
+                            }
+                            onSearchQueryClear={ handleSearchQueryClear }
+                            searchQuery={ searchQuery }
+                            update={ () => mutateUserStoreListFetchRequest() }
+                            featureConfig={ featureConfig }
+                            data-testid={ `${ testId }-list` }
+                        />
+                    </ListLayout>
                 ) }
         </PageLayout>
     );
