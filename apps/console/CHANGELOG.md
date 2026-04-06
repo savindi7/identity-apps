@@ -1,5 +1,31 @@
 # @wso2is/console
 
+## 3.3.20
+
+### Patch Changes
+
+- [#10028](https://github.com/wso2/identity-apps/pull/10028) [`cb9c729820e870cec921d7b4e852bdda35868514`](https://github.com/wso2/identity-apps/commit/cb9c729820e870cec921d7b4e852bdda35868514) Thanks [@AmshikaH](https://github.com/AmshikaH)! - Update well-known endpoint resolution in app info
+
+- Updated dependencies [[`cb9c729820e870cec921d7b4e852bdda35868514`](https://github.com/wso2/identity-apps/commit/cb9c729820e870cec921d7b4e852bdda35868514)]:
+  - @wso2is/admin.applications.v1@2.42.17
+  - @wso2is/admin.agents.v1@1.1.17
+  - @wso2is/admin.approval-workflows.v1@1.3.23
+  - @wso2is/admin.branding.v1@2.32.161
+  - @wso2is/admin.onboarding.v1@1.0.76
+  - @wso2is/admin.core.v1@2.55.28
+  - @wso2is/admin.roles.v2@2.27.375
+  - @wso2is/admin.users.v1@2.38.28
+  - @wso2is/admin.home.v1@1.7.185
+  - @wso2is/admin.connections.v1@2.36.45
+  - @wso2is/admin.subscription.v1@1.5.217
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.205
+  - @wso2is/admin.email-management.v1@2.25.369
+  - @wso2is/admin.flows.v1@1.0.174
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.205
+  - @wso2is/admin.server-configurations.v1@2.38.44
+  - @wso2is/admin.console-settings.v1@2.26.39
+  - @wso2is/admin.registration-flow-builder.v1@0.10.165
+
 ## 3.3.19
 
 ### Patch Changes
