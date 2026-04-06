@@ -132,6 +132,9 @@ const UserProfileForm: FunctionComponent<UserProfileFormPropsInterface> = ({
     const usersFeatureConfig: FeatureAccessConfigInterface = useSelector(
         (state: AppState) => state?.config?.ui?.features?.users
     );
+    const enableSCIMLegacyEnterpriseUser: boolean = useSelector(
+        (state: AppState) => state?.config?.ui?.enableSCIMLegacyEnterpriseUser
+    );
 
     const [ isUpdating, setIsUpdating ] = useState<boolean>(false);
 
@@ -571,8 +574,18 @@ const UserProfileForm: FunctionComponent<UserProfileFormPropsInterface> = ({
                          * }
                          * ```
                          */
-                        _flattenedInitialValues[encodedSchemaId][schema.name] = preparedInitialValues[
-                            schema.schemaId]?.[schemaNameParts[0]];
+                        const valueFromUrn: unknown = preparedInitialValues[schema.schemaId]?.[schemaNameParts[0]];
+                        const valueFromEnterpriseUser: unknown =
+                                enableSCIMLegacyEnterpriseUser &&
+                                schema.schemaId === "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+                                    ? preparedInitialValues[ProfileConstants.SCIM2_LEGACY_ENT_USER_SCHEMA]
+                                        ?.[schema.name] : undefined;
+
+                        const resolvedValue: unknown = valueFromUrn ?? valueFromEnterpriseUser;
+
+                        if (resolvedValue !== undefined) {
+                            _flattenedInitialValues[encodedSchemaId][schema.name] = resolvedValue;
+                        }
                     }
                 }
             }

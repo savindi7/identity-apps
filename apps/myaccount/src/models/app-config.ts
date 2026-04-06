@@ -162,6 +162,10 @@ export interface UIConfigInterface extends CommonUIConfigInterface {
      */
     enableMFAUserWise?: boolean;
     /**
+     * Flag to check whether SCIM legacy enterprise user behavior is enabled.
+     */
+    enableSCIMLegacyEnterpriseUser?: boolean;
+    /**
      * Config for disable MFA for federated users.
      */
     disableMFAForFederatedUsers?: boolean;

@@ -32,6 +32,7 @@ export class ProfileConstants {
     public static readonly SCIM2_CORE_SCHEMA: string = "urn:ietf:params:scim:schemas:core:2.0";
     public static readonly SCIM2_CORE_USER_SCHEMA: string = "urn:ietf:params:scim:schemas:core:2.0:User";
     public static readonly SCIM2_ENT_USER_SCHEMA: string = "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User";
+    public static readonly SCIM2_LEGACY_ENT_USER_SCHEMA: string = "EnterpriseUser";
     /**
      * @deprecated This variable is deprecated. Use `SCIM2_SYSTEM_USER_SCHEMA` instead.
      */

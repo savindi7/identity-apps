@@ -345,6 +345,7 @@
         "enableLegacyLocaleDropdown": false,
         "enableLegacySessionBoundTokenBehaviour": false,
         "enableOldUIForEmailProvider": false,
+        "enableSCIMLegacyEnterpriseUser": false,
         "features": {
             "accountLogin": {
                 "disabledFeatures": [],

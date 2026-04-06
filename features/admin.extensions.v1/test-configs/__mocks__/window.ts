@@ -114,6 +114,7 @@ interface CustomExtendedWindow extends Window {
                 appName: "Console | WSO2 Identity Server",
                 applicationTemplateLoadingStrategy: "LOCAL",
                 appLogoPath: "/assets/images/branding/logo.svg",
+                enableSCIMLegacyEnterpriseUser: false,
                 showAppSwitchButton: true,
                 features: {
                     accountSecurity: {

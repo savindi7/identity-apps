@@ -164,6 +164,8 @@ export class Config {
             disableMFAForFederatedUsers: window["AppUtils"]?.getConfig()?.ui?.disableMFAForFederatedUsers,
             disableMFAforSuperTenantUser: window["AppUtils"]?.getConfig()?.ui?.disableMFAforSuperTenantUser,
             enableMFAUserWise: window["AppUtils"]?.getConfig()?.ui?.enableMFAUserWise,
+            enableSCIMLegacyEnterpriseUser:
+                window[ "AppUtils" ]?.getConfig()?.ui?.enableSCIMLegacyEnterpriseUser ?? false,
             features: window["AppUtils"]?.getConfig()?.ui?.features,
             forceBackupCode: window["AppUtils"]?.getConfig()?.ui?.forceBackupCode,
             i18nConfigs: window["AppUtils"]?.getConfig()?.ui?.i18nConfigs,

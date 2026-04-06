@@ -55,7 +55,7 @@ import {
     UIConfigInterface,
     ValidationFormInterface
 } from "../../models";
-import { AppState } from "../../store";
+import { AppState, store } from "../../store";
 import { setActiveForm } from "../../store/actions";
 import { getProfileInformation } from "../../store/actions/authenticate";
 import { SettingsSection } from "../shared";
@@ -138,6 +138,10 @@ export const Profile: FunctionComponent<ProfileProps> = (props: ProfileProps): R
     const [ isEmailVerificationEnabled, setIsEmailVerificationEnabled ] = useState<boolean>(false);
     const [ isValidationConfigsLoading, setIsValidationConfigsLoading ] = useState<boolean>(true);
     const [ usernameConfig, setUsernameConfig ] = useState<ValidationFormInterface>();
+
+    // Access the enableSCIMLegacyEnterpriseUser flag from the Redux store
+    const enableSCIMLegacyEnterpriseUser: boolean = store.getState()?.
+        config?.ui?.enableSCIMLegacyEnterpriseUser || false;
 
     const isLoading: boolean =
         isProfileInfoLoading || isProfileSchemaLoading || isPreferencesLoading || isValidationConfigsLoading;
@@ -379,7 +383,8 @@ export const Profile: FunctionComponent<ProfileProps> = (props: ProfileProps): R
             flattenedProfileSchema,
             isMultipleEmailsAndMobileNumbersEnabled,
             isEmailVerificationEnabled,
-            isMobileVerificationEnabled
+            isMobileVerificationEnabled,
+            enableSCIMLegacyEnterpriseUser
         );
     }, [
         profileDetails.profileInfo,

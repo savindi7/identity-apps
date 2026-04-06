@@ -62,6 +62,7 @@
         "enableCustomSmsTemplates": true,
         "enableEmailDomain": false,
         "enableIdentityClaims": true,
+        "enableSCIMLegacyEnterpriseUser": false,
         "features": {
             "accountLogin": {
                 "disabledFeatures": [],

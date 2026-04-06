@@ -217,7 +217,8 @@ export const getFlattenedInitialValues = (
     flattenedProfileSchema: ProfileSchemaInterface[],
     isMultipleEmailAndMobileNumberEnabled: boolean,
     isEmailVerificationEnabled: boolean,
-    isMobileVerificationEnabled: boolean
+    isMobileVerificationEnabled: boolean,
+    enableSCIMLegacyEnterpriseUser: boolean = false
 ): Record<string, unknown> => {
     const preparedInitialValues: Record<string, unknown> = prepareInitialValues(
         profileData, isMultipleEmailAndMobileNumberEnabled, isEmailVerificationEnabled, isMobileVerificationEnabled);
@@ -476,8 +477,18 @@ export const getFlattenedInitialValues = (
                      * }
                      * ```
                      */
-                    _flattenedInitialValues[encodedSchemaId][schema.name] = preparedInitialValues[
-                        schema.schemaId]?.[schemaNameParts[0]];
+                    const valueFromUrn: unknown = preparedInitialValues[schema.schemaId]?.[schemaNameParts[0]];
+                    const valueFromEnterpriseUser: unknown =
+                            enableSCIMLegacyEnterpriseUser &&
+                            schema.schemaId === "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+                                ? preparedInitialValues[ProfileConstants.SCIM2_LEGACY_ENT_USER_SCHEMA]?.[schema.name]
+                                : undefined;
+
+                    const resolvedValue: unknown = valueFromUrn ?? valueFromEnterpriseUser;
+
+                    if (resolvedValue !== undefined) {
+                        _flattenedInitialValues[encodedSchemaId][schema.name] = resolvedValue;
+                    }
                 }
             }
         }

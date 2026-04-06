@@ -452,6 +452,8 @@ export class Config {
             enableLegacySessionBoundTokenBehaviour:
                 window[ "AppUtils" ]?.getConfig()?.ui?.enableLegacySessionBoundTokenBehaviour ?? true,
             enableOldUIForEmailProvider: window[ "AppUtils" ]?.getConfig()?.ui?.enableOldUIForEmailProvider,
+            enableSCIMLegacyEnterpriseUser:
+                window[ "AppUtils" ]?.getConfig()?.ui?.enableSCIMLegacyEnterpriseUser ?? false,
             enabledFeatureOverridesInConsoleRolePermissions:
                 window[ "AppUtils" ]?.getConfig()?.ui?.enabledFeatureOverridesInConsoleRolePermissions,
             features: window[ "AppUtils" ]?.getConfig()?.ui?.features,
