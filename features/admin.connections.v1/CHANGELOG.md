@@ -1,5 +1,18 @@
 # @wso2is/admin.connections.v1
 
+## 2.36.46
+
+### Patch Changes
+
+- [#10066](https://github.com/wso2/identity-apps/pull/10066) [`d2cf5fb7c7f98631caf66c2365408f1d48d031df`](https://github.com/wso2/identity-apps/commit/d2cf5fb7c7f98631caf66c2365408f1d48d031df) Thanks [@ranuka-laksika](https://github.com/ranuka-laksika)! - Exclude Agent userstore from JIT provisioning user store domain dropdown
+
+- Updated dependencies [[`d2cf5fb7c7f98631caf66c2365408f1d48d031df`](https://github.com/wso2/identity-apps/commit/d2cf5fb7c7f98631caf66c2365408f1d48d031df)]:
+  - @wso2is/admin.connections.v1@2.36.46
+  - @wso2is/admin.console-settings.v1@2.26.40
+  - @wso2is/admin.applications.v1@2.42.18
+  - @wso2is/admin.core.v1@2.55.29
+  - @wso2is/admin.roles.v2@2.27.376
+
 ## 2.36.45
 
 ### Patch Changes

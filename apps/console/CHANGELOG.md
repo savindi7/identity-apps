@@ -1,5 +1,31 @@
 # @wso2is/console
 
+## 3.3.21
+
+### Patch Changes
+
+- [#10066](https://github.com/wso2/identity-apps/pull/10066) [`d2cf5fb7c7f98631caf66c2365408f1d48d031df`](https://github.com/wso2/identity-apps/commit/d2cf5fb7c7f98631caf66c2365408f1d48d031df) Thanks [@ranuka-laksika](https://github.com/ranuka-laksika)! - Exclude Agent userstore from JIT provisioning user store domain dropdown
+
+- Updated dependencies [[`d2cf5fb7c7f98631caf66c2365408f1d48d031df`](https://github.com/wso2/identity-apps/commit/d2cf5fb7c7f98631caf66c2365408f1d48d031df)]:
+  - @wso2is/admin.connections.v1@2.36.46
+  - @wso2is/admin.console-settings.v1@2.26.40
+  - @wso2is/admin.onboarding.v1@1.0.77
+  - @wso2is/admin.applications.v1@2.42.18
+  - @wso2is/admin.home.v1@1.7.186
+  - @wso2is/admin.agents.v1@1.1.18
+  - @wso2is/admin.approval-workflows.v1@1.3.24
+  - @wso2is/admin.branding.v1@2.32.162
+  - @wso2is/admin.core.v1@2.55.29
+  - @wso2is/admin.roles.v2@2.27.376
+  - @wso2is/admin.users.v1@2.38.29
+  - @wso2is/admin.subscription.v1@1.5.218
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.206
+  - @wso2is/admin.email-management.v1@2.25.370
+  - @wso2is/admin.flows.v1@1.0.175
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.206
+  - @wso2is/admin.server-configurations.v1@2.38.45
+  - @wso2is/admin.registration-flow-builder.v1@0.10.166
+
 ## 3.3.20
 
 ### Patch Changes
