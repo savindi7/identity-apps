@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025, WSO2 LLC. (https://www.wso2.com).
+ * Copyright (c) 2026, WSO2 LLC. (https://www.wso2.com).
  *
  * WSO2 LLC. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -21,8 +21,6 @@ import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
-
-type AppDispatch = ThunkDispatch<AppState, unknown, AnyAction>;
 import {
     addCopilotMessage,
     clearCopilotChatWithApi,
@@ -36,9 +34,11 @@ import {
 } from "../store/actions/copilot";
 import {
     CopilotContentType,
-    CopilotMessage,
-    CopilotPanelState
+    CopilotMessageInterface,
+    CopilotPanelStateInterface
 } from "../store/types/copilot-action-types";
+
+type AppDispatch = ThunkDispatch<AppState, unknown, AnyAction>;
 
 /**
  * Interface for the copilot panel hook return value.
@@ -55,7 +55,7 @@ export interface UseCopilotPanelInterface {
     /**
      * The chat messages.
      */
-    messages: CopilotMessage[];
+    messages: CopilotMessageInterface[];
     /**
      * The current content type.
      */
@@ -87,7 +87,7 @@ export interface UseCopilotPanelInterface {
     /**
      * Function to add a message to the chat.
      */
-    addMessage: (message: CopilotMessage) => void;
+    addMessage: (message: CopilotMessageInterface) => void;
     /**
      * Function to clear the chat history.
      */
@@ -106,8 +106,9 @@ export interface UseCopilotPanelInterface {
     loadHistory: () => void;
     /**
      * Function to load the next (older) page of history and prepend it.
+     * Resolves to true if messages were actually prepended, false otherwise.
      */
-    loadMoreHistory: () => void;
+    loadMoreHistory: () => Promise<boolean>;
     /**
      * The current status message (agent step progress), or null.
      */
@@ -122,7 +123,7 @@ export interface UseCopilotPanelInterface {
  */
 const useCopilotPanel = (): UseCopilotPanelInterface => {
     const dispatch: AppDispatch = useDispatch<AppDispatch>();
-    const copilotState: CopilotPanelState = useSelector((state: AppState) => state.copilot);
+    const copilotState: CopilotPanelStateInterface = useSelector((state: AppState) => state.copilot);
 
     const showPanel: () => void = useCallback(() => {
         dispatch(setCopilotPanelVisibility(true));
@@ -144,7 +145,7 @@ const useCopilotPanel = (): UseCopilotPanelInterface => {
         dispatch(sendCopilotMessage(message));
     }, [ dispatch ]);
 
-    const addMessage: (message: CopilotMessage) => void = useCallback((message: CopilotMessage) => {
+    const addMessage: (message: CopilotMessageInterface) => void = useCallback((message: CopilotMessageInterface) => {
         dispatch(addCopilotMessage(message));
     }, [ dispatch ]);
 
@@ -168,8 +169,8 @@ const useCopilotPanel = (): UseCopilotPanelInterface => {
         dispatch(fetchCopilotHistory());
     }, [ dispatch ]);
 
-    const loadMoreHistory: () => void = useCallback(() => {
-        dispatch(loadMoreCopilotHistory());
+    const loadMoreHistory: () => Promise<boolean> = useCallback((): Promise<boolean> => {
+        return dispatch(loadMoreCopilotHistory());
     }, [ dispatch ]);
 
     return {

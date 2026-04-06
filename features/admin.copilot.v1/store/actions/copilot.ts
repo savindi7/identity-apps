@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025, WSO2 LLC. (https://www.wso2.com).
+ * Copyright (c) 2026, WSO2 LLC. (https://www.wso2.com).
  *
  * WSO2 LLC. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -38,8 +38,8 @@ import {
     ClearCopilotChatActionInterface,
     CopilotActionTypes,
     CopilotContentType,
-    CopilotMessage,
-    HistoryPaginationPayload,
+    CopilotMessageInterface,
+    HistoryPaginationPayloadInterface,
     PrependCopilotMessagesActionInterface,
     SetCopilotChatHistoryActionInterface,
     SetCopilotContentTypeActionInterface,
@@ -127,7 +127,7 @@ export const setCopilotPanelLoading = (isLoading: boolean): SetCopilotPanelLoadi
  * @param message - The message to add.
  * @returns An action of type `ADD_COPILOT_MESSAGE`.
  */
-export const addCopilotMessage = (message: CopilotMessage): AddCopilotMessageActionInterface => ({
+export const addCopilotMessage = (message: CopilotMessageInterface): AddCopilotMessageActionInterface => ({
     payload: message,
     type: CopilotActionTypes.ADD_COPILOT_MESSAGE
 });
@@ -142,7 +142,7 @@ export const updateCopilotMessage = (
     update: {
         id: string;
         content: string;
-        type?: CopilotMessage["type"];
+        type?: CopilotMessageInterface["type"];
         suggestions?: string[];
         suggestionsLoading?: boolean;
     }
@@ -189,16 +189,17 @@ export const clearCopilotChatWithApi = () => {
         dispatch(setCopilotPanelLoading(false));
         dispatch(setCopilotStatusMessage(null));
 
-        // Clear the chat
-        dispatch(clearCopilotChat());
-
         try {
             await clearCopilotChatApi();
+            // Only clear local messages after a successful API response
+            dispatch(clearCopilotChat());
         } catch (error: unknown) {
+            dispatch(clearCopilotChat());
+
             const errorMsg: string = error instanceof Error ? error.message : String(error);
 
             if (!errorMsg.includes("Failed to fetch") && !errorMsg.includes("Network error")) {
-                const errorMessage: CopilotMessage = {
+                const errorMessage: CopilotMessageInterface = {
                     content: I18n.instance.t("console:common.copilot.errors.clearHistoryFailed"),
                     id: `warning-${Date.now()}`,
                     sender: "copilot",
@@ -218,7 +219,7 @@ export const clearCopilotChatWithApi = () => {
  * @param messages - The history messages.
  * @returns An action of type `SET_COPILOT_CHAT_HISTORY`.
  */
-export const setCopilotChatHistory = (messages: CopilotMessage[]): SetCopilotChatHistoryActionInterface => ({
+export const setCopilotChatHistory = (messages: CopilotMessageInterface[]): SetCopilotChatHistoryActionInterface => ({
     payload: messages,
     type: CopilotActionTypes.SET_COPILOT_CHAT_HISTORY
 });
@@ -230,7 +231,7 @@ export const setCopilotChatHistory = (messages: CopilotMessage[]): SetCopilotCha
  * @returns An action of type `SET_COPILOT_HISTORY_PAGINATION`.
  */
 export const setHistoryPagination = (
-    payload: HistoryPaginationPayload
+    payload: HistoryPaginationPayloadInterface
 ): SetCopilotHistoryPaginationActionInterface => ({
     payload,
     type: CopilotActionTypes.SET_COPILOT_HISTORY_PAGINATION
@@ -242,7 +243,7 @@ export const setHistoryPagination = (
  * @param messages - Older messages to prepend.
  * @returns An action of type `PREPEND_COPILOT_MESSAGES`.
  */
-export const prependCopilotMessages = (messages: CopilotMessage[]): PrependCopilotMessagesActionInterface => ({
+export const prependCopilotMessages = (messages: CopilotMessageInterface[]): PrependCopilotMessagesActionInterface => ({
     payload: messages,
     type: CopilotActionTypes.PREPEND_COPILOT_MESSAGES
 });
@@ -273,7 +274,7 @@ export const fetchCopilotHistory = () => {
         try {
             // Check if there are already messages (don't overwrite existing conversation)
             const currentState: AppState = getState();
-            const currentMessages: CopilotMessage[] = currentState?.copilot?.messages || [];
+            const currentMessages: CopilotMessageInterface[] = currentState?.copilot?.messages || [];
 
             if (currentMessages.length > 0) {
                 return;
@@ -289,7 +290,7 @@ export const fetchCopilotHistory = () => {
             if (historyController.signal.aborted) return;
 
             if (response.history && Array.isArray(response.history)) {
-                const messages: CopilotMessage[] = [];
+                const messages: CopilotMessageInterface[] = [];
 
                 response.history.forEach((record: HistoryRecord, index: number) => {
                     // Add user message
@@ -313,7 +314,7 @@ export const fetchCopilotHistory = () => {
 
                 // Only set history if we still don't have messages (avoid race condition)
                 const finalState: AppState = getState();
-                const finalMessages: CopilotMessage[] = finalState?.copilot?.messages || [];
+                const finalMessages: CopilotMessageInterface[] = finalState?.copilot?.messages || [];
 
                 if (finalMessages.length === 0) {
                     dispatch(setCopilotChatHistory(messages));
@@ -344,12 +345,12 @@ export const fetchCopilotHistory = () => {
  * @returns A thunk function.
  */
 export const loadMoreCopilotHistory = () => {
-    return async (dispatch: Dispatch, getState: () => AppState) => {
+    return async (dispatch: Dispatch, getState: () => AppState): Promise<boolean> => {
         const state: AppState = getState();
         const { hasMoreHistory, historyOffset, isLoadingMoreHistory } = state?.copilot || {};
 
         if (!hasMoreHistory || isLoadingMoreHistory) {
-            return;
+            return false;
         }
 
         // Set the guard before the async boundary so rapid clicks are blocked.
@@ -357,16 +358,18 @@ export const loadMoreCopilotHistory = () => {
 
         const historyController: AbortController = requestManager.startRequest("chatHistory");
 
+        let prepended: boolean = false;
+
         try {
             const response: CopilotHistoryResponse = await getCopilotChatHistory(
                 historyOffset, undefined, historyController.signal
             );
 
             // Discard results if a clear was issued while this request was in-flight.
-            if (historyController.signal.aborted) return;
+            if (historyController.signal.aborted) return false;
 
             if (response.history && Array.isArray(response.history) && response.history.length > 0) {
-                const olderMessages: CopilotMessage[] = [];
+                const olderMessages: CopilotMessageInterface[] = [];
 
                 response.history.forEach((record: HistoryRecord, index: number) => {
                     olderMessages.push({
@@ -391,6 +394,7 @@ export const loadMoreCopilotHistory = () => {
                     nextOffset: historyOffset + response.limit,
                     total: response.total
                 }));
+                prepended = true;
             } else {
                 // No more records
                 dispatch(setHistoryPagination({
@@ -401,7 +405,7 @@ export const loadMoreCopilotHistory = () => {
             }
         } catch (_error: unknown) {
             // Don't touch pagination state when the request was intentionally aborted
-            if (historyController.signal.aborted) return;
+            if (historyController.signal.aborted) return false;
 
             // Reset pagination so the "load more" button re-enables instead of staying stuck
             dispatch(setHistoryPagination({
@@ -413,6 +417,8 @@ export const loadMoreCopilotHistory = () => {
             requestManager.completeRequest("chatHistory", historyController);
             dispatch(setIsLoadingMoreHistory(false));
         }
+
+        return prepended;
     };
 };
 
@@ -558,13 +564,19 @@ class StatusQueue {
  */
 export const sendCopilotMessage = (userMessage: string) => {
     return async (dispatch: Dispatch) => {
+        const trimmedUserMessage: string = userMessage.trim();
+
+        if (!trimmedUserMessage) {
+            return;
+        }
+
         // Cancel any existing request before starting a new one, then register this one
         const controller: AbortController = requestManager.startRequest("chat");
         const signal: AbortSignal = controller.signal;
 
         // Add user message
-        const userMsg: CopilotMessage = {
-            content: userMessage,
+        const userMsg: CopilotMessageInterface = {
+            content: trimmedUserMessage,
             id: `user-${Date.now()}`,
             sender: "user",
             timestamp: Date.now(),
@@ -582,7 +594,7 @@ export const sendCopilotMessage = (userMessage: string) => {
         // onComplete, onSuggestionsLoading, and onSuggestions can update it even if
         // they fire before the first token.
         const aiMessageId: string = `ai-${Date.now()}`;
-        const aiPlaceholder: CopilotMessage = {
+        const aiPlaceholder: CopilotMessageInterface = {
             content: "",
             id: aiMessageId,
             sender: "copilot",
@@ -615,7 +627,7 @@ export const sendCopilotMessage = (userMessage: string) => {
 
         try {
             await sendCopilotChatMessage(
-                userMessage,
+                trimmedUserMessage,
                 {
                     onComplete: () => {
                         // Flush any tokens still waiting in the 16ms batch before finalizing.
@@ -684,7 +696,6 @@ export const sendCopilotMessage = (userMessage: string) => {
                                 statusQueue.cancel();
                                 aiMessageAdded = true;
                                 dispatch(setCopilotStatusMessage(null));
-                                dispatch(setCopilotPanelLoading(false));
 
                                 // Flush all buffered pre-first-token content as one dispatch.
                                 const initialContent: string = pendingTokens.splice(0).join("");
@@ -714,6 +725,11 @@ export const sendCopilotMessage = (userMessage: string) => {
 
         } catch (error: unknown) {
             statusQueue.cancel();
+
+            if (tokenFlushTimer !== null && !signal.aborted) {
+                clearTimeout(tokenFlushTimer);
+                flushTokenBatch();
+            }
 
             // Clear suggestions timeout if the request errored/aborted mid-stream.
             if (suggestionsTimeoutId !== null) {
@@ -755,7 +771,7 @@ export const sendCopilotMessage = (userMessage: string) => {
                 }));
             } else {
                 // Partial content was already visible; append a separate error bubble.
-                const errorMessage: CopilotMessage = {
+                const errorMessage: CopilotMessageInterface = {
                     content: errorContent,
                     id: `error-${Date.now()}`,
                     sender: "copilot",
