@@ -103,7 +103,7 @@ export const OutboundProvisioningConnectorConfigForm: FunctionComponent<
 
             return;
         }
-        if (formRef.current && formRef.current.getState().dirty) {
+        if (triggerSubmit && formRef.current && formRef.current.getState().dirty) {
             formRef.current.submit();
         }
     }, [ triggerSubmit ]);
