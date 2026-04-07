@@ -380,6 +380,11 @@ export const console: ConsoleNS = {
             tenants: "Root Organizations",
             policyAdministration: "Policy Administration"
         },
+        featureLockedBanner: {
+            prefix: "This feature is only available on higher-tier plans.",
+            action: "Upgrade your plan",
+            suffix: "to get access."
+        },
         upgrade: "Upgrade",
         validations: {
             inSecureURL: {

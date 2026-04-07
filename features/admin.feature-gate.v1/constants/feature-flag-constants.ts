@@ -72,8 +72,10 @@ class FeatureFlagConstants {
         PUSH_PROVIDER_TEMPLATES: "pushProviders.templates",
         REMOTE_LOG_PUBLISH: "remote.log.publish",
         SMS_TEMPLATES: "smsTemplates",
+        SMS_TEMPLATES_CUSTOMIZATION: "console.smsTemplates",
         USER_ROLES: "userRoles",
         USER_STORES: "userStores",
+        USER_STORES_REMOTE_USER_STORES: "console.userStores.remoteUserStores",
         VERIFIABLE_CREDENTIALS: "verifiableCredentials",
         WEBHOOKS: "webhooks",
         WORKFLOW_INSTANCES: "workflowInstances"
