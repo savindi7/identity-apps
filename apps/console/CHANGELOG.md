@@ -1,5 +1,34 @@
 # @wso2is/console
 
+## 4.2.11
+
+### Patch Changes
+
+- [#10068](https://github.com/wso2/identity-apps/pull/10068) [`b5b317593ddc2fd764f15a96555eb6b84d903d8e`](https://github.com/wso2/identity-apps/commit/b5b317593ddc2fd764f15a96555eb6b84d903d8e) Thanks [@AmshikaH](https://github.com/AmshikaH)! - Update well-known endpoint resolution in app info
+
+* [#10080](https://github.com/wso2/identity-apps/pull/10080) [`d22020e38f021e2f07c28ff141f47708ae3b37f9`](https://github.com/wso2/identity-apps/commit/d22020e38f021e2f07c28ff141f47708ae3b37f9) Thanks [@github-actions](https://github.com/apps/github-actions)! - Outbound provisioning UI improvement
+
+* Updated dependencies [[`b5b317593ddc2fd764f15a96555eb6b84d903d8e`](https://github.com/wso2/identity-apps/commit/b5b317593ddc2fd764f15a96555eb6b84d903d8e), [`d22020e38f021e2f07c28ff141f47708ae3b37f9`](https://github.com/wso2/identity-apps/commit/d22020e38f021e2f07c28ff141f47708ae3b37f9), [`58e307a97ad591cc7c6a34e076b42fe6dea3fbae`](https://github.com/wso2/identity-apps/commit/58e307a97ad591cc7c6a34e076b42fe6dea3fbae)]:
+  - @wso2is/admin.applications.v1@2.42.14
+  - @wso2is/admin.connections.v1@2.36.42
+  - @wso2is/i18n@2.38.5
+  - @wso2is/admin.agents.v1@1.1.14
+  - @wso2is/admin.approval-workflows.v1@1.3.20
+  - @wso2is/admin.branding.v1@2.32.158
+  - @wso2is/admin.onboarding.v1@1.0.73
+  - @wso2is/admin.console-settings.v1@2.26.36
+  - @wso2is/admin.core.v1@2.55.25
+  - @wso2is/admin.roles.v2@2.27.372
+  - @wso2is/admin.users.v1@2.38.25
+  - @wso2is/admin.home.v1@1.7.182
+  - @wso2is/admin.subscription.v1@1.5.217
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.202
+  - @wso2is/admin.email-management.v1@2.25.366
+  - @wso2is/admin.flows.v1@1.0.171
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.202
+  - @wso2is/admin.server-configurations.v1@2.38.41
+  - @wso2is/admin.registration-flow-builder.v1@0.10.162
+
 ## 4.2.10
 
 ### Patch Changes
