@@ -1,5 +1,15 @@
 # @wso2is/admin.rules.v1
 
+## 0.7.46
+
+### Patch Changes
+
+- Updated dependencies [[`f334f308a27092b61d3c115be04056809943144e`](https://github.com/wso2/identity-apps/commit/f334f308a27092b61d3c115be04056809943144e)]:
+  - @wso2is/admin.extensions.v1@2.41.2
+  - @wso2is/admin.core.v1@2.55.30
+  - @wso2is/core@2.12.11
+  - @wso2is/admin.roles.v2@2.27.377
+
 ## 0.7.45
 
 ### Patch Changes

@@ -1,5 +1,14 @@
 # @wso2is/i18n
 
+## 2.38.5
+
+### Patch Changes
+
+- [#10074](https://github.com/wso2/identity-apps/pull/10074) [`1db5d37d51d45ddc911ab1ee9c766ead39566083`](https://github.com/wso2/identity-apps/commit/1db5d37d51d45ddc911ab1ee9c766ead39566083) Thanks [@sadilchamishka](https://github.com/sadilchamishka)! - update outbound provisioning groups i18s
+
+- Updated dependencies [[`f334f308a27092b61d3c115be04056809943144e`](https://github.com/wso2/identity-apps/commit/f334f308a27092b61d3c115be04056809943144e)]:
+  - @wso2is/core@2.12.11
+
 ## 2.38.4
 
 ### Patch Changes
