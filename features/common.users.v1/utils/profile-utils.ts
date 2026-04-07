@@ -183,6 +183,7 @@ const prepareInitialValues = (
  * @param isMultipleEmailAndMobileNumberEnabled - Whether multiple email and mobile number support is enabled.
  * @param isEmailVerificationEnabled - Whether email verification is enabled.
  * @param isMobileVerificationEnabled - Whether mobile verification is enabled.
+ * @param enableSCIMLegacyEnterpriseUser - Whether SCIM legacy enterprise user behavior is enabled.
  * @returns The flattened initial values.
  *
  * @example
@@ -226,7 +227,8 @@ export const getFlattenedInitialValues = (
     flattenedProfileSchema: ProfileSchemaInterface[],
     isMultipleEmailAndMobileNumberEnabled: boolean,
     isEmailVerificationEnabled: boolean,
-    isMobileVerificationEnabled: boolean
+    isMobileVerificationEnabled: boolean,
+    enableSCIMLegacyEnterpriseUser: boolean = false
 ): Record<string, unknown> => {
     const preparedInitialValues: Record<string, unknown> = prepareInitialValues(
         profileData, isMultipleEmailAndMobileNumberEnabled, isEmailVerificationEnabled, isMobileVerificationEnabled);
@@ -499,8 +501,18 @@ export const getFlattenedInitialValues = (
                      * }
                      * ```
                      */
-                    _flattenedInitialValues[encodedSchemaId][schema.name] = preparedInitialValues[
-                        schema.schemaId]?.[schemaNameParts[0]];
+                    const valueFromUrn: unknown = preparedInitialValues[schema.schemaId]?.[schemaNameParts[0]];
+                    const valueFromEnterpriseUser: unknown =
+                            enableSCIMLegacyEnterpriseUser &&
+                            schema.schemaId === "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+                                ? preparedInitialValues[ProfileConstants.SCIM2_LEGACY_ENT_USER_SCHEMA]?.[schema.name]
+                                : undefined;
+
+                    const resolvedValue: unknown = valueFromUrn ?? valueFromEnterpriseUser;
+
+                    if (resolvedValue !== undefined) {
+                        _flattenedInitialValues[encodedSchemaId][schema.name] = resolvedValue;
+                    }
                 }
             }
         }

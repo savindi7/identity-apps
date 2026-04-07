@@ -559,6 +559,10 @@ export interface UIConfigInterface extends CommonUIConfigInterface<FeatureConfig
      * Flag to check whether email as a username feature is enabled.
      */
     enableEmailDomain?: boolean;
+     /**
+     * Flag to check whether SCIM legacy enterprise user behavior is enabled.
+     */
+    enableSCIMLegacyEnterpriseUser?: boolean;
     /**
      * Should show/hide marketing consent banner.
      */
