@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025, WSO2 LLC. (https://www.wso2.com).
+ * Copyright (c) 2026, WSO2 LLC. (https://www.wso2.com).
  *
  * WSO2 LLC. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -24,7 +24,6 @@ import { IdentifiableComponentInterface } from "@wso2is/core/models";
 import React, { FunctionComponent, ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import "./feature-locked-banner.scss";
 
 /**
  * Props interface for the FeatureLockedBanner component.
@@ -38,13 +37,11 @@ type FeatureLockedBannerPropsInterface = IdentifiableComponentInterface & Pick<A
  * @returns Feature locked banner component.
  */
 const FeatureLockedBanner: FunctionComponent<FeatureLockedBannerPropsInterface> = (
-    props: FeatureLockedBannerPropsInterface
-): ReactElement => {
-
-    const {
+    {
         [ "data-componentid" ]: componentId = "feature-locked-banner",
         sx
-    } = props;
+    }: FeatureLockedBannerPropsInterface
+): ReactElement => {
 
     const { t } = useTranslation();
 
@@ -62,26 +59,32 @@ const FeatureLockedBanner: FunctionComponent<FeatureLockedBannerPropsInterface> 
 
     return (
         <Alert
-            sx={ sx }
-            className="feature-locked-banner oxygen-chip-premium"
+            sx={ {
+                "& .MuiAlert-message": {
+                    fontSize: "14px",
+                    fontWeight: "100"
+                },
+                "& a": {
+                    fontWeight: "bold"
+                },
+                ...sx
+            } }
+            className="oxygen-chip-premium"
             severity="warning"
             icon={ false }
             data-componentid={ componentId }
         >
-            { t("console:common.featureLockedBanner.prefix",
-                { defaultValue: "This feature is only available on higher-tier plans." }) }
+            { t("console:common.featureLockedBanner.prefix") }
             { " " }
             <Link
                 href={ upgradeButtonURL }
                 target="_blank"
                 rel="noreferrer"
             >
-                { t("console:common.featureLockedBanner.action",
-                    { defaultValue: "Upgrade your plan" }) }
+                { t("console:common.featureLockedBanner.action") }
             </Link>
             { " " }
-            { t("console:common.featureLockedBanner.suffix",
-                { defaultValue: "to get access." }) }
+            { t("console:common.featureLockedBanner.suffix") }
         </Alert>
     );
 };
