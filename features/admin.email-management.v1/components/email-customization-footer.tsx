@@ -36,6 +36,11 @@ interface EmailCustomizationFooterProps extends IdentifiableComponentInterface {
     isSaveButtonLoading: boolean;
 
     /**
+     * Is save button disabled
+     */
+    isSaveButtonDisabled?: boolean;
+
+    /**
      * On Save button clicked
      * @param e - Button Click Event
      * @param data - Button Props
@@ -57,13 +62,11 @@ const EmailCustomizationFooter: FunctionComponent<EmailCustomizationFooterProps>
     const {
         ["data-componentid"]: componentId,
         isSaveButtonLoading,
+        isSaveButtonDisabled,
         onSaveButtonClick
     } = props;
 
-    const { tierName }: UseSubscriptionInterface = useSubscription();
     const { t } = useTranslation();
-    const disableEmailTemplateForFreeTier: boolean = useSelector(
-        (state: AppState) => state?.config?.ui?.disableEmailTemplateForFreeTier);
 
     return (
         <Segment
@@ -72,12 +75,10 @@ const EmailCustomizationFooter: FunctionComponent<EmailCustomizationFooterProps>
             padded={ true }
             data-componentid={ componentId }
         >
-            { disableEmailTemplateForFreeTier && tierName === TenantTier.FREE &&
-                <Segment basic><EmailTemplateCustomizationPremiumBanner /></Segment>
-            }
             <PrimaryButton
                 size="small"
                 loading={ isSaveButtonLoading }
+                disabled={ isSaveButtonDisabled }
                 onClick={ (e: MouseEvent<HTMLButtonElement>, data: ButtonProps) => {
                     onSaveButtonClick(e, data);
                 } }

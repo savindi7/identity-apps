@@ -50,6 +50,7 @@ class FeatureFlagConstants {
         ATTRIBUTE_DIALECTS: "attributeDialects",
         BRANDING: "branding",
         BRANDING_STYLES_AND_TEXT_TITLE: "branding.stylesAndText.application.title",
+        EMAIL_TEMPLATES_CUSTOMIZATION: "console.emailTemplates",
         CUSTOMER_DATA_PROFILES: "customerDataProfiles",
         CUSTOMER_DATA_PROFILES_UNIFICATION_RULES: "customerDataUnificationRules",
         CUSTOMER_DATA_PROFILE_ATTRIBUTES: "customerDataProfileAttributes",
