@@ -16,17 +16,11 @@
  * under the License.
  */
 
-import { AppState } from "@wso2is/admin.core.v1/store";
-import useSubscription, { UseSubscriptionInterface } from "@wso2is/admin.subscription.v1/hooks/use-subscription";
-import { TenantTier } from "@wso2is/admin.subscription.v1/models/tenant-tier";
 import { IdentifiableComponentInterface } from "@wso2is/core/models";
 import { PrimaryButton } from "@wso2is/react-components";
 import React, { FunctionComponent, MouseEvent, ReactElement } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
 import { ButtonProps, Segment } from "semantic-ui-react";
-
-import EmailTemplateCustomizationPremiumBanner from "../components/banners/email-template-customization-premium-banner";
 
 interface EmailCustomizationFooterProps extends IdentifiableComponentInterface {
 

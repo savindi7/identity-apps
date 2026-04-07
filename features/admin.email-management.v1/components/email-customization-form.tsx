@@ -248,7 +248,7 @@ export const EmailCustomizationForm: FunctionComponent<EmailCustomizationFormPro
                     );
                 } }
             />
-            { isFeatureEnabled && <Show
+            { isFeatureEnabled && (<Show
                 when={ featureConfig?.emailTemplates?.scopes?.delete }
             >
                 <DangerZone
@@ -260,7 +260,7 @@ export const EmailCustomizationForm: FunctionComponent<EmailCustomizationFormPro
                     buttonDisableHint={ t("extensions:develop.emailTemplates.dangerZone.actionDisabledHint") }
                     onActionClick={ onDeleteRequested }
                 />
-            </Show> }
+            </Show>) }
         </>
     );
 };
