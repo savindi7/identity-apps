@@ -591,18 +591,18 @@ export const AppUtils: AppUtilsInterface = (function() {
                         .replace(USER_TENANT_DOMAIN_IDP_URL_PLACEHOLDER, this.getTenantName()
                             ? this.getTenantName()
                             : this.getSuperTenantProxy()),
-                wellKnownEndpointURL: _config.idpConfigs
-                    && _config.idpConfigs.wellKnownEndpointURL
-                    && _config.idpConfigs.wellKnownEndpointURL
+                wellKnownEndpoint: _config.idpConfigs
+                    && _config.idpConfigs.wellKnownEndpoint
+                    && _config.idpConfigs.wellKnownEndpoint
                         .replace(SERVER_ORIGIN_URL_PLACEHOLDER,  _config.serverOrigin + tenantPath)
                         .replace(TENANT_PREFIX_IDP_URL_PLACEHOLDER, this.getTenantPrefix())
                         .replace(SUPER_TENANT_DOMAIN_IDP_URL_PLACEHOLDER, this.getSuperTenantProxy())
                         .replace(USER_TENANT_DOMAIN_IDP_URL_PLACEHOLDER, this.getTenantName()
                             ? this.getTenantName()
                             : this.getSuperTenantProxy()),
-                wellKnownEndpoint: _config.idpConfigs
-                    && _config.idpConfigs.wellKnownEndpoint
-                    && _config.idpConfigs.wellKnownEndpoint
+                wellKnownEndpointURL: _config.idpConfigs
+                    && _config.idpConfigs.wellKnownEndpointURL
+                    && _config.idpConfigs.wellKnownEndpointURL
                         .replace(SERVER_ORIGIN_URL_PLACEHOLDER,  _config.serverOrigin + tenantPath)
                         .replace(TENANT_PREFIX_IDP_URL_PLACEHOLDER, this.getTenantPrefix())
                         .replace(SUPER_TENANT_DOMAIN_IDP_URL_PLACEHOLDER, this.getSuperTenantProxy())
@@ -615,7 +615,7 @@ export const AppUtils: AppUtilsInterface = (function() {
         /**
          * Updates the organization name.
          *
-         * @param organizationName - new Organization. 
+         * @param organizationName - new Organization.
          */
         updateOrganizationName: function (organizationName: string) {
             _config.organizationName = organizationName;
