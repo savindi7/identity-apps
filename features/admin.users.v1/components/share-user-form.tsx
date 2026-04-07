@@ -567,6 +567,7 @@ export const ShareUserForm: FunctionComponent<UserShareFormPropsInterface> = (
                 message: t("user:editUser.sections.sharedAccess.notifications.unshare.success.message")
             }));
             resetStates(false);
+            setSavedShareType(ShareType.UNSHARE);
 
             return true;
         } catch (error) {
@@ -1583,8 +1584,10 @@ export const ShareUserForm: FunctionComponent<UserShareFormPropsInterface> = (
                                                     actualAssignedRolesMap={ userAssignedRolesMap }
                                                     setActualAssignedRolesMap={ setUserAssignedRolesMap }
                                                     currentlyAssignedRolesLabel={
-                                                        t("user:editUser.sections.sharedAccess." +
-                                                            "currentlyAssignedRolesLabel")
+                                                        savedShareType !== ShareType.UNSHARE
+                                                            ? t("user:editUser.sections.sharedAccess." +
+                                                                "currentlyAssignedRolesLabel")
+                                                            : undefined
                                                     }
                                                 />
                                             </Grid>
