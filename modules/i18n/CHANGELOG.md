@@ -1,5 +1,11 @@
 # @wso2is/i18n
 
+## 2.38.6
+
+### Patch Changes
+
+- [#10081](https://github.com/wso2/identity-apps/pull/10081) [`e80d0d42b1cf3c7232c6e7fbe5f1564f945e32c0`](https://github.com/wso2/identity-apps/commit/e80d0d42b1cf3c7232c6e7fbe5f1564f945e32c0) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Add autocomplete input to show currently assigned roles to a shared user in a specific suborg
+
 ## 2.38.5
 
 ### Patch Changes

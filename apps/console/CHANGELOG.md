@@ -1,5 +1,32 @@
 # @wso2is/console
 
+## 3.3.23
+
+### Patch Changes
+
+- [#10081](https://github.com/wso2/identity-apps/pull/10081) [`e80d0d42b1cf3c7232c6e7fbe5f1564f945e32c0`](https://github.com/wso2/identity-apps/commit/e80d0d42b1cf3c7232c6e7fbe5f1564f945e32c0) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Add autocomplete input to show currently assigned roles to a shared user in a specific suborg
+
+- Updated dependencies [[`e80d0d42b1cf3c7232c6e7fbe5f1564f945e32c0`](https://github.com/wso2/identity-apps/commit/e80d0d42b1cf3c7232c6e7fbe5f1564f945e32c0)]:
+  - @wso2is/admin.users.v1@2.38.31
+  - @wso2is/i18n@2.38.6
+  - @wso2is/admin.applications.v1@2.42.20
+  - @wso2is/admin.console-settings.v1@2.26.42
+  - @wso2is/admin.agents.v1@1.1.20
+  - @wso2is/admin.onboarding.v1@1.0.79
+  - @wso2is/admin.subscription.v1@1.5.220
+  - @wso2is/admin.approval-workflows.v1@1.3.26
+  - @wso2is/admin.branding.v1@2.32.164
+  - @wso2is/admin.core.v1@2.55.31
+  - @wso2is/admin.roles.v2@2.27.378
+  - @wso2is/admin.home.v1@1.7.188
+  - @wso2is/admin.email-management.v1@2.25.372
+  - @wso2is/admin.connections.v1@2.36.48
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.208
+  - @wso2is/admin.flows.v1@1.0.177
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.208
+  - @wso2is/admin.server-configurations.v1@2.38.47
+  - @wso2is/admin.registration-flow-builder.v1@0.10.168
+
 ## 3.3.22
 
 ### Patch Changes
