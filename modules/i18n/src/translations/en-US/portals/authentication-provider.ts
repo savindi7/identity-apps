@@ -1717,11 +1717,11 @@ export const authenticationProvider:AuthenticationProviderNS = {
                 message: "Update Error"
             },
             genericError: {
-                description: "An error occurred while updating outbound provisioning role configurations.",
+                description: "An error occurred while updating outbound provisioning group configurations.",
                 message: "Update Error"
             },
             success: {
-                description: "Successfully updated outbound provisioning role configurations.",
+                description: "Successfully updated outbound provisioning group configurations.",
                 message: "Update successful"
             }
         },
