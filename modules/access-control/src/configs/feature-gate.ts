@@ -39,6 +39,9 @@ export const featureGateConfig: FeatureGateInterface  = {
                 }
             }
         },
+        emailTemplates: {
+            status: FeatureStatus.DEFAULT
+        },
         loginAndRegistration: {
             sessionManagement: {
                 status: FeatureStatus.DEFAULT

@@ -80,6 +80,9 @@ export interface FeatureGateInterface {
                 }
             }
         },
+        emailTemplates: {
+            status: FeatureStatus
+        },
         loginAndRegistration: {
             sessionManagement: {
                 status: FeatureStatus
