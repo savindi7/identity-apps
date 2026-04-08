@@ -223,7 +223,7 @@ Features have scopes, which allow them to change their behaviour based on the pe
 
 1. Identify a sub-feature
 
-Identify the sub-feature you want to implement. Say you want to add an "Export Organizations" button as a separate sub-feature under organizations with its own scopes. Let's assume that we want that feature to require the `internal_organization_view` and `internal_user_mgt_list` scopes under `read`. Notice that `internal_user_mgt_list` is not a permission required in the parent feature, which makes the sub-feature have more specialized permission requirements than its parent.
+Identify the sub-feature you want to implement. For this example, we'll take the "Update" button in role permissions management page found in User Management > Roles > [Select a Role] > Permissions. We need this button to render only when the user has the permissions `internal_role_mgt_permissions_update` and `internal_role_mgt_update`.
 
 2. Add the sub feature to the deployment config.
 
@@ -232,40 +232,58 @@ Identify the sub-feature you want to implement. Say you want to add an "Export O
   "ui": {
     "features": {
       // other features,
-      "organizations": {
+      "userRoles": {
         "disabledFeatures": [],
         "enabled": true,
-        "featureFlags": [],
+        "featureFlags": [
+            {
+                "feature": "userRoles",
+                "flag": ""
+            }
+        ],
         "scopes": {
-          "create": [ "internal_organization_create" ],
-          "delete": [ "internal_organization_delete" ],
-          "feature": [ "console:organizations" ],
-          "read": [ "internal_organization_view" ],
-          "update": [ "internal_organization_update" ]
-        },
-        "subFeatures": {
-          // ...other sub-features,
-          "exportOrganizations": {
-            "disabledFeatures": [],
-            "enabled": true,
-            "featureFlags": [],
-            "scopes": {
-                "create": [],
-                "delete": [],
-                "feature": [],
-                "read": [
-                    "internal_organization_view",
-                    "internal_user_mgt_list"
-                ],
-                "update": []
+            "create": [
+                "internal_role_mgt_create"
+            ],
+            "delete": [
+                "internal_role_mgt_delete"
+            ],
+            "feature": [
+                "console:roles"
+            ],
+            "read": [
+                "internal_application_mgt_view",
+                "internal_group_mgt_view",
+                "internal_idp_view",
+                "internal_role_mgt_view",
+                "internal_user_mgt_list",
+                "internal_user_mgt_view",
+                "internal_userstore_view"
+            ],
+            "update": [
+                "internal_role_mgt_update"
+            ]
+          },
+          "subFeatures": {
+            // other sub-features
+            "rolePermissionAssignments": {
+                "disabledFeatures": [],
+                "enabled": true,
+                "featureFlags": [],
+                "scopes": {
+                    "update": [
+                        "internal_role_mgt_permissions_update",
+                        "internal_role_mgt_update"
+                    ]
+                }
             }
           }
-        }
       }
     }
   }
 }
 ```
+Note that the permission `internal_role_mgt_permissions_update` is not present in the parent feature scope meaning that the sub-feature has more specific permission requirements distinct from its parent.
 
 3. Read the scopes of the sub feature in your component and implement the conditional.
 
@@ -273,25 +291,34 @@ Identify the sub-feature you want to implement. Say you want to add an "Export O
 ```tsx
 
 const App = () => {
-    const organizationsFeatureConfig = useSelector(
-        (state: AppState) => state?.config?.ui?.features?.organizations
+    const userRolesFeatureConfig: FeatureAccessConfigInterface = useSelector(
+        (state: AppState) => state?.config?.ui?.features?.userRoles
     );
 
-    const hasExportOrganizationsReadPermissions: boolean = useRequiredScopes(
-        organizationsFeatureConfig?.subFeatures?.exportOrganizations?.scopes?.read
+    const hasRolePermissionUpdatePermission: boolean = useRequiredScopes(
+        userRolesFeatureConfig?.subFeatures?.rolePermissionAssignments?.scopes?.update
     );
 
     return (
-        <Button disabled={ !hasExportOrganizationsReadPermissions }>
-            Export Organizations
-        </Button>
+        hasRolePermissionUpdatePermission && (
+            <Button>
+                Update
+            </Button>
+          )
     );
 };
 
 export default App;
 ```
 
-In the above example, if the user does not have the required scopes, the button is disabled.
+In the above example, if the user does not have the required scopes, the button is not rendered.
+
+ - With permissions:
+<br><img width="600" alt="subfeature-example-with-permissions" src="assets/images/feature-flags/subfeature-example-with-permissions.png" /><br>
+
+ - Without permissions:
+<br><img width="600" alt="subfeature-example-without-permissions" src="assets/images/feature-flags/subfeature-example-without-permissions.png" /><br>
+Notice that the `Update` button did not render because the user did not have sufficient permissions.
 
 OR
 
