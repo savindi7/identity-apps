@@ -138,37 +138,7 @@ In the above example:
 - `feature` identifies the feature identifier.
 - `flag` defines the status label to be used.
 
-3. Read the Feature Flag Value in Your Component
-
-Use the `useFeatureFlag` hook to read the configured label from the `featureFlags` array and conditionally render a `Chip` next to the button label.
-
-Example:
-
-```tsx
-
-const App = () => {
-  const organizationFeatureFlags: FeatureFlagsInterface[] = useSelector(
-    (state: AppState) => state.config.ui.features?.organizations?.featureFlags
-  );
-
-  const exportButtonFlag: string | null = useFeatureFlag("organizations.exportButton", organizationFeatureFlags);
-
-  return (
-    <Button>
-      Export Organizations
-      { exportButtonFlag === "NEW" && (
-        <Chip size="small" label="New" className="oxygen-chip-new" />
-      ) }
-    </Button>
-  );
-};
-
-export default App;
-```
-
-In the above example, if the configured flag value is `NEW`, a `New` chip is rendered inside the button. If the flag is not set, the button renders without the chip.
-
-4. Use `FeatureFlagLabel` for Standard UI Labels
+3. Use `FeatureFlagLabel` for UI Labels
 
 You can also render the status label as a reusable UI element instead of directly modifying the elements by using the `FeatureFlagLabel` component. This component reads the flag and renders it as a `chip` or a `ribbon`.
 
@@ -182,11 +152,8 @@ You can also render the status label as a reusable UI element instead of directl
 Example:
 
 ```tsx
-import Button from "@oxygen-ui/react/Button";
-import { AppState } from "@wso2is/admin.core.v1/store";
 import FeatureFlagLabel from "@wso2is/admin.feature-gate.v1/components/feature-flag-label";
 import { FeatureFlagsInterface } from "@wso2is/core/models";
-import { useSelector } from "react-redux";
 
 const App = () => {
   const organizationFeatureFlags: FeatureFlagsInterface[] = useSelector(
@@ -211,10 +178,10 @@ export default App;
 You can use:
 
 - `type="chip"` to render the label as a chip.
-  <br><br><img width="236" height="69" alt="image" src="https://github.com/user-attachments/assets/7b88c1d7-b819-4ddd-8aed-30f352cc105c" /><br>
+  <br><br><img width="236" height="69" alt="chip" src="assets/images/feature-flags/chip-feature-flag-label.png" /><br>
 
 - `type="ribbon"` to render the label as a ribbon.
-  <br><br><img width="465" height="223" alt="ribbon" src="https://github.com/user-attachments/assets/b5fa372e-3a87-4f73-a042-d8133bb7b5d2" /><br>
+  <br><br><img width="465" height="223" alt="ribbon" src="assets/images/feature-flags/ribbon-feature-flag-label.png" /><br>
 
 ## Using Nested Features (sub-features)
 
@@ -289,7 +256,6 @@ Note that the permission `internal_role_mgt_permissions_update` is not present i
 
 
 ```tsx
-
 const App = () => {
     const userRolesFeatureConfig: FeatureAccessConfigInterface = useSelector(
         (state: AppState) => state?.config?.ui?.features?.userRoles
@@ -325,10 +291,7 @@ OR
 4. Use `Show` to display or hide elements based on permissions
 
 ```tsx
-import Button from "@oxygen-ui/react/Button";
 import { Show } from "@wso2is/access-control";
-import { AppState } from "@wso2is/admin.core.v1/store";
-import { useSelector } from "react-redux";
 
 const App = () => {
     const organizationsFeatureConfig = useSelector(
@@ -346,4 +309,3 @@ const App = () => {
 
 export default App;
 ```
-
