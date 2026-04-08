@@ -1,5 +1,11 @@
 # @wso2is/access-control
 
+## 3.5.5
+
+### Patch Changes
+
+- [#10093](https://github.com/wso2/identity-apps/pull/10093) [`a27ac0c8a6d65ac6995b5a70db973a14b32fdcfe`](https://github.com/wso2/identity-apps/commit/a27ac0c8a6d65ac6995b5a70db973a14b32fdcfe) Thanks [@Lakshan-Banneheke](https://github.com/Lakshan-Banneheke)! - Feature Gate email template customization
+
 ## 3.5.4
 
 ### Patch Changes

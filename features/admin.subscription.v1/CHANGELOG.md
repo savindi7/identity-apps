@@ -1,5 +1,15 @@
 # @wso2is/admin.subscription.v1
 
+## 1.5.219
+
+### Patch Changes
+
+- Updated dependencies [[`56fa246c730d17f1f727d3286bc25ca34b05f3d9`](https://github.com/wso2/identity-apps/commit/56fa246c730d17f1f727d3286bc25ca34b05f3d9), [`a27ac0c8a6d65ac6995b5a70db973a14b32fdcfe`](https://github.com/wso2/identity-apps/commit/a27ac0c8a6d65ac6995b5a70db973a14b32fdcfe)]:
+  - @wso2is/admin.users.v1@2.38.27
+  - @wso2is/admin.feature-gate.v1@1.9.4
+  - @wso2is/access-control@3.5.5
+  - @wso2is/admin.core.v1@2.55.27
+
 ## 1.5.218
 
 ### Patch Changes

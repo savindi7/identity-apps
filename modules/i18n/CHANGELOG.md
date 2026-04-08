@@ -1,5 +1,13 @@
 # @wso2is/i18n
 
+## 2.38.7
+
+### Patch Changes
+
+- [#10082](https://github.com/wso2/identity-apps/pull/10082) [`56fa246c730d17f1f727d3286bc25ca34b05f3d9`](https://github.com/wso2/identity-apps/commit/56fa246c730d17f1f727d3286bc25ca34b05f3d9) Thanks [@github-actions](https://github.com/apps/github-actions)! - Add autocomplete input to show currently assigned roles to a shared user in a specific suborg
+
+* [#10071](https://github.com/wso2/identity-apps/pull/10071) [`c308be01f69c5ffd4d0b057a59a3a6e42292759e`](https://github.com/wso2/identity-apps/commit/c308be01f69c5ffd4d0b057a59a3a6e42292759e) Thanks [@DilshanSenarath](https://github.com/DilshanSenarath)! - Home realm support based on an extension configuration
+
 ## 2.38.6
 
 ### Patch Changes

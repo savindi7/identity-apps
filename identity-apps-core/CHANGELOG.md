@@ -1,5 +1,11 @@
 # @wso2is/identity-apps-core
 
+## 5.0.9
+
+### Patch Changes
+
+- [#10087](https://github.com/wso2/identity-apps/pull/10087) [`bc51e7a078b7b429d99584f53adf51cc14039b86`](https://github.com/wso2/identity-apps/commit/bc51e7a078b7b429d99584f53adf51cc14039b86) Thanks [@github-actions](https://github.com/apps/github-actions)! - Enabling browser auto detect custom language
+
 ## 5.0.8
 
 ### Patch Changes
