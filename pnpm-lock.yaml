@@ -698,7 +698,7 @@ importers:
         specifier: ^2.9.25
         version: link:../../modules/react-components
       '@wso2is/theme':
-        specifier: ^2.9.5
+        specifier: ^2.9.6
         version: link:../../modules/theme
       '@wso2is/validation':
         specifier: ^2.4.2
@@ -1023,7 +1023,7 @@ importers:
         specifier: ^2.9.23
         version: link:../../modules/react-components
       '@wso2is/theme':
-        specifier: ^2.9.5
+        specifier: ^2.9.6
         version: link:../../modules/theme
       '@wso2is/validation':
         specifier: ^2.4.1
@@ -22834,7 +22834,7 @@ importers:
   identity-apps-core:
     dependencies:
       '@wso2is/theme':
-        specifier: ^2.9.5
+        specifier: ^2.9.6
         version: link:../modules/theme
       dompurify:
         specifier: ^3.0.9
