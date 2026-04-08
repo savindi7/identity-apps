@@ -1,5 +1,15 @@
 # @wso2is/myaccount
 
+## 4.1.7
+
+### Patch Changes
+
+- [#10095](https://github.com/wso2/identity-apps/pull/10095) [`8552889ba63327114d7ca213f8ed78fcdbf5e5b1`](https://github.com/wso2/identity-apps/commit/8552889ba63327114d7ca213f8ed78fcdbf5e5b1) Thanks [@github-actions](https://github.com/apps/github-actions)! - Add tenanted wellknown endpoint support.
+
+- Updated dependencies [[`56fa246c730d17f1f727d3286bc25ca34b05f3d9`](https://github.com/wso2/identity-apps/commit/56fa246c730d17f1f727d3286bc25ca34b05f3d9), [`a27ac0c8a6d65ac6995b5a70db973a14b32fdcfe`](https://github.com/wso2/identity-apps/commit/a27ac0c8a6d65ac6995b5a70db973a14b32fdcfe), [`c308be01f69c5ffd4d0b057a59a3a6e42292759e`](https://github.com/wso2/identity-apps/commit/c308be01f69c5ffd4d0b057a59a3a6e42292759e)]:
+  - @wso2is/i18n@2.38.7
+  - @wso2is/access-control@3.5.5
+
 ## 4.1.6
 
 ### Patch Changes
