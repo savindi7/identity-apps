@@ -1,5 +1,14 @@
 # @wso2is/identity-apps-core
 
+## 4.0.11
+
+### Patch Changes
+
+- [#10052](https://github.com/wso2/identity-apps/pull/10052) [`0fc359ed41080ebe5bc7e7be31673373baef6764`](https://github.com/wso2/identity-apps/commit/0fc359ed41080ebe5bc7e7be31673373baef6764) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Update logos in identity server portal UIs
+
+- Updated dependencies [[`0fc359ed41080ebe5bc7e7be31673373baef6764`](https://github.com/wso2/identity-apps/commit/0fc359ed41080ebe5bc7e7be31673373baef6764)]:
+  - @wso2is/theme@2.9.7
+
 ## 4.0.10
 
 ### Patch Changes
