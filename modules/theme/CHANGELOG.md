@@ -1,5 +1,11 @@
 # @wso2is/theme
 
+## 2.9.7
+
+### Patch Changes
+
+- [#10052](https://github.com/wso2/identity-apps/pull/10052) [`0fc359ed41080ebe5bc7e7be31673373baef6764`](https://github.com/wso2/identity-apps/commit/0fc359ed41080ebe5bc7e7be31673373baef6764) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Update logos in identity server portal UIs
+
 ## 2.9.6
 
 ### Patch Changes
