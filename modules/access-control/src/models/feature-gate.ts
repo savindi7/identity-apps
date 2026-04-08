@@ -80,6 +80,9 @@ export interface FeatureGateInterface {
                 }
             }
         },
+        consoleSettings: {
+            status: FeatureStatus
+        },
         emailTemplates: {
             status: FeatureStatus
         },

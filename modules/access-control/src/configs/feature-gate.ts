@@ -39,6 +39,9 @@ export const featureGateConfig: FeatureGateInterface  = {
                 }
             }
         },
+        consoleSettings: {
+            status: FeatureStatus.DEFAULT
+        },
         emailTemplates: {
             status: FeatureStatus.DEFAULT
         },

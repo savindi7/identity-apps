@@ -54,6 +54,10 @@ export interface ConsoleRolesListLayoutPropsInterface extends IdentifiableCompon
     onSearchQueryChange: (query: string) => void;
     onRoleCreate: () => void;
     listItemLimit: number;
+    /**
+     * Whether the console settings feature is locked.
+     */
+    isFeatureLocked?: boolean;
 }
 
 /**
@@ -77,6 +81,7 @@ const ConsoleRolesListLayout: FunctionComponent<ConsoleRolesListLayoutPropsInter
         onListItemLimitChange,
         onSearchQueryChange,
         onRoleCreate,
+        isFeatureLocked,
         [ "data-componentid" ]: componentId
     } = props;
 
@@ -224,6 +229,7 @@ const ConsoleRolesListLayout: FunctionComponent<ConsoleRolesListLayoutPropsInter
                         <PrimaryButton
                             data-componentid={ `${componentId}-add-button` }
                             onClick={ () => onRoleCreate() }
+                            disabled={ isFeatureLocked }
                         >
                             <Icon
                                 data-componentid={ `${componentId}-add-button-icon` }
