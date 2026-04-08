@@ -1,5 +1,11 @@
 # @wso2is/theme
 
+## 2.9.6
+
+### Patch Changes
+
+- [#10089](https://github.com/wso2/identity-apps/pull/10089) [`9402262ea4ba4fbf137055ea2926f1acfcb6faba`](https://github.com/wso2/identity-apps/commit/9402262ea4ba4fbf137055ea2926f1acfcb6faba) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Fix IDP logo icon inconsistency
+
 ## 2.9.5
 
 ### Patch Changes

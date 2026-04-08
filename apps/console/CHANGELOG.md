@@ -1,5 +1,16 @@
 # @wso2is/console
 
+## 3.3.24
+
+### Patch Changes
+
+- [#10089](https://github.com/wso2/identity-apps/pull/10089) [`9402262ea4ba4fbf137055ea2926f1acfcb6faba`](https://github.com/wso2/identity-apps/commit/9402262ea4ba4fbf137055ea2926f1acfcb6faba) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Fix IDP logo icon inconsistency
+
+* [#10092](https://github.com/wso2/identity-apps/pull/10092) [`3c4465a7d7005743ac46e6b8f4b8d2eff950cbce`](https://github.com/wso2/identity-apps/commit/3c4465a7d7005743ac46e6b8f4b8d2eff950cbce) Thanks [@ImalshaD](https://github.com/ImalshaD)! - Add tenanted wellknown endpoint support.
+
+* Updated dependencies [[`9402262ea4ba4fbf137055ea2926f1acfcb6faba`](https://github.com/wso2/identity-apps/commit/9402262ea4ba4fbf137055ea2926f1acfcb6faba)]:
+  - @wso2is/theme@2.9.6
+
 ## 3.3.23
 
 ### Patch Changes
