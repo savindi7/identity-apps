@@ -96,9 +96,7 @@ export const OPERATION_FIELD_MAPPING: Record<string, string[]> = {
     // providing data for these fields for the respective operations.
     ADD_ROLE: [
         APPROVAL_WORKFLOW_RULE_FIELDS.ROLE_AUDIENCE,
-        APPROVAL_WORKFLOW_RULE_FIELDS.ROLE_PERMISSIONS,
-        USER_CLAIMS_FIELD,
-        INITIATOR_CLAIMS_FIELD
+        APPROVAL_WORKFLOW_RULE_FIELDS.ROLE_PERMISSIONS
     ],
     ADD_USER: [
         APPROVAL_WORKFLOW_RULE_FIELDS.USER_DOMAIN,
