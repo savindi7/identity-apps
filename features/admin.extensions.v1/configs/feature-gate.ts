@@ -43,6 +43,12 @@ export const featureGateConfig: FeatureGateInterface  = {
             templates: {
                 customAuthenticator: {
                     status: FeatureStatus.DEFAULT
+                },
+                enterprise: {
+                    status: FeatureStatus.DEFAULT
+                },
+                idvp: {
+                    status: FeatureStatus.DEFAULT
                 }
             }
         },

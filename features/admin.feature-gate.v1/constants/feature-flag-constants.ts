@@ -51,6 +51,8 @@ class FeatureFlagConstants {
         BRANDING: "branding",
         BRANDING_STYLES_AND_TEXT_TITLE: "branding.stylesAndText.application.title",
         CONNECTIONS_CUSTOM_AUTHENTICATOR: "console.connections.templates.customAuthenticator",
+        CONNECTIONS_ENTERPRISE: "console.connections.templates.enterprise",
+        CONNECTIONS_IDVP: "console.connections.templates.idvp",
         CONSOLE_SETTINGS: "console.consoleSettings",
         CUSTOMER_DATA_PROFILES: "customerDataProfiles",
         CUSTOMER_DATA_PROFILES_UNIFICATION_RULES: "customerDataUnificationRules",

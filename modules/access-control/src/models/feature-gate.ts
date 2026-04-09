@@ -84,6 +84,12 @@ export interface FeatureGateInterface {
             templates: {
                 customAuthenticator: {
                     status: FeatureStatus
+                },
+                enterprise: {
+                    status: FeatureStatus
+                },
+                idvp: {
+                    status: FeatureStatus
                 }
             }
         },
