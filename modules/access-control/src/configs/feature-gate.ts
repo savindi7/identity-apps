@@ -39,6 +39,13 @@ export const featureGateConfig: FeatureGateInterface  = {
                 }
             }
         },
+        connections: {
+            templates: {
+                customAuthenticator: {
+                    status: FeatureStatus.DEFAULT
+                }
+            }
+        },
         consoleSettings: {
             status: FeatureStatus.DEFAULT
         },

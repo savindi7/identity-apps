@@ -80,6 +80,13 @@ export interface FeatureGateInterface {
                 }
             }
         },
+        connections: {
+            templates: {
+                customAuthenticator: {
+                    status: FeatureStatus
+                }
+            }
+        },
         consoleSettings: {
             status: FeatureStatus
         },
