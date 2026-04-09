@@ -30,8 +30,8 @@ import { EventPublisher } from "@wso2is/admin.core.v1/utils/event-publisher";
 import FeatureLockedBanner from "@wso2is/admin.feature-gate.v1/components/feature-locked-banner";
 import FeatureFlagConstants from "@wso2is/admin.feature-gate.v1/constants/feature-flag-constants";
 import { IdentityAppsError } from "@wso2is/core/errors";
-import { AlertLevels, IdentifiableComponentInterface,
-    HttpErrorResponseDataInterface
+import { AlertLevels, HttpErrorResponseDataInterface,
+    IdentifiableComponentInterface
 } from "@wso2is/core/models";
 import { addAlert } from "@wso2is/core/store";
 import { Field, Wizard2, WizardPage } from "@wso2is/form";
