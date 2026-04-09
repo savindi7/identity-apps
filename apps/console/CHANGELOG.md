@@ -1,5 +1,31 @@
 # @wso2is/console
 
+## 3.3.27
+
+### Patch Changes
+
+- [#10104](https://github.com/wso2/identity-apps/pull/10104) [`b89cd340d1444de82ddf27f61bbe5ba5e99c8aed`](https://github.com/wso2/identity-apps/commit/b89cd340d1444de82ddf27f61bbe5ba5e99c8aed) Thanks [@sadilchamishka](https://github.com/sadilchamishka)! - Remove not supported workflow apporval rules from add role operation
+
+- Updated dependencies [[`b89cd340d1444de82ddf27f61bbe5ba5e99c8aed`](https://github.com/wso2/identity-apps/commit/b89cd340d1444de82ddf27f61bbe5ba5e99c8aed)]:
+  - @wso2is/admin.approval-workflows.v1@1.3.27
+  - @wso2is/admin.users.v1@2.38.32
+  - @wso2is/admin.agents.v1@1.1.21
+  - @wso2is/admin.onboarding.v1@1.0.80
+  - @wso2is/admin.subscription.v1@1.5.221
+  - @wso2is/admin.core.v1@2.55.32
+  - @wso2is/admin.roles.v2@2.27.379
+  - @wso2is/admin.applications.v1@2.42.21
+  - @wso2is/admin.home.v1@1.7.189
+  - @wso2is/admin.console-settings.v1@2.26.43
+  - @wso2is/admin.email-management.v1@2.25.373
+  - @wso2is/admin.connections.v1@2.36.49
+  - @wso2is/admin.branding.v1@2.32.165
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.209
+  - @wso2is/admin.flows.v1@1.0.178
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.209
+  - @wso2is/admin.server-configurations.v1@2.38.48
+  - @wso2is/admin.registration-flow-builder.v1@0.10.169
+
 ## 3.3.26
 
 ### Patch Changes

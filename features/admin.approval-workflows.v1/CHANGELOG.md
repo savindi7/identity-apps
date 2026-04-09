@@ -1,5 +1,18 @@
 # @wso2is/admin.approval-workflows.v1
 
+## 1.3.27
+
+### Patch Changes
+
+- [#10104](https://github.com/wso2/identity-apps/pull/10104) [`b89cd340d1444de82ddf27f61bbe5ba5e99c8aed`](https://github.com/wso2/identity-apps/commit/b89cd340d1444de82ddf27f61bbe5ba5e99c8aed) Thanks [@sadilchamishka](https://github.com/sadilchamishka)! - Remove not supported workflow apporval rules from add role operation
+
+- Updated dependencies []:
+  - @wso2is/admin.users.v1@2.38.32
+  - @wso2is/admin.core.v1@2.55.32
+  - @wso2is/admin.roles.v2@2.27.379
+  - @wso2is/admin.applications.v1@2.42.21
+  - @wso2is/admin.rules.v1@0.7.48
+
 ## 1.3.26
 
 ### Patch Changes
