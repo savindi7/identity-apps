@@ -1,5 +1,11 @@
 # @wso2is/admin.sms-templates.v1
 
+## 1.0.209
+
+### Patch Changes
+
+- [#10101](https://github.com/wso2/identity-apps/pull/10101) [`eabc8a4a3decca893883f156480b70c1e3acbe37`](https://github.com/wso2/identity-apps/commit/eabc8a4a3decca893883f156480b70c1e3acbe37) Thanks [@DilshanSenarath](https://github.com/DilshanSenarath)! - Fix the issue rendering the i18n text for the SMS template dropdown label
+
 ## 1.0.208
 
 ### Patch Changes
