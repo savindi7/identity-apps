@@ -1,5 +1,20 @@
 # @wso2is/admin.applications.v1
 
+## 2.42.21
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @wso2is/admin.users.v1@2.38.32
+  - @wso2is/admin.onboarding.v1@1.0.80
+  - @wso2is/admin.subscription.v1@1.5.221
+  - @wso2is/admin.core.v1@2.55.32
+  - @wso2is/admin.roles.v2@2.27.379
+  - @wso2is/admin.console-settings.v1@2.26.43
+  - @wso2is/admin.connections.v1@2.36.49
+  - @wso2is/admin.branding.v1@2.32.165
+  - @wso2is/admin.server-configurations.v1@2.38.48
+
 ## 2.42.20
 
 ### Patch Changes
