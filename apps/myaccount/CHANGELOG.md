@@ -1,5 +1,11 @@
 # @wso2is/myaccount
 
+## 3.0.13
+
+### Patch Changes
+
+- [#10107](https://github.com/wso2/identity-apps/pull/10107) [`383a70d00232c191213d1f1a1b91fbc74fe164aa`](https://github.com/wso2/identity-apps/commit/383a70d00232c191213d1f1a1b91fbc74fe164aa) Thanks [@sadilchamishka](https://github.com/sadilchamishka)! - Fix primary mobile number delete icon enabled when mobile number is marked as required in MyAccount
+
 ## 3.0.12
 
 ### Patch Changes
