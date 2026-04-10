@@ -1,5 +1,11 @@
 # @wso2is/identity-apps-core
 
+## 5.0.11
+
+### Patch Changes
+
+- [#10116](https://github.com/wso2/identity-apps/pull/10116) [`cae26253852a89ba886a3fb1fe258875340054e1`](https://github.com/wso2/identity-apps/commit/cae26253852a89ba886a3fb1fe258875340054e1) Thanks [@github-actions](https://github.com/apps/github-actions)! - Add logic to check whether the new registration feature is enabled for IDF configuration.
+
 ## 5.0.10
 
 ### Patch Changes
