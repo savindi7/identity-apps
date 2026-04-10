@@ -39,6 +39,22 @@ export const featureGateConfig: FeatureGateInterface  = {
                 }
             }
         },
+        connections: {
+            templates: {
+                customAuthenticator: {
+                    status: FeatureStatus.DEFAULT
+                },
+                enterprise: {
+                    status: FeatureStatus.DEFAULT
+                },
+                idvp: {
+                    status: FeatureStatus.DEFAULT
+                }
+            }
+        },
+        consoleSettings: {
+            status: FeatureStatus.DEFAULT
+        },
         emailTemplates: {
             status: FeatureStatus.DEFAULT
         },
