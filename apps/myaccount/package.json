@@ -1,7 +1,7 @@
 {
     "private": true,
     "name": "@wso2is/myaccount",
-    "version": "4.1.8",
+    "version": "4.1.9",
     "description": "WSO2 Identity Server My Account",
     "author": "WSO2",
     "license": "Apache-2.0",
@@ -41,7 +41,7 @@
         "@mui/system": "^5.12.3",
         "@oxygen-ui/react": "^2.4.6",
         "@oxygen-ui/react-icons": "^2.4.6",
-        "@wso2is/access-control": "^3.5.5",
+        "@wso2is/access-control": "^3.5.6",
         "@wso2is/admin.organizations.v1": "^2.28.2",
         "@wso2is/common.branding.v1": "^2.28.3",
         "@wso2is/common.ui.v1": "^0.2.0",
