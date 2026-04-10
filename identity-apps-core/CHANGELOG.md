@@ -1,5 +1,11 @@
 # @wso2is/identity-apps-core
 
+## 4.0.13
+
+### Patch Changes
+
+- [#10118](https://github.com/wso2/identity-apps/pull/10118) [`96448d5de7e53b790bd6abd3273e8719cd5e71cd`](https://github.com/wso2/identity-apps/commit/96448d5de7e53b790bd6abd3273e8719cd5e71cd) Thanks [@DilshanSenarath](https://github.com/DilshanSenarath)! - Release a new identity apps core version
+
 ## 4.0.12
 
 ### Patch Changes
