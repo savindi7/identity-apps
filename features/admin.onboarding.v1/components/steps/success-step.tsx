@@ -276,7 +276,9 @@ const SuccessStep: FunctionComponent<SuccessStepPropsInterface> = (
         templateId
     }), [ createdApplication, customServerHost, inboundOidcConfig, redirectUrls, templateId ]);
 
-    const docsUrl: string | undefined = getTemplateDocsUrl(templateId, docSiteURL);
+    const appName: string = createdApplication?.name || "Your application";
+
+    const docsUrl: string | undefined = getTemplateDocsUrl(templateId, docsHomePage);
 
     const getSuccessTitle: () => string = (): string => {
         if (isTourFlow) {
