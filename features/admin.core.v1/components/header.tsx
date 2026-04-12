@@ -362,6 +362,22 @@ const Header: FunctionComponent<HeaderPropsInterface> = ({
                 </Menu>
             </>
         ),
+        window["AppUtils"].getConfig().documentation?.common?.docsHomePage && (
+            <Button
+                color="inherit"
+                onClick={ () => {
+                    window.open(
+                        window["AppUtils"].getConfig().documentation?.common?.docsHomePage,
+                        "_blank",
+                        "noopener"
+                    );
+                } }
+                startIcon={ <DocsIcon /> }
+                data-testid="dev-doc-site-link"
+            >
+                { I18n.instance.t("console:common.help.docSiteLink") as ReactNode }
+            </Button>
+        ),
         (window["AppUtils"].getConfig().extensions.getHelp) && (
             <>
                 <Button
