@@ -276,8 +276,6 @@ const SuccessStep: FunctionComponent<SuccessStepPropsInterface> = (
         templateId
     }), [ createdApplication, customServerHost, inboundOidcConfig, redirectUrls, templateId ]);
 
-    const appName: string = createdApplication?.name || "Your application";
-
     const docsUrl: string | undefined = getTemplateDocsUrl(templateId, docsHomePage);
 
     const getSuccessTitle: () => string = (): string => {
