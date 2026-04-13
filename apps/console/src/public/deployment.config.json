@@ -18,6 +18,7 @@
     },
     "appBaseName": "console",
     "clientID": "CONSOLE",
+    "cookiePolicyUrl": "/authenticationendpoint/cookie_policy.do",
     "customContent": {
         "maxFileSize": 1048576
     },
@@ -27,14 +28,7 @@
         "displayName": "Develop",
         "path": "/applications"
     },
-    "documentation": {
-        "common": {
-            "cookiePolicy": "https://wso2.com/cookie-policy",
-            "docsHomePage": "https://is.docs.wso2.com/en/latest",
-            "privacyPolicy": "https://wso2.com/privacy-policy",
-            "termsOfService": "https://wso2.com/terms-of-use"
-        }
-    },
+    "docSiteUrl": "https://is.docs.wso2.com/en/latest",
     "extensions": {
         "analytics": {
             "moesif": {
@@ -2183,6 +2177,7 @@
             "maxPasswordAllowedLength": 64
         },
         "privacyPolicyConfigs": {},
+        "privacyPolicyUrl": "/authenticationendpoint/privacy_policy.do",
         "productName": "WSO2 Identity Server",
         "productVersionConfig": {
             "productVersion": "7.2.0"
@@ -2232,6 +2227,7 @@
             "My Account"
         ],
         "systemReservedUserStores": ["AGENT"],
+        "termsOfUseUrl": "https://wso2.com/terms-of-use",
         "theme": {
             "name": "wso2is"
         },

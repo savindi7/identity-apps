@@ -255,6 +255,7 @@ export const AppUtils: any = (function() {
                     displayName: _config.developerApp.displayName,
                     path: this.constructAppPaths("")
                 },
+                docSiteUrl: _config.docSiteUrl,
                 documentation: _config.documentation,
                 extensions: _config.extensions,
                 getProfileInfoFromIDToken: _config.getProfileInfoFromIDToken,

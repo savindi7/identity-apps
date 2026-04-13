@@ -150,7 +150,7 @@ export const CreateConnectionWizard: FC<CreateConnectionWizardPropsInterface> = 
         let documentationLink: string = undefined;
 
         if (metadataLink) {
-            documentationLink = deploymentConfig?.documentation?.common?.docsHomePage + metadataLink;
+            documentationLink = deploymentConfig?.docSiteURL + metadataLink;
         }
 
         return documentationLink;

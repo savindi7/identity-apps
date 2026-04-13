@@ -362,12 +362,12 @@ const Header: FunctionComponent<HeaderPropsInterface> = ({
                 </Menu>
             </>
         ),
-        window["AppUtils"].getConfig().documentation?.common?.docsHomePage && (
+        window["AppUtils"].getConfig().docSiteUrl && (
             <Button
                 color="inherit"
                 onClick={ () => {
                     window.open(
-                        window["AppUtils"].getConfig().documentation?.common?.docsHomePage,
+                        window["AppUtils"].getConfig().docSiteUrl,
                         "_blank",
                         "noopener"
                     );
