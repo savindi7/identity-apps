@@ -25,7 +25,7 @@ const documentationBaseUrl: string =
 /**
  * Get all the Features documentation links.
  *
- * @returns {DocumentationLinksInterface}
+ * @returns the feature documentation links.
  */
 export const DocumentationLinks: DocumentationLinksInterface = {
     develop: {
