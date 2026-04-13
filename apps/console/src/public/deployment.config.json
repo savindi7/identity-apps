@@ -2225,6 +2225,7 @@
         },
         "selfAppIdentifier": "Console",
         "showAppSwitchButton": true,
+        "showDocLinks": false,
         "showStatusLabelForNewAuthzRuntimeFeatures": false,
         "systemAppsIdentifiers": [
             "Console",
