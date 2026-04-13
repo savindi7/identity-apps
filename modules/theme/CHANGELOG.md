@@ -1,5 +1,11 @@
 # @wso2is/theme
 
+## 2.10.0
+
+### Minor Changes
+
+- [#10112](https://github.com/wso2/identity-apps/pull/10112) [`793c5bde494bdde069a0fbc0b5311d279938ceb9`](https://github.com/wso2/identity-apps/commit/793c5bde494bdde069a0fbc0b5311d279938ceb9) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - feat: add AI Copilot ("Ask AI") assistant to the Admin Console
+
 ## 2.9.6
 
 ### Patch Changes

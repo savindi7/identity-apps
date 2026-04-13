@@ -1,5 +1,15 @@
 # @wso2is/i18n
 
+## 2.39.0
+
+### Minor Changes
+
+- [#10112](https://github.com/wso2/identity-apps/pull/10112) [`793c5bde494bdde069a0fbc0b5311d279938ceb9`](https://github.com/wso2/identity-apps/commit/793c5bde494bdde069a0fbc0b5311d279938ceb9) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - feat: add AI Copilot ("Ask AI") assistant to the Admin Console
+
+### Patch Changes
+
+- [#10039](https://github.com/wso2/identity-apps/pull/10039) [`3ab81080396569cab60e5e4b52d8715b54d9ef67`](https://github.com/wso2/identity-apps/commit/3ab81080396569cab60e5e4b52d8715b54d9ef67) Thanks [@github-actions](https://github.com/apps/github-actions)! - fix incorrect UI input validation for orgHandle in sub-organization creation form
+
 ## 2.38.7
 
 ### Patch Changes

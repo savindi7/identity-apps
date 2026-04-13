@@ -1,5 +1,45 @@
 # @wso2is/console
 
+## 4.3.0
+
+### Minor Changes
+
+- [#10112](https://github.com/wso2/identity-apps/pull/10112) [`793c5bde494bdde069a0fbc0b5311d279938ceb9`](https://github.com/wso2/identity-apps/commit/793c5bde494bdde069a0fbc0b5311d279938ceb9) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - feat: add AI Copilot ("Ask AI") assistant to the Admin Console
+
+### Patch Changes
+
+- [#10039](https://github.com/wso2/identity-apps/pull/10039) [`3ab81080396569cab60e5e4b52d8715b54d9ef67`](https://github.com/wso2/identity-apps/commit/3ab81080396569cab60e5e4b52d8715b54d9ef67) Thanks [@github-actions](https://github.com/apps/github-actions)! - fix incorrect UI input validation for orgHandle in sub-organization creation form
+
+* [#10049](https://github.com/wso2/identity-apps/pull/10049) [`2854c792d92d6157c3f8d32921ea410c5c451edd`](https://github.com/wso2/identity-apps/commit/2854c792d92d6157c3f8d32921ea410c5c451edd) Thanks [@github-actions](https://github.com/apps/github-actions)! - Hide danger zone section for shared users on the user profile page
+
+* Updated dependencies [[`793c5bde494bdde069a0fbc0b5311d279938ceb9`](https://github.com/wso2/identity-apps/commit/793c5bde494bdde069a0fbc0b5311d279938ceb9), [`3ab81080396569cab60e5e4b52d8715b54d9ef67`](https://github.com/wso2/identity-apps/commit/3ab81080396569cab60e5e4b52d8715b54d9ef67), [`2854c792d92d6157c3f8d32921ea410c5c451edd`](https://github.com/wso2/identity-apps/commit/2854c792d92d6157c3f8d32921ea410c5c451edd)]:
+  - @wso2is/admin.copilot.v1@1.0.0
+  - @wso2is/admin.extensions.v1@2.42.0
+  - @wso2is/admin.core.v1@2.56.0
+  - @wso2is/theme@2.10.0
+  - @wso2is/i18n@2.39.0
+  - @wso2is/admin.organizations.v1@2.28.3
+  - @wso2is/admin.users.v1@2.38.30
+  - @wso2is/admin.approval-workflows.v1@1.3.25
+  - @wso2is/admin.onboarding.v1@1.0.78
+  - @wso2is/admin.actions.v1@1.15.5
+  - @wso2is/admin.org-insights.v1@2.26.3
+  - @wso2is/admin.session-management.v1@2.26.5
+  - @wso2is/admin.agents.v1@1.1.19
+  - @wso2is/admin.subscription.v1@1.5.222
+  - @wso2is/admin.applications.v1@2.42.19
+  - @wso2is/admin.home.v1@1.7.187
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.207
+  - @wso2is/admin.branding.v1@2.32.163
+  - @wso2is/admin.email-management.v1@2.25.371
+  - @wso2is/admin.flows.v1@1.0.176
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.207
+  - @wso2is/admin.server-configurations.v1@2.38.46
+  - @wso2is/admin.roles.v2@2.27.377
+  - @wso2is/admin.console-settings.v1@2.26.41
+  - @wso2is/admin.registration-flow-builder.v1@0.10.167
+  - @wso2is/admin.connections.v1@2.36.47
+
 ## 4.2.15
 
 ### Patch Changes
