@@ -366,11 +366,7 @@ const Header: FunctionComponent<HeaderPropsInterface> = ({
             <Button
                 color="inherit"
                 onClick={ () => {
-                    window.open(
-                        window["AppUtils"].getConfig().docSiteUrl,
-                        "_blank",
-                        "noopener"
-                    );
+                    window.open(window["AppUtils"].getConfig().docSiteUrl, "_blank", "noopener");
                 } }
                 startIcon={ <DocsIcon /> }
                 data-testid="dev-doc-site-link"

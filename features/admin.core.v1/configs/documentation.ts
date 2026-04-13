@@ -20,7 +20,7 @@ import { Config } from "./app";
 import { DocumentationLinksInterface } from "../models/documentation";
 
 const documentationBaseUrl: string =
-    Config?.getDeploymentConfig()?.documentation?.common?.docsHomePage ?? "";
+    Config?.getDeploymentConfig()?.docSiteURL ?? "";
 
 /**
  * Get all the Features documentation links.

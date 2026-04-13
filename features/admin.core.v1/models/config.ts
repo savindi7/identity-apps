@@ -379,38 +379,6 @@ export interface DeploymentConfigInterface extends CommonDeploymentConfigInterfa
 }
 
 /**
- * Interface representing common documentation links configured via deployment config.
- */
-export interface CommonDocumentationConfigInterface {
-    /**
-     * Cookie policy link.
-     */
-    cookiePolicy?: string;
-    /**
-     * Documentation home page link.
-     */
-    docsHomePage?: string;
-    /**
-     * Privacy policy link.
-     */
-    privacyPolicy?: string;
-    /**
-     * Terms of service link.
-     */
-    termsOfService?: string;
-}
-
-/**
- * Interface representing documentation related deployment config.
- */
-export interface DocumentationConfigInterface {
-    /**
-     * Common documentation links.
-     */
-    common?: CommonDocumentationConfigInterface;
-}
-
-/**
  * Flow execution compatibility settings from the tenant/sub-org API.
  */
 export interface FlowExecutionCompatibilityInterface {

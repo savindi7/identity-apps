@@ -57,11 +57,9 @@
     {% if console.super_tenant_proxy_name is defined %}
         "superTenantProxy" : "{{ console.super_tenant_proxy_name }}",
     {% endif %}
-    "documentation": {
-        "common": {
-            "docsHomePage": "{{ console.doc_site_path if console.doc_site_path is defined else 'https://is.docs.wso2.com/en/latest' }}",
-        }
-    },
+    {% if console.doc_site_path is defined %}
+        "docSiteUrl": "{{ console.doc_site_path }}",
+    {% endif %}
     {% if console.idp_configs is defined %}
     "idpConfigs": {
         {% if console.idp_configs.items() is defined %}

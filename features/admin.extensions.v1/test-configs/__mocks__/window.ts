@@ -63,14 +63,7 @@ interface CustomExtendedWindow extends Window {
                 displayName: "app",
                 path: "/t/testorg/develop/applications"
             },
-            documentation: {
-                common: {
-                    cookiePolicy: "https://wso2.com/cookie-policy",
-                    docsHomePage: "https://is.docs.wso2.com/",
-                    privacyPolicy: "https://wso2.com/privacy-policy",
-                    termsOfService: "https://wso2.com/terms-of-use"
-                }
-            },
+            docSiteUrl: "https://is.docs.wso2.com/",
             extensions: {
                 collaboratorUsernameRegex: "^[\\u00C0-\\u00FFa-zA-Z0-9.+\\-_]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,10}$",
                 community: "https://localhost:9443/community",

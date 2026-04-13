@@ -68,6 +68,7 @@ export const commonConfigReducerInitialState: CommonConfigReducerStateInterface<
                 path: "",
                 tenantQualifiedPath: ""
             },
+            docSiteURL: "",
             extensions: null,
             helpCenterURL: "",
             idpConfigs: null,
