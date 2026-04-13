@@ -208,7 +208,7 @@ const SuccessStep: FunctionComponent<SuccessStepPropsInterface> = (
     const accountAppURL: string = useSelector((state: AppState) =>
         state.config?.deployment?.accountApp?.tenantQualifiedPath || ""
     );
-    const docsSiteURL: string = useSelector((state: AppState) =>
+    const docSiteURL: string = useSelector((state: AppState) =>
         state.config?.deployment?.docSiteURL || ""
     );
 
@@ -244,7 +244,7 @@ const SuccessStep: FunctionComponent<SuccessStepPropsInterface> = (
         clientOrigin,
         createdApplication,
         customServerHost,
-        docSiteURL: docsSiteURL,
+        docSiteURL: docSiteURL,
         inboundProtocolConfig: inboundOidcConfig,
         oidcConfigurations,
         productName,
@@ -252,7 +252,7 @@ const SuccessStep: FunctionComponent<SuccessStepPropsInterface> = (
         serverOrigin,
         tenantDomain
     }), [
-        accountAppURL, clientOrigin, createdApplication, customServerHost, docsSiteURL,
+        accountAppURL, clientOrigin, createdApplication, customServerHost, docSiteURL,
         inboundOidcConfig, oidcConfigurations, productName, redirectUrls, serverOrigin,
         tenantDomain
     ]);
@@ -276,7 +276,7 @@ const SuccessStep: FunctionComponent<SuccessStepPropsInterface> = (
         templateId
     }), [ createdApplication, customServerHost, inboundOidcConfig, redirectUrls, templateId ]);
 
-    const docsUrl: string | undefined = getTemplateDocsUrl(templateId, docsSiteURL);
+    const docsUrl: string | undefined = getTemplateDocsUrl(templateId, docSiteURL);
 
     const getSuccessTitle: () => string = (): string => {
         if (isTourFlow) {
