@@ -65,6 +65,7 @@
         "@wso2is/admin.claims.v1": "^2.31.0",
         "@wso2is/admin.connections.v1": "^2.36.46",
         "@wso2is/admin.console-settings.v1": "^2.26.40",
+        "@wso2is/admin.copilot.v1": "workspace:^",
         "@wso2is/admin.core.v1": "^2.55.29",
         "@wso2is/admin.email-and-sms.v1": "^2.25.207",
         "@wso2is/admin.email-management.v1": "^2.25.370",
