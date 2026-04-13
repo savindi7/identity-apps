@@ -244,7 +244,7 @@ const SuccessStep: FunctionComponent<SuccessStepPropsInterface> = (
         clientOrigin,
         createdApplication,
         customServerHost,
-        docSiteURL: docSiteURL,
+        docSiteURL,
         inboundProtocolConfig: inboundOidcConfig,
         oidcConfigurations,
         productName,
