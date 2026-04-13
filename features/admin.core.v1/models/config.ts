@@ -360,9 +360,9 @@ export interface DeploymentConfigInterface extends CommonDeploymentConfigInterfa
      */
     extensions: Record<string, unknown>;
     /**
-     * Documentation links configured through the deployment config.
+     * Documentation site URL configured through the deployment config.
      */
-    documentation?: DocumentationConfigInterface;
+    docSiteURL?: string;
     /**
      * URL of the help center.
      */
