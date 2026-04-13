@@ -512,7 +512,12 @@ interface WebhooksDocumentationLinksInterface {
     learnMore: string;
 }
 
+interface CommonDocumentationLinksInterface {
+    aiTermsOfService: string;
+}
+
 export interface DocumentationLinksInterface {
+    common: CommonDocumentationLinksInterface;
     develop: {
         actions: ActionsDocumentationLinksInterface;
         apiResources: APIResourcesDocumentationLinksInterface

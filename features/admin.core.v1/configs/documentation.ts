@@ -28,6 +28,9 @@ const documentationBaseUrl: string =
  * @returns the feature documentation links.
  */
 export const DocumentationLinks: DocumentationLinksInterface = {
+    common: {
+        aiTermsOfService: "https://wso2.com/licenses/wso2-ai-services-terms-of-use/"
+    },
     develop: {
         actions: {
             learnMore: documentationBaseUrl + "/guides/service-extensions/understanding-service-extensions/",
