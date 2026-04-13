@@ -58,7 +58,7 @@ const BrandingAIBanner: FunctionComponent<PropsWithChildren<BrandingAIBannerProp
 
     const { getLink } = useDocumentation();
     const termsOfServiceLink: string = useSelector((state: AppState) =>
-        state.config?.deployment?.documentation?.common?.termsOfService || ""
+        state.config?.ui?.termsOfUseUrl || ""
     );
 
     const aiFeatureConfig: FeatureAccessConfigInterface = useSelector(

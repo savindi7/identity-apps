@@ -18,7 +18,6 @@
     },
     "appBaseName": "console",
     "clientID": "CONSOLE",
-    "cookiePolicyUrl": "/authenticationendpoint/cookie_policy.do",
     "customContent": {
         "maxFileSize": 1048576
     },

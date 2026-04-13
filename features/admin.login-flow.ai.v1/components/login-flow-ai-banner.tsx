@@ -64,7 +64,7 @@ const LoginFlowAIBanner: FunctionComponent<IdentifiableComponentInterface> = (
 
     const { t } = useTranslation();
     const termsOfServiceLink: string = useSelector((state: AppState) =>
-        state.config?.deployment?.documentation?.common?.termsOfService || ""
+        state.config?.ui?.termsOfUseUrl || ""
     );
 
     const applicationsFeatureConfig: FeatureAccessConfigInterface =

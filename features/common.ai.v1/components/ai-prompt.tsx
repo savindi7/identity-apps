@@ -59,7 +59,7 @@ const AIPrompt = ({
     const { t } = useTranslation();
     const { addPrompt, prompts } = useAIPromptHistory(promptHistoryPreferenceKey);
     const termsOfServiceLink: string = useSelector((state: AppState) =>
-        state.config?.deployment?.documentation?.common?.termsOfService || ""
+        state.config?.ui?.termsOfUseUrl || ""
     );
 
     const [ showPromptHistory, setShowPromptHistory ] = useState<boolean>(false);
