@@ -1,91 +1,89 @@
 {
-  "targetDefaults": {
-    "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "production",
-        "^production"
-      ]
+    "targetDefaults": {
+        "build": {
+            "dependsOn": ["^build"],
+            "inputs": ["production", "^production"]
+        },
+        "build-storybook": {
+            "inputs": [
+                "default",
+                "^production",
+                "{projectRoot}/.storybook/**/*",
+                "{projectRoot}/tsconfig.storybook.json"
+            ]
+        },
+        "test": {
+
+        },
+        "lint": {
+
+        },
+        "package": {
+
+        },
+        "prepare": {
+
+        }
     },
-    "build-storybook": {
-      "inputs": [
-        "default",
-        "^production",
-        "{projectRoot}/.storybook/**/*",
-        "{projectRoot}/tsconfig.storybook.json"
-      ]
+    "$schema": "./node_modules/nx/schemas/nx-schema.json",
+    "workspaceLayout": {
+        "appsDir": "apps",
+        "libsDir": "modules"
     },
-    "test": {},
-    "lint": {},
-    "package": {},
-    "prepare": {}
-  },
-  "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "workspaceLayout": {
-    "appsDir": "apps",
-    "libsDir": "modules"
-  },
-  "targetDependencies": {
-    "build": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ],
-    "prepare": [
-      {
-        "target": "prepare",
-        "projects": "dependencies"
-      }
-    ],
-    "package": [
-      {
-        "target": "package",
-        "projects": "dependencies"
-      }
-    ]
-  },
-  "pluginsConfig": {
-    "@nx/js": {
-      "analyzeSourceFiles": true
+    "targetDependencies": {
+        "build": [
+            {
+                "target": "build",
+                "projects": "dependencies"
+            }
+        ],
+        "prepare": [
+            {
+                "target": "prepare",
+                "projects": "dependencies"
+            }
+        ],
+        "package": [
+            {
+                "target": "package",
+                "projects": "dependencies"
+            }
+        ]
+    },
+    "affected": {
+        "defaultBase": "master"
+    },
+    "pluginsConfig": {
+        "@nx/js": {
+            "analyzeSourceFiles": true
+        }
+    },
+    "generators": {
+        "@nx/react": {
+            "application": {
+                "style": "css",
+                "linter": "eslint",
+                "babel": true
+            },
+            "component": {
+                "style": "css"
+            },
+            "library": {
+                "style": "css",
+                "linter": "eslint"
+            }
+        }
+    },
+    "namedInputs": {
+        "default": ["{projectRoot}/**/*", "sharedGlobals"],
+        "sharedGlobals": ["{workspaceRoot}/babel.config.json"],
+        "production": [
+            "default",
+            "!{projectRoot}/.eslintrc.js",
+            "!{projectRoot}/.storybook/**/*",
+            "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
+            "!{projectRoot}/tsconfig.storybook.json",
+            "!{projectRoot}/src/test-setup.[jt]s"
+        ]
     }
-  },
-  "generators": {
-    "@nx/react": {
-      "application": {
-        "style": "css",
-        "linter": "eslint",
-        "babel": true
-      },
-      "component": {
-        "style": "css"
-      },
-      "library": {
-        "style": "css",
-        "linter": "eslint"
-      }
-    }
-  },
-  "namedInputs": {
-    "default": [
-      "{projectRoot}/**/*",
-      "sharedGlobals"
-    ],
-    "sharedGlobals": [
-      "{workspaceRoot}/babel.config.json"
-    ],
-    "production": [
-      "default",
-      "!{projectRoot}/.eslintrc.js",
-      "!{projectRoot}/.storybook/**/*",
-      "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
-      "!{projectRoot}/tsconfig.storybook.json",
-      "!{projectRoot}/src/test-setup.[jt]s"
-    ]
-  },
-  "neverConnectToCloud": true,
-  "useInferencePlugins": false,
-  "defaultBase": "master"
 }
