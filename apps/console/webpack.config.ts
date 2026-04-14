@@ -21,8 +21,8 @@ import path from "path";
 import { ParsedUrlQuery } from "querystring";
 import url, { UrlWithParsedQuery } from "url";
 import zlib, { BrotliOptions } from "zlib";
-import { withNx } from "@nx/webpack/src/utils/with-nx";
 import { withReact } from "@nx/react/plugins/with-react";
+import { withNx } from "@nx/webpack/src/utils/with-nx";
 import CompressionPlugin from "compression-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
@@ -179,7 +179,7 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
         } else {
             config.plugins[forkTsCheckerPluginIndex] = new ForkTsCheckerWebpackPlugin({
                 typescript: {
-                    memoryLimit: 2048
+                    memoryLimit: 4096
                 }
             });
         }
