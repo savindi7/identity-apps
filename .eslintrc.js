@@ -189,7 +189,8 @@ module.exports = {
                 "no-undef": 0,
                 "no-unsafe-optional-chaining": "off",
                 "no-use-before-define": "off",
-                "padding-line-between-statements": "off"
+                "padding-line-between-statements": "off",
+                "storybook/no-uninstalled-addons": "off"
             },
             settings: {
                 react: {

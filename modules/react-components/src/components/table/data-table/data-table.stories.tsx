@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020, WSO2 LLC. (https://www.wso2.com). All Rights Reserved.
+ * Copyright (c) 2020-2026, WSO2 LLC. (https://www.wso2.com).
  *
  * WSO2 LLC. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -16,11 +16,11 @@
  * under the License.
  */
 
-import { action } from "storybook/actions";
 import cloneDeep from "lodash-es/cloneDeep";
 import orderBy from "lodash-es/orderBy";
 import React, { ReactElement, SyntheticEvent, useState } from "react";
 import { Divider, Form, Grid, Header, Label, SemanticICONS } from "semantic-ui-react";
+import { action } from "storybook/actions";
 import { DataTable, DataTableSortOrder, TableColumnInterface } from "./data-table";
 import { DEMO_DATA_LIST, DataTableDemoDataInterface, meta } from "./data-table.stories.meta";
 import { AppAvatar } from "../../avatar";

@@ -26,7 +26,7 @@ const UN_MINIFIED_THEME_STYLESHEET_NAME = "theme.css";
 const MINIFIED_THEME_STYLESHEET_NAME = "theme.min.css";
 
 module.exports = {
-    addons: ["@storybook/addon-links", {
+    addons: [ "@storybook/addon-links", {
         name: "@storybook/addon-docs",
         options: {
             babelOptions: {},
@@ -34,7 +34,7 @@ module.exports = {
             sourceLoaderOptions: null,
             transcludeMarkdown: true
         }
-    }, "@nx/react/plugins/storybook"],
+    }, "@nx/react/plugins/storybook" ],
     framework: {
         name: "@storybook/react-webpack5",
         options: {}
