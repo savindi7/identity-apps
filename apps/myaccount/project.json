@@ -37,6 +37,7 @@
             "defaultConfiguration": "production",
             "options": {
                 "compiler": "babel",
+                "memoryLimit": 4096,
                 "outputPath": "apps/myaccount/build/myaccount",
                 "index": "index.html",
                 "baseHref": "/myaccount/",

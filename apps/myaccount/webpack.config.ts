@@ -168,6 +168,16 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
     const RELATIVE_PATHS: RelativePathsInterface = getRelativePaths(config.mode, context);
 
     const isProduction: boolean = config.mode === "production";
+
+    if (!isProduction) {
+        // Move webpack's module graph cache from RAM to disk. In dev mode webpack 5 defaults to
+        // an in-memory cache that can grow to several hundred MB; filesystem cache writes the
+        // same data to .cache/ and frees that heap.
+        config.cache = { type: "filesystem" } as WebpackOptionsNormalized["cache"];
+        // eval-cheap-module-source-map reuses webpack's eval() bundle; it rebuilds fast and
+        // doesn't materialise a full per-file SourceMap in memory the way `source-map` does.
+        config.devtool = "eval-cheap-module-source-map";
+    }
     const baseHref: string = getBaseHref(
         context.buildOptions?.baseHref ?? context.options.baseHref,
         DeploymentConfig.appBaseName
