@@ -16,7 +16,7 @@
  * under the License.
  */
 
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 import React, { ReactElement } from "react";
 import { Label } from "semantic-ui-react";
 import { ResourceList } from "./resource-list";

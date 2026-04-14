@@ -16,7 +16,7 @@
  * under the License.
  */
 
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 import { UIConstants } from "@wso2is/core/constants";
 import React, { ReactElement } from "react";
 import { UserAvatar } from "./user-avatar";

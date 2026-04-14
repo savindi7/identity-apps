@@ -16,7 +16,7 @@
  * under the License.
  */
 
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 import * as React from "react";
 import { meta } from "./card.stories.meta";
 import { InfoCard, LabeledCard, SelectionCard } from "../../index";

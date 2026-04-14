@@ -16,7 +16,7 @@
  * under the License.
  */
 
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 import cloneDeep from "lodash-es/cloneDeep";
 import orderBy from "lodash-es/orderBy";
 import React, { ReactElement, SyntheticEvent, useState } from "react";

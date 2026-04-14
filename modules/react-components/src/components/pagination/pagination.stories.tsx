@@ -16,7 +16,7 @@
  * under the License.
  */
 
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 import React, { ReactElement, SyntheticEvent } from "react";
 import { PaginationProps } from "semantic-ui-react";
 import { meta } from "./pagination.stories.meta";

@@ -1,21 +1,21 @@
 {
-    "plugins": [
-        [
-            "babel-plugin-rename-jsx-attribute",
-            {
-                "attributes": {
-                    "data-suppress": "data-hj-suppress"
-                }
-            }
-        ]
-    ],
-    "presets": [
-        [
-            "@nx/react/babel",
-            {
-                "runtime": "automatic",
-                "useBuiltIns": "usage"
-            }
-        ]
+  "plugins": [
+    [
+      "babel-plugin-rename-jsx-attribute",
+      {
+        "attributes": {
+          "data-suppress": "data-hj-suppress"
+        }
+      }
     ]
+  ],
+  "presets": [
+    [
+      "@nx/react/babel",
+      {
+        "runtime": "automatic",
+        "useBuiltIns": "usage"
+      }
+    ]
+  ]
 }
