@@ -50,9 +50,6 @@
             }
         ]
     },
-    "affected": {
-        "defaultBase": "master"
-    },
     "pluginsConfig": {
         "@nx/js": {
             "analyzeSourceFiles": true
@@ -85,5 +82,8 @@
             "!{projectRoot}/tsconfig.storybook.json",
             "!{projectRoot}/src/test-setup.[jt]s"
         ]
-    }
+    },
+    "neverConnectToCloud": true,
+    "useInferencePlugins": false,
+    "defaultBase": "master"
 }
