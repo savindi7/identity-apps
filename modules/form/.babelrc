@@ -22,8 +22,8 @@
         [
             "@nx/react/babel",
             {
-              "runtime": "automatic",
-              "useBuiltIns": "usage"
+                "runtime": "automatic",
+                "useBuiltIns": "usage"
             }
         ]
     ],
