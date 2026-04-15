@@ -261,6 +261,7 @@ module.exports = [
             "no-undef": 0,
             "no-unreachable": "off",
             "no-unsafe-negation": "off",
+            "no-unused-vars": "off",
             "no-with": "off",
             "valid-typeof": "off",
             // @typescript-eslint/recommended rules

@@ -197,18 +197,20 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
     }
 
     if (isProduction && !isDeployedOnExternalStaticServer) {
-        /* eslint-disable max-len */
         config.plugins.push(
             (new HtmlWebpackPlugin({
                 authorizationCode: "<%=request.getParameter(\"code\")%>",
                 contentType: "<%@ page language=\"java\" contentType=\"text/html; charset=UTF-8\" " +
                     "pageEncoding=\"UTF-8\" %>",
-                cookieproDomainScriptId: "<% String cookiepro_domain_script_id = System.getenv(\"cookiepro_domain_script_id\"); %>",
+                cookieproDomainScriptId:
+                    "<% String cookiepro_domain_script_id = System.getenv(\"cookiepro_domain_script_id\"); %>",
                 cookieproDomainScriptIdVar: "<%= cookiepro_domain_script_id %>",
                 cookieproEnabledCheck: "<% if ((Boolean.TRUE.toString()).equals(is_cookiepro_enabled)) { %>",
                 cookieproEnabledCheckEnd: "<% } %>",
                 cookieproEnabledFlag: "<% String is_cookiepro_enabled = System.getenv(\"is_cookiepro_enabled\"); %>",
-                cookieproInitialScriptTypeCheck: "<% String initialScriptType = (Boolean.TRUE.toString()).equals(is_cookiepro_enabled) ? \"text/plain\" : \"text/javascript\"; %>",
+                cookieproInitialScriptTypeCheck:
+                    "<% String initialScriptType = (Boolean.TRUE.toString()).equals(is_cookiepro_enabled) ?" +
+                    " \"text/plain\" : \"text/javascript\"; %>",
                 cookieproInitialScriptTypeVar: "<%= initialScriptType %>",
                 filename: ABSOLUTE_PATHS.homeTemplateInDistribution,
                 getAdaptiveAuthenticationAvailability: !isDeployedOnExternalTomcatServer
@@ -258,7 +260,8 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
                     ? "<%=ServerConfiguration.getInstance().getFirstProperty(PROXY_CONTEXT_PATH)%>"
                     : "",
                 proxyContextPathConstant: !isDeployedOnExternalTomcatServer
-                    ? "<%@ page import=\"static org.wso2.carbon.identity.core.util.IdentityCoreConstants.PROXY_CONTEXT_PATH\" %>"
+                    ? "<%@ page import=\"static org.wso2.carbon.identity.core.util." +
+                      "IdentityCoreConstants.PROXY_CONTEXT_PATH\" %>"
                     : "",
                 publicPath: baseHref,
                 serverConfiguration: !isDeployedOnExternalTomcatServer
@@ -282,9 +285,7 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
                 themeHash: getThemeConfigs(theme).styleSheetHash
             }) as unknown) as WebpackPluginInstance
         );
-        /* eslint-enable max-len */
 
-        /* eslint-disable max-len */
         config.plugins.push(
             (new HtmlWebpackPlugin({
                 authenticatedIdPs: "<%=request.getParameter(\"AuthenticatedIdPs\")%>",
@@ -335,7 +336,8 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
                     ? "<%=ServerConfiguration.getInstance().getFirstProperty(PROXY_CONTEXT_PATH)%>"
                     : "",
                 proxyContextPathConstant: !isDeployedOnExternalTomcatServer
-                    ? "<%@ page import=\"static org.wso2.carbon.identity.core.util.IdentityCoreConstants.PROXY_CONTEXT_PATH\" %>"
+                    ? "<%@ page import=\"static org.wso2.carbon.identity.core.util." +
+                      "IdentityCoreConstants.PROXY_CONTEXT_PATH\" %>"
                     : "",
                 publicPath: baseHref,
                 requestForwardSnippet: "if(request.getParameter(\"code\") != null && " +
@@ -364,7 +366,6 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
                 themeHash: getThemeConfigs(theme).styleSheetHash
             }) as unknown) as WebpackPluginInstance
         );
-        /* eslint-enable max-len */
     } else if (isPreAuthCheckEnabled) {
         config.plugins.push(
             (new HtmlWebpackPlugin({
@@ -413,20 +414,26 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
         );
     }
 
-    isAnalyzeMode && config.plugins.push(
+    if(isAnalyzeMode) {
+        config.plugins.push(
         (new BundleAnalyzerPlugin({
             analyzerHost: "localhost",
             analyzerPort: analyzerPort
         }) as unknown) as WebpackPluginInstance
-    );
+        );
 
-    isProfilingMode && config.plugins.push(
-        new webpack.ProgressPlugin({
-            profile: true
-        })
-    );
+    }
 
-    isProduction && config.plugins.push(
+    if(isProfilingMode) {
+        config.plugins.push(
+            new webpack.ProgressPlugin({
+                profile: true
+            })
+        );
+    }
+
+    if (isProduction) {
+        config.plugins.push(
         (new CompressionPlugin({
             algorithm: "gzip",
             filename: "[path][base].gz",
@@ -434,9 +441,9 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
             test: /\.js$|\.css$|\.html$|\.png$|\.svg$|\.jpeg$|\.jpg$/,
             threshold: 10240
         }) as unknown) as WebpackPluginInstance
-    );
+        );
 
-    isProduction && config.plugins.push(
+        config.plugins.push(
         (new CompressionPlugin({
             algorithm: "brotliCompress",
             compressionOptions: {
@@ -449,7 +456,8 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
             test: /\.(js|css|html|png|svg|jpeg|jpg)$/,
             threshold: 10240
         }) as unknown) as WebpackPluginInstance
-    );
+        );
+    }
 
     // ESLint runs as a separate CI step; running it inside webpack during production
     // builds doubles peak memory usage and significantly slows the build.
@@ -470,7 +478,8 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
                 : undefined,
             overrideConfigFile: ABSOLUTE_PATHS.eslintConfig
         }) as unknown) as WebpackPluginInstance
-    );
+        );
+    }
 
     config.plugins.push(
         (new webpack.ProvidePlugin({
@@ -666,16 +675,18 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
         }
 
         if (rule.test.toString().includes("svg") && rule.test instanceof RegExp) {
-            rule.use instanceof Array && rule.use.forEach((item: RuleSetUseItem) => {
-                if (
-                    typeof item !== "string" &&
+            if (rule.use instanceof Array) {
+                rule.use.forEach((item: RuleSetUseItem) => {
+                    if (
+                        typeof item !== "string" &&
                     ((item as any).loader.includes("url-loader") || (item as any).loader.includes("file-loader"))
-                ) {
-                    (item as any).options.name = isProduction
-                        ? `${RELATIVE_PATHS.staticMedia}/[contenthash].[ext]`
-                        : `${RELATIVE_PATHS.staticMedia}/[path][name].[ext]`;
-                }
-            });
+                    ) {
+                        (item as any).options.name = isProduction
+                            ? `${RELATIVE_PATHS.staticMedia}/[contenthash].[ext]`
+                            : `${RELATIVE_PATHS.staticMedia}/[path][name].[ext]`;
+                    }
+                });
+            }
         }
     });
 
@@ -877,7 +888,7 @@ const getI18nConfigs = () => {
 
     try {
         metaFiles = fs.readdirSync(I18N_DIR);
-    } catch (e) {
+    } catch (_e) {
         // Log Infastructure Error.
     }
 
@@ -889,9 +900,6 @@ const getI18nConfigs = () => {
 };
 
 const getRelativePaths = (env: Configuration["mode"], context: NxWebpackContextInterface): RelativePaths => {
-    // TODO: Remove supression once `isProduction` is actively used.
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const isProduction: boolean = env === "production";
 
     let homeTemplate: string = "home.jsp";
 
@@ -912,7 +920,7 @@ const getRelativePaths = (env: Configuration["mode"], context: NxWebpackContextI
 };
 
 const getAbsolutePaths = (env: Configuration["mode"], context: NxWebpackContextInterface): AbsolutePaths => {
-    const isProduction: boolean = env === "production";
+
     const RELATIVE_PATHS: RelativePaths = getRelativePaths(env, context);
 
     let homeTemplateInDistribution: string = path.resolve(
