@@ -279,12 +279,6 @@ export default App;
 
 In the above example, if the user does not have the required scopes, the button is not rendered.
 
- - With permissions:
-<br><img width="600" alt="subfeature-example-with-permissions" src="assets/images/feature-flags/subfeature-example-with-permissions.png" /><br>
-
- - Without permissions:
-<br><img width="600" alt="subfeature-example-without-permissions" src="assets/images/feature-flags/subfeature-example-without-permissions.png" /><br>
-Notice that the `Update` button did not render because the user did not have sufficient permissions.
 
 OR
 
