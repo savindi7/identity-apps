@@ -253,9 +253,7 @@ Identify the sub-feature you want to implement. For this example, we'll take the
 ```
 Note that the permission `internal_role_mgt_permissions_update` is not included in the parent feature’s scope. This highlights that the sub-feature defines its own, more specific permission requirements, separate from those of the parent feature.
 
-
 3. Read the scopes of the sub feature in your component and implement the conditional.
-
 
 ```tsx
 const App = () => {
@@ -279,12 +277,7 @@ const App = () => {
 export default App;
 ```
 
-In the above example, if the user does not have the required scopes, the button is not rendered.
-
-
-OR
-
-4. Use `Show` to display or hide elements based on permissions
+You can also use the `Show` component to display or hide elements based on permissions.
 
 ```tsx
 import { Show } from "@wso2is/access-control";
