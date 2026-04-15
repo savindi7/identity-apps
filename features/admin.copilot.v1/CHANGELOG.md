@@ -1,5 +1,12 @@
 # @wso2is/admin.copilot.v1
 
+## 1.0.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.56.1
+
 ## 1.0.0
 
 ### Major Changes
