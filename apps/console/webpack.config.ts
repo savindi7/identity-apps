@@ -76,7 +76,7 @@ interface AbsolutePaths {
     distribution: string;
     entryPoints: string[];
     eslintCache: string;
-    eslintrc: string;
+    eslintConfig: string;
     homeTemplateInDistribution: string;
     homeTemplateInSource: string;
     indexTemplateInDistribution: string;
@@ -461,7 +461,14 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
             eslintPath: require.resolve("eslint"),
             extensions: [ "js", "jsx", "ts", "tsx" ],
             lintDirtyModulesOnly: true,
-            overrideConfigFile: ABSOLUTE_PATHS.eslintrc
+            overrideConfig: isProduction
+                ? {
+                    rules: {
+                        "no-debugger": 2
+                    }
+                }
+                : undefined,
+            overrideConfigFile: ABSOLUTE_PATHS.eslintConfig
         }) as unknown) as WebpackPluginInstance
     );
 
@@ -942,9 +949,7 @@ const getAbsolutePaths = (env: Configuration["mode"], context: NxWebpackContextI
             path.resolve(__dirname, "src", "init", "init.ts")
         ],
         eslintCache: path.resolve(__dirname, "node_modules", ".cache", ".eslintcache"),
-        eslintrc: isProduction
-            ? path.resolve(__dirname, ".prod.eslintrc.js")
-            : path.resolve(__dirname, ".eslintrc.js"),
+        eslintConfig: path.resolve(__dirname, "../../eslint.config.js"),
         homeTemplateInDistribution,
         homeTemplateInSource: path.resolve(__dirname, RELATIVE_PATHS.source, RELATIVE_PATHS.homeTemplate),
         indexTemplateInDistribution: path.resolve(

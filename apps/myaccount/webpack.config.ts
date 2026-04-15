@@ -92,9 +92,9 @@ interface AbsolutePathsInterface {
      */
     eslintCache: string;
     /**
-     * The absolute path to the '.eslintrc' configuration file for the application.
+        * The absolute path to the ESLint flat configuration file for the application.
      */
-    eslintrc: string;
+        eslintConfig: string;
     /**
      * The absolute path to the home page template file in the distribution directory.
      */
@@ -512,7 +512,14 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
                 eslintPath: require.resolve("eslint"),
                 extensions: [ "js", "jsx", "ts", "tsx" ],
                 lintDirtyModulesOnly: true,
-                overrideConfigFile: ABSOLUTE_PATHS.eslintrc
+                overrideConfig: isProduction
+                    ? {
+                        rules: {
+                            "no-debugger": 2
+                        }
+                    }
+                    : undefined,
+                overrideConfigFile: ABSOLUTE_PATHS.eslintConfig
             }) as unknown) as WebpackPluginInstance
         );
 
@@ -940,7 +947,7 @@ const getAbsolutePaths = (env: Configuration["mode"], context: NxWebpackContextI
         distribution: path.resolve(__dirname, RELATIVE_PATHS.distribution),
         entryPoints: [ "@babel/polyfill", path.resolve(__dirname, "src", "init", "init.ts") ],
         eslintCache: path.resolve(__dirname, "node_modules", ".cache", ".eslintcache"),
-        eslintrc: isProduction ? path.resolve(__dirname, ".prod.eslintrc.js") : path.resolve(__dirname, ".eslintrc.js"),
+        eslintConfig: path.resolve(__dirname, "../../eslint.config.js"),
         homeTemplateInDistribution,
         homeTemplateInSource: path.resolve(__dirname, RELATIVE_PATHS.source, RELATIVE_PATHS.homeTemplate),
         indexTemplateInDistribution: path.resolve(__dirname, RELATIVE_PATHS.distribution, RELATIVE_PATHS.indexTemplate),
