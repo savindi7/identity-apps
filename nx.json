@@ -1,6 +1,7 @@
 {
     "targetDefaults": {
         "build": {
+            "cache": true,
             "dependsOn": ["^build"],
             "inputs": ["production", "^production"]
         },
@@ -84,6 +85,6 @@
         ]
     },
     "neverConnectToCloud": true,
-    "useInferencePlugins": false,
+    "useInferencePlugins": true,
     "defaultBase": "master"
 }

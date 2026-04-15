@@ -121,6 +121,7 @@
         },
         "build": {
             "executor": "nx:run-commands",
+            "outputs": ["{workspaceRoot}/apps/console/build/console"],
             "options": {
                 "commands": [
                     "pnpm nx run console:build-prepare",

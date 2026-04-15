@@ -104,6 +104,7 @@
         },
         "build": {
             "executor": "nx:run-commands",
+            "outputs": ["{workspaceRoot}/apps/myaccount/build/myaccount"],
             "options": {
                 "commands": [
                     "pnpm nx run myaccount:build-prepare",
