@@ -185,7 +185,8 @@ You can use:
 
 ## Using Nested Features (sub-features)
 
-Features have scopes, which allow them to change their behaviour based on the permissions a user has. Sub-features can be used to create features that have a subset relationship to a parent feature. They can be configured to have more specialized or different scopes from their parent. The below example will show how to use sub-features.
+Sub-features allow you to model hierarchical relationships, where a child feature represents a more specific or restricted version of a parent feature. These sub-features can have their own scopes, enabling finer-grained or customized behavior compared to the parent. The following example demonstrates how to work with sub-features.
+
 
 
 1. Identify a sub-feature
