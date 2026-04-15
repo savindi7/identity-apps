@@ -251,7 +251,8 @@ Identify the sub-feature you want to implement. For this example, we'll take the
   }
 }
 ```
-Note that the permission `internal_role_mgt_permissions_update` is not present in the parent feature scope meaning that the sub-feature has more specific permission requirements distinct from its parent.
+Note that the permission `internal_role_mgt_permissions_update` is not included in the parent feature’s scope. This highlights that the sub-feature defines its own, more specific permission requirements, separate from those of the parent feature.
+
 
 3. Read the scopes of the sub feature in your component and implement the conditional.
 
