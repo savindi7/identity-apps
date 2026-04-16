@@ -643,6 +643,10 @@ export interface UIConfigInterface extends CommonUIConfigInterface<FeatureConfig
      */
     showAppSwitchButton?: boolean;
     /**
+     * Show documentation links throughout the console.
+     */
+    showDocLinks?: boolean;
+    /**
      * Show Label for the features introduced with new authz runtime.
      */
     showStatusLabelForNewAuthzRuntimeFeatures?: boolean;
