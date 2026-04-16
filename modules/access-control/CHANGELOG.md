@@ -1,5 +1,14 @@
 # @wso2is/access-control
 
+## 3.5.7
+
+### Patch Changes
+
+- [#10130](https://github.com/wso2/identity-apps/pull/10130) [`8ffe97ffe949b7846fb511dea88ff4672faf7001`](https://github.com/wso2/identity-apps/commit/8ffe97ffe949b7846fb511dea88ff4672faf7001) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Migrate `identity-apps` to nx 21
+
+- Updated dependencies [[`8ffe97ffe949b7846fb511dea88ff4672faf7001`](https://github.com/wso2/identity-apps/commit/8ffe97ffe949b7846fb511dea88ff4672faf7001)]:
+  - @wso2is/core@2.13.1
+
 ## 3.5.6
 
 ### Patch Changes

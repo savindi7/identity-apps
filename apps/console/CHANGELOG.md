@@ -1,5 +1,20 @@
 # @wso2is/console
 
+## 4.4.1
+
+### Patch Changes
+
+- [#10090](https://github.com/wso2/identity-apps/pull/10090) [`737246c00a28b8582a5100e854550de03c18b0a3`](https://github.com/wso2/identity-apps/commit/737246c00a28b8582a5100e854550de03c18b0a3) Thanks [@github-actions](https://github.com/apps/github-actions)! - Fix IDP logo icon inconsistency
+
+* [#10130](https://github.com/wso2/identity-apps/pull/10130) [`8ffe97ffe949b7846fb511dea88ff4672faf7001`](https://github.com/wso2/identity-apps/commit/8ffe97ffe949b7846fb511dea88ff4672faf7001) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Migrate `identity-apps` to nx 21
+
+* Updated dependencies [[`737246c00a28b8582a5100e854550de03c18b0a3`](https://github.com/wso2/identity-apps/commit/737246c00a28b8582a5100e854550de03c18b0a3), [`8ffe97ffe949b7846fb511dea88ff4672faf7001`](https://github.com/wso2/identity-apps/commit/8ffe97ffe949b7846fb511dea88ff4672faf7001)]:
+  - @wso2is/theme@2.10.1
+  - @wso2is/react-components@2.10.1
+  - @wso2is/access-control@3.5.7
+  - @wso2is/validation@2.4.4
+  - @wso2is/core@2.13.1
+
 ## 4.4.0
 
 ### Minor Changes
