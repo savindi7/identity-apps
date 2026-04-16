@@ -1,5 +1,14 @@
 # @wso2is/identity-apps-core
 
+## 5.0.12
+
+### Patch Changes
+
+- [#10090](https://github.com/wso2/identity-apps/pull/10090) [`737246c00a28b8582a5100e854550de03c18b0a3`](https://github.com/wso2/identity-apps/commit/737246c00a28b8582a5100e854550de03c18b0a3) Thanks [@github-actions](https://github.com/apps/github-actions)! - Fix IDP logo icon inconsistency
+
+- Updated dependencies [[`737246c00a28b8582a5100e854550de03c18b0a3`](https://github.com/wso2/identity-apps/commit/737246c00a28b8582a5100e854550de03c18b0a3)]:
+  - @wso2is/theme@2.10.1
+
 ## 5.0.11
 
 ### Patch Changes
