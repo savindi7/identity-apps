@@ -22,6 +22,13 @@ module.exports = {
         "plugin:storybook/recommended"
     ],
     rules: {
+        "storybook/no-uninstalled-addons": [
+            "error",
+            {
+                ignore: [ "@nx/react/plugins/storybook" ],
+                packageJsonLocation: "./modules/react-components/package.json"
+            }
+        ],
         "@typescript-eslint/typedef": "off"
     }
 };
