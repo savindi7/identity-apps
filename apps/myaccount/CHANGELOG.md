@@ -1,5 +1,11 @@
 # @wso2is/myaccount
 
+## 3.0.14
+
+### Patch Changes
+
+- [#10135](https://github.com/wso2/identity-apps/pull/10135) [`ed202644e9115e27087b62530f31c7e830353fac`](https://github.com/wso2/identity-apps/commit/ed202644e9115e27087b62530f31c7e830353fac) Thanks [@sadilchamishka](https://github.com/sadilchamishka)! - Show new password API error response when password update fails
+
 ## 3.0.13
 
 ### Patch Changes
