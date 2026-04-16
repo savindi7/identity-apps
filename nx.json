@@ -1,8 +1,21 @@
 {
     "targetDefaults": {
         "build": {
+            "cache": true,
             "dependsOn": ["^build"],
-            "inputs": ["production", "^production"]
+            "inputs": [
+                "production",
+                "^production",
+                {
+                    "env": "SERVER_TYPE"
+                },
+                {
+                    "env": "PRE_AUTH_CHECK"
+                },
+                {
+                    "env": "APP_BASE_PATH"
+                }
+            ]
         },
         "build-storybook": {
             "inputs": [
@@ -50,9 +63,6 @@
             }
         ]
     },
-    "affected": {
-        "defaultBase": "master"
-    },
     "pluginsConfig": {
         "@nx/js": {
             "analyzeSourceFiles": true
@@ -85,5 +95,8 @@
             "!{projectRoot}/tsconfig.storybook.json",
             "!{projectRoot}/src/test-setup.[jt]s"
         ]
-    }
+    },
+    "neverConnectToCloud": true,
+    "useInferencePlugins": true,
+    "defaultBase": "master"
 }
