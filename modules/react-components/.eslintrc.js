@@ -23,12 +23,6 @@ module.exports = {
     ],
     rules: {
         "@typescript-eslint/typedef": "off",
-        "storybook/no-uninstalled-addons": [
-            "error",
-            {
-                ignore: [ "@nx/react/plugins/storybook" ],
-                packageJsonLocation: "./modules/react-components/package.json"
-            }
-        ]
+        "storybook/no-uninstalled-addons": "off"
     }
 };

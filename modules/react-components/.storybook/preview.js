@@ -22,6 +22,7 @@ import { MediaContextProvider } from "../src/components";
 
 export const parameters = {
     docs: {
+        autodocs: true,
         theme: Theme
     }
 };
@@ -42,4 +43,3 @@ const withProviders = (Story, context) => {
 };
 
 export const decorators = [ withProviders ];
-export const tags = [ "autodocs" ];

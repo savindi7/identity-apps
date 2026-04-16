@@ -16,7 +16,7 @@
  * under the License.
  */
 
-import { create } from "storybook/theming";
+import { create } from "@storybook/theming";
 import Manifest from "../package.json";
 import DeploymentConfig from "../public/deployment.config.json";
 

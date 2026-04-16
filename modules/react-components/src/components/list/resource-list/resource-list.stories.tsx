@@ -16,9 +16,9 @@
  * under the License.
  */
 
+import { action } from "@storybook/addon-actions";
 import React, { ReactElement } from "react";
 import { Label } from "semantic-ui-react";
-import { action } from "storybook/actions";
 import { ResourceList } from "./resource-list";
 import { APPLICATIONS_LIST, meta } from "./resource-list.stories.meta";
 import { AppAvatar } from "../../avatar";

@@ -16,8 +16,8 @@
  * under the License.
  */
 
+import { action } from "@storybook/addon-actions";
 import React, { ReactElement } from "react";
-import { action } from "storybook/actions";
 import { DangerZone } from "./danger-zone";
 import { DangerZoneGroup } from "./danger-zone-group";
 import { meta } from "./danger-zone.stories.meta";

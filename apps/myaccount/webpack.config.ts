@@ -199,8 +199,10 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
     const analyzerPort: number = parseInt(process.env.ANALYZER_PORT, 10) || 8888;
 
     // Dev Server Options.
-    const devServerPort: number = process.env.DEV_SERVER_PORT || config.devServer?.port;
-    const devServerHost: string = process.env.DEV_SERVER_HOST || config.devServer?.host;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const devServerConfig: { [index: string]: any } | undefined = config.devServer as { [index: string]: any };
+    const devServerPort: number = process.env.DEV_SERVER_PORT || devServerConfig?.port;
+    const devServerHost: string = process.env.DEV_SERVER_HOST || devServerConfig?.host;
     const isDevServerHostCheckDisabled: boolean = process.env.DISABLE_DEV_SERVER_HOST_CHECK === "true";
     const isESLintPluginDisabled: boolean = process.env.DISABLE_ESLINT_PLUGIN === "true";
     const isTSCheckPluginDisabled: boolean = process.env.DISABLE_TS_CHECK_PLUGIN === "true";
@@ -521,11 +523,13 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
     );
 
     // Update the existing `DefinePlugin` plugin added by NX.
-    const existingDefinePlugin: WebpackPluginInstance = config.plugins.find((plugin: WebpackPluginInstance) => {
-        return plugin.constructor.name === "DefinePlugin";
-    });
+    const existingDefinePlugin: WebpackPluginInstance | undefined = config.plugins.find(
+        (plugin: WebpackPluginInstance) => {
+            return plugin.constructor.name === "DefinePlugin";
+        }
+    ) as WebpackPluginInstance | undefined;
 
-    if (config.plugins.indexOf(existingDefinePlugin) !== -1) {
+    if (existingDefinePlugin && config.plugins.indexOf(existingDefinePlugin) !== -1) {
         config.plugins.splice(config.plugins.indexOf(existingDefinePlugin), 1);
 
         config.plugins.push(
@@ -541,11 +545,13 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
     }
 
     // Update the existing `CopyPlugin` plugin added by NX.
-    const existingCopyPlugin: webpack.WebpackPluginInstance = config.plugins.find((plugin: WebpackPluginInstance) => {
-        return plugin.constructor.name === "CopyPlugin";
-    });
+    const existingCopyPlugin: webpack.WebpackPluginInstance | undefined = config.plugins.find(
+        (plugin: WebpackPluginInstance) => {
+            return plugin.constructor.name === "CopyPlugin";
+        }
+    ) as webpack.WebpackPluginInstance | undefined;
 
-    if (config.plugins.indexOf(existingCopyPlugin) !== -1) {
+    if (existingCopyPlugin && config.plugins.indexOf(existingCopyPlugin) !== -1) {
         config.plugins.splice(config.plugins.indexOf(existingCopyPlugin), 1);
 
         config.plugins.push(
@@ -722,7 +728,7 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
             }
         },
         devMiddleware: {
-            ...config.devServer?.devMiddleware,
+            ...(devServerConfig?.devMiddleware),
             publicPath: getStaticFileServePath(baseHref),
             writeToDisk: true
         },

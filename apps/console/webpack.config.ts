@@ -22,7 +22,7 @@ import { ParsedUrlQuery } from "querystring";
 import url, { UrlWithParsedQuery } from "url";
 import zlib, { BrotliOptions } from "zlib";
 import { withReact } from "@nx/react/plugins/with-react";
-import { withNx } from "@nx/webpack/src/utils/with-nx";
+import { withNx } from "@nx/webpack";
 import CompressionPlugin from "compression-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
@@ -681,8 +681,8 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
         hotUpdateChunkFilename: "hot/[id].[fullhash].hot-update.js",
         hotUpdateMainFilename: "hot/[runtime].[fullhash].hot-update.json",
         path: (isPreAuthCheckEnabled && process.env.APP_BASE_PATH) ?
-            `${(config.output.path ?? ABSOLUTE_PATHS.distribution)}/${process.env.APP_BASE_PATH}`
-            : (config.output.path ?? ABSOLUTE_PATHS.distribution),
+            `${(config.output?.path ?? ABSOLUTE_PATHS.distribution)}/${process.env.APP_BASE_PATH}`
+            : (config.output?.path ?? ABSOLUTE_PATHS.distribution),
         publicPath: baseHref
     };
 

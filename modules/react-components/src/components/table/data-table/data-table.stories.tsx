@@ -16,11 +16,11 @@
  * under the License.
  */
 
+import { action } from "@storybook/addon-actions";
 import cloneDeep from "lodash-es/cloneDeep";
 import orderBy from "lodash-es/orderBy";
 import React, { ReactElement, SyntheticEvent, useState } from "react";
 import { Divider, Form, Grid, Header, Label, SemanticICONS } from "semantic-ui-react";
-import { action } from "storybook/actions";
 import { DataTable, DataTableSortOrder, TableColumnInterface } from "./data-table";
 import { DEMO_DATA_LIST, DataTableDemoDataInterface, meta } from "./data-table.stories.meta";
 import { AppAvatar } from "../../avatar";

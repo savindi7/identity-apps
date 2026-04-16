@@ -16,9 +16,9 @@
  * under the License.
  */
 
+import { action } from "@storybook/addon-actions";
 import React, { ReactElement, useState } from "react";
 import { Button } from "semantic-ui-react";
-import { action } from "storybook/actions";
 import { ConfirmationModal } from "./confirmation-modal";
 import { meta } from "./confirmation-modal.stories.meta";
 import { Heading } from "../../typography";

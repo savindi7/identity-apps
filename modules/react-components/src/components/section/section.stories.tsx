@@ -16,8 +16,8 @@
  * under the License.
  */
 
+import { action } from "@storybook/addon-actions";
 import React, { ReactElement } from "react";
-import { action } from "storybook/actions";
 import { meta } from "./section.stories.meta";
 import {
     ReactComponent as ProfileExportIllustration
