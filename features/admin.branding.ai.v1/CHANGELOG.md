@@ -1,5 +1,20 @@
 # @wso2is/admin.branding.ai.v1
 
+## 2.28.0
+
+### Minor Changes
+
+- [#10123](https://github.com/wso2/identity-apps/pull/10123) [`13a622370c3a3aaa07dadd0bec22ceb9ff486fea`](https://github.com/wso2/identity-apps/commit/13a622370c3a3aaa07dadd0bec22ceb9ff486fea) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Unify documentation extensions
+
+### Patch Changes
+
+- Updated dependencies [[`13a622370c3a3aaa07dadd0bec22ceb9ff486fea`](https://github.com/wso2/identity-apps/commit/13a622370c3a3aaa07dadd0bec22ceb9ff486fea)]:
+  - @wso2is/react-components@2.10.0
+  - @wso2is/admin.core.v1@2.57.0
+  - @wso2is/common.ai.v1@2.28.0
+  - @wso2is/core@2.13.0
+  - @wso2is/admin.branding.v1@2.32.165
+
 ## 2.27.101
 
 ### Patch Changes
