@@ -91,11 +91,6 @@ module.exports = [
     // ----- Global config for all JS/JSX/TS/TSX files -----
     {
         files: [ "**/*.{js,jsx,ts,tsx,mjs,cjs}" ],
-        plugins: {
-            "import": importPlugin,
-            "jsx-a11y": jsxA11yPlugin,
-            "tsdoc": tsdocPlugin
-        },
         languageOptions: {
             globals: {
                 ...globals.browser,
@@ -111,11 +106,16 @@ module.exports = [
                 sourceType: "module"
             }
         },
+        plugins: {
+            "import": importPlugin,
+            "jsx-a11y": jsxA11yPlugin,
+            "tsdoc": tsdocPlugin
+        },
         rules: {
             // Import plugin — import/typescript equivalent rules
             "import/named": "off",
             "import/no-unresolved": "off",
-            // Disabled due runtime incompatibility with ESLint 10 in eslint-plugin-import.
+            // Temporarily disabled due runtime incompatibilities in eslint-plugin-import.
             "import/order": "off",
             // General rules
             "array-bracket-spacing": [ 1, "always" ],

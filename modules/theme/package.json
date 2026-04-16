@@ -38,7 +38,7 @@
         "@typescript-eslint/parser": "^8.58.2",
         "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
         "clean-css": "^4.2.1",
-        "eslint": "10.2.0",
+        "eslint": "9.38.0",
         "eslint-plugin-import": "^2.32.0",
         "eslint-plugin-react": "^7.37.5",
         "eslint-plugin-react-hooks": "^7.0.1",
