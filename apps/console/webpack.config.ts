@@ -101,9 +101,7 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
     // Apply Nx base and React configs synchronously. withNx/withReact are the inner synchronous
     // plugin functions — unlike nxReactWebpackConfig which wraps them in async composePlugins.
     // Calling the async wrapper without await discards the promise and CSS loaders are never applied.
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     config = withNx()(config as any, context as any) as unknown as WebpackOptionsNormalized;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     config = withReact()(config as any, context as any) as unknown as WebpackOptionsNormalized;
 
     // Safety null guards (withNx/withReact should set these, but guard defensively).
@@ -139,7 +137,6 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
     const analyzerPort: number = parseInt(process.env.ANALYZER_PORT, 10) || 8889;
 
     // Dev Server Options.
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const devServerConfig: { [index: string]: any } | undefined = config.devServer as { [index: string]: any };
     const devServerPort: number = process.env.DEV_SERVER_PORT || devServerConfig?.port;
     const devServerHost: string = process.env.DEV_SERVER_HOST || devServerConfig?.host;
