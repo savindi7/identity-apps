@@ -76,7 +76,7 @@ interface AbsolutePaths {
     distribution: string;
     entryPoints: string[];
     eslintCache: string;
-    eslintrc: string;
+    eslintConfig: string;
     homeTemplateInDistribution: string;
     homeTemplateInSource: string;
     indexTemplateInDistribution: string;
@@ -101,9 +101,7 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
     // Apply Nx base and React configs synchronously. withNx/withReact are the inner synchronous
     // plugin functions — unlike nxReactWebpackConfig which wraps them in async composePlugins.
     // Calling the async wrapper without await discards the promise and CSS loaders are never applied.
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     config = withNx()(config as any, context as any) as unknown as WebpackOptionsNormalized;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     config = withReact()(config as any, context as any) as unknown as WebpackOptionsNormalized;
 
     // Safety null guards (withNx/withReact should set these, but guard defensively).
@@ -139,7 +137,6 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
     const analyzerPort: number = parseInt(process.env.ANALYZER_PORT, 10) || 8889;
 
     // Dev Server Options.
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const devServerConfig: { [index: string]: any } | undefined = config.devServer as { [index: string]: any };
     const devServerPort: number = process.env.DEV_SERVER_PORT || devServerConfig?.port;
     const devServerHost: string = process.env.DEV_SERVER_HOST || devServerConfig?.host;
@@ -197,18 +194,20 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
     }
 
     if (isProduction && !isDeployedOnExternalStaticServer) {
-        /* eslint-disable max-len */
         config.plugins.push(
             (new HtmlWebpackPlugin({
                 authorizationCode: "<%=request.getParameter(\"code\")%>",
                 contentType: "<%@ page language=\"java\" contentType=\"text/html; charset=UTF-8\" " +
                     "pageEncoding=\"UTF-8\" %>",
-                cookieproDomainScriptId: "<% String cookiepro_domain_script_id = System.getenv(\"cookiepro_domain_script_id\"); %>",
+                cookieproDomainScriptId:
+                    "<% String cookiepro_domain_script_id = System.getenv(\"cookiepro_domain_script_id\"); %>",
                 cookieproDomainScriptIdVar: "<%= cookiepro_domain_script_id %>",
                 cookieproEnabledCheck: "<% if ((Boolean.TRUE.toString()).equals(is_cookiepro_enabled)) { %>",
                 cookieproEnabledCheckEnd: "<% } %>",
                 cookieproEnabledFlag: "<% String is_cookiepro_enabled = System.getenv(\"is_cookiepro_enabled\"); %>",
-                cookieproInitialScriptTypeCheck: "<% String initialScriptType = (Boolean.TRUE.toString()).equals(is_cookiepro_enabled) ? \"text/plain\" : \"text/javascript\"; %>",
+                cookieproInitialScriptTypeCheck:
+                    "<% String initialScriptType = (Boolean.TRUE.toString()).equals(is_cookiepro_enabled) ?" +
+                    " \"text/plain\" : \"text/javascript\"; %>",
                 cookieproInitialScriptTypeVar: "<%= initialScriptType %>",
                 filename: ABSOLUTE_PATHS.homeTemplateInDistribution,
                 getAdaptiveAuthenticationAvailability: !isDeployedOnExternalTomcatServer
@@ -258,7 +257,8 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
                     ? "<%=ServerConfiguration.getInstance().getFirstProperty(PROXY_CONTEXT_PATH)%>"
                     : "",
                 proxyContextPathConstant: !isDeployedOnExternalTomcatServer
-                    ? "<%@ page import=\"static org.wso2.carbon.identity.core.util.IdentityCoreConstants.PROXY_CONTEXT_PATH\" %>"
+                    ? "<%@ page import=\"static org.wso2.carbon.identity.core.util." +
+                      "IdentityCoreConstants.PROXY_CONTEXT_PATH\" %>"
                     : "",
                 publicPath: baseHref,
                 serverConfiguration: !isDeployedOnExternalTomcatServer
@@ -282,9 +282,7 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
                 themeHash: getThemeConfigs(theme).styleSheetHash
             }) as unknown) as WebpackPluginInstance
         );
-        /* eslint-enable max-len */
 
-        /* eslint-disable max-len */
         config.plugins.push(
             (new HtmlWebpackPlugin({
                 authenticatedIdPs: "<%=request.getParameter(\"AuthenticatedIdPs\")%>",
@@ -335,7 +333,8 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
                     ? "<%=ServerConfiguration.getInstance().getFirstProperty(PROXY_CONTEXT_PATH)%>"
                     : "",
                 proxyContextPathConstant: !isDeployedOnExternalTomcatServer
-                    ? "<%@ page import=\"static org.wso2.carbon.identity.core.util.IdentityCoreConstants.PROXY_CONTEXT_PATH\" %>"
+                    ? "<%@ page import=\"static org.wso2.carbon.identity.core.util." +
+                      "IdentityCoreConstants.PROXY_CONTEXT_PATH\" %>"
                     : "",
                 publicPath: baseHref,
                 requestForwardSnippet: "if(request.getParameter(\"code\") != null && " +
@@ -364,7 +363,6 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
                 themeHash: getThemeConfigs(theme).styleSheetHash
             }) as unknown) as WebpackPluginInstance
         );
-        /* eslint-enable max-len */
     } else if (isPreAuthCheckEnabled) {
         config.plugins.push(
             (new HtmlWebpackPlugin({
@@ -413,57 +411,65 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
         );
     }
 
-    isAnalyzeMode && config.plugins.push(
-        (new BundleAnalyzerPlugin({
-            analyzerHost: "localhost",
-            analyzerPort: analyzerPort
-        }) as unknown) as WebpackPluginInstance
-    );
+    if (isAnalyzeMode) {
+        config.plugins.push(
+            (new BundleAnalyzerPlugin({
+                analyzerHost: "localhost",
+                analyzerPort: analyzerPort
+            }) as unknown) as WebpackPluginInstance
+        );
+    }
 
-    isProfilingMode && config.plugins.push(
-        new webpack.ProgressPlugin({
-            profile: true
-        })
-    );
+    if (isProfilingMode) {
+        config.plugins.push(
+            new webpack.ProgressPlugin({
+                profile: true
+            })
+        );
+    }
 
-    isProduction && config.plugins.push(
-        (new CompressionPlugin({
-            algorithm: "gzip",
-            filename: "[path][base].gz",
-            minRatio: 0.8,
-            test: /\.js$|\.css$|\.html$|\.png$|\.svg$|\.jpeg$|\.jpg$/,
-            threshold: 10240
-        }) as unknown) as WebpackPluginInstance
-    );
+    if (isProduction) {
+        config.plugins.push(
+            (new CompressionPlugin({
+                algorithm: "gzip",
+                filename: "[path][base].gz",
+                minRatio: 0.8,
+                test: /\.js$|\.css$|\.html$|\.png$|\.svg$|\.jpeg$|\.jpg$/,
+                threshold: 10240
+            }) as unknown) as WebpackPluginInstance
+        );
 
-    isProduction && config.plugins.push(
-        (new CompressionPlugin({
-            algorithm: "brotliCompress",
-            compressionOptions: {
-                params: {
-                    [zlib.constants.BROTLI_PARAM_QUALITY]: 11
-                }
-            } as BrotliOptions,
-            filename: "[path][base].br",
-            minRatio: 0.8,
-            test: /\.(js|css|html|png|svg|jpeg|jpg)$/,
-            threshold: 10240
-        }) as unknown) as WebpackPluginInstance
-    );
+        config.plugins.push(
+            (new CompressionPlugin({
+                algorithm: "brotliCompress",
+                compressionOptions: {
+                    params: {
+                        [zlib.constants.BROTLI_PARAM_QUALITY]: 11
+                    }
+                } as BrotliOptions,
+                filename: "[path][base].br",
+                minRatio: 0.8,
+                test: /\.(js|css|html|png|svg|jpeg|jpg)$/,
+                threshold: 10240
+            }) as unknown) as WebpackPluginInstance
+        );
+    }
 
     // ESLint runs as a separate CI step; running it inside webpack during production
     // builds doubles peak memory usage and significantly slows the build.
-    !isProduction && !isESLintPluginDisabled && config.plugins.push(
-        (new ESLintPlugin({
-            cache: true,
-            cacheLocation: ABSOLUTE_PATHS.eslintCache,
-            context: ABSOLUTE_PATHS.appSrc,
-            eslintPath: require.resolve("eslint"),
-            extensions: [ "js", "jsx", "ts", "tsx" ],
-            lintDirtyModulesOnly: true,
-            overrideConfigFile: ABSOLUTE_PATHS.eslintrc
-        }) as unknown) as WebpackPluginInstance
-    );
+    if (!isProduction && !isESLintPluginDisabled) {
+        config.plugins.push(
+            (new ESLintPlugin({
+                cache: true,
+                cacheLocation: ABSOLUTE_PATHS.eslintCache,
+                context: ABSOLUTE_PATHS.appSrc,
+                eslintPath: require.resolve("eslint"),
+                extensions: [ "js", "jsx", "ts", "tsx" ],
+                lintDirtyModulesOnly: true,
+                overrideConfigFile: ABSOLUTE_PATHS.eslintConfig
+            }) as unknown) as WebpackPluginInstance
+        );
+    }
 
     config.plugins.push(
         (new webpack.ProvidePlugin({
@@ -659,16 +665,18 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
         }
 
         if (rule.test.toString().includes("svg") && rule.test instanceof RegExp) {
-            rule.use instanceof Array && rule.use.forEach((item: RuleSetUseItem) => {
-                if (
-                    typeof item !== "string" &&
+            if (Array.isArray(rule.use)) {
+                rule.use.forEach((item: RuleSetUseItem) => {
+                    if (
+                        typeof item !== "string" &&
                     ((item as any).loader.includes("url-loader") || (item as any).loader.includes("file-loader"))
-                ) {
-                    (item as any).options.name = isProduction
-                        ? `${RELATIVE_PATHS.staticMedia}/[contenthash].[ext]`
-                        : `${RELATIVE_PATHS.staticMedia}/[path][name].[ext]`;
-                }
-            });
+                    ) {
+                        (item as any).options.name = isProduction
+                            ? `${RELATIVE_PATHS.staticMedia}/[contenthash].[ext]`
+                            : `${RELATIVE_PATHS.staticMedia}/[path][name].[ext]`;
+                    }
+                });
+            }
         }
     });
 
@@ -870,7 +878,7 @@ const getI18nConfigs = () => {
 
     try {
         metaFiles = fs.readdirSync(I18N_DIR);
-    } catch (e) {
+    } catch (_e) {
         // Log Infastructure Error.
     }
 
@@ -882,9 +890,6 @@ const getI18nConfigs = () => {
 };
 
 const getRelativePaths = (env: Configuration["mode"], context: NxWebpackContextInterface): RelativePaths => {
-    // TODO: Remove supression once `isProduction` is actively used.
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const isProduction: boolean = env === "production";
 
     let homeTemplate: string = "home.jsp";
 
@@ -905,7 +910,7 @@ const getRelativePaths = (env: Configuration["mode"], context: NxWebpackContextI
 };
 
 const getAbsolutePaths = (env: Configuration["mode"], context: NxWebpackContextInterface): AbsolutePaths => {
-    const isProduction: boolean = env === "production";
+
     const RELATIVE_PATHS: RelativePaths = getRelativePaths(env, context);
 
     let homeTemplateInDistribution: string = path.resolve(
@@ -942,9 +947,7 @@ const getAbsolutePaths = (env: Configuration["mode"], context: NxWebpackContextI
             path.resolve(__dirname, "src", "init", "init.ts")
         ],
         eslintCache: path.resolve(__dirname, "node_modules", ".cache", ".eslintcache"),
-        eslintrc: isProduction
-            ? path.resolve(__dirname, ".prod.eslintrc.js")
-            : path.resolve(__dirname, ".eslintrc.js"),
+        eslintConfig: path.resolve(__dirname, "../../eslint.config.js"),
         homeTemplateInDistribution,
         homeTemplateInSource: path.resolve(__dirname, RELATIVE_PATHS.source, RELATIVE_PATHS.homeTemplate),
         indexTemplateInDistribution: path.resolve(

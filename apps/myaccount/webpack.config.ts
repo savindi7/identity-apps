@@ -92,9 +92,9 @@ interface AbsolutePathsInterface {
      */
     eslintCache: string;
     /**
-     * The absolute path to the '.eslintrc' configuration file for the application.
+        * The absolute path to the ESLint flat configuration file for the application.
      */
-    eslintrc: string;
+        eslintConfig: string;
     /**
      * The absolute path to the home page template file in the distribution directory.
      */
@@ -151,9 +151,9 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
     // Apply Nx base and React configs synchronously. withNx/withReact are the inner synchronous
     // plugin functions — unlike nxReactWebpackConfig which wraps them in async composePlugins.
     // Calling the async wrapper without await discards the promise and CSS loaders are never applied.
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     config = withNx()(config as any, context as any) as unknown as WebpackOptionsNormalized;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     config = withReact()(config as any, context as any) as unknown as WebpackOptionsNormalized;
 
     // Safety null guards (withNx/withReact should set these, but guard defensively).
@@ -199,7 +199,7 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
     const analyzerPort: number = parseInt(process.env.ANALYZER_PORT, 10) || 8888;
 
     // Dev Server Options.
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     const devServerConfig: { [index: string]: any } | undefined = config.devServer as { [index: string]: any };
     const devServerPort: number = process.env.DEV_SERVER_PORT || devServerConfig?.port;
     const devServerHost: string = process.env.DEV_SERVER_HOST || devServerConfig?.host;
@@ -246,7 +246,7 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
     }
 
     if (isProduction && !isDeployedOnExternalStaticServer) {
-        /* eslint-disable max-len */
+
         config.plugins.push(
             (new HtmlWebpackPlugin({
                 authorizationCode: "<%=request.getParameter(\"code\")%>",
@@ -260,7 +260,8 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
                 cookieproEnabledCheckEnd: "<% } %>",
                 cookieproEnabledFlag: "<% String is_cookiepro_enabled = System.getenv(\"is_cookiepro_enabled\"); %>",
                 cookieproInitialScriptTypeCheck:
-                    "<% String initialScriptType = (Boolean.TRUE.toString()).equals(is_cookiepro_enabled) ? \"text/plain\" : \"text/javascript\"; %>",
+                    "<% String initialScriptType = (Boolean.TRUE.toString()).equals(is_cookiepro_enabled) " +
+                    "? \"text/plain\" : \"text/javascript\"; %>",
                 cookieproInitialScriptTypeVar: "<%= initialScriptType %>",
                 filename: ABSOLUTE_PATHS.homeTemplateInDistribution,
                 getAdaptiveAuthenticationAvailability: !isDeployedOnExternalTomcatServer
@@ -309,7 +310,8 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
                     ? "<%=ServerConfiguration.getInstance().getFirstProperty(PROXY_CONTEXT_PATH)%>"
                     : "",
                 proxyContextPathConstant: !isDeployedOnExternalTomcatServer
-                    ? "<%@ page import=\"static org.wso2.carbon.identity.core.util.IdentityCoreConstants.PROXY_CONTEXT_PATH\" %>"
+                    ? "<%@ page import=\"static org.wso2.carbon.identity.core.util."+
+                      "IdentityCoreConstants.PROXY_CONTEXT_PATH\" %>"
                     : "",
                 publicPath: baseHref,
                 rtlThemeHash: getRTLThemeConfigs(theme).styleSheetHash,
@@ -326,9 +328,7 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
                 themeHash: getThemeConfigs(theme).styleSheetHash
             }) as unknown) as WebpackPluginInstance
         );
-        /* eslint-enable max-len */
 
-        /* eslint-disable max-len */
         config.plugins.push(
             (new HtmlWebpackPlugin({
                 authenticatedIdPs: "<%=request.getParameter(\"AuthenticatedIdPs\")%>",
@@ -386,7 +386,8 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
                     ? "<%=ServerConfiguration.getInstance().getFirstProperty(PROXY_CONTEXT_PATH)%>"
                     : "",
                 proxyContextPathConstant: !isDeployedOnExternalTomcatServer
-                    ? "<%@ page import=\"static org.wso2.carbon.identity.core.util.IdentityCoreConstants.PROXY_CONTEXT_PATH\" %>"
+                    ? "<%@ page import=\"static org.wso2.carbon.identity.core.util." +
+                      "IdentityCoreConstants.PROXY_CONTEXT_PATH\" %>"
                     : "",
                 publicPath: baseHref,
                 requestForwardSnippet:
@@ -409,7 +410,7 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
                 themeHash: getThemeConfigs(theme).styleSheetHash
             }) as unknown) as WebpackPluginInstance
         );
-        /* eslint-enable max-len */
+
     } else if (isPreAuthCheckEnabled) {
         config.plugins.push(
             (new HtmlWebpackPlugin({
@@ -461,22 +462,24 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
         );
     }
 
-    isAnalyzeMode &&
+    if (isAnalyzeMode) {
         config.plugins.push(
             (new BundleAnalyzerPlugin({
                 analyzerHost: "localhost",
                 analyzerPort: analyzerPort
             }) as unknown) as WebpackPluginInstance
         );
+    }
 
-    isProfilingMode &&
+    if (isProfilingMode){
         config.plugins.push(
             new webpack.ProgressPlugin({
                 profile: true
             })
         );
+    }
 
-    isProduction &&
+    if(isProduction) {
         config.plugins.push(
             (new CompressionPlugin({
                 algorithm: "gzip",
@@ -487,7 +490,6 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
             }) as unknown) as WebpackPluginInstance
         );
 
-    isProduction &&
         config.plugins.push(
             (new CompressionPlugin({
                 algorithm: "brotliCompress",
@@ -503,7 +505,9 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
             }) as unknown) as WebpackPluginInstance
         );
 
-    !isProduction && !isESLintPluginDisabled &&
+    }
+
+    if (!isProduction && !isESLintPluginDisabled) {
         config.plugins.push(
             (new ESLintPlugin({
                 cache: true,
@@ -512,9 +516,17 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
                 eslintPath: require.resolve("eslint"),
                 extensions: [ "js", "jsx", "ts", "tsx" ],
                 lintDirtyModulesOnly: true,
-                overrideConfigFile: ABSOLUTE_PATHS.eslintrc
+                overrideConfig: isProduction
+                    ? {
+                        rules: {
+                            "no-debugger": 2
+                        }
+                    }
+                    : undefined,
+                overrideConfigFile: ABSOLUTE_PATHS.eslintConfig
             }) as unknown) as WebpackPluginInstance
         );
+    }
 
     config.plugins.push(
         (new webpack.ProvidePlugin({
@@ -679,7 +691,7 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
         }
 
         if (rule.test.toString().includes("svg") && rule.test instanceof RegExp) {
-            rule.use instanceof Array &&
+            if (rule.use instanceof Array) {
                 rule.use.forEach((item: RuleSetUseItem) => {
                     if (
                         typeof item !== "string" &&
@@ -690,6 +702,7 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
                             : `${RELATIVE_PATHS.staticMedia}/[path][name].[ext]`;
                     }
                 });
+            }
         }
     });
 
@@ -854,7 +867,7 @@ const getI18nConfigs = () => {
 
     try {
         metaFiles = fs.readdirSync(I18N_DIR);
-    } catch (e) {
+    } catch (_e) {
         // Log Infastructure Error.
     }
 
@@ -892,9 +905,6 @@ const getRTLThemeConfigs = (theme: string) => {
 };
 
 const getRelativePaths = (env: Configuration["mode"], context: NxWebpackContextInterface): RelativePathsInterface => {
-    // TODO: Remove supression once `isProduction` is actively used.
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const isProduction: boolean = env === "production";
 
     let homeTemplate: string = "home.jsp";
 
@@ -914,7 +924,6 @@ const getRelativePaths = (env: Configuration["mode"], context: NxWebpackContextI
 };
 
 const getAbsolutePaths = (env: Configuration["mode"], context: NxWebpackContextInterface) => {
-    const isProduction: boolean = env === "production";
     const RELATIVE_PATHS: RelativePathsInterface = getRelativePaths(env, context);
 
     let homeTemplateInDistribution: string = path.resolve(
@@ -940,7 +949,7 @@ const getAbsolutePaths = (env: Configuration["mode"], context: NxWebpackContextI
         distribution: path.resolve(__dirname, RELATIVE_PATHS.distribution),
         entryPoints: [ "@babel/polyfill", path.resolve(__dirname, "src", "init", "init.ts") ],
         eslintCache: path.resolve(__dirname, "node_modules", ".cache", ".eslintcache"),
-        eslintrc: isProduction ? path.resolve(__dirname, ".prod.eslintrc.js") : path.resolve(__dirname, ".eslintrc.js"),
+        eslintConfig: path.resolve(__dirname, "../../eslint.config.js"),
         homeTemplateInDistribution,
         homeTemplateInSource: path.resolve(__dirname, RELATIVE_PATHS.source, RELATIVE_PATHS.homeTemplate),
         indexTemplateInDistribution: path.resolve(__dirname, RELATIVE_PATHS.distribution, RELATIVE_PATHS.indexTemplate),
