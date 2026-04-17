@@ -1,5 +1,31 @@
 # @wso2is/console
 
+## 3.3.29
+
+### Patch Changes
+
+- [#10153](https://github.com/wso2/identity-apps/pull/10153) [`fe208c76c01120846af95a0ba0ad6cd9cdd5790c`](https://github.com/wso2/identity-apps/commit/fe208c76c01120846af95a0ba0ad6cd9cdd5790c) Thanks [@SujanSanjula96](https://github.com/SujanSanjula96)! - Remove server config related to enhanced org authentication feature enabled
+
+- Updated dependencies [[`fe208c76c01120846af95a0ba0ad6cd9cdd5790c`](https://github.com/wso2/identity-apps/commit/fe208c76c01120846af95a0ba0ad6cd9cdd5790c)]:
+  - @wso2is/admin.applications.v1@2.42.23
+  - @wso2is/admin.core.v1@2.55.34
+  - @wso2is/admin.agents.v1@1.1.23
+  - @wso2is/admin.approval-workflows.v1@1.3.29
+  - @wso2is/admin.branding.v1@2.32.167
+  - @wso2is/admin.onboarding.v1@1.0.82
+  - @wso2is/admin.roles.v2@2.27.381
+  - @wso2is/admin.users.v1@2.38.34
+  - @wso2is/admin.home.v1@1.7.191
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.211
+  - @wso2is/admin.email-management.v1@2.25.375
+  - @wso2is/admin.flows.v1@1.0.180
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.211
+  - @wso2is/admin.server-configurations.v1@2.38.50
+  - @wso2is/admin.connections.v1@2.36.51
+  - @wso2is/admin.subscription.v1@1.5.223
+  - @wso2is/admin.registration-flow-builder.v1@0.10.171
+  - @wso2is/admin.console-settings.v1@2.26.45
+
 ## 3.3.28
 
 ### Patch Changes
