@@ -1,5 +1,20 @@
 # @wso2is/admin.onboarding.v1
 
+## 1.0.81
+
+### Patch Changes
+
+- [#10149](https://github.com/wso2/identity-apps/pull/10149) [`6d2cb20edd11ea21e78e5dda82e01471ce628624`](https://github.com/wso2/identity-apps/commit/6d2cb20edd11ea21e78e5dda82e01471ce628624) Thanks [@github-actions](https://github.com/apps/github-actions)! - Add scope check in the user onboarding wizard status hook.
+
+- Updated dependencies []:
+  - @wso2is/admin.applications.v1@2.42.22
+  - @wso2is/admin.branding.v1@2.32.166
+  - @wso2is/admin.core.v1@2.57.1
+  - @wso2is/admin.roles.v2@2.27.380
+  - @wso2is/admin.users.v1@2.38.33
+  - @wso2is/admin.connections.v1@2.37.1
+  - @wso2is/admin.server-configurations.v1@2.38.49
+
 ## 1.0.80
 
 ### Patch Changes
