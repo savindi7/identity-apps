@@ -131,7 +131,6 @@ First, identify the parent feature that owns the UI element. For example, assume
 
 Add a new entry to the `featureFlags` array in the relevant feature config.
 
-Updated deployment.config.json:
 
 ```js
 {
