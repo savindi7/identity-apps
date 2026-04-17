@@ -479,7 +479,6 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
             overrideConfigFile: ABSOLUTE_PATHS.eslintConfig
         }) as unknown) as WebpackPluginInstance
         );
-    }
 
     config.plugins.push(
         (new webpack.ProvidePlugin({
