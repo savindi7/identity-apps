@@ -112,7 +112,7 @@ do
         echo -e "\n 🔥 Linting batch $((i/MAX_FILE_THRESHOLD_FOR_LINTER + 1))... \n"
     fi
 
-    pnpm eslint --ext .js,.jsx,.ts,.tsx --no-error-on-unmatched-pattern --max-warnings=0 -- "$filter_pattern"
+    pnpm eslint --no-error-on-unmatched-pattern --max-warnings=0 -- "$filter_pattern"
 
     # Capture the exit status of ESLint
     if [ $? -ne 0 ]; then

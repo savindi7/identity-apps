@@ -414,17 +414,16 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
         );
     }
 
-    if(isAnalyzeMode) {
+    if (isAnalyzeMode) {
         config.plugins.push(
-        (new BundleAnalyzerPlugin({
-            analyzerHost: "localhost",
-            analyzerPort: analyzerPort
-        }) as unknown) as WebpackPluginInstance
+            (new BundleAnalyzerPlugin({
+                analyzerHost: "localhost",
+                analyzerPort: analyzerPort
+            }) as unknown) as WebpackPluginInstance
         );
-
     }
 
-    if(isProfilingMode) {
+    if (isProfilingMode) {
         config.plugins.push(
             new webpack.ProgressPlugin({
                 profile: true
@@ -434,51 +433,46 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
 
     if (isProduction) {
         config.plugins.push(
-        (new CompressionPlugin({
-            algorithm: "gzip",
-            filename: "[path][base].gz",
-            minRatio: 0.8,
-            test: /\.js$|\.css$|\.html$|\.png$|\.svg$|\.jpeg$|\.jpg$/,
-            threshold: 10240
-        }) as unknown) as WebpackPluginInstance
+            (new CompressionPlugin({
+                algorithm: "gzip",
+                filename: "[path][base].gz",
+                minRatio: 0.8,
+                test: /\.js$|\.css$|\.html$|\.png$|\.svg$|\.jpeg$|\.jpg$/,
+                threshold: 10240
+            }) as unknown) as WebpackPluginInstance
         );
 
         config.plugins.push(
-        (new CompressionPlugin({
-            algorithm: "brotliCompress",
-            compressionOptions: {
-                params: {
-                    [zlib.constants.BROTLI_PARAM_QUALITY]: 11
-                }
-            } as BrotliOptions,
-            filename: "[path][base].br",
-            minRatio: 0.8,
-            test: /\.(js|css|html|png|svg|jpeg|jpg)$/,
-            threshold: 10240
-        }) as unknown) as WebpackPluginInstance
+            (new CompressionPlugin({
+                algorithm: "brotliCompress",
+                compressionOptions: {
+                    params: {
+                        [zlib.constants.BROTLI_PARAM_QUALITY]: 11
+                    }
+                } as BrotliOptions,
+                filename: "[path][base].br",
+                minRatio: 0.8,
+                test: /\.(js|css|html|png|svg|jpeg|jpg)$/,
+                threshold: 10240
+            }) as unknown) as WebpackPluginInstance
         );
     }
 
     // ESLint runs as a separate CI step; running it inside webpack during production
     // builds doubles peak memory usage and significantly slows the build.
-    !isProduction && !isESLintPluginDisabled && config.plugins.push(
-        (new ESLintPlugin({
-            cache: true,
-            cacheLocation: ABSOLUTE_PATHS.eslintCache,
-            context: ABSOLUTE_PATHS.appSrc,
-            eslintPath: require.resolve("eslint"),
-            extensions: [ "js", "jsx", "ts", "tsx" ],
-            lintDirtyModulesOnly: true,
-            overrideConfig: isProduction
-                ? {
-                    rules: {
-                        "no-debugger": 2
-                    }
-                }
-                : undefined,
-            overrideConfigFile: ABSOLUTE_PATHS.eslintConfig
-        }) as unknown) as WebpackPluginInstance
+    if (!isProduction && !isESLintPluginDisabled) {
+        config.plugins.push(
+            (new ESLintPlugin({
+                cache: true,
+                cacheLocation: ABSOLUTE_PATHS.eslintCache,
+                context: ABSOLUTE_PATHS.appSrc,
+                eslintPath: require.resolve("eslint"),
+                extensions: [ "js", "jsx", "ts", "tsx" ],
+                lintDirtyModulesOnly: true,
+                overrideConfigFile: ABSOLUTE_PATHS.eslintConfig
+            }) as unknown) as WebpackPluginInstance
         );
+    }
 
     config.plugins.push(
         (new webpack.ProvidePlugin({
@@ -674,7 +668,7 @@ module.exports = (config: WebpackOptionsNormalized, context: NxWebpackContextInt
         }
 
         if (rule.test.toString().includes("svg") && rule.test instanceof RegExp) {
-            if (rule.use instanceof Array) {
+            if (Array.isArray(rule.use)) {
                 rule.use.forEach((item: RuleSetUseItem) => {
                     if (
                         typeof item !== "string" &&
