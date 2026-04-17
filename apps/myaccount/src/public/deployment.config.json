@@ -54,6 +54,7 @@
         "cookiePolicyUrl": "/authenticationendpoint/cookie_policy.do",
         "disableMFAForFederatedUsers": true,
         "enableMFAUserWise": true,
+        "enableSCIMLegacyEnterpriseUser": false,
         "features": {
             "applications": {
                 "disabledFeatures": [],

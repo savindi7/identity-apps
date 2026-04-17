@@ -1,5 +1,28 @@
 # @wso2is/admin.email-providers.v1
 
+## 2.28.2
+
+### Patch Changes
+
+- [#9923](https://github.com/wso2/identity-apps/pull/9923) [`37eb4e51bcf1b6c2e4cd715f892844d560852195`](https://github.com/wso2/identity-apps/commit/37eb4e51bcf1b6c2e4cd715f892844d560852195) Thanks [@UdeshAthukorala](https://github.com/UdeshAthukorala)! - Add UI Length validation for HTTP-based email provider configuration UI
+
+- Updated dependencies [[`37eb4e51bcf1b6c2e4cd715f892844d560852195`](https://github.com/wso2/identity-apps/commit/37eb4e51bcf1b6c2e4cd715f892844d560852195), [`8d832e11274602412741a4f926c972c25510fbca`](https://github.com/wso2/identity-apps/commit/8d832e11274602412741a4f926c972c25510fbca)]:
+  - @wso2is/admin.core.v1@2.55.13
+
+## 2.28.1
+
+### Patch Changes
+
+- [#9875](https://github.com/wso2/identity-apps/pull/9875) [`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - Revert Axios and SDK version bumps
+
+- Updated dependencies [[`c834b18928cdfc09710c5e7067668206d006e68a`](https://github.com/wso2/identity-apps/commit/c834b18928cdfc09710c5e7067668206d006e68a), [`877d726905edf898c33c615cd887f8ed0a071a0e`](https://github.com/wso2/identity-apps/commit/877d726905edf898c33c615cd887f8ed0a071a0e), [`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d)]:
+  - @wso2is/i18n@2.37.5
+  - @wso2is/admin.core.v1@2.55.3
+  - @wso2is/access-control@3.5.3
+  - @wso2is/theme@2.9.5
+  - @wso2is/core@2.12.10
+  - @wso2is/form@2.10.1
+
 ## 2.28.0
 
 ### Minor Changes

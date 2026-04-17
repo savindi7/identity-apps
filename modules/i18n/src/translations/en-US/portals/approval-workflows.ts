@@ -156,7 +156,7 @@ export const approvalWorkflows: approvalWorkflowsNS = {
         },
         notifications: {
             approver: {
-                hint: "Send notifications to users assigned to approve the request.",
+                hint: "Send notifications to approvers assigned to review the request.",
                 label: "Approver Notifications"
             },
             channels: {
@@ -164,8 +164,8 @@ export const approvalWorkflows: approvalWorkflowsNS = {
                 sms: "SMS"
             },
             initiator: {
-                hint: "Send notifications to the user who initiated the request.",
-                label: "Initiator Notifications"
+                hint: "Send notifications to the user who initiated the request upon completion.",
+                label: "Notify Initiator on Completion"
             }
         },
         operations: {
@@ -285,6 +285,16 @@ export const approvalWorkflows: approvalWorkflowsNS = {
         updateDelay: {
             description: "It might take some time for the updated properties to appear.",
             message: "Updating properties takes time"
+        },
+        updateRuleConfiguration: {
+            genericError: {
+                description: "An error occurred while updating the rule configuration.",
+                message: "Rule update failed"
+            },
+            success: {
+                description: "The rule configuration has been updated successfully.",
+                message: "Rule updated successfully!"
+            }
         }
     },
     pageLayout: {
@@ -294,17 +304,23 @@ export const approvalWorkflows: approvalWorkflowsNS = {
             ruleConditions: {
                 addRule: "Add Rule",
                 configured: "Configured",
-                confirmClear: {
+                confirmDelete: {
                     content: "This action is irreversible and will permanently delete the rule.",
                     message: "If you delete this rule, approval workflow will be always engaged when " +
                         "{{operation}} is triggered. Please proceed with caution.",
-                    title: "Confirm Clear Rule"
+                    title: "Confirm Delete Rule"
                 },
                 editRule: "Edit Rule",
                 engagement: {
                     always: "Always",
                     column: "Engagement",
                     configured: "Conditional"
+                },
+                fields: {
+                    initiatorClaim: "initiator claim",
+                    userClaim: "user claim",
+                    valueRequired: "A value is required.",
+                    workflowClaimSelector: "Select Claim"
                 },
                 modal: {
                     subtitle: "Define conditions to determine when the approval workflow should be engaged for this operation.",
@@ -322,18 +338,18 @@ export const approvalWorkflows: approvalWorkflowsNS = {
                 },
                 step2: {
                     description: "Select the operations that would trigger this approval workflow and configure rule conditions.",
-                    hint: "This approval workflow will be triggered when any of the selected operations are initiated.",
+                    hint: "This approval workflow is triggered for selected operations based on configured rules, and always triggers if no rules are defined.",
                     title:  "Workflow Operation Details"
                 },
                 step3: {
+                    description: "Configure the approval steps of the workflow. Approval by any selected user or role member will complete each step.",
+                    hint: "You can add multiple approval steps to the workflow. Each step can have different approvers. Approval by any selected user or role member will complete each step.",
+                    title: "Approval Step Details"
+                },
+                step4: {
                     description: "Configure notification channels for the initiator and approvers.",
                     hint: "Select how the initiator and approvers will be notified during the workflow.",
                     title: "Notification Configuration"
-                },
-                step4: {
-                    description: "Configure the approval steps of the workflow. Approval by any selected user or role member will complete each step.",
-                    hint: "You can add multiple approval steps to the workflow. Each step can have different approvers. Approval by any selected user or role member will complete each step.",
-                    title:  "Approval Step Details"
                 }
             },
             title: "Create an Approval Workflow"

@@ -1,5 +1,38 @@
 # @wso2is/common.users.v1
 
+## 1.0.11
+
+### Patch Changes
+
+- [#10072](https://github.com/wso2/identity-apps/pull/10072) [`f334f308a27092b61d3c115be04056809943144e`](https://github.com/wso2/identity-apps/commit/f334f308a27092b61d3c115be04056809943144e) Thanks [@indeewari](https://github.com/indeewari)! - Incoporate legacy SCIM enterprise user attributes.
+
+## 1.0.10
+
+### Patch Changes
+
+- [#10056](https://github.com/wso2/identity-apps/pull/10056) [`aca268b8b54edcd02d56d58d660c987ad9bcad3d`](https://github.com/wso2/identity-apps/commit/aca268b8b54edcd02d56d58d660c987ad9bcad3d) Thanks [@sadilchamishka](https://github.com/sadilchamishka)! - Fix email verification issue
+
+## 1.0.9
+
+### Patch Changes
+
+- [#10027](https://github.com/wso2/identity-apps/pull/10027) [`3096f2a7d8dac8fbee97944d175c2ac6e7dc9bb8`](https://github.com/wso2/identity-apps/commit/3096f2a7d8dac8fbee97944d175c2ac6e7dc9bb8) Thanks [@sadilchamishka](https://github.com/sadilchamishka)! - User management team UI fixes
+
+## 1.0.8
+
+### Patch Changes
+
+- [#9898](https://github.com/wso2/identity-apps/pull/9898) [`8ba669268e37c2c75809ba5cbbde403538540b0f`](https://github.com/wso2/identity-apps/commit/8ba669268e37c2c75809ba5cbbde403538540b0f) Thanks [@NutharaNR](https://github.com/NutharaNR)! - Modify pendingEmails call to honour to complex attribute type
+
+## 1.0.7
+
+### Patch Changes
+
+- [#9875](https://github.com/wso2/identity-apps/pull/9875) [`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - Revert Axios and SDK version bumps
+
+- Updated dependencies [[`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d)]:
+  - @wso2is/form@2.10.1
+
 ## 1.0.6
 
 ### Patch Changes

@@ -1,5 +1,120 @@
 # @wso2is/identity-apps-core
 
+## 4.0.14
+
+### Patch Changes
+
+- [#10138](https://github.com/wso2/identity-apps/pull/10138) [`fa0d6c1706911857e0e8ee3dfcdb371a56220a60`](https://github.com/wso2/identity-apps/commit/fa0d6c1706911857e0e8ee3dfcdb371a56220a60) Thanks [@DilshanSenarath](https://github.com/DilshanSenarath)! - Release a new identity apps core version
+
+## 4.0.13
+
+### Patch Changes
+
+- [#10118](https://github.com/wso2/identity-apps/pull/10118) [`96448d5de7e53b790bd6abd3273e8719cd5e71cd`](https://github.com/wso2/identity-apps/commit/96448d5de7e53b790bd6abd3273e8719cd5e71cd) Thanks [@DilshanSenarath](https://github.com/DilshanSenarath)! - Release a new identity apps core version
+
+## 4.0.12
+
+### Patch Changes
+
+- [#10115](https://github.com/wso2/identity-apps/pull/10115) [`e1e0c18524e330097d96f57bee388d558c92b9a1`](https://github.com/wso2/identity-apps/commit/e1e0c18524e330097d96f57bee388d558c92b9a1) Thanks [@DilshanSenarath](https://github.com/DilshanSenarath)! - Add logic to check whether the new registration feature is enabled for IDF configuration.
+
+## 4.0.11
+
+### Patch Changes
+
+- [#10052](https://github.com/wso2/identity-apps/pull/10052) [`0fc359ed41080ebe5bc7e7be31673373baef6764`](https://github.com/wso2/identity-apps/commit/0fc359ed41080ebe5bc7e7be31673373baef6764) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Update logos in identity server portal UIs
+
+- Updated dependencies [[`0fc359ed41080ebe5bc7e7be31673373baef6764`](https://github.com/wso2/identity-apps/commit/0fc359ed41080ebe5bc7e7be31673373baef6764)]:
+  - @wso2is/theme@2.9.7
+
+## 4.0.10
+
+### Patch Changes
+
+- [#10089](https://github.com/wso2/identity-apps/pull/10089) [`9402262ea4ba4fbf137055ea2926f1acfcb6faba`](https://github.com/wso2/identity-apps/commit/9402262ea4ba4fbf137055ea2926f1acfcb6faba) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Fix IDP logo icon inconsistency
+
+- Updated dependencies [[`9402262ea4ba4fbf137055ea2926f1acfcb6faba`](https://github.com/wso2/identity-apps/commit/9402262ea4ba4fbf137055ea2926f1acfcb6faba)]:
+  - @wso2is/theme@2.9.6
+
+## 4.0.9
+
+### Patch Changes
+
+- [#10073](https://github.com/wso2/identity-apps/pull/10073) [`f7f6fde48e229a2c05fa53a35ff5047f1df4f8c7`](https://github.com/wso2/identity-apps/commit/f7f6fde48e229a2c05fa53a35ff5047f1df4f8c7) Thanks [@indeewari](https://github.com/indeewari)! - Enabling browser auto detect custom language
+
+## 4.0.8
+
+### Patch Changes
+
+- [#9967](https://github.com/wso2/identity-apps/pull/9967) [`543d61f8a556172a691c652dc728afcf69b9837a`](https://github.com/wso2/identity-apps/commit/543d61f8a556172a691c652dc728afcf69b9837a) Thanks [@Sithumli](https://github.com/Sithumli)! - Update passkey instruction messages to be device-agnostic for better UX on mobile devices
+
+## 4.0.7
+
+### Patch Changes
+
+- [#10025](https://github.com/wso2/identity-apps/pull/10025) [`2f1e747825ac6578760c606df24b7a3b4c627a47`](https://github.com/wso2/identity-apps/commit/2f1e747825ac6578760c606df24b7a3b4c627a47) Thanks [@DilshanSenarath](https://github.com/DilshanSenarath)! - Fix the issue with the X.509 authenticator error page.
+
+## 4.0.6
+
+### Patch Changes
+
+- [#10000](https://github.com/wso2/identity-apps/pull/10000) [`e1fae599a1c54a534d60355375fed04fea4621ca`](https://github.com/wso2/identity-apps/commit/e1fae599a1c54a534d60355375fed04fea4621ca) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - Axios and SDK version bumps and Type error fixes
+
+## 4.0.5
+
+### Patch Changes
+
+- [#9976](https://github.com/wso2/identity-apps/pull/9976) [`31ac345af1a1fe32272db7d0443a2fc14c5f9830`](https://github.com/wso2/identity-apps/commit/31ac345af1a1fe32272db7d0443a2fc14c5f9830) Thanks [@HasiniSama](https://github.com/HasiniSama)! - Fix JSP compilation errors in user-not-found.jsp causing 404 on new user Google sign-in
+
+* [#9985](https://github.com/wso2/identity-apps/pull/9985) [`41963ef8b50dbd6f6404c7995e7dac56c22ac473`](https://github.com/wso2/identity-apps/commit/41963ef8b50dbd6f6404c7995e7dac56c22ac473) Thanks [@HimashaHerath](https://github.com/HimashaHerath)! - Fix double HTML encoding of error messages in x509 certificate error page
+
+## 4.0.4
+
+### Patch Changes
+
+- [#9962](https://github.com/wso2/identity-apps/pull/9962) [`daf105e2780b356759d8a8be5c0a895522363e5c`](https://github.com/wso2/identity-apps/commit/daf105e2780b356759d8a8be5c0a895522363e5c) Thanks [@DilshanSenarath](https://github.com/DilshanSenarath)! - Add the cache-prevention filter for forward requests
+
+## 4.0.3
+
+### Patch Changes
+
+- [#9953](https://github.com/wso2/identity-apps/pull/9953) [`a527ed748c33de141a84a9f21657bc7cbac30ace`](https://github.com/wso2/identity-apps/commit/a527ed748c33de141a84a9f21657bc7cbac30ace) Thanks [@DilshanSenarath](https://github.com/DilshanSenarath)! - Fix pattern issue in cache prevention filter
+
+## 4.0.2
+
+### Patch Changes
+
+- [#9843](https://github.com/wso2/identity-apps/pull/9843) [`ea7227c798abbff52cbf69d4f6e91d38426b6651`](https://github.com/wso2/identity-apps/commit/ea7227c798abbff52cbf69d4f6e91d38426b6651) Thanks [@SujanSanjula96](https://github.com/SujanSanjula96)! - Hide enable enhanced org authentication toggle in my account and add backend validations for system apps
+
+## 4.0.1
+
+### Patch Changes
+
+- [#9875](https://github.com/wso2/identity-apps/pull/9875) [`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - Revert Axios and SDK version bumps
+
+- Updated dependencies [[`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d)]:
+  - @wso2is/theme@2.9.5
+
+## 4.0.0
+
+### Major Changes
+
+- [#9825](https://github.com/wso2/identity-apps/pull/9825) [`2a5a8feb389c2476e50e730a11142f78ded5aed9`](https://github.com/wso2/identity-apps/commit/2a5a8feb389c2476e50e730a11142f78ded5aed9) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Major version bump for the upcoming release
+
+## 3.7.2
+
+### Patch Changes
+
+- [#9413](https://github.com/wso2/identity-apps/pull/9413) [`9badd48ba2c7db9aade47e4d49186f81e0e8b3f0`](https://github.com/wso2/identity-apps/commit/9badd48ba2c7db9aade47e4d49186f81e0e8b3f0) Thanks [@RushanNanayakkara](https://github.com/RushanNanayakkara)! - improve encodings of mobile.jsp
+
+## 3.7.1
+
+### Patch Changes
+
+- [#9796](https://github.com/wso2/identity-apps/pull/9796) [`ba7c5040fe8f83a20d4dfbdfacdfd07433e09acb`](https://github.com/wso2/identity-apps/commit/ba7c5040fe8f83a20d4dfbdfacdfd07433e09acb) Thanks [@JayaShakthi97](https://github.com/JayaShakthi97)! - Fix proxy context path not prefixing to policy URLs issue
+
+* [#9725](https://github.com/wso2/identity-apps/pull/9725) [`0f3292ffa589a3bafecea90ef56a78249b7e09f3`](https://github.com/wso2/identity-apps/commit/0f3292ffa589a3bafecea90ef56a78249b7e09f3) Thanks [@AfraHussaindeen](https://github.com/AfraHussaindeen)! - Refactor isMultiAuthAvailable method to include current authenticator check
+
 ## 3.7.0
 
 ### Minor Changes

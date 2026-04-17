@@ -102,7 +102,6 @@ const ProfilesList: FunctionComponent<ProfilesListProps> = ({
             render: (profile: ProfileModel): ReactNode => {
                 const userId:string = profile.user_id;
 
-                // Anonymous
                 if (!userId) {
                     return (
                         <Chip
@@ -115,35 +114,18 @@ const ProfilesList: FunctionComponent<ProfilesListProps> = ({
                     );
                 }
 
-                return null;
-            },
-            textAlign: "center",
-            title: t("customerDataService:profiles.list.columns.user")
-        },
-        {
-            allowToggleVisibility: true,
-            dataIndex: "unified_profiles",
-            id: "unified_profiles",
-            key: "unified_profiles",
-            render: (profile: ProfileModel): ReactNode => {
-                const merged:Array<{ profile_id: string; reason: string }> = profile.merged_from;
-                const hasMerged:boolean = Array.isArray(merged) && merged.length > 0;
-
-                if (!hasMerged) {
-                    return null;
-                }
-
                 return (
                     <Chip
                         size="small"
+                        color="success"
                         variant="outlined"
-                        label={ t("customerDataService:profiles.list.chips.unified") }
-                        data-testid="unified-profile-chip"
+                        label={ t("customerDataService:profiles.list.chips.registered") }
+                        data-testid="registered-username-chip"
                     />
                 );
             },
             textAlign: "center",
-            title: t("customerDataService:profiles.list.columns.unifiedProfiles")
+            title: t("customerDataService:profiles.list.columns.user")
         },
         {
             allowToggleVisibility: false,

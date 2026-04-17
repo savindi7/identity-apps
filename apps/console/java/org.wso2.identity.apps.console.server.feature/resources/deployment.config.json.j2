@@ -236,6 +236,9 @@
         {% if identity_mgt.user_claim_update.enable_multiple_emails_and_mobile_numbers is defined %}
         "isMultipleEmailsAndMobileNumbersEnabled": {{ identity_mgt.user_claim_update.enable_multiple_emails_and_mobile_numbers }},
         {% endif %}
+        {% if scim2.enable_legacy_enterprise_user is defined %}
+        "enableSCIMLegacyEnterpriseUser": {{ scim2.enable_legacy_enterprise_user }},
+        {% endif %}
         "features": {
             {% if console.extensions.features is defined %}
             {% for name, feature in console.extensions.features.items() %}
@@ -2018,6 +2021,7 @@
                 "enabled": {% if console.onboarding.enabled is defined %} {{ console.onboarding.enabled }},
                 {% else %} true,
                 {% endif %}
+                "featureDeployedDate": "{% if console.onboarding.feature_deployed_date is defined %}{{ console.onboarding.feature_deployed_date }}{% endif %}",
                 "scopes": {
                     {% if console.onboarding.scopes is defined %}
                     {% for operation, scopes in console.onboarding.scopes.items() %}
@@ -2668,6 +2672,16 @@
             "enableOldUIForEmailProvider": {{ console.ui.enable_old_ui_for_email_provider }},
         {% else %}
             "enableOldUIForEmailProvider": false,
+        {% endif %}
+        {% if console.ui.http_email_provider_body_max_length is defined %}
+            "httpEmailProviderBodyMaxLength": {{ console.ui.http_email_provider_body_max_length }},
+        {% else %}
+            "httpEmailProviderBodyMaxLength": 1023,
+        {% endif %}
+        {% if console.ui.http_email_provider_scopes_max_length is defined %}
+            "httpEmailProviderScopesMaxLength": {{ console.ui.http_email_provider_scopes_max_length }},
+        {% else %}
+            "httpEmailProviderScopesMaxLength": 1023,
         {% endif %}
         {% if console.ui.enable_legacy_locale_dropdown is defined %}
             "enableLegacyLocaleDropdown": {{ console.ui.enable_legacy_locale_dropdown }},

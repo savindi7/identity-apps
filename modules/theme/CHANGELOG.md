@@ -1,5 +1,23 @@
 # @wso2is/theme
 
+## 2.9.7
+
+### Patch Changes
+
+- [#10052](https://github.com/wso2/identity-apps/pull/10052) [`0fc359ed41080ebe5bc7e7be31673373baef6764`](https://github.com/wso2/identity-apps/commit/0fc359ed41080ebe5bc7e7be31673373baef6764) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Update logos in identity server portal UIs
+
+## 2.9.6
+
+### Patch Changes
+
+- [#10089](https://github.com/wso2/identity-apps/pull/10089) [`9402262ea4ba4fbf137055ea2926f1acfcb6faba`](https://github.com/wso2/identity-apps/commit/9402262ea4ba4fbf137055ea2926f1acfcb6faba) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Fix IDP logo icon inconsistency
+
+## 2.9.5
+
+### Patch Changes
+
+- [#9875](https://github.com/wso2/identity-apps/pull/9875) [`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - Revert Axios and SDK version bumps
+
 ## 2.9.4
 
 ### Patch Changes

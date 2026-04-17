@@ -29,6 +29,11 @@
     },
     "docSiteUrl": "https://is.docs.wso2.com/en/latest",
     "extensions": {
+        "analytics": {
+            "moesif": {
+                "applicationId": ""
+            }
+        },
         "defaultBrandedLoginScreenCopyright": "${copyright} ${year} WSO2 LLC.",
         "emailTemplates": [
             {
@@ -233,7 +238,11 @@
                 "displayName": "Password Set Success",
                 "id": "YXNrUGFzc3dvcmRTZXRTdWNjZXNz"
             }
-        ]
+        ],
+        "trial": {
+            "enabled": false,
+            "tierName": "Paid"
+        }
     },
     "getProfileInfoFromIDToken": false,
     "i18nResourcePath": "",
@@ -336,6 +345,7 @@
         "enableLegacyLocaleDropdown": false,
         "enableLegacySessionBoundTokenBehaviour": false,
         "enableOldUIForEmailProvider": false,
+        "enableSCIMLegacyEnterpriseUser": false,
         "features": {
             "accountLogin": {
                 "disabledFeatures": [],
@@ -1372,18 +1382,17 @@
             "onboarding": {
                 "disabledFeatures": [],
                 "enabled": false,
+                "featureDeployedDate": "",
                 "featureFlags": [],
                 "scopes": {
                     "create": [
                         "internal_application_mgt_create",
-                        "internal_branding_preference_update",
-                        "internal_governance_update"
+                        "internal_branding_preference_update"
                     ],
                     "delete": [],
                     "feature": [
                         "console:applications",
-                        "console:branding",
-                        "console:loginAndRegistration"
+                        "console:branding"
                     ],
                     "read": [],
                     "update": []
@@ -2005,7 +2014,7 @@
             },
             "verifiableCredentials": {
                 "disabledFeatures": [],
-                "enabled": false,
+                "enabled": true,
                 "featureFlags": [],
                 "scopes": {
                     "create": [
@@ -2073,7 +2082,10 @@
             }
         },
         "flowExecution": {
-            "enableLegacyFlows": false
+            "enableLegacyFlows": false,
+            "enableLegacyInvitedUserRegistrationFlow": false,
+            "enableLegacyPasswordRecoveryFlow": false,
+            "enableLegacySelfRegistrationFlow": false
         },
         "governanceConnectors": {
             "loginAttempts": {
@@ -2093,6 +2105,8 @@
             "swe-idp"
         ],
         "hiddenUserStores": [],
+        "httpEmailProviderBodyMaxLength": 1023,
+        "httpEmailProviderScopesMaxLength": 1023,
         "i18nConfigs": {
             "langAutoDetectEnabled": false,
             "showLanguageSwitcher": false

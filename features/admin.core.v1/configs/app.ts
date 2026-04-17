@@ -111,13 +111,27 @@ export class Config {
             return this.getDeploymentConfig()?.serverOrigin;
         }
 
+        return this.resolveTenantedServerHost(skipAuthzRuntimePath);
+    }
+
+    /**
+     * This method resolves the server host without checking whether tenant-qualified URLs are enabled.
+     * This is for paths that require the tenanted path regardless of whether tenant-qualified URLS
+     * are enabled.
+     *
+     * @param skipAuthzRuntimePath - Skips the authorization runtime path.
+     *
+     * @returns Server host.
+     */
+    public static resolveTenantedServerHost(skipAuthzRuntimePath?: boolean): string {
+
         const serverOriginWithTenant: string = window[ "AppUtils" ]?.getConfig()?.serverOriginWithTenant;
 
         if (skipAuthzRuntimePath && serverOriginWithTenant?.slice(-2) === "/o") {
             return serverOriginWithTenant.substring(0,serverOriginWithTenant.lastIndexOf("/o"));
         }
 
-        return window[ "AppUtils" ]?.getConfig()?.serverOriginWithTenant;
+        return serverOriginWithTenant;
     }
 
     /**
@@ -374,7 +388,7 @@ export class Config {
             // TODO: Remove this endpoint and use ID token to get the details
             me: `${ this.getDeploymentConfig()?.serverHost }/scim2/Me`,
             saml2Meta: `${ this.resolveServerHost(false, true) }/identity/metadata/saml2`,
-            wellKnown: `${ this.resolveServerHost(false, true) }/oauth2/token/.well-known/openid-configuration`
+            wellKnown: `${ this.resolveTenantedServerHost(true) }/oauth2/token/.well-known/openid-configuration`
         };
     }
 
@@ -438,11 +452,26 @@ export class Config {
             enableLegacySessionBoundTokenBehaviour:
                 window[ "AppUtils" ]?.getConfig()?.ui?.enableLegacySessionBoundTokenBehaviour ?? true,
             enableOldUIForEmailProvider: window[ "AppUtils" ]?.getConfig()?.ui?.enableOldUIForEmailProvider,
+            enableSCIMLegacyEnterpriseUser:
+                window[ "AppUtils" ]?.getConfig()?.ui?.enableSCIMLegacyEnterpriseUser ?? false,
             enabledFeatureOverridesInConsoleRolePermissions:
                 window[ "AppUtils" ]?.getConfig()?.ui?.enabledFeatureOverridesInConsoleRolePermissions,
             features: window[ "AppUtils" ]?.getConfig()?.ui?.features,
             flowExecution: {
-                enableLegacyFlows: window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacyFlows ?? true
+                enableLegacyFlows:
+                    window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacyFlows ?? true,
+                enableLegacyInvitedUserRegistrationFlow:
+                    window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacyInvitedUserRegistrationFlow
+                    ?? window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacyFlows
+                    ?? true,
+                enableLegacyPasswordRecoveryFlow:
+                    window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacyPasswordRecoveryFlow
+                    ?? window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacyFlows
+                    ?? true,
+                enableLegacySelfRegistrationFlow:
+                    window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacySelfRegistrationFlow
+                    ?? window[ "AppUtils" ]?.getConfig()?.ui?.flowExecution?.enableLegacyFlows
+                    ?? true
             },
             googleOneTapEnabledTenants: window["AppUtils"]?.getConfig()?.ui?.googleOneTapEnabledTenants,
             governanceConnectors: window["AppUtils"]?.getConfig()?.ui?.governanceConnectors,
@@ -453,6 +482,8 @@ export class Config {
             hiddenOutboundProvisioningConnectors:
                 window[ "AppUtils" ]?.getConfig()?.ui?.hiddenOutboundProvisioningConnectors ?? [],
             hiddenUserStores: window[ "AppUtils" ]?.getConfig()?.ui?.hiddenUserStores,
+            httpEmailProviderBodyMaxLength: window[ "AppUtils" ]?.getConfig()?.ui?.httpEmailProviderBodyMaxLength,
+            httpEmailProviderScopesMaxLength: window[ "AppUtils" ]?.getConfig()?.ui?.httpEmailProviderScopesMaxLength,
             i18nConfigs: window[ "AppUtils" ]?.getConfig()?.ui?.i18nConfigs,
             identityProviderTemplates: window[ "AppUtils" ]?.getConfig()?.ui?.identityProviderTemplates,
             isClaimUniquenessValidationEnabled:
@@ -474,6 +505,8 @@ export class Config {
             isMultipleEmailsAndMobileNumbersEnabled:
                 window["AppUtils"]?.getConfig()?.ui?.isMultipleEmailsAndMobileNumbersEnabled,
             isPasswordInputValidationEnabled: window["AppUtils"]?.getConfig()?.ui?.isPasswordInputValidationEnabled,
+            isPasswordResetEnforcementScopeEnabled:
+                window["AppUtils"]?.getConfig()?.ui?.isPasswordResetEnforcementScopeEnabled ?? false,
             isRequestPathAuthenticationEnabled:
                 window[ "AppUtils" ]?.getConfig()?.ui?.isRequestPathAuthenticationEnabled,
             isSAASDeployment: window[ "AppUtils" ]?.getConfig()?.ui?.isSAASDeployment,

@@ -858,6 +858,10 @@ export interface ApplicationsNS {
                 rolesSharedPartially: string;
                 shareRoleSubsetWithSelectedOrgs: string;
                 shareRoleSubsetWithAllOrgs: string;
+                roleAudience: {
+                    application: string;
+                    organization: string;
+                };
                 searchAvailableRolesPlaceholder: string;
                 manageRoleSharing: string;
                 viewRoleSharing: string;
@@ -1550,6 +1554,14 @@ export interface ApplicationsNS {
                     notificationChannels: {
                         externalHint: string;
                         externalLabel: string;
+                        hint: string;
+                        label: string;
+                    };
+                    skipUserValidation: {
+                        hint: string;
+                        label: string;
+                    };
+                    allowFederatedUsers: {
                         hint: string;
                         label: string;
                     };
@@ -2409,6 +2421,7 @@ export interface ApplicationsNS {
                     oidcConfigurations: {
                         labels: {
                             authorize: string;
+                            backchannelAuthentication: string;
                             dynamicClientRegistration: string;
                             endSession: string;
                             introspection: string;

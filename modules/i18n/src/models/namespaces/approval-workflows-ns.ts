@@ -120,6 +120,16 @@ export interface approvalWorkflowsNS {
             message: string;
             description: string;
         };
+        updateRuleConfiguration: {
+            genericError: {
+                message: string;
+                description: string;
+            };
+            success: {
+                message: string;
+                description: string;
+            };
+        };
     };
     confirmation: {
         hint: string;
@@ -189,10 +199,16 @@ export interface approvalWorkflowsNS {
                     column: string,
                     configured: string
                 },
-                confirmClear: {
+                confirmDelete: {
                     content: string,
                     message: string,
                     title: string
+                },
+                fields: {
+                    initiatorClaim: string,
+                    userClaim: string,
+                    valueRequired: string,
+                    workflowClaimSelector: string
                 }
             }
         };

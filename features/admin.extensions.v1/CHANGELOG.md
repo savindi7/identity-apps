@@ -1,5 +1,110 @@
 # @wso2is/admin.extensions.v1
 
+## 2.41.2
+
+### Patch Changes
+
+- [#10072](https://github.com/wso2/identity-apps/pull/10072) [`f334f308a27092b61d3c115be04056809943144e`](https://github.com/wso2/identity-apps/commit/f334f308a27092b61d3c115be04056809943144e) Thanks [@indeewari](https://github.com/indeewari)! - Incoporate legacy SCIM enterprise user attributes.
+
+- Updated dependencies [[`f334f308a27092b61d3c115be04056809943144e`](https://github.com/wso2/identity-apps/commit/f334f308a27092b61d3c115be04056809943144e), [`d1264751d5c39336db0364992a0d42053050cda9`](https://github.com/wso2/identity-apps/commit/d1264751d5c39336db0364992a0d42053050cda9), [`1db5d37d51d45ddc911ab1ee9c766ead39566083`](https://github.com/wso2/identity-apps/commit/1db5d37d51d45ddc911ab1ee9c766ead39566083)]:
+  - @wso2is/admin.users.v1@2.38.30
+  - @wso2is/admin.core.v1@2.55.30
+  - @wso2is/core@2.12.11
+  - @wso2is/admin.connections.v1@2.36.47
+  - @wso2is/i18n@2.38.5
+  - @wso2is/admin.applications.v1@2.42.19
+  - @wso2is/admin.roles.v2@2.27.377
+  - @wso2is/admin.server-configurations.v1@2.38.46
+
+## 2.41.1
+
+### Patch Changes
+
+- [#10059](https://github.com/wso2/identity-apps/pull/10059) [`256d9c3d856df16c8b5ce1836726953ca22b08b8`](https://github.com/wso2/identity-apps/commit/256d9c3d856df16c8b5ce1836726953ca22b08b8) Thanks [@ranuka-laksika](https://github.com/ranuka-laksika)! - Add unified MCP capability feature for All existing Applications except Digital Wallet Application
+
+- Updated dependencies [[`256d9c3d856df16c8b5ce1836726953ca22b08b8`](https://github.com/wso2/identity-apps/commit/256d9c3d856df16c8b5ce1836726953ca22b08b8)]:
+  - @wso2is/admin.applications.v1@2.42.16
+  - @wso2is/admin.core.v1@2.55.27
+  - @wso2is/admin.roles.v2@2.27.374
+  - @wso2is/admin.users.v1@2.38.27
+  - @wso2is/admin.connections.v1@2.36.44
+  - @wso2is/admin.server-configurations.v1@2.38.43
+
+## 2.41.0
+
+### Minor Changes
+
+- [#9888](https://github.com/wso2/identity-apps/pull/9888) [`fe26e130e7b52a2075c1cd31ee881497a947b4f5`](https://github.com/wso2/identity-apps/commit/fe26e130e7b52a2075c1cd31ee881497a947b4f5) Thanks [@ranuka-laksika](https://github.com/ranuka-laksika)! - Add user-serving agent support with OAuth configuration to agent creation wizard
+
+### Patch Changes
+
+- [#9741](https://github.com/wso2/identity-apps/pull/9741) [`5a1254e3c6604f51b6c92567bcb18d5f67267fbf`](https://github.com/wso2/identity-apps/commit/5a1254e3c6604f51b6c92567bcb18d5f67267fbf) Thanks [@ShanChathusanda93](https://github.com/ShanChathusanda93)! - Enable trusted token issuer advanced setting page with unique lookup attributes
+
+- Updated dependencies [[`b5a62b142ae0c817afb50a4b5418bd6d9d2c4f21`](https://github.com/wso2/identity-apps/commit/b5a62b142ae0c817afb50a4b5418bd6d9d2c4f21), [`5a1254e3c6604f51b6c92567bcb18d5f67267fbf`](https://github.com/wso2/identity-apps/commit/5a1254e3c6604f51b6c92567bcb18d5f67267fbf), [`fe26e130e7b52a2075c1cd31ee881497a947b4f5`](https://github.com/wso2/identity-apps/commit/fe26e130e7b52a2075c1cd31ee881497a947b4f5)]:
+  - @wso2is/admin.applications.v1@2.42.0
+  - @wso2is/admin.connections.v1@2.36.28
+  - @wso2is/i18n@2.38.0
+  - @wso2is/admin.core.v1@2.55.11
+  - @wso2is/admin.roles.v2@2.27.358
+  - @wso2is/admin.users.v1@2.38.11
+  - @wso2is/admin.server-configurations.v1@2.38.27
+
+## 2.40.31
+
+### Patch Changes
+
+- [#9902](https://github.com/wso2/identity-apps/pull/9902) [`89dd70084bb54ed6d06eb1d3aa98686a5b63cd53`](https://github.com/wso2/identity-apps/commit/89dd70084bb54ed6d06eb1d3aa98686a5b63cd53) Thanks [@DilshanSenarath](https://github.com/DilshanSenarath)! - Improve the UX when enabling the custom layout feature through the console
+
+- Updated dependencies [[`89dd70084bb54ed6d06eb1d3aa98686a5b63cd53`](https://github.com/wso2/identity-apps/commit/89dd70084bb54ed6d06eb1d3aa98686a5b63cd53)]:
+  - @wso2is/i18n@2.37.11
+  - @wso2is/admin.users.v1@2.38.10
+  - @wso2is/admin.applications.v1@2.41.35
+  - @wso2is/admin.core.v1@2.55.10
+  - @wso2is/admin.server-configurations.v1@2.38.26
+  - @wso2is/admin.roles.v2@2.27.357
+  - @wso2is/admin.connections.v1@2.36.27
+
+## 2.40.30
+
+### Patch Changes
+
+- [#9875](https://github.com/wso2/identity-apps/pull/9875) [`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - Revert Axios and SDK version bumps
+
+- Updated dependencies [[`c834b18928cdfc09710c5e7067668206d006e68a`](https://github.com/wso2/identity-apps/commit/c834b18928cdfc09710c5e7067668206d006e68a), [`877d726905edf898c33c615cd887f8ed0a071a0e`](https://github.com/wso2/identity-apps/commit/877d726905edf898c33c615cd887f8ed0a071a0e), [`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d), [`b75bb804c799c0e795e8580d35eedb8993d0ecc4`](https://github.com/wso2/identity-apps/commit/b75bb804c799c0e795e8580d35eedb8993d0ecc4)]:
+  - @wso2is/admin.applications.v1@2.41.28
+  - @wso2is/admin.users.v1@2.38.3
+  - @wso2is/i18n@2.37.5
+  - @wso2is/admin.server-configurations.v1@2.38.19
+  - @wso2is/admin.identity-providers.v1@2.27.3
+  - @wso2is/admin.organizations.v1@2.28.2
+  - @wso2is/admin.feature-gate.v1@1.9.2
+  - @wso2is/admin.provisioning.v1@2.25.208
+  - @wso2is/admin.connections.v1@2.36.20
+  - @wso2is/admin.userstores.v1@2.27.42
+  - @wso2is/admin.validation.v1@2.28.3
+  - @wso2is/admin.tenants.v1@2.29.25
+  - @wso2is/admin.claims.v1@2.30.6
+  - @wso2is/admin.roles.v2@2.27.350
+  - @wso2is/admin.core.v1@2.55.3
+  - @wso2is/access-control@3.5.3
+  - @wso2is/theme@2.9.5
+  - @wso2is/core@2.12.10
+  - @wso2is/form@2.10.1
+
+## 2.40.29
+
+### Patch Changes
+
+- [#9814](https://github.com/wso2/identity-apps/pull/9814) [`193f2c8597147db88fdb7ff21bf39bcadcbdab89`](https://github.com/wso2/identity-apps/commit/193f2c8597147db88fdb7ff21bf39bcadcbdab89) Thanks [@sahandilshan](https://github.com/sahandilshan)! - Hide CIBA grant from public clients
+
+- Updated dependencies [[`193f2c8597147db88fdb7ff21bf39bcadcbdab89`](https://github.com/wso2/identity-apps/commit/193f2c8597147db88fdb7ff21bf39bcadcbdab89)]:
+  - @wso2is/admin.applications.v1@2.41.23
+  - @wso2is/admin.core.v1@2.54.28
+  - @wso2is/admin.roles.v2@2.27.342
+  - @wso2is/admin.connections.v1@2.36.12
+  - @wso2is/admin.server-configurations.v1@2.38.11
+  - @wso2is/admin.users.v1@2.37.19
+
 ## 2.40.28
 
 ### Patch Changes

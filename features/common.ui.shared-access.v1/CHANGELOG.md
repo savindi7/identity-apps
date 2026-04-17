@@ -1,5 +1,69 @@
 # @wso2is/common.ui.shared-access.v1
 
+## 0.1.9
+
+### Patch Changes
+
+- [#10081](https://github.com/wso2/identity-apps/pull/10081) [`e80d0d42b1cf3c7232c6e7fbe5f1564f945e32c0`](https://github.com/wso2/identity-apps/commit/e80d0d42b1cf3c7232c6e7fbe5f1564f945e32c0) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Add autocomplete input to show currently assigned roles to a shared user in a specific suborg
+
+- Updated dependencies []:
+  - @wso2is/admin.applications.v1@2.42.20
+  - @wso2is/admin.console-settings.v1@2.26.42
+  - @wso2is/admin.core.v1@2.55.31
+  - @wso2is/admin.roles.v2@2.27.378
+
+## 0.1.8
+
+### Patch Changes
+
+- [#9958](https://github.com/wso2/identity-apps/pull/9958) [`d1db4ad0cc600b7cc0bd63daca7f9277ac125a6a`](https://github.com/wso2/identity-apps/commit/d1db4ad0cc600b7cc0bd63daca7f9277ac125a6a) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Hide role selector in selective sharing view for non immediate child organizations
+
+- Updated dependencies []:
+  - @wso2is/admin.applications.v1@2.42.5
+  - @wso2is/admin.console-settings.v1@2.26.27
+  - @wso2is/admin.core.v1@2.55.16
+  - @wso2is/admin.roles.v2@2.27.363
+
+## 0.1.7
+
+### Patch Changes
+
+- [#9950](https://github.com/wso2/identity-apps/pull/9950) [`4798b1c75f3eff0edccb1539f720b8c582393075`](https://github.com/wso2/identity-apps/commit/4798b1c75f3eff0edccb1539f720b8c582393075) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Fix user sharing and application sharing with selected organizations not working issue
+
+- Updated dependencies []:
+  - @wso2is/admin.applications.v1@2.42.4
+  - @wso2is/admin.console-settings.v1@2.26.26
+  - @wso2is/admin.core.v1@2.55.15
+  - @wso2is/admin.roles.v2@2.27.362
+
+## 0.1.6
+
+### Patch Changes
+
+- [#9930](https://github.com/wso2/identity-apps/pull/9930) [`da0811f1e746298894ea42b365b559788318fd5b`](https://github.com/wso2/identity-apps/commit/da0811f1e746298894ea42b365b559788318fd5b) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Display role audience in the role selection dropdown in user's shared access configuration view
+
+- Updated dependencies [[`ea7227c798abbff52cbf69d4f6e91d38426b6651`](https://github.com/wso2/identity-apps/commit/ea7227c798abbff52cbf69d4f6e91d38426b6651)]:
+  - @wso2is/admin.applications.v1@2.42.3
+  - @wso2is/admin.console-settings.v1@2.26.25
+  - @wso2is/admin.core.v1@2.55.14
+  - @wso2is/admin.roles.v2@2.27.361
+
+## 0.1.5
+
+### Patch Changes
+
+- [#9830](https://github.com/wso2/identity-apps/pull/9830) [`c834b18928cdfc09710c5e7067668206d006e68a`](https://github.com/wso2/identity-apps/commit/c834b18928cdfc09710c5e7067668206d006e68a) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - UI bug fixes related to B2B user sharing
+
+* [#9875](https://github.com/wso2/identity-apps/pull/9875) [`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - Revert Axios and SDK version bumps
+
+* Updated dependencies [[`cb14c93c0b4e51aeb7e94e349c2d39e8a703c9de`](https://github.com/wso2/identity-apps/commit/cb14c93c0b4e51aeb7e94e349c2d39e8a703c9de), [`c834b18928cdfc09710c5e7067668206d006e68a`](https://github.com/wso2/identity-apps/commit/c834b18928cdfc09710c5e7067668206d006e68a), [`877d726905edf898c33c615cd887f8ed0a071a0e`](https://github.com/wso2/identity-apps/commit/877d726905edf898c33c615cd887f8ed0a071a0e), [`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d), [`b75bb804c799c0e795e8580d35eedb8993d0ecc4`](https://github.com/wso2/identity-apps/commit/b75bb804c799c0e795e8580d35eedb8993d0ecc4)]:
+  - @wso2is/admin.console-settings.v1@2.26.14
+  - @wso2is/admin.applications.v1@2.41.28
+  - @wso2is/admin.organizations.v1@2.28.2
+  - @wso2is/admin.roles.v2@2.27.350
+  - @wso2is/admin.core.v1@2.55.3
+  - @wso2is/form@2.10.1
+
 ## 0.1.4
 
 ### Patch Changes

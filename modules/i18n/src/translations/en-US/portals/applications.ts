@@ -282,11 +282,11 @@ export const applications: ApplicationsNS = {
             assertionHint: "Please confirm your action."
         },
         deleteOutboundProvisioningIDP: {
-            assertionHint: "Please type <1>{{ name }}</1> to confirm.",
-            content: "If you delete this outbound provisioning IDP, you will not be able to get it back. " +
-                "Please proceed with caution.",
+            assertionHint: "Please confirm your action.",
+            content: "If you remove this outbound provisioning connection, outbound provisioning will not be " +
+                "triggered from this application. Please proceed with caution.",
             header: "Are you sure?",
-            message: "This action is irreversible and will remove the IDP."
+            message: "This action is irreversible and will remove the provisioning connection."
         },
         deleteProtocol: {
             assertionHint: "Please type <1>{{ name }}</1> to confirm.",
@@ -620,6 +620,10 @@ export const applications: ApplicationsNS = {
                 viewRoleSharing: "View shared roles",
                 noSharedOrgs: "This application is not shared with any organizations.",
                 noRolesAvailableForOrg: "No roles available for the selected organization.",
+                roleAudience: {
+                    application: "application/{{appName}}",
+                    organization: "organization"
+                },
                 searchAvailableRolesPlaceholder: "Search available roles",
                 orgNotSelectedForRoleSharing: "To share roles, please select the organization from the left panel.",
                 rolesSharedPartially: "Roles are selectively shared with this organization.",
@@ -1823,6 +1827,19 @@ export const applications: ApplicationsNS = {
                             "this client application is permitted to request.",
                         label: "Allowed Notification Delivery Methods"
                     },
+                    skipUserValidation: {
+                        hint: "When enabled, the server skips the validation that verifies the " +
+                            "resolved user from the login_hint matches the user who completes " +
+                            "the authentication.",
+                        label: "Skip user validation"
+                    },
+                    allowFederatedUsers: {
+                        hint: "Allow sending CIBA notifications to users not found in the local " +
+                            "user store. The notification is sent directly to the login_hint value, " +
+                            "using the notification channel to determine if it is an email or " +
+                            "phone number. Requires skip user validation to be enabled.",
+                        label: "Allow federated users"
+                    },
                     heading: "Client Initiated Backchannel Authentication"
                 }
             },
@@ -2788,6 +2805,7 @@ export const applications: ApplicationsNS = {
                     oidcConfigurations: {
                         labels: {
                             authorize: "Authorize",
+                            backchannelAuthentication: "Backchannel Authentication",
                             dynamicClientRegistration: "Dynamic Client Registration",
                             endSession: "Logout",
                             introspection: "Introspection",

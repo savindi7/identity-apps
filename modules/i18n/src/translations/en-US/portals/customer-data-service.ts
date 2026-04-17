@@ -114,7 +114,7 @@ export const customerDataService: CustomerDataServiceNS = {
                             placeholder: "Enter a description"
                         },
                         displayName: {
-                            hint: "A human-readable name shown in the UI.",
+                            hint: "A human-readable name.",
                             label: "Display Name",
                             placeholder: "Enter a display name"
                         },
@@ -265,6 +265,11 @@ export const customerDataService: CustomerDataServiceNS = {
                     hint: "The name of this attribute.",
                     label: "Attribute"
                 },
+                displayName: {
+                    hint: "A human-readable name.",
+                    label: "Display Name",
+                    placeholder: "Enter a display name"
+                },
                 mergeStrategy: {
                     hint: "Determines how value of the attribute from multiple profiles are merged when profile unification occurs. " +
                         "Use Combine to accumulate values, or Overwrite to replace with the latest updated value.",
@@ -371,6 +376,11 @@ export const customerDataService: CustomerDataServiceNS = {
                     header: "Delete Attribute",
                     message: "This action is irreversible!"
                 }
+            },
+            identityAttributes: {
+                description: "Edit or update Identity Attributes.",
+                manage: "Manage Identity Attributes",
+                title: "Identity Attributes"
             },
             notifications: {
                 deleteAttribute: {
@@ -517,15 +527,20 @@ export const customerDataService: CustomerDataServiceNS = {
                 title: "Unified Profiles"
             }
         },
+        linkedUser: {
+            action: "View Customer Profile",
+            info: "This user has an associated Customer data profile."
+        },
         list: {
             chips: {
-                anonymous: "Anonymous",
+                anonymous: "Temporary",
+                registered: "Permanent",
                 unified: "Unified"
             },
             columns: {
                 profile: "Profile",
                 unifiedProfiles: "Unified Profiles",
-                user: "User"
+                user: "Profile Type"
             },
             confirmations: {
                 delete: {

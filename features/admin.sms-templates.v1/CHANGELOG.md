@@ -1,5 +1,28 @@
 # @wso2is/admin.sms-templates.v1
 
+## 1.0.209
+
+### Patch Changes
+
+- [#10101](https://github.com/wso2/identity-apps/pull/10101) [`eabc8a4a3decca893883f156480b70c1e3acbe37`](https://github.com/wso2/identity-apps/commit/eabc8a4a3decca893883f156480b70c1e3acbe37) Thanks [@DilshanSenarath](https://github.com/DilshanSenarath)! - Fix the issue rendering the i18n text for the SMS template dropdown label
+
+## 1.0.208
+
+### Patch Changes
+
+- [#9875](https://github.com/wso2/identity-apps/pull/9875) [`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - Revert Axios and SDK version bumps
+
+- Updated dependencies [[`c834b18928cdfc09710c5e7067668206d006e68a`](https://github.com/wso2/identity-apps/commit/c834b18928cdfc09710c5e7067668206d006e68a), [`877d726905edf898c33c615cd887f8ed0a071a0e`](https://github.com/wso2/identity-apps/commit/877d726905edf898c33c615cd887f8ed0a071a0e), [`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d)]:
+  - @wso2is/i18n@2.37.5
+  - @wso2is/admin.organizations.v1@2.28.2
+  - @wso2is/common.branding.v1@2.28.3
+  - @wso2is/admin.branding.v1@2.32.136
+  - @wso2is/admin.core.v1@2.55.3
+  - @wso2is/access-control@3.5.3
+  - @wso2is/theme@2.9.5
+  - @wso2is/core@2.12.10
+  - @wso2is/form@2.10.1
+
 ## 1.0.207
 
 ### Patch Changes

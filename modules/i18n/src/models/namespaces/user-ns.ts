@@ -91,6 +91,9 @@ export interface userNS {
         sections: {
             sharedAccess: {
                 doNotShareUser: string;
+                assignedRolesLabel: string;
+                currentlyAssignedRolesLabel: string;
+                sharingSettingsLabel: string;
                 notifications: {
                     fetchOrganizations: {
                         genericError: {
@@ -143,6 +146,10 @@ export interface userNS {
                 allUserRolesSharingMessage: string;
                 noRolesAndOrgsSharingMessage: string;
                 roleAvailabilityInfo: string;
+                roleAudience: {
+                    application: string;
+                    organization: string;
+                };
                 shareUserWithFutureChildOrgs: string;
                 shareTypeSwitchModal: {
                     description: string;
@@ -158,6 +165,9 @@ export interface userNS {
                     description: string;
                     header: string;
                     message: string;
+                };
+                nonResidentUserPlaceholder: {
+                    description: string;
                 };
                 subTitle: string;
                 title: string;

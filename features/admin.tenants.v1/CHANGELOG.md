@@ -1,5 +1,44 @@
 # @wso2is/admin.tenants.v1
 
+## 2.29.27
+
+### Patch Changes
+
+- [#9963](https://github.com/wso2/identity-apps/pull/9963) [`6f636d61f26bec8b6f45ebdb47b2f1dbe971bedd`](https://github.com/wso2/identity-apps/commit/6f636d61f26bec8b6f45ebdb47b2f1dbe971bedd) Thanks [@Lakshan-Banneheke](https://github.com/Lakshan-Banneheke)! - Move trial activation logic from admin.tenants.v1 to admin.subscription.v1
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.55.17
+  - @wso2is/admin.users.v1@2.38.17
+
+## 2.29.26
+
+### Patch Changes
+
+- [#9920](https://github.com/wso2/identity-apps/pull/9920) [`8d832e11274602412741a4f926c972c25510fbca`](https://github.com/wso2/identity-apps/commit/8d832e11274602412741a4f926c972c25510fbca) Thanks [@Lakshan-Banneheke](https://github.com/Lakshan-Banneheke)! - Add trial activation mechanism
+
+- Updated dependencies [[`37eb4e51bcf1b6c2e4cd715f892844d560852195`](https://github.com/wso2/identity-apps/commit/37eb4e51bcf1b6c2e4cd715f892844d560852195), [`8d832e11274602412741a4f926c972c25510fbca`](https://github.com/wso2/identity-apps/commit/8d832e11274602412741a4f926c972c25510fbca)]:
+  - @wso2is/admin.core.v1@2.55.13
+  - @wso2is/admin.users.v1@2.38.13
+
+## 2.29.25
+
+### Patch Changes
+
+- [#9875](https://github.com/wso2/identity-apps/pull/9875) [`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - Revert Axios and SDK version bumps
+
+- Updated dependencies [[`c834b18928cdfc09710c5e7067668206d006e68a`](https://github.com/wso2/identity-apps/commit/c834b18928cdfc09710c5e7067668206d006e68a), [`877d726905edf898c33c615cd887f8ed0a071a0e`](https://github.com/wso2/identity-apps/commit/877d726905edf898c33c615cd887f8ed0a071a0e), [`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d)]:
+  - @wso2is/admin.users.v1@2.38.3
+  - @wso2is/i18n@2.37.5
+  - @wso2is/admin.organizations.v1@2.28.2
+  - @wso2is/admin.feature-gate.v1@1.9.2
+  - @wso2is/admin.extensions.v1@2.40.30
+  - @wso2is/admin.validation.v1@2.28.3
+  - @wso2is/admin.core.v1@2.55.3
+  - @wso2is/access-control@3.5.3
+  - @wso2is/theme@2.9.5
+  - @wso2is/core@2.12.10
+  - @wso2is/form@2.10.1
+
 ## 2.29.24
 
 ### Patch Changes

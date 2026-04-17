@@ -75,6 +75,17 @@ interface ConnectionConfigInterface extends FeatureAccessConfigInterface {
 }
 
 /**
+ * Extended feature config for onboarding with deployment-specific fields.
+ */
+export interface OnboardingFeatureConfigInterface extends FeatureAccessConfigInterface {
+    /**
+     * Cutoff date (YYYY-MM-DD) for determining whether a user is "new".
+     * Users with SCIM2 meta.created on or after this date are considered new.
+     */
+    featureDeployedDate?: string;
+}
+
+/**
  * Application configuration interface.
  */
 export interface FeatureConfigInterface {
@@ -141,7 +152,7 @@ export interface FeatureConfigInterface {
     /**
      * Onboarding wizard feature.
      */
-    onboarding?: FeatureAccessConfigInterface;
+    onboarding?: OnboardingFeatureConfigInterface;
     /**
      * SMS providers feature.
      */
@@ -247,6 +258,10 @@ export interface FeatureConfigInterface {
      */
     secretsManagement?: FeatureAccessConfigInterface;
     /**
+     * Tenant management feature.
+     */
+    tenants?: FeatureAccessConfigInterface;
+    /**
      * Try It feature
      */
     tryIt?: FeatureAccessConfigInterface;
@@ -310,6 +325,10 @@ export interface FeatureConfigInterface {
      * Customer Data feature.
      */
     customerData?: FeatureAccessConfigInterface;
+    /**
+     * Customer Data Service feature.
+     */
+    customerDataService?: FeatureAccessConfigInterface;
 }
 
 /**
@@ -360,6 +379,9 @@ export interface DeploymentConfigInterface extends CommonDeploymentConfigInterfa
  */
 export interface FlowExecutionCompatibilityInterface {
     enableLegacyFlows?: string;
+    enableLegacySelfRegistrationFlow?: string;
+    enableLegacyInvitedUserRegistrationFlow?: string;
+    enableLegacyPasswordRecoveryFlow?: string;
 }
 
 /**
@@ -537,6 +559,10 @@ export interface UIConfigInterface extends CommonUIConfigInterface<FeatureConfig
      * Flag to check whether email as a username feature is enabled.
      */
     enableEmailDomain?: boolean;
+     /**
+     * Flag to check whether SCIM legacy enterprise user behavior is enabled.
+     */
+    enableSCIMLegacyEnterpriseUser?: boolean;
     /**
      * Should show/hide marketing consent banner.
      */
@@ -549,6 +575,17 @@ export interface UIConfigInterface extends CommonUIConfigInterface<FeatureConfig
      * Enable old UI of email provider.
      */
     enableOldUIForEmailProvider: boolean;
+    /**
+     * Maximum character length for the OAuth scopes field in the HTTP-based email provider.
+     * Defaults to 1023 to match the default database column size. Configurable to support
+     * deployments with a different column length.
+     */
+    httpEmailProviderScopesMaxLength?: number;
+    /**
+     * Maximum character length for the body field in the HTTP-based email provider.
+     * Defaults to 1023. Configurable to support deployments with a different column length.
+     */
+    httpEmailProviderBodyMaxLength?: number;
     /**
      * Enable/Disable custom email template feature
      */
@@ -708,6 +745,9 @@ export interface UIConfigInterface extends CommonUIConfigInterface<FeatureConfig
      */
     flowExecution: {
         enableLegacyFlows: boolean;
+        enableLegacySelfRegistrationFlow?: boolean;
+        enableLegacyInvitedUserRegistrationFlow?: boolean;
+        enableLegacyPasswordRecoveryFlow?: boolean;
     };
     /**
      * Enable legacy session bound token behaviour.
@@ -721,6 +761,10 @@ export interface UIConfigInterface extends CommonUIConfigInterface<FeatureConfig
      * Flag to check whether the password reset enforcer authenticator is enabled.
      */
     isPasswordResetEnforcerEnabled?: boolean;
+    /**
+     * Flag to check whether the password reset enforcement scope configuration is enabled.
+     */
+    isPasswordResetEnforcementScopeEnabled?: boolean;
 }
 
 /**

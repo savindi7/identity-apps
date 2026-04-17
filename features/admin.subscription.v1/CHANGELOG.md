@@ -1,5 +1,149 @@
 # @wso2is/admin.subscription.v1
 
+## 1.5.222
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.55.33
+  - @wso2is/admin.users.v1@2.38.33
+
+## 1.5.221
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @wso2is/admin.users.v1@2.38.32
+  - @wso2is/admin.core.v1@2.55.32
+
+## 1.5.220
+
+### Patch Changes
+
+- Updated dependencies [[`e80d0d42b1cf3c7232c6e7fbe5f1564f945e32c0`](https://github.com/wso2/identity-apps/commit/e80d0d42b1cf3c7232c6e7fbe5f1564f945e32c0)]:
+  - @wso2is/admin.users.v1@2.38.31
+  - @wso2is/admin.core.v1@2.55.31
+
+## 1.5.219
+
+### Patch Changes
+
+- Updated dependencies [[`f334f308a27092b61d3c115be04056809943144e`](https://github.com/wso2/identity-apps/commit/f334f308a27092b61d3c115be04056809943144e)]:
+  - @wso2is/admin.users.v1@2.38.30
+  - @wso2is/admin.core.v1@2.55.30
+  - @wso2is/core@2.12.11
+
+## 1.5.218
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.55.29
+  - @wso2is/admin.users.v1@2.38.29
+
+## 1.5.217
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.55.28
+  - @wso2is/admin.users.v1@2.38.28
+
+## 1.5.216
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.55.27
+  - @wso2is/admin.users.v1@2.38.27
+
+## 1.5.215
+
+### Patch Changes
+
+- Updated dependencies [[`034fc22337d975ced7088460f456b1a09a8176c2`](https://github.com/wso2/identity-apps/commit/034fc22337d975ced7088460f456b1a09a8176c2), [`fc100d6e6c26ee6e530fbe894cc1856e7811a781`](https://github.com/wso2/identity-apps/commit/fc100d6e6c26ee6e530fbe894cc1856e7811a781)]:
+  - @wso2is/admin.users.v1@2.38.26
+  - @wso2is/admin.core.v1@2.55.26
+
+## 1.5.214
+
+### Patch Changes
+
+- Updated dependencies [[`3096f2a7d8dac8fbee97944d175c2ac6e7dc9bb8`](https://github.com/wso2/identity-apps/commit/3096f2a7d8dac8fbee97944d175c2ac6e7dc9bb8)]:
+  - @wso2is/admin.users.v1@2.38.25
+  - @wso2is/admin.core.v1@2.55.25
+
+## 1.5.213
+
+### Patch Changes
+
+- Updated dependencies [[`c406e3b163ff2dfd39f00615763329ede5fa163e`](https://github.com/wso2/identity-apps/commit/c406e3b163ff2dfd39f00615763329ede5fa163e)]:
+  - @wso2is/admin.organizations.v1@2.28.3
+  - @wso2is/admin.core.v1@2.55.24
+  - @wso2is/admin.users.v1@2.38.24
+
+## 1.5.212
+
+### Patch Changes
+
+- Updated dependencies [[`2ecd363f8381a89683e20fb91d6911d708de880b`](https://github.com/wso2/identity-apps/commit/2ecd363f8381a89683e20fb91d6911d708de880b)]:
+  - @wso2is/admin.users.v1@2.38.23
+  - @wso2is/admin.core.v1@2.55.23
+
+## 1.5.211
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @wso2is/admin.users.v1@2.38.22
+  - @wso2is/admin.core.v1@2.55.22
+
+## 1.5.210
+
+### Patch Changes
+
+- [#10009](https://github.com/wso2/identity-apps/pull/10009) [`76d5dc3ab3ad7afe7e811c2b825743dff7930f8c`](https://github.com/wso2/identity-apps/commit/76d5dc3ab3ad7afe7e811c2b825743dff7930f8c) Thanks [@Lakshan-Banneheke](https://github.com/Lakshan-Banneheke)! - Fix incorrect config check
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.55.21
+  - @wso2is/admin.users.v1@2.38.21
+
+## 1.5.209
+
+### Patch Changes
+
+- [#9942](https://github.com/wso2/identity-apps/pull/9942) [`4952cd109836fc3b51516d0b4a40c757546c9d10`](https://github.com/wso2/identity-apps/commit/4952cd109836fc3b51516d0b4a40c757546c9d10) Thanks [@Lakshan-Banneheke](https://github.com/Lakshan-Banneheke)! - Add free trial banner
+
+- Updated dependencies [[`4952cd109836fc3b51516d0b4a40c757546c9d10`](https://github.com/wso2/identity-apps/commit/4952cd109836fc3b51516d0b4a40c757546c9d10)]:
+  - @wso2is/admin.core.v1@2.55.20
+  - @wso2is/admin.users.v1@2.38.20
+
+## 1.5.208
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.55.19
+  - @wso2is/admin.users.v1@2.38.19
+
+## 1.5.207
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.55.18
+  - @wso2is/admin.users.v1@2.38.18
+
+## 1.5.206
+
+### Patch Changes
+
+- [#9963](https://github.com/wso2/identity-apps/pull/9963) [`6f636d61f26bec8b6f45ebdb47b2f1dbe971bedd`](https://github.com/wso2/identity-apps/commit/6f636d61f26bec8b6f45ebdb47b2f1dbe971bedd) Thanks [@Lakshan-Banneheke](https://github.com/Lakshan-Banneheke)! - Move trial activation logic from admin.tenants.v1 to admin.subscription.v1
+
+- Updated dependencies []:
+  - @wso2is/admin.core.v1@2.55.17
+  - @wso2is/admin.users.v1@2.38.17
+
 ## 1.5.205
 
 ### Patch Changes

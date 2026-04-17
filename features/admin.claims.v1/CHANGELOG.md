@@ -1,5 +1,51 @@
 # @wso2is/admin.claims.v1
 
+## 2.30.6
+
+### Patch Changes
+
+- [#9875](https://github.com/wso2/identity-apps/pull/9875) [`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - Revert Axios and SDK version bumps
+
+- Updated dependencies [[`c834b18928cdfc09710c5e7067668206d006e68a`](https://github.com/wso2/identity-apps/commit/c834b18928cdfc09710c5e7067668206d006e68a), [`877d726905edf898c33c615cd887f8ed0a071a0e`](https://github.com/wso2/identity-apps/commit/877d726905edf898c33c615cd887f8ed0a071a0e), [`75dc24fe314a0c3e90fba9b52eb2974801bd464d`](https://github.com/wso2/identity-apps/commit/75dc24fe314a0c3e90fba9b52eb2974801bd464d)]:
+  - @wso2is/admin.users.v1@2.38.3
+  - @wso2is/i18n@2.37.5
+  - @wso2is/admin.server-configurations.v1@2.38.19
+  - @wso2is/admin.organizations.v1@2.28.2
+  - @wso2is/admin.extensions.v1@2.40.30
+  - @wso2is/admin.userstores.v1@2.27.42
+  - @wso2is/admin.validation.v1@2.28.3
+  - @wso2is/admin.claims.v1@2.30.6
+  - @wso2is/admin.core.v1@2.55.3
+  - @wso2is/access-control@3.5.3
+  - @wso2is/theme@2.9.5
+  - @wso2is/core@2.12.10
+  - @wso2is/form@2.10.1
+
+## 2.30.5
+
+### Patch Changes
+
+- [#9802](https://github.com/wso2/identity-apps/pull/9802) [`d017740b584334c955953a9a8c99608040decd9c`](https://github.com/wso2/identity-apps/commit/d017740b584334c955953a9a8c99608040decd9c) Thanks [@ImalshaD](https://github.com/ImalshaD)! - Add Individual config based legacy flow enablement capabilities.
+
+- Updated dependencies [[`d017740b584334c955953a9a8c99608040decd9c`](https://github.com/wso2/identity-apps/commit/d017740b584334c955953a9a8c99608040decd9c)]:
+  - @wso2is/admin.server-configurations.v1@2.38.10
+  - @wso2is/admin.claims.v1@2.30.5
+  - @wso2is/admin.users.v1@2.37.18
+  - @wso2is/admin.core.v1@2.54.27
+
+## 2.30.4
+
+### Patch Changes
+
+- [#9786](https://github.com/wso2/identity-apps/pull/9786) [`c1fabf4ef861da56adba0ed0fc10aa65638471fc`](https://github.com/wso2/identity-apps/commit/c1fabf4ef861da56adba0ed0fc10aa65638471fc) Thanks [@shashimalcse](https://github.com/shashimalcse)! - Hide VC attributes from sub orgs
+
+- Updated dependencies [[`25ca6cf9e8fc5f1219728aa73e1abe61c1044aca`](https://github.com/wso2/identity-apps/commit/25ca6cf9e8fc5f1219728aa73e1abe61c1044aca), [`c1fabf4ef861da56adba0ed0fc10aa65638471fc`](https://github.com/wso2/identity-apps/commit/c1fabf4ef861da56adba0ed0fc10aa65638471fc)]:
+  - @wso2is/i18n@2.37.1
+  - @wso2is/admin.claims.v1@2.30.4
+  - @wso2is/admin.core.v1@2.54.26
+  - @wso2is/admin.server-configurations.v1@2.38.9
+  - @wso2is/admin.users.v1@2.37.17
+
 ## 2.30.3
 
 ### Patch Changes

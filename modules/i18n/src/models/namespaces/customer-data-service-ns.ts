@@ -213,6 +213,11 @@ export interface CustomerDataServiceNS {
                     hint: string;
                     label: string;
                 };
+                displayName: {
+                    hint: string;
+                    label: string;
+                    placeholder: string;
+                };
                 mergeStrategy: {
                     hint: string;
                     label: string;
@@ -341,6 +346,11 @@ export interface CustomerDataServiceNS {
                     title: string;
                 };
             };
+            identityAttributes: {
+                description: string;
+                manage: string;
+                title: string;
+            };
             search: {
                 placeholder: string;
             };
@@ -352,9 +362,14 @@ export interface CustomerDataServiceNS {
     };
 
     profiles: {
+        linkedUser: {
+            action: string;
+            info: string;
+        };
         list: {
             chips: {
                 anonymous: string;
+                registered: string;
                 unified: string;
             };
             columns: {

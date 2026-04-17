@@ -241,6 +241,7 @@ export const commonConfigReducerInitialState: CommonConfigReducerStateInterface<
             enableLegacyLocaleDropdown: undefined,
             enableLegacySessionBoundTokenBehaviour: false,
             enableOldUIForEmailProvider: undefined,
+            enableSCIMLegacyEnterpriseUser: false,
             enabledFeatureOverridesInConsoleRolePermissions: [],
             features: {
                 applications: null,
@@ -261,7 +262,10 @@ export const commonConfigReducerInitialState: CommonConfigReducerStateInterface<
                 users: null
             },
             flowExecution: {
-                enableLegacyFlows: true
+                enableLegacyFlows: true,
+                enableLegacyInvitedUserRegistrationFlow: true,
+                enableLegacyPasswordRecoveryFlow: true,
+                enableLegacySelfRegistrationFlow: true
             },
             googleOneTapEnabledTenants: [],
             gravatarConfig: {
@@ -273,6 +277,8 @@ export const commonConfigReducerInitialState: CommonConfigReducerStateInterface<
             hiddenConnectionTemplates: [],
             hiddenOutboundProvisioningConnectors: [],
             hiddenUserStores: [],
+            httpEmailProviderBodyMaxLength: undefined,
+            httpEmailProviderScopesMaxLength: undefined,
             i18nConfigs: null,
             identityProviderTemplates: {
                 apple: {
@@ -310,6 +316,7 @@ export const commonConfigReducerInitialState: CommonConfigReducerStateInterface<
             isLeftNavigationCategorized: undefined,
             isMarketingConsentBannerEnabled: undefined,
             isPasswordInputValidationEnabled: undefined,
+            isPasswordResetEnforcementScopeEnabled: undefined,
             isRequestPathAuthenticationEnabled: undefined,
             isSAASDeployment: undefined,
             isSignatureValidationCertificateAliasEnabled: undefined,

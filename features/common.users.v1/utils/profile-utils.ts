@@ -90,8 +90,17 @@ const prepareInitialValues = (
                 : [];
 
             const emails: unknown[] = Array.isArray(value) ? (value as unknown[]) : [];
-            const primaryEmail: string = emails.find(
-                (email: unknown): email is string => typeof email === "string");
+            // If the primary email is retrieved as
+            // `["primaryEmail", { type: "work", value: "workEmail" }]`.
+            let primaryEmail: string = emails.find((email: unknown): email is string => typeof email === "string");
+
+            if (!primaryEmail) {
+                // If the primary email is retrieved as
+                // `[{ value: "primaryEmail", primary: true }, { value: "workEmail", type: "work" }]`.
+                primaryEmail = emails.find((email: unknown) => typeof email === "object" &&
+                    email !== null &&
+                    email["primary"] === true)?.["value"] as string;
+            }
 
             if (isMultipleEmailAndMobileNumberEnabled && isEmpty(emailAddresses)) {
                 if (primaryEmail) {
@@ -174,6 +183,7 @@ const prepareInitialValues = (
  * @param isMultipleEmailAndMobileNumberEnabled - Whether multiple email and mobile number support is enabled.
  * @param isEmailVerificationEnabled - Whether email verification is enabled.
  * @param isMobileVerificationEnabled - Whether mobile verification is enabled.
+ * @param enableSCIMLegacyEnterpriseUser - Whether SCIM legacy enterprise user behavior is enabled.
  * @returns The flattened initial values.
  *
  * @example
@@ -217,7 +227,8 @@ export const getFlattenedInitialValues = (
     flattenedProfileSchema: ProfileSchemaInterface[],
     isMultipleEmailAndMobileNumberEnabled: boolean,
     isEmailVerificationEnabled: boolean,
-    isMobileVerificationEnabled: boolean
+    isMobileVerificationEnabled: boolean,
+    enableSCIMLegacyEnterpriseUser: boolean = false
 ): Record<string, unknown> => {
     const preparedInitialValues: Record<string, unknown> = prepareInitialValues(
         profileData, isMultipleEmailAndMobileNumberEnabled, isEmailVerificationEnabled, isMobileVerificationEnabled);
@@ -410,8 +421,22 @@ export const getFlattenedInitialValues = (
                     }
                 } else {
                     if (!schema.extended) {
-                        _flattenedInitialValues[schema.name] = preparedInitialValues[
-                            schemaNameParts[0]]?.[schemaNameParts[1]];
+                        const parentValues: unknown = preparedInitialValues[schemaNameParts[0]];
+
+                        if (Array.isArray(parentValues)) {
+                            // Complex multi-valued attribute: find the element whose `type` key
+                            // matches the sub-attribute name and return its `value`.
+                            _flattenedInitialValues[schema.name] = (
+                                parentValues as Array<{ type: string; value: unknown }>
+                            ).find(
+                                (item: { type: string; value: unknown }) =>
+                                    item.type === schemaNameParts[1]
+                            )?.value;
+                        } else {
+                            _flattenedInitialValues[schema.name] = (
+                                parentValues as Record<string, unknown>
+                            )?.[schemaNameParts[1]];
+                        }
                     } else {
                         if (schema.schemaId === ProfileConstants.SCIM2_CORE_SCHEMA) {
                             /**
@@ -476,8 +501,18 @@ export const getFlattenedInitialValues = (
                      * }
                      * ```
                      */
-                    _flattenedInitialValues[encodedSchemaId][schema.name] = preparedInitialValues[
-                        schema.schemaId]?.[schemaNameParts[0]];
+                    const valueFromUrn: unknown = preparedInitialValues[schema.schemaId]?.[schemaNameParts[0]];
+                    const valueFromEnterpriseUser: unknown =
+                            enableSCIMLegacyEnterpriseUser &&
+                            schema.schemaId === "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+                                ? preparedInitialValues[ProfileConstants.SCIM2_LEGACY_ENT_USER_SCHEMA]?.[schema.name]
+                                : undefined;
+
+                    const resolvedValue: unknown = valueFromUrn ?? valueFromEnterpriseUser;
+
+                    if (resolvedValue !== undefined) {
+                        _flattenedInitialValues[encodedSchemaId][schema.name] = resolvedValue;
+                    }
                 }
             }
         }

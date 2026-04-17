@@ -112,14 +112,13 @@ const RolesShareWithAll: FunctionComponent<RolesShareWithAllPropsInterface> = (
         !isEmpty(user?.id)
     );
 
-    // Roles available for sharing. The Console Administrator role is excluded unless
+    // Roles available for sharing. Console application roles are excluded unless
     // enableConsoleAdminRole is true (e.g. in the console settings administrator edit view).
     const userRolesList: RolesV2Interface[] = useMemo(() => {
         if (originalUserRoles?.Resources?.length > 0) {
             return originalUserRoles.Resources.filter((role: RolesV2Interface) =>
                 enableConsoleAdminRole
-                || !(role.displayName === UIConstants.ADMINISTRATOR_ROLE_DISPLAY_NAME
-                    && role.audience?.type?.toUpperCase() === RoleAudienceTypes.APPLICATION
+                || !(role.audience?.type?.toUpperCase() === RoleAudienceTypes.APPLICATION
                     && role.audience?.display === UIConstants.CONSOLE_APP_AUDIENCE_DISPLAY)
             );
         }
@@ -172,6 +171,18 @@ const RolesShareWithAll: FunctionComponent<RolesShareWithAllPropsInterface> = (
         }
     };
 
+    const getRoleAudienceLabel = (role: RolesV2Interface): string => {
+        const audienceType: string = role?.audience?.type?.toUpperCase();
+
+        if (audienceType === RoleAudienceTypes.ORGANIZATION) {
+            return t("user:editUser.sections.sharedAccess.roleAudience.organization");
+        }
+
+        return t("user:editUser.sections.sharedAccess.roleAudience.application", {
+            appName: role?.audience?.display ?? ""
+        });
+    };
+
     return (
         <>
             <Typography variant="body1" marginBottom={ 1 }>
@@ -204,10 +215,29 @@ const RolesShareWithAll: FunctionComponent<RolesShareWithAllPropsInterface> = (
                 noOptionsText={ t("common:noResultsFound") }
                 getOptionLabel={ (dropdownOption: DropdownProps) =>
                     dropdownOption?.displayName }
+                renderOption={ (props: React.HTMLAttributes<HTMLLIElement>, option: RolesV2Interface) => (
+                    <li
+                        { ...props }
+                        style={ {
+                            alignItems: "flex-start",
+                            display: "flex",
+                            flexDirection: "column"
+                        } }
+                    >
+                        <Typography variant="body2" sx={ { fontSize: "0.95rem" } }>
+                            { option?.displayName }
+                        </Typography>
+                        <Typography variant="caption" color="text.secondary">
+                            { getRoleAudienceLabel(option) }
+                        </Typography>
+                    </li>
+                ) }
                 isOptionEqualToValue={ (
                     option: RolesV2Interface,
                     value: RolesV2Interface) =>
-                    option?.displayName === value.displayName
+                    option?.displayName === value?.displayName
+                    && option?.audience?.type === value?.audience?.type
+                    && option?.audience?.display === value?.audience?.display
                 }
                 renderInput={ (params: AutocompleteRenderInputParams) => (
                     <TextField
