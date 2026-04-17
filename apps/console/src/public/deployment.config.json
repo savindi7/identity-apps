@@ -2130,7 +2130,6 @@
         "isDefaultDialectEditingEnabled": false,
         "isDialectAddingEnabled": false,
         "isEditingSystemRolesAllowed": true,
-        "isEnhancedOrganizationAuthenticationFeatureEnabled": true,
         "isFeatureGateEnabled": false,
         "isGOTEnabledForSuperTenantOnly": true,
         "isGroupAndRoleSeparationEnabled": true,
