@@ -131,7 +131,34 @@ First, identify the parent feature that owns the UI element. For example, assume
 
 Add a new entry to the `featureFlags` array in the relevant feature config.
 
+Updated deployment.config.json:
 
+```js
+{
+  "ui": {
+    "features": {
+      // other features,
+      "organizations": {
+        "disabledFeatures": [],
+        "enabled": true,
+        "featureFlags": [
+          {
+            "feature": "organizations.exportButton",
+            "flag": "NEW"
+          }
+        ],
+        "scopes": {
+          "create": [ "internal_organization_create" ],
+          "delete": [ "internal_organization_delete" ],
+          "feature": [ "console:organizations" ],
+          "read": [ "internal_organization_view" ], 
+          "update": [ "internal_organization_update" ] 
+        }
+      }
+    }
+  }
+}
+```
 
 In the above example:
 
