@@ -22,7 +22,7 @@ import path from "path";
 import basicSsl from "@vitejs/plugin-basic-ssl";
 import legacy from "@vitejs/plugin-legacy";
 import react from "@vitejs/plugin-react";
-import { type PluginOption, type ViteDevServer, defineConfig, loadEnv } from "vite";
+import { Connect, type PluginOption, type ViteDevServer, defineConfig, loadEnv } from "vite";
 import svgr from "vite-plugin-svgr";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { resolveBuildMode } from "./scripts/build/resolve-build-mode";
@@ -157,11 +157,13 @@ const devServerBasePathRewritePlugin = (basePath: string): PluginOption => {
             }
 
             server.middlewares.use((
-                request,
+                request: Connect.IncomingMessage,
                 _response: ServerResponse,
                 next: () => void
             ) => {
-                const requestMessage = request as { url?: string };
+                const requestMessage: {
+                    url?: string;
+                } = request as { url?: string };
                 const requestUrl: string | undefined = requestMessage.url;
 
                 if (!requestUrl) {
@@ -238,11 +240,11 @@ const consoleDevHtmlPlugin = (basePath: string): PluginOption => {
             );
 
             server.middlewares.use(async (
-                request,
+                request: Connect.IncomingMessage,
                 response: ServerResponse,
                 next: () => void
             ) => {
-                const requestMessage = request as { method?: string; url?: string };
+                const requestMessage: { method?: string; url?: string } = request as { method?: string; url?: string };
                 const requestUrl: string | undefined = requestMessage.url;
                 const method: string | undefined = requestMessage.method;
 
@@ -360,11 +362,11 @@ const devI18nAssetsPlugin = (): PluginOption => {
         apply: "serve",
         configureServer(server: ViteDevServer) {
             server.middlewares.use((
-                request,
+                request: Connect.IncomingMessage,
                 response: ServerResponse,
                 next: () => void
             ) => {
-                const requestMessage = request as { method?: string; url?: string };
+                const requestMessage: { method?: string; url?: string } = request as { method?: string; url?: string };
                 const requestUrl: string | undefined = requestMessage.url;
                 const method: string | undefined = requestMessage.method;
 
@@ -428,11 +430,11 @@ const devLibsAssetsPlugin = (): PluginOption => {
         apply: "serve",
         configureServer(server: ViteDevServer) {
             server.middlewares.use((
-                request,
+                request: Connect.IncomingMessage,
                 response: ServerResponse,
                 next: () => void
             ) => {
-                const requestMessage = request as { method?: string; url?: string };
+                const requestMessage: { method?: string; url?: string } = request as { method?: string; url?: string };
                 const requestUrl: string | undefined = requestMessage.url;
                 const method: string | undefined = requestMessage.method;
 

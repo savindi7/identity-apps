@@ -190,7 +190,7 @@ export class ExtensionsManager {
      * @param templateConfig - Template config.
      * @returns the resolved template config.
      */
-    // eslint-disable-next-line @typescript-eslint/ban-types
+    // eslint-disable-next-line @typescript-eslint/no-empty-object-type
     private static lazyLoadTemplateResources<T = {}>(
         templateConfig: TemplateConfigInterface<T>): TemplateConfigInterface<T> {
 
