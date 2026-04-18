@@ -28,7 +28,7 @@ export class AuthenticateUtils {
      * the class.
      *
      */
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
+
     private constructor() {}
 
     /**
@@ -174,8 +174,8 @@ export class AuthenticateUtils {
     public static getCodeChallangeForTheVerifier = async (codeVerifier: string) => {
         const encoder: TextEncoder = new TextEncoder();
         const encodedCodeVerifier: Uint8Array = encoder.encode(codeVerifier);
-        const hashedCodeVerifier: ArrayBuffer = await window.crypto.subtle.digest("SHA-256",
-            encodedCodeVerifier);
+        // @ts-expect-error - TODO (typescript upgrade)
+        const hashedCodeVerifier: ArrayBuffer = await window.crypto.subtle.digest("SHA-256", encodedCodeVerifier);
 
         return btoa(String.fromCharCode(...new Uint8Array(hashedCodeVerifier)))
             .replace(/\+/g, "-")
