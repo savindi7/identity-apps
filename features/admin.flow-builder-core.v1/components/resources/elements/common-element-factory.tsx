@@ -77,7 +77,7 @@ export const CommonElementFactory: FunctionComponent<CommonElementFactoryPropsIn
             return <CheckboxAdapter stepId={ stepId } resource={ resource } />;
         }
 
-        if (resource.variant === InputVariants.Choice || resource.config?.options) {
+        if (resource.variant === InputVariants.Choice) {
             return <ChoiceAdapter stepId={ stepId } resource={ resource } />;
         }
 

@@ -34,7 +34,7 @@ const RadioFieldAdapter = ({ component, formState, formStateHandler, fieldErrorH
 
     useEffect(() => {
         formStateHandler(identifier, value);
-    }, []);
+    }, [ identifier, value ]);
 
     const handleFieldValidation = (selectedValue) => {
         const { errors, isValid } = validate({ identifier, required }, selectedValue);
