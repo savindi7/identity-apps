@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025, WSO2 LLC. (https://www.wso2.com).
+ * Copyright (c) 2025-2026, WSO2 LLC. (https://www.wso2.com).
  *
  * WSO2 LLC. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -20,6 +20,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import CheckboxFieldAdapter from "./checkbox-field-adapter";
 import CountryFieldAdapter from "./country-field-adapter";
+import RadioFieldAdapter from "./radio-field-adapter";
 import DateFieldAdapter from "./date-field-adapter";
 import NumberFieldAdapter from "./number-field-adapter";
 import OTPFieldAdapter from "./otp-field-adapter";
@@ -104,6 +105,15 @@ const InputFieldAdapter = ({ component, formState, formStateHandler, formFieldEr
         case "NUMBER":
             return (
                 <NumberFieldAdapter
+                    component={ component }
+                    formState={ formState }
+                    formStateHandler={ formStateHandler }
+                    fieldErrorHandler={ formFieldError }
+                />
+            );
+        case "CHOICE":
+            return (
+                <RadioFieldAdapter
                     component={ component }
                     formState={ formState }
                     formStateHandler={ formStateHandler }
