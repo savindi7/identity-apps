@@ -486,7 +486,7 @@ const devLibsAssetsPlugin = (): PluginOption => {
 
                 const [ pathName ] = requestUrl.split("?");
 
-                if (!pathName.includes("/libs/") && !pathName.startsWith("/libs/")) {
+                if (!pathName.includes("/libs/")) {
                     next();
 
                     return;
@@ -500,7 +500,7 @@ const devLibsAssetsPlugin = (): PluginOption => {
                     loginLayoutsRelativePath
                 );
 
-                if (!resolvedThemeLibPath || !resolvedLoginLayoutsPath) {
+                if (!resolvedThemeLibPath && !resolvedLoginLayoutsPath) {
                     response.statusCode = 400;
                     response.end("Invalid asset path.");
 
@@ -511,7 +511,7 @@ const devLibsAssetsPlugin = (): PluginOption => {
                 const candidatePaths: string[] = [
                     resolvedThemeLibPath,
                     resolvedLoginLayoutsPath
-                ];
+                ].filter((candidatePath: string | undefined): candidatePath is string => Boolean(candidatePath));
 
                 const existingPath: string | undefined = candidatePaths.find((candidatePath: string) => {
                     return fs.existsSync(candidatePath) && fs.statSync(candidatePath).isFile();
@@ -594,7 +594,7 @@ export default defineConfig(({ mode }: { mode: string }) => {
                         const lowerCasedName: string = resolvedAssetName.toLowerCase();
 
                         if (lowerCasedName.endsWith(".css")) {
-                            return "static/js/[name].[hash][extname]";
+                            return "static/css/[name].[hash][extname]";
                         }
 
                         return "static/media/[name].[hash][extname]";
