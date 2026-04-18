@@ -94,7 +94,7 @@ export const Announcement: FunctionComponent<AnnouncementPropsInterface> = (
     const classes = classNames(
         "announcement",
         {
-            [ color ]: !isFeatureAnnouncement ?? color
+            [ color ]: !isFeatureAnnouncement
         }
         , className
     );
@@ -131,7 +131,7 @@ export const Announcement: FunctionComponent<AnnouncementPropsInterface> = (
                                     size="nano"
                                     floated="right"
                                     onClick={ (e: React.MouseEvent<HTMLDivElement>) => onDismiss(e) }
-                                    fill={ !isFeatureAnnouncement ?? "white" }
+                                    fill={ isFeatureAnnouncement ? "white" : undefined }
                                     inline
                                     link
                                     transparent

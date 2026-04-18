@@ -307,19 +307,17 @@ export const AddTenantWizardForm: FunctionComponent<AddTenantWizardFormPropsInte
                                                 <li>
                                                     <>
                                                     contain more than{ " " }
-                                                        { {
-                                                            minLength:
+                                                        {
                                                             TenantManagementConstants
                                                                 .FORM_FIELD_CONSTRAINTS
                                                                 .TENANT_NAME_MIN_LENGTH
-                                                        } }
+                                                        }
                                                     and less than{ " " }
-                                                        { {
-                                                            maxLength:
+                                                        {
                                                             TenantManagementConstants
                                                                 .FORM_FIELD_CONSTRAINTS
                                                                 .TENANT_NAME_MAX_LENGTH
-                                                        } }
+                                                        }
                                                     characters
                                                     </>
                                                 </li>
@@ -361,19 +359,17 @@ export const AddTenantWizardForm: FunctionComponent<AddTenantWizardFormPropsInte
                                                 <li>
                                                     <>
                                                     contain more than{ " " }
-                                                        { {
-                                                            minLength:
+                                                        {
                                                             TenantManagementConstants
                                                                 .FORM_FIELD_CONSTRAINTS
                                                                 .TENANT_NAME_MIN_LENGTH
-                                                        } }
+                                                        }
                                                     and less than{ " " }
-                                                        { {
-                                                            maxLength:
+                                                        {
                                                             TenantManagementConstants
                                                                 .FORM_FIELD_CONSTRAINTS
                                                                 .TENANT_NAME_MAX_LENGTH
-                                                        } }
+                                                        }
                                                     characters
                                                     </>
                                                 </li>
