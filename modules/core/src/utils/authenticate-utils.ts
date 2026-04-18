@@ -171,11 +171,11 @@ export class AuthenticateUtils {
      * @param codeVerifier - The code verifier.
      * @returns A generated code challange.
      */
-    public static getCodeChallangeForTheVerifier = async (codeVerifier: string) => {
+    public static getCodeChallangeForTheVerifier = async (codeVerifier: string): Promise<string> => {
         const encoder: TextEncoder = new TextEncoder();
         const encodedCodeVerifier: Uint8Array = encoder.encode(codeVerifier);
-        // @ts-expect-error - TODO (typescript upgrade)
-        const hashedCodeVerifier: ArrayBuffer = await window.crypto.subtle.digest("SHA-256", encodedCodeVerifier);
+        const hashedCodeVerifier: ArrayBuffer = await window.crypto.subtle.digest("SHA-256",
+            encodedCodeVerifier as BufferSource);
 
         return btoa(String.fromCharCode(...new Uint8Array(hashedCodeVerifier)))
             .replace(/\+/g, "-")
