@@ -49,14 +49,20 @@ interface ResourceTemplateModuleInterface {
     default: unknown;
 }
 
+interface ImportMetaWithGlobInterface extends ImportMeta {
+    glob: <T>(pattern: string) => Record<string, () => Promise<T>>;
+}
+
+const importMetaWithGlob: ImportMetaWithGlobInterface = import.meta as ImportMetaWithGlobInterface;
+
 const applicationTemplateContentModuleMap: Record<string, () => Promise<ContentTemplateModuleInterface>> =
-    import.meta.glob<ContentTemplateModuleInterface>("./application-templates/**/*.tsx");
+    importMetaWithGlob.glob<ContentTemplateModuleInterface>("./application-templates/**/*.tsx");
 const identityProviderTemplateContentModuleMap: Record<string, () => Promise<ContentTemplateModuleInterface>> =
-    import.meta.glob<ContentTemplateModuleInterface>("./identity-provider-templates/**/*.tsx");
+    importMetaWithGlob.glob<ContentTemplateModuleInterface>("./identity-provider-templates/**/*.tsx");
 const applicationTemplateResourceModuleMap: Record<string, () => Promise<ResourceTemplateModuleInterface>> =
-    import.meta.glob<ResourceTemplateModuleInterface>("./application-templates/**/*.json");
+    importMetaWithGlob.glob<ResourceTemplateModuleInterface>("./application-templates/**/*.json");
 const identityProviderTemplateResourceModuleMap: Record<string, () => Promise<ResourceTemplateModuleInterface>> =
-    import.meta.glob<ResourceTemplateModuleInterface>("./identity-provider-templates/**/*.json");
+    importMetaWithGlob.glob<ResourceTemplateModuleInterface>("./identity-provider-templates/**/*.json");
 
 /**
  * Class to manage extensions.
