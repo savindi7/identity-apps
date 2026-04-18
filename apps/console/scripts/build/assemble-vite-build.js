@@ -82,19 +82,234 @@ function resolveThemeHash(theme) {
  * @returns {string}
  */
 function renderTemplate(content, options) {
+    const parseExpression = (expression) => {
+        const trimmedExpression = expression.trim();
+
+        if (!trimmedExpression.includes("buildOptions.")) {
+            return {
+                handled: false,
+                value: ""
+            };
+        }
+
+        // Reject anything outside the small supported expression surface.
+        if (!/^[\s\w.$'":+?()!-]*$/.test(trimmedExpression)) {
+            throw new Error(`Unsupported template expression: ${trimmedExpression}`);
+        }
+
+        const unwrapParentheses = (value) => {
+            let current = value.trim();
+
+            while (current.startsWith("(") && current.endsWith(")")) {
+                let depth = 0;
+                let canUnwrap = true;
+
+                for (let index = 0; index < current.length; index++) {
+                    const char = current[index];
+
+                    if (char === "(") {
+                        depth++;
+                    } else if (char === ")") {
+                        depth--;
+                    }
+
+                    if (depth === 0 && index < current.length - 1) {
+                        canUnwrap = false;
+                        break;
+                    }
+                }
+
+                if (!canUnwrap || depth !== 0) {
+                    break;
+                }
+
+                current = current.slice(1, -1).trim();
+            }
+
+            return current;
+        };
+
+        const findTopLevelOperator = (value, operator) => {
+            let depth = 0;
+            let quote = "";
+
+            for (let index = 0; index < value.length; index++) {
+                const char = value[index];
+
+                if (quote) {
+                    if (char === quote && value[index - 1] !== "\\") {
+                        quote = "";
+                    }
+
+                    continue;
+                }
+
+                if (char === '"' || char === "'") {
+                    quote = char;
+
+                    continue;
+                }
+
+                if (char === "(") {
+                    depth++;
+
+                    continue;
+                }
+
+                if (char === ")") {
+                    depth--;
+
+                    continue;
+                }
+
+                if (depth === 0 && char === operator) {
+                    return index;
+                }
+            }
+
+            return -1;
+        };
+
+        const splitTopLevel = (value, operator) => {
+            const parts = [];
+            let depth = 0;
+            let quote = "";
+            let start = 0;
+
+            for (let index = 0; index < value.length; index++) {
+                const char = value[index];
+
+                if (quote) {
+                    if (char === quote && value[index - 1] !== "\\") {
+                        quote = "";
+                    }
+
+                    continue;
+                }
+
+                if (char === '"' || char === "'") {
+                    quote = char;
+
+                    continue;
+                }
+
+                if (char === "(") {
+                    depth++;
+
+                    continue;
+                }
+
+                if (char === ")") {
+                    depth--;
+
+                    continue;
+                }
+
+                if (depth === 0 && char === operator) {
+                    parts.push(value.slice(start, index));
+                    start = index + 1;
+                }
+            }
+
+            parts.push(value.slice(start));
+
+            return parts;
+        };
+
+        const evaluateToken = (token) => {
+            const normalizedToken = unwrapParentheses(token.trim());
+
+            if (normalizedToken.length === 0) {
+                return "";
+            }
+
+            if ((normalizedToken.startsWith('"') && normalizedToken.endsWith('"')) ||
+                (normalizedToken.startsWith("'") && normalizedToken.endsWith("'"))) {
+                return normalizedToken.slice(1, -1);
+            }
+
+            if (normalizedToken.startsWith("buildOptions.")) {
+                const optionKey = normalizedToken.slice("buildOptions.".length);
+
+                if (!/^[a-zA-Z0-9_]+$/.test(optionKey)) {
+                    throw new Error(`Unsupported buildOptions key access: ${normalizedToken}`);
+                }
+
+                return options[optionKey];
+            }
+
+            if (normalizedToken === "true") {
+                return true;
+            }
+
+            if (normalizedToken === "false") {
+                return false;
+            }
+
+            if (normalizedToken === "null") {
+                return null;
+            }
+
+            if (normalizedToken.startsWith("!")) {
+                return !Boolean(evaluateExpression(normalizedToken.slice(1)));
+            }
+
+            throw new Error(`Unsupported token in template expression: ${normalizedToken}`);
+        };
+
+        const evaluateExpression = (value) => {
+            const normalizedValue = unwrapParentheses(value.trim());
+
+            const ternaryQuestionIndex = findTopLevelOperator(normalizedValue, "?");
+
+            if (ternaryQuestionIndex !== -1) {
+                const ternaryCondition = normalizedValue.slice(0, ternaryQuestionIndex);
+                const ternaryRemainder = normalizedValue.slice(ternaryQuestionIndex + 1);
+                const ternaryColonIndex = findTopLevelOperator(ternaryRemainder, ":");
+
+                if (ternaryColonIndex === -1) {
+                    throw new Error(`Invalid ternary expression: ${normalizedValue}`);
+                }
+
+                const truthyBranch = ternaryRemainder.slice(0, ternaryColonIndex);
+                const falsyBranch = ternaryRemainder.slice(ternaryColonIndex + 1);
+
+                return Boolean(evaluateExpression(ternaryCondition))
+                    ? evaluateExpression(truthyBranch)
+                    : evaluateExpression(falsyBranch);
+            }
+
+            const plusSegments = splitTopLevel(normalizedValue, "+");
+
+            if (plusSegments.length > 1) {
+                return plusSegments
+                    .map((segment) => evaluateExpression(segment))
+                    .map((segment) => segment === undefined || segment === null ? "" : String(segment))
+                    .join("");
+            }
+
+            return evaluateToken(normalizedValue);
+        };
+
+        return {
+            handled: true,
+            value: evaluateExpression(trimmedExpression)
+        };
+    };
+
     return content.replace(/<%=\s*([\s\S]*?)\s*%>/g, (match, expression) => {
         if (!expression.includes("buildOptions.")) {
             return match;
         }
 
         try {
-            // Evaluate only template expressions against a controlled
-            // object shape. This supports legacy ternaries/concatenations in JSP/HTML
-            // while avoiding changes to native JSP scriptlets.
-            const evaluate = new Function("buildOptions", `return (${expression});`);
-            const value = evaluate({
-                ...options
-            });
+            const parsedExpression = parseExpression(expression);
+
+            if (!parsedExpression.handled) {
+                return match;
+            }
+
+            const value = parsedExpression.value;
 
             if (value === undefined || value === null) {
                 return "";
@@ -328,7 +543,7 @@ function generateCompressedArtifacts() {
 
         const brotliContent = zlib.brotliCompressSync(sourceContent, {
             params: {
-                [zlib.constants.BROTLI_PARAM_QUALITY]: 11
+                [zlib.constants.BROTLI_PARAM_QUALITY]: 9
             }
         });
         const brotliRatio = brotliContent.length / sourceContent.length;
@@ -559,7 +774,16 @@ function rewriteDeploymentConfig() {
  */
 function renderShellFiles() {
     const templateOptions = buildTemplateOptions();
-    const manifest = fs.existsSync(manifestPath) ? fs.readJsonSync(manifestPath) : {};
+    const hasManifest = fs.existsSync(manifestPath);
+
+    if (!hasManifest) {
+        throw new Error(
+            `renderShellFiles failed: Vite manifest is missing at "${manifestPath}". ` +
+            "Cannot call buildEntryTags or renderTemplateToFile without a valid manifest."
+        );
+    }
+
+    const manifest = fs.readJsonSync(manifestPath);
     const entryTags = buildEntryTags(manifest, "src/init/vite-entry.ts", buildMode.publicBase);
 
     if (buildMode.isStatic && buildMode.isPreAuthCheckEnabled) {

@@ -46,7 +46,7 @@ ContextUtils.setRuntimeConfig(Config.getDeploymentConfig());
  * Function to check the status of the Monaco CDN.
  * If the CDN is not available, the default CDN will be used.
  */
-const checkCDNStatus = async () => {
+const checkCDNStatus = async (): Promise<void> => {
     try {
         const response: Response = await fetch("https://cdn.jsdelivr.net/npm/monaco-editor@0.36.1/min/vs/loader.js");
 
@@ -64,7 +64,13 @@ const checkCDNStatus = async () => {
             });
         }
     } catch (error) {
-        // Use default CDN.
+        // eslint-disable-next-line no-console
+        console.warn("Failed to load Monaco loader from jsdelivr. Falling back to cdnjs.", error);
+        loader.config({
+            paths: {
+                vs: "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs"
+            }
+        });
     }
 };
 

@@ -33,7 +33,7 @@ import {
     IdentityProviderTemplateListItemInterface
 } from "@wso2is/admin.identity-providers.v1/models";
 import isObject from "lodash-es/isObject";
-import { lazy } from "react";
+import { ComponentType, lazy } from "react";
 import { ExtensionsConfig } from "./config";
 import {
     ApplicationTemplateExtensionsConfigInterface,
@@ -41,13 +41,21 @@ import {
     IdentityProviderTemplateExtensionsConfigInterface
 } from "./models";
 
-const applicationTemplateContentModuleMap: Record<string, () => Promise<any>> =
+interface ContentTemplateModuleInterface {
+    default: ComponentType<any>;
+}
+
+interface ResourceTemplateModuleInterface {
+    default: unknown;
+}
+
+const applicationTemplateContentModuleMap: Record<string, () => Promise<ContentTemplateModuleInterface>> =
     import.meta.glob("./application-templates/**/*.tsx");
-const identityProviderTemplateContentModuleMap: Record<string, () => Promise<any>> =
+const identityProviderTemplateContentModuleMap: Record<string, () => Promise<ContentTemplateModuleInterface>> =
     import.meta.glob("./identity-provider-templates/**/*.tsx");
-const applicationTemplateResourceModuleMap: Record<string, () => Promise<any>> =
+const applicationTemplateResourceModuleMap: Record<string, () => Promise<ResourceTemplateModuleInterface>> =
     import.meta.glob("./application-templates/**/*.json");
-const identityProviderTemplateResourceModuleMap: Record<string, () => Promise<any>> =
+const identityProviderTemplateResourceModuleMap: Record<string, () => Promise<ResourceTemplateModuleInterface>> =
     import.meta.glob("./identity-provider-templates/**/*.json");
 
 /**
@@ -194,22 +202,27 @@ export class ExtensionsManager {
             }
 
             for (const [ key, value ] of Object.entries(content)) {
+                if (typeof value !== "string") {
+                    continue;
+                }
 
                 // Strip the prefix './application-templates/', './identity-provider-templates/`
                 // and the '.tsx' extension to overcome rollup limitation
                 //https://www.npmjs.com/package/@rollup/plugin-dynamic-import-vars
                 if (value.includes("application-templates")) {
-                    const contentModuleLoader: () => Promise<any> = applicationTemplateContentModuleMap[value];
+                    const contentModuleLoader: (() => Promise<ContentTemplateModuleInterface>) | undefined =
+                        applicationTemplateContentModuleMap[value];
 
-                    if (contentModuleLoader) {
-                        content[ key ] = lazy(contentModuleLoader);
-                    }
+                    content[ key ] = contentModuleLoader
+                        ? lazy(contentModuleLoader)
+                        : lazy(() => Promise.reject(new Error(`Unknown application template content: ${value}`)));
                 } else if (value.includes("identity-provider-templates")) {
-                    const contentModuleLoader: () => Promise<any> = identityProviderTemplateContentModuleMap[value];
+                    const contentModuleLoader: (() => Promise<ContentTemplateModuleInterface>) | undefined =
+                        identityProviderTemplateContentModuleMap[value];
 
-                    if (contentModuleLoader) {
-                        content[ key ] = lazy(contentModuleLoader);
-                    }
+                    content[ key ] = contentModuleLoader
+                        ? lazy(contentModuleLoader)
+                        : lazy(() => Promise.reject(new Error(`Unknown identity provider template content: ${value}`)));
                 }
             }
 
@@ -217,28 +230,45 @@ export class ExtensionsManager {
         };
 
         // Lazy loads the resource.
-        const loadResource = (resource: any) => {
+        const resolveResourceModuleDefault = (
+            module: unknown,
+            resourcePath: string
+        ): unknown => {
+            if (!isObject(module) || !("default" in module)) {
+                throw new Error(`Template resource module is missing a default export: ${resourcePath}`);
+            }
+
+            return (module as ResourceTemplateModuleInterface).default;
+        };
+
+        const loadResource = (resource: unknown): T | Promise<T> | string | undefined => {
 
             if (typeof resource !== "string") {
-                return resource;
+                return resource as T;
             }
 
             // Strip the prefix './application-templates/', './identity-provider-templates/`
             // and the '.json' extension to overcome rollup limitation
             //https://www.npmjs.com/package/@rollup/plugin-dynamic-import-vars
             if (resource.includes("application-templates")) {
-                const resourceModuleLoader: () => Promise<any> = applicationTemplateResourceModuleMap[resource];
+                const resourceModuleLoader: (() => Promise<ResourceTemplateModuleInterface>) | undefined =
+                    applicationTemplateResourceModuleMap[resource];
 
                 return resourceModuleLoader
-                    ? resourceModuleLoader().then((module: any) => module.default)
+                    ? resourceModuleLoader().then((module: unknown) => {
+                        return resolveResourceModuleDefault(module, resource) as T;
+                    })
                     : Promise.reject(new Error(`Unknown application template resource: ${resource}`));
             }
 
             if (resource.includes("identity-provider-templates")) {
-                const resourceModuleLoader: () => Promise<any> = identityProviderTemplateResourceModuleMap[resource];
+                const resourceModuleLoader: (() => Promise<ResourceTemplateModuleInterface>) | undefined =
+                    identityProviderTemplateResourceModuleMap[resource];
 
                 return resourceModuleLoader
-                    ? resourceModuleLoader().then((module: any) => module.default)
+                    ? resourceModuleLoader().then((module: unknown) => {
+                        return resolveResourceModuleDefault(module, resource) as T;
+                    })
                     : Promise.reject(new Error(`Unknown identity provider template resource: ${resource}`));
             }
         };

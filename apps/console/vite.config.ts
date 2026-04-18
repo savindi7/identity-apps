@@ -17,14 +17,31 @@
  */
 
 import fs from "fs";
-import type { IncomingMessage } from "http";
+import type { ServerResponse } from "http";
 import path from "path";
 import basicSsl from "@vitejs/plugin-basic-ssl";
+import legacy from "@vitejs/plugin-legacy";
 import react from "@vitejs/plugin-react";
 import { type PluginOption, type ViteDevServer, defineConfig, loadEnv } from "vite";
 import svgr from "vite-plugin-svgr";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { resolveBuildMode } from "./scripts/build/resolve-build-mode";
+
+interface DeploymentConfigInterface {
+    ui?: {
+        theme?: {
+            name?: string;
+        };
+    };
+}
+
+interface PreRenderedOutputInfoInterface {
+    name?: string;
+}
+
+const isDeploymentConfig = (value: unknown): value is DeploymentConfigInterface => {
+    return typeof value === "object" && value !== null;
+};
 
 /**
  * Resolve the i18n meta hash generated during prebuild.
@@ -126,6 +143,11 @@ const devServerBasePathRewritePlugin = (basePath: string): PluginOption => {
     const normalizedBasePath: string = basePath.endsWith("/") ? basePath : `${basePath}/`;
     const basePathWithoutTrailingSlash: string = normalizedBasePath.replace(/\/$/, "");
     const appSegment: string = basePathWithoutTrailingSlash.split("/").filter(Boolean).pop() || "";
+    const escapedAppSegment: string = appSegment.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    // Match /console, /t/<tenant>/console, /o/<org>/console and combined variants.
+    const tenantAwarePattern: RegExp = new RegExp(
+        `^\\/(?:t\\/[^/]+\\/)?(?:o\\/[^/]+\\/)?${escapedAppSegment}(\\/.*)?$`
+    );
 
     return {
         apply: "serve",
@@ -135,11 +157,12 @@ const devServerBasePathRewritePlugin = (basePath: string): PluginOption => {
             }
 
             server.middlewares.use((
-                request: IncomingMessage,
-                _response: any,
+                request,
+                _response: ServerResponse,
                 next: () => void
             ) => {
-                const requestUrl: string | undefined = request.url;
+                const requestMessage = request as { url?: string };
+                const requestUrl: string | undefined = requestMessage.url;
 
                 if (!requestUrl) {
                     next();
@@ -148,11 +171,6 @@ const devServerBasePathRewritePlugin = (basePath: string): PluginOption => {
                 }
 
                 const [ pathName, query = "" ] = requestUrl.split("?");
-                const escapedAppSegment: string = appSegment.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-                // Match /console, /t/<tenant>/console, /o/<org>/console and combined variants.
-                const tenantAwarePattern: RegExp = new RegExp(
-                    `^\\/(?:t\\/[^/]+\\/)?(?:o\\/[^/]+\\/)?${escapedAppSegment}(\\/.*)?$`
-                );
                 const tenantAwareMatch: RegExpExecArray | null = tenantAwarePattern.exec(pathName);
                 const isBaseRootRequest: boolean =
                     pathName === basePathWithoutTrailingSlash || pathName === normalizedBasePath;
@@ -172,7 +190,7 @@ const devServerBasePathRewritePlugin = (basePath: string): PluginOption => {
                         : pathName.substring(normalizedBasePath.length - 1) || "/";
 
                 // Hand back to Vite as if app is mounted at root during dev.
-                request.url = query.length > 0
+                requestMessage.url = query.length > 0
                     ? `${rewrittenPathName}?${query}`
                     : rewrittenPathName;
 
@@ -195,8 +213,11 @@ const consoleDevHtmlPlugin = (basePath: string): PluginOption => {
     const basePathWithoutTrailingSlash: string = normalizedBasePath.replace(/\/$/, "");
     const appSegment: string = basePathWithoutTrailingSlash.split("/").filter(Boolean).pop() || "console";
     const deploymentConfigPath: string = path.resolve(__dirname, "src/public/deployment.config.json");
-    const deploymentConfig: Record<string, any> = fs.existsSync(deploymentConfigPath)
+    const deploymentConfigUnknown: unknown = fs.existsSync(deploymentConfigPath)
         ? JSON.parse(fs.readFileSync(deploymentConfigPath, "utf8"))
+        : {};
+    const deploymentConfig: DeploymentConfigInterface = isDeploymentConfig(deploymentConfigUnknown)
+        ? deploymentConfigUnknown
         : {};
     const themeName: string = deploymentConfig?.ui?.theme?.name || "default";
     const themeDirectoryPath: string = path.resolve(__dirname, "../../modules/theme/dist/lib/themes", themeName);
@@ -217,12 +238,13 @@ const consoleDevHtmlPlugin = (basePath: string): PluginOption => {
             );
 
             server.middlewares.use(async (
-                request: IncomingMessage,
-                response: any,
+                request,
+                response: ServerResponse,
                 next: () => void
             ) => {
-                const requestUrl: string | undefined = request.url;
-                const method: string | undefined = request.method;
+                const requestMessage = request as { method?: string; url?: string };
+                const requestUrl: string | undefined = requestMessage.url;
+                const method: string | undefined = requestMessage.method;
 
                 if (!requestUrl || (method !== "GET" && method !== "HEAD")) {
                     next();
@@ -338,12 +360,13 @@ const devI18nAssetsPlugin = (): PluginOption => {
         apply: "serve",
         configureServer(server: ViteDevServer) {
             server.middlewares.use((
-                request: IncomingMessage,
-                response: any,
+                request,
+                response: ServerResponse,
                 next: () => void
             ) => {
-                const requestUrl: string | undefined = request.url;
-                const method: string | undefined = request.method;
+                const requestMessage = request as { method?: string; url?: string };
+                const requestUrl: string | undefined = requestMessage.url;
+                const method: string | undefined = requestMessage.method;
 
                 if (!requestUrl || (method !== "GET" && method !== "HEAD")) {
                     next();
@@ -405,12 +428,13 @@ const devLibsAssetsPlugin = (): PluginOption => {
         apply: "serve",
         configureServer(server: ViteDevServer) {
             server.middlewares.use((
-                request: IncomingMessage,
-                response: any,
+                request,
+                response: ServerResponse,
                 next: () => void
             ) => {
-                const requestUrl: string | undefined = request.url;
-                const method: string | undefined = request.method;
+                const requestMessage = request as { method?: string; url?: string };
+                const requestUrl: string | undefined = requestMessage.url;
+                const method: string | undefined = requestMessage.method;
 
                 if (!requestUrl || (method !== "GET" && method !== "HEAD")) {
                     next();
@@ -506,8 +530,12 @@ export default defineConfig(({ mode }: { mode: string }) => {
             rollupOptions: {
                 input: path.resolve(__dirname, "src", "init", "vite-entry.ts"),
                 output: {
-                    assetFileNames: (assetInfo: any) => {
-                        const lowerCasedName: string = (assetInfo.name || "").toLowerCase();
+                    assetFileNames: (assetInfo: PreRenderedOutputInfoInterface) => {
+                        const resolvedAssetName: string =
+                            "name" in assetInfo && typeof assetInfo.name === "string"
+                                ? assetInfo.name
+                                : "";
+                        const lowerCasedName: string = resolvedAssetName.toLowerCase();
 
                         if (lowerCasedName.endsWith(".css")) {
                             return "static/js/[name].[hash][extname]";
@@ -555,7 +583,8 @@ export default defineConfig(({ mode }: { mode: string }) => {
             svgr({
                 include: "**/*.svg?react"
             }),
-            react()
+            react(),
+            legacy()
         ],
         publicDir: path.resolve(__dirname, "src", "public"),
         resolve: {

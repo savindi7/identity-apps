@@ -26,9 +26,10 @@ dotenv.config();
 let appFolder = "";
 
 if (process.env.PRE_AUTH_CHECK === "true") {
-    appFolder = process.env.APP_BASE_PATH
-        ? process.env.APP_BASE_PATH.trim()
-        : DeploymentConfig.appBaseName;
+    const trimmedAppBasePath = (process.env.APP_BASE_PATH || "").trim();
+    const selectedAppBasePath = trimmedAppBasePath || DeploymentConfig.appBaseName || "";
+
+    appFolder = selectedAppBasePath.replace(/^\/+|\/+$/g, "");
 }
 
 // eslint-disable-next-line no-console

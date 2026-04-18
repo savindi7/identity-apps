@@ -16,18 +16,18 @@
  * under the License.
  */
 
-import "@babel/polyfill";
 import { Buffer } from "buffer";
 
-const globalScope: any = globalThis as typeof globalThis & { Buffer?: typeof Buffer };
-const globalWithNodeAliases: any = globalScope as typeof globalScope & { global?: typeof globalThis };
+type GlobalScopeInterface = typeof globalThis & { Buffer?: typeof Buffer };
+
+const globalScope: GlobalScopeInterface = globalThis;
 
 if (typeof globalScope.Buffer === "undefined") {
     globalScope.Buffer = Buffer;
 }
 
-if (typeof globalWithNodeAliases.global === "undefined") {
-    globalWithNodeAliases.global = globalThis;
+if (typeof (globalThis as Record<string, unknown>)["global"] === "undefined") {
+    (globalThis as Record<string, unknown>)["global"] = globalThis;
 }
 
 void import("./init")

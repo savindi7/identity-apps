@@ -107,7 +107,7 @@
             "options": {
                 "commands": [
                     {
-                        "command": "SASS_SILENCE_DEPRECATIONS=legacy-js-api pnpm vite --config vite.config.ts --mode development",
+                        "command": "pnpm vite --config vite.config.ts --mode development",
                         "description": "Serve the Console app using Vite dev server."
                     }
                 ],

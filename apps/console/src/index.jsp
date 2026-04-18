@@ -140,7 +140,7 @@
             }
         </style>
         <script
-            src="/<%= buildOptions.basename ? buildOptions.basename + '/' : '' %>startup-config.js"
+            src="/<%= buildOptions.basename + '/' %>startup-config.js"
         ></script>
 
         <!-- Start of custom stylesheets -->
@@ -306,11 +306,11 @@
 
                     if (getTenantName() === startupConfig.superTenant && isSuperTenantRequiredInUrl !== "true") {
                         return applicationDomain.replace(/\/+$/, '') + contextPath
-                            + "<%= buildOptions.basename ? '/' + buildOptions.basename : ''%>";
+                            + "<%= '/' + buildOptions.basename %>";
                     }
 
                     return applicationDomain.replace(/\/+$/, '') + contextPath + getTenantPath()
-                        + "<%= buildOptions.basename ? '/' + buildOptions.basename : ''%>";
+                        + "<%= '/' + buildOptions.basename %>";
                 }
 
                 /**
@@ -428,7 +428,7 @@
     <script>
         if(!authorizationCode) {
             var authSPAJS = document.createElement("script");
-            var authScriptSrc = "<%= buildOptions.basename ? '/' + buildOptions.basename + '/auth-spa-3.1.2.min.js' : '/auth-spa-3.1.2.min.js'%>";
+            var authScriptSrc = "<%= '/' + buildOptions.basename + '/auth-spa-3.1.2.min.js' %>";
 
             authSPAJS.setAttribute("src", authScriptSrc);
             authSPAJS.setAttribute("async", "false");

@@ -38,9 +38,9 @@ function resolveBuildMode(env = {}) {
     const isStatic = env.SERVER_TYPE === "static";
     const isExternalTomcat = env.SERVER_TYPE === "tomcat";
     const isPreAuthCheckEnabled = env.PRE_AUTH_CHECK === "true";
-    const appBasePath = (env.APP_BASE_PATH && env.APP_BASE_PATH.trim()) || "app";
-
-    const resolvedAppBasePath = appBasePath.replace(/^\/+|\/+$/g, "");
+    const rawAppBasePath = env.APP_BASE_PATH ?? "";
+    const normalizedAppBasePath = rawAppBasePath.trim().replace(/^\/+|\/+$/g, "");
+    const resolvedAppBasePath = normalizedAppBasePath || "app";
     const publicBase = isStatic && isPreAuthCheckEnabled
         ? `/${resolvedAppBasePath}/`
         : "/console/";
