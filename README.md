@@ -50,7 +50,8 @@ End-user apps in WSO2 Identity Server
 2. Install [pnpm](https://pnpm.io/).
 
   ```shell
-  corepack prepare pnpm@latest --activate
+  corepack enable
+  corepack prepare pnpm@10.33.0 --activate
   ```
 
   Or, follow the other [recommended installation options](https://pnpm.io/installation).
