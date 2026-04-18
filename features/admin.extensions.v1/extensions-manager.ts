@@ -42,7 +42,7 @@ import {
 } from "./models";
 
 interface ContentTemplateModuleInterface {
-    default: ComponentType<any>;
+    default: ComponentType<Record<string, unknown>>;
 }
 
 interface ResourceTemplateModuleInterface {
@@ -247,10 +247,10 @@ export class ExtensionsManager {
             return (module as ResourceTemplateModuleInterface).default;
         };
 
-        const loadResource = (resource: unknown): T | Promise<T> | string | undefined => {
+        const loadResource = (resource: T | Promise<T> | string | undefined): T | Promise<T> | string | undefined => {
 
             if (typeof resource !== "string") {
-                return resource as T;
+                return resource;
             }
 
             // Strip the prefix './application-templates/', './identity-provider-templates/`

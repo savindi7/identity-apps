@@ -46,7 +46,7 @@ ContextUtils.setRuntimeConfig(Config.getDeploymentConfig());
  * Function to check the status of the Monaco CDN.
  * If the CDN is not available, the default CDN will be used.
  */
-const checkCDNStatus = async (): Promise<void> => {
+const checkCDNStatus: () => Promise<void> = async (): Promise<void> => {
     try {
         const response: Response = await fetch("https://cdn.jsdelivr.net/npm/monaco-editor@0.36.1/min/vs/loader.js");
 
@@ -63,7 +63,7 @@ const checkCDNStatus = async (): Promise<void> => {
                 }
             });
         }
-    } catch (error) {
+    } catch (error: unknown) {
         // eslint-disable-next-line no-console
         console.warn("Failed to load Monaco loader from jsdelivr. Falling back to cdnjs.", error);
         loader.config({
@@ -73,8 +73,6 @@ const checkCDNStatus = async (): Promise<void> => {
         });
     }
 };
-
-checkCDNStatus();
 
 /**
  * Render root component with configs.
@@ -133,7 +131,13 @@ const RootWithConfig = (): ReactElement => {
 
 const rootElement: HTMLElement = document.getElementById("root");
 
-// Moved back to the legacy mode due to unpredictable state update issue.
-// Tracked here: https://github.com/wso2/product-is/issues/14912
-// eslint-disable-next-line react/no-deprecated
-ReactDOM.render(<RootWithConfig />, rootElement);
+const renderApp: () => void = (): void => {
+    // Moved back to the legacy mode due to unpredictable state update issue.
+    // Tracked here: https://github.com/wso2/product-is/issues/14912
+    // eslint-disable-next-line react/no-deprecated
+    ReactDOM.render(<RootWithConfig />, rootElement);
+};
+
+void checkCDNStatus().then((): void => {
+    renderApp();
+});

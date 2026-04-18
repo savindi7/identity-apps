@@ -51,7 +51,7 @@ function resolveBuildMode(env = {}) {
         isPreAuthCheckEnabled,
         isStatic,
         outDir: isStatic && isPreAuthCheckEnabled
-            ? "build/console/app"
+            ? `build/console/${resolvedAppBasePath}`
             : "build/console",
         publicBase
     };

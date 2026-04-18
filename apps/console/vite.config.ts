@@ -43,6 +43,25 @@ const isDeploymentConfig = (value: unknown): value is DeploymentConfigInterface 
     return typeof value === "object" && value !== null;
 };
 
+const isPathWithinRoot = (root: string, resolvedPath: string): boolean => {
+    const resolvedRoot: string = path.resolve(root);
+    const relativePath: string = path.relative(resolvedRoot, resolvedPath);
+
+    return relativePath === "" || (!relativePath.startsWith("..") && !path.isAbsolute(relativePath));
+};
+
+const resolvePathWithinRoot = (root: string, rawRelativePath: string): string | undefined => {
+    const normalizedRelativePath: string = path.normalize(rawRelativePath).replace(/^[\\/]+/, "");
+
+    if (/^\.\.(?:[\\/]|$)/.test(normalizedRelativePath)) {
+        return undefined;
+    }
+
+    const resolvedPath: string = path.resolve(root, normalizedRelativePath);
+
+    return isPathWithinRoot(root, resolvedPath) ? resolvedPath : undefined;
+};
+
 /**
  * Resolve the i18n meta hash generated during prebuild.
  *
@@ -215,9 +234,20 @@ const consoleDevHtmlPlugin = (basePath: string): PluginOption => {
     const basePathWithoutTrailingSlash: string = normalizedBasePath.replace(/\/$/, "");
     const appSegment: string = basePathWithoutTrailingSlash.split("/").filter(Boolean).pop() || "console";
     const deploymentConfigPath: string = path.resolve(__dirname, "src/public/deployment.config.json");
-    const deploymentConfigUnknown: unknown = fs.existsSync(deploymentConfigPath)
-        ? JSON.parse(fs.readFileSync(deploymentConfigPath, "utf8"))
-        : {};
+    let deploymentConfigUnknown: unknown = {};
+
+    if (fs.existsSync(deploymentConfigPath)) {
+        try {
+            deploymentConfigUnknown = JSON.parse(fs.readFileSync(deploymentConfigPath, "utf8"));
+        } catch (error: unknown) {
+            // eslint-disable-next-line no-console
+            console.warn(
+                `Failed to parse deployment config at ${deploymentConfigPath}. Falling back to defaults.`,
+                error
+            );
+        }
+    }
+
     const deploymentConfig: DeploymentConfigInterface = isDeploymentConfig(deploymentConfigUnknown)
         ? deploymentConfigUnknown
         : {};
@@ -385,11 +415,21 @@ const devI18nAssetsPlugin = (): PluginOption => {
                 }
 
                 const relativeFilePath: string = pathName.replace("/resources/i18n/", "");
+                const resolvedBundlePath: string | undefined = resolvePathWithinRoot(i18nBundlePath, relativeFilePath);
+                const resolvedMetaPath: string | undefined = resolvePathWithinRoot(i18nMetaPath, relativeFilePath);
+
+                if (!resolvedBundlePath || !resolvedMetaPath) {
+                    response.statusCode = 400;
+                    response.end("Invalid asset path.");
+
+                    return;
+                }
+
                 // Keep lookup order aligned with previous build pipeline:
                 // 1) module bundle output, 2) app-local generated meta file.
                 const candidatePaths: string[] = [
-                    path.resolve(i18nBundlePath, relativeFilePath),
-                    path.resolve(i18nMetaPath, relativeFilePath)
+                    resolvedBundlePath,
+                    resolvedMetaPath
                 ];
 
                 const existingPath: string | undefined = candidatePaths.find((candidatePath: string) => {
@@ -453,10 +493,24 @@ const devLibsAssetsPlugin = (): PluginOption => {
                 }
 
                 const relativeLibPath: string = pathName.substring(pathName.indexOf("/libs/") + "/libs/".length);
+                const loginLayoutsRelativePath: string = relativeLibPath.replace(/^login-portal-layouts\//, "");
+                const resolvedThemeLibPath: string | undefined = resolvePathWithinRoot(themeLibPath, relativeLibPath);
+                const resolvedLoginLayoutsPath: string | undefined = resolvePathWithinRoot(
+                    loginLayoutsPath,
+                    loginLayoutsRelativePath
+                );
+
+                if (!resolvedThemeLibPath || !resolvedLoginLayoutsPath) {
+                    response.statusCode = 400;
+                    response.end("Invalid asset path.");
+
+                    return;
+                }
+
                 // Resolve from copied theme dist first, then app login layouts.
                 const candidatePaths: string[] = [
-                    path.resolve(themeLibPath, relativeLibPath),
-                    path.resolve(loginLayoutsPath, relativeLibPath.replace(/^login-portal-layouts\//, ""))
+                    resolvedThemeLibPath,
+                    resolvedLoginLayoutsPath
                 ];
 
                 const existingPath: string | undefined = candidatePaths.find((candidatePath: string) => {
