@@ -1373,6 +1373,7 @@ export const AccessConfiguration: FunctionComponent<AccessConfigurationPropsInte
                 )
                 : (
                     <Grid>
+                        {/* @ts-expect-error TODO(typescript-upgrade) */}
                         <>
                             { loadSupportedProtocols() }
                             {

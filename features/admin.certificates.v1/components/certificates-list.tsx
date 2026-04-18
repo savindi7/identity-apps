@@ -340,6 +340,7 @@ export const CertificatesList: FunctionComponent<CertificatesListPropsInterface>
             byteArray[ x ] = parseInt(hex.substr(x * 2, 2), 16);
         }
 
+        // @ts-expect-error TODO(typescript-upgrade): Revisit Uint8Array BlobPart typing
         const blob : Blob = new Blob([ byteArray ], {
             type: "application/x-x509-ca-cert"
         });
