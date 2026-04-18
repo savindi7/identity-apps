@@ -724,7 +724,7 @@ export const CertificatesList: FunctionComponent<CertificatesListPropsInterface>
                 onRowClick={
                     (e: SyntheticEvent, certificate: Certificate): void => {
                         handleCertificateView(certificate);
-                        onListItemClick && onListItemClick(e, certificate);
+                        onListItemClick?.(e, certificate);
                     }
                 }
                 placeholders={ showPlaceholders() }
