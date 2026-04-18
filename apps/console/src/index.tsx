@@ -29,7 +29,6 @@ import GlobalVariablesProvider from "@wso2is/admin.core.v1/providers/global-vari
 import { store } from "@wso2is/admin.core.v1/store";
 import OrganizationsProvider from "@wso2is/admin.organizations.v1/providers/organizations-provider";
 import { ContextUtils } from "@wso2is/core/utils";
-import * as monaco from "monaco-editor";
 import React, { ReactElement, useEffect, useState } from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
@@ -40,8 +39,36 @@ import Theme from "./theme";
 // Set the runtime config in the context.
 ContextUtils.setRuntimeConfig(Config.getDeploymentConfig());
 
-// Configure monaco editor.
-loader.config({ monaco: monaco as any });
+/**
+ * TODO: Evaluate bundler-aware Monaco loading optimization.
+ * {@link https://github.com/wso2-enterprise/asgardeo-product/issues/23937}
+ *
+ * Function to check the status of the Monaco CDN.
+ * If the CDN is not available, the default CDN will be used.
+ */
+const checkCDNStatus = async () => {
+    try {
+        const response: Response = await fetch("https://cdn.jsdelivr.net/npm/monaco-editor@0.36.1/min/vs/loader.js");
+
+        if (response.ok) {
+            loader.config({
+                paths: {
+                    vs: "https://cdn.jsdelivr.net/npm/monaco-editor@0.36.1/min/vs"
+                }
+            });
+        } else {
+            loader.config({
+                paths: {
+                    vs: "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs"
+                }
+            });
+        }
+    } catch (error) {
+        // Use default CDN.
+    }
+};
+
+checkCDNStatus();
 
 /**
  * Render root component with configs.

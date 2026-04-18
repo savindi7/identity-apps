@@ -41,6 +41,15 @@ import {
     IdentityProviderTemplateExtensionsConfigInterface
 } from "./models";
 
+const applicationTemplateContentModuleMap: Record<string, () => Promise<any>> =
+    import.meta.glob("./application-templates/**/*.tsx");
+const identityProviderTemplateContentModuleMap: Record<string, () => Promise<any>> =
+    import.meta.glob("./identity-provider-templates/**/*.tsx");
+const applicationTemplateResourceModuleMap: Record<string, () => Promise<any>> =
+    import.meta.glob("./application-templates/**/*.json");
+const identityProviderTemplateResourceModuleMap: Record<string, () => Promise<any>> =
+    import.meta.glob("./identity-provider-templates/**/*.json");
+
 /**
  * Class to manage extensions.
  */
@@ -190,17 +199,17 @@ export class ExtensionsManager {
                 // and the '.tsx' extension to overcome rollup limitation
                 //https://www.npmjs.com/package/@rollup/plugin-dynamic-import-vars
                 if (value.includes("application-templates")) {
-                    const valueStripped: string = value
-                        .replace(/^\.\/application-templates\//, "")
-                        .replace(/\.tsx$/, "");
+                    const contentModuleLoader: () => Promise<any> = applicationTemplateContentModuleMap[value];
 
-                    content[ key ] = lazy(() => import(`./application-templates/${ valueStripped }.tsx`));
+                    if (contentModuleLoader) {
+                        content[ key ] = lazy(contentModuleLoader);
+                    }
                 } else if (value.includes("identity-provider-templates")) {
-                    const valueStripped: string = value
-                        .replace(/^\.\/identity-provider-templates\//, "")
-                        .replace(/\.tsx$/, "");
+                    const contentModuleLoader: () => Promise<any> = identityProviderTemplateContentModuleMap[value];
 
-                    content[ key ] = lazy(() => import(`./identity-provider-templates/${ valueStripped }.tsx`));
+                    if (contentModuleLoader) {
+                        content[ key ] = lazy(contentModuleLoader);
+                    }
                 }
             }
 
@@ -218,21 +227,19 @@ export class ExtensionsManager {
             // and the '.json' extension to overcome rollup limitation
             //https://www.npmjs.com/package/@rollup/plugin-dynamic-import-vars
             if (resource.includes("application-templates")) {
-                const resourceStripped: string = resource
-                    .replace(/^\.\/application-templates\//, "")
-                    .replace(/\.json$/, "");
+                const resourceModuleLoader: () => Promise<any> = applicationTemplateResourceModuleMap[resource];
 
-                return import(`./application-templates/${resourceStripped}.json`).then((module: any) => module.default);
+                return resourceModuleLoader
+                    ? resourceModuleLoader().then((module: any) => module.default)
+                    : Promise.reject(new Error(`Unknown application template resource: ${resource}`));
             }
 
             if (resource.includes("identity-provider-templates")) {
-                const resourceStripped: string = resource
-                    .replace(/^\.\/identity-provider-templates\//, "")
-                    .replace(/\.json$/, "");
+                const resourceModuleLoader: () => Promise<any> = identityProviderTemplateResourceModuleMap[resource];
 
-                return import(`./identity-provider-templates/${resourceStripped}.json`).then(
-                    (module: any) => module.default
-                );
+                return resourceModuleLoader
+                    ? resourceModuleLoader().then((module: any) => module.default)
+                    : Promise.reject(new Error(`Unknown identity provider template resource: ${resource}`));
             }
         };
 

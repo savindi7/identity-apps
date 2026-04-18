@@ -21,7 +21,7 @@ import { Form, Ref } from "semantic-ui-react";
 import { Field, GroupFields, InnerField, InnerGroupFields } from "./components";
 import { isCheckBoxField, isDropdownField, isFilePickerField,
     isInputField, isRadioField, isScopesField, isTextField, isToggleField } from "./helpers";
-import { Error, FormField, FormValue, Validation } from "./models";
+import type { Error, FormField, FormValue, Validation } from "./models";
 import { useNonInitialEffect } from "./utils";
 
 /**
