@@ -49,20 +49,24 @@ interface ResourceTemplateModuleInterface {
     default: unknown;
 }
 
-interface ImportMetaWithGlobInterface extends ImportMeta {
-    glob: <T>(pattern: string) => Record<string, () => Promise<T>>;
-}
-
-const importMetaWithGlob: ImportMetaWithGlobInterface = import.meta as ImportMetaWithGlobInterface;
-
+// `import.meta.glob` is provided by Vite in console runtime.
+// This package is also type-checked in non-Vite contexts.
 const applicationTemplateContentModuleMap: Record<string, () => Promise<ContentTemplateModuleInterface>> =
-    importMetaWithGlob.glob<ContentTemplateModuleInterface>("./application-templates/**/*.tsx");
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    import.meta.glob<ContentTemplateModuleInterface>("./application-templates/**/*.tsx");
 const identityProviderTemplateContentModuleMap: Record<string, () => Promise<ContentTemplateModuleInterface>> =
-    importMetaWithGlob.glob<ContentTemplateModuleInterface>("./identity-provider-templates/**/*.tsx");
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    import.meta.glob<ContentTemplateModuleInterface>("./identity-provider-templates/**/*.tsx");
 const applicationTemplateResourceModuleMap: Record<string, () => Promise<ResourceTemplateModuleInterface>> =
-    importMetaWithGlob.glob<ResourceTemplateModuleInterface>("./application-templates/**/*.json");
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    import.meta.glob<ResourceTemplateModuleInterface>("./application-templates/**/*.json");
 const identityProviderTemplateResourceModuleMap: Record<string, () => Promise<ResourceTemplateModuleInterface>> =
-    importMetaWithGlob.glob<ResourceTemplateModuleInterface>("./identity-provider-templates/**/*.json");
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    import.meta.glob<ResourceTemplateModuleInterface>("./identity-provider-templates/**/*.json");
 
 /**
  * Class to manage extensions.
