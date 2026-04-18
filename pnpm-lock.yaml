@@ -1227,9 +1227,6 @@ importers:
       typescript:
         specifier: ^4.6.4
         version: 4.9.5
-      vite:
-        specifier: ^5.4.8
-        version: 5.4.21(@types/node@13.13.52)(less@3.13.1)
 
   features:
     dependencies:
