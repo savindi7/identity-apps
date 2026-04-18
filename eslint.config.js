@@ -250,7 +250,6 @@ module.exports = [
             // @typescript-eslint rules (recommended + custom, sorted alphabetically)
             "@typescript-eslint/adjacent-overload-signatures": "error",
             "@typescript-eslint/ban-ts-comment": "warn",
-            "@typescript-eslint/ban-types": "warn",
             // Custom TypeScript rules (from the original .eslintrc.js override)
             "@typescript-eslint/explicit-function-return-type": 0,
             "@typescript-eslint/no-array-constructor": "error",
