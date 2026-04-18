@@ -50,13 +50,13 @@ interface ResourceTemplateModuleInterface {
 }
 
 const applicationTemplateContentModuleMap: Record<string, () => Promise<ContentTemplateModuleInterface>> =
-    import.meta.glob("./application-templates/**/*.tsx");
+    import.meta.glob<ContentTemplateModuleInterface>("./application-templates/**/*.tsx");
 const identityProviderTemplateContentModuleMap: Record<string, () => Promise<ContentTemplateModuleInterface>> =
-    import.meta.glob("./identity-provider-templates/**/*.tsx");
+    import.meta.glob<ContentTemplateModuleInterface>("./identity-provider-templates/**/*.tsx");
 const applicationTemplateResourceModuleMap: Record<string, () => Promise<ResourceTemplateModuleInterface>> =
-    import.meta.glob("./application-templates/**/*.json");
+    import.meta.glob<ResourceTemplateModuleInterface>("./application-templates/**/*.json");
 const identityProviderTemplateResourceModuleMap: Record<string, () => Promise<ResourceTemplateModuleInterface>> =
-    import.meta.glob("./identity-provider-templates/**/*.json");
+    import.meta.glob<ResourceTemplateModuleInterface>("./identity-provider-templates/**/*.json");
 
 /**
  * Class to manage extensions.
