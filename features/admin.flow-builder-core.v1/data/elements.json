@@ -188,7 +188,7 @@
         "variant": "CHOICE",
         "display": {
             "label": "Radio Button",
-            "displayname": "Choice",
+            "displayName": "Choice",
             "image": "assets/images/icons/boolean.svg",
             "showOnResourcePanel": true
         },
