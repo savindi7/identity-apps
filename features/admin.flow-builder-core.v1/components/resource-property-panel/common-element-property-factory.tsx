@@ -18,7 +18,6 @@
 
 import TextField from "@oxygen-ui/react/TextField";
 import { IdentifiableComponentInterface } from "@wso2is/core/models";
-import startCase from "lodash-es/startCase";
 import React, { FunctionComponent, ReactElement } from "react";
 import CheckboxPropertyField from "./checkbox-property-field";
 import ChoiceOptionsPropertyField from "./choice-options-property-field";
