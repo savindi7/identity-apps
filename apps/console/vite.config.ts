@@ -580,6 +580,7 @@ export default defineConfig(({ mode }: { mode: string }) => {
                 ],
                 transformMixedEsModules: true
             },
+            copyPublicDir: false,
             emptyOutDir: true,
             manifest: true,
             outDir: buildMode.outDir,

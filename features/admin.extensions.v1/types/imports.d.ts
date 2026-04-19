@@ -39,12 +39,3 @@ declare module "*.png" {
 }
 
 declare module "*.md";
-
-interface ImportMeta {
-    glob<T = Record<string, unknown>>(pattern: string): Record<string, () => Promise<T>>;
-    glob<T = Record<string, unknown>>(pattern: string, options: { eager: true }): Record<string, T>;
-    glob<T = Record<string, unknown>>(
-        pattern: string,
-        options: { eager?: boolean; as?: string }
-    ): Record<string, T | (() => Promise<T>)>;
-}
