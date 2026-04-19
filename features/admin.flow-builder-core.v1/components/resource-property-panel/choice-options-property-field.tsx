@@ -111,7 +111,7 @@ const ChoiceOptionsPropertyField: FunctionComponent<ChoiceOptionsPropertyFieldPr
                         fullWidth
                         size="small"
                         label="Label"
-                        value={ option.label }
+                        defaultValue={ option.label }
                         onChange={ (e: ChangeEvent<HTMLInputElement>) =>
                             handleOptionChange(index, "label", e.target.value)
                         }
@@ -121,7 +121,7 @@ const ChoiceOptionsPropertyField: FunctionComponent<ChoiceOptionsPropertyFieldPr
                         fullWidth
                         size="small"
                         label="Value"
-                        value={ option.value }
+                        defaultValue={ option.value }
                         onChange={ (e: ChangeEvent<HTMLInputElement>) =>
                             handleOptionChange(index, "value", e.target.value)
                         }
