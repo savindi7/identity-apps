@@ -1,5 +1,19 @@
 # @wso2is/console
 
+## 4.5.0
+
+### Minor Changes
+
+- [#10156](https://github.com/wso2/identity-apps/pull/10156) [`5e2cee30e0d0d16f071af34a399167452970dde0`](https://github.com/wso2/identity-apps/commit/5e2cee30e0d0d16f071af34a399167452970dde0) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Migrate console app to vite
+
+### Patch Changes
+
+- Updated dependencies [[`5e2cee30e0d0d16f071af34a399167452970dde0`](https://github.com/wso2/identity-apps/commit/5e2cee30e0d0d16f071af34a399167452970dde0)]:
+  - @wso2is/admin.authentication.v1@2.25.209
+  - @wso2is/admin.extensions.v1@2.43.1
+  - @wso2is/react-components@2.10.2
+  - @wso2is/forms@2.3.26
+
 ## 4.4.3
 
 ### Patch Changes
