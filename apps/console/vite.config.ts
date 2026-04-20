@@ -20,7 +20,6 @@ import fs from "fs";
 import type { ServerResponse } from "http";
 import path from "path";
 import basicSsl from "@vitejs/plugin-basic-ssl";
-import legacy from "@vitejs/plugin-legacy";
 import react from "@vitejs/plugin-react";
 import { Connect, type PluginOption, type ViteDevServer, defineConfig, loadEnv } from "vite";
 import svgr from "vite-plugin-svgr";
@@ -640,8 +639,7 @@ export default defineConfig(({ mode }: { mode: string }) => {
             svgr({
                 include: "**/*.svg?react"
             }),
-            react(),
-            legacy()
+            react()
         ],
         publicDir: path.resolve(__dirname, "src", "public"),
         resolve: {
