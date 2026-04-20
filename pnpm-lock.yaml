@@ -533,7 +533,7 @@ importers:
         specifier: workspace:^
         version: link:../../features/admin.ask-password-flow-builder.v1
       '@wso2is/admin.authentication.v1':
-        specifier: ^2.25.208
+        specifier: ^2.25.209
         version: link:../../features/admin.authentication.v1
       '@wso2is/admin.branding.v1':
         specifier: ^2.32.166
@@ -569,7 +569,7 @@ importers:
         specifier: ^2.28.2
         version: link:../../features/admin.email-providers.v1
       '@wso2is/admin.extensions.v1':
-        specifier: ^2.43.0
+        specifier: ^2.43.1
         version: link:../../features/admin.extensions.v1
       '@wso2is/admin.feature-gate.v1':
         specifier: ^1.9.5
@@ -704,13 +704,13 @@ importers:
         specifier: ^2.10.2
         version: link:../../modules/form
       '@wso2is/forms':
-        specifier: ^2.3.25
+        specifier: ^2.3.26
         version: link:../../modules/forms
       '@wso2is/i18n':
         specifier: ^2.39.0
         version: link:../../modules/i18n
       '@wso2is/react-components':
-        specifier: ^2.10.1
+        specifier: ^2.10.2
         version: link:../../modules/react-components
       '@wso2is/theme':
         specifier: ^2.10.1
@@ -3488,7 +3488,7 @@ importers:
         specifier: ^2.49.129
         version: link:../admin.core.v1
       '@wso2is/admin.extensions.v1':
-        specifier: ^2.39.4
+        specifier: ^2.43.1
         version: link:../admin.extensions.v1
       '@wso2is/admin.organizations.v1':
         specifier: ^2.26.208
@@ -8311,7 +8311,7 @@ importers:
         specifier: ^2.42.21
         version: link:../admin.applications.v1
       '@wso2is/admin.authentication.v1':
-        specifier: ^2.25.205
+        specifier: ^2.25.209
         version: link:../admin.authentication.v1
       '@wso2is/admin.claims.v1':
         specifier: ^2.30.6
@@ -8371,13 +8371,13 @@ importers:
         specifier: ^2.10.1
         version: link:../../modules/form
       '@wso2is/forms':
-        specifier: ^2.3.24
+        specifier: ^2.3.26
         version: link:../../modules/forms
       '@wso2is/i18n':
         specifier: ^2.39.0
         version: link:../../modules/i18n
       '@wso2is/react-components':
-        specifier: ^2.10.0
+        specifier: ^2.10.2
         version: link:../../modules/react-components
       '@wso2is/theme':
         specifier: ^2.10.0
