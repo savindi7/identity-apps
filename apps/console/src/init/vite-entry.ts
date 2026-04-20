@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024, WSO2 LLC. (https://www.wso2.com).
+ * Copyright (c) 2026, WSO2 LLC. (https://www.wso2.com).
  *
  * WSO2 LLC. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -16,26 +16,19 @@
  * under the License.
  */
 
-declare module "*.json" {
-    const value: any;
+import { Buffer } from "buffer";
 
-    export default value;
+type GlobalScopeInterface = typeof globalThis & { Buffer?: typeof Buffer };
+
+const globalScope: GlobalScopeInterface = globalThis;
+
+if (typeof globalScope.Buffer === "undefined") {
+    globalScope.Buffer = Buffer;
 }
 
-declare module "*.svg" {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    import React = require("react");
-
-    export const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
-    const src: string;
-
-    export default src;
+if (typeof (globalThis as Record<string, unknown>)["global"] === "undefined") {
+    (globalThis as Record<string, unknown>)["global"] = globalThis;
 }
 
-declare module "*.png" {
-    const content: string;
-
-    export default content;
-}
-
-declare module "*.md";
+void import("./init")
+    .then(() => import("../index"));

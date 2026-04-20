@@ -25,6 +25,7 @@ const globals = require("globals");
 const importPlugin = require("eslint-plugin-import");
 const jsxA11yPlugin = require("eslint-plugin-jsx-a11y");
 const tsdocPlugin = require("eslint-plugin-tsdoc");
+const reactPlugin = require("eslint-plugin-react");
 const reactHooksPlugin = require("eslint-plugin-react-hooks");
 const jsoncPlugin = require("eslint-plugin-jsonc");
 const jsoncParser = require("jsonc-eslint-parser");
@@ -112,15 +113,20 @@ module.exports = [
             "tsdoc": tsdocPlugin
         },
         rules: {
+            // General rules
+            "array-bracket-spacing": [ 1, "always" ],
+            "comma-dangle": [ "warn", "never" ],
+            "eol-last": "error",
             // Import plugin — import/typescript equivalent rules
             "import/named": "off",
             "import/no-unresolved": "off",
             // Temporarily disabled due runtime incompatibilities in eslint-plugin-import.
             "import/order": "off",
-            // General rules
-            "array-bracket-spacing": [ 1, "always" ],
-            "comma-dangle": [ "warn", "never" ],
-            "eol-last": "error",
+            indent: [
+                1,
+                4,
+                { SwitchCase: 1 }
+            ],
             "jsx-quotes": [ "warn", "prefer-double" ],
             "lines-between-class-members": [
                 1,
@@ -131,19 +137,11 @@ module.exports = [
                 "warn",
                 { code: 120 }
             ],
-            "no-debugger": 1,
             "no-alert": 1,
             "no-console": "warn",
+            "no-debugger": 1,
             "no-duplicate-imports": "warn",
             "no-extra-semi": 0,
-            "no-unused-vars": [
-                "warn",
-                {
-                    argsIgnorePattern: "^_",
-                    caughtErrorsIgnorePattern: "^_",
-                    varsIgnorePattern: "^_"
-                }
-            ],
             "no-restricted-imports": [
                 "error",
                 {
@@ -167,7 +165,7 @@ module.exports = [
                         },
                         {
                             importNames: [ "Popup" ],
-                            message: "Avoid using Popup from Semantic. Instead import it from @wso2is/react-components.",
+                            message: "Avoid using Popup from Semantic. Import from @wso2is/react-components instead.",
                             name: "semantic-ui-react"
                         },
                         {
@@ -189,6 +187,14 @@ module.exports = [
             "no-trailing-spaces": "warn",
             "no-unreachable": "error",
             "no-unsafe-optional-chaining": "off",
+            "no-unused-vars": [
+                "warn",
+                {
+                    argsIgnorePattern: "^_",
+                    caughtErrorsIgnorePattern: "^_",
+                    varsIgnorePattern: "^_"
+                }
+            ],
             "object-curly-spacing": [ "warn", "always" ],
             "padding-line-between-statements": [ ...LINE_PADDING_RULES ],
             "quotes": [ "warn", "double" ],
@@ -206,12 +212,7 @@ module.exports = [
                 "asc",
                 { caseSensitive: true, minKeys: 2, natural: false }
             ],
-            "tsdoc/syntax": "warn",
-            indent: [
-                1,
-                4,
-                { SwitchCase: 1 }
-            ]
+            "tsdoc/syntax": "warn"
         }
     },
 
@@ -219,20 +220,22 @@ module.exports = [
     {
         files: [ "**/*.{jsx,tsx}" ],
         plugins: {
+            "react": reactPlugin,
             "react-hooks": reactHooksPlugin
         },
         rules: {
+            "react-hooks/exhaustive-deps": "off",
             "react-hooks/rules-of-hooks": "error",
-            "react-hooks/exhaustive-deps": "off"
+            "react/no-deprecated": "warn"
+        },
+        settings: {
+            react: { version: "detect" }
         }
     },
 
     // ----- TypeScript files -----
     {
         files: [ "**/*.{ts,tsx}" ],
-        plugins: {
-            "@typescript-eslint": tsPlugin
-        },
         languageOptions: {
             parser: tsParser,
             parserOptions: {
@@ -240,38 +243,24 @@ module.exports = [
                 sourceType: "module"
             }
         },
-        settings: {
-            react: { version: "detect" }
+        plugins: {
+            "@typescript-eslint": tsPlugin
         },
         rules: {
-            // @typescript-eslint/eslint-recommended equivalent: turn off rules TS handles
-            "constructor-super": "off",
-            "getter-return": "off",
-            "no-const-assign": "off",
-            "no-dupe-args": "off",
-            "no-dupe-class-members": "off",
-            "no-dupe-keys": "off",
-            "no-func-assign": "off",
-            "no-import-assign": "off",
-            "no-new-symbol": "off",
-            "no-obj-calls": "off",
-            "no-redeclare": "off",
-            "no-setter-return": "off",
-            "no-this-before-super": "off",
-            "no-undef": 0,
-            "no-unreachable": "off",
-            "no-unsafe-negation": "off",
-            "no-unused-vars": "off",
-            "no-with": "off",
-            "valid-typeof": "off",
-            // @typescript-eslint/recommended rules
+            // @typescript-eslint rules (recommended + custom, sorted alphabetically)
             "@typescript-eslint/adjacent-overload-signatures": "error",
             "@typescript-eslint/ban-ts-comment": "warn",
+            // Custom TypeScript rules (from the original .eslintrc.js override)
+            "@typescript-eslint/explicit-function-return-type": 0,
             "@typescript-eslint/no-array-constructor": "error",
             "@typescript-eslint/no-duplicate-enum-values": "error",
+            // Temporary disable the no-empty-function rule.
+            // Refer: https://github.com/wso2/product-is/issues/20659
+            "@typescript-eslint/no-empty-function": "off",
             "@typescript-eslint/no-empty-object-type": "error",
             "@typescript-eslint/no-explicit-any": 0,
             "@typescript-eslint/no-extra-non-null-assertion": "error",
+            "@typescript-eslint/no-inferrable-types": "off",
             "@typescript-eslint/no-misused-new": "error",
             "@typescript-eslint/no-namespace": "error",
             "@typescript-eslint/no-non-null-asserted-optional-chain": "error",
@@ -289,16 +278,6 @@ module.exports = [
                     varsIgnorePattern: "^_"
                 }
             ],
-            "@typescript-eslint/no-wrapper-object-types": "error",
-            "@typescript-eslint/prefer-as-const": "error",
-            "@typescript-eslint/prefer-namespace-keyword": "error",
-            "@typescript-eslint/triple-slash-reference": "error",
-            // Custom TypeScript rules (from the original .eslintrc.js override)
-            "@typescript-eslint/explicit-function-return-type": 0,
-            // Temporary disable the no-empty-function rule.
-            // Refer: https://github.com/wso2/product-is/issues/20659
-            "@typescript-eslint/no-empty-function": "off",
-            "@typescript-eslint/no-inferrable-types": "off",
             "@typescript-eslint/no-use-before-define": [
                 "warn",
                 {
@@ -308,6 +287,10 @@ module.exports = [
                     variables: false
                 }
             ],
+            "@typescript-eslint/no-wrapper-object-types": "error",
+            "@typescript-eslint/prefer-as-const": "error",
+            "@typescript-eslint/prefer-namespace-keyword": "error",
+            "@typescript-eslint/triple-slash-reference": "error",
             "@typescript-eslint/typedef": [
                 "warn",
                 {
@@ -321,13 +304,36 @@ module.exports = [
                     "variableDeclarationIgnoreFunction": true
                 }
             ],
+            // Rules turned off since TypeScript handles them
+            "constructor-super": "off",
             "eol-last": "error",
+            "getter-return": "off",
+            "no-const-assign": "off",
+            "no-dupe-args": "off",
+            "no-dupe-class-members": "off",
+            "no-dupe-keys": "off",
             // Temporary disable the `no-extra-semi` rule.
             // Refer: https://github.com/wso2/product-is/issues/20659
             "no-extra-semi": 0,
+            "no-func-assign": "off",
+            "no-import-assign": "off",
+            "no-new-symbol": "off",
+            "no-obj-calls": "off",
+            "no-redeclare": "off",
+            "no-setter-return": "off",
+            "no-this-before-super": "off",
+            "no-undef": 0,
+            "no-unreachable": "off",
+            "no-unsafe-negation": "off",
             "no-unsafe-optional-chaining": "off",
+            "no-unused-vars": "off",
             "no-use-before-define": "off",
-            "padding-line-between-statements": [ ...LINE_PADDING_RULES ]
+            "no-with": "off",
+            "padding-line-between-statements": [ ...LINE_PADDING_RULES ],
+            "valid-typeof": "off"
+        },
+        settings: {
+            react: { version: "detect" }
         }
     },
 
@@ -376,8 +382,8 @@ module.exports = [
     {
         files: [ "apps/console/**/*.{ts,tsx,js,jsx}", "apps/myaccount/**/*.{ts,tsx,js,jsx}" ],
         plugins: {
-            "testing-library": testingLibraryPlugin,
-            "jest-dom": jestDomPlugin
+            "jest-dom": jestDomPlugin,
+            "testing-library": testingLibraryPlugin
         },
         rules: {
             // testing-library/dom recommended rules
@@ -395,8 +401,8 @@ module.exports = [
             "apps/console/**/*.json",
             "apps/myaccount/**/*.json"
         ],
-        plugins: { "jsonc": jsoncPlugin },
         languageOptions: { parser: jsoncParser },
+        plugins: { "jsonc": jsoncPlugin },
         rules: {
             "max-len": "off",
             "semi": "off"
@@ -409,8 +415,8 @@ module.exports = [
             "apps/console/**/deployment.config.json",
             "apps/myaccount/**/deployment.config.json"
         ],
-        plugins: { "jsonc": jsoncPlugin },
         languageOptions: { parser: jsoncParser },
+        plugins: { "jsonc": jsoncPlugin },
         rules: {
             "jsonc/sort-array-values": [ "error", { order: { type: "asc" }, pathPattern: ".*" } ],
             "jsonc/sort-keys": "error",
