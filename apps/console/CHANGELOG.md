@@ -1,5 +1,11 @@
 # @wso2is/console
 
+## 4.5.1
+
+### Patch Changes
+
+- [#10169](https://github.com/wso2/identity-apps/pull/10169) [`e42b0a46ff355bb010679dd5c7e16434896eaa88`](https://github.com/wso2/identity-apps/commit/e42b0a46ff355bb010679dd5c7e16434896eaa88) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Fix incorrect regex in console vite build script
+
 ## 4.5.0
 
 ### Minor Changes
