@@ -24,7 +24,7 @@
     ],
     "dependencies": {
         "@mui/x-tree-view": "^8.5.2",
-        "@oxygen-ui/react": "^2.4.6",
+        "@oxygen-ui/react": "catalog:",
         "@oxygen-ui/react-icons": "^2.4.6",
         "@wso2is/admin.applications.v1": "^2.42.16",
         "@wso2is/admin.console-settings.v1": "^2.26.38",

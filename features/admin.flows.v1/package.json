@@ -6,7 +6,7 @@
     "author": "WSO2",
     "license": "Apache-2.0",
     "dependencies": {
-        "@oxygen-ui/react": "^2.4.3",
+        "@oxygen-ui/react": "catalog:",
         "@oxygen-ui/react-icons": "^2.4.3",
         "@wso2is/admin.claims.v1": "^2.31.0",
         "@wso2is/admin.core.v1": "^2.57.1",
