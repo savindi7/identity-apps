@@ -93,7 +93,7 @@ function renderTemplate(content, options) {
         }
 
         // Reject anything outside the small supported expression surface.
-        if (!/^[\s\w.$'":+?()!-]*$/.test(trimmedExpression)) {
+        if (!/^[\s\w.$'":+?()!\/-]*$/.test(trimmedExpression)) {
             throw new Error(`Unsupported template expression: ${trimmedExpression}`);
         }
 
