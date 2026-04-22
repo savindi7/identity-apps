@@ -1,5 +1,14 @@
 # @wso2is/console
 
+## 4.5.2
+
+### Patch Changes
+
+- [#10173](https://github.com/wso2/identity-apps/pull/10173) [`e88c86cbfe47027559a3acc40fd8def4f42b88d7`](https://github.com/wso2/identity-apps/commit/e88c86cbfe47027559a3acc40fd8def4f42b88d7) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Fix NPE being thrown when the username is not available in the ID token
+
+- Updated dependencies [[`e88c86cbfe47027559a3acc40fd8def4f42b88d7`](https://github.com/wso2/identity-apps/commit/e88c86cbfe47027559a3acc40fd8def4f42b88d7)]:
+  - @wso2is/admin.users.v1@2.38.34
+
 ## 4.5.1
 
 ### Patch Changes
