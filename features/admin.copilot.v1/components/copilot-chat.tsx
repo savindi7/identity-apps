@@ -39,6 +39,7 @@ import {
     StyledLoadMoreButton,
     StyledSuggestionButton
 } from "./copilot-styles";
+import { CHARS_PER_FRAME, MAX_INPUT_LENGTH, TYPING_SPEED_MS } from "../constants/copilot-chat-constants";
 import useCopilotPanel from "../hooks/use-copilot-panel";
 import { CopilotMessageInterface } from "../store/types/copilot-action-types";
 
@@ -281,11 +282,9 @@ interface ChatMessageProps {
     isLoading: boolean;
     componentId: string;
     onSendMessage: (msg: string) => void;
+    onAnimatedContentChange: () => void;
 }
 
-const TYPING_SPEED_MS: number = 16;
-const CHARS_PER_FRAME: number = 3;
-const MAX_INPUT_LENGTH: number = 256;
 
 /**
  * Renders a single chat message. Wrapped in React.memo so that messages that
@@ -299,7 +298,8 @@ const ChatMessage: React.FunctionComponent<ChatMessageProps> = React.memo(
         isLastMessage,
         isLoading: loading,
         componentId,
-        onSendMessage
+        onSendMessage,
+        onAnimatedContentChange
     }: ChatMessageProps): ReactElement => {
         const { t } = useTranslation();
         const isUser: boolean = message.sender === "user";
@@ -380,6 +380,12 @@ const ChatMessage: React.FunctionComponent<ChatMessageProps> = React.memo(
         const renderedContent: string = isStreaming
             ? normalizeStreamingMarkdown(displayedContent)
             : displayedContent;
+
+        useEffect((): void => {
+            if (isStreaming && displayedContent) {
+                onAnimatedContentChange();
+            }
+        }, [ displayedContent, isStreaming, onAnimatedContentChange ]);
 
         if (isUser) {
             return (
@@ -584,6 +590,16 @@ const CopilotChat: React.FunctionComponent<CopilotChatProps> = (
     }, []);
 
     /**
+     * Called by the last ChatMessage on every typewriter tick so the parent
+     * can keep the viewport anchored to the bottom during streaming.
+     */
+    const handleAnimatedContentChange: () => void = useCallback((): void => {
+        if (isUserNearBottom()) {
+            throttledScrollToBottom();
+        }
+    }, [ isUserNearBottom, throttledScrollToBottom ]);
+
+    /**
      * Scroll to bottom when messages change - only when the user is already
      * near the bottom so loading earlier history never yanks the viewport.
      */
@@ -692,6 +708,7 @@ const CopilotChat: React.FunctionComponent<CopilotChatProps> = (
                             isLoading={ isLoading }
                             componentId={ componentId }
                             onSendMessage={ sendMessage }
+                            onAnimatedContentChange={ handleAnimatedContentChange }
                         />
                     ))
                 ) }
