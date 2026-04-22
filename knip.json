@@ -6,7 +6,11 @@
         "**/node_modules/**",
         "**/__mocks__/**",
         "**/coverage/**",
-        "**/*.config.{js,cjs,mjs,ts}",
+        "**/jest.config.{js,cjs,mjs,ts}",
+        "**/webpack.config.{js,cjs,mjs,ts}",
+        "**/eslint.config.{js,cjs,mjs,ts}",
+        "**/rollup.config.{js,cjs,mjs,ts}",
+        "**/babel.config.{js,cjs,mjs,json}",
         "identity-apps-core/**",
         "apps/console/src/extensions/i18n/**",
         "modules/i18n/src/translations/**"
