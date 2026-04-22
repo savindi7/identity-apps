@@ -461,7 +461,6 @@ export const getCopilotChatHistory = async (
         },
         method: HttpMethods.GET,
         params,
-        signal,
         url: `${getCopilotBaseUrl()}/history`
     };
 

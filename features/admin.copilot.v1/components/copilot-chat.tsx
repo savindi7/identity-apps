@@ -283,6 +283,10 @@ interface ChatMessageProps {
     onSendMessage: (msg: string) => void;
 }
 
+const TYPING_SPEED_MS: number = 16;
+const CHARS_PER_FRAME: number = 3;
+const MAX_INPUT_LENGTH: number = 256;
+
 /**
  * Renders a single chat message. Wrapped in React.memo so that messages that
  * have not changed (all history messages) do NOT re-render on every token
@@ -300,9 +304,82 @@ const ChatMessage: React.FunctionComponent<ChatMessageProps> = React.memo(
         const { t } = useTranslation();
         const isUser: boolean = message.sender === "user";
         const isError: boolean = message.type === "error";
-        const renderedContent: string = message.type === "streaming"
-            ? normalizeStreamingMarkdown(message.content)
-            : message.content;
+        const isStreaming: boolean = message.type === "streaming";
+
+        // Keep raw content as the animation target; normalization happens per-frame at render.
+        const safeContent: string = message.content;
+
+        const [ displayedContent, setDisplayedContent ] = useState<string>(
+            isStreaming ? "" : safeContent
+        );
+        const safeContentRef: React.MutableRefObject<string> = useRef<string>(safeContent);
+        const animTimerRef: React.MutableRefObject<number | null> = useRef<number | null>(null);
+        // Tracks displayed length so tick can decide whether to re-arm without a stale closure.
+        const displayedContentLenRef: React.MutableRefObject<number> = useRef<number>(0);
+        // Stable ref to the tick function so both effects share the same implementation.
+        const tickRef: React.MutableRefObject<() => void> = useRef<() => void>(() => undefined);
+
+        // Sync raw target into ref on every new chunk.
+        useEffect(() => {
+            safeContentRef.current = safeContent;
+        }, [ safeContent ]);
+
+        // Keep displayedContentLenRef current so tick's re-arm check is accurate.
+        useEffect(() => {
+            displayedContentLenRef.current = displayedContent.length;
+        }, [ displayedContent ]);
+
+        // Define tick via ref so the restart effect can share the same function without
+        // capturing a stale closure. All state it needs is in refs.
+        tickRef.current = (): void => {
+            setDisplayedContent((prev: string) => {
+                const target: string = safeContentRef.current;
+
+                if (prev.length >= target.length) return prev;
+
+                return target.slice(0, prev.length + CHARS_PER_FRAME);
+            });
+            if (displayedContentLenRef.current < safeContentRef.current.length) {
+                animTimerRef.current = window.setTimeout(tickRef.current, TYPING_SPEED_MS);
+            } else {
+                // Caught up — stop spinning; restart effect will re-arm if more content arrives.
+                animTimerRef.current = null;
+            }
+        };
+
+        useEffect(() => {
+            if (!isStreaming) {
+                if (animTimerRef.current !== null) {
+                    clearTimeout(animTimerRef.current);
+                    animTimerRef.current = null;
+                }
+                setDisplayedContent(safeContent);
+
+                return;
+            }
+
+            animTimerRef.current = window.setTimeout(tickRef.current, TYPING_SPEED_MS);
+
+            return () => {
+                if (animTimerRef.current !== null) {
+                    clearTimeout(animTimerRef.current);
+                    animTimerRef.current = null;
+                }
+            };
+        }, [ isStreaming ]);
+
+        // When new streaming content arrives and the timer has stopped (caught up to a
+        // previous chunk), restart animation to consume the additional content.
+        useEffect(() => {
+            if (!isStreaming || animTimerRef.current !== null) return;
+            animTimerRef.current = window.setTimeout(tickRef.current, TYPING_SPEED_MS);
+        }, [ safeContent, isStreaming ]);
+
+        // Normalize only the visible slice so each frame is well-formed markdown,
+        // not a prefix of an already-normalized full string.
+        const renderedContent: string = isStreaming
+            ? normalizeStreamingMarkdown(displayedContent)
+            : displayedContent;
 
         if (isUser) {
             return (
@@ -452,7 +529,7 @@ const CopilotChat: React.FunctionComponent<CopilotChatProps> = (
      */
     const handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void = useCallback(
         (event: React.ChangeEvent<HTMLInputElement>) => {
-            setInputValue(event.target.value);
+            setInputValue(event.target.value.slice(0, MAX_INPUT_LENGTH));
         }, []);
 
     /**
@@ -648,6 +725,7 @@ const CopilotChat: React.FunctionComponent<CopilotChatProps> = (
                         onChange={ handleInputChange }
                         onKeyDown={ handleKeyDown }
                         disabled={ isLoading }
+                        inputProps={ { maxLength: MAX_INPUT_LENGTH } }
                         data-componentid={ `${componentId}-input` }
                     />
 
