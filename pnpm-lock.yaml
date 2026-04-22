@@ -1009,7 +1009,7 @@ importers:
         version: 5.18.0(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react@18.3.1)
       '@oxygen-ui/react':
         specifier: 'catalog:'
-        version: 2.4.6(b3a7bf317a21da66b994db901870a2f2)
+        version: 2.4.6(cb8ef80e0dd86ca3bac6762a2f60085c)
       '@oxygen-ui/react-icons':
         specifier: ^2.4.6
         version: 2.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3)
@@ -1620,7 +1620,7 @@ importers:
         version: 5.13.0(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@oxygen-ui/react':
         specifier: 'catalog:'
-        version: 2.4.6(b3a7bf317a21da66b994db901870a2f2)
+        version: 2.4.6(cb8ef80e0dd86ca3bac6762a2f60085c)
       '@oxygen-ui/react-icons':
         specifier: ^2.4.6
         version: 2.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3)
@@ -4938,9 +4938,6 @@ importers:
       '@wso2is/access-control':
         specifier: ^3.5.3
         version: link:../../modules/access-control
-      '@wso2is/admin.claims.v1':
-        specifier: ^2.31.0
-        version: 'link:'
       '@wso2is/admin.core.v1':
         specifier: ^2.55.15
         version: link:../admin.core.v1
@@ -6152,7 +6149,7 @@ importers:
         version: 5.13.0(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@oxygen-ui/react':
         specifier: 'catalog:'
-        version: 2.4.6(b3a7bf317a21da66b994db901870a2f2)
+        version: 2.4.6(cb8ef80e0dd86ca3bac6762a2f60085c)
       '@oxygen-ui/react-icons':
         specifier: ^2.4.5
         version: 2.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3)
@@ -9020,7 +9017,7 @@ importers:
     dependencies:
       '@oxygen-ui/react':
         specifier: 'catalog:'
-        version: 2.4.6(b3a7bf317a21da66b994db901870a2f2)
+        version: 2.4.6(cb8ef80e0dd86ca3bac6762a2f60085c)
       '@oxygen-ui/react-icons':
         specifier: ^2.4.3
         version: 2.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3)
@@ -10868,7 +10865,7 @@ importers:
         version: 5.13.0(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@oxygen-ui/react':
         specifier: 'catalog:'
-        version: 2.4.6(b3a7bf317a21da66b994db901870a2f2)
+        version: 2.4.6(cb8ef80e0dd86ca3bac6762a2f60085c)
       '@wso2is/access-control':
         specifier: ^3.5.3
         version: link:../../modules/access-control
@@ -12058,7 +12055,7 @@ importers:
         version: 5.13.0(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@oxygen-ui/react':
         specifier: 'catalog:'
-        version: 2.4.6(b3a7bf317a21da66b994db901870a2f2)
+        version: 2.4.6(cb8ef80e0dd86ca3bac6762a2f60085c)
       '@oxygen-ui/react-icons':
         specifier: ^2.4.6
         version: 2.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3)
@@ -17206,9 +17203,6 @@ importers:
       '@wso2is/admin.organizations.v1':
         specifier: ^2.28.3
         version: link:../admin.organizations.v1
-      '@wso2is/admin.server-configurations.v1':
-        specifier: ^2.38.49
-        version: 'link:'
       '@wso2is/admin.users.v1':
         specifier: ^2.38.33
         version: link:../admin.users.v1
@@ -20660,7 +20654,7 @@ importers:
         version: 11.14.1(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react@18.3.1)
       '@oxygen-ui/react':
         specifier: 'catalog:'
-        version: 2.4.6(b3a7bf317a21da66b994db901870a2f2)
+        version: 2.4.6(cb8ef80e0dd86ca3bac6762a2f60085c)
       '@wso2is/access-control':
         specifier: ^3.5.3
         version: link:../../modules/access-control
@@ -20793,7 +20787,7 @@ importers:
         version: 5.13.0(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@oxygen-ui/react':
         specifier: 'catalog:'
-        version: 2.4.6(b3a7bf317a21da66b994db901870a2f2)
+        version: 2.4.6(cb8ef80e0dd86ca3bac6762a2f60085c)
       '@oxygen-ui/react-icons':
         specifier: ^2.3.4
         version: 2.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3)
@@ -22283,7 +22277,7 @@ importers:
         version: 8.28.3(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react@18.3.1))(@mui/material@5.13.0(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mui/system@5.18.0(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@oxygen-ui/react':
         specifier: 'catalog:'
-        version: 2.4.6(b3a7bf317a21da66b994db901870a2f2)
+        version: 2.4.6(cb8ef80e0dd86ca3bac6762a2f60085c)
       '@oxygen-ui/react-icons':
         specifier: ^2.4.6
         version: 2.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3)
@@ -22495,7 +22489,7 @@ importers:
     dependencies:
       '@oxygen-ui/react':
         specifier: 'catalog:'
-        version: 2.4.6(b3a7bf317a21da66b994db901870a2f2)
+        version: 2.4.6(cb8ef80e0dd86ca3bac6762a2f60085c)
       '@oxygen-ui/react-icons':
         specifier: ^2.4.6
         version: 2.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3)
@@ -23187,7 +23181,7 @@ importers:
         version: 5.13.0(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@oxygen-ui/react':
         specifier: 'catalog:'
-        version: 2.4.6(b3a7bf317a21da66b994db901870a2f2)
+        version: 2.4.6(cb8ef80e0dd86ca3bac6762a2f60085c)
       '@wso2is/core':
         specifier: ^2.7.0
         version: link:../core
@@ -23278,7 +23272,7 @@ importers:
         version: 6.18.0(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react@18.3.1))(@mui/material@5.13.0(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mui/system@5.18.0(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(dayjs@1.11.20)(luxon@3.7.2)(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@oxygen-ui/react':
         specifier: 'catalog:'
-        version: 2.4.6(b3a7bf317a21da66b994db901870a2f2)
+        version: 2.4.6(cb8ef80e0dd86ca3bac6762a2f60085c)
       '@oxygen-ui/react-icons':
         specifier: ^2.4.6
         version: 2.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3)
@@ -23506,7 +23500,7 @@ importers:
         version: 6.2.1(react@18.3.1)
       '@oxygen-ui/react':
         specifier: 'catalog:'
-        version: 2.4.6(b3a7bf317a21da66b994db901870a2f2)
+        version: 2.4.6(cb8ef80e0dd86ca3bac6762a2f60085c)
       '@oxygen-ui/react-icons':
         specifier: ^2.4.6
         version: 2.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3)
@@ -26751,24 +26745,6 @@ packages:
       '@types/react': 18.0.18
       react: ^17.0.0 || ^18.0.0 || ^19.0.0
     peerDependenciesMeta:
-      '@types/react':
-        optional: true
-
-  '@mui/lab@5.0.0-alpha.110':
-    resolution: {integrity: sha512-SkX5QNbaWouO7BXvb8zpFzDizLt7UzgaebqKSvFJLF28OXiNDfPVCle6IIB4g7hAyb/o19Kbhxs9V+LwK5gQzA==}
-    engines: {node: '>=12.0.0'}
-    peerDependencies:
-      '@emotion/react': ^11.5.0
-      '@emotion/styled': ^11.3.0
-      '@mui/material': ^5.13.0
-      '@types/react': 18.0.18
-      react: ^17.0.0 || ^18.0.0
-      react-dom: ^17.0.0 || ^18.0.0
-    peerDependenciesMeta:
-      '@emotion/react':
-        optional: true
-      '@emotion/styled':
-        optional: true
       '@types/react':
         optional: true
 
