@@ -1,5 +1,14 @@
 # @wso2is/console
 
+## 4.5.3
+
+### Patch Changes
+
+- [#10174](https://github.com/wso2/identity-apps/pull/10174) [`0a77da3c6ef130a8fccb21d82921876ad1a82141`](https://github.com/wso2/identity-apps/commit/0a77da3c6ef130a8fccb21d82921876ad1a82141) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - Enhance Copilot chat functionality with typing effect, input length limit and history load
+
+- Updated dependencies [[`0a77da3c6ef130a8fccb21d82921876ad1a82141`](https://github.com/wso2/identity-apps/commit/0a77da3c6ef130a8fccb21d82921876ad1a82141)]:
+  - @wso2is/admin.copilot.v1@1.0.4
+
 ## 4.5.2
 
 ### Patch Changes
