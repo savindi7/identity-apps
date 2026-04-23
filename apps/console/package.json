@@ -52,7 +52,6 @@
         "@wso2is/admin.agents.v1": "workspace:^",
         "@wso2is/admin.analytics.v1": "workspace:^",
         "@wso2is/admin.alternative-login-identifier.v1": "^1.5.207",
-        "@wso2is/admin.api-resources.v1": "^2.25.204",
         "@wso2is/admin.api-resources.v2": "^2.26.8",
         "@wso2is/admin.application-templates.v1": "^1.6.1",
         "@wso2is/admin.applications.v1": "^2.42.22",
