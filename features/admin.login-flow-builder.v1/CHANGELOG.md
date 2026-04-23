@@ -1,5 +1,11 @@
 # @wso2is/admin.login-flow-builder.v1
 
+## 2.29.9
+
+### Patch Changes
+
+- [#10178](https://github.com/wso2/identity-apps/pull/10178) [`a8356777febf9d45381c27119bdac239531c7f21`](https://github.com/wso2/identity-apps/commit/a8356777febf9d45381c27119bdac239531c7f21) Thanks [@ashanthamara](https://github.com/ashanthamara)! - Fix the issue where the updated script is not displayed after it is modified.
+
 ## 2.29.8
 
 ### Patch Changes
