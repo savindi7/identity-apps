@@ -1,5 +1,14 @@
 # @wso2is/console
 
+## 4.5.6
+
+### Patch Changes
+
+- [#10186](https://github.com/wso2/identity-apps/pull/10186) [`515386ded3291fdd7810d3e17790431e67472785`](https://github.com/wso2/identity-apps/commit/515386ded3291fdd7810d3e17790431e67472785) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Fix mobile deep link regex
+
+- Updated dependencies [[`515386ded3291fdd7810d3e17790431e67472785`](https://github.com/wso2/identity-apps/commit/515386ded3291fdd7810d3e17790431e67472785)]:
+  - @wso2is/core@2.13.2
+
 ## 4.5.5
 
 ### Patch Changes
