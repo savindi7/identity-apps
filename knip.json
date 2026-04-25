@@ -15,7 +15,8 @@
         "apps/console/src/extensions/i18n/**",
         "modules/i18n/src/**",
         "features/admin.server-configurations.v1/dynamic-connector.tsx",
-        "features/admin.applications.v1/components/application-danger-zone.tsx"
+        "features/admin.applications.v1/components/application-danger-zone.tsx",
+        "features/admin.extensions.v1/configs/components/application-general-tab-overide.tsx"
     ],
     "ignoreDependencies": [
         "babel-polyfill",
