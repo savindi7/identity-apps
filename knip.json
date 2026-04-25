@@ -13,7 +13,8 @@
         "**/babel.config.{js,cjs,mjs,json}",
         "identity-apps-core/**",
         "apps/console/src/extensions/i18n/**",
-        "modules/i18n/src/translations/**"
+        "modules/i18n/src/**",
+        "features/admin.server-configurations.v1/dynamic-connector.tsx"
     ],
     "ignoreDependencies": [
         "babel-polyfill",
