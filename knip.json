@@ -15,7 +15,7 @@
         "apps/console/src/extensions/i18n/**",
         "modules/i18n/src/**",
         "features/admin.server-configurations.v1/dynamic-connector.tsx",
-        "Discard changes to features/admin.applications.v1/components/application-danger-zone.tsx"
+        "features/admin.applications.v1/components/application-danger-zone.tsx"
     ],
     "ignoreDependencies": [
         "babel-polyfill",
