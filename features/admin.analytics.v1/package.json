@@ -11,8 +11,7 @@
         "@wso2is/admin.tenants.v1": "workspace:^",
         "@wso2is/core": "^2.12.13",
         "moesif-browser-js": "^1.8.0",
-        "react-redux": "^7.2.9",
-        "redux": "^4.0.4"
+        "react-redux": "^7.2.9"
     },
     "devDependencies": {
         "@rollup/plugin-commonjs": "^25.0.7",
