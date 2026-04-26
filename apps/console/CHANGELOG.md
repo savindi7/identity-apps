@@ -1,5 +1,11 @@
 # @wso2is/console
 
+## 4.5.8
+
+### Patch Changes
+
+- [#10195](https://github.com/wso2/identity-apps/pull/10195) [`d523920c1cc4f169e1c4afab767a67925e0811e3`](https://github.com/wso2/identity-apps/commit/d523920c1cc4f169e1c4afab767a67925e0811e3) Thanks [@NotoriousTechWorker](https://github.com/NotoriousTechWorker)! - Move dependencies to pnpm catalog
+
 ## 4.5.7
 
 ### Patch Changes
