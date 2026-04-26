@@ -31,9 +31,9 @@
         "typecheck": "pnpm compile"
     },
     "dependencies": {
-        "@mui/material": "5.13.0",
+        "@mui/material": "catalog:",
         "@mui/x-date-pickers": "6.18.0",
-        "@oxygen-ui/react": "^2.4.6",
+        "@oxygen-ui/react": "catalog:",
         "@oxygen-ui/react-icons": "^2.4.6",
         "@wso2is/core": "^2.12.11",
         "@wso2is/react-components": "^2.9.24",

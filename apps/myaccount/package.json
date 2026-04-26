@@ -37,9 +37,9 @@
     "dependencies": {
         "@asgardeo/auth-react": "^5.6.0",
         "@babel/polyfill": "^7.0.0",
-        "@mui/material": "^5.13.0",
-        "@mui/system": "^5.12.3",
-        "@oxygen-ui/react": "^2.4.6",
+        "@mui/material": "catalog:",
+        "@mui/system": "catalog:",
+        "@oxygen-ui/react": "catalog:",
         "@oxygen-ui/react-icons": "^2.4.6",
         "@wso2is/access-control": "^3.5.7",
         "@wso2is/admin.organizations.v1": "^2.28.2",
