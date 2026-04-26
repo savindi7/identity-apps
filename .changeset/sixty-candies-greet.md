@@ -1,0 +1,51 @@
+---
+"@wso2is/admin.identity-verification-providers.v1": patch
+"@wso2is/admin.password-recovery-flow-builder.v1": patch
+"@wso2is/admin.ask-password-flow-builder.v1": patch
+"@wso2is/admin.organization-discovery.v1": patch
+"@wso2is/admin.policy-administration.v1": patch
+"@wso2is/admin.approval-workflows.v1": patch
+"@wso2is/admin.identity-providers.v1": patch
+"@wso2is/admin.issuer-usage-scope.v1": patch
+"@wso2is/admin.login-flow-builder.v1": patch
+"@wso2is/admin.application-roles.v1": patch
+"@wso2is/admin.flow-builder-core.v1": patch
+"@wso2is/admin.console-settings.v1": patch
+"@wso2is/admin.email-management.v1": patch
+"@wso2is/admin.email-providers.v1": patch
+"@wso2is/admin.email-templates.v1": patch
+"@wso2is/admin.private-key-jwt.v1": patch
+"@wso2is/admin.administrators.v1": patch
+"@wso2is/admin.authentication.v1": patch
+"@wso2is/admin.api-resources.v2": patch
+"@wso2is/admin.email-and-sms.v1": patch
+"@wso2is/admin.impersonation.v1": patch
+"@wso2is/admin.login-flow.ai.v1": patch
+"@wso2is/admin.organizations.v1": patch
+"@wso2is/admin.applications.v1": patch
+"@wso2is/admin.certificates.v1": patch
+"@wso2is/admin.feature-gate.v1": patch
+"@wso2is/admin.org-insights.v1": patch
+"@wso2is/admin.provisioning.v1": patch
+"@wso2is/admin.branding.ai.v1": patch
+"@wso2is/admin.connections.v1": patch
+"@wso2is/admin.oidc-scopes.v1": patch
+"@wso2is/admin.extensions.v1": patch
+"@wso2is/admin.onboarding.v1": patch
+"@wso2is/admin.analytics.v1": patch
+"@wso2is/admin.branding.v1": patch
+"@wso2is/admin.actions.v1": patch
+"@wso2is/admin.copilot.v1": patch
+"@wso2is/admin.agents.v1": patch
+"@wso2is/admin.claims.v1": patch
+"@wso2is/admin.groups.v1": patch
+"@wso2is/admin.flows.v1": patch
+"@wso2is/admin.core.v1": patch
+"@wso2is/admin.home.v1": patch
+"@wso2is/admin.logs.v1": patch
+"@wso2is/admin.cds.v1": patch
+"@wso2is/console": patch
+"@wso2is/myaccount": patch
+---
+
+Remove unused dependencies
