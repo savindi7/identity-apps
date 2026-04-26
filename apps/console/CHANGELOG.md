@@ -1,5 +1,15 @@
 # @wso2is/console
 
+## 4.5.10
+
+### Patch Changes
+
+- [#10199](https://github.com/wso2/identity-apps/pull/10199) [`8b5c2d0feea5f6335ab9b27e7d661e0a2a813452`](https://github.com/wso2/identity-apps/commit/8b5c2d0feea5f6335ab9b27e7d661e0a2a813452) Thanks [@NotoriousTechWorker](https://github.com/NotoriousTechWorker)! - Fix build errors
+
+- Updated dependencies [[`8b5c2d0feea5f6335ab9b27e7d661e0a2a813452`](https://github.com/wso2/identity-apps/commit/8b5c2d0feea5f6335ab9b27e7d661e0a2a813452)]:
+  - @wso2is/admin.server-configurations.v1@2.38.50
+  - @wso2is/admin.extensions.v1@2.43.4
+
 ## 4.5.9
 
 ### Patch Changes
