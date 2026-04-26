@@ -1,12 +1,12 @@
 {
     "private": true,
     "name": "@wso2is/admin.private-key-jwt.v1",
-    "version": "2.25.205",
+    "version": "2.25.206",
     "description": "WSO2 Identity Server Console",
     "author": "WSO2",
     "license": "Apache-2.0",
     "dependencies": {
-        "@wso2is/admin.core.v1": "^2.49.95",
+        "@wso2is/admin.core.v1": "^2.57.3",
         "@wso2is/admin.server-configurations.v1": "^2.35.109",
         "@wso2is/core": "^2.7.0",
         "@wso2is/react-components": "^2.9.16",
