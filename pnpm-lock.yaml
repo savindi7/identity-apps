@@ -1634,7 +1634,7 @@ importers:
         specifier: ^2.57.3
         version: link:../admin.core.v1
       '@wso2is/admin.feature-gate.v1':
-        specifier: ^1.9.6
+        specifier: workspace:^
         version: link:../admin.feature-gate.v1
       '@wso2is/admin.organizations.v1':
         specifier: workspace:^
@@ -2980,6 +2980,9 @@ importers:
       '@wso2is/admin.extensions.v1':
         specifier: workspace:^
         version: link:../admin.extensions.v1
+      '@wso2is/admin.feature-gate.v1':
+        specifier: workspace:^
+        version: link:../admin.feature-gate.v1
       '@wso2is/admin.groups.v1':
         specifier: ^2.27.128
         version: link:../admin.groups.v1
@@ -17319,7 +17322,7 @@ importers:
         specifier: ^2.38.3
         version: link:../admin.extensions.v1
       '@wso2is/admin.feature-gate.v1':
-        specifier: ^1.6.3
+        specifier: workspace:^
         version: link:../admin.feature-gate.v1
       '@wso2is/core':
         specifier: ^2.7.6

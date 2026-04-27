@@ -9,6 +9,7 @@
         "@wso2is/admin.applications.v1": "workspace:^",
         "@wso2is/admin.core.v1": "^2.57.3",
         "@wso2is/admin.extensions.v1": "workspace:^",
+        "@wso2is/admin.feature-gate.v1": "workspace:^",
         "@wso2is/core": "^2.13.0",
         "@wso2is/admin.groups.v1": "^2.27.128",
         "@wso2is/admin.roles.v2": "^2.27.380",
