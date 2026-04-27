@@ -563,7 +563,7 @@ importers:
         specifier: ^2.31.1
         version: link:../../features/admin.claims.v1
       '@wso2is/admin.connections.v1':
-        specifier: ^2.37.2
+        specifier: ^2.37.3
         version: link:../../features/admin.connections.v1
       '@wso2is/admin.console-settings.v1':
         specifier: ^2.26.45

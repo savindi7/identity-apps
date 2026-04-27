@@ -1,5 +1,14 @@
 # @wso2is/console
 
+## 4.5.11
+
+### Patch Changes
+
+- [#10201](https://github.com/wso2/identity-apps/pull/10201) [`86c828169e4ebc17b8f9e059819e7739cb1e4e9e`](https://github.com/wso2/identity-apps/commit/86c828169e4ebc17b8f9e059819e7739cb1e4e9e) Thanks [@pavinduLakshan](https://github.com/pavinduLakshan)! - Add duo authenticator to connection constants
+
+- Updated dependencies [[`86c828169e4ebc17b8f9e059819e7739cb1e4e9e`](https://github.com/wso2/identity-apps/commit/86c828169e4ebc17b8f9e059819e7739cb1e4e9e)]:
+  - @wso2is/admin.connections.v1@2.37.3
+
 ## 4.5.10
 
 ### Patch Changes
