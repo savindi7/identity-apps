@@ -35,7 +35,7 @@
         "typecheck": "pnpm run compile"
     },
     "dependencies": {
-        "@asgardeo/auth-react": "^5.6.0",
+        "@asgardeo/auth-react": "^5.6.1",
         "@babel/polyfill": "^7.0.0",
         "@mui/material": "catalog:",
         "@mui/system": "catalog:",
