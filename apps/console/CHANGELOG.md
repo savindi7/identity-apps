@@ -1,5 +1,19 @@
 # @wso2is/console
 
+## 4.5.12
+
+### Patch Changes
+
+- [#10203](https://github.com/wso2/identity-apps/pull/10203) [`4eb39168ef1c46f4c3d31013e09d5a3fbed15368`](https://github.com/wso2/identity-apps/commit/4eb39168ef1c46f4c3d31013e09d5a3fbed15368) Thanks [@Lakshan-Banneheke](https://github.com/Lakshan-Banneheke)! - Feature gate webhooks, workflows, actions
+
+- Updated dependencies [[`4eb39168ef1c46f4c3d31013e09d5a3fbed15368`](https://github.com/wso2/identity-apps/commit/4eb39168ef1c46f4c3d31013e09d5a3fbed15368)]:
+  - @wso2is/admin.actions.v1@1.15.7
+  - @wso2is/admin.approval-workflows.v1@1.3.30
+  - @wso2is/admin.extensions.v1@2.43.5
+  - @wso2is/admin.feature-gate.v1@1.9.7
+  - @wso2is/admin.webhooks.v1@1.1.3
+  - @wso2is/access-control@3.5.8
+
 ## 4.5.11
 
 ### Patch Changes
