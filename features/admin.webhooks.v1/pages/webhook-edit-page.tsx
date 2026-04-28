@@ -114,7 +114,7 @@ const WebhookEditPage: FunctionComponent<WebhookEditPageInterface> = ({
         if (webhooksFeatureStatus && webhooksFeatureStatus !== FeatureStatus.ENABLED) {
             navigateToWebhooksList();
         }
-    }, [ webhooksFeatureStatus ]);
+    }, [ webhooksFeatureStatus, navigateToWebhooksList ]);
 
     // Extract webhook ID from URL
     const webhookId: string = useMemo(() => {
