@@ -1,5 +1,11 @@
 # @wso2is/myaccount
 
+## 4.1.18
+
+### Patch Changes
+
+- [#10208](https://github.com/wso2/identity-apps/pull/10208) [`acee8bcc6cde7d212cf28a40ccde208768643c53`](https://github.com/wso2/identity-apps/commit/acee8bcc6cde7d212cf28a40ccde208768643c53) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - update @asgardeo/auth-react dependency to version 5.6.1
+
 ## 4.1.17
 
 ### Patch Changes
