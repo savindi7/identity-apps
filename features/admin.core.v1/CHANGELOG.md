@@ -1,5 +1,11 @@
 # @wso2is/admin.core.v1
 
+## 2.57.4
+
+### Patch Changes
+
+- [#10210](https://github.com/wso2/identity-apps/pull/10210) [`f0f3d1335b420611e694640872d71e59c3505bd1`](https://github.com/wso2/identity-apps/commit/f0f3d1335b420611e694640872d71e59c3505bd1) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - update copilot toggle implementation to use button instead of menu item
+
 ## 2.57.3
 
 ### Patch Changes

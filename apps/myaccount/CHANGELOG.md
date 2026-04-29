@@ -1,5 +1,11 @@
 # @wso2is/myaccount
 
+## 4.1.19
+
+### Patch Changes
+
+- [#10212](https://github.com/wso2/identity-apps/pull/10212) [`49e1a4ac7b047b2e5f6f75e3958831a889407859`](https://github.com/wso2/identity-apps/commit/49e1a4ac7b047b2e5f6f75e3958831a889407859) Thanks [@JayaShakthi97](https://github.com/JayaShakthi97)! - Enhance feature checks for account linking feature
+
 ## 4.1.18
 
 ### Patch Changes
