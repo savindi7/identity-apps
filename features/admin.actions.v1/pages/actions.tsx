@@ -82,7 +82,7 @@ type ActionTypesListingPageInterface = IdentifiableComponentInterface;
  * @param props - Props injected to the component.
  * @returns Action Types listing page component.
  */
-export const ActionTypesListingPage: FunctionComponent<ActionTypesListingPageInterface> = ({
+const ActionTypesListingPage: FunctionComponent<ActionTypesListingPageInterface> = ({
     "data-componentid": _componentId = "action-types-listing-page"
 }: ActionTypesListingPageInterface): ReactElement => {
 

@@ -68,7 +68,7 @@ export interface DefaultLayoutPropsInterface extends RouteComponentProps {
  *
  * @returns Dashboard Layout.
  */
-export const DefaultLayout: FunctionComponent<DefaultLayoutPropsInterface> = ({
+const DefaultLayout: FunctionComponent<DefaultLayoutPropsInterface> = ({
     location
 }: DefaultLayoutPropsInterface): ReactElement => {
     const { t } = useTranslation();

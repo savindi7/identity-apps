@@ -68,7 +68,7 @@ const ORGANIZATION_POLICY_RADIO_OPTIONS: RadioChild[] = [
  * @param props - Props injected to the component.
  * @returns Functional Component.
  */
-export const WebhookSettingsForm: FunctionComponent<WebhookSettingsFormPropsInterface> = ({
+const WebhookSettingsForm: FunctionComponent<WebhookSettingsFormPropsInterface> = ({
     ["data-componentid"]: componentId = "webhook-settings-page"
 }: WebhookSettingsFormPropsInterface): ReactElement => {
 
