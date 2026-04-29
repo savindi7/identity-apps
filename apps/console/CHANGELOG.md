@@ -1,5 +1,40 @@
 # @wso2is/console
 
+## 4.5.16
+
+### Patch Changes
+
+- [#10219](https://github.com/wso2/identity-apps/pull/10219) [`783edc1aa96f58facf455b05d204b3bb066ba65c`](https://github.com/wso2/identity-apps/commit/783edc1aa96f58facf455b05d204b3bb066ba65c) Thanks [@NotoriousTechWorker](https://github.com/NotoriousTechWorker)! - Remove duplicate exports
+
+- Updated dependencies [[`783edc1aa96f58facf455b05d204b3bb066ba65c`](https://github.com/wso2/identity-apps/commit/783edc1aa96f58facf455b05d204b3bb066ba65c)]:
+  - @wso2is/admin.password-recovery-flow-builder.v1@1.1.212
+  - @wso2is/admin.ask-password-flow-builder.v1@1.1.212
+  - @wso2is/admin.registration-flow-builder.v1@0.10.171
+  - @wso2is/admin.organization-discovery.v1@2.25.210
+  - @wso2is/admin.server-configurations.v1@2.38.51
+  - @wso2is/admin.saml2-configuration.v1@2.25.208
+  - @wso2is/admin.wsfed-configuration.v1@2.25.207
+  - @wso2is/admin.approval-workflows.v1@1.3.31
+  - @wso2is/admin.session-management.v1@2.26.6
+  - @wso2is/admin.administrators.v1@2.29.210
+  - @wso2is/admin.email-and-sms.v1@2.25.209
+  - @wso2is/admin.impersonation.v1@1.6.208
+  - @wso2is/admin.applications.v1@2.42.24
+  - @wso2is/admin.connections.v1@2.37.4
+  - @wso2is/admin.onboarding.v1@1.0.83
+  - @wso2is/admin.validation.v1@2.28.4
+  - @wso2is/admin.webhooks.v1@1.1.4
+  - @wso2is/admin.actions.v1@1.15.8
+  - @wso2is/admin.tenants.v1@2.29.28
+  - @wso2is/admin.claims.v1@2.31.2
+  - @wso2is/admin.roles.v2@2.27.381
+  - @wso2is/admin.users.v1@2.38.36
+  - @wso2is/admin.core.v1@2.57.6
+  - @wso2is/admin.logs.v1@1.6.8
+  - @wso2is/admin.cds.v1@1.6.4
+  - @wso2is/dynamic-forms@2.4.42
+  - @wso2is/forms@2.3.27
+
 ## 4.5.15
 
 ### Patch Changes
