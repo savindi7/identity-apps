@@ -51,7 +51,7 @@ const FORM_ID: string = "impersonation-configuration-form";
 /**
  * Impersonation Configuration page.
  */
-export const ImpersonationConfigurationPage: FunctionComponent<ImpersonationConfigurationPageInterface> = (
+const ImpersonationConfigurationPage: FunctionComponent<ImpersonationConfigurationPageInterface> = (
     props: ImpersonationConfigurationPageInterface
 ): ReactElement => {
     const { [ "data-componentid" ]: componentId } = props;
@@ -271,3 +271,5 @@ export const ImpersonationConfigurationPage: FunctionComponent<ImpersonationConf
 ImpersonationConfigurationPage.defaultProps = {
     "data-componentid": "impersonation-configuration-page"
 };
+
+export default ImpersonationConfigurationPage;
