@@ -271,5 +271,3 @@ export const ImpersonationConfigurationPage: FunctionComponent<ImpersonationConf
 ImpersonationConfigurationPage.defaultProps = {
     "data-componentid": "impersonation-configuration-page"
 };
-
-export default ImpersonationConfigurationPage;
