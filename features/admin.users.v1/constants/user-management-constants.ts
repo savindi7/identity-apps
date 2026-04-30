@@ -249,13 +249,6 @@ export enum UserAccountTypesMain {
 
 /**
  * @readonly
- * @typeParam string - Types of attributes that cannot be bulk imported.
- */
-export enum BlockedBulkUserImportAttributes {
-}
-
-/**
- * @readonly
  * @typeParam string - Types of attributes that should be handled manually.
  */
 export enum SpecialMultiValuedComplexAttributes {
