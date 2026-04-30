@@ -1,5 +1,11 @@
 # @wso2is/console
 
+## 4.5.17
+
+### Patch Changes
+
+- [#10221](https://github.com/wso2/identity-apps/pull/10221) [`c64c9c7722283ef2624ef9a5bd8363dfc413a118`](https://github.com/wso2/identity-apps/commit/c64c9c7722283ef2624ef9a5bd8363dfc413a118) Thanks [@RavindiFernando](https://github.com/RavindiFernando)! - Fix: Copilot feature visibility to sub-level organizations
+
 ## 4.5.16
 
 ### Patch Changes
