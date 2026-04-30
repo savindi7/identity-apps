@@ -78,36 +78,7 @@ export enum AcceptHeaderValues {
  * @enum {string}
  */
 export enum ContentTypeHeaderValues {
-    /**
-     * Value for JSON type content type entity header.
-     *
-     * @type {string}
-     */
-    APP_JSON = "application/json",
-    /**
-     * Value for XML type content type entity header.
-     *
-     * @type {string}
-     */
-    APP_XML = "application/xml",
-    /**
-     * Value for javascript type content type entity header.
-     *
-     * @type {string}
-     */
-    APP_JAVASCRIPT = "application/javascript",
-    /**
-     * Value for form type content type entity header.
-     *
-     * @type {string}
-     */
-    APP_FORM = "application/x-www-form-urlencoded",
-    /**
-     * Value for SCIM type content type entity header.
-     *
-     * @type {string}
-     */
-    APP_SCIM = "application/scim+json"
+    APP_JSON = "application/json"
 }
 
 /**

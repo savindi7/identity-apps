@@ -1,6 +1,6 @@
 {
     "$schema": "https://unpkg.com/knip@latest/schema.json",
-    "include": ["files", "duplicates"],
+    "include": ["files", "duplicates", "enumMembers", "unlisted"],
     "ignore": [
         "**/dist/**",
         "**/build/**",
@@ -19,6 +19,11 @@
         "features/admin.applications.v1/components/application-danger-zone.tsx",
         "features/admin.extensions.v1/configs/components/application-general-tab-overide.tsx"
     ],
+    "ignoreIssues": {
+        "features/common.branding.v1/models/branding-preferences.ts": ["enumMembers"],
+        "features/admin.identity-providers.v1/models/identity-provider.ts": ["enumMembers"],
+        "features/admin.applications.v1/models/application-inbound.ts": ["enumMembers"]
+    },
     "ignoreDependencies": [
         "babel-polyfill",
         "react-app-polyfill",

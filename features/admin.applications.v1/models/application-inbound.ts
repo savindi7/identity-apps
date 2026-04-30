@@ -279,8 +279,7 @@ export enum SupportedAuthProtocolName {
 export enum DefaultProtocolTemplate {
     SAML = "default-saml",
     OIDC = "default-oidc",
-    WS_FEDERATION = "default-ws-federation",
-    WS_TRUST = "default-ws-trust"
+    WS_FEDERATION = "default-ws-federation"
 }
 
 /**

@@ -65,7 +65,7 @@ jobs:
         id: install-dependencies
         run: pnpm install
 
-      - name: 🔪 Run Knip
+      - name: ✂️ Run Knip
         id: run-knip
         # Knip findings and runtime failures will fail CI.
         run: pnpm knip:ci
