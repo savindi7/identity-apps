@@ -90,6 +90,9 @@ const DefaultLayout: FunctionComponent<DefaultLayoutPropsInterface> = ({
     const hasGettingStartedViewPermission: boolean = useRequiredScopes(gettingStartedFeatureConfig?.scopes?.feature);
 
     const { isVisible: isCopilotVisible, togglePanel: toggleCopilotPanel } = useCopilotPanel();
+    const isFirstLevelOrganization: boolean = useSelector(
+        (state: AppState) => state.organization.isFirstLevelOrganization
+    );
 
     const [ filteredRoutes, setFilteredRoutes ] = useState<RouteInterface[]>(getDefaultLayoutRoutes());
 
@@ -192,7 +195,7 @@ const DefaultLayout: FunctionComponent<DefaultLayoutPropsInterface> = ({
             <AppShell
                 header={
                     (<Header
-                        copilotToggle={ featureConfig?.copilot?.enabled ? {
+                        copilotToggle={ featureConfig?.copilot?.enabled && isFirstLevelOrganization ? {
                             icon: <AISparkleIcon
                                 width={ 20 }
                                 height={ 20 }
@@ -244,7 +247,7 @@ const DefaultLayout: FunctionComponent<DefaultLayoutPropsInterface> = ({
                     </Suspense>
                 </ErrorBoundary>
             </AppShell>
-            { featureConfig?.copilot?.enabled && (
+            { featureConfig?.copilot?.enabled && isFirstLevelOrganization && (
                 <ErrorBoundary
                     onChunkLoadError={ AppUtils.onChunkLoadError }
                     handleError={ (_error: Error, _errorInfo: React.ErrorInfo) => {
