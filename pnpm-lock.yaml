@@ -647,7 +647,7 @@ importers:
         specifier: ^1.7.166
         version: link:../../features/admin.remote-userstores.v1
       '@wso2is/admin.roles.v2':
-        specifier: ^2.27.381
+        specifier: ^2.27.382
         version: link:../../features/admin.roles.v2
       '@wso2is/admin.saml2-configuration.v1':
         specifier: ^2.25.208
@@ -719,7 +719,7 @@ importers:
         specifier: ^2.3.27
         version: link:../../modules/forms
       '@wso2is/i18n':
-        specifier: ^2.39.1
+        specifier: ^2.39.2
         version: link:../../modules/i18n
       '@wso2is/react-components':
         specifier: ^2.10.2
@@ -12479,7 +12479,7 @@ importers:
         specifier: ^2.3.27
         version: link:../../modules/forms
       '@wso2is/i18n':
-        specifier: ^2.39.0
+        specifier: ^2.39.2
         version: link:../../modules/i18n
       '@wso2is/react-components':
         specifier: ^2.10.0
