@@ -32,7 +32,10 @@
             ],
             "project": [
                 "src/**/*.{ts,tsx}"
-            ]
+            ],
+            "webpack": {
+                "config": []
+            }
         },
         "apps/myaccount": {
             "entry": [
@@ -41,9 +44,15 @@
             ],
             "project": [
                 "src/**/*.{ts,tsx}"
-            ]
+            ],
+            "webpack": {
+                "config": []
+            }
         },
         "features": {
+            "entry": [
+                "index.ts"
+            ],
             "project": [
                 "**/*.{ts,tsx}",
                 "!admin.*/**"
