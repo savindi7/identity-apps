@@ -16,6 +16,8 @@
  * under the License.
  */
 
+import { IdentityAppsError } from "@wso2is/core/errors";
+
 export const APPLICATION_DOMAIN: string = "Application/";
 export const INTERNAL_DOMAIN: string = "Internal";
 export const ROLE_VIEW_PATH: string = "/roles/";
@@ -126,6 +128,16 @@ export class RoleConstants {
      * This is used to check if the user has permission to update users in a role.
      */
     public static readonly ROLE_USERS_UPDATE: string = "internal_role_mgt_users_update";
+
+    /**
+     * Role create limit reached error.
+     */
+    public static readonly ERROR_CREATE_LIMIT_REACHED: IdentityAppsError = new IdentityAppsError(
+        "ASG-FG-API-60002",
+        "roles:notifications.apiLimitReachedError.error.description",
+        "roles:notifications.apiLimitReachedError.error.message",
+        "f637d53d-ddcc-483e-a4ab-80213c3bd840"
+    );
 }
 
 /**
