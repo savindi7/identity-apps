@@ -1034,6 +1034,9 @@ importers:
       '@wso2is/core':
         specifier: ^2.13.1
         version: link:../../modules/core
+      '@wso2is/form':
+        specifier: ^2.10.2
+        version: link:../../modules/form
       '@wso2is/forms':
         specifier: ^2.3.27
         version: link:../../modules/forms
@@ -19882,6 +19885,9 @@ importers:
       '@wso2is/core':
         specifier: ^2.7.0
         version: link:../core
+      '@wso2is/react-components':
+        specifier: ^2.10.1
+        version: link:../react-components
       classnames:
         specifier: ^2.2.6
         version: 2.5.1
@@ -20203,6 +20209,9 @@ importers:
       jest:
         specifier: ^29.7.0
         version: 29.7.0(@types/node@13.13.52)(babel-plugin-macros@3.1.0)(node-notifier@8.0.2)(ts-node@10.9.2(@swc/core@1.5.7(@swc/helpers@0.5.21))(@types/node@13.13.52)(typescript@5.9.3))
+      path-browserify:
+        specifier: ^1.0.1
+        version: 1.0.1
       postcss-import:
         specifier: ^14.1.0
         version: 14.1.0(postcss@8.5.10)

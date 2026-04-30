@@ -68,36 +68,7 @@ export enum HttpMethods {
  * @enum {string}
  */
 export enum AcceptHeaderValues {
-    /**
-     * Value for JSON type Accept header.
-     *
-     * @type {string}
-     */
-    APP_JSON = "application/json",
-    /**
-     * Value for XML type Accept header.
-     *
-     * @type {string}
-     */
-    APP_XML = "application/xml",
-    /**
-     * Value for javascript type Accept header.
-     *
-     * @type {string}
-     */
-    APP_JAVASCRIPT = "application/javascript",
-    /**
-     * Value for form type Accept header.
-     *
-     * @type {string}
-     */
-    APP_FORM = "application/x-www-form-urlencoded",
-    /**
-     * Value for SCIM type Accept header.
-     *
-     * @type {string}
-     */
-    APP_SCIM = "application/scim+json"
+    APP_JSON = "application/json"
 }
 
 /**

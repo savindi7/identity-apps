@@ -117,9 +117,5 @@ export interface OrganizationDiscoveryCheckResponseInterface {
  */
 export enum AutoCompleteReasonType {
     CREATE_OPTION = "createOption",
-    REMOVE_OPTION = "removeOption",
-    SELECT_OPTION = "selectOption",
-    CLEAR = "clear",
-    RESET = "reset",
-    BLUR = "blur"
+    REMOVE_OPTION = "removeOption"
 }

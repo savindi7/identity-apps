@@ -82,8 +82,7 @@ export interface ParentOrgUserInvitationResult {
  * Enum for the result status of a parent org user invite.
  */
 export enum ParentOrgUserInviteResultStatus {
-    SUCCESS = "Successful",
-    FAIL = "Failed"
+    SUCCESS = "Successful"
 }
 
 /**

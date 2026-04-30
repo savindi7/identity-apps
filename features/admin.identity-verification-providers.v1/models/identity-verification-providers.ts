@@ -88,7 +88,6 @@ export enum IdVPEditTabContentType {
 export enum IdVPEditTabIDs {
     GUIDE = "setup-guide",
     GENERAL = "general",
-    SETTINGS = "settings",
     ATTRIBUTES = "attributes"
 }
 

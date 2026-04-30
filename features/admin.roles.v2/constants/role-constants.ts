@@ -132,8 +132,6 @@ export class RoleConstants {
  * Enum for SCIM2 schemas used in roles.
  */
 export enum Schemas {
-    SEARCH_REQUEST = "urn:ietf:params:scim:api:messages:2.0:SearchRequest",
-    BULK_REQUEST = "urn:ietf:params:scim:api:messages:2.0:BulkRequest",
     PATCH_OP = "urn:ietf:params:scim:api:messages:2.0:PatchOp"
 }
 

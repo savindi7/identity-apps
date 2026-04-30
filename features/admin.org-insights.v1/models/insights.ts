@@ -115,8 +115,6 @@ export type FilterAttribute = FilterCondition
 
 export enum OrgInsightsFeature {
     COMPARE_WITH_LAST_PERIOD = "compareWithLastPeriod",
-    ADVANCED_INSIGHT_FILTERING = "advancedInsightFiltering",
-    REGISTRATION_INSIGHTS = "registrationInsights",
     M2M_INSIGHTS = "m2mInsights",
 }
 
@@ -142,6 +140,5 @@ export enum AuthenticatorFilterValue {
     OIDC = "OpenIDConnectAuthenticator",
     SAML = "SAMLSSOAuthenticator",
     HYPR = "HYPRAuthenticator",
-    IPROOV = "IproovAuthenticator",
-    ORGANIZATION_AUTHENTICATOR = "OrganizationAuthenticator"
+    IPROOV = "IproovAuthenticator"
 }

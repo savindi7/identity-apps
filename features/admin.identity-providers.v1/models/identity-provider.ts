@@ -227,12 +227,6 @@ export interface IdentityProviderTemplateListItemInterface extends IdentityProvi
  * @readonly
  */
 export enum SupportedAuthenticators {
-    NONE = "none",
-    APPLE = "AppleOIDCAuthenticator",
-    FACEBOOK = "FacebookAuthenticator",
-    GOOGLE = "GoogleOIDCAuthenticator",
-    TWITTER = "TwitterAuthenticator",
-    MICROSOFT= "MicrosoftAuthenticator",
     OIDC = "OpenIDConnectAuthenticator",
     SAML = "SAMLSSOAuthenticator"
 }
@@ -648,7 +642,6 @@ export enum AuthProtocolTypes {
  * Enum for IdP Tab types
  */
 export enum IdentityProviderTabTypes {
-    GENERAL = "General",
     SETTINGS ="settings",
     USER_ATTRIBUTES = "user-attributes",
     ADVANCED = "advanced",

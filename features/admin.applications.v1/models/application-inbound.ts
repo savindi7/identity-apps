@@ -268,10 +268,7 @@ export enum SupportedCustomAuthProtocolTypes {
  * @readonly
  */
 export enum SupportedAuthProtocolName {
-    SAML = "saml",
-    OIDC = "oidc",
-    WS_FEDERATION = "ws-federation",
-    WS_TRUST = "ws-trust"
+    OIDC = "oidc"
 }
 
 /**
@@ -326,8 +323,6 @@ interface SAMLAssertionConfigurationInterface {
 }
 
 export enum SAML2BindingTypes {
-    HTTP_POST= "HTTP_POST",
-    HTTP_REDIRECT= "HTTP_REDIRECT",
     ARTIFACT= "ARTIFACT"
 }
 
@@ -452,7 +447,6 @@ export interface PassiveStsConfigurationInterface {
 }
 
 export enum CustomTypeEnum {
-    STRING = "STRING",
     BOOLEAN = "BOOLEAN",
     INTEGER = "INTEGER"
 }

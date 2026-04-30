@@ -107,7 +107,6 @@ export class OrganizationManagementConstants {
 }
 
 export enum ORGANIZATION_TYPE {
-    STRUCTURAL = "STRUCTURAL",
     TENANT = "TENANT"
 }
 

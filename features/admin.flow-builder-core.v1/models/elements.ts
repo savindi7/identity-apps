@@ -42,7 +42,6 @@ export interface Element<T = any> extends Base<T> {
 
 export enum ElementCategories {
     Action = "ACTION",
-    Block = "BLOCK",
     Display = "DISPLAY",
     Field = "FIELD"
 }
@@ -68,7 +67,6 @@ export enum InputVariants {
     Password = "PASSWORD",
     Email = "EMAIL",
     Telephone = "TELEPHONE",
-    Number = "NUMBER",
     Checkbox = "CHECKBOX",
     OTP = "OTP",
     Choice = "CHOICE"
@@ -82,8 +80,7 @@ export enum ButtonVariants {
 }
 
 export enum ButtonTypes {
-    Submit = "submit",
-    Button = "button"
+    Submit = "submit"
 }
 
 export enum TypographyVariants {
@@ -92,9 +89,7 @@ export enum TypographyVariants {
     H3 = "H3",
     H4 = "H4",
     H5 = "H5",
-    H6 = "H6",
-    Body1 = "BODY1",
-    Body2 = "BODY2"
+    H6 = "H6"
 }
 
 export enum DividerVariants {

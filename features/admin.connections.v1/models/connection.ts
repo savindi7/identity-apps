@@ -668,8 +668,7 @@ export enum AuthProtocolTypes {
     SAML = "saml",
     OIDC = "oidc",
     WS_FEDERATION = "passive-sts",
-    WS_TRUST = "ws-trust",
-    CUSTOM= "custom"
+    WS_TRUST = "ws-trust"
 }
 
 export interface TemplateConfigInterface<T = Record<string, unknown>> {
