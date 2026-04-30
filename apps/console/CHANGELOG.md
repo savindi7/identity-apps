@@ -1,5 +1,15 @@
 # @wso2is/console
 
+## 4.5.18
+
+### Patch Changes
+
+- [#10215](https://github.com/wso2/identity-apps/pull/10215) [`237eda6cc0a0312286f8a4a2915fbb4856a02ba7`](https://github.com/wso2/identity-apps/commit/237eda6cc0a0312286f8a4a2915fbb4856a02ba7) Thanks [@Lakshan-Banneheke](https://github.com/Lakshan-Banneheke)! - Add support for handling groups tier limit
+
+- Updated dependencies [[`237eda6cc0a0312286f8a4a2915fbb4856a02ba7`](https://github.com/wso2/identity-apps/commit/237eda6cc0a0312286f8a4a2915fbb4856a02ba7)]:
+  - @wso2is/admin.groups.v1@2.27.129
+  - @wso2is/i18n@2.39.1
+
 ## 4.5.17
 
 ### Patch Changes
