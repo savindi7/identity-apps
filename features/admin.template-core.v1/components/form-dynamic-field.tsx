@@ -43,7 +43,7 @@ import "./form-dynamic-field.scss";
 /**
  * Prop types for the dynamic input fields.
  */
-export interface FormDynamicFieldPropsInterface extends IdentifiableComponentInterface {
+interface FormDynamicFieldPropsInterface extends IdentifiableComponentInterface {
     /**
      * Field configs.
      */

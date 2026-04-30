@@ -37,7 +37,7 @@ import "./admin-session-advisory-banner.scss";
 /**
  * Props interface of {@link SystemSettingsTabs}
  */
-export type AdminAdvisoryBannerInterface = IdentifiableComponentInterface;
+type AdminAdvisoryBannerInterface = IdentifiableComponentInterface;
 
 interface AdminAdvisoryConfigurationInterface {
     /**

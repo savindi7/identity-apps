@@ -88,7 +88,7 @@ import {
 import { ConnectionsManagementUtils } from "../../utils/connection-utils";
 import "./custom-authenticator-create-wizard.scss";
 
-export interface CustomAuthenticatorCreateWizardPropsInterface
+interface CustomAuthenticatorCreateWizardPropsInterface
     extends GenericConnectionCreateWizardPropsInterface,
         IdentifiableComponentInterface {
     /**

@@ -58,7 +58,7 @@ interface AddTenantWizardFormPropsInterface extends TestableComponentInterface {
 /**
  * Interface to capture add tenant wizard form error messages.
  */
-export interface AddTenantWizardFormErrorValidationsInterface {
+interface AddTenantWizardFormErrorValidationsInterface {
     tenantName: string;
     deploymentUnitName?: string
 }
