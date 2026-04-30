@@ -5,7 +5,6 @@
     "description": "WSO2 Identity Server My Account",
     "author": "WSO2",
     "license": "Apache-2.0",
-    "main": "index.js",
     "scripts": {
         "build": "pnpm build:prod",
         "build:prod": "pnpm nx run myaccount:build",
