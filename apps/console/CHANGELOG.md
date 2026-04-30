@@ -1,5 +1,11 @@
 # @wso2is/console
 
+## 4.5.20
+
+### Patch Changes
+
+- [#10223](https://github.com/wso2/identity-apps/pull/10223) [`7d6c89fe5e01a71db518ba2ae0b7f527e37dfd1f`](https://github.com/wso2/identity-apps/commit/7d6c89fe5e01a71db518ba2ae0b7f527e37dfd1f) Thanks [@NotoriousTechWorker](https://github.com/NotoriousTechWorker)! - Remove unused exported enum members and unlisted dependencies
+
 ## 4.5.19
 
 ### Patch Changes
