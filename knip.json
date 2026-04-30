@@ -1,6 +1,6 @@
 {
     "$schema": "https://unpkg.com/knip@latest/schema.json",
-    "include": ["files", "duplicates", "enumMembers", "unlisted"],
+    "include": ["files", "duplicates", "enumMembers", "unlisted", "types"],
     "ignore": [
         "**/dist/**",
         "**/build/**",

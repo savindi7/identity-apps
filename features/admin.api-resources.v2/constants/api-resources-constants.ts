@@ -88,7 +88,7 @@ export enum APIResourceType {
 * Manamgement API Resources are prefixed with `TENANT`.
 * Organization API Resources are prefixed with `ORGANIZATION`.
 */
-export enum APIResourceCategoryPrefixes {
+enum APIResourceCategoryPrefixes {
     MANAGEMENT = "TENANT",
     ORGANIZATION = "ORGANIZATION"
 }

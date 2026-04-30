@@ -56,7 +56,7 @@ import "./resource-create-wizard.scss";
 /**
  * Prop types of the `ResourceCreateWizard` component.
  */
-export interface ResourceCreateWizardPropsInterface extends ModalProps, IdentifiableComponentInterface {
+interface ResourceCreateWizardPropsInterface extends ModalProps, IdentifiableComponentInterface {
     /**
      * Whether the resource creation wizard should be displayed.
      */

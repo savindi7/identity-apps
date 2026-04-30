@@ -413,7 +413,7 @@ export enum RecoveryScenario {
  *
  * @readonly
  */
-export enum RecoveryOptionTypes {
+enum RecoveryOptionTypes {
     CODE = "code",
     LINK = "link"
 }

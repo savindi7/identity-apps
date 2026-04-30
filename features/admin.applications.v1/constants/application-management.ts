@@ -642,7 +642,7 @@ export class ApplicationManagementConstants {
     public static readonly B2B_APPLICATION_SHARE: string = "B2B_APPLICATION_SHARE";
 }
 
-export enum ShareWithOrgStatus {
+enum ShareWithOrgStatus {
     TRUE,
     FALSE,
     UNDEFINED

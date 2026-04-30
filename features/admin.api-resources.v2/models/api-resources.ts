@@ -293,7 +293,7 @@ export interface APIResourceEndpointsInterface {
 /**
  * Interface to contain scope information
  */
-export interface ScopeInterface {
+interface ScopeInterface {
     id: string;
     displayName?: string;
     name?: string;

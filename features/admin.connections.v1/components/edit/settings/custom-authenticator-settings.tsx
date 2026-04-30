@@ -57,7 +57,7 @@ import "./custom-authenticator-settings.scss";
 /**
  * Proptypes for the Custom Local Authenticator edit page component.
  */
-export interface CustomAuthenticatorSettingsPagePropsInterface extends IdentifiableComponentInterface {
+interface CustomAuthenticatorSettingsPagePropsInterface extends IdentifiableComponentInterface {
     /**
      * Is the authenticator a custom local authenticator.
      */

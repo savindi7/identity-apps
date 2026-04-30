@@ -56,14 +56,14 @@ export interface CIBANotificationChannelInterface {
 /**
  * CIBA related metadata.
  */
-export interface CIBAMetaDataInterface {
+interface CIBAMetaDataInterface {
     supportedNotificationChannels?: CIBANotificationChannelInterface[];
 }
 
 /**
  * FAPI related metadata.
  */
-export interface FapiMetaDataInterface {
+interface FapiMetaDataInterface {
     allowedSignatureAlgorithms: MetadataPropertyInterface;
     allowedEncryptionAlgorithms: MetadataPropertyInterface;
     tokenEndpointAuthMethod: MetadataPropertyInterface;
@@ -118,7 +118,7 @@ export interface OAuth2PKCEConfigurationInterface {
     supportPlainTransformAlgorithm?: boolean;
 }
 
-export interface HybridFlowConfigurationInterface {
+interface HybridFlowConfigurationInterface {
     enable?: boolean;
     responseType?: string;
 }
@@ -126,14 +126,14 @@ export interface HybridFlowConfigurationInterface {
 /**
  * OIDC client authentication related properties.
  */
-export interface ClientAuthenticationConfigurationInterface {
+interface ClientAuthenticationConfigurationInterface {
     tokenEndpointAuthMethod?: string;
     tokenEndpointAllowReusePvtKeyJwt?: boolean;
     tokenEndpointAuthSigningAlg?: string;
     tlsClientAuthSubjectDn?: string;
 }
 
-export interface PushedAuthRequestConfigurationInterface {
+interface PushedAuthRequestConfigurationInterface {
     requirePushAuthorizationRequest?: boolean;
 }
 
@@ -142,7 +142,7 @@ interface RequestObjectEncryptionConfigurationInterface {
     method?: string;
 }
 
-export interface RequestObjectConfigurationInterface {
+interface RequestObjectConfigurationInterface {
     requestObjectSigningAlg?: string;
     encryption?: RequestObjectEncryptionConfigurationInterface;
 }
@@ -196,7 +196,7 @@ interface SubjectConfigInterface {
 /**
  * CIBA authentication related properties.
  */
-export interface CIBAAuthenticationConfigurationInterface {
+interface CIBAAuthenticationConfigurationInterface {
     allowFederatedUsers?: boolean;
     authReqExpiryTime?: number;
     notificationChannels?: string[];
@@ -287,7 +287,7 @@ export enum DefaultProtocolTemplate {
  *
  * @readonly
  */
-export enum SupportedQuickStartTemplateTypes {
+enum SupportedQuickStartTemplateTypes {
     SPA = "spa",
     OAUTH_WEB_APP = "oauthWebApp"
 }
@@ -333,7 +333,7 @@ interface SingleSignOnProfileInterface {
     assertion?: SAMLAssertionConfigurationInterface;
 }
 
-export interface SAMLAttributeProfileInterface {
+interface SAMLAttributeProfileInterface {
     enabled?: boolean;
     alwaysIncludeAttributesInResponse?: boolean;
     nameFormat?: string;
@@ -394,7 +394,7 @@ export interface SAML2ServiceProviderInterface {
 /**
  * SAML template configurations for an application.
  */
-export interface SAML2TemplateServiceProviderInterface {
+interface SAML2TemplateServiceProviderInterface {
     issuer: string;
     assertionConsumerUrls?: Array<string>;
 }

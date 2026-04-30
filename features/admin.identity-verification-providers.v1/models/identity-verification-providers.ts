@@ -161,7 +161,7 @@ export interface IdVPTemplateInterface {
     payload: IdentityVerificationProviderInterface;
 }
 
-export interface IdVPTemplateResponseInterface {
+interface IdVPTemplateResponseInterface {
     payload: {
         Name: string;
         Type?: string;

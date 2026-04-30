@@ -89,7 +89,7 @@ export interface ExtendedExternalClaimInterface extends ExternalClaim {
     requested?: boolean;
 }
 
-export interface AdvanceSettingsSubmissionInterface {
+interface AdvanceSettingsSubmissionInterface {
     subject: SubjectConfigInterface;
     role: RoleConfigInterface;
     oidc: OIDCDataInterface

@@ -45,7 +45,7 @@ export const APPROVAL_WORKFLOW_VALIDATION_REGEX_PATTERNS: ApprovalWorkflowValida
 /**
  * Approval workflow edit tabs
  */
-export enum ApprovalWorkflowEditTabIDs {
+enum ApprovalWorkflowEditTabIDs {
     GENERAL = "general",
     OPERATIONS = "workflow operations",
     CONFIGURATIONS = "approval steps",

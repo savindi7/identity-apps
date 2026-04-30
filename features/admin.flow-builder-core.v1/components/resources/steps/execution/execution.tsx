@@ -33,7 +33,7 @@ import View from "../view/view";
 /**
  * Props interface of {@link Execution}
  */
-export type ExecutionPropsInterface = CommonStepFactoryPropsInterface & IdentifiableComponentInterface;
+type ExecutionPropsInterface = CommonStepFactoryPropsInterface & IdentifiableComponentInterface;
 
 /**
  * Execution Node component.
