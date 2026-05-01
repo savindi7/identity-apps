@@ -84,6 +84,17 @@
                 "@wso2is/admin.feature-gate.v1"
             ]
         },
+        "features/admin.email-and-sms.v1": {
+            "entry": [
+                "public-api.ts"
+            ],
+            "project": [
+                "**/*.{ts,tsx}"
+            ],
+            "ignoreDependencies": [
+                "redux"
+            ]
+        },
         "features/admin.*": {
             "entry": [
                 "public-api.ts"
