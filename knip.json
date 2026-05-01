@@ -19,7 +19,9 @@
         "modules/form/src/components/adapters/file-picker-adapter.tsx": ["enumMembers"],
         "features/admin.users.v1/components/guests/models/invite.ts": ["enumMembers"]
     },
-    "ignoreDependencies": [],
+    "ignoreDependencies": [
+        "@wso2is/features:@wso2is/theme"
+    ],
     "workspaces": {
         ".": {
             "entry": [
