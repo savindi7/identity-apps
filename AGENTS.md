@@ -79,13 +79,6 @@ cd apps/myaccount && pnpm start   # My Account at https://localhost:9000/myaccou
 - Translation interfaces in `modules/i18n/src/models/namespaces/`
 - English values in `modules/i18n/src/translations/en-US/portals/`
 
-## Environment Requirements
-
-- Node.js >= 16
-- pnpm 8.x
-- Maven (for JSP apps)
-- JDK 11+
-
 ## Full Documentation
 
 For comprehensive guidelines including feature development patterns, API layer conventions, route registration, access control, state management, and more, see:

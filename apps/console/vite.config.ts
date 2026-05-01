@@ -560,8 +560,7 @@ export default defineConfig(({ mode }: { mode: string }) => {
     const devServerWebSocketPath: string = environment.WDS_SOCKET_PATH || "/";
     const nodeEnvironment: string = mode === "production" ? "production" : "development";
     const alias: Record<string, string> = {
-        "@unit-testing": path.resolve(__dirname, "test-configs/utils"),
-        buffer: require.resolve("buffer/")
+        "@unit-testing": path.resolve(__dirname, "test-configs/utils")
     };
 
     // Dev-only alias avoids production bundle/export mismatches from dist output
