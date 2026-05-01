@@ -66,6 +66,16 @@ export const SettingsSection: FunctionComponent<PropsWithChildren<SettingsSectio
         [ "data-componentid"]: componentId
     } = props;
 
+    const resolveIcon = (icon?: FunctionComponent | ReactNode): ReactNode => {
+        if (typeof icon !== "function") {
+            return icon as ReactNode;
+        }
+
+        const IconComponent: React.FunctionComponent = icon as FunctionComponent;
+
+        return <IconComponent />;
+    };
+
     return (
 
         <Card
@@ -86,11 +96,7 @@ export const SettingsSection: FunctionComponent<PropsWithChildren<SettingsSectio
                                     backgroundColorRandomizer={ "notificationChannels" }
                                     className="notification-channel-icon-container"
                                 >
-                                    { /* icon can be a FunctionComponent | ReactNode. Render accordingly. */ }
-                                    { typeof icon === "function"
-                                        ? React.createElement(icon as FunctionComponent)
-                                        : (icon as ReactNode)
-                                    }
+                                    { resolveIcon(icon) }
 
                                 </Avatar>
                             )
