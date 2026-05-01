@@ -25,13 +25,11 @@
     "dependencies": {
         "@mui/x-tree-view": "^8.5.2",
         "@oxygen-ui/react": "catalog:",
-        "@oxygen-ui/react-icons": "^2.4.6",
         "@wso2is/admin.applications.v1": "^2.42.16",
         "@wso2is/admin.console-settings.v1": "^2.26.38",
         "@wso2is/admin.core.v1": "^2.55.27",
         "@wso2is/admin.organizations.v1": "^2.28.2",
         "@wso2is/admin.roles.v2": "^2.27.374",
-        "@wso2is/form": "^2.10.1",
         "lodash-es": "^4.17.21",
         "react-redux": "^7.2.9",
         "redux": "^4.0.4"

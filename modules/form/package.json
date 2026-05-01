@@ -40,7 +40,6 @@
         "@wso2is/validation": "^2.4.1",
         "dayjs": "^1.11.18",
         "final-form": "^4.20.2",
-        "joi": "^17.4.0",
         "lodash-es": "^4.17.21",
         "react-final-form": "^6.5.3",
         "react-i18next": "^11.18.5",

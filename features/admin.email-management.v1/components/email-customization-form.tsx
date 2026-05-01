@@ -129,12 +129,12 @@ export const EmailCustomizationForm: FunctionComponent<EmailCustomizationFormPro
                 } }
                 onSubmit={ onSubmit }
                 data-componentid={ componentId }
-                render={ ({ onSubmit }: FormRenderProps) => {
+                render={ ({ handleSubmit }: FormRenderProps) => {
 
                     return (
                         <form
                             id={ FORM_ID }
-                            onSubmit={ onSubmit }
+                            onSubmit={ handleSubmit }
                         >
                             <Grid rowSpacing={ 2 } container>
                                 <Grid xs={ 8 }>

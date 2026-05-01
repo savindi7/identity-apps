@@ -1,6 +1,6 @@
 {
     "$schema": "https://unpkg.com/knip@latest/schema.json",
-    "include": ["files", "duplicates", "enumMembers", "exports", "unlisted", "types"],
+    "include": ["files", "dependencies", "duplicates", "enumMembers", "exports", "unlisted", "types"],
     "ignore": [
         "identity-apps-core/**",
         "apps/console/src/extensions/i18n/**",
@@ -40,7 +40,11 @@
             ],
             "webpack": {
                 "config": []
-            }
+            },
+            "ignoreDependencies": [
+                "@wso2is/theme",
+                "buffer"
+            ]
         },
         "apps/myaccount": {
             "entry": [
@@ -52,7 +56,10 @@
             ],
             "webpack": {
                 "config": []
-            }
+            },
+            "ignoreDependencies": [
+                "@wso2is/theme"
+            ]
         },
         "features": {
             "entry": [
@@ -61,6 +68,31 @@
             "project": [
                 "**/*.{ts,tsx}",
                 "!admin.*/**"
+            ],
+            "ignoreDependencies": [
+                "@wso2is/theme"
+            ]
+        },
+        "features/admin.extensions.v1": {
+            "entry": [
+                "public-api.ts"
+            ],
+            "project": [
+                "**/*.{ts,tsx}"
+            ],
+            "ignoreDependencies": [
+                "@wso2is/admin.feature-gate.v1"
+            ]
+        },
+        "features/admin.email-and-sms.v1": {
+            "entry": [
+                "public-api.ts"
+            ],
+            "project": [
+                "**/*.{ts,tsx}"
+            ],
+            "ignoreDependencies": [
+                "redux"
             ]
         },
         "features/admin.*": {
@@ -151,5 +183,8 @@
                 "src/**/*.{ts,tsx}"
             ]
         }
+    },
+    "rules": {
+        "devDependencies": "off"
     }
 }

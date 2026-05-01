@@ -467,6 +467,7 @@ const AttributeVerificationSettingsFormPage: FunctionComponent<AttributeVerifica
                     {
                         emailVerificationOptions.map((emailVerificationOption: EmailVerificationOptionInterface) => (
                             <Field.Radio
+                                ariaLabel={ emailVerificationOption.label }
                                 key={ emailVerificationOption.key }
                                 label={ emailVerificationOption.label }
                                 name={ emailVerificationOption.name }

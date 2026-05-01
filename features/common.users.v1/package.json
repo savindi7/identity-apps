@@ -24,9 +24,7 @@
         "@oxygen-ui/react": "catalog:",
         "@oxygen-ui/react-icons": "^2.4.6",
         "@wso2is/form": "^2.10.2",
-        "lodash-es": "^4.17.21",
-        "react-redux": "^7.2.9",
-        "redux": "^4.0.4"
+        "lodash-es": "^4.17.21"
     },
     "devDependencies": {
         "@rollup/plugin-commonjs": "^25.0.7",
