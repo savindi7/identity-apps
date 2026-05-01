@@ -46,7 +46,7 @@ interface AddIDPCertificateWizardPropsInterface extends TestableComponentInterfa
  *
  * @param props - Props injected to the component.
  */
-export const AddIDPCertificateWizard: FunctionComponent<AddIDPCertificateWizardPropsInterface> = (
+const AddIDPCertificateWizard: FunctionComponent<AddIDPCertificateWizardPropsInterface> = (
     props: AddIDPCertificateWizardPropsInterface): ReactElement => {
 
     const {

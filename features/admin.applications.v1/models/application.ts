@@ -806,7 +806,7 @@ export interface DiscoverableGroupInterface {
     groups: GroupMetadataInterface[];
 }
 
-export const emptyOIDCAppConfiguration = (): OIDCApplicationConfigurationInterface => ({
+const emptyOIDCAppConfiguration = (): OIDCApplicationConfigurationInterface => ({
     authorizeEndpoint: "",
     endSessionEndpoint: "",
     introspectionEndpoint: "",

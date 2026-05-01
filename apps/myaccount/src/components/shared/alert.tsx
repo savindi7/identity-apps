@@ -41,7 +41,7 @@ interface AlertProps extends TestableComponentInterface {
  * @param {AlertProps} props - Props injected in to the alert component.
  * @return {JSX.Element}
  */
-export const Alert: FunctionComponent<AlertProps> = (props: AlertProps): JSX.Element => {
+const Alert: FunctionComponent<AlertProps> = (props: AlertProps): JSX.Element => {
 
     const alertRef = useRef(null);
     const alert: AlertInterface = useSelector((state: AppState) => state.global.alert);

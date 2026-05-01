@@ -206,7 +206,7 @@ export const createEmptyUserDetails = (): UserDetailsInterface => ({
 /**
  * The following function creates an empty add user wizard object
  */
-export const createEmptyUserBasicWizard = (): AddUserWizardStateInterface => ({
+const createEmptyUserBasicWizard = (): AddUserWizardStateInterface => ({
     confirmPassword: "",
     domain: "",
     email: "",

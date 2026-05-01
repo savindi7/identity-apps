@@ -70,7 +70,7 @@ interface AdvanceAttributeSettingsPropsInterface extends IdentifiableComponentIn
     appVersion?: string;
 }
 
-export const SubjectAttributeFieldName: string = "subjectAttribute";
+const SubjectAttributeFieldName: string = "subjectAttribute";
 
 const FORM_ID: string = "application-attributes-advance-settings-form";
 

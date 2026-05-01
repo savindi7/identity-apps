@@ -63,7 +63,7 @@ enum JITProvisioningConstants {
  * @param props - Props injected to the component.
  * @returns
  */
-export const JITProvisioningConfigurationsForm: FunctionComponent<JITProvisioningConfigurationFormPropsInterface> = (
+const JITProvisioningConfigurationsForm: FunctionComponent<JITProvisioningConfigurationFormPropsInterface> = (
     props: JITProvisioningConfigurationFormPropsInterface
 ): ReactElement => {
 

@@ -569,7 +569,7 @@ export const InnerField = React.forwardRef((props: InnerFieldPropsInterface, ref
  *
  * @param hint - The hint text.
  */
-export const FieldHint: React.FC<{ hint: string }> = ({ hint }: { hint: string }): ReactElement => {
+const FieldHint: React.FC<{ hint: string }> = ({ hint }: { hint: string }): ReactElement => {
     return (
         <div className={ "ui-hint" }>
             <Icon color="grey" floated="left" name="info circle"/>

@@ -483,4 +483,4 @@ export const FeatureCarousel = () => {
     );
 };
 
-export default NewFeatureAnnouncement;
+

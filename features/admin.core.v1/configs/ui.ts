@@ -380,7 +380,7 @@ type GetSidePanelMiscIconsInterface = {
  * {@link GetSidePanelMiscIconsInterface} if introducing
  * new icons/images.
  */
-export const getSidePanelMiscIcons = (): GetSidePanelMiscIconsInterface => {
+const getSidePanelMiscIcons = (): GetSidePanelMiscIconsInterface => {
 
     return {
         caretRight: CaretRightIcon
@@ -583,7 +583,7 @@ type GetAppSwitcherIconsInterface = {
  * {@link GetAppSwitcherIconsInterface} if introducing
  * new icons/images.
  */
-export const AppSwitcherIcons = (): GetAppSwitcherIconsInterface => {
+const AppSwitcherIcons = (): GetAppSwitcherIconsInterface => {
 
     return {
         console: ConsoleIcon,
@@ -625,7 +625,7 @@ type GetAppHeaderIconsInterface = {
  * {@link GetAppHeaderIconsInterface} if introducing
  * new icons/images.
  */
-export const getAppHeaderIcons = (): GetAppHeaderIconsInterface => {
+const getAppHeaderIcons = (): GetAppHeaderIconsInterface => {
 
     return {
         homeIcon: HomeIcon

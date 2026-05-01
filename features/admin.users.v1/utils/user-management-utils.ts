@@ -357,7 +357,7 @@ const getValidationConfig = (
  * @param schemaKey - The attribute key to extract sub-attributes from.
  * @returns Array of sub-attributes (objects).
  */
-export const extractSubAttributes = (user: ProfileInfoInterface, schemaKey: string): Record<string, string>[] => {
+const extractSubAttributes = (user: ProfileInfoInterface, schemaKey: string): Record<string, string>[] => {
     return user && user[schemaKey]?.filter(
         (subAttribute: unknown) => typeof subAttribute === "object") || [];
 };
@@ -634,7 +634,7 @@ const deepMerge = <T extends JsonValue>(target: T, source: T): T => {
     return source;
 };
 
-export const groupByTopLevelKey = <T extends Record<string, JsonValue>>(inputArray: T[]): T => {
+const groupByTopLevelKey = <T extends Record<string, JsonValue>>(inputArray: T[]): T => {
     const grouped: Record<string, JsonValue> = {};
 
     for (const obj of inputArray) {
@@ -657,7 +657,7 @@ export const groupByTopLevelKey = <T extends Record<string, JsonValue>>(inputArr
  * @param prefix - The prefix for the keys (used for recursion).
  * @returns A map with dot-separated keys and their corresponding values.
  */
-export const flattenValues = (obj: Record<string, any>, prefix: string = ""): Map<string, string> => {
+const flattenValues = (obj: Record<string, any>, prefix: string = ""): Map<string, string> => {
     const map: Map<string, string> = new Map<string, string>();
 
     for (const key in obj) {
@@ -683,7 +683,7 @@ export const flattenValues = (obj: Record<string, any>, prefix: string = ""): Ma
  * @param schemaName - Schema name.
  * @returns Verification pending attribute value.
  */
-export const getVerificationPendingAttributeValue = (schemaName: string, user: ProfileInfoInterface): string | null => {
+const getVerificationPendingAttributeValue = (schemaName: string, user: ProfileInfoInterface): string | null => {
     if (schemaName === EMAIL_ATTRIBUTE || schemaName === EMAIL_ADDRESSES_ATTRIBUTE) {
         const pendingAttributes: Array<{value: string}> | undefined = user[ProfileConstants.SCIM2_SYSTEM_USER_SCHEMA]
             ?.[ProfileConstants.SCIM2_SCHEMA_DICTIONARY.get("PENDING_EMAILS")];

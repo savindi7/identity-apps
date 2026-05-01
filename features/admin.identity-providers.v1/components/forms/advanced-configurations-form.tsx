@@ -56,7 +56,7 @@ interface AdvanceConfigurationsFormPropsInterface extends ConnectionAdvanceInter
  * @param props - Props injected to the component.
  * @returns Advance configurations form component.
  */
-export const AdvanceConfigurationsForm: FunctionComponent<AdvanceConfigurationsFormPropsInterface> = (
+const AdvanceConfigurationsForm: FunctionComponent<AdvanceConfigurationsFormPropsInterface> = (
     props: AdvanceConfigurationsFormPropsInterface
 ): ReactElement => {
 
