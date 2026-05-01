@@ -1,6 +1,6 @@
 {
     "$schema": "https://unpkg.com/knip@latest/schema.json",
-    "include": ["files", "duplicates", "enumMembers", "unlisted", "types"],
+    "include": ["files", "duplicates", "enumMembers", "exports", "unlisted", "types"],
     "ignore": [
         "identity-apps-core/**",
         "apps/console/src/extensions/i18n/**",
