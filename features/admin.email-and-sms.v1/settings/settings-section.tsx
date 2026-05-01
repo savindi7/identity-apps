@@ -70,7 +70,7 @@ export const SettingsSection: FunctionComponent<PropsWithChildren<SettingsSectio
 
         <Card
             data-componentid={ componentId }
-            position="relative"
+            sx={ { position: "relative" } }
             className={ `notification-channel ${!connectorEnabled && "disabled"}` }
             onClick={ onPrimaryActionClick }
         >
@@ -86,7 +86,11 @@ export const SettingsSection: FunctionComponent<PropsWithChildren<SettingsSectio
                                     backgroundColorRandomizer={ "notificationChannels" }
                                     className="notification-channel-icon-container"
                                 >
-                                    { icon }
+                                    { /* icon can be a FunctionComponent | ReactNode. Render accordingly. */ }
+                                    { typeof icon === "function"
+                                        ? React.createElement(icon as FunctionComponent)
+                                        : (icon as ReactNode)
+                                    }
 
                                 </Avatar>
                             )
