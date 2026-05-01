@@ -726,5 +726,5 @@ Avoid:
 ```js
 const pageName = "home";
 const pageImport = () => import(`./pages/${pageName}`);
-const pageImport = () => import("./pages" + "/dynamic-connector.tsx");
+const concatenatedPageImport = () => import("./pages" + "/dynamic-connector.tsx");
 ```
