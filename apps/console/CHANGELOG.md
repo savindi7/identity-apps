@@ -1,5 +1,11 @@
 # @wso2is/console
 
+## 4.5.23
+
+### Patch Changes
+
+- [#10235](https://github.com/wso2/identity-apps/pull/10235) [`2721c0a576d38e16a6f5dceca4d61f88f6510147`](https://github.com/wso2/identity-apps/commit/2721c0a576d38e16a6f5dceca4d61f88f6510147) Thanks [@NotoriousTechWorker](https://github.com/NotoriousTechWorker)! - Remove unused dependencies
+
 ## 4.5.22
 
 ### Patch Changes
