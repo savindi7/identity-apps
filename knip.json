@@ -40,7 +40,11 @@
             ],
             "webpack": {
                 "config": []
-            }
+            },
+            "ignoreDependencies": [
+                "@wso2is/theme",
+                "buffer"
+            ]
         },
         "apps/myaccount": {
             "entry": [
@@ -52,7 +56,10 @@
             ],
             "webpack": {
                 "config": []
-            }
+            },
+            "ignoreDependencies": [
+                "@wso2is/theme"
+            ]
         },
         "features": {
             "entry": [
