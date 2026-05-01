@@ -1,5 +1,11 @@
 # @wso2is/identity-apps-core
 
+## 5.0.18
+
+### Patch Changes
+
+- [#10231](https://github.com/wso2/identity-apps/pull/10231) [`fb88f19e4099e71f42bb9a0d286b53e045eca9d0`](https://github.com/wso2/identity-apps/commit/fb88f19e4099e71f42bb9a0d286b53e045eca9d0) Thanks [@NotoriousTechWorker](https://github.com/NotoriousTechWorker)! - Remove unused exports
+
 ## 5.0.17
 
 ### Patch Changes
