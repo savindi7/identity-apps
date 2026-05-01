@@ -19,9 +19,9 @@
 /**
  * The login scope.
  */
-export const LOGIN_SCOPE: string = "internal_login";
+const LOGIN_SCOPE: string = "internal_login";
 
 /**
  * Human task scope.
  */
-export const HUMAN_TASK_SCOPE: string = "internal_humantask_view";
+const HUMAN_TASK_SCOPE: string = "internal_humantask_view";

@@ -70,7 +70,7 @@ interface RoleMappingSettingsPropsInterface extends TestableComponentInterface {
  * @param props - Props injected to the component.
  * @returns Role mapping settings component.
  */
-export const RoleMappingSettings: FunctionComponent<RoleMappingSettingsPropsInterface> = (
+const RoleMappingSettings: FunctionComponent<RoleMappingSettingsPropsInterface> = (
     props: RoleMappingSettingsPropsInterface
 ): ReactElement => {
 
@@ -126,7 +126,6 @@ export const RoleMappingSettings: FunctionComponent<RoleMappingSettingsPropsInte
                 });
         }
     }, [ initialRoleMappings ]);
-
 
     /**
      * Prepends `Internal/` to the role name if it does not have a domain prepended already.

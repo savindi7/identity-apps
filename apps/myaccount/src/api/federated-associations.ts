@@ -77,7 +77,7 @@ export const deleteFederatedAssociation = (id: string): Promise<void> => {
 /**
  * This removes all the federated associations
  */
-export const deleteAllFederatedAssociation = (): Promise<void> => {
+const deleteAllFederatedAssociation = (): Promise<void> => {
     const requestConfig: HttpRequestConfig = {
         headers: {
             "Access-Control-Allow-Origin": store.getState()?.config?.deployment?.clientHost,

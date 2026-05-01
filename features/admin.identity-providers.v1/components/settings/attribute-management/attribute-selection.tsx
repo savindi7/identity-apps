@@ -55,7 +55,7 @@ interface AttributeSelectionUIPropsInterface {
  *
  * @deprecated Please use {@link AttributesSelectionV2}
  */
-export const AttributeSelection: FunctionComponent<AttributeSelectionPropsInterface> = (
+const AttributeSelection: FunctionComponent<AttributeSelectionPropsInterface> = (
     props: AttributeSelectionPropsInterface
 ): ReactElement => {
 

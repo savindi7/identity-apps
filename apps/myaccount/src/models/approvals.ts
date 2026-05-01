@@ -130,5 +130,3 @@ enum ApprovalStatus {
     REJECT = "REJECT",
     ALL = "ALL"
 }
-
-export {};

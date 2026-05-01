@@ -22,7 +22,7 @@
  * @param encodedString - Encoded image.
  * @returns Mime-type as "image/png" | "image/svg+xml" etc.
  */
-export const base64MimeType = (encodedString: string): string => {
+const base64MimeType = (encodedString: string): string => {
     const mime: RegExpMatchArray = encodedString.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/);
 
     return mime && mime.length ? mime[1] : null;

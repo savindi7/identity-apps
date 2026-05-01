@@ -37,7 +37,7 @@ const SUPPORTED_OPERATOR_ALIASES: SupportedOperatorAliasesInterface = {
  * @param raw - Raw search string.
  * @returns Built search query.
  */
-export const buildSearchQuery = (raw: string): string => {
+const buildSearchQuery = (raw: string): string => {
     const parts: string[] = raw.split(" ");
     const moderatedQueryParts: string[] = parts.splice(1, parts.length);
 

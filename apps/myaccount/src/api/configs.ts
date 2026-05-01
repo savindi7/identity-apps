@@ -34,7 +34,7 @@ const httpClient: HttpInstance = AsgardeoSPAClient.getInstance().httpRequest.bin
  * @see ServiceResourceEndpointsInterface.config
  * @returns Promise that resolves to the list of home realm identifiers.
  */
-export const fetchHomeRealmIdentifiers = async (): Promise<string[]> => {
+const fetchHomeRealmIdentifiers = async (): Promise<string[]> => {
 
     const requestConfig: AxiosRequestConfig = {
         headers: { "Content-Type": "application/json" },

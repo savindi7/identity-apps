@@ -150,7 +150,7 @@ const FORM_ID: string = "push-authenticator-form";
  * @param props - Props injected to the component.
  * @returns Functional component.
  */
-export const PushAuthenticatorForm: FunctionComponent<PushAuthenticatorFormPropsInterface> = (
+const PushAuthenticatorForm: FunctionComponent<PushAuthenticatorFormPropsInterface> = (
     props: PushAuthenticatorFormPropsInterface
 ): ReactElement => {
 

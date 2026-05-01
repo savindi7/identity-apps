@@ -153,7 +153,7 @@ const FORM_ID: string = "sms-otp-authenticator-form";
  * @param props - Props injected to the component.
  * @returns Functional component.
  */
-export const SMSOTPAuthenticatorForm: FunctionComponent<SMSOTPAuthenticatorFormPropsInterface> = (
+const SMSOTPAuthenticatorForm: FunctionComponent<SMSOTPAuthenticatorFormPropsInterface> = (
     props: SMSOTPAuthenticatorFormPropsInterface
 ): ReactElement => {
 

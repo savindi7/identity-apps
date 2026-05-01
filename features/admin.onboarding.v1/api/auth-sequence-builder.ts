@@ -170,7 +170,7 @@ export const buildAuthSequence = (options: SignInOptionsConfigInterface): Authen
 /**
  * Returns a default auth sequence with BasicAuthenticator only.
  */
-export const getDefaultAuthSequence = (): AuthenticationSequenceInterface => {
+const getDefaultAuthSequence = (): AuthenticationSequenceInterface => {
     return {
         attributeStepId: 1,
         steps: [
@@ -192,7 +192,7 @@ export const getDefaultAuthSequence = (): AuthenticationSequenceInterface => {
 /**
  * Returns true if the sequence is a single-step BasicAuthenticator (default) config.
  */
-export const isDefaultAuthSequence = (sequence: AuthenticationSequenceInterface): boolean => {
+const isDefaultAuthSequence = (sequence: AuthenticationSequenceInterface): boolean => {
     if (sequence.type === "DEFAULT") {
         return true;
     }
@@ -215,7 +215,7 @@ export const isDefaultAuthSequence = (sequence: AuthenticationSequenceInterface)
 /**
  * Checks whether Step 2 has multiple alternatives (OR logic, not sequential MFA).
  */
-export const hasMultipleLoginMethods = (sequence: AuthenticationSequenceInterface): boolean => {
+const hasMultipleLoginMethods = (sequence: AuthenticationSequenceInterface): boolean => {
     if (sequence.steps.length < 2) {
         return false;
     }

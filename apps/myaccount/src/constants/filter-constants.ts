@@ -19,114 +19,114 @@
 /**
  * Features key.
  */
-export const FEATURES: string = "features";
+const FEATURES: string = "features";
 
 /**
  * Overview key.
  */
-export const OVERVIEW: string = "overview";
+const OVERVIEW: string = "overview";
 
 /**
  * Personal info key.
  */
-export const PERSONAL_INFO: string = "personalInfo";
+const PERSONAL_INFO: string = "personalInfo";
 
 /**
  * Profile key.
  */
-export const PROFILE: string = "profile";
+const PROFILE: string = "profile";
 
 /**
  * Linked Accounts key.
  */
-export const LINKED_ACCOUNTS: string = "linkedAccounts";
+const LINKED_ACCOUNTS: string = "linkedAccounts";
 
 /**
  * Export Profile key.
  */
-export const EXPORT_PROFILE: string = "exportProfile";
+const EXPORT_PROFILE: string = "exportProfile";
 
 /**
  * Applications key.
  */
-export const APPLICATIONS: string = "applications";
+const APPLICATIONS: string = "applications";
 
 /**
  * Security key.
  */
-export const SECURITY: string = "security";
+const SECURITY: string = "security";
 
 /**
  * Change password key.
  */
-export const CHANGE_PASSWORD: string = "changePassword";
+const CHANGE_PASSWORD: string = "changePassword";
 
 /**
  * Account Recovery key.
  */
-export const ACCOUNT_RECOVERY: string = "accountRecovery";
+const ACCOUNT_RECOVERY: string = "accountRecovery";
 
 /**
  * Security Questions key.
  */
-export const SECURITY_QUESTIONS: string = "securityQuestions";
+const SECURITY_QUESTIONS: string = "securityQuestions";
 
 /**
  * Email Recovery.
  */
-export const EMAIL_RECOVERY: string = "emailRecovery";
+const EMAIL_RECOVERY: string = "emailRecovery";
 
 /**
  * MFA key.
  */
-export const MULTI_FACTOR_AUTHENTICATION: string = "multiFactorAuthentication";
+const MULTI_FACTOR_AUTHENTICATION: string = "multiFactorAuthentication";
 
 /**
  * SMS OTP key.
  */
-export const SMS: string = "sms";
+const SMS: string = "sms";
 
 /**
  * FIDO key.
  */
-export const FIDO: string = "fido";
+const FIDO: string = "fido";
 
 /**
  * Authenticator app.
  */
-export const AUTHENTICATOR_APP: string = "authenticatorApp";
+const AUTHENTICATOR_APP: string = "authenticatorApp";
 
 /**
  * Active Sessions key.
  */
-export const ACTIVE_SESSIONS: string = "activeSessions";
+const ACTIVE_SESSIONS: string = "activeSessions";
 
 /**
  * Manage Consents key.
  */
-export const MANAGE_CONSENTS: string = "manageConsents";
+const MANAGE_CONSENTS: string = "manageConsents";
 
 /**
  * Account Status.
  */
-export const ACCOUNT_STATUS: string = "accountStatus";
+const ACCOUNT_STATUS: string = "accountStatus";
 
 /**
  * Account Activity.
  */
-export const ACCOUNT_ACTIVITY: string = "accountActivity";
+const ACCOUNT_ACTIVITY: string = "accountActivity";
 
 /**
  * Account Security.
  */
-export const ACCOUNT_SECURITY: string = "accountSecurity";
+const ACCOUNT_SECURITY: string = "accountSecurity";
 
 /**
  * Consents Control key.
  */
-export const CONSENTS_CONTROL: string = "consentsControl";
+const CONSENTS_CONTROL: string = "consentsControl";
 
 /**
  * External Logins key.
  */
-export const EXTERNAL_LOGINS: string = "externalLogins";
+const EXTERNAL_LOGINS: string = "externalLogins";

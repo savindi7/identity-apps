@@ -20,7 +20,7 @@ import { IdentityAppsError } from "@wso2is/core/errors";
 
 export const APPLICATION_DOMAIN: string = "Application/";
 export const INTERNAL_DOMAIN: string = "Internal";
-export const ROLE_VIEW_PATH: string = "/roles/";
+const ROLE_VIEW_PATH: string = "/roles/";
 export const DOMAIN_SEPARATOR: string = "/";
 
 /**
