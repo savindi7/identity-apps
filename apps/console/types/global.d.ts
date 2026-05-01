@@ -40,3 +40,5 @@ declare global {
     const isAdaptiveAuthenticationAvailable: boolean;
     const isOrganizationManagementEnabled: boolean;
 }
+
+export {};
