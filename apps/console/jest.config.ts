@@ -51,7 +51,7 @@ module.exports = {
         "\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|md)$":
             "<rootDir>/test-configs/__mocks__/file.ts",
         "\\.svg": "<rootDir>/test-configs/__mocks__/svgr.ts",
-        "^lodash-es/(.*)$": "<rootDir>/../../node_modules/lodash/$1",
+        "^lodash-es/(.*)$": "<rootDir>/../../node_modules/lodash-es/$1",
         "^react($|/.+)": "<rootDir>/node_modules/react$1",
         "uuid": "<rootDir>/node_modules/uuid"
     },
@@ -78,7 +78,7 @@ module.exports = {
         } ]
     },
     transformIgnorePatterns: [
-        "/node_modules/(?!(\\.pnpm|@wso2is|@oxygen-ui\\/react|axios)\\/)"
+        "/node_modules/(?!(\\.pnpm|@wso2is|@oxygen-ui\\/react|axios|lodash-es)\\/)"
     ],
     verbose: true
 };
