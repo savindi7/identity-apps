@@ -41,6 +41,11 @@
             ],
             "project": [
                 "scripts/**/*.{js,ts}"
+            ],
+            "ignoreDependencies": [
+                "core-js",
+                "@svgr/rollup",
+                "@rollup/plugin-url"
             ]
         },
         "apps/console": {

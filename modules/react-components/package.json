@@ -71,6 +71,7 @@
         "@storybook/addon-actions": "^6.5.12",
         "@storybook/addon-docs": "^6.5.12",
         "@storybook/addon-links": "^6.5.12",
+        "@svgr/rollup": "^6.2.1",
         "@types/jest": "^29.5.12",
         "@types/js-beautify": "^1.8.2",
         "@types/lodash-es": "^4.17.4",
