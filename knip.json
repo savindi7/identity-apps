@@ -46,7 +46,9 @@
                 "core-js",
                 "lodash",
                 "@svgr/rollup",
-                "@rollup/plugin-url"
+                "@rollup/plugin-url",
+                "@babel/polyfill",
+                "worker-loader"
             ]
         },
         "apps/console": {
@@ -65,7 +67,7 @@
                 "buffer"
             ]
         },
-        "apps/myaccount": {
+                "apps/myaccount": {
             "entry": [
                 "src/index.tsx",
                 "src/init/*.ts"
@@ -87,9 +89,6 @@
             ]
         },
         "features": {
-            "entry": [
-                "index.ts"
-            ],
             "project": [
                 "**/*.{ts,tsx}",
                 "!admin.*/**"
@@ -125,9 +124,6 @@
             ]
         },
         "modules/core": {
-            "entry": [
-                "src/*/index.ts"
-            ],
             "project": [
                 "src/**/*.{ts,tsx}"
             ]
@@ -163,12 +159,14 @@
             ],
             "project": [
                 "src/**/*.{js,ts}"
+            ],
+            "ignoreDependencies": [
+                "semantic-ui-css",
+                "semantic-ui-less",
+                "rc-tree"
             ]
         },
         "modules/unit-testing": {
-            "entry": [
-                "index.ts"
-            ],
             "project": [
                 "*.{ts,tsx}"
             ]

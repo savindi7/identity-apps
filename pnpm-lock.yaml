@@ -94,6 +94,9 @@ importers:
       '@babel/plugin-transform-modules-commonjs':
         specifier: ^7.10.4
         version: 7.28.6(@babel/core@7.29.0)
+      '@babel/polyfill':
+        specifier: ^7.0.0
+        version: 7.12.1
       '@babel/preset-env':
         specifier: ^7.11.0
         version: 7.29.2(@babel/core@7.29.0)
@@ -271,6 +274,9 @@ importers:
       webpack:
         specifier: 5.101.3
         version: 5.101.3(@swc/core@1.5.7(@swc/helpers@0.5.21))(esbuild@0.25.12)
+      worker-loader:
+        specifier: ^2.0.0
+        version: 2.0.0(webpack@5.101.3(@swc/core@1.5.7(@swc/helpers@0.5.21))(esbuild@0.25.12))
 
   apps/console:
     dependencies:
@@ -599,6 +605,9 @@ importers:
       jest-environment-jsdom-global:
         specifier: ^4.0.0
         version: 4.0.0(jest-environment-jsdom@29.7.0)
+      react-refresh:
+        specifier: ^0.9.0
+        version: 0.9.0
       rimraf:
         specifier: ^3.0.2
         version: 3.0.2
@@ -623,6 +632,9 @@ importers:
       '@asgardeo/auth-react':
         specifier: ^5.6.1
         version: 5.6.1(@babel/runtime-corejs3@7.29.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@babel/polyfill':
+        specifier: 7.0.0
+        version: 7.0.0
       '@mui/material':
         specifier: ^5.13.0
         version: 5.18.0(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react@18.3.1))(@types/react@18.0.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -12138,6 +12150,9 @@ importers:
       merge-files:
         specifier: ^0.1.2
         version: 0.1.2
+      rc-tree:
+        specifier: ^4.0.0-beta.2
+        version: 4.2.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       replace:
         specifier: ^1.1.5
         version: 1.2.2
@@ -12147,6 +12162,12 @@ importers:
       rtlcss:
         specifier: ^4.3.0
         version: 4.3.0
+      semantic-ui-css:
+        specifier: ^2.4.1
+        version: 2.5.0
+      semantic-ui-less:
+        specifier: ^2.4.1
+        version: 2.5.0
       watch:
         specifier: ^1.0.2
         version: 1.0.2
@@ -12931,6 +12952,14 @@ packages:
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0
+
+  '@babel/polyfill@7.0.0':
+    resolution: {integrity: sha512-dnrMRkyyr74CRelJwvgnnSUDh2ge2NCTyHVwpOdvRMHtJUyxLtMAfhBN3s64pY41zdw0kgiLPh6S20eb1NcX6Q==}
+    deprecated: 🚨 This package has been deprecated in favor of separate inclusion of a polyfill and regenerator-runtime (when needed). See the @babel/polyfill docs (https://babeljs.io/docs/en/babel-polyfill) for more information.
+
+  '@babel/polyfill@7.12.1':
+    resolution: {integrity: sha512-X0pi0V6gxLi6lFZpGmeNa4zxtwEmCs42isWLNjZZDE0Y8yVfgu0T2OAHlzBbdYlqbW/YXVvoBHpATEM+goCj8g==}
+    deprecated: 🚨 This package has been deprecated in favor of separate inclusion of a polyfill and regenerator-runtime (when needed). See the @babel/polyfill docs (https://babeljs.io/docs/en/babel-polyfill) for more information.
 
   '@babel/preset-env@7.29.2':
     resolution: {integrity: sha512-DYD23veRYGvBFhcTY1iUvJnDNpuqNd/BzBwCvzOTKUnJjKg5kpUBh3/u9585Agdkgj+QuygG7jLfOPWMa2KVNw==}
@@ -20755,6 +20784,9 @@ packages:
   jose@4.15.9:
     resolution: {integrity: sha512-1vUQX+IdDMVPj4k8kOxgUqlcK518yluMuGZwqlr44FS1ppZB/5GWh4rZG89erpOBOJjU/OBsnCVFfapsRz6nEA==}
 
+  jquery@4.0.0:
+    resolution: {integrity: sha512-TXCHVR3Lb6TZdtw1l3RTLf8RBWVGexdxL6AC8/e0xZKEpBflBsjh9/8LXw+dkNFuOyW9B7iB3O1sP7hS0Kiacg==}
+
   js-beautify@1.15.4:
     resolution: {integrity: sha512-9/KXeZUKKJwqCXUdBxFJ3vPh467OCckSBmYDwSK/EtV090K+iMJ7zx2S3HLVDIWFQdqMIsZWbnaGiba18aWhaA==}
     engines: {node: '>=14'}
@@ -20997,6 +21029,10 @@ packages:
   loader-runner@4.3.2:
     resolution: {integrity: sha512-DFEqQ3ihfS9blba08cLfYf1NRAIEm+dDjic073DRDc3/JspI/8wYmtDsHwd3+4hwvdxSK7PGaElfTmm0awWJ4w==}
     engines: {node: '>=6.11.5'}
+
+  loader-utils@1.4.2:
+    resolution: {integrity: sha512-I5d00Pd/jwMD2QCduo657+YM/6L3KZu++pmX9VFncxaxvHcru9jx1lBaFft+r4Mt2jK0Yhp41XlRAihzPxHNCg==}
+    engines: {node: '>=4.0.0'}
 
   loader-utils@2.0.4:
     resolution: {integrity: sha512-xXqpXoINfFhgua9xiqD8fPFHgkoq1mmmpE92WlDbm9rNRd/EbRb+Gqf908T2DMfuHjjJlksiK2RbHVOdD/MqSw==}
@@ -22720,6 +22756,10 @@ packages:
     resolution: {integrity: sha512-z6F7K9bV85EfseRCp2bzrpyQ0Gkw1uLoCel9XBVWPg/TjRj94SkJzUTGfOa4bs7iJvBWtQG0Wq7wnI0syw3EBQ==}
     engines: {node: '>=0.10.0'}
 
+  react-refresh@0.9.0:
+    resolution: {integrity: sha512-Gvzk7OZpiqKSkxsQvO/mbTN1poglhmAV7gR/DdIrRrSMXraRQQlfikRJOr3Nb9GTMPC5kof948Zy6jJZIFtDvQ==}
+    engines: {node: '>=0.10.0'}
+
   react-router-dom@4.3.1:
     resolution: {integrity: sha512-c/MlywfxDdCp7EnB7YfPMOfMD3tOtIjrQlj/CKfNMBxdmpJP8xcz5P/UAFn3JbnQCNUxsHyVVqllF9LhgVyFCA==}
     peerDependencies:
@@ -23335,6 +23375,10 @@ packages:
   scheduler@0.23.2:
     resolution: {integrity: sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==}
 
+  schema-utils@0.4.7:
+    resolution: {integrity: sha512-v/iwU6wvwGK8HbU9yi3/nhGzP0yGSuhQMzL6ySiec1FSrZZDkhm4noOSWzrNFo/jEc+SJY6jRTwuwbSXJPDUnQ==}
+    engines: {node: '>= 4'}
+
   schema-utils@2.7.0:
     resolution: {integrity: sha512-0ilKFI6QQF5nxDZLFn2dMjvc4hjg/Wkg7rHd3jK6/A4a1Hl9VFdQWvgB1UMGoU94pad1P/8N7fMcEnLnSiju8A==}
     engines: {node: '>= 8.9.0'}
@@ -23377,6 +23421,12 @@ packages:
       react: ^16.6.0
       react-dom: ^16.6.0
       semantic-ui-react: '>=0.84.0'
+
+  semantic-ui-css@2.5.0:
+    resolution: {integrity: sha512-jIWn3WXXE2uSaWCcB+gVJVRG3masIKtTMNEP2X8Aw909H2rHpXGneYOxzO3hT8TpyvB5/dEEo9mBFCitGwoj1A==}
+
+  semantic-ui-less@2.5.0:
+    resolution: {integrity: sha512-Nlp8iR0otCQB74Yqob2Dxpsm5H9YAp3NvQ3sWDediwFjrd/l3Leu9md2O82UU5n5hOSqu95xnTok55eIAhlTjg==}
 
   semantic-ui-react@2.1.5:
     resolution: {integrity: sha512-nIqmmUNpFHfovEb+RI2w3E2/maZQutd8UIWyRjf1SLse+XF51hI559xbz/sLN3O6RpLjr/echLOOXwKCirPy3Q==}
@@ -24848,6 +24898,12 @@ packages:
   wordwrap@1.0.0:
     resolution: {integrity: sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==}
 
+  worker-loader@2.0.0:
+    resolution: {integrity: sha512-tnvNp4K3KQOpfRnD20m8xltE3eWh89Ye+5oj7wXEEHKac1P4oZ6p9oTj8/8ExqoSBnk9nu5Pr4nKfQ1hn2APJw==}
+    engines: {node: '>= 6.9.0 || >= 8.9.0'}
+    peerDependencies:
+      webpack: 5.101.3
+
   world-countries@5.1.0:
     resolution: {integrity: sha512-CXR6EBvTbArDlDDIWU3gfKb7Qk0ck2WNZ234b/A0vuecPzIfzzxH+O6Ejnvg1sT8XuiZjVlzOH0h08ZtaO7g0w==}
 
@@ -25907,6 +25963,16 @@ snapshots:
       '@babel/core': 7.29.0
       '@babel/helper-create-regexp-features-plugin': 7.28.5(@babel/core@7.29.0)
       '@babel/helper-plugin-utils': 7.28.6
+
+  '@babel/polyfill@7.0.0':
+    dependencies:
+      core-js: 2.6.12
+      regenerator-runtime: 0.11.1
+
+  '@babel/polyfill@7.12.1':
+    dependencies:
+      core-js: 2.6.12
+      regenerator-runtime: 0.13.11
 
   '@babel/preset-env@7.29.2(@babel/core@7.29.0)':
     dependencies:
@@ -36625,6 +36691,8 @@ snapshots:
 
   jose@4.15.9: {}
 
+  jquery@4.0.0: {}
+
   js-beautify@1.15.4:
     dependencies:
       config-chain: 1.1.13
@@ -36950,6 +37018,12 @@ snapshots:
       repeat-string: 1.6.1
 
   loader-runner@4.3.2: {}
+
+  loader-utils@1.4.2:
+    dependencies:
+      big.js: 5.2.2
+      emojis-list: 3.0.0
+      json5: 1.0.2
 
   loader-utils@2.0.4:
     dependencies:
@@ -37912,7 +37986,7 @@ snapshots:
   ora@5.4.1:
     dependencies:
       bl: 4.1.0
-      chalk: 4.1.1
+      chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.9.2
       is-interactive: 1.0.0
@@ -38980,6 +39054,8 @@ snapshots:
 
   react-refresh@0.17.0: {}
 
+  react-refresh@0.9.0: {}
+
   react-router-dom@4.3.1(react@18.3.1):
     dependencies:
       history: 4.10.1
@@ -39729,6 +39805,11 @@ snapshots:
     dependencies:
       loose-envify: 1.4.0
 
+  schema-utils@0.4.7:
+    dependencies:
+      ajv: 6.15.0
+      ajv-keywords: 3.5.2(ajv@6.15.0)
+
   schema-utils@2.7.0:
     dependencies:
       '@types/json-schema': 7.0.15
@@ -39783,6 +39864,14 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       semantic-ui-react: 2.1.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+
+  semantic-ui-css@2.5.0:
+    dependencies:
+      jquery: 4.0.0
+
+  semantic-ui-less@2.5.0:
+    dependencies:
+      jquery: 4.0.0
 
   semantic-ui-react@2.1.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
@@ -41605,6 +41694,12 @@ snapshots:
   word-wrap@1.2.5: {}
 
   wordwrap@1.0.0: {}
+
+  worker-loader@2.0.0(webpack@5.101.3(@swc/core@1.5.7(@swc/helpers@0.5.21))(esbuild@0.25.12)):
+    dependencies:
+      loader-utils: 1.4.2
+      schema-utils: 0.4.7
+      webpack: 5.101.3(@swc/core@1.5.7(@swc/helpers@0.5.21))(esbuild@0.25.12)
 
   world-countries@5.1.0: {}
 

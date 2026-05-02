@@ -43,9 +43,12 @@
         "less-plugin-rewrite-variable": "0.1.0",
         "less-to-json": "^1.2.0",
         "merge-files": "^0.1.2",
+        "rc-tree": "^4.0.0-beta.2",
         "replace": "^1.1.5",
         "rimraf": "^3.0.2",
         "rtlcss": "^4.3.0",
+        "semantic-ui-css": "^2.4.1",
+        "semantic-ui-less": "^2.4.1",
         "watch": "^1.0.2"
     }
 }
