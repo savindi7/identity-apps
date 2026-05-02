@@ -1,5 +1,13 @@
 # @wso2is/myaccount
 
+## 4.1.24
+
+### Patch Changes
+
+- [#10239](https://github.com/wso2/identity-apps/pull/10239) [`63d41fe8acdaec032e340ffe42e8596fc26baad9`](https://github.com/wso2/identity-apps/commit/63d41fe8acdaec032e340ffe42e8596fc26baad9) Thanks [@NotoriousTechWorker](https://github.com/NotoriousTechWorker)! - Remove unused dev dependencies
+
+* [#10241](https://github.com/wso2/identity-apps/pull/10241) [`0ff7cdd4e8c8d35d63080e867f0af18e0907ad56`](https://github.com/wso2/identity-apps/commit/0ff7cdd4e8c8d35d63080e867f0af18e0907ad56) Thanks [@NotoriousTechWorker](https://github.com/NotoriousTechWorker)! - Migrate myaccount app to vite
+
 ## 4.1.23
 
 ### Patch Changes
