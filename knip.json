@@ -95,9 +95,6 @@
             ]
         },
         "modules/access-control": {
-            "entry": [
-                "src/index.ts"
-            ],
             "project": [
                 "src/**/*.{ts,tsx}"
             ]
@@ -111,41 +108,26 @@
             ]
         },
         "modules/dynamic-forms": {
-            "entry": [
-                "src/index.ts"
-            ],
             "project": [
                 "src/**/*.{ts,tsx}"
             ]
         },
         "modules/form": {
-            "entry": [
-                "src/index.ts"
-            ],
             "project": [
                 "src/**/*.{ts,tsx}"
             ]
         },
         "modules/forms": {
-            "entry": [
-                "src/index.ts"
-            ],
             "project": [
                 "src/**/*.{ts,tsx}"
             ]
         },
         "modules/i18n": {
-            "entry": [
-                "src/index.ts"
-            ],
             "project": [
                 "src/**/*.{ts,tsx}"
             ]
         },
         "modules/react-components": {
-            "entry": [
-                "src/index.ts"
-            ],
             "project": [
                 "src/**/*.{ts,tsx}"
             ]
@@ -167,9 +149,6 @@
             ]
         },
         "modules/validation": {
-            "entry": [
-                "src/index.ts"
-            ],
             "project": [
                 "src/**/*.{ts,tsx}"
             ]
