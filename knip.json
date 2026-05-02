@@ -174,8 +174,5 @@
                 "src/**/*.{ts,tsx}"
             ]
         }
-    },
-    "rules": {
-        "devDependencies": "off"
     }
 }
