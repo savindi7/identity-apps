@@ -33,7 +33,7 @@ module.exports = {
     ],
     moduleNameMapper: {
         "^@unit-testing(.*)$": "<rootDir>/test-configs/utils",
-        "^lodash-es/(.*)$": "<rootDir>/../../node_modules/lodash-es/$1"
+        "^lodash-es/(.*)$": "<rootDir>/../../node_modules/lodash/$1"
     },
     modulePaths: [
         "<rootDir>"
@@ -61,7 +61,7 @@ module.exports = {
         } ]
     },
     transformIgnorePatterns: [
-        "/node_modules/?(?!@wso2is|lodash-es)"
+        "/node_modules/?(?!@wso2is)"
     ],
     verbose: true
 };
