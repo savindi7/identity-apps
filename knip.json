@@ -1,6 +1,5 @@
 {
     "$schema": "https://unpkg.com/knip@latest/schema.json",
-    "include": ["files", "dependencies", "duplicates", "enumMembers", "exports", "unlisted", "types"],
     "ignore": [
         "identity-apps-core/**",
         "apps/console/src/extensions/i18n/**",
@@ -19,6 +18,10 @@
         "modules/form/src/components/adapters/file-picker-adapter.tsx": ["enumMembers"],
         "features/admin.users.v1/components/guests/models/invite.ts": ["enumMembers"]
     },
+    "ignoreBinaries": [
+        "prebuild",
+        "postbuild"
+    ],
     "ignoreDependencies": [],
     "workspaces": {
         ".": {
