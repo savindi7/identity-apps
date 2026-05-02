@@ -76,7 +76,13 @@
                 "config": []
             },
             "ignoreDependencies": [
-                "@wso2is/theme"
+                "@wso2is/theme",
+                "compression-webpack-plugin",
+                "copy-webpack-plugin",
+                "eslint-webpack-plugin",
+                "html-webpack-plugin",
+                "json-minimizer-webpack-plugin",
+                "webpack-bundle-analyzer"
             ]
         },
         "features": {
