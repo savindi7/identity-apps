@@ -77,7 +77,6 @@
         "@nx/react": "21.6.9",
         "@nx/rollup": "21.6.9",
         "@nx/storybook": "21.6.9",
-        "@nx/webpack": "21.6.9",
         "@storybook/react-webpack5": "9.1.9",
         "@rollup/plugin-url": "^8.0.2",
         "@svgr/rollup": "^6.2.1",
