@@ -605,9 +605,6 @@ importers:
       jest-environment-jsdom-global:
         specifier: ^4.0.0
         version: 4.0.0(jest-environment-jsdom@29.7.0)
-      react-refresh:
-        specifier: ^0.9.0
-        version: 0.9.0
       rimraf:
         specifier: ^3.0.2
         version: 3.0.2
@@ -22756,10 +22753,6 @@ packages:
     resolution: {integrity: sha512-z6F7K9bV85EfseRCp2bzrpyQ0Gkw1uLoCel9XBVWPg/TjRj94SkJzUTGfOa4bs7iJvBWtQG0Wq7wnI0syw3EBQ==}
     engines: {node: '>=0.10.0'}
 
-  react-refresh@0.9.0:
-    resolution: {integrity: sha512-Gvzk7OZpiqKSkxsQvO/mbTN1poglhmAV7gR/DdIrRrSMXraRQQlfikRJOr3Nb9GTMPC5kof948Zy6jJZIFtDvQ==}
-    engines: {node: '>=0.10.0'}
-
   react-router-dom@4.3.1:
     resolution: {integrity: sha512-c/MlywfxDdCp7EnB7YfPMOfMD3tOtIjrQlj/CKfNMBxdmpJP8xcz5P/UAFn3JbnQCNUxsHyVVqllF9LhgVyFCA==}
     peerDependencies:
@@ -39053,8 +39046,6 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
 
   react-refresh@0.17.0: {}
-
-  react-refresh@0.9.0: {}
 
   react-router-dom@4.3.1(react@18.3.1):
     dependencies:
