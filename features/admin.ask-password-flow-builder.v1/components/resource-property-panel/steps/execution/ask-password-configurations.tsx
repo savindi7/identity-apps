@@ -109,11 +109,11 @@ export const AskPasswordConfigurations: FunctionComponent<AskPasswordConfigurati
     const [
         isInviteUserToSetPasswordEnabled,
         setIsInviteUserToSetPasswordEnabled
-    ]= useState<boolean>(false);
+    ] = useState<boolean>(false);
     const [ isUpperCaseEnabled, setIsUpperCaseEnabled ] = useState<boolean>(false);
     const [ isLowerCaseEnabled, setIsLowerCaseEnabled ] = useState<boolean>(false);
     const [ isNumericEnabled, setIsNumericEnabled ] = useState<boolean>(false);
-    const [ askPasswordOption, setAskPasswordOption ] = useState<string>(VerificationOption.EMAIL_LINK);
+    const [ askPasswordOption, setAskPasswordOption ] = useState<VerificationOption>(VerificationOption.EMAIL_LINK);
     const [ expiryTime, setExpiryTime ] = useState<string>("");
     const [ otpLength, setOtpLength ] = useState<string>("");
     const [ enableAccountLockOnCreation, setEnableAccountLockOnCreation ] = useState<boolean>(false);
@@ -239,12 +239,9 @@ export const AskPasswordConfigurations: FunctionComponent<AskPasswordConfigurati
      * Handles form value changes.
      */
     useEffect(() => {
-
         setInvitedUserRegistrationConfig(updatedConfigs);
         setIsInvitedUserRegistrationConfigUpdated(true);
-    }, [
-        updatedConfigs
-    ]);
+    }, [ updatedConfigs ]);
 
     /**
      * Flattens and resolved form initial values and field metadata.

@@ -152,7 +152,6 @@ const Execution: FC<ExecutionPropsInterface> = memo(({
         }
     }, [ fullResource ]);
 
-
     /**
      * Resolves the execution name based on the type.
      *
