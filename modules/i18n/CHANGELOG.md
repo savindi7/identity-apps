@@ -1,5 +1,11 @@
 # @wso2is/i18n
 
+## 2.39.3
+
+### Patch Changes
+
+- [#10247](https://github.com/wso2/identity-apps/pull/10247) [`520a54257c26a2e7f006f3428639ac722fb301ed`](https://github.com/wso2/identity-apps/commit/520a54257c26a2e7f006f3428639ac722fb301ed) Thanks [@Lakshan-Banneheke](https://github.com/Lakshan-Banneheke)! - Add support for handling api resources tier limit reached
+
 ## 2.39.2
 
 ### Patch Changes
