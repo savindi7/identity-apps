@@ -619,7 +619,7 @@
                                         boolean GOOGLE_ONE_TAP_ENABLED = false;
 
                                         if ("Asgardeo Platform IDP".equals(idpName)) {
-                                            idpDisplayName = "Asgardeo";
+                                            idpDisplayName = "WSO2 Identity Platform";
                                         }
                                         if (idpName.endsWith(".hub")) {
                                             isHubIdp = true;
@@ -837,7 +837,7 @@
                                         }
 
                                         if ("Asgardeo Platform IDP".equals(idpName)) {
-                                            logoPath = "libs/themes/wso2is/assets/images/identity-providers/asgardeo.svg";
+                                            logoPath = "libs/themes/wso2is/assets/images/identity-providers/pulse-black.svg";
                                         }
 
                                         if (!imageURL.isEmpty() && imageURL.contains("assets/images/logos/")) {
@@ -1196,10 +1196,10 @@
                                                         '<%=Encode.forJavaScriptAttribute(Encode.forUriComponent(ENTERPRISE_USER_LOGIN_AUTHENTICATOR))%>',
                                                         '<%=Encode.forJavaScriptAttribute(Encode.forUriComponent(userTenantDomain))%>')"
                                                     >
-                                                        <img class="ui image" src="libs/themes/wso2is/assets/images/branding/asgardeo-trifacta.svg">
+                                                        <img class="ui image" src="libs/themes/wso2is/assets/images/branding/pulse-black.svg">
                                                         <span>
                                                             <%=AuthenticationEndpointUtil.i18n(resourceBundle, "continue.with")%>
-                                                            <%=Encode.forHtmlContent("Asgardeo")%>
+                                                            <%=Encode.forHtmlContent("WSO2 Identity Platform")%>
                                                         </span>
                                                 </button>
                                             </div>

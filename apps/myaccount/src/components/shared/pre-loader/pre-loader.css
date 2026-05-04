@@ -27,6 +27,27 @@
     background-image: none;
 }
 
+.trifacta-pre-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.trifacta-pre-loader svg {
+    width: 80px;
+    height: 80px;
+    animation: trifacta-pre-loader-pulse 2s ease-in-out infinite;
+}
+
+@keyframes trifacta-pre-loader-pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
 .ui.loader {
     position: absolute;
     top: 50%;
