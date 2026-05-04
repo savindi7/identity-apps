@@ -1,5 +1,18 @@
 # @wso2is/console
 
+## 4.5.25
+
+### Patch Changes
+
+- [#10185](https://github.com/wso2/identity-apps/pull/10185) [`60dc6035b6d72c77f65247dc951d53bcc8f930be`](https://github.com/wso2/identity-apps/commit/60dc6035b6d72c77f65247dc951d53bcc8f930be) Thanks [@ranuka-laksika](https://github.com/ranuka-laksika)! - Add Token Exchange grant type to agent application template
+
+* [#10247](https://github.com/wso2/identity-apps/pull/10247) [`520a54257c26a2e7f006f3428639ac722fb301ed`](https://github.com/wso2/identity-apps/commit/520a54257c26a2e7f006f3428639ac722fb301ed) Thanks [@Lakshan-Banneheke](https://github.com/Lakshan-Banneheke)! - Add support for handling api resources tier limit reached
+
+* Updated dependencies [[`60dc6035b6d72c77f65247dc951d53bcc8f930be`](https://github.com/wso2/identity-apps/commit/60dc6035b6d72c77f65247dc951d53bcc8f930be), [`520a54257c26a2e7f006f3428639ac722fb301ed`](https://github.com/wso2/identity-apps/commit/520a54257c26a2e7f006f3428639ac722fb301ed)]:
+  - @wso2is/admin.extensions.v1@2.43.6
+  - @wso2is/admin.api-resources.v2@2.26.10
+  - @wso2is/i18n@2.39.3
+
 ## 4.5.24
 
 ### Patch Changes
